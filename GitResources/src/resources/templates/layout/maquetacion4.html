@@ -1,0 +1,611 @@
+<th:block th:insert="/public/home/html_type"></th:block>
+<head>
+  <th:block th:insert="/public/home/technicalheader::main" th:with="page='opac-maquetacion-4'"></th:block>
+  <!-- :: ESPECIFICO MAQUETACION -->
+  <link type="text/css" rel="stylesheet" th:href="@{/css/opac/maquetacion/maquetacion.css}" media="all">
+</head>
+<body class="page_type_layout layout_maquetacion4">
+  <!-- :: [layout/maquetacion3.html] -->
+  <header class="header_principal">
+    <th:block th:with="pageLocation='home'" th:insert="/public/home/header"></th:block>
+  </header>
+  <main id="acc_anchor_main">
+
+    <th:block th:insert="/layout/fragments/enlaces_internos"></th:block>
+
+    <h2 class="w-100 mt-3 mb-3">Línea Maquetación 4: Grids</h2>
+    <section class="cont_grid mb-3">
+      <h3 class="w-100 mt-3 mb-3">GRIDS: TIPOS GENERALES DE VISTAS</h2>
+      <!-- https://tympanus.net/codrops/css_reference/grid/ -->
+
+
+
+
+
+        <div class="grid-container">
+          <div class="grid__item">
+
+
+
+
+            <section id="sct_buscador" class="sct_buscador d-flex" data-skip_to_content="recommendations_art_suggest_0" aria-labelledby="title_sct_buscador">
+              <h2 id="title_sct_buscador" class="anchor_title stc_title sr-only">Buscador</h2>
+
+          <!-- :: [public/search/type.html] -->
+
+          <div class="component w-100 no_border mb-0"><!-- :: [public/search/quick/index.html] -->
+
+        <div class="container quick_search">
+          <div class="catalog-search simple-search pt-md-4 pt-2">
+            <div class="mx-auto cont_form_quick_search">
+              <form method="post" id="solrSearch" name="solrSearchWeb" action="/OpacWeb-0.2.15-SNAPSHOT/public/search/action#refreshWrapper" role="search"><input type="hidden" name="_csrf" value="1184e93a-c104-4620-825b-8744e7e8e41f">
+                <input type="hidden" name="solrSearch.solrCollection" id="solrCollection.form.quick" value="BIBLIOGRAPHIC_CATALOG">
+                <input type="hidden" name="solrSearch.queryType" id="queryType.form.quick" value="EXPERT">
+
+
+
+                <div class="form-row">
+                  <div class="cont_input_quick_search form-group cont_input">
+                    <div class="blq cont_botonera botonera_left">
+                      <span class="icono fas fa-search icono_lupa desktop" aria-hidden="true"></span>
+                      <!-- :: Boton de 'buscar' sólo resolucion móvil -->
+                      <button type="submit" class="btn_quick_search btn_search mobile_flex align-items-center justify-content-center" aria-label="Buscar" title="Buscar">
+                        <span class="icono fas fa-search icono_lupa" aria-hidden="true"></span>
+                      </button>
+                    </div>
+                    <!-- :: /.cont_botonera -->
+                    <div class="blq cont_input">
+                      <label class="sr-only" for="mainAccessLink">Introduzca el término a buscar</label>
+                      <input type="text" id="mainAccessLink" name="solrSearch.query" class="input_quick_search form-control" value="" placeholder="Introduzca el término a buscar" autocomplete="off">
+                    </div>
+                    <!-- :: /.cont_input -->
+                    <div class="blq cont_botonera botonera_right">
+                      <button type="button" id="delete_terms" class="btn_quick_search btn_delete_terms" aria-label="Borra los terminos de busqueda insertados" title="Borra los terminos de busqueda insertados">
+                        <span class="icono fas fa-times icono_delete" aria-hidden="true"></span>
+                      </button>
+                      <!-- :: Botón de despliegue de la capa de opciones de búsqueda sólo resolución móvil -->
+                      <button type="button" id="show_collapse" class="btn_quick_search btn_show_collapse mobile" aria-label="Opciones de búsqueda" title="Muestra las opciones de búsqueda">
+                        <span class="icono fas fa-angle-down icono_show_collapse" aria-hidden="true"></span>
+                      </button>
+                    </div>
+                    <!-- :: /.cont_botonera -->
+                  </div>
+                  <!-- :: /.form-group -->
+                  <div class="cont_botonera_quick_search botonera_desktop col-md-2 desktop_flex">
+                    <button type="submit" class="btn btn_search btn-outline-primary p-2 m-auto" title="Buscar">Buscar</button>
+                  </div>
+                  <!-- :: /.form-group -->
+                </div>
+                <!-- :: /.form-row -->
+                <div class="barra_titulo form-row bg-highlight desktop_flex">
+                  <div class="cont_titulo col-md-6 col-xl-3 my-auto desktop py-1">
+                    <span class="titulo m-2">Filtros de búsqueda</span>
+                  </div>
+                  <!-- :: /.form-group -->
+                  <!-- link Avanzado -->
+                  <div class="cont_botonera col-auto my-auto ml-auto my-auto desktop_flex">
+                    <a class="btn btn-link btn_enlace link-buscar mr-2" href="/OpacWeb-0.2.15-SNAPSHOT/public/search/advanced">
+                      <span class="icono fas fa-binoculars" aria-hidden="true"></span>
+                      <span class="texto border-bottom">Búsqueda avanzada</span>
+                      <span class="icono fas fa-chevron-right" aria-hidden="true"></span>
+                    </a>
+                  </div>
+                  <!-- :: /.form-group -->
+                </div>
+                <!-- :: /.form-row -->
+                <div class="container_mobile_collapse desktop_flex">
+                  <div class="form-row cont_mobile_buttons mobile_flex">
+                    <!-- :: [public/search/mobileButtons.html] -->
+        <div class="cont_botonera_mobile col-12 d-flex">
+          <button type="button" data-control_container="cont_sources" class="btn-actions col-5 form-control btn btn-white">En otras plataformas</button>
+          <button type="button" data-control_container="cont_subcatalogs" class="btn-actions col-5 form-control btn btn-white">Por biblioteca</button>
+        </div>
+        <!-- :: [public/search/mobileButtons.html] -->
+                  </div>
+                  <!-- :: /.form-row -->
+                  <div class="cont_sources cont_dependant form-row">
+                    <!-- :: [public/search/copySources.html] -->
+        <fieldset class="type_copySources search-sources cont_form_group cont_radio_tunned col-md-12">
+          <legend class="sr-only">Filtro de plataforma de los ejemplares</legend>
+          <div class="fieldset_title d-flex desktop_flex">
+            <span class="icono fas fa-search icono_red" aria-hidden="true"></span>
+            <span class="label ml-1">Seleccione dónde buscar:</span>
+          </div>
+          <!-- :: /.fieldset_title -->
+          <div class="cont_checks d-flex scaleCero">
+            <div class="form-group cont_radio col-auto form-check radio">
+              <label id="source" for="any-source">Cualquier origen</label>
+              <input type="radio" id="any-source" name="solrSearch.origin" value="" checked="checked" tabindex="0">
+            <span class="cont_nuevo_radio activado" aria-hidden="true"></span></div>
+            <!-- :: /.col-auto-->
+
+            <div class="form-group cont_radio col-auto form-check radio">
+              <label id="absysnet" class="form-check-label" for="AbsysNET">Catálogo</label>
+              <input type="radio" id="AbsysNET" name="solrSearch.origin" value="AbsysNET" tabindex="0">
+            <span class="cont_nuevo_radio" aria-hidden="true"></span></div>
+            <!-- :: /.col-auto-->
+
+            <div class="form-group cont_radio col-auto form-check radio">
+              <label id="efilm_label" class="form-check-label" for="efilm">efilm</label>
+              <input type="radio" id="efilm" name="solrSearch.origin" value="efilm" tabindex="0">
+            <span class="cont_nuevo_radio" aria-hidden="true"></span></div>
+
+            <div class="form-group cont_radio col-auto form-check radio">
+              <label id="Dialnet-Derecho_label" class="form-check-label" for="Dialnet-Derecho">Dialnet-Derecho</label>
+              <input type="radio" id="Dialnet-Derecho" name="solrSearch.origin" value="Dialnet-Derecho" tabindex="0">
+            <span class="cont_nuevo_radio" aria-hidden="true"></span></div>
+
+            <div class="form-group cont_radio col-auto form-check radio">
+              <label id="BIBNET_label" class="form-check-label" for="BIBNET">BIBNET</label>
+              <input type="radio" id="BIBNET" name="solrSearch.origin" value="BIBNET" tabindex="0">
+            <span class="cont_nuevo_radio" aria-hidden="true"></span></div>
+            <!-- :: /.col-auto-->
+
+          </div>
+          <!-- :: /.cont_checks -->
+
+        </fieldset>
+        <!-- :: /.search-sources -->
+
+        <!-- :: /[public/search/copySources.html] -->
+                  </div>
+                  <!-- :: /.form-row -->
+                  <div class="cont_subcatalogs cont_dependant form-row mb-2">
+                    <!-- :: [public/search/subCataSelect.html] -->
+
+        <fieldset class="auto-search col-md-12">
+          <!--<legend class="sr-only" th:text="#{search.subcatalog.selection}"></legend>-->
+          <legend class="fieldset_title desktop">
+            <span class="icono fas fa-filter icono_red" aria-hidden="true"></span>
+            <span class="label">Filtrar en el catálogo:</span>
+          </legend>
+          <!-- :: /.col-md-3 -->
+
+          <!-- :: [public/search/subCataSelectDiv.html] -->
+        <div class="auto-search cont_selects selects_dependientes_js d-flex">
+
+              <div class="cont_form_group col-xl col-lg-6 col-md-6 col-12 flex-grow-1 pl-sm-0">
+                <div class="form-group cont_selectPicker cont_select selectPicker_selectized">
+                  <label for="solrSearch.subCatalog.subCatalogs0.optionSelected" class="bmd-label-floating">Selección de Subcatálogo</label>
+
+                  <span class="icono fas fa-sort-down icono_red" aria-hidden="true"></span><div class="dropdown bootstrap-select sub-cata-select form-control select_selectized"><select class="sub-cata-select form-control select_selectized" data-live-search="true" data-select_num="1" id="solrSearch.subCatalog.subCatalogs0.optionSelected" name="solrSearch.subCatalog.subCatalogs[0].optionSelected">
+                    <!-- <th:block  th:insert="/public/search/subCataOptions :: options(collection=${comb.optionsSelect},mselected=${comb.optionSelected},sfield=${sfield})"></th:block>-->
+
+                      <option value="" class="level1" selected="selected">Todos los subcatálogos</option>
+
+                      <option value="B-60" class="option-level-1 level-2 on-change">Bibliotecas de San Martín del Rey Aurelio</option>
+
+                      <option value="B-AS-PAR" class="option-level-1 level-2 on-change">Paraguay</option>
+
+                      <option value="B-BA-GUI" class="option-level-1 level-2 on-change">Guinea Ecuatorial</option>
+
+                      <option value="B-BORRA" class="option-level-1 level-2 on-change">borrame</option>
+
+                      <option value="B-BTZ" class="option-level-1 level-2 on-change">Biblioteca Baratz</option>
+
+                      <option value="B-CI-COL" class="option-level-1 level-2 on-change">Colombia</option>
+
+                      <option value="B-HA-CUB" class="option-level-1 level-2 on-change">Cuba</option>
+
+                      <option value="B-LI-PER" class="option-level-1 level-2 on-change">Perú</option>
+
+                      <option value="B-MA-GUI" class="option-level-1 level-2 on-change">Guinea Ecuatorial</option>
+
+                      <option value="B-MA-NIC" class="option-level-1 level-2 on-change">Nicaragua</option>
+
+                      <option value="B-ME-MEX" class="option-level-1 level-2 on-change">México</option>
+
+                      <option value="B-PA-PAN" class="option-level-1 level-2 on-change">Casa del Soldado</option>
+
+                      <option value="B-SA-CHI" class="option-level-1 level-2 on-change">Chile</option>
+
+                      <option value="B-SD-RDO" class="option-level-1 level-2 on-change">República Dominicana</option>
+
+                      <option value="B-SJ-CRI" class="option-level-1 level-2 on-change">Costa Rica</option>
+
+                      <option value="B-SS-SAL" class="option-level-1 level-2 on-change">El Salvador</option>
+
+                      <option value="B-TE-HON" class="option-level-1 level-2 on-change">Honduras</option>
+
+                      <option value="B-TEST" class="option-level-1 level-2 on-change">solo para test de integracion</option>
+
+                      <option value="B-ZZ-ZZZ" class="option-level-1 level-2 on-change">______</option>
+
+                      <option value="BG-ARG" class="option-level-1 level-1">Argentina</option>
+
+                      <option value="BG-ARG B-BA-ARG" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Argentina</option>
+
+                      <option value="BG-ARG B-CO-ARG" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Argentina C</option>
+
+                      <option value="BG-ARG B-RO-ARG" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Argentina R</option>
+
+                      <option value="BG-ASIA" class="option-level-1 level-1">Asia</option>
+
+                      <option value="BG-ASIA B-B-TAI" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Tailandia</option>
+
+                      <option value="BG-ASIA B-CH" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;China</option>
+
+                      <option value="BG-ASIA B-TAI" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Tailandia</option>
+
+                      <option value="BG-ASIA B-VIE" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Vietnam</option>
+
+                      <option value="BG-BE" class="option-level-1 level-1">Bibliotecas Especializadas</option>
+
+                      <option value="BG-BE B-12" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Biblioteca de Cangas de Onís</option>
+
+                      <option value="BG-BE B-4" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Biblioteca de Avilés</option>
+
+                      <option value="BG-BE B-47" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Biblioteca de Peñamellera Baja</option>
+
+                      <option value="BG-BE B-48" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Biblioteca de Pesoz</option>
+
+                      <option value="BG-BE B-50" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Biblioteca de Ponga</option>
+
+                      <option value="BG-BE B-501" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Archivo Histórico de Asturias</option>
+
+                      <option value="BG-BE B-503" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Museo Marítimo de Asturias</option>
+
+                      <option value="BG-BE B-504" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Museo Arqueológico de Asturias</option>
+
+                      <option value="BG-BE B-505" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Real Instituto de Estudios Asturianos</option>
+
+                      <option value="BG-BE B-506" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Museo de Bellas Artes de Asturias</option>
+
+                      <option value="BG-BE B-507" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Conservatorio de Musica de Asturias</option>
+
+                      <option value="BG-BE B-508" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Mediateca Laboral Centro de Arte y Creación Industrial</option>
+
+                      <option value="BG-BE B-509" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Fundación Alvargonzález</option>
+
+                      <option value="BG-BE B-510" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;SERIDA</option>
+
+                      <option value="BG-BE B-511" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Bibliotecas especializadas del PA</option>
+
+                      <option value="BG-BE B-512" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Fundación Cardín</option>
+
+                      <option value="BG-BE B-61" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Biblioteca de San Martín de Oscos</option>
+
+                      <option value="BG-BE B-76" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Biblioteca de Villaviciosa</option>
+
+                      <option value="BG-BOL" class="option-level-1 level-1">Bolivia</option>
+
+                      <option value="BG-BOL B-PA-BOL" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Bolivia P</option>
+
+                      <option value="BG-BOL B-SC-BOL" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Bolivia</option>
+
+                      <option value="BG-BP" class="option-level-1 level-1">Bibliotecas Públicas</option>
+
+                      <option value="BG-BP B-1" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Biblioteca de Allande</option>
+
+                      <option value="BG-BP B-10" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Biblioteca de Candamo</option>
+
+                      <option value="BG-BP B-11" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Biblioteca de Cangas del Narcea</option>
+
+                      <option value="BG-BP B-13" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Biblioteca de Caravia</option>
+
+                      <option value="BG-BP B-14" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Biblioteca de Carreño</option>
+
+                      <option value="BG-BP B-15" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Biblioteca de Caso</option>
+
+                      <option value="BG-BP B-16" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Bibliotecas de Castrillón</option>
+
+                      <option value="BG-BP B-17" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Bibliotecas de Castropol</option>
+
+                      <option value="BG-BP B-18" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Biblioteca de Coaña</option>
+
+                      <option value="BG-BP B-19" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Biblioteca de Colunga</option>
+
+                      <option value="BG-BP B-2" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Bibliotecas de Aller</option>
+
+                      <option value="BG-BP B-20" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Bibliotecas de Corvera</option>
+
+                      <option value="BG-BP B-21" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Bibliotecas de Cudillero</option>
+
+                      <option value="BG-BP B-22" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Biblioteca de Degaña</option>
+
+                      <option value="BG-BP B-23" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Biblioteca de El Franco</option>
+
+                      <option value="BG-BP B-24" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;"Biblioteca Pública ""Jovellanos"""</option>
+
+                      <option value="BG-BP B-24M" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Bibliotecas Municipales de Gijón</option>
+
+                      <option value="BG-BP B-25" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Biblioteca de Gozón</option>
+
+                      <option value="BG-BP B-26" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Biblioteca de Grado</option>
+
+                      <option value="BG-BP B-27" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Biblioteca de Grandas de Salime</option>
+
+                      <option value="BG-BP B-29" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Biblioteca de Illano</option>
+
+                      <option value="BG-BP B-3" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Biblioteca de Amieva</option>
+
+                      <option value="BG-BP B-31" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Bibliotecas de Langreo</option>
+
+                      <option value="BG-BP B-32" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Bibliotecas de Laviana</option>
+
+                      <option value="BG-BP B-33" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Bibliotecas de Lena</option>
+
+                      <option value="BG-BP B-34" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Biblioteca de Valdés</option>
+
+                      <option value="BG-BP B-35" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Bibliotecas de Llanera</option>
+
+                      <option value="BG-BP B-36" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Bibliotecas de Llanes</option>
+
+                      <option value="BG-BP B-37" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Bibliotecas de Mieres</option>
+
+                      <option value="BG-BP B-38" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Biblioteca de Morcín</option>
+
+                      <option value="BG-BP B-39" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Bibliotecas de Muros de Nalón</option>
+
+                      <option value="BG-BP B-40" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Biblioteca de Nava</option>
+
+                      <option value="BG-BP B-41" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Bibliotecas de Navia</option>
+
+                      <option value="BG-BP B-42" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Biblioteca de Noreña</option>
+
+                      <option value="BG-BP B-43" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Biblioteca de Onís</option>
+
+                      <option value="BG-BP B-44" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Biblioteca de Asturias</option>
+
+                      <option value="BG-BP B-44M" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Bibliotecas Municipales de Oviedo</option>
+
+                      <option value="BG-BP B-45" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Biblioteca de Parres</option>
+
+                      <option value="BG-BP B-46" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Bibliotecas de Peñamellera Alta</option>
+
+                      <option value="BG-BP B-49" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Bibliotecas de Piloña</option>
+
+                      <option value="BG-BP B-5" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Biblioteca de Belmonte</option>
+
+                      <option value="BG-BP B-502" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Monasterio de San Pelayo</option>
+
+                      <option value="BG-BP B-51" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Biblioteca de Pravia</option>
+
+                      <option value="BG-BP B-52" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Biblioteca de Proaza</option>
+
+                      <option value="BG-BP B-53" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Biblioteca de Quirós</option>
+
+                      <option value="BG-BP B-54" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Biblioteca de Las Regueras</option>
+
+                      <option value="BG-BP B-55" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Biblioteca de Ribadedeva</option>
+
+                      <option value="BG-BP B-56" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Biblioteca de Ribadesella</option>
+
+                      <option value="BG-BP B-57" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Biblioteca de Ribera de Arriba</option>
+
+                      <option value="BG-BP B-58" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Biblioteca de Riosa</option>
+
+                      <option value="BG-BP B-59" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Biblioteca de Salas</option>
+
+                      <option value="BG-BP B-6" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Biblioteca de Bimenes</option>
+
+                      <option value="BG-BP B-62" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Biblioteca de Sta. Eulalia de Oscos</option>
+
+                      <option value="BG-BP B-63" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Biblioteca de San Tirso de Abres</option>
+
+                      <option value="BG-BP B-64" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Biblioteca de Santo Adriano</option>
+
+                      <option value="BG-BP B-65" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Biblioteca de Sariego</option>
+
+                      <option value="BG-BP B-66" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Bibliotecas de Siero</option>
+
+                      <option value="BG-BP B-67" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Bibliotecas de Sobrescobio</option>
+
+                      <option value="BG-BP B-68" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Biblioteca de Somiedo</option>
+
+                      <option value="BG-BP B-69" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Bibliotecas de Soto del Barco</option>
+
+                      <option value="BG-BP B-7" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Biblioteca de Boal</option>
+
+                      <option value="BG-BP B-70" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Biblioteca de Tapia de Casariego</option>
+
+                      <option value="BG-BP B-71" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Biblioteca de Taramundi</option>
+
+                      <option value="BG-BP B-72" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Biblioteca de Teverga</option>
+
+                      <option value="BG-BP B-73" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Bibliotecas de Tineo</option>
+
+                      <option value="BG-BP B-74" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Biblioteca de Vegadeo</option>
+
+                      <option value="BG-BP B-75" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Biblioteca de Villanueva de Oscos</option>
+
+                      <option value="BG-BP B-8" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Bibliotecas de Cabrales</option>
+
+                      <option value="BG-BP B-9" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Biblioteca de Cabranes</option>
+
+                      <option value="BG-GUA" class="option-level-1 level-1">Guatemala</option>
+
+                      <option value="BG-GUA B-AN-GUA" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Biblioteca del Centro de Formación de La Antigua Guatemala</option>
+
+                      <option value="BG-GUA B-GU-GUA" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Biblioteca del Centro Cultural de España en Guatemala</option>
+
+                      <option value="BG-URU" class="option-level-1 level-1">Uruguay</option>
+
+                      <option value="BG-URU B-MO-URU" class="option-level-2 level-2 on-change">&nbsp;&nbsp;&nbsp;&nbsp;Uruguay</option>
+
+                  </select><button type="button" tabindex="-1" class="btn dropdown-toggle btn-light bs-placeholder" data-toggle="dropdown" aria-owns="bs-select-1" aria-controls="bs-select-1" aria-haspopup="listbox" aria-expanded="false" data-id="solrSearch.subCatalog.subCatalogs0.optionSelected" title="Todos los subcatálogos" id="btn_solrSearch.subCatalog.subCatalogs0.optionSelected"><span class="filter-option"><span class="filter-option-inner"><span class="filter-option-inner-inner">Todos los subcatálogos</span></span> </span></button><div class="dropdown-menu "><div class="bs-searchbox"><input type="search" class="form-control" autocomplete="off" aria-label="Search" aria-controls="bs-select-1" aria-autocomplete="list"></div><div class="inner show" role="listbox" aria-label="undefined" id="bs-select-1" tabindex="-1"><ul class="dropdown-menu inner show" role="presentation"></ul></div></div></div>
+                  <span class="bmd-help">Subcatálogo</span>
+                </div>
+              </div>
+              <!-- :: /.cont_form_group -->
+
+              <div class="cont_form_group col-xl col-lg-6 col-md-6 col-12 flex-grow-1 pl-sm-0">
+                <div class="form-group cont_selectPicker cont_select selectPicker_selectized">
+                  <label for="solrSearch.subCatalog.subCatalogs1.optionSelected" class="bmd-label-floating">Selección de Subcatálogo</label>
+
+                  <span class="icono fas fa-sort-down icono_red" aria-hidden="true"></span><div class="dropdown bootstrap-select sub-cata-select form-control select_selectized"><select class="sub-cata-select form-control select_selectized" data-live-search="true" data-select_num="2" id="solrSearch.subCatalog.subCatalogs1.optionSelected" name="solrSearch.subCatalog.subCatalogs[1].optionSelected">
+                    <!-- <th:block  th:insert="/public/search/subCataOptions :: options(collection=${comb.optionsSelect},mselected=${comb.optionSelected},sfield=${sfield})"></th:block>-->
+
+                      <option value="" class="level1" selected="selected">Todos los subcatálogos</option>
+
+                  </select><button type="button" tabindex="-1" class="btn dropdown-toggle btn-light bs-placeholder" data-toggle="dropdown" role="combobox" aria-owns="bs-select-2" aria-controls="bs-select-2" aria-haspopup="listbox" aria-expanded="false" data-id="solrSearch.subCatalog.subCatalogs1.optionSelected" title="Todos los subcatálogos" id="btn_solrSearch.subCatalog.subCatalogs1.optionSelected"><div class="filter-option"><div class="filter-option-inner"><div class="filter-option-inner-inner">Todos los subcatálogos</div></div> </div></button><div class="dropdown-menu "><div class="inner show" role="listbox" aria-label="undefined" id="bs-select-2" tabindex="-1"><ul class="dropdown-menu inner show" role="presentation"></ul></div></div></div>
+                  <span class="bmd-help">Subcatálogo</span>
+                </div>
+              </div>
+              <!-- :: /.cont_form_group -->
+
+          </div>
+          <!-- :: /.cont_selects -->
+          <!-- :: [public/search/subCataSelectDiv.html] -->
+
+        </fieldset>
+        <!-- :: /.auto-search -->
+
+        <!-- :: /[public/search/subCataSelect.html] -->
+                  </div>
+                  <!-- :: /.form-row -->
+                  <div class="cont_extras nav-item row mb-1 mobile_flex">
+                    <button type="button" class="dropdownMenuLink_history btn-actions btn btn_simil_desplegable w-100 text-left mb-2" data-control_container="cont_search_history" data-max_items="5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <span class="icono fas fa-history" aria-hidden="true"></span>
+                      <span class="btn_title">Búsquedas guardadas</span>
+                    </button>
+                    <div class="cont_search_history cont_dependant col-12 form-row mb-2">
+                      <!-- :: [public/catalog/fragments/searchHistory.html] -->
+            <div class="cont_historico w-100">
+
+        <!-- :: [public/catalog/fragments/record.html] -->
+        <ul class="records_list w-100">
+
+        </ul>
+        <!-- :: /[public/catalog/fragments/record.html] -->
+
+              <div class="botonera_ultimas_busquedas cont_botonera w-100 d-flex justify-content-center">
+                  <a class="btn btn-sm btn-outline-secondary" href="/OpacWeb-0.2.15-SNAPSHOT/public/reader/lastSearchs?tabId=0&amp;id=">
+                    <span class="btn_title">Lista completa de últimas búsquedas</span>
+                  </a>
+              </div>
+            </div>
+            <!-- :: /.cont_historico -->
+        <!-- :: /[public/catalog/fragments/searchHistory.html] -->
+                    </div>
+                    <!-- :: /.form-row -->
+
+                    <a href="/OpacWeb-0.2.15-SNAPSHOT/reader/data/home" class="btn btn_simil_desplegable w-100 text-left">
+                      <span class="icono far fa-bookmark" aria-hidden="true"></span>
+                      <span class="btn_title">Favoritos</span>
+                    </a>
+                  </div>
+                  <!-- :: /.form-row -->
+                </div>
+                <!-- :: /.container_mobile_collapse -->
+              </form>
+            </div>
+          </div>
+          <!-- :: /.simple-search -->
+        </div>
+        <!-- :: /. container-->
+
+
+        <!-- :: /[public/search/quick/index.html] --></div>
+          <!-- :: /[public/search/type.html] -->
+
+            </section>
+
+
+
+
+
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+        <!-- <div class="grid-container">
+          <div class="grid__item uno">
+            <div class="item_cont">1</div>
+            <div class="item_cont">2</div>
+            <div class="item_cont">3</div>
+            <div class="item_cont">4</div>
+            <div class="item_cont">5</div>
+            <div class="item_cont">6</div>
+            <div class="item_cont">7</div>
+            <div class="item_cont">8</div>
+            <div class="item_cont">9</div>
+            <div class="item_cont">10</div>
+          </div>
+          <div class="grid__item dos">
+            <div class="item_cont">1</div>
+            <div class="item_cont">2</div>
+            <div class="item_cont">3</div>
+            <div class="item_cont">4</div>
+            <div class="item_cont">5</div>
+            <div class="item_cont">6</div>
+            <div class="item_cont">7</div>
+
+          </div>
+          <div class="grid__item tres">
+            <div class="item_cont">1</div>
+            <div class="item_cont">2</div>
+            <div class="item_cont">3</div>
+            <div class="item_cont">4</div>
+            <div class="item_cont">5</div>
+            <div class="item_cont">6</div>
+            <div class="item_cont">7</div>
+            <div class="item_cont">8</div>
+            <div class="item_cont">9</div>
+            <div class="item_cont">10</div>
+          </div>
+          <div class="grid__item cuatro">
+            <div class="item_cont">1</div>
+            <div class="item_cont">2</div>
+            <div class="item_cont">3</div>
+            <div class="item_cont">4</div>
+            <div class="item_cont">5</div>
+            <div class="item_cont">6</div>
+            <div class="item_cont">7</div>
+            <div class="item_cont">8</div>
+            <div class="item_cont">9</div>
+            <div class="item_cont">10</div>
+          </div>
+          <div class="grid__item cinco">
+            <div class="item_cont">1</div>
+            <div class="item_cont">2</div>
+            <div class="item_cont">3</div>
+            <div class="item_cont">4</div>
+            <div class="item_cont">5</div>
+            <div class="item_cont">6</div>
+            <div class="item_cont">7</div>
+            <div class="item_cont">8</div>
+          </div>
+          <div class="grid__item seis">
+            <div class="item_cont">1</div>
+            <div class="item_cont">2</div>
+            <div class="item_cont">3</div>
+            <div class="item_cont">4</div>
+            <div class="item_cont">5</div>
+            <div class="item_cont">6</div>
+            <div class="item_cont">7</div>
+            <div class="item_cont">8</div>
+            <div class="item_cont">9</div>
+            <div class="item_cont">10</div>
+            <div class="item_cont">11</div>
+            <div class="item_cont">12</div>
+            <div class="item_cont">13</div>
+            <div class="item_cont">14</div>
+            <div class="item_cont">15</div>
+            <div class="item_cont">16</div>
+            <div class="item_cont">17</div>
+            <div class="item_cont">18</div>
+            <div class="item_cont">19</div>
+          </div>
+        </div> -->
+
+    </section>
+  </main>
+  <footer class="footer_principal">
+    <th:block th:insert="/public/home/footer"></th:block>
+  </footer>
+  <th:block th:insert="/public/home/technicalfooter" th:with="page='opac-maquetacion-4'"></th:block>
+
+<!-- :: /[layout/maquetacion4.html] -->
+</body>
+
+</html>

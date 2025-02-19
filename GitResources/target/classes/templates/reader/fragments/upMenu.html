@@ -1,0 +1,23 @@
+<!-- :: [reader/fragments/upMenu.html] -->
+<h3 id="myLibrary_menu" class="sr-only" th:text="#{mylibrary.menu.loan.request.title}"></h3>
+<ul class="nav nav-pills">
+   <li class="nav-item">
+      <a th:href="@{${thymeleafMap.get('READER_LOANS_PATH')}}" th:text="#{dockbar.biblio.loans}" data-type="btn_actuales"
+         th:aria-label="#{dockbar.biblio.loans}" class="nav-link"
+         th:classappend="${activePill=='loans'} ? active : ''">
+      </a>
+   </li>
+   <li th:if="${allowViewLoansHistory}" class="nav-item">
+      <a th:href="@{${thymeleafMap.get('READER_LOANS_HISTORY_PATH')}}" th:text="#{dockbar.biblio.loans.history}" data-type="btn_historico"
+         th:aria-label="#{dockbar.biblio.loans.history}" class="nav-link"
+         th:classappend="${activePill=='loansHistory'} ? active : ''">
+      </a>
+   </li>
+   <li class="nav-item">
+      <a th:href="@{${thymeleafMap.get('READER_RESERVATION_PATH')}}" th:text="#{dockbar.biblio.reservation}" data-type="btn_solicitudes"
+         th:aria-label="#{dockbar.biblio.reservation}" class="nav-link"
+         th:classappend="${activePill=='reservation'} ? active : ''">
+      </a>
+   </li>
+</ul>
+<!-- :: /[reader/fragments/upMenu.html] -->

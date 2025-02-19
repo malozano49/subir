@@ -1,0 +1,26 @@
+<!-- :: [reader/suggestions/suggestionsForm.html] -->
+<div class="suggestions--form suggestions--form--container">
+	<form id="form_addSuggestion" class="register_form" th:action="@{${thymeleafMap.get('READER_SUGGESTIONS_ADD')}}"
+	th:object="${suggestionWebVO}" method="post">
+	<div class="form-row register-row">
+		<div class="cont_form_group register_group col-12 mb-3">
+			<label for="suggestion" th:text="#{suggestion.form.text}"></label>
+			<div class="form-group cont_input cont_textarea cont_textarea_suggestion">
+			<textarea id="suggestion" name="comment" class="form-control js-suggestion-textarea" th:field="*{comment}" minlength="5" maxlength="512"></textarea>
+			<span id="error-comment-text" class="error" th:if="${#fields.hasErrors('comment')}" th:errors="*{comment}"></span>
+		</div>
+	</div>
+		
+
+	</div>
+	<div class="cont_botonera_input d-flex flex-row justify-content-end">
+	<button class="btn btn-outline-secondary close-suggestion-btn" th:aria-label="#{suggestion.cancel}">
+		<th:block th:text="#{mylibrary.reader.cancel}"></th:block>
+	</button>
+	<button class="btn btn-outline-primary save-suggestion-btn" id="save-suggestion" type="button" th:aria-label="#{suggestion.save}">
+		<th:block th:text="#{mylibrary.reader.save}"></th:block>
+	</button>
+	</div>
+</form>
+</div>
+<!-- :: [reader/suggestions/suggestionsForm.html] -->

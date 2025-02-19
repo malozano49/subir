@@ -1,0 +1,11 @@
+<!-- :: fragments/streaming.html -->
+<div th:fragment="streaming (ssource, sbarcode, surl)">
+<button th:if="${ssource==thymeleafMap.get('EFILM_SOURCE')}"
+	type="button" class="btn btn-outline-primary btn_view_streaming"
+	data-action="titleList_url_efilm"
+	th:data-href="${surl}">
+	<span class="icono fas fa-external-link-alt mr-1" aria-hidden="true"></span>
+	<span class="" th:text="#{streaming.ver}"></span>
+</button>
+</div>
+<!-- :: fragments/streaming.html -->

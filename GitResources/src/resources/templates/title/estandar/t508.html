@@ -1,0 +1,16 @@
+<th:block th:each="subcampos : ${mvalor.subFields}">
+<!-- :: [title/estandar/t508.html] -->
+	<th:block th:unless="${#strings.contains(subcampos.subFieldValue, '$guion') or #strings.contains(subcampos.subFieldValue, '$musica') or #strings.contains(subcampos.subFieldValue, '$fotografia')}"
+			  th:insert="/title/fragments/subfieldValue">
+	</th:block>
+	<th:block th:if="${#strings.contains(subcampos.subFieldValue, '$guion')}">
+		<span class="page_title" th:text="#{estandar.guion.label} + ': ' + ${#strings.replace(subcampos.subFieldValue,'$guion','')}"></span>
+	</th:block>
+	<th:block th:if="${#strings.contains(subcampos.subFieldValue, '$musica')}">
+		<span class="page_title" th:text="#{estandar.musica.label} + ': ' + ${#strings.replace(subcampos.subFieldValue,'$musica','')}"></span>
+	</th:block>
+	<th:block th:if="${#strings.contains(subcampos.subFieldValue, '$fotografia')}">
+		<span class="page_title" th:text="#{estandar.fotografia.label} + ': ' + ${#strings.replace(subcampos.subFieldValue,'$fotografia','')}"></span>
+	</th:block>
+<!-- :: /[title/estandar/t508.html] -->
+</th:block>

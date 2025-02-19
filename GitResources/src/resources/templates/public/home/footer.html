@@ -1,0 +1,132 @@
+<!-- :: [public/home/footer.html] -->
+<!-- :: <span th:text=${page}/> -->
+<div class="footer-bottom container-fluid">
+<section class="row container flex-row px-5">
+	<div class="footer-cont_btn d-flex justify-content-between mb-3 flex-grow-1">
+    <a class="footer-brand" href="https://www.baratz.es/" title="Acceder a la página principal de Baratz">
+      <img src="/OpacDiscovery/img/baratz_negativo.png" class="logo" alt="Logo Opac 3.0">
+    </a>
+  </div>
+  <div class="footer-cont_btn d-flex justify-content-between mb-3">
+     <ul class="social-media-icons">
+            <li><a class="link" href="#" th:aria-label="#{footer.facebook.label}" target="_blank" rel="external noopener noreferrer">
+              <span aria-hidden="true" class="icono fab fa-facebook"></span>
+            </a></li>
+            <li><a class="link" href="#" th:aria-label="#{footer.twitter.label}" target="_blank" rel="external noopener noreferrer">
+              <span aria-hidden="true" class="icono fab fa-twitter"></span>
+            </a></li>
+            <li><a class="link" href="#" th:aria-label="#{footer.pinterest.label}" target="_blank" rel="external noopener noreferrer">
+              <span aria-hidden="true" class="icono fab fa-pinterest"></span>
+            </a></li>
+            <li><a class="link" href="#" th:aria-label="#{footer.vimeo.label}" target="_blank" rel="external noopener noreferrer">
+              <span aria-hidden="true" class="icono fab fa-vimeo"></span>
+            </a></li>
+         </ul>
+  </div>
+</section>
+
+   <section class="row container flex-row px-5" aria-labelledby="sct_data_title">
+      <h2 id="sct_data_title" class="sr-only" th:text="#{footer.our.info}"></h2>
+      
+      
+      <article class="art_location blq col-md-3 col-sm-6 p-0" aria-labelledby="title_art_location">
+    
+         <h3 id="title_art_location" class="font-weight-bold mb-3 mt-3">
+            <th:block th:text="#{footer.our.location.title}"/>
+         </h3>
+         <ul>
+            <li>
+              <th:block th:text="#{footer.address.title}"/>    
+            </li>
+            <li>
+            <th:block th:text="#{footer.additional.address.title}"/>
+            </li>
+            <li>
+               <th:block th:text="#{footer.phones.title}"/>
+            </li>
+            <li>
+               <a class="link" th:href="'mailto:' + #{footer.email.title}">
+                <th:block th:text="#{footer.email.title}"/>
+               </a>
+            </li>
+         </ul>
+      </article>
+         <article th:if="${page != 'opac-faq' or userManagementEnabled}"
+      		class="art_help blq col-md-3 col-sm-6 p-0" aria-labelledby="title_art_help">
+         <h3 id="title_art_help" class="font-weight-bold mb-3 mt-3">
+            <th:block th:text="#{footer.help.title}"/>
+         </h3>
+         <ul>
+            <li th:if="${page != 'opac-faq'}">
+               <a class="link" th:href="@{${thymeleafMap.get('FAQ')}}">
+                  <span th:text="#{footer.faq.title}"></span>
+               </a>
+            </li>
+
+            <li th:if="${userManagementEnabled}" sec:authorize="!isAuthenticated() or principal.hasRole(#vars.thymeleafMap.get('READER_AUTHORITY'))" >
+               <a class="link" th:href="@{${thymeleafMap.get('READER_RESERVATION_PATH')}}">
+                  <span th:text="#{footer.reserve.state.title}"></span>
+               </a>
+            </li>
+
+         </ul>
+      </article>
+      <article class="art_info_legal blq col-md-3 col-sm-6 p-0" aria-labelledby="title_art_info_legal">
+         <h3 id="title_art_info_legal" class="font-weight-bold mb-3 mt-3">
+            <th:block th:text="#{footer.legal.information.title}"/>
+         </h3>
+         <ul>
+            <th:block th:if="${page != 'opac-dataprivacyterms'}">
+            <li>
+               <a class="link" th:href="@{${thymeleafMap.get('DATA_PRIVACY_TERMS')}}">
+                  <th:block th:text="#{footer.data.privacy.terms.title}"/>
+               </a>
+            </li>
+            </th:block>
+            <th:block th:if="${page != 'opac-cookieterms'}">
+            <li>
+               <a class="link" th:href="@{${thymeleafMap.get('COOKIE_TERMS')}}">
+                  <th:block th:text="#{footer.cookie.terms.title}"></th:block>
+               </a>
+            </li>
+            </th:block>
+         </ul>
+
+      </article>
+      <!-- To Top -->
+   </section>
+   <!-- :: /.row -->
+</div>
+<!-- :: /.footer-bottom -->
+
+<div class="footer-bottom_version d-flex bg-highlight">
+  <span class="version" th:data-version="${applicationVersion}" aria-hidden="true" th:text="'OpacDiscovery '+${applicationVersion}"></span>
+</div>
+<!-- :: /.footer-bottom_version -->
+
+<div class="loading">
+   <div class="spinner-border" role="status">
+      <span class="sr-only">
+         <th:block th:text="#{footer.Loading}"/>
+      </span>
+   </div>
+</div>
+<!-- :: /.loading -->
+
+<nav class="botonera_flotante" aria-labelledby="label_botoneraFlotante">
+  <h2 id="label_botoneraFlotante" class="sr-only" th:text="#{float.buttons.title}"></h2>
+  <div class="blq cont_specials">
+    <button type="button" class="btn_accion top-to d-none" data-action="subir" th:title="#{footer.go.to.top.label}">
+      <span class="sr-only" th:text="#{footer.go.to.top.label}"></span>
+      <span class="icono fas fa-angle-up" aria-hidden="true"></span>
+    </button>
+  </div>
+  <div class="blq cont_despliegue">
+    <button type="button" class="btn_cursor active" th:title="#{float.buttons.toggle.anchors}">
+      <span class="sr-only" th:text="#{float.buttons.toggle.anchors}"></span>
+      <span class="icono fas fa-chevron-right" aria-hidden="true"></span>
+    </button>
+  </div>
+  <th:block th:insert="/title/stickySidebar.html" th:with="page=${page}"></th:block>
+</nav>
+<!-- :: [public/home/footer.html] -->

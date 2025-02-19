@@ -1,0 +1,18 @@
+<!-- :: [title/fragments/locationFilter.html] -->
+<th:block th:if="${libraryBranchFilter != null and not #lists.isEmpty(libraryBranchFilter)}">
+<div class="cont_form_group">
+  <div class="auto-search form-group cont_select_min cont_selectPicker">
+    <label th:for="'selectLibraryBranchFilter_'+${position}" class="bmd-label-floating" th:text="#{copy.libraryBranchFilter}"></label>
+    <select th:id="'selectLibraryBranchFilter_'+${position}" name="libraryBranchFilter" class="sub-cata-select form-control changeLibraryBranch selectpicker">
+      <option class="level-1" th:data-href="@{${currentUrl}(pageCopies=1,setAvailable=${detail.available},tabId=${solrSearchWeb.solrSearch.tabId})}" th:text="#{copy.libraryBranchFilter.all}">
+      </option>
+      <th:block  th:each="option : ${libraryBranchFilter}">
+        <option th:class="'option-level-'+${option.type.treeLevel}+' level-'+${option.type.treeLevel}" th:selected="${option.value==detail.screenRestriction}" th:data-href="@{${currentUrl}(pageCopies=1,setAvailable=${detail.available},tabId=${solrSearchWeb.solrSearch.tabId},branch=${option.value})}" th:text="${option.name}">
+        </option>
+      </th:block>
+    </select>
+    <span class="bmd-help" th:text="#{copy.libraryBranchFilter}"></span>
+  </div>
+</div>
+</th:block>
+<!-- :: [title/fragments/locationFilter.html] -->

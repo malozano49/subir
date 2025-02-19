@@ -1,0 +1,96 @@
+<!-- :: [/public/catalog/fragments/searchListElement_carousel_email.html] -->
+<th:block th:with="elementUrl=${host != null} ? ${host}+@{${thymeleafMap.get('CATALOG_MAPPING_DETAIL_VIEW_NO_VIEW_NO_PARAM')}}+${item.oaiIdentifierB64} : @{${thymeleafMap.get('CATALOG_MAPPING_DETAIL_VIEW_NO_VIEW_NO_PARAM')}}+${item.oaiIdentifierB64} ">
+<tr th:id="${'elem_' + item.oaiIdentifierB64}" style="border-bottom:3px;border-bottom-style:dashed;border-bottom-color:lavender">
+  
+  <td valign="top" align="left" style="padding-bottom:15px;">
+
+  
+  <div class="cont_text" valign="top" align="left">
+
+    <div class="card-body">
+       <h3 th:unless="${(item.marcFields.get('t245')==null or #strings.isEmpty(item.marcFields.get('t245')[0]))}">
+          <a th:href="${elementUrl}" th:utext="${item.marcFields.get('t245')[0]}" th:title="${item.marcFields.get('t245')[0]}" th:aria-label="${item.marcFields.get('t245')[0]}" th:id="${item.oaiIdentifierB64}"></a>
+       </h3>
+       <th:block th:if="${(item.marcFields.get('t245')==null or #strings.isEmpty(item.marcFields.get('t245')[0]))}">
+          <h3 th:unless="${(item.marcFields.get('t240')==null or #strings.isEmpty(item.marcFields.get('t240')[0]))}">
+             <a th:href="${elementUrl}" th:utext="${item.marcFields.get('t240')[0]}" th:title="${item.marcFields.get('t240')[0]}" th:aria-label="${item.marcFields.get('t240')[0]}"  th:id="${item.oaiIdentifierB64}"></a>
+          </h3>
+       </th:block>
+      <p class="authory" th:if="${item.marcFields.get('t100') != null or item.marcFields.get('t110') != null or item.marcFields.get('t111') != null or item.marcFields.get('t700') != null or item.marcFields.get('t710') != null or item.marcFields.get('t711') != null}">
+        <th:block th:if="${item.marcFields.get('t100') != null}" th:each="mvalor: ${item.marcFields.get('t100')}">
+           <span>
+              <th:block th:tuext="${mvalor} + ' '"></th:block>
+           </span>
+        </th:block>
+        <th:block th:if="${item.marcFields.get('t110') != null}" th:each="mvalor: ${item.marcFields.get('t110')}">
+           <span>
+              <th:block th:utext="${mvalor} + ' '"></th:block>
+           </span>
+        </th:block>
+        <th:block th:if="${item.marcFields.get('t111') != null}" th:each="mvalor: ${item.marcFields.get('t111')}">
+           <span>
+              <th:block th:utext="${mvalor} + ' '"></th:block>
+           </span>
+        </th:block>
+        <th:block th:if="${item.marcFields.get('t700') != null}" th:each="mvalor: ${item.marcFields.get('t700')}">
+           <span>
+              <th:block th:utext="${mvalor} + ' '"></th:block>
+           </span>
+        </th:block>
+        <th:block th:if="${item.marcFields.get('t710') != null}" th:each="mvalor: ${item.marcFields.get('t710')}">
+           <span>
+              <th:block th:utext="${mvalor} + ' '"></th:block>
+           </span>
+        </th:block>
+        <th:block th:if="${item.marcFields.get('t711') != null}" th:each="mvalor: ${item.marcFields.get('t711')}">
+           <span>
+              <th:block th:utext="${mvalor} + ' '"></th:block>
+           </span>
+        </th:block>
+      </p>
+      <p class="edition" th:if="${item.marcFields.get('t260') != null or item.marcFields.get('t264') != null}">
+        <th:block th:if="${item.marcFields.get('t260') != null}" th:each="mvalor: ${item.marcFields.get('t260')}">
+        <span >
+          <th:block th:utext="${mvalor} + ' '"></th:block>
+        </span>
+        </th:block>
+        <th:block th:if="${item.marcFields.get('t264') != null}" th:each="mvalor: ${item.marcFields.get('t264')}">
+        <span>
+          <th:block th:utext="${mvalor} + ' '"></th:block>
+        </span>
+        </th:block>
+      </p>
+    </div>
+
+    <div class="datos">
+
+      <div class="type"><th:block th:if="${item.recordFormatType.value != 'undefined'}" th:text="#{desc.format. + ${item.recordFormatType.value}}"/></div>
+
+      <div class="cont_data" style="position:relative;margin-top:15px">
+
+        <div class="localization" th:if="${item.numPlaces > 0}">
+            <span style="position:relative;float:left;margin-right:15px" th:text="#{result.localized.at}"></span>
+            <a style="position:relative;float:left;margin-right:15px;" th:href="${elementUrl}+'#copias'"  th:if="${item.numPlaces > 1}" th:aria-label="${item.numPlaces} + ' ' + #{result.locations}">
+              <th:block th:text="${item.numPlaces} + ' ' + #{result.locations}"></th:block>
+            </a>
+            <a th:href="${elementUrl}+'#copias'"  th:if="${item.numPlaces == 1 }" th:aria-label="${item.titleLocation[0].branchDescription} + ', ' + ${item.titleLocation[0].libraryDescription}">
+              <th:block th:text="${item.titleLocation[0].branchDescription} + ', ' + ${item.titleLocation[0].libraryDescription}"></th:block>
+            </a>
+        </div>
+        
+        <a class="ejemplares" style="margin-right:15px;" th:href="${elementUrl}+'#copias'" th:if="${item.totalCopiesByPage != null and item.totalCopiesByPage > 0}" th:aria-label="#{result.copies} + ' ('  +  ${item.totalCopiesByPage} + ')'">
+          <th:block th:text="#{result.copies} + ' :'  + ${item.totalCopiesByPage}"/>
+        </a>
+        <a class="disponiblidad" th:href="${elementUrl}+'#copias'"   th:if="${item.availableCopies != null and item.totalCopiesByPage != null and item.totalCopiesByPage > 0}" th:aria-label="#{result.copies.available} + ' ('  +  ${item.availableCopies} + ')'">
+          <th:block th:text="#{result.copies.available} + ': ' + ${item.availableCopies}"/>
+        </a>
+      </div>
+
+    </div>
+  </div>
+  </td>
+
+</tr>
+
+</th:block>
+<!-- :: /[/public/catalog/fragments/searchListElement_carousel_email.html] -->

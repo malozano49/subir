@@ -1,0 +1,221 @@
+<!-- :: [public/register/registerForm.html] -->
+<form id="form_addReader" class="register_form reader_register_form" th:action="@{${thymeleafMap.get('READER_REGISTER_ADD')}}" th:object="${readerRegisterWebVO}" method="post">
+
+	<div class="form-row register-row">
+		<th:block th:if="${fieldsFormMap.get('library')}">			
+			<div class="cont_form_group register_group col-sm-6 mb-2">
+				<label for="library" th:text="#{reader.form.library}"></label>
+				<th:block th:if="${fieldsMandatoryFormMap.get('library')}"><span class="mandatory">*</span></th:block>
+  				<div class="form-group cont_input">
+   			 	<select aria-describedby=""  class="sub-cata-select js-register-library form-control" name="library" id="library"> 
+   			 	<option th:text="#{reader.form.library.select}"  value="" ></option>
+   			 	   	<th:block  th:each="item : ${libraries}" >
+	             	 <option  th:selected="${item.code == selectedLibrary}" th:utext="${item.description}"  th:value="${item.code}" ></option>
+	         	 </th:block>
+	          	</select>
+	          	<span class="error" th:if="${#fields.hasErrors('library')}" th:errors="*{library}"></span>	
+   				</div>
+		 </div>
+		</th:block> 
+	 
+
+		<th:block th:if="${fieldsFormMap.get('readerType')}">
+	 		<div class="cont_form_group register_group col-sm-6 mb-2">
+	 			<label for="readerType" th:text="#{reader.form.readerType}"></label>
+	 			<th:block th:if="${fieldsMandatoryFormMap.get('readerType')}"><span class="mandatory">*</span></th:block>
+   				<div class="form-group cont_input">
+   				<div class="js-type-reader">
+   					<th:block th:insert="public/register/readerType.html"></th:block>
+   				</div>
+	       		<span class="error" th:if="${#fields.hasErrors('readerType')}" th:errors="*{readerType}" ></span>		
+   			</div>
+		 </div>
+	 	</th:block> 
+	</div>
+	
+	<div class="form-row register-row">	
+		<th:block th:if="${fieldsFormMap.get('firstName')}">
+			<div class="cont_form_group register_group col-sm-4">	
+			<label for="firstName" th:text="#{reader.form.firstName}"></label>
+			<th:block th:if="${fieldsMandatoryFormMap.get('firstName')}"><span class="mandatory">*</span></th:block>
+			 <div class="form-group cont_input">
+				<input id="firstName" name="firstName" class="form-control" th:field="*{firstName}" maxLength="80"/>				
+				<span class="error" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></span>							
+			</div>	
+			</div>		
+		</th:block>
+		
+		<th:block th:if="${fieldsFormMap.get('surname')}">
+			<div class="cont_form_group register_group col-sm-8">
+			<label for="surname" th:text="#{reader.form.surname}"></label>
+			<th:block th:if="${fieldsMandatoryFormMap.get('surname')}"><span class="mandatory">*</span></th:block>
+			<div class="form-group cont_input">
+				<input id="surname" name="surname" class="form-control" th:field="*{surname}" maxLength="80"/>
+				<span class="error" th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"></span>
+			</div>		
+			</div>		
+		</th:block>	
+	</div>
+	
+	<div class="form-row register-row">
+		<th:block th:if="${fieldsFormMap.get('password')}">
+			<div class="cont_form_group register_group col-sm-6">
+			<label for="password" th:text="#{reader.form.password}"></label>
+			<th:block th:if="${fieldsMandatoryFormMap.get('password')}"><span class="mandatory">*</span></th:block>
+				<div class="form-group cont_input">					
+					<input id="password" name="password" class="form-control" th:field="*{password}" maxlength="8"/>
+					<span class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+					<br th:if="${#fields.hasErrors('${readerRegisterWebVO}') and #fields.hasErrors('password')}"/>
+					<span class="error" th:if="${#fields.hasErrors('${readerRegisterWebVO}')}" th:errors="${readerRegisterWebVO}"></span>
+				</div>				
+			</div>		
+		</th:block>
+		
+		<th:block th:if="${fieldsFormMap.get('repassword')}">
+			<div class="cont_form_group register_group col-sm-6">
+				<label for="repassword" th:text="#{reader.form.repassword}"></label>
+				<th:block th:if="${fieldsMandatoryFormMap.get('repassword')}"><span class="mandatory">*</span></th:block>
+				<div class="form-group cont_input">
+					<input id="repassword" name="repassword" class="form-control"  th:field="*{repassword}" maxlength="8"/>
+					<span class="error" th:if="${#fields.hasErrors('repassword')}" th:errors="*{repassword}"></span>
+					<br th:if="${#fields.hasErrors('${readerRegisterWebVO}') and #fields.hasErrors('repassword')}"/>
+					<span class="error" th:if="${#fields.hasErrors('${readerRegisterWebVO}')}" th:errors="${readerRegisterWebVO}"></span>
+				</div>			
+			</div>		
+		</th:block>	
+	</div>	
+
+	<div class="form-row register-row">		
+		<th:block th:if="${fieldsFormMap.get('address')}">
+			<th:block th:each="i : ${#numbers.sequence(0, addressLines-1)}">
+			<div class="cont_form_group register_group col-md-6">
+				<label for="address" th:text="#{reader.form.address.__${i}__}"></label>
+				<th:block th:if="${fieldsMandatoryFormMap.get('address') and i==0}"><span class="mandatory">*</span></th:block>
+				<div class="form-group cont_input">
+					<input th:field="*{address[__${i}__]}" class="form-control" maxlength="50"/>
+					<span class="error" th:if="${#fields.hasErrors('address[__${i}__]')}" th:errors="*{address[__${i}__]}"></span>
+				</div>				
+			</div>		
+			</th:block>
+		</th:block>
+		
+		
+		
+		<th:block th:if="${fieldsFormMap.get('postalCode')}">
+			<div class="cont_form_group register_group col-md-4 col-sm-6">
+				<label for="postalCode" th:text="#{reader.form.postalCode}"></label>
+				<th:block th:if="${fieldsMandatoryFormMap.get('postalCode')}"><span class="mandatory">*</span></th:block>
+				<div class="form-group cont_input">	
+					<input id="postalCode" name="postalCode" th:field="*{postalCode}" class="form-control" maxLength="8"/>
+					<span class="error" th:if="${#fields.hasErrors('postalCode')}" th:errors="*{postalCode}"></span>
+				</div>			
+			</div>
+		</th:block>
+	</div>
+	
+
+	
+	<div class="form-row register-row">
+	<th:block th:if="${fieldsFormMap.get('addressExt')}">
+			<th:block th:each="i : ${#numbers.sequence(0, addressExtLines-1)}">
+			<div class="cont_form_group register_group col-md-6">
+				<label for="addressExt" th:text="#{reader.form.addressExt.__${i}__}"></label>
+				<th:block th:if="${fieldsMandatoryFormMap.get('addressExt') and i==0}"><span class="mandatory">*</span></th:block>
+				<div class="form-group cont_input">
+					<input th:field="*{addressExt[__${i}__]}" class="form-control" maxlength="50"/>
+					<span class="error" th:if="${#fields.hasErrors('addressExt[__${i}__]')}" th:errors="*{addressExt[__${i}__]}"></span>
+				</div>				
+			</div>		
+			</th:block>
+		</th:block>
+	</div>
+	
+	<div class="form-row register-row">
+		<th:block th:if="${fieldsFormMap.get('phone')}">
+			<div class="cont_form_group register_group col-md-4 col-sm-6">
+				<label for="phone" th:text="#{reader.form.phone}"></label>
+				<th:block th:if="${fieldsMandatoryFormMap.get('phone')}"><span class="mandatory">*</span></th:block>
+				<div class="form-group cont_input">					
+					<input id="phone" name="phone" th:field="*{phone}" class="form-control" maxLength="15"/>
+					<span class="error" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></span>
+				</div>				
+			</div>		
+		</th:block>
+		
+		<th:block th:if="${fieldsFormMap.get('mobilePhone')}">
+			<div class="cont_form_group register_group col-md-4 col-sm-6">
+				<label for="mobilePhone" th:text="#{reader.form.mobilePhone}"></label>
+				<th:block th:if="${fieldsMandatoryFormMap.get('mobilePhone')}"><span class="mandatory">*</span></th:block>
+				<div class="form-group cont_input">	
+					<input id="mobilePhone" name="mobilePhone" th:field="*{mobilePhone}" class="form-control" maxLength="15"/>
+					<span class="error" th:if="${#fields.hasErrors('mobilePhone')}" th:errors="*{mobilePhone}"></span>
+				</div>			
+			</div>			
+		</th:block>
+		
+		<th:block th:if="${fieldsFormMap.get('email')}">
+			<div class="cont_form_group register_group col-md-8 col-sm-6">
+				<label for="email" th:text="#{reader.form.email}"></label>
+				<th:block th:if="${fieldsMandatoryFormMap.get('email')}"><span class="mandatory">*</span></th:block>
+				<div class="form-group cont_input">					
+					<input id="email" name="email" th:field="*{email}" class="form-control" maxLength="100"/>
+					<span class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+				</div>			
+			</div>
+		</th:block>	
+	</div>
+	
+	<div class="form-row register-row">
+		
+		<th:block th:if="${fieldsFormMap.get('nationalIdentificationNumber')}">
+			<div class="cont_form_group register_group col-md-4 col-sm-6">
+				<label for="nationalIdentificationNumber" th:text="#{reader.form.nationalIdentificationNumber}"></label>
+				<th:block th:if="${fieldsMandatoryFormMap.get('nationalIdentificationNumber')}"><span class="mandatory">*</span></th:block>
+				<div class="form-group cont_input">					
+					<input id="nationalIdentificationNumber" name="nationalIdentificationNumber" th:field="*{nationalIdentificationNumber}" class="form-control" maxLength="20"/>
+					<span class="error" th:if="${#fields.hasErrors('nationalIdentificationNumber')}" th:errors="*{nationalIdentificationNumber}"></span>
+				</div>			
+			</div>		
+		</th:block>
+		
+		<th:block th:if="${fieldsFormMap.get('birthDate')}">
+			<div class="cont_form_group register_group col-md-4 col-sm-6">
+				<label for="birthDate" th:text="#{reader.form.birthDate}"></label>
+				<th:block th:if="${fieldsMandatoryFormMap.get('birthDate')}"><span class="mandatory">*</span></th:block>
+				<div class="form-group cont_input">					
+					<input id="birthDate" name="birthDate" th:field="*{birthDate}" class="form-control" type="date" th:max="${today}"/>
+					<span class="error" th:if="${#fields.hasErrors('birthDate')}" th:errors="*{birthDate}"></span>	
+				</div>			
+			</div>		
+		</th:block>
+	</div>
+	
+	<div class="form-row register-row" th:if="${fieldsFormMap.get('acceptedTerms')}">
+			<div class="cont_form_group register_group col-lg-12 col-md-12 col-sm-12">
+				<div class="form-group cont_checkbox">
+					<input id="acceptedTerms" type="checkbox" name="acceptedTerms" th:field="*{acceptedTerms}" class="mr-2"/>
+					<label for="acceptedTerms" th:text="#{reader.form.acceptedTerms}" class="mb-0"></label>
+					<th:block th:if="${fieldsMandatoryFormMap.get('acceptedTerms')}"><span class="mandatory">*</span></th:block>					
+				</div>
+				<span class="error" th:if="${#fields.hasErrors('acceptedTerms')}" th:errors="*{acceptedTerms}"></span>				
+			</div>	
+			
+			<div class="alert alert_lgpd alert-warning alert-dismissible mb-4 mt-3">
+		          <span class="alert_texto">
+		             <span th:text="#{lgpd.info}" th:aria-label="#{lgpd.info}"></span>
+		             <a id="link_lgpd" class="link link_lgpd" th:href="@{${thymeleafMap.get('DATA_PRIVACY_TERMS')}}" target="_blank" th:text="#{lgpd.info.link}"></a>
+		          </span>
+		          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		            <span aria-hidden="true">×</span>
+		          </button>
+        	</div>
+	</div>
+	
+	<div class="form-row register-row justify-content-end">
+		<button class="btn btn-outline-primary btn-search reader-register" id="save-reader-register" type="submit" th:aria-label="#{reader.form.save}">
+			<th:block th:text="#{reader.form.save}"></th:block>
+		</button>
+	</div>	
+		
+</form>
+<!-- :: [public/register/registerForm.html] -->

@@ -1,0 +1,313 @@
+@charset "UTF-8";
+/*!
+ *  @file        : maquetacion.scss
+ *
+ *  @description : ABSYS aplicacion estilos
+ *
+ *  @author      : http://www.baratz.es/
+ *
+ *  @ref         : Linea de maquetacion
+--------------------------------------------------------------------------------------------------*/
+/*
+ *  @file        : _variables.scss
+ *
+ *  @description : ABSYS aplicacion estilos
+ *
+ *  @author      : http://www.baratz.es/
+ *
+ *  @ref         : Variables de ambito general
+--------------------------------------------------------------------------------------------------*/
+@media (max-width: 768px) {
+  .order-xs-1 {
+    order: 1;
+  }
+
+  .order-xs-2 {
+    order: 2;
+  }
+
+  .order-xs-3 {
+    order: 3;
+  }
+
+  .order-xs-4 {
+    order: 4;
+  }
+
+  .order-xs-5 {
+    order: 5;
+  }
+
+  .order-xs-6 {
+    order: 6;
+  }
+
+  .order-xs-7 {
+    order: 7;
+  }
+
+  .order-xs-8 {
+    order: 8;
+  }
+
+  .order-xs-9 {
+    order: 9;
+  }
+}
+@media (max-width: 576px) {
+  .flex-xs-column {
+    flex-direction: column !important;
+  }
+}
+/*!
+ *  @file        : _colors.scss
+ *
+ *  @description : ABSYS aplicacion estilos normal
+ *
+ *  @author      : http://www.baratz.es/
+ *
+ *  @ref         : Colorimetria
+ *
+ *  Ejemplo de definiciones: https://www.ibm.com/docs/es/spm/7.0.9?topic=application-customizing-color-scheme-typography
+ *
+ *  Sass color generator: http://scg.ar-ch.org/
+ *
+--------------------------------------------------------------------------------------------------*/
+/*!
+ *  @file        : _fonts.scss
+ *
+ *  @description : ABSYS aplicacion estilos
+ *
+ *  @author      : http://www.baratz.es/
+ *
+ *  @ref         : Importacion de fuentes y aplicacion de bases para fuentes
+--------------------------------------------------------------------------------------------------*/
+/* @include font-face("SourceSansPro", '/OpacDiscovery/webfonts/SourceSansPro/SourceSansPro-Regular');
+@include font-face("SourceSansPro Italic", '/OpacDiscovery/webfonts/SourceSansPro/SourceSansPro-Italic');
+@include font-face("SourceSansPro SemiBold", '/OpacDiscovery/webfonts/SourceSansPro/SourceSansPro-SemiBold'); */
+/*
+  FONTAWESOME: Se incluye css vÃ­a url en el header
+
+  Solid: font-family: 'Font Awesome 5 Free;font-weight: 900;
+  Regular: font-family: 'Font Awesome 5 Free';font-weight: 400;
+  Brands: font-family: 'Font Awesome 5 Brands';
+*/
+/*$font-size-lg       : ($font-size-base * 1.25) !default;
+$font-size-sm       : ($font-size-base * .875) !default;
+ */
+.font-weight-bold {
+  font-family: "SourceSansPro SemiBold";
+  font-weight: normal !important;
+}
+
+.font-italic {
+  font-family: "SourceSansPro Italic";
+}
+
+.font-italic-bold {
+  font-family: "SourceSansPro Italic";
+  font-weight: 700;
+}
+
+body {
+  font-family: SourceSansPro, Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  font-stretch: normal;
+  text-rendering: optimizeLegibility;
+}
+body h1, body .h1 {
+  font-size: 1.625rem;
+  line-height: 1.5;
+}
+body h2, body .h2 {
+  font-size: 1.375rem;
+}
+body h3, body .h3 {
+  font-size: 1.25rem;
+  line-height: 1.3em;
+}
+body h4, body .h4 {
+  font-size: 1.125rem;
+  font-weight: 400;
+}
+body h5, body .h5 {
+  font-size: 1rem;
+}
+body p {
+  font-size: 1rem;
+}
+body h2, body h4, body p {
+  line-height: 1.5;
+}
+body ol, body ul {
+  list-style: none;
+}
+body a {
+  text-decoration: none;
+}
+body a:hover {
+  /* text-decoration:underline!important; */
+}
+body a:hover .item-title {
+  text-decoration: underline;
+}
+body a[aria-disabled="true"]:hover, body a.disabled:hover {
+  text-decoration: none !important;
+}
+body .error-code {
+  font-size: 10rem;
+}
+
+.version {
+  font-size: 0.7rem;
+  font-family: "SourceSansPro SemiBold";
+  font-weight: normal !important;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+
+/*!
+  ESTILOS MAQUETACION [COLORES]
+--------------------------------------------------------------------------------------------------*/
+.cont_colores {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.cont_colors_sass {
+  display: none;
+}
+
+.container_color {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 85%;
+  min-width: 175px;
+  max-width: 200px;
+  padding: 8px 3px 8px 3px;
+}
+.container_color .color_name {
+  position: relative;
+  width: 100%;
+  font-size: 0.8125rem;
+  font-family: "SourceSansPro SemiBold";
+  font-weight: normal !important;
+}
+.container_color .color_alias {
+  position: relative;
+  width: 100%;
+  font-size: 0.8125rem;
+}
+.container_color .color {
+  position: relative;
+  float: left;
+  width: 100%;
+  height: 80px;
+  border: 1px dashed #ddd;
+}
+.container_color .cont_color_hex {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  font-size: .875rem;
+  font-family: "SourceSansPro SemiBold";
+  font-weight: normal !important;
+}
+.container_color .color_hex {
+  position: relative;
+  float: left;
+  width: 100%;
+  text-align: center;
+  padding-right: 1.5em;
+}
+.container_color .btn_color_hex {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  line-height: 1em;
+}
+.container_color .btn_color_hex .icono {
+  font-size: .9rem;
+}
+
+/*!
+  ESTILOS GENERALES
+--------------------------------------------------------------------------------------------------*/
+article {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/*!
+  MAQUETACION4 GRIDS MODELOS
+--------------------------------------------------------------------------------------------------*/
+.grid-container {
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-template-columns: 1fr;
+  grid-auto-flow: row;
+  justify-items: stretch;
+}
+
+.grid__item {
+  position: relative;
+  justify-self: stretch;
+  display: flex;
+  flex-flow: row wrap;
+  align-content: center;
+  justify-content: center;
+  border: 1px solid red;
+}
+
+.uno {
+  background: skyblue;
+}
+
+.dos {
+  background: orange;
+  /*
+  ::after {
+    content: "";
+    flex: auto;
+  }
+  */
+}
+.dos .item_cont:last-child {
+  margin-left: auto;
+}
+
+.tres {
+  background: cyan;
+}
+
+.cuatro {
+  background: chocolate;
+}
+
+.cinco {
+  background: ghostwhite;
+}
+.cinco .item_cont:last-child {
+  margin-right: auto;
+}
+
+.seis {
+  background: greenyellow;
+}
+
+.item_cont {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  border: 1px solid green;
+}
+
+/*# sourceMappingURL=maquetacion.css.map */

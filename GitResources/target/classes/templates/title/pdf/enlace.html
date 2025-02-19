@@ -1,0 +1,7 @@
+<!-- :: [title/pdf/enlace.html] -->
+<th:block th:each="subcampos, iterStat : ${mvalor}">	
+<th:block th:each="sub, iterS : ${subcampos.subFields}">	
+  <span class="btn_enlace_title" th:text="${sub.subFieldValue}"></span>
+</th:block>
+</th:block>
+<!-- :: /[title/pdf/enlace.html] -->

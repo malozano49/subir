@@ -1,0 +1,89 @@
+<th:block th:insert="/public/home/html_type"></th:block>
+<th:block th:insert="/public/home/technicalheader::main" th:with="page=${'opac-help-historySearch-es_ES'}"></th:block>
+<script type="text/javascript">
+	var menu = document.getElementById('menu');
+	Stickyfill.add(menu);
+</script>
+<body>
+<div id="burger-menu" class="burger-menu">
+  <span></span>
+  			<div id="menu2" class="menu menu2">
+			<div class=""><nav class="sn-contents" aria-label="Secondary">
+      <ul class="sidenav--list">
+<li><a href="#historySearch">Búsquedas gardadas</a></li>
+				<li><a href="#searchAuthorities">Acceso á busca en autoridades</a></li>
+				<li><a href="#searchIndexes">Acceso á busca nos índices</a></li>
+				<li><a href="#favorites">Acceso a favoritos</a></li>
+				<li><a href="#profile">Acceso ao Meu Perfil</a></li>	
+				<li><a href="#home">Acceso á páxina de inicio</a></li></ul></nav>
+</div>
+		</div>
+</div>
+	<div class="wrapper cf">
+<div id="menu" class="menu">
+			<div class="sidenav"><nav class="sn-contents" aria-label="Secundario">
+      <ul class="sidenav--list">
+ <li><a href="#historySearch">Búsquedas gardadas</a></li>
+				<li><a href="#searchAuthorities">Acceso á busca en autoridades</a></li>
+				<li><a href="#searchIndexes">Acceso á busca nos índices</a></li>
+				<li><a href="#favorites">Acceso a favoritos</a></li>
+				<li><a href="#profile">Acceso ao Meu Perfil</a></li>	
+				<li><a href="#home">Acceso á páxina de inicio</a></li></ul></nav>
+</div>
+		</div>
+		<div class="content">
+			<a name="top"></a>
+			<a name="historySearch"></a>	
+			<h2 class="title-help">Búsquedas gardadas</h2>
+			<p>Dende esta opción visualízanse as búsquedas que gardaches en sesións anteriores</p>
+			<ul class="tab4-help margen5">
+				<li>As búsquedas mostranse ordeadas por data en <span class="text-bold-help">modo descendente</span>
+				<li>Se desexas <span class="text-bold-help">eliminar</span> algunha das búsquedas gardadas, fai clic na opción 
+					<img th:src="@{/img/help/icon-paper-bin-1.png}" alt="Icono papelera"/>asociada á busca que che interese
+				</li>
+			</ul>
+			<p>Dende esta opción tamén podes visualizar as últimas búsquedas que fixeches durante a sesión que tes aberta. Para iso, fai clic en <i>Últimas búsquedas</i>.</p>
+			<ul class="tab4-help margen5">
+				<li>Se desexas gardar algunha das búsquedas, fai clic na opción <img th:src="@{/img/help/icon-save.png}" alt="Icono gardar"/>asociada á busca que che interese.
+					<ul class="tab5-help margen5">
+						<li>- por defecto, podes gardar un máximo de <span class="text-bold-help">50</span> búsquedas</li>
+					</ul>
+				</li>
+			</ul>
+			<a name="searchAuthorities"></a>	
+			<h2 class="title-help">2.- Acceso á busca en autoridades</h2>
+			<p>Para facer unha busca en autoridades que permita localizar rexistros que conteñen unha autoridade específica, fai clic na opción <i>Busca autoridades</i>.</p>
+			<a name="searchIndexes"></a>	
+			<h2 class="title-help">3.- Acceso á busca nos índices</h2>
+			<p>Para facer unha busca que localice palabras ou patróns de palabras parecidas ao termo ou termos introducidos, fai clic na opción <i>Busca índices</i>.</p>
+			<a name="favorites"></a>	
+			<h2 class="title-help">4.- Acceso a favoritos</h2>
+			<p>Para visualizar os rexistros que marcaste como favoritos, fai clic en <i>Favoritos</i>.</p>
+			<a name="profile"></a>	
+			<h2 class="title-help">5.- Acceso ao Meu Perfil</h2>
+			<p> Fai clic na opción <i>Meu perfil</i> e identifícate para poder acceder ás seguintes utilidades de <span class="text-bold-help">ODA</span>:</p>
+			<ul class="tab5-help margen10">
+				<li>Datos persoais</li>
+				<li>Solicitudes</li>
+				<li>Préstamos activos</li>
+				<li>Histórico de préstamos</li>
+				<li>Renovar préstamos</li>
+				<li>Anular reservas</li>
+				<li>Gardar búsquedas</li>
+				<li>Crear listas de favoritos</li>
+			</ul>
+			<p  class="tab3-help">•	Para identificarte como usuario podes utilizar calquera destes 3 métodos:</p>
+			<ul class="tab5-help margen10">
+				<li>nº de carné</li>
+				<li>correo electrónico que forneciches á túa biblioteca</li>
+				<li>teléfono móbil que forneciches á túa biblioteca</li>
+			</ul>
+			<a name="home"></a>	
+			<h2 class="title-help">6.- Acceso á páxina de inicio</h2>
+			<p>Para volver á páxina de inicio, fai clic en <i>Inicio</i>.</p>
+			<p class="top-help"><a href="#top">Arriba</a></p>
+		</div>
+	</div>
+	<th:block th:insert="/public/home/technicalfooter" th:with="page='opac-dataprivacyterms'"/>
+</body>
+</html>

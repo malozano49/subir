@@ -1,0 +1,255 @@
+<th:block th:insert="/public/home/html_type"></th:block>
+<th:block th:insert="/public/home/technicalheader::main" th:with="page=${'opac-help-myProfile-es_ES'}"></th:block>
+<script type="text/javascript">
+	var menu = document.getElementById('menu');
+	Stickyfill.add(menu);
+</script>
+<body><div id="burger-menu" class="burger-menu">
+  <span></span>
+  			<div id="menu2" class="menu menu2">
+			<div class=""><nav class="sn-contents" aria-label="Secondary">
+      <ul class="sidenav--list">
+			<li><a href="#modifyPersonalData">How to modify personal data</a>
+			  <li><a href="#viewListActiveLoans">How to view active loans</a>
+			    <ul class="tab3-help">
+			      <li><a href="#moveListActiveLoans">How to navigate the list of active loans</a></li>
+			    </ul>
+			  </li>
+			  <li><a href="#viewListLoanHistory">How to view loan history</a>
+			    <ul class="tab3-help">
+			      <li><a href="#moveListLoanHistory">How to navigate the list of loan history</a></li>
+			    </ul>
+			  </li>
+			  <li><a href="#viewRequests">How to view requests</a>
+			    <ul class="tab3-help">
+			      <li><a href="#moveListRequests">How to navigate the list of requests</a></li>
+			    </ul>
+			  </li>
+			  <li><a href="#cancelReservation">How to cancel a reservation request</a></li>
+			  <li><a href="#cancelRequest">How to cancel a loan request</a></li>
+			  <li><a href="#renewloans">How to renew loans</a></li>
+			  <li><a href="#home">Accessing the homepage</a></li>
+			  <li><a href="#searchAuthority">Accessing authority search</a></li>
+			  <li><a href="#searchIndexes">Accessing index search</a></li>
+			  <li><a href="#lastSearh">Accessing recent searches</a></li>
+			  <li><a href="#historySearch">Accessing saved searches</a></li>
+			  <li><a href="#favorites">Accessing favorites</a></li>
+			</ul></nav>
+</div>
+		</div>
+		
+</div>
+	<div class="wrapper cf">
+	
+		<div id="menu" class="menu">
+			<div class="sidenav"><nav class="sn-contents" aria-label="Secondary">
+      <ul class="sidenav--list">
+			<li><a href="#modifyPersonalData">How to modify personal data</a>
+			  <li><a href="#viewListActiveLoans">How to view active loans</a>
+			    <ul class="tab3-help">
+			      <li><a href="#moveListActiveLoans">How to navigate the list of active loans</a></li>
+			    </ul>
+			  </li>
+			  <li><a href="#viewListLoanHistory">How to view loan history</a>
+			    <ul class="tab3-help">
+			      <li><a href="#moveListLoanHistory">How to navigate the list of loan history</a></li>
+			    </ul>
+			  </li>
+			  <li><a href="#viewRequests">How to view requests</a>
+			    <ul class="tab3-help">
+			      <li><a href="#moveListRequests">How to navigate the list of requests</a></li>
+			    </ul>
+			  </li>
+			  <li><a href="#cancelReservation">How to cancel a reservation request</a></li>
+			  <li><a href="#cancelRequest">How to cancel a loan request</a></li>	
+			  <li><a href="#renewloans">How to renew loans</a></li>	
+			  <li><a href="#home">Accessing the homepage</a></li>
+			  <li><a href="#searchAuthority">Accessing authority search</a></li>
+			  <li><a href="#searchIndexes">Accessing index search</a></li>
+			  <li><a href="#lastSearh">Accessing recent searches</a></li>
+			  <li><a href="#historySearch">Accessing saved searches</a></li>
+			  <li><a href="#favorites">Accessing favorites</a></li></ul></nav>
+			</div>
+			</div>
+			
+			<div class="content">
+			  <a name="top"></a>
+			  <a name="modifyPersonalData"></a>
+			  <h2 class="title-help">How to modify personal data</h2>
+			  <ul class="tab5-help margen5">
+			    <li>1. Click on <img th:src="@{/img/help/btn-edit.png}" alt="Edit button"/> to modify the data you are interested in</li>
+			    <li>2. Make the desired changes</li>
+			    <li>3. Click on <img th:src="@{/img/help/btn-save.png}" alt="Save button" width="75px"/> to save the modifications</li>
+			  </ul>
+			  <a name="viewListActiveLoans"></a>
+			  <h2 class="title-help">How to view active loans</h2>
+			  <ul class="tab5-help margen5">
+			    <li>1. Click on <img th:src="@{/img/help/btn-current.png}" alt="Current button" width="75px"/> to view the list of your active loans
+			      <ul class="tab5-help margen5">
+			        <li>The following loan-related information is displayed:
+			          <ul class="tab5-help margen10">
+			            <li>Library of the item</li>
+			            <li>Branch of the request</li>
+			            <li>Title</li>
+			            <li>Author</li>
+			            <li>Date of loan</li>
+			            <li>Date of return</li>
+			            <li>The option <img th:src="@{/img/help/btn-streaming.png}" alt="Streaming button" width="100px"/> if the request is an efilm content</li>
+			          </ul>
+			        </li>
+			        <li>Loans are displayed sorted by the return date in ascending order</li>
+			        <li>If you click on any of the loans, the associated title's details are displayed</li>
+			      </ul>
+			    </li>
+			  </ul>
+			<a name="moveListActiveLoans"></a>	
+			<h4 class="title-help">How to Navigate the List of Active Loans</h4>
+			<p>By default, search results are displayed in groups of <span class="text-bold-help">10</span>. However, you have the option to group results by 25 or 35.</p>
+			<span class="tab5-help margen10"><img th:src="@{/img/help/results-by-page.png}" alt="Results per page" width="320px"/></span>
+			<p>To navigate through different pages of the obtained results, you have the following options:</p>
+			<ul class="tab5-help margen5">
+			  <li>Click on <img th:src="@{/img/help/next.png}" alt="Next" width="80px"/> to move to the next page.</li>
+			  <li>Click on <img th:src="@{/img/help/back.png}" alt="Previous" width="80px"/> to move to the previous page.</li>
+			  <li>Click on the page number you want to view.
+			    <span class="tab3-help"><img th:src="@{/img/help/number-by-page.png}" alt="Page number" width="320px"/></span>
+			  </li>
+			  <li>Click on the number 1 to view the first page.
+			    <span class="tab3-help"><img th:src="@{/img/help/first-page.png}" alt="First page" width="320px"/></span>
+			  </li>
+			  <li>Click on the number before "Next" to go to the last page.
+			    <span class="tab3-help"><img th:src="@{/img/help/last-page.png}" alt="Last page" width="320px"/></span>
+			  </li>
+			</ul>
+			<a name="viewListLoanHistory"></a>
+			<h2 class="title-help">How to View Loan History</h2>
+			<ul class="tab3-help">
+			  <li>Click on <img th:src="@{/img/help/btn-histority.png}" alt="History button" width="75px"/>
+			    <ul class="tab4-help margen5">
+			      <li>The following loan-related information is displayed:
+			        <ul class="tab5-help margen5">
+			          <li>Library of the item</li>
+			          <li>Branch of the request</li>
+			          <li>Title</li>
+			          <li>Author</li>
+			          <li>Date of loan</li>
+			          <li>Date of return</li>
+			        </ul>
+			      </li>
+			      <li>Loans are displayed sorted by the return date in descending order.</li>
+			      <li>If you click on any of the loans, the associated title's details are displayed.</li>
+			    </ul>
+			  </li>
+			</ul>		
+			<a name="moveListLoanHistory"></a>
+			<h4 class="title-help">How to Navigate the List of Loan History</h4>
+			<p>By default, search results are displayed in groups of <span class="text-bold-help">10</span>. However, you have the option to group results by 25 or 35.</p>
+			<span class="tab5-help margen10"><img th:src="@{/img/help/results-by-page.png}" alt="Results per page" width="320px"/></span>
+			<p>To navigate through different pages of the obtained results, you have the following options:</p>
+			<ul class="tab5-help margen5">
+			  <li>Click on <img th:src="@{/img/help/next.png}" alt="Next" width="80px"/> to move to the next page.</li>
+			  <li>Click on <img th:src="@{/img/help/back.png}" alt="Previous" width="80px"/> to move to the previous page.</li>
+			  <li>Click on the page number you want to view.
+			    <span class="tab3-help"><img th:src="@{/img/help/number-by-page.png}" alt="Page number" width="320px"/></span>
+			  </li>
+			  <li>Click on the number 1 to view the first page.
+			    <span class="tab3-help"><img th:src="@{/img/help/first-page.png}" alt="First page" width="320px"/></span>
+			  </li>
+			  <li>Click on the number before "Next" to go to the last page.
+			    <span class="tab3-help"><img th:src="@{/img/help/last-page.png}" alt="Last page" width="320px"/></span>
+			  </li>
+			</ul>			
+			<a name="viewRequests"></a>
+			<h2 class="title-help">How to View Requests</h2>
+			<ul class="tab3-help">
+			  <li>Click on <img th:src="@{/img/help/my-requests.png}" alt="My Requests" width="100px"/>
+			    <ul class="tab4-help margen5">
+			      <li>The following data related to pending requests are displayed:
+			        <ul class="tab5-help margen10">
+			          <li>Library of the item</li>
+			          <li>Branch of the request</li>
+			          <li>Title</li>
+			          <li>Author</li>
+			          <li>Creation date</li>
+			          <li>Completion date</li>
+			          <li>Counter</li>
+			          <li>Information about its status</li>
+			        </ul>
+			      </li>
+			      <li>Requests are displayed grouped by Library/Branch sorted by completion date in ascending order.</li>
+			      <li>If you click on any of the requests, the details of the associated title are displayed.					  
+				</li>
+			</ul>
+			</p>
+			<a name="moveListRequests"></a>
+			<h4 class="title-help">How to Navigate the List of Requests</h4>
+			<p>By default, search results are displayed in groups of <span class="text-bold-help">10</span>. However, you have the option to group results by 25 or 35.</p>
+			<span class="tab5-help"><img th:src="@{/img/help/results-by-page.png}" alt="Results per page" width="320px"/></span>
+			<p>To navigate through different pages of the obtained results, you have the following options:</p>
+			<ul class="tab5-help margen5">
+			  <li>Click on <img th:src="@{/img/help/next.png}" alt="Next" width="80px"/> to move to the next page.</li>
+			  <li>Click on <img th:src="@{/img/help/back.png}" alt="Previous" width="80px"/> to move to the previous page.</li>
+			  <li>Click on the page number you want to view.
+			    <span class="tab3-help"><img th:src="@{/img/help/number-by-page.png}" alt="Page number" width="320px"/></span>
+			  </li>
+			  <li>Click on the number 1 to view the first page.
+			    <span class="tab3-help"><img th:src="@{/img/help/first-page.png}" alt="First page" width="320px"/></span>
+			  </li>
+			  <li>Click on the number before "Next" to go to the last page.
+			    <span class="tab3-help"><img th:src="@{/img/help/last-page.png}" alt="Last page" width="320px"/></span>
+			  </li>
+			</ul>			
+			<a name="cancelReservation"></a>
+			<h2 class="title-help">How to Cancel a Reservation Request</h2>
+			<ul class="tab5-help margen5">
+			  <li>1. Click on <img th:src="@{/img/help/my-requests.png}" alt="My Requests" width="100px"/></li>
+			  <li>2. Click on the <img th:src="@{/img/help/btn-cancel.png}" alt="Cancel" width="50px"/> option associated with the reservation you want to cancel.
+			    <p class="tab5-help margen5">- A confirmation message will appear.</p>
+			    <span class="tab4-help margen5"><img th:src="@{/img/help/cancel-request.png}" alt="Cancel Request" width="400px"/></span>
+			  </li>
+			  <li>3. Click on the <img th:src="@{/img/help/btn-cancel.png}" alt="Cancel" width="50px"/> option to delete the request.</li>
+			</ul>
+			<div class="tab5-help">
+			  <div class="box-help">You can only cancel reservations that are not activated, meaning they are not yet available for pickup.</div>
+			</div>			
+			<a name="cancelRequest"></a>
+			<h2 class="title-help">How to Cancel a Loan Request</h2>
+			<ul class="tab5-help margen5">
+			  <li>1. Click on <img th:src="@{/img/help/my-requests.png}" alt="My Requests" width="100px"/></li>
+			  <li>2. Click on the option <img th:src="@{/img/help/btn-cancel.png}" alt="Cancel" width="50px"/> associated with the request you want to cancel.
+			    <p class="tab5-help margen5">- A confirmation message will appear.</p>
+			    <span class="tab4-help margen5"><img th:src="@{/img/help/cancel-request.png}" alt="Cancel Request" width="400px"/></span>
+			  </li>
+			  <li>3. Click on the option <img th:src="@{/img/help/btn-cancel.png}" alt="Cancel" width="50px"/> to delete the request.</li>
+			</ul>
+			<div class="tab5-help">
+			  <div class="box-help">You can only cancel requests that are in the R-Request status.</div>
+			</div>		
+			<a name="renewloans"></a>
+			<h2 class="title-help">How to Renew Loans</h2>
+			<p class="tab5-help margen5">1. Click on <img th:src="@{/img/help/btn-current.png}" alt="Current button" width="75px"/></p>  
+			<p class="tab5-help margen5">2. Click on the <img th:src="@{/img/help/btn-renew.png}" alt="Renew button" width="75px"/> option associated with the loan you want to renew.</p>			
+			<a name="home"></a>
+			<h2 class="title-help">Access to the Homepage</h2>
+			<p>To go to the homepage, click on <i>Home</i>.</p>		
+			<a name="searchAuthority"></a>
+			<h2 class="title-help">Access to Authority Search</h2>
+			<p>To perform an authority search that allows you to locate records containing a specific authority, click on the <i>Authority Search</i> option.</p>			
+			<a name="searchIndexes"></a>
+			<h2 class="title-help">Access to Index Search</h2>
+			<p>To perform a search that locates words or word patterns similar to the entered term or terms, click on the <i>Index Search</i> option.</p>			
+			<a name="lastSearh"></a>
+			<h2 class="title-help">Access to Recently Performed Searches</h2>
+			<p>To view the last <span class="text-bold-help">10</span> searches that returned results during the Opac session, click on <i>Recent Searches</i>.</p>			
+			<a name="historySearch"></a>
+			<h2 class="title-help">Access to Saved Searches</h2>
+			<p>If you want to save any of the searches you've performed to execute them later, click on <i>Saved Searches</i>.</p>
+			<p class="tab2-help">* To save searches, you need to be identified in advance.</p>			
+			<a name="favorites"></a>
+			<h2 class="title-help">Access to Favorites</h2>
+			<p>To view the records you've marked as favorites, click on <i>Favorites</i>.</p>
+			<p class="top-help"><a href="#top">Top</a></p>
+		</div>
+	</div>
+	<th:block th:insert="/public/home/technicalfooter" th:with="page='opac-dataprivacyterms'"/>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!-- :: [title/estandar/enlace.html] -->
+	  <form method="post" name="solrSearchWeb" th:action="@{${thymeleafMap.get('SEARCH_ACTION')}}" class="links">
+	    <input type="hidden" name="solrSearch.solrCollection" value="BIBLIOGRAPHIC_CATALOG">
+	    <input type="hidden" name="solrSearch.queryType" th:value="${thymeleafMap.get('EXPERT')}">
+	
+	    <input type="hidden" name="solrSearch.origin" th:value="${solrSearchWeb?.solrSearch?.origin}">
+	
+	     <th:block th:each="sub,iter  : ${solrSearchWeb?.solrSearch?.subCatalog?.subCatalogs}">
+	     <input type="hidden" th:name="'solrSearch.subCatalog.subCatalogs['+${iter.index}+'].optionSelected'"  th:value="${sub.optionSelected}"/>
+	     </th:block>
+	    <th:block th:if="${mvalor.getDollarMat!=''}">
+	      <input type="hidden" name="solrSearch.hiddenQuery" th:value="${'dollar0:&quot;'+ mvalor.getDollarMat + '&quot;'}">
+	    </th:block>
+	    <th:block th:if="${mvalor.getDollarMat==''}">
+	      <input type="hidden" name="solrSearch.hiddenQuery" th:value="${'&quot;'+ mvalor.getMatNameReplace + '&quot;'}">
+	    </th:block>
+	    <button type="submit" name="solrSearch.query" th:value="'&quot;' + ${mvalor.getMatNameReplace} + '&quot;'" class="btn btn-link btn_enlace p-0">
+	      <span class="btn_enlace_title" th:text="${mvalor.getMatName}"></span>
+	    </button>
+	  </form>
+<!-- :: /[title/estandar/enlace.html] -->

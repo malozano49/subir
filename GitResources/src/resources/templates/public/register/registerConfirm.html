@@ -1,0 +1,56 @@
+<!-- :: [public/register/registerConfirm.html] -->
+<th:block th:insert="/public/home/html_type"></th:block>
+   <head>
+      <th:block th:insert="/public/home/technicalheader::main" th:with="page='opac-reader-register'"></th:block>
+   </head>
+   <!--  Mirar las clases y poner las que necesito -->
+   <body class="page_type_reader reader_register register vista_reader" data-tipo_vista="reader,register">
+      
+      <header class="header_principal">
+         <th:block th:insert="/public/home/header"></th:block>
+         <th:block th:insert="/fragments/breadcrums"></th:block>
+      </header>
+	<main id="acc_anchor_main">
+		<div class="layout_1-12 container-fluid">
+			<div id="firstRow" class="cont_menu_datos_type_00 row pt-2">
+				<div class="col-sm-8 mx-auto cont_apart cont_data_loans">
+					<div class="component type_readerregister">					
+						<h3 class="text-primary" th:text="#{login.reader.register.confirm}"></h3>
+						<section class="sct_alerts component type_readerInfo" aria-labelledby="sct_alerts_title" th:if="${error}">
+							<h2 id="sct_alerts_title" class="sr-only" th:text="#{alert.zone.title}"></h2>
+							<div class="cont_alerts_general" aria-live="polite"	aria-atomic="true">
+								<div class="alert alert-danger">
+									<span class="alert_texto" th:text="#{error.description.reader.register.email.confirm}"></span>
+								</div>
+							</div>
+						</section>
+						
+						<section class="sct_alerts component type_readerInfo" aria-labelledby="sct_alerts_title" th:unless="${error}">
+							<h2 id="sct_alerts_title" class="sr-only" th:text="#{alert.zone.title}"></h2>
+							<div class="cont_alerts_general" aria-live="polite"	aria-atomic="true">
+								<div class="alert alert-success">
+									<span class="alert_texto" th:text="#{description.reader.register.email.confirm}"></span>
+								</div>
+							</div>
+							<div class="form-row justify-content-center mt-5">
+								<a class="btn btn-primary" th:unless="${error}" th:text="#{reader.confirm.button}" th:href="@{${thymeleafMap.get('LOGIN_PATH')}}"></a>				
+							</div>
+						</section>
+						
+							
+					</div>
+
+				</div>
+				<!-- :: /#firstRow -->
+			</div>
+		</div>
+	</main>
+			<footer class="footer_principal">
+				<th:block th:insert="/public/home/footer"></th:block>
+			</footer>
+			<th:block th:insert="/public/home/technicalfooter" th:with="page='opac-reader-register'"></th:block>
+</body>
+</html>
+
+
+<!-- :: [public/register/registerComfirm.html] -->

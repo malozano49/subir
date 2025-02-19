@@ -1,0 +1,53 @@
+<!-- :: [/public/catalog/fragments/searchListElementMissing_view.html] -->
+<th:block th:with="elementUrl=${host != null} ? ${host}+@{${thymeleafMap.get('CATALOG_MAPPING_DETAIL_VIEW_NO_VIEW_NO_PARAM')}}+${item.oaiIdentifierB64} : @{${thymeleafMap.get('CATALOG_MAPPING_DETAIL_VIEW_NO_VIEW_NO_PARAM')}}+${item.oaiIdentifierB64} ">
+	<li th:data-id="${item.oaiIdentifierB64}">
+      <figure th:with="elementTitle = (${(item.dtFields.get('t245ab')==null or #strings.isEmpty(item.dtFields.get('t245ab')[0]))}) ? ((${(item.marcFields.get('t240')==null or #strings.isEmpty(item.marcFields.get('t240')[0]))}) ? #{explore.no.title} : ${item.marcFields.get('t240')[0]})  : ${item.dtFields.get('t245ab')[0]} ">
+
+        <div class="cont_image invisible">
+          <span class="btn_image_title ellipsis_multiline" aria-hidden="true" th:text="${elementTitle}"></span>
+
+          <a th:if="${expo.type=='list'}" class="btn_image" th:href="${elementUrl}"  tabindex="-1" th:title="#{result.detail}+' de '+${elementTitle}" th:aria-label="#{result.detail}+' de '+${elementTitle}" >
+            <th:block th:insert="/public/catalog/fragments/recordImage :: image(${item.oaiIdentifierB64})"></th:block>
+          </a>
+          <button th:if="${expo.type=='carousel'}" type="button" class="btn_image" tabindex="-1" th:title="#{result.detail}+' de '+${elementTitle}" th:aria-label="#{result.detail}+' de '+${elementTitle}">
+             <th:block th:insert="/public/catalog/fragments/recordImage :: image(${item.oaiIdentifierB64})"></th:block>
+          </button>
+          <div th:if="${expo.type=='mosaic'}" class="btn_image">
+             <th:block th:insert="/public/catalog/fragments/recordImage :: image(${item.oaiIdentifierB64})"></th:block>
+          </div>
+          <div th:if="${expo.type=='tabla'}" class="btn_image">
+            <th:block th:insert="/public/catalog/fragments/recordImage :: image(${item.oaiIdentifierB64})"></th:block>
+         </div>
+        </div>
+        <!-- :: /.cont_image -->
+        <figcaption class="card-body">
+          	<div class="cont_item_data">
+	            <h3 class="h3 cont_title">
+	           	  <span th:text="${item.dtFields.get('t245ab')[0]}"></span>
+	            </h3>  
+	    	 </div>
+	     </figcaption>  
+         <div class="cont_tableBotonera" th:if="${exploreView == 'manager'}" >
+                <button class="btn_delete_recommended btn btn-outline-secondary modal_js" th:title="#{result.item.delete.title}" th:aria-label="#{result.item.delete.title}"
+                  th:data-modal_title="#{result.item.delete.modal.title}"
+                  data-modal_size="modal-md"
+                  data-modal_target="#modal_confirmacion_borrado_manager_recommended"
+                  data-modal_tipo="light"
+                  data-datos_modal=""
+                  data-modal_discriminador="modal_confirmacion_borrado_manager_recommended"
+                  data-modal_html="#modal_confirmacion_borrado_manager_recommended_html"
+                  data-modal_footer="false"
+                >
+                  <span class="icono fas fa-trash" aria-hidden="true"></span>
+                </button>
+            </div>
+          <!-- :: /.cont_item_data -->
+	     </figure>
+	     <div class="cont_item-format col-3 pl-0 pr-0 d-flex">
+	         <span class="sr-only" th:text="#{search.result.element.format.title}"></span>
+	     </div>
+	     <!-- :: /.cont_item-format-->
+
+    </li>
+</th:block>
+<!-- :: /[/public/catalog/fragments/searchListElementMissing_view.html] -->

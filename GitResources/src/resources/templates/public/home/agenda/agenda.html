@@ -1,0 +1,39 @@
+<!-- :: [public/home/agenda/agenda.html] -->
+
+<div class="widget_agenda widget widget_home border" th:if="${not #maps.isEmpty(infos) and infos['info.activities'] != null}">
+  <div class="widget-cont_header">
+    <span class="icono fas fa-calendar-times mr-2"></span>
+    <h3 id="art_agenda_title" class="anchor_title stc_title widget-header h2"  th:text="#{${infos['info.activities'].text}}" ></h3>
+  </div>
+  <!-- :: /.widget-cont_header -->
+  <div class="widget_cont">
+     <ul class="category-list">
+     	<li th:if="${infos['info.activities'].elements != null}" th:each="activity: ${infos['info.activities'].elements}">
+     		<th:block th:if="${#strings.isEmpty(activity.link)}">
+     		  <span class="desc" th:text="${activity.text}" aria-hidden="true"></span>
+              <span class="date">
+                <span class="icono fas fa-calendar-alt mr-1" aria-hidden="true"></span>
+                <span class="date_title" th:text="${#dates.format(activity.activityDateStart, 'dd/MM/yyyy')}?:'00/00/0000'"></span>
+              </span>
+     		</th:block>
+    		<a th:unless="${#strings.isEmpty(activity.link)}" class="link" th:href="${activity.link}" th:aria-label="#{info.activities.link.description(${activity.text},${activity.activityDateStart})}" th:title="#{info.activities.link.description(${activity.text},${activity.activityDateStart})}" target="_blank" rel="external noopener noreferrer">
+              <span class="desc" th:text="${activity.text}" aria-hidden="true"></span>
+              <span class="date">
+                <span class="icono fas fa-calendar-alt mr-1" aria-hidden="true"></span>
+                <span class="date_title" th:text="${#dates.format(activity.activityDateStart, 'dd/MM/yyyy')}?:'00/00/0000'"></span>
+              </span>
+	        </a>
+        </li>
+    </ul>
+    <div th:if="${infos['info.activities'].showAllButton && infos['info.activities'].elements.size() > 9}" class="wdg_botonera d-flex justify-content-end w-100 mt-3" >
+      <a th:href="@{${thymeleafMap.get('INFO_ACTIVITIES_URL')}}" class="btn btn-primary" th:title="#{info.activities.all}" th:aria-label="#{info.activities.all}">
+        <span aria-hidden="true" class="btn_title" th:text="#{button.view.all}"></span>
+      </a>
+    </div>
+  </div>
+  <!-- :: /.widget_cont -->
+</div>
+<!-- :: /.widget -->
+
+
+<!-- :: /[public/home/agenda/agenda.html] -->

@@ -1,0 +1,37 @@
+<!-- :: [public/home/fragments/cookies_bar.html] -->
+
+<!--/*
+  Baratz.tmpls_actions.CONTROL_COOKIES_BAR()
+*/-->
+<aside class="cookies_bar" aria-labelledby="label_cookiesBar">
+  <h2 id="label_cookiesBar" class="sr-only">Seleccion de uso para las cookies del entorno</h2>
+  <div class="contenedor_principal">
+<!-- :: RENAME -->
+    <p class="cookies_bar-text">
+      <strong>Esta aplicación usa cookies</strong>: Utilizamos cookies propias y de terceros, según el entorno y durante la navegación por el sitio, con la finalidad de permitir el acceso a las funcionalidades de la aplicación, extraer estadísticas de tráfico y mejorar la experiencia del usuario. Para consultar las cookies usadas y personalizar su aceptación, pulse en el botón <strong>'Política de cookies'</strong>.
+    </p>
+    <div class="blq cont_botonera">
+      <th:block th:if="${page != 'opac-cookieterms'}">
+        <a class="btn btn-primary btn_cookies cookies_policy" th:title="#{footer.cookie.terms.title}"th:href="@{${thymeleafMap.get('COOKIE_TERMS')}}">
+          <th:block th:text="#{footer.cookie.terms.title}"></th:block>
+          <span class="icono fas fa-angle-right" aria-hidden="true"></span>
+        </a>
+      </th:block>
+<!-- :: RENAME -->
+      <button class="btn btn-primary btn_cookies btn_accept" title="Botón para aceptar TODAS las cookies del entorno" aria-label="Botón para aceptar TODAS las cookies del entorno" data-action="cookies_accept"
+          th:data-url="@{${thymeleafMap.get('COOKIES_ACCEPT_ALL_PATH')}}">
+        <span aria-hidden="true" class="btn_title">Aceptar todas las cookies</span>
+      </button>
+<!-- :: RENAME -->
+      <button class="btn btn-danger btn_cookies btn_decline" title="Botón para declinar TODAS las cookies del entorno, que no interfieran en su funcionamiento" aria-label="Botón para declinar TODAS las cookies del entorno, que no interfieran en su funcionamiento" data-action="cookies_decline"
+          th:data-url="@{${thymeleafMap.get('COOKIES_REJECT_ALL_PATH')}}">
+        <span aria-hidden="true" class="btn_title">Declinar cookies</span>
+      </button>
+    </div>
+    <button class="btn btn_close" th:aria-label="#{modal.close.title}">
+      <span class="icono" aria-hidden="true">×</span>
+    </button>
+  </div>
+
+</aside>
+<!-- :: /[public/home/fragments/cookies_bar.html] -->

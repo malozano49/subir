@@ -1,0 +1,24 @@
+@charset "UTF-8";
+/*!
+ *  @file        : def_colors_high.scss
+ *
+ *  @description : ABSYS colorimetrias
+ *
+ *  @author      : http://www.baratz.es/
+ *
+ *  @ref         : Linea de maquetaciÃ³n, tabla de colores para la vista highcontrast
+--------------------------------------------------------------------------------------------------*/
+/*!
+ *  @file        : _colors_high.scss
+ *
+ *  @description : ABSYS aplicacion estilos
+ *
+ *  @author      : http://www.baratz.es/
+ *
+ *  @ref         : Colorimetria highcontrast
+--------------------------------------------------------------------------------------------------*/
+.colors_high-data:before {
+  content: '{"highcontrast":"[{"nom":"$alert-danger","alias":"","color":"#fcdfea"}, {"nom":"$alert-info","alias":"","color":"#d9e5f8"}, {"nom":"$alert-success","alias":"","color":"#d9fec0"}, {"nom":"$black","alias":"$dark","color":"#000000"}, {"nom":"$blue","alias":"","color":"#2553a2"}, {"nom":"$blue_dark","alias":"","color":"#1c3e78"}, {"nom":"$btn-danger-back","alias":"","color":"#a43235"}, {"nom":"$btn-danger-hover","alias":"","color":"#561a1c"}, {"nom":"$btn-info-back","alias":"","color":"#186073"}, {"nom":"$btn-info-hover","alias":"","color":"#134c5c"}, {"nom":"$btn-success-back","alias":"","color":"#105b18"}, {"nom":"$btn-success-hover ","alias":"","color":"#010401"}, {"nom":"$gray-100","alias":"$bg_footer,$border-color,$light,$table_border","color":"#C0C0C0"}, {"nom":"$gray-200","alias":"$light-medium","color":"#8d8d8d"}, {"nom":"$gray-300","alias":"$medium","color":"#747474"}, {"nom":"$gray-400","alias":"","color":"#5a5a5a"}, {"nom":"$gray-500","alias":"","color":"#414141"}, {"nom":"$gray-600","alias":"$grey-dark","color":"#272727"}, {"nom":"$gray-700","alias":"","color":"#0e0e0e"}, {"nom":"$gray-800","alias":"","color":"black"}, {"nom":"$gray-hover","alias":"","color":"#b3b3b3"}, {"nom":"$green","alias":"$success","color":"#0A4501"}, {"nom":"$green_dark","alias":"","color":"#031300"}, {"nom":"$link-propietary","alias":"","color":"#000617"}, {"nom":"$primary-100","alias":"$info","color":"#9DAFD9"}, {"nom":"$primary-200","alias":"$disabled","color":"#4E6190"}, {"nom":"$primary-300","alias":"$link-propietary-hover","color":"#13235E"}, {"nom":"$primary-400","alias":"$color-info,$link-hover-color,$resaltado","color":"#010624"}, {"nom":"$primary-500","alias":"$primary,$focus_shadow_color(.46)","color":"#00010E"}, {"nom":"$propietary","alias":"","color":"#414769"}, {"nom":"$propietary-light","alias":"","color":"#D9E2ED"}, {"nom":"$propietary-medio","alias":"","color":"#7B829F"}, {"nom":"$red","alias":"$danger","color":"#7f0002"}, {"nom":"$red_dark","alias":"","color":"#640f19"}, {"nom":"$secondary","alias":"$link-color","color":"#34395a"}, {"nom":"$secondary-light","alias":"$bg_component_01","color":"#e5f2ff"}, {"nom":"$white","alias":"$bg_body,$btn-success-color,$btn-info-color,$btn-danger-color","color":"#FFFFFF"}, {"nom":"$yellow","alias":"$alert-warning,$btn-warning-back,$warning","color":"#faf0d1"}, {"nom":"$yellow_dark","alias":"$btn-warning-hover","color":"#e6db74"}]"}';
+}
+
+/*# sourceMappingURL=def_colors_high.css.map */

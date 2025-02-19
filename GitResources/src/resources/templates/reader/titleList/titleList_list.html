@@ -1,0 +1,98 @@
+<!-- :: [reader/titleList/titleList_list.html] -->
+<section class="card my-library-section reader-title-list item-detail container pb-4" aria-labelledby="readerTitleList_title">
+  <div class="cont_title col-md-12">
+    <h2 id="readerTitleList_title" class="fieldset__title font-weight-bold mb-0">
+      <span class="icono fas fa-list mr-1" aria-hidden="true"></span>
+      <th:block th:text="#{mylibrary.title.list.section.title}"/>
+    </h2>
+    <button type="button" class="btn_add_list slide_btn btn btn-primary" data-action="titleList_form_add" aria-controls="slide_add_list_html" aria-expanded="false">
+      <span class="" th:text="#{mylibrary.title.list.btn_add_list.title}"></span>
+      <span class="icono fas fa-plus" aria-hidden="true"></span>
+    </button>
+  </div>
+
+  <div id="slide_add_list_html" class="slide_add_list_html slide_html article col-md-12 mt-2 p-4 mb-2 d-none" aria-hidden="true">
+    <div class="alert-process alert alert-info col-md-12 mb-3">
+	  <span class="alert_titulo sr-only" th:text="#{alert.info.title}"></span>
+      <span class="alert_texto" th:text="#{mylibrary.title.list.slide_add_list_html.alert_texto}">.</span>
+    </div>
+    <!-- :: /.alert -->
+    <th:block th:insert="/reader/titleList/form/titleList_form_modify.html" th:with="url=@{${thymeleafMap.get('READER_ADD_TITLE_LIST')}},use='create'"/>
+  </div>
+  <!-- /#modal_add_list_html-->
+
+  <div class="cont_detail-copies article p-4">
+    <div class="detail-copies border col-md-12">
+
+      <div  th:if="${myListMessageLevel}" class="cont_alert" aria-live="polite" aria-atomic="true">
+        <div th:class="'alert-process alert alert-' + ${myListMessageLevel} + ' col-md-12'" >
+          <span class="alert_titulo sr-only" th:text="#{alert.info.title}"></span>
+          <span class="alert_texto" th:text="#{${myListMessage}}"></span>
+        </div>
+        <!-- :: /.alert -->
+      </div>
+      <!-- :: /.cont_alert -->
+      <ul id="resultList" class="list-group">
+        <th:block th:each="myL, iterStat : ${listsTitle}">
+          <li th:data-id="${myL.id}" class="li_item">
+          	<!-- ::  la lista no es la lista temporal de favoritos -->
+            <a th:if="${!#strings.equals(myL.name, thymeleafMap.get('MYLIST_FAVS_SESSION'))}"
+                th:id="${myL.id}" th:href="@{${thymeleafMap.get('READER_TITLE_LIST_ITEMS')}(idList=(${myL.id} ? ${myL.id}))}"
+                class="btn_ver_contenido item_title btn btn-secondary" th:text="${myL.name}" />
+
+            <!-- ::  si la lista es la lista temporal de favoritos el link tiene un nombre especifico y una clase adicional para su resaltado -->
+            <a th:if="${#strings.equals(myL.name, thymeleafMap.get('MYLIST_FAVS_SESSION'))}"
+                th:id="${myL.id}" th:href="@{${thymeleafMap.get('READER_TITLE_LIST_ITEMS')}(idList=(${myL.id} ? ${myL.id}))}"
+                class="btn_ver_contenido btn_title-list-favorite item_title btn btn-secondary font-weight-bold" th:text="#{title.list.favorite}"/>
+
+            <div class="cont_botonera">
+
+              <!-- :: el boton modificar nombre de la lista, solo aparece si la lista no es la lista temporal de favoritos -->
+              <button type="button" th:if="${!#strings.equals(myL.name, thymeleafMap.get('MYLIST_FAVS_SESSION'))}" class="btn_titleList_form_modify btn btn-outline-secondary mr-1" th:aria-label="#{mylibrary.title.list.btn_titleList_form_modify.title}" th:title="#{mylibrary.title.list.btn_titleList_form_modify.title}" data-action="titleList_form_modify" th:data-value="${titleList.name}">
+                <span class="icono fas fa-edit" aria-hidden="true" ></span>
+              </button>
+              <button type="button" class="btn_list_delete btn btn-outline-secondary modal_js" th:aria-label="#{mylibrary.title.list.btn_list_delete.title}" th:title="#{mylibrary.title.list.btn_list_delete.title}"
+                th:data-url="@{${thymeleafMap.get('READER_DELETE_TITLE_LIST')}(idList=(${myL.id} ? ${myL.id}))}"
+                th:data-id_list="${myL.id}"
+                 th:data-modal_title="#{mylibrary.title.list.btn_list_delete.modal_title}"
+                 data-modal_size="modal-md"
+                 th:data-modal_target="'#modal_confirmacion_borrado_lista_' + ${myL.id}"
+                 data-modal_tipo="light"
+                 data-modal_discriminador="modal_confirmacion_borrado_lista"
+                 data-modal_html="#modal_confirmacion_borrado_lista_html"
+                 data-modal_footer="false">
+                <span class="icono fas fa-trash" aria-hidden="true" ></span>
+              </button>
+              <form th:action="@{${thymeleafMap.get('READER_DELETE_TITLE_LIST')}}" method="post">
+              <input type="hidden" th:value="${myL.id}"/>
+              </form>
+            </div>
+            <!-- :: /.cont_botonera -->
+          </li>
+        </th:block>
+      </ul>
+
+      <!-- :: Capa con el formulario que se clona en la linea a modificar -->
+      <div id="titleList_form_modify" class="d-none">
+        <th:block th:insert="/reader/titleList/form/titleList_form_modify.html" th:with="url=@{${thymeleafMap.get('READER_ADD_TITLE_LIST')}},use='modify'"/>
+      </div>
+      <!-- :: /.form-edit -->
+    </div>
+    <!-- :: /.detail-copies -->
+  </div>
+  <!-- :: /.cont_detail-copies -->
+
+  <div id="modal_confirmacion_borrado_lista_html" class="d-none">
+    <span class="modal_question" th:text="#{title.list.delete.list.confirmation}"></span>
+    <div class="cont_botonera d-flex justify-content-center mt-4">
+      <button type="button" class="btn_cerrar btn btn-outline-secondary mr-2" data-dismiss="modal" th:aria-label="#{modal.close.title}" th:text="#{modal.close}"></button>
+      <!-- :: El id de la lista se complementa en la url a traves de js en [scripts.js]. Buscar por modal_confirmacion_borrado_lista -->
+      <a class="btn_borrar btn btn-primary" th:text="#{title.list.delete.list.button}"></a>
+    </div>
+    <!-- :: /.cont_botonera -->
+  </div>
+  <!-- :: /#modal_confirmacion_borrado_lista_html -->
+
+</section>
+<!-- :: /[reader/titleList/titleList_list.html] -->
+

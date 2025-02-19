@@ -1,0 +1,236 @@
+<th:block th:insert="/public/home/html_type"></th:block>
+	<!-- :: [title/pdf/main.html] -->
+   <head>
+   	<style>
+      main {
+        clear: left;
+      }
+
+      article, aside, figcaption, figure, footer, header, hgroup, main, nav,
+        section {
+        display: block;
+      }
+
+      td {
+        vertical-align: top;
+      }
+
+      article, .article {
+        background: #FFFFFF;
+        padding: .5rem 2rem;
+        border-radius: 2px;
+      }
+
+      img {
+        border-style: none;
+        margin: .6em;
+      }
+
+      article img, .article img, .ad-listing-list a img {
+        border-radius: 3px;
+        padding: 0.2em;
+      }
+
+      .d-block {
+        display: block;
+      }
+
+      .w-100 {
+        width: 100%;
+      }
+
+      .pb-2, .py-2 {
+        padding-bottom: .5rem !important;
+      }
+
+      .mb-2 {
+        margin-bottom: .5rem !important;
+      }
+
+      .font-weight-bold {
+        font-weight: 700 !important;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 1400px;
+        padding-right: 15px;
+        padding-left: 15px;
+        display: block;
+        font-size: .8rem;
+        font-weight: normal;
+        line-height: 1.5em;
+      }
+
+      .header {
+        background-color: #FFFFFF;
+        color: #062D64;
+        border-bottom: 1.5px solid #062D64;
+        box-shadow: none;
+      }
+
+      .footer {
+        background-color: #FFFFFF;
+        color: #062D64;
+        border-top: 1.5px solid #062D64 !important;
+        box-shadow: none;
+      }
+
+      .card-body {
+        padding: 1.25rem;
+      }
+
+      .border-top {
+        border-top: 1.5px solid #DEE2E6 !important;
+      }
+
+      .badge {
+        font-size: 75%;
+        font-weight: 700;
+        line-height: 1;
+        text-align: center;
+        vertical-align: baseline;
+        border-radius: .25rem;
+        padding: .2em .5em;
+        margin: .2em;
+      }
+
+      .badge-primary {
+        color: #fff;
+        background-color: #204477;
+      }
+
+      .cont_logo {
+        vertical-align: middle;
+      }
+
+      .logo {
+        max-width: 150px;
+        border-style: none;
+      }
+
+      .item-detail .item-summary {
+        text-align: justify;
+        overflow: auto;
+      }
+
+      .item-detail .detail-summary .summary-location {
+        position: relative;
+        font-size: 0.8125rem;
+        color: #204477;
+      }
+
+      .item-detail .detail-summary .summary-location .blq {
+        position: relative;
+        margin-bottom: 0.5em;
+        padding-top: .5em;
+      }
+
+      .item-detail .detail-summary .summary-location .blq_title .icono,
+        .item-detail .detail-summary .summary-location .blq_title .texto {
+        font-size: 0.875rem;
+        color: #A81A2B;
+        margin-right: 1em;
+      }
+
+      .item-detail .detail-summary .summary .item-title {
+        font-size: 1.625rem;
+        color: #4f4f4f;
+        line-height: 1.6;
+      }
+
+      .item-detail .detail-summary .summary .item-authority {
+        color: #9c9c9c;
+      }
+
+      .item-detail .detail-summary .summary .item-authority .btn_enlace_title
+        {
+        display: block;
+      }
+
+      .item-detail .detail-summary .summary .item-link {
+        color: #062D64;
+      }
+
+      .item-detail .detail-summary .summary .item-link .btn_enlace_title
+        {
+        display: block;
+        font-size: .5rem;
+      }
+
+      .item-detail .detail-summary .cont_image img {
+        max-width: 150px;
+        min-width: 150px;
+        min-height: 150px;
+        border: 1px solid #b5b5b5;
+        background-image: url([[@{/img/no_image.png}]]);
+        background-size: 80% 80%;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+
+      .item-detail .detail-summary .cont_image svg, .item-detail .detail-summary .cont_image img
+        {
+        display: block;
+        top: 0;
+      }
+
+      .item-detail .detail-summary .summary .item-publication {
+        font-size: 0.8125rem;
+        color: #4f4f4f;
+      }
+
+      .item-detail .detail-summary .summary .item-format {
+        margin-top: 10px;
+        font-size: 0.75rem;
+        color: #4f4f4f;
+      }
+
+      .item-detail .detail-more-details-format {
+        font-size: 0.8125rem;
+      }
+
+      .item-detail .article.detail-plus .detail-more-details-format {
+        padding: 10px 0.9% 10px 0.8%;
+      }
+
+      .standard-copy-format .field-title {
+        margin-bottom: 5px;
+        display: inline;
+      }
+
+      .standard-copy-format .field-content {
+        margin-bottom: 5px;
+        display: inline;
+      }
+
+      .standard-copy-format .field-content .field-content_internal {
+        width: 100%;
+        display: inline;
+      }
+
+      .standard-copy-format .field-content .page-link_title {
+        margin-bottom: .5rem;
+      }
+    </style>
+   </head>
+   <body class="page_type_title title_pdf">
+
+      <main id="acc_anchor_main">
+            <section id="firstRow">
+               <div class="item-detail">
+                  <div class="page_main container d-block">
+                    <th:block th:insert="/title/pdf/header.html"></th:block>
+                    <th:block th:insert="/title/pdf/summary.html"></th:block>
+                    <th:block th:insert="/title/pdf/moreDetails.html"></th:block>
+                    <th:block th:insert="/title/pdf/footer.html"></th:block>
+                  </div>
+                  <!-- :: /.page_main -->
+               </div>
+               <!-- :: /.item-detail -->
+            </section>
+            <!-- :: /#firstRow -->
+      </main>
+   </body>
+   <!-- :: /[title/pdf/main.html] -->
+</html>

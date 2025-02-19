@@ -1,0 +1,28 @@
+/*!
+ *  @file        : def_colors_red.scss
+ *
+ *  @description : ABSYS colorimetrias
+ *
+ *  @author      : http://www.baratz.es/
+ *
+ *  @ref         : Linea de maquetación, tabla de colores para la vista de prueba en base rojo
+--------------------------------------------------------------------------------------------------*/
+
+
+@import "../../static/plugins/sass-to-js/sass/sass-to-js";
+@import "../red/colors";
+
+// =============================================================================
+// TABLA RED colores usados en la linea de maquetación, al añadir nuevos colores insertar aquí
+// =============================================================================
+$colorMap_red: (
+  red:'[{"nom":"$alert-danger","alias":"","color":"'+$alert-danger+'"}, {"nom":"$alert-info","alias":"","color":"'+$alert-info+'"}, {"nom":"$alert-success","alias":"","color":"'+$alert-success+'"}, {"nom":"$black","alias":"$dark","color":"'+$black+'"}, {"nom":"$blue","alias":"","color":"'+$blue+'"}, {"nom":"$blue_dark","alias":"","color":"'+$blue_dark+'"}, {"nom":"$btn-danger-back","alias":"","color":"'+$btn-danger-back+'"}, {"nom":"$btn-danger-hover","alias":"","color":"'+$btn-danger-hover+'"}, {"nom":"$btn-info-back","alias":"","color":"'+$btn-info-back+'"}, {"nom":"$btn-info-hover","alias":"","color":"'+$btn-info-hover+'"}, {"nom":"$btn-success-back","alias":"","color":"'+$btn-success-back+'"}, {"nom":"$btn-success-hover ","alias":"","color":"'+$btn-success-hover+'"}, {"nom":"$gray-100","alias":"$bg_footer,$border-color,$light,$table_border","color":"'+$gray-100+'"}, {"nom":"$gray-200","alias":"$light-medium","color":"'+$gray-200+'"}, {"nom":"$gray-300","alias":"$medium","color":"'+$gray-300+'"}, {"nom":"$gray-400","alias":"","color":"'+$gray-400+'"}, {"nom":"$gray-500","alias":"","color":"'+$gray-500+'"}, {"nom":"$gray-600","alias":"$grey-dark","color":"'+$gray-600+'"}, {"nom":"$gray-700","alias":"","color":"'+$gray-700+'"}, {"nom":"$gray-800","alias":"","color":"'+$gray-800+'"}, {"nom":"$gray-hover","alias":"","color":"'+$gray-hover+'"}, {"nom":"$green","alias":"$success","color":"'+$green+'"}, {"nom":"$green_dark","alias":"","color":"'+$green_dark+'"}, {"nom":"$link-propietary","alias":"","color":"'+$link-propietary+'"}, {"nom":"$primary-100","alias":"$info,$link-propietary-hover","color":"'+$primary-100+'"}, {"nom":"$primary-200","alias":"$disabled","color":"'+$primary-200+'"}, {"nom":"$primary-300","alias":"","color":"'+$primary-300+'"}, {"nom":"$primary-400","alias":"$color-info,$link-hover-color,$resaltado","color":"'+$primary-400+'"}, {"nom":"$primary-500","alias":"$primary,$focus_shadow_color(.54)","color":"'+$primary-500+'"}, {"nom":"$propietary","alias":"","color":"'+$propietary+'"}, {"nom":"$propietary-light","alias":"","color":"'+$propietary-light+'"}, {"nom":"$propietary-medio","alias":"","color":"'+$propietary-medio+'"}, {"nom":"$red","alias":"$danger","color":"'+$red+'"}, {"nom":"$red_dark","alias":"","color":"'+$red_dark+'"}, {"nom":"$secondary","alias":"$link-color","color":"'+$secondary+'"}, {"nom":"$secondary-light","alias":"$bg_component_01","color":"'+$secondary-light+'"}, {"nom":"$white","alias":"$bg_body","color":"'+$white+'"}, {"nom":"$yellow","alias":"$alert-warning,$btn-warning-back,$warning","color":"'+$yellow+'"}, {"nom":"$yellow_dark","alias":"$btn-warning-hover","color":"'+$yellow_dark+'"}]'
+);
+// =============================================================================
+// aplica json en el before como contenido, para tratarlo desde js a traves del plugin
+// https://github.com/malyw/sass-to-js
+// https://hospodarets.com/passing_data_from_sass_to_js
+// =============================================================================
+.colors_red-data{
+  &:before{content: sassToJs($colorMap_red);}
+}

@@ -1,0 +1,33 @@
+<th:block>
+   <!-- :: [reader/buysuggestions/acepeted/home1_12.html] -->
+   <div class="layout_1-12 container-fluid">
+      <div id="firstRow" class="cont_menu_datos_type_00 row bg-propietary-light pt-2">
+         <div class="col-lg-3 col-md-12 col-sm-12 component">
+            <th:block th:with="activeMenu='buysuggestionsAcepted'" th:insert="/reader/fragments/lateralMenu"></th:block>
+         </div>
+         <!-- :: /.component -->
+         <div class="col-lg-9 col-md-12 col-sm-12 cont_apart cont_data_loans">
+            <section class="sct_alerts component type_readerInfo" aria-labelledby="sct_alerts_title">
+              <h2 id="sct_alerts_title" class="sr-only" th:text="#{alert.zone.title}"></h2>
+               <th:block th:insert="/reader/fragments/readerInfo"></th:block>
+               <div class="cont_alerts_general" aria-live="polite" aria-atomic="true">
+                <th:block th:if="${userWarning != null and #lists.size(userWarning) > 0}">
+                    <th:block th:insert="/reader/fragments/userWarningReservation"></th:block>
+                </th:block>
+              </div>
+              <!-- :: /.cont_alerts_general -->
+            </section>
+            <!-- :: /.type_readerInfo -->
+             <div class="component type_readerbuysuggestionsAcepted buysuggestionsAcepeted">           
+               <th:block th:insert="/reader/buysuggestions/acepted/buySuggestionsAceptedList.html"></th:block>
+            </div>
+            <!-- /.type_readerbuysuggestions -->
+         </div>
+         <!-- :: /.cont_data_loans-->
+      </div>
+      <!-- :: /#firstRow -->
+   </div>
+   <!-- :: /.layout_1-12 -->
+
+   <!-- :: /[reader/buysuggestions/acepeted/home1_12.html] -->
+</th:block>

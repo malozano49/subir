@@ -1,0 +1,31 @@
+<th:block th:insert="/public/home/html_type"></th:block>
+   <head>
+      <th:block th:insert="/public/home/technicalheader::main" th:with="page='opac-login'"></th:block>
+   </head>
+   <body class="page_type_login login_logoutManager">
+      <!--  :: login/logoutManager.html -->
+      <header class="header_principal">
+         <th:block th:insert="/public/home/header::main"></th:block>
+      </header>
+      <main id="acc_anchor_main">
+         <section class="login-form py-4">
+            <div class="container">
+               <div class="form-group row justify-content-center" id="pwd-container">
+                  <div class="col-lg-5 col-md-8 align-item-center">
+                     <div class="text-center mb-4"><img th:src="@{/img/logo.png}" style="max-height:100px;" th:alt="#{login.img_alt}" /></div>
+                     <div class="text-center mb-4">
+                        <a th:href="@{${thymeleafMap.get('ADMIN_AREA_PATH')}}" class="btn btn-primary btn-search" th:text="#{administration.console}"></a>
+                     </div>
+                  </div>
+               </div>
+               <!-- :: /.form-group -->
+            </div>
+            <!-- :: /.container -->
+         </section>
+      </main>
+      <footer class="text-center mb-4">
+         <th:block th:insert="/public/home/footer::main"></th:block>
+      </footer>
+      <th:block th:insert="/public/home/technicalfooter::main" th:with="page='opac-login'"></th:block>
+   </body>
+</html>

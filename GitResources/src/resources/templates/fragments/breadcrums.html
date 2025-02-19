@@ -1,0 +1,27 @@
+<!-- :: [fragments/breadcrums.html] -->
+<div class="container_migas" th:if="${breadcrumb!=null and !breadcrumb.empty}">
+  <nav class="cont_breadcrumbs" aria-labelledby="title-menu_reader_fragments_breadcrumbs">
+    <h2 id="title-menu_reader_fragments_breadcrumbs" class="sr-only">
+      <span th:text="#{mylibrary.reader.breadcrums}"></span>
+    </h2>
+    <ul class="breadcrumb-custom p-0 m-0">
+      <li>
+        <div class="cont_miga">
+          <a th:href="@{${thymeleafMap.get('HOME_URL')}}" th:aria-label="#{breadcrumbs.img.home}">
+            <span class="icono fas fa-home text-danger p-2" aria-hidden="true"></span>
+          </a>
+        </div>
+      </li>
+      <li th:each="element,iterStat : ${breadcrumb}">
+        <div class="cont_miga">
+          <a th:href="@{${element.link}}" th:aria-label="#{${element.text}}" th:classappend="${iterStat.last} ? disabled : ''" >
+            <span aria-hidden="true" th:text="#{${element.text}}" th:if="${element.i18n}" ></span>
+            <span aria-hidden="true" th:text="${element.text}" th:if="${!element.i18n}" ></span>
+          </a>
+        </div>
+      </li>
+    </ul>
+  </nav>
+</div>
+<!-- :: /.container_migas -->
+<!-- :: /[fragments/breadcrums.html] -->

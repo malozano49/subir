@@ -1,0 +1,31 @@
+  <!-- :: [title/explorePag.html] -->
+
+                  <div th:class="'cont_views view_type_'+${expo.type}" th:classappend="${expo.type=='carousel'?'carousel-main carousel_explore':''}" aria-live="polite" aria-atomic="true">
+
+                    <!-- :: PAGINACION TOP -->
+                    <th:block th:if="${thymeleafMap.get('RelatedTitlesViewKind_TABLE').getId() == expo.type and explore=='recommendations'}" th:insert="/title/fragments/explorePagination.html" th:with="pagination_position='pagination-top', page=${expo.page+1}, totalPages=${expo.totalPages}, itemsPage=${expo.maxResults}, totalItems=${expo.totalResults}"></th:block>
+
+                      <div th:classappend="${expo.type=='carousel'?'swiper-container col-md-12':expo.type + '-main container-fluid'}"
+                            th:attr="data-type=${expo.type}, data-query=${expo.query}, data-manager=${manager}, data-code=${levelCode}">
+                        <ul>
+                          <th:block th:each="item, iterStat : ${expo.data}">
+                               <th:block th:if=${item.hasDataResourceSolr} >
+								<!--Recursos existente Solr-->
+						        <th:block th:insert="/public/catalog/fragments/searchListElement_view.html"></th:block>
+							</th:block>
+						   	<th:block th:unless=${item.hasDataResourceSolr}>
+								<!--Recursos no existente en Solr-->
+								 <th:block th:insert="/public/catalog/fragments/searchListElementMissing_view.html"></th:block>
+					 	    </th:block>
+                          </th:block>
+                        </ul>
+                      </div>
+                      <!-- :: /.container-fluid-->
+
+                    <!-- :: PAGINACION BOTTOM -->
+                    <th:block th:if="${thymeleafMap.get('RelatedTitlesViewKind_TABLE').getId() == expo.type and explore=='recommendations'}" th:insert="/title/fragments/explorePagination.html" th:with="pagination_position='pagination-bottom', page=${expo.page+1}, totalPages=${expo.totalPages}, itemsPage=${expo.maxResults}, totalItems=${expo.totalResults}"></th:block>
+
+                  </div>
+                   <!-- :: /.cont_views-->
+
+  <!-- :: /[title/explorePag.html] -->

@@ -1,0 +1,96 @@
+
+
+<!-- :: [admin/oai/oaiSourcesAjax.html] -->
+<div class="item_base_clone d-none">
+
+  <!--/* ELEMENTO BASE PARA CLONADO */-->
+  <!--/* Cuidado con los ids y name, así como el valor para los checkboxes y la inicializacion de los selects (ver Baratz.tmpl_actions.CMP_SORTABLE()) */-->
+  <div class="cmp_sortable_item cmp_sortable_item_form_row form-row d-flex flex-wrap col-md-12 pr-4 pt-3 pl-2 m-0 border" data-order-init="">
+
+    <input class="propietary" type="hidden" th:id="'catalog_'+${index}" th:name="'oai.oaiSources['+${index}+'].catalog'" value="BIBLIOGRAPHIC_CATALOG">
+    <input class="propietary" type="hidden" th:id="'lastFrom_'+${index}" th:name="'oai.oaiSources['+${index}+'].lastFrom'" value="">
+    <input class="propietary" type="hidden" th:id="'identifierPrefix_'+${index}" th:name="'oai.oaiSources['+${index}+'].identifierPrefix'" value="">
+    <input class="propietary" type="hidden" th:id="'linkFields_'+${index}" th:name="'oai.oaiSources['+${index}+'].linkFields'" value="">
+
+
+    <div class="cont_form_group col-lg-2 col-md-5 col-sm-12">
+        <div class="form-group cont_input">
+          <label th:for="${'originCode_' + __${index}__}" class="bmd-label-floating" th:text="#{administration.properties.oai.source.code}"></label>
+          <input type="text" th:id="${'originCode_' + __${index}__}" class="form-control" autocomplete="off" th:name="${'oai.oaiSources['+__${index}__+'].originCode'}" value="">
+          <span class="bmd-help" th:text="#{administration.properties.oai.source.code.info}"></span>
+        </div>
+        <!-- :: /.form-group -->
+    </div>
+    <!-- :: /.cont_form_group -->
+
+    <div class="cont_form_group col-lg-6 col-md-7 col-sm-12">
+        <div class="form-group cont_input">
+          <label th:for="${'url_' + __${index}__}" class="bmd-label-floating" th:text="#{administration.properties.oai.source.url}"></label>
+          <input type="text" th:id="${'url_' + __${index}__}" class="form-control" autocomplete="off" th:name="${'oai.oaiSources['+__${index}__+'].url'}" value="">
+          <span class="bmd-help" th:text="#{administration.properties.oai.source.url.info}"></span>
+        </div>
+        <!-- :: /.form-group -->
+    </div>
+    <!-- :: /.cont_form_group -->
+
+    <div class="cont_form_group col-lg-2 col-md-5 col-sm-12 mb-3">
+      <div class="form-group cont_selectPicker">
+        <label for="${'subcatalog_type_' + __${index}__}" class="bmd-label-floating" th:text="#{administration.properties.oai.source.metadata.prefix}"></label>
+        <select th:id="${'subcatalog_type_' + __${index}__}" th:name="${'oai.oaiSources['+__${index}__+'].metadataPrefix'}" class="form-control"  th:aria-label="#{administration.properties.oai.source.metadata.prefix}">
+          <option th:each="subcatalog_type_opt : ${thymeleafMap.get('MetadataPrefixType')}" th:value="${subcatalog_type_opt}" th:text="${subcatalog_type_opt}"></option>
+        </select>
+        <span class="bmd-help" th:text="#{administration.properties.oai.source.metadata.prefix.info}"></span>
+      </div>
+      <!-- :: /.form-group -->
+    </div>
+    <!-- :: /.cont_form_group -->
+
+    <div class="cont_form_group col-lg-2 col-md-7 col-sm-12">
+      <div class="form-group cont_input">
+        <label th:for="${'set_' + __${index}__}" class="bmd-label-floating" th:text="#{administration.properties.oai.source.set}"></label>
+        <input type="text" th:id="${'set_' + __${index}__}" class="form-control" autocomplete="off" th:name="${'oai.oaiSources['+__${index}__+'].set'}" value="">
+        <span class="bmd-help" th:text="#{administration.properties.oai.source.set.info}"></span>
+      </div>
+      <!-- :: /.form-group -->
+    </div>
+    <!-- :: /.cont_form_group -->
+
+    <div class="cont_form_group col-lg-2 col-md-5 col-sm-12">
+      <div class="form-group cont_input">
+        <label th:for="${'mapper_' + __${index}__}" class="bmd-label-floating" th:text="#{administration.properties.oai.source.mapper}"></label>
+        <input type="text" th:id="${'mapper_' + __${index}__}" class="form-control" autocomplete="off" th:name="${'oai.oaiSources['+__${index}__+'].mapper'}" value="">
+        <span class="bmd-help" th:text="#{administration.properties.oai.source.mapper.info}"></span>
+      </div>
+      <!-- :: /.form-group -->
+    </div>
+    <!-- :: /.cont_form_group -->
+
+    <div class="cont_form_group col-lg-3 col-md-4 col-sm-12">
+      <div class="form-group cont_input">
+        <label th:for="${'cron_' + __${index}__}" class="bmd-label-floating" th:text="#{administration.properties.oai.source.cron.expression}"></label>
+        <input type="text" th:id="${'cron_' + __${index}__}" class="form-control" autocomplete="off" th:name="${'oai.oaiSources['+__${index}__+'].cron'}" value="">
+        <span class="bmd-help" th:text="#{administration.properties.oai.source.cron.expression.info}"></span>
+      </div>
+      <!-- :: /.form-group -->
+    </div>
+    <!-- :: /.cont_form_group -->
+
+    <div class="cont_form_group col-lg-3 col-md-3 col-sm-12 pl-2 pr-2 mb-3 d-flex align-items-center">
+      <div class="form-group cont_check cont_check_tunned pt-lg-3 pt-md-0">
+        <label class="mb-lg-2 mb-md-0" th:for="${'active_' + __${index}__}" th:text="#{administration.properties.oai.source.active}"></label>
+        <input type="checkbox" th:id="${'active_' + __${index}__}" th:name="${'oai.oaiSources['+__${index}__+'].active'}" value="true" checked="checked">
+        <input type="hidden" th:name="${'_oai.oaiSources['+__${index}__+'].active'}" value="on">
+      </div>
+      <!-- :: /.form-group -->
+    </div>
+    <!-- :: /.cont_form_group -->
+
+    <button type="button" class="btn_cmp_sortable_item_form_row--remove_item" th:title="#{administration.properties.buttons.delete.title}" th:aria-label="#{administration.properties.buttons.delete.title}"></button>
+  </div>
+  <!-- :: /.cmp_sortable_item -->
+  <!--/* /ELEMENTO BASE PARA CLONADO */-->
+
+</div>
+<!-- :: /.item_base_clone -->
+
+<!-- :: /[admin/oai/oaiSourcesAjax.html] -->

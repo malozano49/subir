@@ -1,0 +1,16 @@
+<th:block th:fragment="main">
+   <!-- :: [title/copies.html] -->
+   <!-- :: data-skip_to_content [scripts.js] -> ACCESIBLE_SKIP_TO_CONTENT() -->
+   <article id="copias" class="article detail-copies" data-skip_to_content="detail-plus_anchor" aria-labelledby="art_copies_title">
+    <!-- <h2 id="art_copies_title" class="w-auto anchor_title stc_title" th:text="#{copies.location.label}"/> -->
+      <div class="cont_alerts_general" aria-live="polite" aria-atomic="true">
+        <th:block th:if="${userWarning != null and #lists.size(userWarning) > 0}">
+          <th:block th:insert="/reader/fragments/userWarningReservation"></th:block>
+        </th:block>
+      </div>
+      <!-- :: /.cont_alerts_general -->
+      <th:block th:insert="/title/fragments/detailCopies"></th:block>
+      <th:block th:if="${(composedLocations!=null)}" th:insert="/title/fragments/detailComposedLocations"></th:block>
+   </article>
+   <!-- :: /[title/copies.html] -->
+</th:block>

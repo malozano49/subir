@@ -1,0 +1,10 @@
+<th:block th:with="regex='(http(s)?:\\/\\/.)?(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)'">
+   <!-- :: [title/fragments/subfieldValue.html] -->
+   <th:block th:if="${subcampos.subFieldValue.trim().matches(regex)}">
+      <a class="page-link" target="_blank" rel="noopener noreferrer" th:href="${subcampos.subFieldValue}" th:text="${subcampos.subFieldValue}"></a>
+   </th:block>
+   <th:block th:unless="${subcampos.subFieldValue.trim().matches(regex)}">
+      <span class="page_title" th:utext="${subcampos.getSubFieldValueEndPunctuationMarks()}"></span>
+   </th:block>
+   <!-- :: /[title/fragments/subfieldValue.html] -->
+</th:block>

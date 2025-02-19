@@ -1,0 +1,7 @@
+<!-- :: [reader/circulation/reserve/fragments/copyReservationState.html] -->
+<th:block th:fragment="frag(reservation)">
+	<span th:if="${reservation.attributes.get('typeDescription')!=null}" th:text="${reservation.attributes.get('typeDescription')}" class="mx-1"></span>
+	<span th:if="${reservation.volumeIdentifier}!=null" th:text="${reservation.volumeIdentifier}" class="reservation-volume-id mx-1"></span>
+	<span th:if="${reservation.attributes.get('locationDescription')!=null}" th:text="${reservation.attributes.get('locationDescription')}" class="reservation-location mx-1"></span>
+</th:block>
+<!-- :: /[reader/circulation/reserve/fragments/copyReservationState.html] -->

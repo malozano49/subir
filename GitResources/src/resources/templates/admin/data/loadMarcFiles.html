@@ -1,0 +1,70 @@
+<!-- :: [admin/data/loadMarcFiles.html] -->
+<article class="border widget">
+   <h3 class="widget-header mb-4">
+      <span class="icono fas fa-download" aria-hidden="true"></span>
+      <th:block th:text="#{administration.load.marc.files}"/>
+   </h3>
+   <div class="cont_alert pr-2" aria-live="polite" aria-atomic="true">
+     <div class="alert alert-success d-none">
+      <span class="alert_titulo" th:text="#{alert.success.title}"></span>
+      <span class="alert_texto">.alert.alert-success</span>
+     </div>
+   </div>
+   <form id="form_loadMarcFiles" action="#" th:action="@{${thymeleafMap.get('ADMIN_DATA_PATH')}}" th:object="${managerData}" method="post">
+      <fieldset th:aria-label="#{administration.load.marc.files}">
+        <div class="cont_form_group pr-0">
+          <div class="form-group">
+             <label id="loadPathId" for="loadPath" class="bmd-label-floating">
+                <th:block th:text="#{administration.load.path.label}"/>
+             </label>
+             <input id="loadPath" type="text" name="loadPath" class="form-control" aria-labeledby="loadPathId loadPathHelp" autocomplete="off">
+             <span id="loadPathHelp" class="bmd-help">
+                <th:block th:text="#{administration.load.path.help}"/>
+             </span>
+          </div>
+          <!-- :: /.form-group -->
+        </div>
+        <!-- :: /.cont_form_group -->
+
+        <div class="cont_form_group pr-0">
+          <div class="form-group cont_selectPicker">
+             <label id="originId" for="origin" class="bmd-label-floating">
+                <th:block th:text="#{administration.load.origin.label}"/>
+             </label>
+             <select id="origin" name="origin" class="form-control" aria-labelledby="originId originHelp">
+                <option th:each="item : ${oaiSourcesForFile}" th:text="${item}" th:value="${item}"></option>
+             </select>
+             <span id="originHelp" class="bmd-help">
+                <th:block th:text="#{administration.load.origin.help}"/>
+             </span>
+          </div>
+          <!-- :: /.form-group.cont_selectPicker -->
+        </div>
+        <!-- :: /.cont_form_group -->
+
+
+        <div class="cont_botonera row text-right py-3">
+           <div class="col-12">
+              <button type="submit" name="loadAction" value="BIBLIOGRAPHIC_CATALOG" class="btn btn-primary" th:title="#{administration.load.in} +' '+ #{administration.cata}">
+                 <th:block th:text="#{administration.load.in}"/>
+                 <span>
+                    <th:block th:text="#{administration.cata}"/>
+                 </span>
+              </button>
+              <button type="submit" name="loadAction" value="AUTHORITY" class="btn btn-primary" th:title="#{administration.load.in} +' '+ #{administration.auto}">
+                 <th:block th:text="#{administration.load.in}"/>
+                 <span>
+                    <th:block th:text="#{administration.auto}"/>
+                 </span>
+              </button>
+           </div>
+        </div>
+        <!-- :: /.row -->
+
+      </fieldset>
+   </form>
+</article>
+<!-- :: /.widget -->
+
+
+<!-- :: /[admin/data/loadMarcFiles.html] -->

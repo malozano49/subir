@@ -1,0 +1,130 @@
+<!-- :: [public/search/advanced/index.html] -->
+
+<div class="advanced-search py-2">
+  <div class="catalog-search simple-search container my-3">
+    <form method="post" id="abwxpAdvanced" name="abwxpAdvanced"
+      th:action="@{/public/search/advanced/action#refreshWrapper}" th:object="${solrSearchWeb}" role="search">
+      <th:block th:if="${solrSearchWeb}"
+        th:replace="/public/search/subCataSelectHidden :: selectname(sname='solrSearchWeb.solrSearch.subCatalog.subCatalogs',sfield='solrSearch.subCatalog.subCatalogs',var=${solrSearchWeb.solrSearch.subCatalog.subCatalogs},ncomb=${solrSearchWeb.solrSearch.subCatalog.numCombo})">
+      </th:block>
+      <input type="hidden" name="solrSearch.solrCollection" id="solrCollection.advanced.form"
+        value="BIBLIOGRAPHIC_CATALOG">
+      <input type="hidden" name="solrSearch.queryType" id="queryType.advanced.form"
+        th:value="${thymeleafMap.get('ADVANCED')}">
+      <input type="hidden" name="solrSearch.query" id="advancedDinamicQuery">
+
+      <div class="cont_quick_search card">
+
+        <div class="card-header">
+          <!-- :: /.barra_titulo -->
+          <p class="card-title">
+            <span class="icono fas fa-search-plus mr-2" aria-hidden="true"></span>
+            <span class="titulo" th:text="#{search.advanced.title}"></span>
+          </p>
+          <!-- :: /.cont_titulo -->
+          <!-- link Busqueda Simple -->
+          <div class="cont_botonera">
+            <a class="btn btn-dark" th:href="@{${thymeleafMap.get('SEARCH')}}">
+              <span class="texto text-white" th:text="#{search.simple.title}"></span>
+              <span class="icono fas fa-chevron-right ml-1 text-white" aria-hidden="true"></span>
+            </a>
+          </div>
+          <!-- :: /.cont_button -->
+        </div>
+
+        <div class="card-body">
+          <!-- :: /.cont_subcatalogs -->
+          <div class="form-row cont_form_quick_search">
+            <div class="cont_subcatalogs w-100 form-row form_quick_search" th:if="${SUBCATALOG_ENABLED}"
+              th:object="${solrSearchWeb}">
+              <th:block th:insert="/public/search/subCataSelect" />
+            </div>
+          </div>
+          <!-- :: /.cont_subcatalogs -->
+          <!-- :: /.cont_filtros_busqueda -->
+          <fieldset>
+            <div class="cont_filtros_busqueda">
+              <legend class="cont_title font-weight-bold my-3">
+                <span th:text="#{ba.format.ranges.area}"></span>
+              </legend>
+              <!-- :: /.cont_title -->
+
+              <div class="row-info">
+                <th:block th:each="search,iStat: ${solrSearchWeb.solrSearch.solrAdvancedSearchRows}">
+                  <th:block th:if="${iStat.index == 0}" th:insert="/public/search/advanced/fragments/mainSearchRow">
+                  </th:block>
+                  <th:block th:if="${iStat.index > 0 }" th:insert="/public/search/advanced/fragments/searchRow">
+                  </th:block>
+                </th:block>
+                <div
+                  th:if="${not #lists.isEmpty(solrSearchWeb.solrSearch.solrAdvancedSearchRows) and #lists.size(solrSearchWeb.solrSearch.solrAdvancedSearchRows)< solrSearchWeb.maxAdvancedRowQueries}"
+                  id="addLine" class="div-butt-advanced  text-right mb-3">
+                  <button type="button" class="btn btn-link add-row-advanced" th:title="#{ba.anadir.linea}">
+                    <span class="icono fas fa-plus-square mr-1" aria-hidden="true"></span>
+                    <span class="btn_text font-weight-bold" th:text="#{ba.anadir.linea}"></span>
+                  </button>
+                </div>
+                <!-- :: /.div-butt-advanced -->
+              </div>
+              <!-- :: /.row-info -->
+              <div class="row no-gutters">
+				<th:block th:if="${showFilters}" th:insert="/public/search/advanced/fragments/ShowFilters.html"></th:block>
+				<th:block th:if="${showFilterFepu}"  th:insert="/public/search/advanced/fragments/ShowFiltersFepu.html"></th:block>
+				<!-- :: /.row-filters -->
+              </div>
+            </div>
+          </fieldset>
+          <!-- :: /.cont_filtros_busqueda -->
+          <!-- if origin as checkboxes -->
+          <th:block th:if="${originView=='checkbox'}" th:insert="/public/search/copySourcesChecks" />
+          <!-- /if -->
+        </div>
+
+        <div class="card-footer">
+          <div class="cont_advanced_info">
+            <th:block th:insert="/public/search/advanced/fragments/information"></th:block>
+          </div>
+          <!-- :: /.cont_advanced_info -->
+          <!-- Botones buscar y borrar -->
+          <div class="cont_botonera_principal">
+            <div class="d-flex justify-content-end">
+              <button class="btn btn-outline-primary btn-search order-2" type="submit"
+                th:title="#{search.advanced.button.find}">
+                <span th:text="#{search.advanced.button.find}"></span>
+                <span class="icono fas fa-search-plus pl-2" aria-hidden="true"></span>
+              </button>
+              <button type="submit" class="btn btn-outline-secondary reset-form order-1 mx-3"
+                th:formaction="@{${thymeleafMap.get('ADVANCED_SEARCH_PATH')}}" th:inline="text"
+                th:title="#{search.advanced.button.reset}">
+                <span th:text="#{search.advanced.button.reset}"></span>
+                <span class="icono fas fa-eraser pl-2" aria-hidden="true"></span>
+              </button>
+            </div>
+          </div>
+          <!-- :: /.cont_botonera_principal -->
+        </div>
+
+      </div>
+
+
+      <!--/* :: hidden que debe tener el ID sin añadirle espeficificacion (variable usada por ajax) */-->
+      <!--/* FIXME subcatalog
+        <input type="hidden" name="solrSearch.subCatalog.subcatalogSelect" id="selectValues" th:value="${solrSearchWeb.solrSearch.subCatalog.subcatalogSelect}">
+		*/-->
+
+      <div class="container_desktop">
+        <!-- sources
+          <div class="cont_sources form-row">
+            <th:block th:insert="/public/search/copySources"/>
+          </div> -->
+        <!-- :: /.cont_sources -->
+
+      </div>
+      <!-- :: /.container_desktop -->
+
+    </form>
+  </div>
+  <!-- :: /.catalog-search.simple-search -->
+</div>
+<!-- :: /.container.advanced-search -->
+<!-- :: /[public/search/advanced/index.html] -->

@@ -1,0 +1,39 @@
+<th:block th:fragment="frag (lfield,titn,ocurrencies,anchor)">
+
+	<th:block th:each="myvalor: ${item.dollar0value.get(lfield)}">
+
+	    <th:block th:each="getDollar : ${myvalor}">
+
+	        <th:block th:each="mydollar,iterStat :${getDollar} ">
+
+				<!-- :: [/public/catalog/fragments/ltfieldAuthority.html ] -->
+		          <form method="post" name="solrSearchWeb" th:action="@{${thymeleafMap.get('SEARCH_ACTION')}}" class="form_cont_button">
+
+		            <input type="hidden" name="solrSearch.solrCollection"  value="BIBLIOGRAPHIC_CATALOG">
+		            <input type="hidden" name="solrSearch.queryType"  th:value="${thymeleafMap.get('EXPERT')}">
+
+		            <input type="hidden" name="solrSearch.antecesorSearch.searchId" th:value="${solrSearchWeb.solrSearch.tabId}">
+		            <input type="hidden" name="solrSearch.antecesorSearch.type" th:value="${solrSearchWeb.solrSearch.queryType}">
+		            <input type="hidden" name="solrSearch.antecesorSearch.anchor" th:value="${anchor}">
+
+		            <th:block th:if="${titn != null}">
+		              <button  type="submit" name="solrSearch.query" th:value="${mydollar.value}" th:title="${mydollar.value}" class="btn_enlace btn btn-link" th:id="${anchor}">
+		                <span class="btn_enlace_title" th:text="${mydollar.value}"></span>
+		              </button>
+
+		              <input type="hidden" name="solrSearch.hiddenQuery"  th:value="${'dollar0:'+  titn}">
+		            </th:block>
+
+		          </form>
+		           <!-- :: [/public/catalog/fragments/ltfieldAuthority.html ] -->
+		          <th:block th:if="${titn != null}">
+                <span class="sr-only" th:text="#{authority.ocurrences}+': '+${ocurrencies}+'.'"></span>
+		            <span aria-hidden="true" class="badge alertbul5" th:title="#{authority.ocurrences}+': '+${ocurrencies}+'.'" th:text="${ocurrencies}"></span>
+		           </th:block>
+	        </th:block>
+
+	    </th:block>
+
+  </th:block>
+
+</th:block>

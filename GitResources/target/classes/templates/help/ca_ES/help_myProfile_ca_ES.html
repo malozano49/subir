@@ -1,0 +1,253 @@
+<th:block th:insert="/public/home/html_type"></th:block>
+<th:block th:insert="/public/home/technicalheader::main" th:with="page=${'opac-help-myProfile-es_ES'}"></th:block>
+<script type="text/javascript">
+	var menu = document.getElementById('menu');
+	Stickyfill.add(menu);
+</script>
+<body><div id="burger-menu" class="burger-menu">
+  <span></span>
+  			<div id="menu2" class="menu menu2">
+			<div class=""><nav class="sn-contents" aria-label="Secondary">
+      <ul class="sidenav--list">
+		<li><a href="#modifyPersonalData">Com modificar les dades personals</a>
+		  <li><a href="#viewListActiveLoans">Com visualitzar els préstecs actius</a>
+		    <ul class="tab3-help">
+		      <li><a href="#moveListActiveLoans">Com moure's per la llista de préstecs actius</a></li>
+		    </ul>
+		  </li>
+		  <li><a href="#viewListLoanHistory">Com visualitzar l'històric de préstecs</a>
+		    <ul class="tab3-help">
+		      <li><a href="#moveListLoanHistory">Com moure's per la llista de l'històric de préstecs</a></li>
+		    </ul>
+		  </li>
+		  <li><a href="#viewRequests">Com visualitzar les sol·licituds</a>
+		    <ul class="tab3-help">
+		      <li><a href="#moveListRequests">Com moure's per la llista de sol·licituds</a></li>
+		    </ul>
+		  </li>
+		  <li><a href="#cancelReservation">Com anul·lar una sol·licitud tipus reserva</a></li>
+		  <li><a href="#cancelRequest">Com anul·lar una sol·licitud tipus petició</a></li>
+		  <li><a href="#renewloans">Com renovar préstecs</a></li>
+		  <li><a href="#home">Accés a la pàgina d'inici</a></li>
+		  <li><a href="#searchAuthority">Accés a la cerca en autoritats</a></li>
+		  <li><a href="#searchIndexes">Accés a la cerca en els índexs</a></li>
+		  <li><a href="#lastSearh">Accés a les últimes cerques realitzades</a></li>
+		  <li><a href="#historySearch">Accés a cerques desades</a></li>
+		  <li><a href="#favorites">Accés a preferits</a></li></ul></nav>
+</div>
+		</div>
+		
+</div>
+	<div class="wrapper cf">
+	
+		<div id="menu" class="menu">
+			<div class="sidenav"><nav class="sn-contents" aria-label="Secondary">
+      <ul class="sidenav--list">
+		<li><a href="#modifyPersonalData">Com modificar les dades personals</a>
+			<li><a href="#viewListActiveLoans">Com visualitzar els préstecs actius</a>
+				<ul class="tab3-help">
+					<li><a href="#moveListActiveLoans">Com moure's pel llistat de préstecs actius</a></li>
+				</ul>
+			</li>
+			<li><a href="#viewListLoanHistory">Com visualitzar l'històric de préstecs</a>
+				<ul class="tab3-help">
+					<li><a href="#moveListLoanHistory">Com moure's pel llistat de l'històric de préstecs</a></li>
+				</ul>
+			</li>
+			<li><a href="#viewRequests">Com visualitzar les sol·licituds</a>
+				<ul class="tab3-help">
+					<li><a href="#moveListRequests">Com moure's pel llistat de sol·licituds</a></li>
+				</ul>
+			</li>
+			<li><a href="#cancelReservation">Com anul·lar una sol·licitud tipus reserva</a></li>
+			<li><a href="#cancelRequest">Com anul·lar una sol·licitud tipus petició</a></li>	
+			<li><a href="#renewloans">Com renovar préstecs</a></li>	
+			<li><a href="#home">Accés a la pàgina d'inici</a></li>
+			<li><a href="#searchAuthority">Accés a la cerca en autoritats</a></li>
+			<li><a href="#searchIndexes">Accés a la cerca en els índexs</a></li>
+			<li><a href="#lastSearh">Accés a les darreres cerques realitzades</a></li>
+			<li><a href="#historySearch">Accés a cerques desades</a></li>
+			<li><a href="#favorites">Accés a preferits</a></li></ul></nav>
+</div>
+		</div>
+		
+		<div class="content">
+			<a name="top"></a>
+			<a name="modifyPersonalData"></a>
+		<h2 class="title-help">Com modificar les dades personals</h2>
+			<ul class="tab5-help margen5">
+				<li>1. Feu clic a <img th:src="@{/img/help/btn-edit.png}" alt="Botó d'edició"/> per modificar les dades que us interessin</li>
+				<li>2. Realitzeu els canvis que us interessin</li>
+				<li>3. Feu clic a <img th:src="@{/img/help/btn-save.png}" alt="Botó de guardar" width="75px"/> per desar les modificacions</li>
+			</ul>
+			<a name="viewListActiveLoans"></a>
+			<h2 class="title-help">Com visualitzar els préstecs actius</h2>
+			<ul class="tab5-help margen5">
+				<li>1. En <img th:src="@{/img/help/btn-current.png}" alt="Botó actuals" width="75px"/> es mostra el llistat dels seus préstecs actius
+					<ul class="tab5-help margen5">
+						<li>S'hi visualitzen les següents dades relacionades amb el préstec:
+							<ul class="tab5-help margen10">
+								<li>Biblioteca de l'exemplar</li>
+								<li>Sucursal de la sol·licitud</li>
+								<li>Títol</li>
+								<li>Autor</li>
+								<li>Data de préstec</li>
+								<li>Data de devolució</li>
+								<li>La opció <img th:src="@{/img/help/btn-streaming.png}" alt="Botó Streaming" width="100px"/> si la sol·licitud és un contingut d'efilm</li>
+							</ul>
+						</li>
+						<li>Els préstecs s'hi visualitzen ordenats per data de devolució en mode ascendent</li>
+						<li>Si feu clic en algun dels préstecs, s'hi visualitzen les dades del títol associat</li>
+					</ul>
+				</li>
+			</ul>
+			<a name="moveListActiveLoans"></a>	
+			<h4 class="title-help">Com moure's pel llistat de préstecs actius</h4>
+			<p>Per defecte, el resultat de la cerca es mostra ordenat en grups de <span class="text-bold-help">10</span>, però existeix la possibilitat d'agrupar els resultats de 25 en 25 o de 35 en 35.</p>
+			<span class="tab5-help margen10"><img th:src="@{/img/help/results-by-page.png}" alt="Resultats per pàgina" width="320px"/></span>
+			<p>Per moure's per les diferents pàgines dels resultats obtinguts existeixen les següents opcions:</p>
+			<ul class="tab5-help margen5">
+				<li>Fes clic a <img th:src="@{/img/help/next.png}" alt="Següent" width="80px"/> per moure't a la següent pàgina.</li>
+				<li>Fes clic a <img th:src="@{/img/help/back.png}" alt="Anterior" width="80px"/> per moure't a la pàgina anterior.</li>
+				<li>Fes clic al núm. de pàgina que t'interessi visualitzar
+					<span class="tab3-help"><img th:src="@{/img/help/number-by-page.png}" alt="Número de pàgina" width="320px"/></span>
+				</p></li>
+				<li>Fes clic al núm. 1 per visualitzar la primera pàgina</li>
+				<span class="tab3-help"><img th:src="@{/img/help/first-page.png}" alt="Primera pàgina" width="320px"/></span>
+				</p>
+				<li>Fes clic al núm. anterior a Següent per anar a l'última pàgina
+					<span class="tab3-help"><img th:src="@{/img/help/last-page.png}" alt="Última pàgina" width="320px"/></span>
+				</li>
+			</ul>
+			<a name="viewListLoanHistory"></a>
+			<h2 class="title-help">Com visualitzar l'històric de préstecs</h2>
+			<ul class="tab3-help">
+				<li>Fes clic a <img th:src="@{/img/help/btn-histority.png}" alt="Botó històric" width="75px"/>
+					<ul class="tab4-help margen5">
+						<li>S'hi visualitzen les següents dades relacionades amb el préstec:
+							<ul class="tab5-help margen5">
+								<li>Biblioteca de l'exemplar</li>
+								<li>Sucursal de la sol·licitud</li>
+								<li>Títol</li>
+								<li>Autor</li>
+								<li>Data de préstec</li>
+								<li>Data de devolució</li>
+							</ul>
+						</li>
+						<li>Els préstecs s'hi visualitzen ordenats per data de devolució en mode descendent</li>
+						<li>Si fas clic en algun dels préstecs, s'hi visualitzen les dades del títol associat</li>
+					</ul>
+				</li>
+			</ul>
+			<a name="moveListLoanHistory"></a>
+			<h4 class="title-help">Com moure's pel llistat d'històric de préstecs</h4>
+			<p>Per defecte, el resultat de la cerca es mostra ordenat en grups de <span class="text-bold-help">10</span>, però existeix la possibilitat d'agrupar els resultats de 25 en 25 o de 35 en 35.</p>
+			<span class="tab5-help margen10"><img th:src="@{/img/help/results-by-page.png}" alt="Resultats per pàgina" width="320px"/></span>
+			<p>Per moure's per les diferents pàgines dels resultats obtinguts existeixen les següents opcions:</p>
+			<ul class="tab5-help margen5">
+				<li>Fes clic a <img th:src="@{/img/help/next.png}" alt="Següent" width="80px"/> per moure't a la següent pàgina.</li>
+				<li>Fes clic a <img th:src="@{/img/help/back.png}" alt="Anterior" width="80px"/> per moure't a la pàgina anterior.</li>
+				<li>Fes clic al núm. de pàgina que t'interessi visualitzar
+					<span class="tab3-help"><img th:src="@{/img/help/number-by-page.png}" alt="Número de pàgina" width="320px"/></span>
+				</p></li>
+				<li>Fes clic al núm. 1 per visualitzar la primera pàgina</li>
+				<span class "tab3-help"><img th:src="@{/img/help/first-page.png}" alt="Primera pàgina" width="320px"/></span>
+				</p>
+				<li>Fes clic al núm. anterior a Següent per anar a l'última pàgina
+					<span class="tab3-help"><img th:src="@{/img/help/last-page.png}" alt="Última pàgina" width="320px"/></span>
+				</li>
+			</ul>	
+			<a name="viewRequests"></a>
+			<h2 class="title-help">Com visualitzar les sol·licituds</h2>
+			<ul class="tab3-help">
+				<li>Fes clic a <img th:src="@{/img/help/my-requests.png}" alt="Les meves sol·licituds" width="100px"/>
+					<ul class="tab4-help margen5">
+						<li>S'hi visualitzen les següents dades relacionades amb les sol·licituds pendents:
+							<ul class="tab5-help margen10">
+								<li>Biblioteca de l'exemplar</li>
+								<li>Sucursal de la sol·licitud</li>
+								<li>Títol</li>
+								<li>Autor</li>
+								<li>Data de creació</li>
+								<li>Data de finalització</li>
+								<li>Mostrador</li>
+								<li>Informació sobre el seu estat</li>
+							</ul>
+						</li>
+						<li>Les sol·licituds s'hi visualitzen agrupades per Biblioteca/sucursal ordenades per data de finalització en mode ascendent</li>
+						<li>Si fas clic en alguna de les sol·licituds, s'hi visualitzen les dades del títol associat</li>
+					</ul>
+				</li>
+			</ul>
+			</p>
+			<a name="moveListRequests"></a>
+			<h4 class="title-help">Com moure's pel llistat de sol·licituds</h4>
+			<p>Per defecte, el resultat de la cerca es mostra ordenat en grups de <span class="text-bold-help">10</span>, però existeix la possibilitat d'agrupar els resultats de 25 en 25 o de 35 en 35
+			<span class="tab5-help"><img th:src="@{/img/help/results-by-page.png}" alt="Resultats per pàgina" width="320px"/></span>
+			<p>Per moure's per les diferents pàgines dels resultats obtinguts existeixen les següents opcions:</p>
+			<ul class="tab5-help margen5">
+				<li>Fes clic a <img th:src="@{/img/help/next.png}" alt="Següent" width="80px"/> per moure't a la següent pàgina.</li>
+				<li>Fes clic a <img th:src="@{/img/help/back.png}" alt="Anterior" width="80px"/> per moure't a la pàgina anterior.</li>
+				<li>Fes clic al núm. de pàgina que t'interessi visualitzar
+					<span class="tab3-help"><img th:src="@{/img/help/number-by-page.png}" alt="Número de pàgina" width="320px"/></span>
+				</p></li>
+				<li>Fes clic al núm. 1 per visualitzar la primera pàgina</li>
+				<span class="tab3-help"><img th:src="@{/img/help/first-page.png}" alt="Primera pàgina" width="320px"/></span>
+				</p>
+				<li>Fes clic al núm. anterior a Següent per anar a l'última pàgina
+					<span class="tab3-help"><img th:src="@{/img/help/last-page.png}" alt="Última pàgina" width="320px"/></span>
+				</li>
+			</ul>
+			<a name="cancelReservation"></a>
+			<h2 class="title-help">Com anul·lar una sol·licitud de tipus reserva</h2>
+			<ul class="tab5-help margen5">
+			    <li>1. Feu clic a <img th:src="@{/img/help/my-requests.png}" alt="Les meves sol·licituds" width="100px"/><p></li>
+			    <li>2. Feu clic a l'opció <img th:src="@{/img/help/btn-cancel.png}" alt="Anular" width="50px"/> associada a la reserva que voleu anul·lar</li>
+			        <p class="tab5-help margen5">- Apareix un missatge demanant confirmació</p>
+			        <span class="tab4-help margen5"><img th:src="@{/img/help/cancel-request.png}" alt="Cancelar solicitud" width="400px"/></span><p>
+			    <li>3. Feu clic a l'opció <img th:src="@{/img/help/btn-cancel.png}" alt="Anular" width="50px"/> per eliminar la sol·licitud</li>
+			</ul>
+			<div class="tab5-help">
+			    <div class="box-help">Només es poden anul·lar les reserves que no estiguin activades, és a dir, les que encara no estiguin disponibles per ser recollides.</div>
+			</div>
+			<a name="cancelRequest"></a>
+			<h2 class="title-help">Com anul·lar una sol·licitud de tipus petició</h2>
+			<ul class="tab5-help margen5">
+			    <li>1. Feu clic a <img th:src="@{/img/help/my-requests.png}" alt="Les meves sol·licituds" width="100px"/><p></li>
+			    <li>2. Feu clic a l'opció <img th:src="@{/img/help/btn-cancel.png}" alt="Anular" width="50px"/> associada a la petició que voleu anul·lar</li>
+			        <p class="tab5-help margen5">- Apareix un missatge demanant confirmació</p>
+			        <span class="tab4-help margen5"><img th:src="@{/img/help/cancel-request.png}" alt="Cancelar solicitud" width="400px"/></span><p>
+			    <li>3. Feu clic a l'opció <img th:src="@{/img/help/btn-cancel.png}" alt="Anular" width="50px"/> per eliminar la sol·licitud</li>
+			</ul>
+			<div class="tab5-help">
+			    <div class="box-help">Només es poden anul·lar les peticions que estiguin en estat R-Petició.</div>
+			</div>
+			<a name="renewloans"></a>
+			<h2 class="title-help">Com renovar préstecs</h2>
+			<p class="tab5-help margen5">1. Feu clic a <img th:src="@{/img/help/btn-current.png}" alt="Botó actuales" width="75px"/></p>
+			<p class="tab5-help margen5">2. Feu clic a l'opció <img th:src="@{/img/help/btn-renew.png}" alt="Botó renovar" width="75px"/> associada al préstec que voleu renovar</p>
+			<a name="home"></a>
+			<h2 class="title-help">Accés a la pàgina d'inici</h2>
+			<p>Per anar a la pàgina d'inici, feu clic a <i>Inici</i>.</p>
+			<a name="searchAuthority"></a>
+			<h2 class="title-help">Accés a la cerca en autoritats</h2>
+			<p>Per realitzar una cerca d'autoritats que us permeti localitzar registres que contenen una autoritat específica, feu clic a l'opció <i>Cerca autoritats</i>.</p>
+			<a name="searchIndexes"></a>
+			<h2 class="title-help">Accés a la cerca en els índexs</h2>
+			<p>Per realitzar una cerca que localitzi paraules o patrons de paraules similars al terme o termes introduïts, feu clic a l'opció <i>Cerca índexs</i>.</p>
+			<a name="lastSearh"></a>
+			<h2 class="title-help">Accés a les darreres cerques realitzades</h2>
+			<p>Per veure les <span class="text-bold-help">10</span> darreres cerques realitzades que han retornat resultats durant la sessió de l'Opac, feu clic a <i>Últimes cerques</i>.</p>
+			<a name="historySearch"></a>
+			<h2 class="title-help">Accés a cerques desades</h2>
+			<p>Si voleu desar algunes de les cerques que heu realitzat per poder-les executar en un altre moment, feu clic a <i>Cerques desades</i>.</p>
+			<p class="tab2-help">* Per poder desar cerques, és necessari que us identifiqueu prèviament</p>
+			<a name="favorites"></a>
+			<h2 class="title-help">Accés als favorits</h2>
+			<p>Per veure els registres que heu marcat com a favorits, feu clic a <i>Favorits</i>.</p>
+			<p class="top-help"><a href="#top">Amunt</a></p>
+		</div>
+	</div>
+	<th:block th:insert="/public/home/technicalfooter" th:with="page='opac-dataprivacyterms'"/>
+</body>
+</html>

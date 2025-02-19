@@ -1,0 +1,89 @@
+<th:block th:insert="/public/home/html_type"></th:block>
+<th:block th:insert="/public/home/technicalheader::main" th:with="page=${'opac-help-historySearch-es_ES'}"></th:block>
+<script type="text/javascript">
+	var menu = document.getElementById('menu');
+	Stickyfill.add(menu);
+</script>
+<body>
+<div id="burger-menu" class="burger-menu">
+  <span></span>
+  			<div id="menu2" class="menu menu2">
+			<div class=""><nav class="sn-contents" aria-label="Secondary">
+      <ul class="sidenav--list">
+<li><a href="#historySearch">Gordetako bilaketak</a></li>
+				<li><a href="#searchAuthorities">Autortasunetan bilaketa</a></li>
+				<li><a href="#searchIndexes">Indizeetan bilaketa</a></li>
+				<li><a href="#favorites">Gogokoak</a></li>
+				<li><a href="#profile">Nire Profila atzitzeko</a></li>	
+				<li><a href="#home">Hasiera orria atzitzeko</a></li></ul></nav>
+</div>
+		</div>
+</div>
+	<div class="wrapper cf">
+<div id="menu" class="menu">
+			<div class="sidenav"><nav class="sn-contents" aria-label="Bigarren maila">
+      <ul class="sidenav--list">
+ <li><a href="#historySearch">Gordetako bilaketak</a></li>
+				<li><a href="#searchAuthorities">Autortasunetan bilaketa</a></li>
+				<li><a href="#searchIndexes">Indizeetan bilaketa</a></li>
+				<li><a href="#favorites">Gogokoak</a></li>
+				<li><a href="#profile">Nire Profila atzitzeko</a></li>	
+				<li><a href="#home">Hasiera orria atzitzeko</a></li></ul></nav>
+</div>
+		</div>
+		<div class="content">
+			<a name="top"></a>
+			<a name="historySearch"></a>	
+			<h2 class="title-help">Gordetako bilaketak</h2>
+			<p>Hauetako aukeratik aldi baterako gordetako bilaketa bistaratzen dira</p>
+			<ul class="tab4-help margen5">
+				<li>Bilaketak dataren arabera ordenatzen dira <span class="text-bold-help">behera moduan</span>
+				<li>Zeuk interesatzen zaituen bilaketak <span class="text-bold-help">kendu</span> nahi badituzu, sakatu bilaketa bakoitzaren ondoan dagoen aukeraren ikonoa 
+					<img th:src="@{/img/help/icon-paper-bin-1.png}" alt="Paper ikonoa"/>
+				</li>
+			</ul>
+			<p>Hauetako aukeratik ere aurreko saioan egin dituzun azken bilaketak bistaratzeko aukera daukazu. Horretarako, egin klik <i>Azken Bilaketak</i> atalean.</p>
+			<ul class="tab4-help margen5">
+				<li>Zerbitzatu nahi dituzun bilaketen artean bat gorde nahi baduzu, sakatu bilaketa bakoitzaren ondoan dagoen ikonoa <img th:src="@{/img/help/icon-save.png}" alt="Gorde ikonoa"/>
+					<ul class="tab5-help margen5">
+						<li>- Lehenetsi bezala, <span class="text-bold-help">50</span> bilaketa gorde daiteke</li>
+					</ul>
+				</li>
+			</ul>
+			<a name="searchAuthorities"></a>	
+			<h2 class="title-help">2.- Autortasunetan bilaketa</h2>
+			<p>Autortasunetan bilaketa egin nahi baduzu, zehaztutako autortasuna duen erregistroak aurkitzeko, sakatu <i>Autortasunetan Bilaketa</i> atala.</p>
+			<a name="searchIndexes"></a>	
+			<h2 class="title-help">3.- Indizeetan Bilaketa</h2>
+			<p>Hitzak edo hitz-motako ereduak sartutako termino edo termino parekatuen bilaketa egin nahi baduzu, sakatu <i>Indizeetan Bilaketa</i> atala.</p>
+			<a name="favorites"></a>	
+			<h2 class "title-help">4.- Gogokoak</h2>
+			<p>Gogoko gabe dituzun erregistroak bistaratzeko, sakatu <i>Gogokoak</i>.</p>
+			<a name="profile"></a>	
+			<h2 class="title-help">5.- Nire Profila atzitzeko</h2>
+			<p>Sakatu <i>Nire Profila</i> aukera eta identifikatu, ODAko ondoko baliabideei sartzeko aukera izateko:</p>
+			<ul class="tab5-help margen10">
+				<li>Datu pertsonalak</li>
+				<li>Eskaerak</li>
+				<li>Préstamo aktiboak</li>
+				<li>Préstamo historia</li>
+				<li>Préstamoak berritu</li>
+				<li>Erreserbaak bertan behera utzi</li>
+				<li>Bilaketak gorde</li>
+				<li>Gogoko zerrendak sortu</li>
+			</ul>
+			<p  class="tab3-help">•	Erabiltzaile gisa identifikatzeko, hiru aukera dituzu:</p>
+			<ul class="tab5-help margen10">
+				<li>Karnet zenbakia</li>
+				<li>Zure liburutegian emandako posta elektronikoa</li>
+				<li>Zure liburutegian emandako mugikorraren zenbakia</li>
+			</ul>
+			<a name="home"></a>	
+			<h2 class="title-help">6.- Hasiera Orria Atzitzeko</h2>
+			<p>Hasierara itzultzeko, sakatu <i>Hasiera</i>.</p>
+			<p class="top-help"><a href="#top">Gora</a></p>
+		</div>
+	</div>
+	<th:block th:insert="/public/home/technicalfooter" th:with="page='opac-dataprivacyterms'"/>
+</body>
+</html>

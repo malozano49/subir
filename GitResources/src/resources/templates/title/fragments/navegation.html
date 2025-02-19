@@ -1,0 +1,31 @@
+<!-- :: [title/fragments/navegation.html] -->
+<nav id="detail_nav" class="mr-auto col-md-12" aria-labelledby="search_title_nav_pages_in_1" data-position="1">
+  <h3 id="search_title_nav_pages_in_1" class="sr-only">Navegación por números de página</h3>
+ <ul class="pagination">
+         <li class="btn_anterior btn_mobile preview page-item" th:classappend="${position <= 1} ? 'disabled'">
+            <a th:href="@{${thymeleafMap.get('CATALOG_MAPPING_DETAIL_VIEW_NO_VIEW_PREV')}(pos=${position},tabId=${solrSearchWeb.solrSearch.tabId})}" class="btn page-link" data-type="back" th:title="#{search.pagination.page.previous}">
+              <span class="icono fas fa-angle-left" aria-hidden="true"></span>
+              <span class="btn_title" th:text="#{search.pagination.page.previous}"></span>
+            </a>
+         </li>
+         <li class="page-item page-count">
+	         <span class="page-link">
+		         <span class="page-actual">
+		         <th:block th:text="${position}"/>
+		         </span>
+		         <span class="page-sep">/</span>
+		         <span class="page-total">
+		          <th:block th:text="${solrSearchWeb.solrSearch.results.totalResults}"/>
+		         </span>
+	         </span>
+         </li>
+
+      	 <li class="btn_siguiente btn_mobile next page-item" th:classappend="${position >= solrSearchWeb.solrSearch.results.totalResults} ? 'disabled'">
+            <a th:href="@{${thymeleafMap.get('CATALOG_MAPPING_DETAIL_VIEW_NO_VIEW_NEXT')}(pos=${position},tabId=${solrSearchWeb.solrSearch.tabId})}" class="btn page-link" data-type="forward" th:title="#{search.pagination.page.next}">
+              <span class="btn_title" th:text="#{search.pagination.page.next}"></span>
+              <span class="icono fas fa-angle-right" aria-hidden="true"></span>
+            </a>
+         </li>
+</ul>
+</nav>
+<!-- :: /[title/fragments/navegation.html] -->

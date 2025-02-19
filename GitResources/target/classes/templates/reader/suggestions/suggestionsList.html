@@ -1,0 +1,34 @@
+<!-- :: [reader/suggestions/suggestionsList.html] -->
+<div class="card p-4 add-buysuggestions-wrapper">
+	<h2 id="SuggestionsList_title" class="item-title d-block font-weight-bold fieldset__title">
+		<span class="icono fa fa-comment mr-2" aria-hidden="true"></span>
+		<span th:text="#{mylibrary.reader.suggestions}" ></span>
+	</h2>
+	<th:block th:if="${reader.suggestionList.size > 0}">
+		<table class="table table-striped table-bordered lists">
+			<thead class="">
+				<tr>
+					<th scope="col" class="" th:text="#{suggestion.date}"></th>
+						<th scope="col" class="" th:text="#{suggestion.state}"></th>
+						<th scope="col" class="" th:text="#{suggestion.comment}"></th>
+						<th scope="col" class="" th:text="#{suggestion.note}"></th>
+						<th scope="col" class=""></th>
+					</tr>
+				</thead>
+				<tbody>
+					<th:block th:each="suggestion : ${reader.suggestionList}">
+					<tr>
+						<!-- 						<td class="" th:text="${#dates.format(suggestion.expirationDate, 'dd/MM/yyyy')}"></td> -->
+						<td class="" th:text="${#dates.format(suggestion.creationDate, 'dd/MM/yyyy')}"></td>  
+						<td class="" th:text="${suggestion.statusDescription}"></td>  
+						<td class="" th:utext="${suggestion.comment}"></td> 
+						<td class="" th:text="${suggestion.note}"></td> 
+						<td class="" >
+							<th:block th:if="${suggestion.removable}" th:insert="reader/suggestions/suggestionsFormDelete.html"></th:block>
+						</td> 
+					</tr>	
+					</th:block> 
+				</tbody>
+		</table>
+	</th:block>
+<!-- :: [reader/suggestions/suggestionsList.html] -->

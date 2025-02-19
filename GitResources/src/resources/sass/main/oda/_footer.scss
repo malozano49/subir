@@ -1,0 +1,66 @@
+/* FOOTER
+Código desactivado en sass/_footer.scss y modificado para adaptar a MASTER Oda
+*/
+
+.footer_principal{position:relative;float:left;width:100%;z-index:200;}
+.footer-bottom {position: relative;display:flex;flex-direction:column;padding: 25px 0;
+	li {
+		margin-bottom: 3px;
+	}
+	.link{
+  	&:hover {text-decoration:$link-hover-decoration;cursor: pointer;}
+  }
+  	.footer-brand {
+	img{max-width: 160px}
+}
+	.social-media-icons{
+		display:flex;gap:10px;margin: 0;
+		li {display: inline-block;}
+		.link {font-size:1.4rem;transition: transform .2s;
+      &:hover{transform: scale(1.5);}
+		}
+	}
+
+  @include media_max(lg){
+    .container{align-items:stretch;justify-items:flex-start;align-content:flex-start;align-items:flex-start;
+      .blq{width:285px;min-width:285px;padding:0;margin-top:1rem;margin-right:auto;margin-bottom:0}
+    }
+  }
+  @include media_max(sm){
+    .container{
+      .blq{min-width:0}
+    }
+  }
+  @include media_max(xs){
+    .container{
+      .blq{width:100%;}
+    }
+  }
+}
+
+//
+// Botonera flotante
+//
+.botonera_flotante{position:fixed;z-index:1000;bottom:30px;width:auto;right:10px;
+  .btn_accion,
+  .btn_anchor,
+  .btn_home{position:relative;display:flex;align-items:center;justify-content:center;max-width:2.5rem;min-width:2.5rem;height:2.5rem;margin-right:5px;cursor:pointer;
+    &:hover{text-decoration:none!important;}
+    &:focus{@extend %focus_button;}
+    &:last-child{margin-right:0}
+    .icono{position:relative;}
+  }
+  .btn_cursor{position:relative;float:left;height:2.5rem;width:1.2rem;cursor:pointer;}
+  .blq{position:relative;float:left;display:flex;flex-flow:row nowrap;align-items:center;
+    &.cont_anchors{
+      .btn_anchor{transition:background-color .3s ease, color .3s ease;}
+    }
+  }
+}
+
+.ie11{
+  .botonera_flotante .btn_accion .icono, .botonera_flotante .btn_anchor .icono{position:absolute;top:50%;left:50%;transform:translate(-50%,-41%)}
+}
+
+
+

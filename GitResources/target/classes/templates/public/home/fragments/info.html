@@ -1,0 +1,21 @@
+<!-- :: /home/fragments/info.html -->
+<!--/* @TODO 210209 Esta seccion sólo debe de aparecer si hay algun contenido, aplicar algun IF */-->
+    <section id="info" class="sct_sidebar container" th:if="${not #maps.isEmpty(infos)} or ${not #maps.isEmpty(infos)}" aria-labelledby="title_sct_sidebar" >
+      <h2 id="title_sct_sidebar" class="sr-only" th:text="#{home.sidebar.section.title}"></h2>
+      <div class="category-sidebar">
+         <!-- <article id="art_mostValued" class="art_mostValued component d-flex p-0 border-0" aria-labelledby="widget_most_visited_title" th:insert="/public/home/comments/mostValued" data-skip_to_content="art_links"></article> -->
+         <!-- :: /.component -->
+         <article id="art_agenda" class="art_agenda component border-0" aria-labelledby="art_agenda_title" th:insert="/public/home/agenda/agenda" data-skip_to_content="false" th:if="${not #maps.isEmpty(infos)}"></article>
+         <!-- :: /.component -->
+         <article id="art_links" class="art_links component border-0" aria-labelledby="art_links_title" th:insert="/public/home/links/links" data-skip_to_content="art_agenda" th:if="${not #maps.isEmpty(infos)}"></article>
+         <!-- :: /.component -->
+      </div>
+
+      <div class="msg_charge">
+        <div aria-live="polite" id="c-polite_info" class="sr-only">
+          <span th:text="#{message.fincargaenlaces}"></span>
+        </div>
+        <div aria-live="assertive" id="c-assertive_info" class="sr-only"></div>
+      </div>
+    </section>
+<!-- :: /home/fragments/info.html -->

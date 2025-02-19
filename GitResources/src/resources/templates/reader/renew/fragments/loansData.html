@@ -1,0 +1,33 @@
+<!-- :: [reader/renew/fragments/loansData.html] -->
+<section class="col-md-12 mx-3">
+
+	<div class="text-center my-2">
+		<h3 th:text="${name} + ' ' + #{renew.ok.reserved}"></h3>
+	</div>
+	
+	<div class="w-100 my-4">
+		<h3 th:text="#{renew.ok.list.title}" class="col-md-8 col-sm-12 col-xs-12 pl-0 pr-0 float-none mx-auto my-3"></h3>
+		<div class="col-md-8 col-sm-12 col-xs-12 pl-0 pr-0 float-none mx-auto">
+			<ul class="m-0">
+				<li th:each="element : ${loans}" class="w-100 m-2">
+					<th:block th:if="${element.attributes.get('subcodeMsg')!=null}">
+						<span class="fas fa-exclamation-circle text-error mx-1"></span>
+						<th:block th:insert="/reader/renew/fragments/copyLoansState :: frag(${element})"></th:block>
+						<span th:text="#{renew.fail.unavailable}" class="text-error font-weight-bold mx-1"></span>
+						<span th:text="#{${element.attributes.get('subcodeMsg')}}" class="mx-1"></span>
+					</th:block>
+					<th:block th:if="${element.attributes.get('subcodeMsg')==null}">
+						<span class="fas fa-check-square text-success mx-1"></span>
+						<th:block th:insert="/reader/renew/fragments/copyLoansState :: frag(${element})"></th:block>
+					</th:block>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="text-center my-4">
+		<a th:href="@{${thymeleafMap.get('READER_LOANS_PATH')}}" th:text="#{renew.ok.link}"></a> 
+	</div>
+
+</section>
+<!-- :: [reader/renew/fragments/loansData.html] -->

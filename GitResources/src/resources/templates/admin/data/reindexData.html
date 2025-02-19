@@ -1,0 +1,33 @@
+<!-- :: [admin/data/reindexData.html] -->
+<article class="border widget">
+   <h3 class="widget-header mb-4">
+      <span class="icono fas fa-redo" aria-hidden="true"></span>
+      <th:block th:text="#{administration.reindex.marc.records}"/>
+   </h3>
+   <div class="cont_alert" aria-live="polite" aria-atomic="true">
+  </div>
+   <form id="form_reindexData" th:action="@{${thymeleafMap.get('ADMIN_DATA_PATH')}}" th:object="${managerData}" method="post">
+    <fieldset th:aria-label="#{administration.reindex.marc.records}">
+      <ul class="category-list d-flex flex-wrap">
+         <li class="col-xl-6 col-lg-12">
+            <button type="submit" name="reindexAction" value="TITLE" class="btn btn-primary w-100">
+               <th:block th:text="#{administration.reindex.in}"/>
+               <span>
+                  <th:block th:text="#{administration.title}"/>
+               </span>
+            </button>
+         </li>
+         <li class="col-xl-6 col-lg-12">
+            <button type="submit" name="reindexAction" value="AUTHORITY" class="btn btn-primary w-100">
+               <th:block th:text="#{administration.reindex.in}"/>
+               <span>
+                  <th:block th:text="#{administration.authority}"/>
+               </span>
+            </button>
+         </li>
+      </ul>
+    </fieldset>
+   </form>
+</article>
+<!-- :: /.widget -->
+<!-- :: /[admin/data/reindexData.html] -->

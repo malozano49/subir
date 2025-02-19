@@ -1,0 +1,117 @@
+<!-- :: [/public/search/advanced/fragments/ShowFilters.html] -->
+<div class="row-filters col-md mr-md-1">
+	<div class="cont_botonera_desplegable">
+		<button type="button"
+			class="btn btn-primary btn-collapse w-100 d-flex align-items-center justify-content-between"
+			data-toggle="collapse" data-target="#collapse_filters" aria-expanded="false"
+			aria-controls="collapse_filters">
+			<span class="font-weight-bold" th:text="#{ba.filtrar.por}"></span>
+			<span class="icono fas fa-angle-down float-right align-middle" aria-hidden="true"></span>
+		</button>
+	</div>
+	<div id="collapse_filters" class="collapse cont_collapse">
+		<div class="form-row my-2">
+			<th:block th:if="${showFiltersMap.get('languages')}">
+			  <div class="cont_form_group col">
+			    <div class="form-group cont_selectPicker">
+			      <label id="languageSelectLabel" for="solrAdvancedSearchFilters.language"
+			        class="bmd-label-floating">
+			        <th:block th:text="#{ba.idioma}" />
+			      </label>
+			      <select id="solrAdvancedSearchFilters.language"
+			        name="solrSearch.solrAdvancedSearchFilters.language" class="form-control"
+			        th:aria-label="#{ba.idioma}">
+			        <option value="">&nbsp;</option>
+			        <option th:each="item : ${solrSearchWeb.solrAdvancedCombosVO.languages}"
+			          th:text="#{${item}}" th:value="${item}"
+			          th:selected="${item}==${solrSearchWeb.solrSearch.solrAdvancedSearchFilters.language}">
+			        </option>
+			      </select>
+			      <span id="languageSelectHelp" class="bmd-help">
+			        <th:block th:text="#{ba.idioma}" />
+			      </span>
+			    </div>
+			    <!-- :: /.form-group -->
+			     </div>
+			</th:block>
+            <!-- ::/.cont_form_group-->
+			<th:block th:if="${showFiltersMap.get('countries')}">
+			    <div class="cont_form_group col">
+			   <div class="form-group cont_selectPicker">
+			     <label id="countrySelectLabel" for="solrAdvancedSearchFilters.country"
+			       class="bmd-label-floating">
+			       <th:block th:text="#{ba.pais}" />
+			     </label>
+			     <select id="solrAdvancedSearchFilters.country"
+			       name="solrSearch.solrAdvancedSearchFilters.country" class="form-control"
+			       th:aria-label="#{ba.pais}">
+			       <option value="">&nbsp;</option>
+			       <option th:each="item : ${solrSearchWeb.solrAdvancedCombosVO.countries}"
+			         th:text="#{${item}}" th:value="${item}"
+			         th:selected="${item}==${solrSearchWeb.solrSearch.solrAdvancedSearchFilters.country}">
+			       </option>
+			     </select>
+			     <span id="countrySelectHelp" class="bmd-help">
+			       <th:block th:text="#{ba.pais}" />
+			     </span>
+			   </div>
+			   <!-- :: /.form-group -->
+			 </div>
+			</th:block>
+		</div>
+		<div class="form-row my-2">
+			<!-- ::/.cont_form_group-->
+			<th:block th:if="${showFiltersMap.get('formats')}">
+			 <div class="cont_form_group col">
+			   <div class="form-group cont_selectPicker">
+			     <label id="formatSelectLabel" for="solrAdvancedSearchFilters.format"
+			       class="bmd-label-floating">
+			       <th:block th:text="#{ba.format}" />
+			     </label>
+			     <select id="solrAdvancedSearchFilters.format"
+			       name="solrSearch.solrAdvancedSearchFilters.format" class="form-control"
+			       th:aria-label="#{ba.format}">
+			       <option value="">&nbsp;</option>
+			       <option th:each="item : ${solrSearchWeb.solrAdvancedCombosVO.formats}" th:text="#{${item}}"
+			         th:value="${item}"
+			         th:selected="${item}==${solrSearchWeb.solrSearch.solrAdvancedSearchFilters.format}">
+			       </option>
+			     </select>
+			     <span id="formatSelectHelp" class="bmd-help">
+			       <th:block th:text="#{ba.format}" />
+			     </span>
+			   </div>
+			   <!-- :: /.form-group -->
+			 </div>
+			</th:block>
+			<!-- ::/.cont_form_group-->
+			<th:block th:if="${showFiltersMap.get('mediatypes')}">
+			    <div class="cont_form_group col">
+			      <div class="form-group cont_selectPicker">
+			        <label id="mediaTypeSelectLabel" for="solrAdvancedSearchFilters.mediaType"
+			          class="bmd-label-floating">
+			          <th:block th:text="#{ba.mediaType}" />
+			        </label>
+			        <select id="solrAdvancedSearchFilters.mediaType"
+			          name="solrSearch.solrAdvancedSearchFilters.mediaType" class="form-control"
+			          th:aria-label="#{ba.mediaType}">
+			          <option value="">&nbsp;</option>
+			          <option th:each="item : ${solrSearchWeb.solrAdvancedCombosVO.mediaTypes}"
+			            th:text="#{${item}}" th:value="${item}"
+			            th:selected="${item}==${solrSearchWeb.solrSearch.solrAdvancedSearchFilters.mediaType}">
+			          </option>
+			        </select>
+			        <span id="mediaTypeSelectHelp" class="bmd-help">
+			          <th:block th:text="#{ba.mediaType}" />
+			        </span>
+			      </div>
+			      <!-- :: /.form-group -->
+			 </div>
+			</th:block>
+			<!-- :: /.cont_form_group-->
+        </div>
+        <!-- :: /.form-row -->
+	</div>
+	<!-- :: /.collapse -->
+</div>
+<!-- :: [/public/search/advanced/fragments/ShowFilters.html] -->

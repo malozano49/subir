@@ -1,0 +1,76 @@
+/*!
+ *  @file        : _suggestions.scss
+ *
+ *  @description : ABSYS aplicación estilos
+ *
+ *  @author      : http://www.baratz.es/
+ *
+ *  @ref         : Hoja de estilos para toda la parte de Sugerencias y sugerencias de compra
+--------------------------------------------------------------------------------------------------*/
+
+.suggestions {
+	
+	&--form {
+		&--container {
+			padding: 1rem;
+			display: flex;
+			justify-content: center;
+			> form {				
+				min-width: 80%;							
+			}			
+		}
+		.save-suggestion-btn {
+			margin-left: 1rem;
+		}
+	}
+}
+
+.open-delsuggestion-modal, .close-suggestion-btn,
+.open-addsuggestion-modal {
+	span {
+		pointer-events: none;
+	}
+}
+
+.buysuggestions {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	
+	.disclaimer{
+		display: flex;
+    justify-content: flex-end;
+    font-size: 14px;
+  }
+  
+	.mandatory{
+		color:$red;
+		font-weight: bold;
+		font-size: 16px;
+		padding:0 3px;
+	}
+	.error-front{
+		color:red;
+    font-size: 14px;
+	}
+	.icono.fas.fa-sort-down.icono_red {
+		display: block !important;
+		top:30%;
+	}
+	.icono.fa-sort-up:before {
+     top: 0; 
+	}
+	.breakword {
+		word-break: break-all;
+	}
+}
+.reader_buysuggestions {
+	.cont_alerts_general .alert{
+		&_titulo{
+			font-size: 16px;
+		}
+		&::after{
+			top: 3px;
+		}
+	}
+}

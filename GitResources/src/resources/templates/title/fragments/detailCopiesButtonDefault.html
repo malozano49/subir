@@ -1,0 +1,20 @@
+<!-- :: [title/fragments/detailCopiesButtonDefault.html] -->
+<li th:data-id="'table_'+${iterStat.index}+'_external_link'" class="type_data external_link">
+	<span class="title font-weight-bold mobile" th:text="#{copy.online.external.link.title}"></span>
+	<th:block th:if="${tfields != null and tfields['t856'] != null}">
+		<th:block th:each="tsubField, itStat : ${tfields['t856']}">
+			<th:block th:if="${tsubField!=null}" th:each="subField, iStat : ${tsubField.subFields}">
+				<th:block th:if="${#strings.equals(subField.dollar,'u') and (tsubField?.getMapSubFields()['z'] == null ? true : (tsubField?.getMapSubFields()['z'][0] != specialFileds?.get('t856')?.get('excludeValues')))}" th:include="/title/fragments/detailCopiesButtonDefault_u.html"></th:block>
+				<th:block th:if="${#strings.equals(subField.dollar,'w')}" th:include="/title/fragments/detailCopiesButtonDefault_w.html"></th:block>
+			</th:block>
+		</th:block>
+		<th:block th:if="${resourceUrlOiginal != null and tfields['t001'] != null}">
+			<a target="_blank" class="online-copies__enlace btn btn-white"  
+				th:href="${resourceUrlOiginal} + ${tfields['t001'][0].controlValue}"
+				th:title="#{copy.online.external.link.resource.origin}" rel="noopener noreferrer">
+				<span th:text="#{copy.online.external.link.resource.origin}"></span> 
+			</a>
+		</th:block>
+	</th:block>
+</li>
+<!-- :: /[title/fragments/detailCopies.html] -->

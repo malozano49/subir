@@ -1,0 +1,17 @@
+<!-- :: [reader/fragments/enlaceAutor.html] -->
+ <th:block th:fragment="frag(tfields, mykey , id)">
+	<span  th:id="${'author_' + id}" class="d-block">
+	<form method="post" id="solrSearch.links" name="solrSearchWeb" th:action="@{${thymeleafMap.get('SEARCH_ACTION')}}" class="links">
+   		<input type="hidden" name="solrSearch.solrCollection" id="solrCollection.link" value="BIBLIOGRAPHIC_CATALOG"> 
+   		<input type="hidden" name="solrSearch.queryType" id="queryType.link" th:value="${thymeleafMap.get('EXPERT')}">
+   	
+   		<th:block th:if="${tfields[__${mykey}__] != null}" th:each="mvalor:${tfields[__${mykey}__]}">
+        	<th:block th:each="subcampos, iterStat : ${mvalor.subFields}">
+        		<input type="hidden" name="solrSearch.hiddenQuery" th:id="'hiddenQuery'+ ${iterStat.index}" th:value="${'dollar0:'+ subcampos.linkValue}">
+      			 <button type="submit" name="solrSearch.query" th:id="'query-link-Z' + ${iterStat.index}" th:value="${subcampos.subFieldValue}" class="btn_enlace page-link" th:text="${subcampos.subFieldValue}"/>
+      		</th:block>
+   		</th:block>
+	</form>
+	
+</th:block>
+<!-- :: [reader/fragments/enlaceAutor.html] -->

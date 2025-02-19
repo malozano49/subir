@@ -1,0 +1,41 @@
+/*!
+ *  @file        : main_personalization.scss
+ *
+ *  @description : ABSYS aplicacion estilos
+ *
+ *  @author      : http://www.baratz.es/
+ *
+ *  @ref         : Hoja de compilacion de modulos de estilos
+--------------------------------------------------------------------------------------------------*/
+
+/**Importando Variables**/
+@import "variables";
+
+/**Importando Colores**/
+@import "./perso/colors";
+
+/**Importando Fuentes**/
+@import "./perso/fonts";
+
+@import "./perso/color_components";
+
+@import "./perso/btns";
+
+/**Importando hojas**/
+@import "layout";
+
+@import "forms";
+@import "login";
+@import "navigation";
+@import "footer";
+@import "results";
+@import "detail";
+@import "myLibrary";
+@import "view_types";
+@import "record";
+@import "modales";
+
+@import "custom";
+@import "pages_type_faq";
+
+@import "cookies_bar";

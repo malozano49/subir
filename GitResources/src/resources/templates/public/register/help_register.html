@@ -1,0 +1,19 @@
+ <div class="cont_botonera_help">
+    <button type="button" class="btn btn_show_help" th:title="#{general.btn_show_help.title}" th:aria-label="#{general.btn_show_help.title}">
+      <span class="icono fas fa-info" aria-hidden="true"></span>
+    </button>
+ </div>
+
+ <div class="alert alert-register-info dispose_icons_js alert-info alert_icon alert-dismissible mt-3 mb-0">
+  <span class="icono fas fa-info-circle pr-3" aria-hidden="true"></span>
+    <span class="alert_titulo mb-2" th:text="#{alert.info.title}"></span>
+    <div class="alert_texto">
+        <span th:text="#{reader.form.password.help}"></span>
+    </div>             
+    <div class="alert_texto mt-2"><span class="mandatory">*</span><span th:text="#{login.user.help}"></span></div>
+    <button type="button" class="close" data-dismiss="alert" th:aria-label="#{modal.close.title}" th:title="#{modal.close.title}">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+
+

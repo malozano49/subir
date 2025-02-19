@@ -1,0 +1,186 @@
+<!-- :: [reader/circulation/loans/fragments/copies.html] -->
+
+<section class="cont_copies col-md-12 pl-3 pr-3">
+
+    <form th:unless="${#lists.isEmpty(copyList)}" th:action="@{${thymeleafMap.get('LOAN_ACTION_PATH')}}" method="post" th:object="${reserve}">
+      <input type="hidden" th:value="${reserve.idDetail}" id="idDetail" name="reserve.idDetail" >
+      <input type="hidden" th:field="${reserve.copyBranch}" >
+      <input type="hidden" th:value="${reserve.tabId}" id="tabId" name="reserve.tabId" >
+      <input type="hidden" th:field="${reserveInfo.selectedCopyId}" >
+      <input type="hidden" th:field="${reserveInfo.selectedTitleId}" >
+      <input type="hidden" th:field="${reserve.source}" >
+
+      <div class="cont_bloque cont_bloque_data col-12 float-left p-4 mb-3 border oculto">
+
+        <div class="w-100 cont_titles">
+          <h3 class="col-md-12 cont_title mb-3">
+            <span class="legend-title font-weight-bold" th:text="#{reserves.library}"></span>
+            <span class="legend-value" th:text="${copyList[0].libraryDescription}"></span>
+          </h3>
+          <h3 class="col-md-12 cont_title">
+            <span class="legend-title font-weight-bold" th:text="#{reserves.branch}"></span>
+            <span class="legend-value" th:text="${copyList[0].branchDescription}"></span>
+          </h3>
+        </div>
+        <!-- :: /.cont_titles -->
+
+        <fieldset class="copies cont_table_big_00 w-100">
+          <legend class="tb_00_title col-lg-8 col-md-12 pl-0 pr-0 float-none ml-auto mr-auto">
+            <span class="tb_00_legend-title font-weight-bold" th:text="#{reserves.select}"></span>
+          </legend>
+
+          <div class="table_big_00 col-lg-8 col-md-12 pl-0 pr-0 float-none ml-auto mr-auto">
+            <!-- :: TITULOS DESKTOP -->
+            <ul class="tb_00_titles desktop_flex d-flex col-md-auto m-0">
+              <li class="typeDescription w-100 order_desktop_1" data-order_desktop="1">
+                <span class="type_title font-weight-bold" th:text="#{copy.location}"></span>
+              </li>
+              <li class="volume w-100 order_desktop_2" data-order_desktop="2">
+                <span class="type_title font-weight-bold" th:text="#{copy.type}"></span>
+              </li>
+              <li class="locationDescription w-100 order_desktop_3" data-order_desktop="3">
+                <span class="type_title font-weight-bold" th:text="#{copy.volume}"><!-- reserves.library --></span>
+              </li>
+              <li class="check w-100 order_desktop_4" data-order_desktop="4">
+                <span class="type_title font-weight-bold">&nbsp;</span>
+              </li>
+            </ul>
+
+            <div class="cont_data col-md-auto pl-0 pr-0">
+              <ul class="tb_00_data d-flex col-md-auto m-0" th:each="copy, iStat: ${copyList}">
+                <li class="type_data volume w-100 order_desktop_1 order_mobile_1 w-100" data-order_desktop="1">
+                	<span class="title mobile" th:text="#{copy.location}"></span>
+
+                    <span class="data" th:text="${copyList[0].locationDescription}"></span>
+                </li>
+                <li class="type_data typeDescription order_desktop_2 order_mobile_2 w-100" data-order_desktop="2">
+                  <span class="title mobile" th:text="#{copy.type}"></span>
+                  <span class="data" th:text="${copy.typeDescription}"></span>
+                </li>
+                <li class="type_data locationDescription order_desktop_3 order_mobile_3 w-100" data-order_desktop="3">
+                  <span class="title mobile" th:text="#{copy.volume}"></span>
+                  <span class="data" th:text="${copy.volumeIdentifier}"></span>
+                </li>
+                <li class="type_data check order_desktop_4 order_mobile_4 w-100" data-order_desktop="4">
+                  <div class="form-group cont_check cont_check_tunned cont_check_graphic">
+                    <label th:for="${copy.barcode} + '_barcode'" class="d-none" th:text="#{reserves.copy.locationDescription.title}"></label>
+                    <input th:id="${copy.barcode} + '_barcode'" type="checkbox" class="d-none" th:value="${copy.barcode}" name="reserve.barcodes" readonly checked>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <!-- :: /.cont_data-->
+          </div>
+          <!-- :: /.table_big_00 -->
+
+        </fieldset>
+        <!-- :: /.cont_table_big_00 -->
+      </div>
+      <!-- :: /.cont_bloque -->
+
+      <div class="cont_bloque cont_bloque_selects col-12 float-left p-4 mt-4 mb-5 border oculto">
+        <fieldset class="d-flex flex-wrap w-100">
+
+<th:block th:if="${(optionSucursal != null && optionSucursal.size()>1)||(optionMostrador != null && optionMostrador.size()>1)}">
+          <legend class="cont_titulo col-md-12 pt-0 pr-0 pl-0 mb-0">
+            <span class="icono fas fa-shopping-cart" aria-hidden="true"></span>
+            <span class="legend_title font-weight-bold" th:text="#{reserves.where}"></span>
+          </legend>
+</th:block>
+
+          <div class="cont_alert alert_general w-100 d-flex flex-wrap" th:if="${apiMessage != null}"  aria-live="polite" aria-atomic="true">
+          	<th:block th:insert="/reader/fragments/apiMessageReservation"></th:block>
+          </div>
+
+<th:block th:if="${(optionSucursal != null && optionSucursal.size()>1)||(optionMostrador != null && optionMostrador.size()>1)}">
+
+          <div class="fld_text_info col-md-12 mt-2 mb-2">
+            <p class="d-flex flex-wrap align-items-center"><a class="btn btn-link btn_enlace ml-3" data-toggle="collapse" href="#collapse_selects" role="button" aria-expanded="false" aria-controls="collapse_selects" th:text="#{reserves.other.desks.info}"></a>
+            </p>
+          </div>
+          <!-- :: /.fld_text_info -->
+
+          <div id="collapse_selects" class="collapse collapse_selects col-12 p-0">
+            <div class="card card-body flex-row flex-wrap w-100">
+
+              <div class="cont_alert d-flex col-12 p-0 mb-3" aria-live="polite" aria-atomic="true">
+                <div class="alert alert-info alert-dismissible fade show">
+                  <span class="alert_titulo" th:text="#{reserves.other.desks.info.title}"></span>
+                  <span class="alert_texto mt-2" th:text="#{reserves.other.desks.info.text1}"></span>
+                  <span class="alert_texto"  th:text="#{reserves.other.desks.info.text2}"></span>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                  </button>
+                </div>
+                <!-- :: /.alert -->
+              </div>
+
+              <div class="cont_selects selects_dependientes_js d-flex flex-wrap col-md-7 col-sm-12 col-xs-12 pl-0 pr-0 ">
+
+                  <div class="cont_form_group col-lg-6 col-md-6 col-sm-12 pl-0">
+                    <div class="form-group cont_selectPicker">
+                      <label class="bmd-label-floating" for="reserve.branch" th:text="#{reserves.branch}"></label>
+                      <select id="reserve.branch" name="reserve.branch" class="form-control" th:aria-label="#{search.subcatalog.selection}" >
+                          <th:block th:insert="/public/search/subCataOptions :: options(collection=${optionSucursal},mselected=${optionSucursalSelected})"></th:block>
+                      </select>
+                      <span class="bmd-help">
+                        <th:block th:text="#{reserves.branch}"/>
+                      </span>
+                    </div>
+                    <!-- :: /.form-group-->
+                  </div>
+                  <!-- :: /.cont_form_group-->
+
+                  <div class="cont_form_group col-lg-6 col-md-6 col-sm-12 pl-0">
+                    <div class="form-group cont_selectPicker" th:classappend="${optionMostrador.size() < 2 ? 'cont_select_disabled' : ''}">
+                      <label class="bmd-label-floating" for="reserve.desk" th:text="#{reserves.desk}"></label>
+                        <select id="reserve.desk" name="reserve.desk" class="form-control" th:aria-label="#{search.subcatalog.selection}">
+                          <th:block th:insert="/public/search/subCataOptions :: options(collection=${optionMostrador},mselected='')"></th:block>
+                        </select>
+                        <span class="bmd-help">
+                          <th:block th:text="#{reserves.desk}"/>
+                        </span>
+                    </div>
+                    <!-- :: /.form-group -->
+                  </div>
+                  <!-- :: /.cont_form_group -->
+                </div>
+                <!-- :: /.cont_selects -->
+              </div>
+              <!-- :: /.card.card-body -->
+            </div>
+          <!-- :: /.collapse-->
+</th:block>
+<th:block th:unless="${(optionSucursal != null && optionSucursal.size()>1)||(optionMostrador != null && optionMostrador.size()>1)}">
+          <input type='hidden' id="reserve.branch" name="reserve.branch" th:value="${optionSucursal != null ? ( optionSucursal.size() > 0 ? optionSucursal.get(0) : null ) : null}"></input>
+          <input type='hidden' id="reserve.desk" name="reserve.desk" th:value="${optionMostrador != null ? ( optionMostrador.size() > 0 ? optionMostrador.get(0) : null ) : null}"></input>
+</th:block>
+
+        </fieldset>
+
+      </div>
+      <!-- :: /.cont_bloque.cont_bloque_selects -->
+
+      <div class="cont_botonera botonera_general">
+
+<th:block th:if="${breadcrumb!=null and !breadcrumb.empty}" th:with="back=${breadcrumb[__${#lists.size(breadcrumb) - 2}__]}">
+          <a role="button" th:href="@{${back.link}}"  class="btn btn-outline-primary btn-form_reserve_return mr-2" th:aria-label="#{reserves.back.to.detail}">
+            <span class="btn_titleWhite" th:text="#{reserves.back.to.detail}"></span>
+            <span class="icono fas fa-reply pl-2" aria-hidden="true"></span>
+          </a>
+          </th:block>
+          <a role="button" th:if="${urlBack}" th:href="@{${urlBack}}" class="btn btn-outline-secondary btn-form_reserve_reset mr-2" th:aria-label="#{mylibrary.reader.cancel}">
+            <span class="btn_titleWhite" th:text="#{mylibrary.reader.cancel}"></span>
+            <span class="icono fas fa-eraser pl-2" aria-hidden="true"></span>
+          </a>
+          <button type="submit" class="btn btn-outline-primary btn-form_reserve_search" th:aria-label="#{loan.loan}">
+            <span class="btn_titleWhite" th:text="#{reserves.reserve}"></span>
+            <span class="icono fas fa-search-plus pl-2" aria-hidden="true"></span>
+          </button>
+
+      </div>
+      <!-- :: /.cont_botonera -->
+    </form>
+</section>
+
+<!-- :: /[reader/circulation/loans/fragments/copies.html] -->

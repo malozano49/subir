@@ -1,0 +1,290 @@
+﻿﻿<th:block th:insert="/public/home/html_type"></th:block>
+<th:block th:insert="/public/home/technicalheader::main" th:with="page=${'opac-help-home-es_ES'}"></th:block>
+<script type="text/javascript">
+	var menu = document.getElementById('menu');
+	Stickyfill.add(menu);
+</script>
+
+<body>	
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="jquery.fittext.js"></script>
+
+<div id="burger-menu" class="burger-menu">
+  <span></span>
+  			<div id="menu2" class="menu menu2">
+			<div class=""><nav class="sn-contents" aria-label="Secondary">
+      <ul class="sidenav--list">
+  <li>
+ <a href="#find" class="page-link">Búsqueda sencilla</a></li><li>
+  <a href="#findAdvanced" class="page-link">Acceso a búsqueda avanzada</a></li><li>
+  <a href="#findAuthorities" class="page-link">Acceso a búsqueda en autoridades</a></li><li>
+  <a href="#searchIndexes" class="page-link">Acceso a búsqueda en los Índices</a></li><li>
+  <a href="#lastSearch" class="page-link">Acceso a últimas búsqueda realizadas</a></li><li>
+ <a href="#historySearch" class="page-link">Acceso a búsqueda guardadas</a></li><li>
+  <a href="#favorites" class="page-link">Acceso a favoritos</a></li><li>
+  <a href="#profile" class="page-link">Acceso a Mi Perfil</a></li></ul></nav>
+</div>
+		</div>
+</div>
+
+
+	<div class="wrapper cf">
+
+		<div id="menu" class="menu">
+			<div class="sidenav"><nav class="sn-contents" aria-label="Secondary">
+      <ul class="sidenav--list">
+  <li>
+ <a href="#find" class="page-link">Búsqueda sencilla</a></li><li>
+  <a href="#findAdvanced" class="page-link">Acceso a búsqueda avanzada</a></li><li>
+  <a href="#findAuthorities" class="page-link">Acceso a búsqueda en autoridades</a></li><li>
+  <a href="#searchIndexes" class="page-link">Acceso a búsqueda en los Índices</a></li><li>
+  <a href="#lastSearch" class="page-link">Acceso a últimas búsqueda realizadas</a></li><li>
+ <a href="#historySearch" class="page-link">Acceso a búsqueda guardadas</a></li><li>
+  <a href="#favorites" class="page-link">Acceso a favoritos</a></li><li>
+  <a href="#profile" class="page-link">Acceso a Mi Perfil</a></li></ul></nav>
+</div>
+		</div>
+		<div class="wrapper cf">
+		
+		<div id="menu" class="menu">
+		  <div class="sidenav">
+		    <nav class="sn-contents" aria-label="Secondary">
+		      <ul class="sidenav--list">
+		        <li>
+				 <a href="#find" class="page-link">Búsqueda sencilla</a></li><li>
+						   
+				  <a href="#findAdvanced" class="page-link">Acceso a búsqueda avanzada</a></li><li>
+						   
+				  <a href="#findAuthorities" class="page-link">Acceso a búsqueda en autoridades</a></li><li>
+						   
+				  <a href="#searchIndexes" class="page-link">Acceso a búsqueda en los Índices</a></li><li>
+						   
+				  <a href="#lastSearch" class="page-link">Acceso a últimas búsqueda realizadas</a></li><li>
+						   
+				 <a href="#historySearch" class="page-link">Acceso a búsqueda guardadas</a></li><li>
+						   
+				  <a href="#favorites" class="page-link">Acceso a favoritos</a></li><li>
+						   
+				  <a href="#profile" class="page-link">Acceso a Mi Perfil</a>
+				  </li>
+				</ul>
+			</nav>
+		  </div>
+		</div>		  
+		<div class="content">
+			<a name="top"></a>
+			<a name="find"></a>
+			<h2 class="title-help">Búsqueda sencilla</h2>
+			<p>La búsqueda sencilla es la que aparece por defecto en la página inicial.</p>
+			<div class="flexx flexcentro">
+				<img class="img-busqueda-sencilla-help" th:src="@{/img/help/simple-search.png}" height="150px" width="100px" alt="busqueda sencilla.png">
+			</div>
+			<a name="filter"></a> 
+			<h4 class="title-help">Filtros que se pueden aplicar a una búsqueda</h4>
+			<span class="tab2-help">Cuando se realiza una búsqueda se puede consultar en todas las <span class="text-bold-help">fuentes</span> disponibles o en una en concreto. </span>
+			<div class=" mb-4">
+				<img  class="img-filtro-help" th:src="@{/img/help/search-filters.png}" alt="filtros de busqueda.png">
+			</div>
+			<p>Por defecto, la búsqueda se realiza en todas las fuentes disponibles. Si quiere que la búsqueda se realicen en una fuente determinada, selecciónela:</p>
+			<div class=" mb-4">
+				<img class="img-filtro-help" th:src="@{/img/help/filter-efilm.png}" alt="filtro de Efilm">
+			</div>
+			<p>Además de poder selecionar las fuentes en las que se puede realizar la búsqueda <span class="text-bold-help">ODA</span> permite restringir la búsqueda a un conjunto de registros en concreto (p.e, los que pertenecen a una biblioteca concreta) a los que vamos a llamar <span class="text-bold-help">subcatálogos</span></p>
+			
+			
+			<ul>
+			<li><span class="tab4-help margen5">Se puede seleccionar un subcatálogo desde la lista de subcatálogos o localizarlo a partir de la introducción de determinados caracteres.</span> 
+			</li>
+			</ul>
+			
+			<div class="flexcentro">
+				<img class="img-subcatalogos-help" th:src="@{/img/help/write-in-subcatalogs.png}" alt="Escribir en subcatalogos"/>
+			</div>
+			<br> 
+			
+			<a name="howToSearch"></a> 
+			<h4 class="title-help">Cómo buscar</h4>
+			<p>Antes de comenzar a buscar tenga en cuenta los siguientes puntos:</p>
+			<ul class="tab4-help margen10">
+				<li>Los términos de búsqueda pueden introducirse de cualquier manera, es decir en mayúsculas o minúsculas y diacríticos, acentos, diéresis, etc., o sin ellos, etc., o sin ellos.</li>
+				<li>Cualquier término introducido es considerado cómo término de búsqueda: una palabra, un número, una cadena de caracteres, etc.</li>
+				<li><span class="text-bold-help">No</span> existen <span class="text-bold-help">palabras</span> definidas como <span class="text-bold-help">vacìas</span>. Se ha decidido mantener las preposiciones, artìculos, etc. como buscables para facilitar la localización exacta de los documentos.</li>
+				<li>Cuando se introducen varios términos de búsqueda en la misma consulta se pueden unir  con un <span class="text-bold-help">operador</span> que indicará su relacion en cada uno de los documentos. El significado de cada uno de los operadores que se pueden utilizar es el siguiente:</li>
+			</ul>
+			<table class="table-help">
+				<tr class="tr-help">
+					<th class="td-help th-help border-right-help">Operador</th>
+					<th class="td-help th-help" >Descripción</th>
+				</tr>
+				<tr class="tr-help">
+					<td class="td-help col-help">AND (&)</td>
+					<td class="td-help">Localiza los registros que contienen todos los términos unidos con este operador.</td>
+				</tr>
+				<tr class="tr-help">
+					<td class="td-help col-help border-top-help">OR (|)</td>
+					<td class="td-help border-top-help">Localiza los registros que contienen alguno de los términos unidos con este operador o ambos.</td>
+				</tr>
+				<tr class="tr-help">
+					<td class="td-help col-help border-top-help">NOT</td>
+					<td class="td-help border-top-help">Localiza los registros que contienen el primer término unido con este operador pero no el segundo.</td>
+				</tr>
+			</table>			
+			<br>
+			<ul class="tab4-help margen10">
+				<li>Se pueden realizar <span class="text-bold-help">búsquedas exactas</span> englobando todos los términos entre comillas ("). <br>
+					De esta manera, se localizan todos los registros que contienen el texto introducido entre comillas en el mismo orden en el que se introdujeron en la búsqueda.
+				</li>
+				<li>Se puede utilizar <span class="text-bold-help">truncamientos</span> para localizar partes de palabras. Los truncamientos pueden ser de dos tipos:</li>
+			</ul>
+			<table class="table-help">
+				<tr class="tr-help">
+					<th class="td-help th-help border-right-help"></th>
+					<th class="td-help th-help">Descripción</th>
+				</tr>
+				<tr class="tr-help">
+					<td class="td-help col-help">?</td>
+					<td class="td-help border-top-help">Situado en cualquier posición del término de búsqueda, cada ? sustituye un único carácter. De esta manera, se localizarán todos los documentos que cumplan el patrón de búsqueda y que en el lugar en donde se encuentra el signo ? contengan cualquier carácter.</td>
+				</tr>
+				<tr>
+					<td class="td-help col-help border-top-help">*</td>
+					<td class="td-help border-top-help">Situado en cualquier posición del término, o en varios a la vez, sustituye una cadena de caracteres. El asterisco *  localizará todos los documentos que cumplan el patrón de búsqueda y que en el lugar donde se encuentra el signo * contengan cualquier número de caracteres.</td>
+				</tr>
+			</table>
+			<br>
+			<p>Se pueden realizar las siguientes búsquedas:</p>
+			<div class="margen10"><ul class="tab5-help">
+				<li>- Por un término</li>
+				<li>- Por varios términos	</li>
+				<li>Búsqueda exactas</li>
+			</ul></div>
+			
+			<a name="searchesByTerm"></a> 
+			<h5 class="subtitle-help">Búsqueda por un término</h5>
+			<span class="tab2-help">1. Introduzca el término de búsqueda que quiere localizar.</span>
+			<div class=" mb-4">
+				<img class="img-buscar-termino-help" th:src="@{/img/help/search-text.png}" alt="Caja de busqueda de texto"/>
+			</div>
+			<span class="tab2-help">2. Haga clic <img class="img-btn-buscar-help" th:src="@{/img/help/btn-search.png}" alt="Botón de buscar"/> en para localizar los registros que contienen el término introducido.</span>
+			<br><br>
+			<div class="tab4-help flexcentro">
+				<div class="box-help">
+						Recuerde que también puede realizar búsqueda utilizando truncamientos
+				</div>
+			</div>
+			<a name="searchesSeveralTerms"></a> 
+			<h5 class="subtitle-help">Búsqueda por varios términos</h5>
+			<span class="tab2-help">1. Introduzca los términos de búsqueda que quiere localizar unidos con uno de los operadores explicados anteriormente.</span>
+			<div class="flexcentro">
+				<img class="img-buscar-termino-help" th:src="@{/img/help/search-multiple-terms.png}" alt="Caja de busqueda de varios termino"/>
+			</div>
+			<span class="tab2-help">2. Haga clic <img class="img-btn-buscar-help" th:src="@{/img/help/btn-search.png}" alt="Botón Ã³n de buscar"/> para localizar los registros que contienen los términos introducidos.</span>
+			<br><br>
+			<div class="tab4-help flexcentro">
+				<div class="box-help">
+						Recuerde que también puede realizar búsqueda utilizando truncamientos
+				</div>
+			</div>
+			<a name="exactSearches"></a> 
+			<h5 class="subtitle-help">Búsqueda exactas</h5>
+			<p>Esta búsqueda recupera los registros que contienen la expresión  buscada tal y como se introdujo <p>
+			<span class="tab2-help">1. Introduzca los términos de búsqueda que quiere localizar entrecomillados.</span>
+			<div class=" mb-4">
+				<img class="img-buscar-entre-comillas-help" th:src="@{/img/help/search-in-quotes.png}" alt="Busqueda entre comillas"/>
+			</div>
+			<span class="tab2-help">2. Haga clic <img class="img-btn-buscar-help" th:src="@{/img/help/btn-search.png}" alt="Botón de buscar"/> para localizar los registros que contienen la expresión buscada tal y como se introdujo.</span>
+			<br><br>
+			<div class="tab4-help flexcentro">
+				<div class="box-help">
+						Recuerde que también puede realizar búsqueda utilizando truncamientos
+				</div>
+			</div>
+			<a name="deleteTerms"></a>
+			<h5 class="subtitle-help">Cómo eliminar los términos de búsqueda introducidos</h5>
+			<p>Para eliminar los términos de búsqueda introducidos, haga clic en <img th:src="@{/img/help/btn-clean.png}" alt="Boton de limpiar"/>
+			<div class="flexcentro">
+				<img class="img-buscar-terminos-help" th:src="@{/img/help/search-multiple-terms.png}" alt="Caja de busqueda de texto"/>
+			</div>
+			<a name="automaticSearch"></a> 
+			<h5 class="subtitle-help">Sugerencias de búsqueda automáticas</h5>
+			<p><span class="text-bold-help">ODA</span> proporciona las siguientes posibilidades de sugerencias de búsqueda automáticas:</p>
+			<div class="margen5"><ul class="tab4-help">
+			<ul class="tab5-help">
+				<li>1."Quiso decir"</li>
+				<li>2.búsqueda en autoridades</li>
+			</ul>
+			</div>
+			<h5 class="paragraph-help">"Quiso decir"</h5>
+			<p>Si en la búsqueda no se han encontrado ningún resultado o se han localizado menos de 10 registros, <span class="text-bold-help">ODA</span> sugiere términos a los usuarios que puedan ayudarles a obtener registros que puedan interesarles basado en spellchecking.</p>
+			<p>El spellchecking es una comprobación ortográfica que consiste en revisar la consulta introducida por el usuario y sugerirle una consulta alternativa ortográficamente correcta.</p>
+			<b>Ejemplo:</b>
+			<div class="flexcentro"><ul class="tab4-help">
+			<ul class="tab5-help">
+				<li>1. Se introduce el término estilmismo
+					<div class=" mb-4">
+						<img class="img-caja-mas-btn-help"  th:src="@{/img/help/box-text-btn-search.png}" alt="Caja de busqueda de texto mÃ¡s botÃ³n"/>
+					</div>
+				</li>
+				<li>2. Como la búsqueda no devuelve resultados, ofrece como sugerencias los siguientes términos:
+					<div class=" mb-4">
+						<img class="img-caja-mas-btn-help" th:src="@{/img/help/did-you-mean.png}" alt="Quiso decir"/>
+					</div>
+				</li>
+				<li>3. Si se hace clic en alguno de los términos sugeridos, realiza una consulta para localizar los registros que contengan el término seleccionado</li>
+			</ul>
+			</div>
+			<h5 class="paragraph-help">Búsqueda en autoridades</h5>
+			<p>Si en la búsqueda no se han encontrado ningún resultado o se han localizado menos de 10 registros,<span class="text-bold-help"> ODA</span> realiza una búsqueda en la base de datos de autoridades para ver si localiza alguna autoridad que se corresponda con la búsqueda introducida.</p>
+			<a name="findAdvanced"></a>
+			<h2 class="title-help">Acceso a búsqueda avanzada</h2>
+			<p>Para acceder a la búsqueda avanzada, haga clic en la opción <i>búsqueda avanzada</i> que aparece en la página inicial.</p>
+			<div class="flexcentro">
+				<img class="img-busqueda-avanzada-help" th:src="@{/img/help/advanced-search.png}" alt="Busqueda avanzada"/>
+			</div>
+			<a name="findAuthorities"></a>
+			<h2 class="title-help">Acceso a búsqueda en autoridades</h2>
+			<p>Para realizar una búsqueda de autoridades que permita localizar registros que contienen una autoridad especìfica, haga clic en la opción <span class="text-bold-help">búsqueda autoridades</span>.</p>
+			<a name="searchIndexes"></a>
+			<h2 class="title-help">Acceso a búsqueda en los ìndices</h2>
+			<p>Para realizar una búsqueda que localice palabras o patrones de palabras parecidas al término o términos introducidos, haga clic en la opción <span class="text-bold-help">búsqueda ìndices</span>.</p>
+			<a name="lastSearch"></a> 
+			<h2 class="title-help">Acceso a últimas búsqueda realizadas</h2>
+			<p>Para visualizar las <span class="text-bold-help">10</span> últimas búsqueda realizadas que han devuelto resultados durante la sesión del Opac, haga clic en <span class="text-bold-help">últimas búsqueda</span></p>
+			<a name="historySearch"></a> 
+			<h2 class="title-help">Acceso a búsqueda guardadas</h2>
+			<p>Si quiere guardar alguna de las búsqueda que ha realizado para poder ejecutarlas en otro momento, haga clic en <span class="text-bold-help">búsqueda guardadas</span>.</p>
+			<ul class="tab5-help">
+				<li>Para poder guardar búsqueda es necesario que se identifique previamente</li>
+			</ul>
+			<a name="favorites"></a>
+			<h2 class="title-help">Acceso a favoritos</h2>
+			<p>Para visualizar los registros que ha marcado como favoritos, haga clic en 
+			<span class="text-bold-help">Favoritos</span></p>
+			<a name="profile"></a> 
+			<h2 class="title-help">Acceso a Mi Perfil</h2>
+			<p>Haga clic en la opción <i>Mi perfil</i> e identifíquese para poder acceder a las siguientes utilidades de <span class="text-bold-help">ODA</span>:</p>	
+			
+			<ul class="tab5-help margen10">
+				<li> Datos personales</li>
+				<li> Solicitudes</li>
+				<li> Préstamos activos</li>
+				<li> Histórico de préstamos</li>
+				<li> Renovar préstamos</li>
+				<li> Anular reservas </li>
+				<li> Guardar búsqueda</li>
+				<li> Crear listas de favoritos</li>
+			</ul>			
+			<p>Para identificarse como usuario puede utilizar cualquiera de estos 3 métodos:</p>			
+			<ul class="tab5-help margen10">
+				<li> nº de carné</li>
+				<li> correo electrónico que haya proporcionado a su biblioteca</li>
+				<li> teléfono móvil que haya proporcionado a su biblioteca</li>
+			</ul>
+			<p class="top-help"><a href="#top">Arriba</a></p>
+	 		
+	</div>
+</div>
+</div>
+	<th:block th:insert="/public/home/technicalfooter" th:with="page='opac-dataprivacyterms'"/>
+	
+</body>
+</html>

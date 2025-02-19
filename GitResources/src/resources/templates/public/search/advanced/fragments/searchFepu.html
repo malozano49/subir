@@ -1,0 +1,26 @@
+<!-- :: [public/search/advanced/fragments/searchFepu.html] -->
+
+    <div class="cont_form_group col">
+      <div class="form-group">
+        <label id="fepuInitLabel" for="solrAdvancedSearchFilters.fepuInit" th:text="#{ba.initDate}" class="bmd-label-floating"></label>
+        <input type="number" min="0" max="9999" id="solrAdvancedSearchFilters.fepuInit" name="solrSearch.solrAdvancedSearchFilters.fepuInit" class="form-control" 
+           th:value="${solrSearchWeb.solrSearch.solrAdvancedSearchFilters.fepuInit}" autocomplete="off">
+        <span id="fepuInitHelp" class="bmd-help" th:text="#{ba.date.help}"></span>
+      </div>
+      <!-- :: /.form-group -->
+    </div>
+    <!-- :: /.cont_form_group -->
+    <div class="cont_form_group col">
+      <div class="form-group">
+        <label id="fepuEndLabel" for="solrAdvancedSearchFilters.fepuEnd" th:text="#{ba.finalDate}" class="bmd-label-floating"></label>
+        <input type="number" min="0" max="9999" id="solrAdvancedSearchFilters.fepuEnd" name="solrSearch.solrAdvancedSearchFilters.fepuEnd" class="form-control" 
+           th:value="${solrSearchWeb.solrSearch.solrAdvancedSearchFilters.fepuEnd}" autocomplete="off">
+        <span id="fepuEndHelp" class="bmd-help" th:text="#{ba.date.help}"></span>
+      </div>
+      <!-- :: /.form-group -->
+    </div>
+    <!-- :: /.cont_form_group -->
+
+
+
+<!-- :: /[public/search/advanced/fragments/searchFepu.html] -->

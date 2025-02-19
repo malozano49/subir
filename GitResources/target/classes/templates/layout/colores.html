@@ -1,0 +1,52 @@
+<th:block th:insert="/public/home/html_type"></th:block>
+	<head>
+    <th:block th:insert="/public/home/technicalheader::main " th:with="page='opac-maquetacion-colorimetrias'"></th:block>
+
+    <!-- :: ESPECIFICO MAQUETACION -->
+    <link type="text/css" rel="stylesheet" th:href="@{/css/opac/maquetacion/def_colors_normal.css}" media="all">
+    <link type="text/css" rel="stylesheet" th:href="@{/css/opac/maquetacion/def_colors_high.css}" media="all">
+    <link type="text/css" rel="stylesheet" th:href="@{/css/opac/maquetacion/def_colors_personalization.css}" media="all">
+    <link type="text/css" rel="stylesheet" th:href="@{/css/opac/maquetacion/def_colors_red.css}" media="all">
+    <link type="text/css" rel="stylesheet" th:href="@{/css/opac/maquetacion/maquetacion.css}" media="all">
+    <style data-id="css_colors" th:attr="nonce=${#request.getAttribute('cspNonce')}"></style>
+	</head>
+   <body class="page_type_layout layout_colores">
+<!-- :: [layout/colores.html] -->
+      <header class="header_principal">
+         <th:block th:with="pageLocation='home'" th:insert="/public/home/header"></th:block>
+      </header>
+      <main id="acc_anchor_main">
+
+        <th:block th:insert="/layout/fragments/enlaces_internos"></th:block>
+
+<!-- COLORES -->
+        <h2 class="col-12 mt-3 mb-3">Tablas de Colores</h2>
+        <div class="col-12 d-flex flex-wrap">
+          <div class="cont_form_group col-lg-3 col-md-6 col-sm-6 col-xs-12 mb-4 pr-3">
+            <div class="form-group cont_input">
+              <label for="filter_colors" class="bmd-label-floating">Color a filtrar</label>
+              <input type="text" id="filter_colors" class="form-control" autocomplete="off" name="filter_colors" value="">
+              <span id="filter_colorshelp" class="bmd-help">Inserta nombre de variable sass ó color hexadecimal para filtrar en las tablas de colores. Se aplica el filtro en todas las tablas según vayas escribiendo.</span>
+            </div>
+          </div>
+          <div class="cont_form_group col-md-4 col-sm-6 col-xs-12 mb-4">
+            <div class="form-group cont_check cont_check_tunned">
+              <label for="check_id_00">Aplicar reducción al filtro</label>
+              <input type="checkbox" id='con_reduccion' name="con_reduccion" value="" />
+            </div>
+          </div>
+        </div>
+        <section id="cont_colorimetrias" class="cont_colorimetrias mb-3">
+
+        </section>
+        <!-- :: /.cont_colorimetrias -->
+
+      </main>
+      <footer class="footer_principal">
+         <th:block th:insert="/public/home/footer"></th:block>
+      </footer>
+      <th:block th:insert="/public/home/technicalfooter" th:with="page='opac-maquetacion-colorimetrias'"></th:block>
+
+<!-- :: /[layout/colores.html] -->
+   </body>
+</html>

@@ -1,0 +1,115 @@
+<!-- :: [public/home/header.html] -->
+<a class="sr-only" href="#acc_anchor_main" th:text="#{dockbar.acc_anchor_main}"></a>
+<h1 class="sr-only" th:text="#{company.name}"></h1>
+<!-- :: Barra menu zona logo (Mi perfil) -->
+<div class="menu_headerCont">
+  <nav class="d-flex container-fluid py-1" aria-labelledby="title-menu_header">
+    <h2 id="title-menu_header" class="sr-only" th:text="#{dockbar.general.menu}"></h2>
+    <th:block th:with="desktop='true'" th:insert="/public/home/fragments/linksDocBar" />
+  </nav>
+</div>
+
+<nav class="container flex-row navbar navbar-expand-lg py-3" aria-labelledby="title-menu_header_mobile">
+
+  <h2 id="title-menu_header_mobile" class="sr-only" th:text="#{dockbar.main.menu}"></h2>
+
+  <div class="navbar-cont_btn d-flex justify-content-between flex-grow-1">
+
+    <a class="navbar-brand btn" th:href="@{${thymeleafMap.get('HOME_URL')}}" th:title="#{dockbar.main.page.access}" >
+      <img th:src="@{/img/logo-sin-fondo2.png}" class="logo" th:alt="#{dockbar.img_alt}">
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false">
+      <span class="sr-only" th:text="#{dockbar.bar.navigation}"></span>
+      <span class="icono  mr-1 fas fa-bars navbar-toggler-icon" aria-hidden="true"></span>
+    </button>
+
+  </div>
+
+  <div class="collapse navbar-collapse links-menu" id="navbarSupportedContent" th:unless="${simpleHeader=='true'}"
+    aria-labelledby="title-menu_header_mobile">
+    <h2 id="title-menu_header_mobile" class="sr-only" th:text="#{dockbar.main.menu}"></h2>
+    <ul class="navbar-nav ml-xl-auto ml-lg-auto w-100 justify-content-end">
+      <li class="nav-item" th:classappend="${pageLocation == 'home' ? 'active' : ''}">
+        <a class="nav-link btn btn-secondary" th:href="@{${thymeleafMap.get('HOME_URL')}}"
+          th:title="#{dockbar.go.to.page} + ' ' + #{dockbar.home.title}">
+          <span class="sr-only" th:text="#{dockbar.go.to.page} + ' ' + #{dockbar.home.title}"></span>
+          <span class="icono  mr-1 fas fa-home d-lg-none" aria-hidden="true"></span>
+          <span class="nav-link_title" aria-hidden="true">
+            <th:block th:text="#{dockbar.home.title}" />
+          </span>
+        </a>
+      </li>
+      <li class="cont_btn_authorities nav-item" th:classappend="${pageLocation == 'authorities' ? 'active' : ''}">
+        <a class="nav-link btn btn-secondary con_icono" th:href="@{${thymeleafMap.get('AUTHORITY_HOME')}}"
+          th:title="#{dockbar.go.to.page} + ' ' + #{dockbar.authority.title}">
+          <span class="sr-only" th:text="#{dockbar.go.to.page} + ' ' + #{dockbar.authority.title}"></span>
+          <span class="icono  mr-1 fas fa-users mr-1" aria-hidden="true"></span>
+          <span class="nav-link_title" aria-hidden="true">
+            <th:block th:text="#{dockbar.authority.title1}" />
+          </span>
+        </a>
+      </li>
+      <li class="cont_btn_index nav-item" th:classappend="${pageLocation == 'index' ? 'active' : ''}">
+        <a class="nav-link btn btn-secondary con_icono" th:href="@{${thymeleafMap.get('INDEX_SEARCH_HOME')}}"
+          th:title="#{dockbar.go.to.page} + ' ' + #{dockbar.search.by.index.title}">
+          <span class="sr-only" th:text="#{dockbar.go.to.page} + ' ' + #{dockbar.search.by.index.title}"></span>
+          <span class="icono  mr-1 far fa-list-alt" aria-hidden="true"></span>
+          <span class="nav-link_title" aria-hidden="true">
+            <th:block th:text="#{dockbar.search.by.index.title1}" />
+          </span>
+        </a>
+      </li>
+      <li class="cont_btn_historico nav-item dropdown" th:classappend="${pageLocation == 'history' ? 'inview' : ''}">
+        <button
+          class="dropdownMenuLink_history nav-link btn btn-secondary  con_icono btn dropdown-toggle"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" th:if="${pageLocation != 'history'}">
+          <span class="icono  mr-1 fas fa-history" aria-hidden="true"></span>
+          <span class="nav-link_title" th:text="#{dockbar.last.searchs.title}"></span>
+        </button>
+        <div class="dropdown-menu dropdown-menu-right flex-column" th:if="${pageLocation != 'history'}">
+          <th:block th:insert="/public/catalog/fragments/searchHistory" />
+        </div>
+        <!-- :: /.dropdown-menu -->
+        <a class="nav-link btn btn-secondary con_icono"
+          th:href="@{${thymeleafMap.get('READER_LAST_SEARCHS')}(tabId=(${solrSearchWeb?.solrSearch} ? ${solrSearchWeb?.solrSearch?.tabId}),id=(${id} ? ${id}))}"
+          th:title="#{dockbar.go.to.page} + ' ' + #{dockbar.last.searchs.title}" th:if="${pageLocation == 'history'}">
+          <span class="icono  mr-1 fas fa-history" aria-hidden="true"></span>
+          <span class="nav-link_title" th:text="#{dockbar.last.searchs.title}"></span>
+        </a>
+      </li>
+      <th:block th:if="${userManagementEnabled}"
+        sec:authorize="!isAuthenticated() or principal.hasRole(#vars.thymeleafMap.get('READER_AUTHORITY'))">
+        <li class="cont_btn_last_search nav-item" th:classappend="${pageLocation == 'history' ? 'active' : ''}">
+          <a class="nav-link btn btn-secondary con_icono"
+            th:href="@{${thymeleafMap.get('READER_SEARCH_HISTORY')}(tabId=(${solrSearchWeb?.solrSearch} ? ${solrSearchWeb?.solrSearch?.tabId}),id=(${id} ? ${id}))}"
+            th:title="#{dockbar.go.to.page} + ' ' + #{dockbar.historic.searchs.title}">
+            <span class="sr-only" th:text="#{dockbar.go.to.page} + ' ' + #{dockbar.historic.searchs.title}"></span>
+            <span class="icono  mr-1 fas fa-thumbtack" aria-hidden="true"></span>
+            <span class="nav-link_title" th:text="#{dockbar.historic.searchs.title1}" aria-hidden="true"></span>
+          </a>
+        </li>
+      </th:block>
+      <li class="cont_btn_favorites nav-item" th:classappend="${pageLocation == 'favorites' ? 'active' : ''}">
+        <a class="nav-link btn btn-secondary con_icono"
+          th:href="@{${thymeleafMap.get('READER_FAVORITES')}(tabId=(${solrSearchWeb?.solrSearch} ? ${solrSearchWeb?.solrSearch?.tabId}),id=(${id} ? ${id}))}"
+          th:title="#{dockbar.go.to.page} + ' ' + #{dockbar.favorites.title}">
+          <span class="sr-only" th:text="#{dockbar.go.to.page} + ' ' + #{dockbar.favorites.title}"></span>
+          <span class="icono  mr-1 far fa-bookmark" aria-hidden="true"></span>
+          <span class="nav-link_title" th:text="#{dockbar.favorites.title}" aria-hidden="true"></span>
+        </a>
+      </li>
+	  <li class="cont_btn_favorites nav-item"  th:if="${suggestionsEnabled}" th:classappend="${pageLocation == 'suggestions' ? 'active' : ''}" sec:authorize="${isAuthenticated()}">
+		<!---->
+		<a class="nav-link btn btn-secondary con_icono" th:href="@{${thymeleafMap.get('READER_SUGGESTIONS')}}" th:title="#{dockbar.biblio.suggestions}" >
+		<span class="nav-item_title" th:text="#{dockbar.biblio.suggestions}"></span></a>
+	  </li>
+    </ul>
+  </div>
+
+
+</nav>
+
+
+<!-- :: /[public/home/header.html] -->

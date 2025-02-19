@@ -1,0 +1,114 @@
+<!-- :: [reader/loans/history/fragment/loansHistoryPageNav.html] -->
+<!--/* :: Paginacion historico de prestamos */-->
+<div class="pagination_bar pagination_loans_history bg-highlight" th:classappend="'position_bar_'+${position_bar}">
+  <div class="cont_datos d-flex flex-wrap w-100 pl-3 pr-3 desktop" th:if="${position_bar}=='top'">
+    <span class="cont_datos_label" th:text="#{mylibrary.loanhistory.page.count(${loanPagVO.totalPagesNumber})}"></span>
+  </div>
+  <nav th:data-source="${source}" class="selection_results-pagination desktop" th:aria-label="#{mylibrary.loanhistory.page.count.title}">
+
+    <div class="cont_selection_size">
+
+      <form method="post" th:action="@{${thymeleafMap.get('READER_LOANS_HISTORY_PAGE_PATH')}(source=(${source}))}" class="results-bar no_icono_loading">
+        <span class="cont_selection_size_label" th:text="#{search.pagination.results.per.page}"></span>
+        <ul class="cont_select_size_page">
+          <li class="size-item" th:each="item : ${loanPagVO.elemntsXPage}" th:classappend="${#strings.equals(loanPagVO.elementPage, item)} ? 'active'">
+            <button type="submit" name="elementPage" th:value="${item}" class="btn btn-white btn-link" th:text="${item}" th:aria-label="${item}"></button>
+          </li>
+        </ul>
+      </form>
+    </div>
+    <!-- :: /.cont_selection_size -->
+  </nav>
+
+  <nav th:data-source="${source}" class="results-pagination" th:aria-label="#{mylibrary.loanhistory.pagination.menu.title}+' '+${position_bar}">
+    <div class="cont cont_pagination pagination_normal d-flex" th:data-page_active="${loanPagVO.page}" th:data-pages_size="${loanPagVO.elementPage}" th:data-pages_total="${loanPagVO.totalPagesNumber}">
+      <form method="post" th:action="@{${thymeleafMap.get('READER_LOANS_HISTORY_PAGE_PATH')}(source=(${source}))}" class="my-auto">
+          <input type="hidden" name="elementPage" id="history.elementPage" th:value="${loanPagVO.elementPage}">
+          <ul class="pagination">
+              <li class="btn_mobile page-item" th:classappend="${loanPagVO.page == 1} ? 'disabled'">
+                <button type="submit" name="history.page" th:value="${loanPagVO.page-1}" class="btn page-link" th:aria-label="#{search.pagination.page.previous}" data-type="back">
+                  <span class="icono fas fa-angle-left" aria-hidden="true"></span>
+                  <span class="btn_title" aria-hidden="true" th:text="#{search.pagination.page.previous}"></span>
+                </button>
+              </li>
+              <li class="btn_mobile page-item" th:classappend="${loanPagVO.page == 1} ? 'active'">
+                <button data-type="initial" type="submit" name="page" value="1" class="btn page-link" th:aria-label="#{search.pagination.first.page}" th:title="#{search.pagination.first.page}">
+                  <span class="icono fas fa-angle-double-left" aria-hidden="true"></span>
+                  <span class="btn_titleWhite" aria-hidden="true">1</span>
+                </button>
+              </li>
+              <li class="page-item" th:if="${loanPagVO.page < 4 && loanPagVO.totalPagesNumber > 2}"
+                th:classappend="${loanPagVO.page == 2} ? 'active'">
+                <button data-type="paginate" type="submit" name="page" value="2" class="btn page-link">2</button>
+              </li>
+              <li class="page-item" th:if="${loanPagVO.page < 4 && loanPagVO.totalPagesNumber > 3}"
+                th:classappend="${loanPagVO.page == 3} ? 'active'">
+                <button data-type="paginate" type="submit" name="page" value="3" class="btn page-link">3</button>
+              </li>
+              <li class="page-item mr-0" th:if="${loanPagVO.page < 4  && loanPagVO.totalPagesNumber > 4}">
+                <button data-type="paginate" type="submit" name="page" value="4" class="btn page-link">4</button>
+              </li>
+              <li th:if="${loanPagVO.page > 3}"
+                class="page-item disabled">
+                <button data-type="intermediate" type="submit" class="btn btn-link" tabindex="-1">...</button>
+              </li>
+              <li class="page-item"
+                th:if="${loanPagVO.page > 3 && loanPagVO.page <= (loanPagVO.totalPagesNumber-3)}">
+                <button data-type="paginate" type="submit" name="page" th:value="${loanPagVO.page-1}" class="btn page-link" th:text="${loanPagVO.page-1}" />
+              </li>
+              <li class="page-item active"
+                th:if="${loanPagVO.page > 3 && loanPagVO.page <= (loanPagVO.totalPagesNumber-3)}">
+                <button data-type="paginate" type="submit" name="page" th:value="${loanPagVO.page}" class="btn page-link" th:text="${loanPagVO.page}" />
+              </li>
+              <li class="page-item mr-0"
+                th:if="${loanPagVO.page > 3 && loanPagVO.page <= (loanPagVO.totalPagesNumber-3)}">
+                <button data-type="paginate" type="submit" name="page" th:value="${loanPagVO.page+1}" class="btn page-link" th:text="${loanPagVO.page+1}" />
+              </li>
+              <li
+                th:if="${loanPagVO.page <= (loanPagVO.totalPagesNumber-3)}"
+                class="page-item disabled">
+                <button data-type="intermediate" type="submit" class="btn btn-link" tabindex="-1">...</button>
+              </li>
+              <li class="page-item"
+                th:if="${loanPagVO.page > 3 && loanPagVO.page > (loanPagVO.totalPagesNumber-3)}">
+                <button data-type="paginate" type="submit" name="page" th:value="${loanPagVO.totalPagesNumber-3}" class="btn page-link" th:text="${loanPagVO.totalPagesNumber-3}" />
+              </li>
+              <li class="page-item"
+                th:if="${loanPagVO.page > 3 && loanPagVO.page > (loanPagVO.totalPagesNumber-3)}"
+                th:classappend="${loanPagVO.page == loanPagVO.totalPagesNumber-2} ? 'active'">
+                <button data-type="paginate" type="submit" name="page" th:value="${loanPagVO.totalPagesNumber-2}" class="btn page-link" th:text="${loanPagVO.totalPagesNumber-2}" />
+              </li>
+              <li class="page-item"
+                th:if="${loanPagVO.page > 3 && loanPagVO.page > (loanPagVO.totalPagesNumber-3)}"
+                th:classappend="${loanPagVO.page == loanPagVO.totalPagesNumber-1} ? 'active'">
+                <button data-type="paginate" type="submit" name="page" th:value="${loanPagVO.totalPagesNumber-1}" class="btn page-link" th:text="${loanPagVO.totalPagesNumber-1}"></button>
+              </li>
+              <li class="btn_mobile page-item"
+                th:if="${loanPagVO.totalPagesNumber > 1}"
+                th:classappend="${loanPagVO.page == loanPagVO.totalPagesNumber} ? 'active'">
+                <button data-type="final" type="submit" name="page" th:value="${loanPagVO.totalPagesNumber}" class="btn page-link" th:aria-label="${loanPagVO.totalPagesNumber}" th:title="${loanPagVO.totalPagesNumber}">
+                  <span class="btn_title" th:text="${loanPagVO.totalPagesNumber}"></span>
+                  <span class="icono fas fa-angle-double-right" aria-hidden="true"></span>
+                </button>
+              </li>
+              <li class="btn_mobile next page-item"
+                th:classappend="${loanPagVO.page == loanPagVO.totalPagesNumber} ? 'disabled'">
+                <button data-type="next" type="submit" name="page" th:value="${loanPagVO.page+1}" class="btn page-link" th:title="#{search.pagination.page.next}">
+                  <span class="btn_title" th:text="#{search.pagination.page.next}"></span>
+                  <span class="icono fas fa-angle-right" aria-hidden="true"></span>
+                </button>
+              </li>
+          </ul>
+      </form>
+    </div>
+    <!-- :: /.cont_pagination -->
+  </nav>
+
+  <div class="cont_datos d-flex flex-wrap w-100 pl-3 pr-3" th:if="${position_bar}=='bottom'">
+    <span class="cont_datos_label" th:text="#{mylibrary.loanhistory.items.count(${loanPagVO.totalPagesNumber})}"></span>
+  </div>
+</div>
+<!-- :: /.cont_total_results_bar -->
+
+
+<!-- :: /[reader/loans/history/fragment/loansHistoryPageNav.html] -->

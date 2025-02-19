@@ -1,0 +1,95 @@
+<!-- :: [reader/titleList/listItems/listItems.html] -->
+<section class="card my-library-section reader-title-list item-detail container pb-4" th:aria-label="${titleList.name}" th:data-loans_listid="${titleList.id}">
+  <div class="cont_title col-12 mt-3">
+    <h2 id="readerTitleList_title" class="item-title d-block font-weight-bold fieldset__title">
+        <span class="icono fas fa-list mr-1" aria-hidden="true"></span>
+        <span th:text="${titleList.name}" ></span>
+    </h2>
+    <div class="cont_botonera_title">
+      <button class="btn_mylist_share_mail slide_btn btn btn-outline-secondary mr-2 modal_js"
+        data-modal_tipo="light"
+        data-modal_target="#modal_share_mylist"
+        data-modal_discriminador="modal_mylist_share_mail"
+        th:data-modal_title="#{email.modal.text.button}"
+        data-modal_html="#dmh_modal_share_mylist"
+        data-modal_footer="false"
+        th:title="#{email.modal.text.button}">
+        <span class="icono fas fa-envelope" aria-hidden="true"></span>
+        <span class="btn_titulo" th:text="#{email.modal.text.button}"></span>
+      </button>
+      <a class="btn btn_navigation_return btn btn-outline-secondary" th:href="@{${thymeleafMap.get('READER_TITLE_LIST')}}" th:aria-label="#{mylibrary.title.list.section.title}" th:title="#{mylibrary.title.list.section.title}">
+        <span class="icono fas fa-undo" aria-hidden="true"></span>
+      </a>
+    </div>
+    <!-- :: /.cont_botonera_title -->
+
+    <div id="dmh_modal_share_mylist" class="d-none" aria-hidden="true">
+      <div class="alert alert-info alert_icon alert-dismissible w-100 fade show">
+        <span class="icono fas fa-question-circle"></span>
+
+        <span class="alert_titulo sr-only"  th:text="#{alert.info.title}"></span>
+        <span class="alert_texto" th:text="#{title.list.email.share.info}"></span>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <form th:action="@{${thymeleafMap.get('SENDMAILMYLIST')}}" method="POST">
+        <input type="hidden" name="idList" th:value="${titleList.id}" >
+        <fieldset>
+          <legend th:text="#{share.mail.mylist.input.add(${titleList.name})}"></legend>
+          <div class="cont_form_group col-md-12">
+            <div class="form-group">
+              <label class="bmd-label-floating" for="recipientEmail" th:text="#{title.list.email}"></label>
+              <input class="form-control" type="email" id="recipientEmail" name="recipientEmail" value=""/>
+              <span class="bmd-help" th:text="#{email.to}"></span>
+            </div>
+          </div>
+        </fieldset>
+        <div class="alert mt-3 d-none"  aria-live="polite" aria-atomic="true" >
+          <span class="alert_titulo sr-only"  th:text="#{alert.error.title}"></span>
+          <span class="alert_texto">.alert.alert-info</span>
+        </div>
+        <div class="cont_botonera_form col-md-12 d-flex justify-content-center mt-3">
+          <button type="button" class="btn btn-outline-secondary mr-2" data-dismiss="modal" th:text="#{email.close}"></button>
+          <button type="submit" class="btn btn-primary mailto" th:text="#{email.modal.text.button}"></button>
+        </div>
+      </form>
+    </div>
+    <!-- :: /#dmh_modal_share_mylist -->
+  </div>
+  <!-- :: /.cont_title -->
+  <div class="detail-copies article border pb-0">
+    <div class="botonera_flotante_btn_actions d-none" aria-hidden="true">
+      <a class="btn_accion btn_navigation" th:href="@{${thymeleafMap.get('READER_TITLE_LIST')}}" th:aria-label="#{mylibrary.title.list.section.title}" th:title="#{mylibrary.title.list.section.title}">
+        <span class="icono fas fa-undo" aria-hidden="true"></span>
+      </a>
+    </div>
+    <!-- :: /.botonera_flotante_btn_actions -->
+
+    <div  th:if="${myListMessageLevel}" class="cont_alert col-md-12 mt-3 fix-height" aria-live="polite" aria-atomic="true">
+      <div th:class="'alert-process alert alert-' + ${myListMessageLevel} + ' col-md-12'">
+        <span class="alert_titulo sr-only" th:text="#{alert.info.title}"></span>
+        <span class="alert_texto" th:text="#{${myListMessage}}"></span>
+      </div>
+      <!-- :: /.alert-process -->
+    </div>
+    <!-- :: /.cont_alert -->
+
+    <th:block th:if="${solrSearchWeb.solrSearch.results != null and not #lists.isEmpty(solrSearchWeb.solrSearch.results.resultList)}">
+
+      <th:block th:insert="/public/catalog/fragments/totalResults"></th:block>
+
+      <div class="listado-resultados-desktop row justify-content-center py-3">
+        <!-- :: Listado de resultados -->
+        <div class="col-md-12 col-sm-7 p-sm-3 py-0 portadas-list">
+          <th:block th:insert="/public/catalog/fragments/catalogView"></th:block>
+        </div>
+        <!-- :: /.portadas-list -->
+      </div>
+      <!-- :: /.listado-resultados-desktop -->
+
+	  </th:block>
+
+  </div>
+</section>
+<!-- :: /[reader/titleList/listItems/listItems.html] -->

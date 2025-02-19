@@ -1,0 +1,11 @@
+<!-- :: [title/fragments/image.html] -->
+<div th:if="${detail.recordFormatType != null && detail.recordFormatType.value != 'undefined'}" class="card-img d-flex card p-5" alt="${detail.recordFormatType.value}">
+   <th:block th:with="item=${detail}, size=10" th:insert="/public/catalog/fragments/recordImage :: image(${detail.catalog.oaiIdentifierB64})"></th:block>
+</div>
+<!-- :: /.card-img-->
+<div class="d-flex pt-2 pb-2">
+   <span class="ml-auto"><span class="fas fa-search-plus pr-2"></span></span>
+   <span class=""><span class="fas fa-edit pr-2"></span></span>
+</div>
+<!-- :: /.d-flex-->
+<!-- :: [title/fragments/image.html] -->

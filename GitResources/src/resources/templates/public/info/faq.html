@@ -1,0 +1,47 @@
+<th:block th:insert="/public/home/html_type"></th:block>
+  <th:block th:insert="/public/info/infobase::infoHead" th:with="page='opac-faq'"/>
+  <body class="page_type_info info_faq opac-faq bg-propietary-light">
+    <!-- :: public/info/faq.html -->
+    <th:block th:insert="/public/info/infobase::infoHeader"/>
+    <main id="acc_anchor_main" class="container-fluid">
+      <section id="firstRow" class="container pt-4" aria-labelledby="sct_title">
+        <h2 id="sct_title" class="sr-only" th:text="#{info.frequent.answered.questions.title}"></h2>
+
+        <article class="bg-white">
+          <h3 class="h2 mt-3 mb-4">Preguntas frecuentes [faq.html]</h3>
+          <!-- :: Cuidado con los id que no pueden estar repetidos (data-target,aria-controls,)-->
+          <div id="error_search" class="cont cont_collapse cont_questions border">
+            <div class="cont cont_question">
+              <button class="btn btn-link btn_ctrl_collapse col-12 d-flex justify-content-between" type="button" data-toggle="collapse" data-target="#collapseExample_01" aria-expanded="false" aria-controls="collapseExample_01">
+<!-- :: RENAME -->
+                <span class="question text-left anchor_title">Error cuando el texto de búsqueda está mal formado</span>
+                <span class="btn-primary icono fas fa-plus p-1 rounded-circle" aria-hidden="true"></span>
+              </button>
+            </div>
+            <!-- :: /.cont_question -->
+            <div class="cont cont_response collapse pl-3 pr-3 pt-1" id="collapseExample_01">
+<!-- :: RENAME -->
+              <p>Si al buscar, dado un texto de búsqueda, aparece un diálogo rojo con el mensaje: <span class="blockquote font-italic">El texto de búsqueda está mal formado. Asegúrate que no contiene caracteres reservados.</span> nos está indicando que existe uno o varios caracteres inválidos en el texto de búsqueda.</p>
+              <p>Si estamos buscando un texto exacto, debemos entrecomillar el texto de búsqueda o parte de este, para encontrar resultados. Los caracteres <span class="blockquote font-italic">( ) [ ] : ~</span> suelen tener un significado concreto para la búsqueda, por lo que entrecomillar las palabras que contengan estos caracteres, suele ser una solución.</p>
+            </div>
+            <!-- :: /.cont_response -->
+          </div>
+          <!-- :: /.cont_collapse -->
+        </article>
+
+      </section>
+      <div class="cont_botonera botonera_flotante_btn_actions d-none" aria-hidden="true">
+<!-- :: RENAME -->
+        <a th:href="@{${thymeleafMap.get('HOME_URL')}}" class="btn_navigation btn_home" aria-label="Volver a la página de inicio" title="Volver a la página de inicio">
+          <span class="icono fas fa-home" aria-hidden="true"></span>
+        </a>
+      </div>
+      <!-- :: /.cont_botonera -->
+    </main>
+
+    <th:block th:insert="/public/info/infobase::infoFooter" th:with="page='opac-faq'"/>
+
+    <th:block th:insert="/public/home/technicalfooter" th:with="page='opac-faq'"></th:block>
+
+  </body>
+</html>

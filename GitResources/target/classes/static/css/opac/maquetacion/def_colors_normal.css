@@ -1,0 +1,29 @@
+@charset "UTF-8";
+/*!
+ *  @file        : def_colors_normal.scss
+ *
+ *  @description : ABSYS colorimetrias
+ *
+ *  @author      : http://www.baratz.es/
+ *
+ *  @ref         : Linea de maquetaciÃ³n, tabla de colores para la vista normal
+--------------------------------------------------------------------------------------------------*/
+/*!
+ *  @file        : _colors.scss
+ *
+ *  @description : ABSYS aplicacion estilos normal
+ *
+ *  @author      : http://www.baratz.es/
+ *
+ *  @ref         : Colorimetria
+ *
+ *  Ejemplo de definiciones: https://www.ibm.com/docs/es/spm/7.0.9?topic=application-customizing-color-scheme-typography
+ *
+ *  Sass color generator: http://scg.ar-ch.org/
+ *
+--------------------------------------------------------------------------------------------------*/
+.colors_normal-data:before {
+  content: '{"normal":"[{"nom":"$alert-danger","alias":"","color":"#F5D6DA"}, {"nom":"$alert-info","alias":"","color":"#b4deff"}, {"nom":"$alert-success","alias":"","color":"#c4e2a0"}, {"nom":"$black","alias":"$dark","color":"#1D1D1D"}, {"nom":"$blue","alias":"","color":"#2553a2"}, {"nom":"$blue_dark","alias":"","color":"#1c3e78"}, {"nom":"$btn-danger-back","alias":"","color":"#dfa39a"}, {"nom":"$btn-danger-hover","alias":"","color":"#c65c4d"}, {"nom":"$btn-info-back","alias":"","color":"#73C7D4"}, {"nom":"$btn-info-hover","alias":"","color":"#359cac"}, {"nom":"$btn-success-back","alias":"","color":"#68C17C"}, {"nom":"$btn-success-hover ","alias":"","color":"#398a4b"}, {"nom":"$gray-100","alias":"$bg_footer,$border-color,$light,$table_border","color":"#E8E8E8"}, {"nom":"$gray-200","alias":"$light-medium","color":"#b5b5b5"}, {"nom":"$gray-300","alias":"$medium","color":"#9c9c9c"}, {"nom":"$gray-400","alias":"","color":"#828282"}, {"nom":"$gray-500","alias":"","color":"dimgray"}, {"nom":"$gray-600","alias":"$grey-dark","color":"#4f4f4f"}, {"nom":"$gray-700","alias":"","color":"#363636"}, {"nom":"$gray-800","alias":"","color":"#1c1c1c"}, {"nom":"$gray-hover","alias":"","color":"#dbdbdb"}, {"nom":"$green","alias":"$success","color":"#53A225"}, {"nom":"$green_dark","alias":"","color":"#3e781c"}, {"nom":"$link-propietary","alias":"","color":"#114B74"}, {"nom":"$primary-100","alias":"$info,$link-propietary-hover","color":"#D7E1F2"}, {"nom":"$primary-200","alias":"$disabled","color":"#A9BAD4"}, {"nom":"$primary-300","alias":"","color":"#6786B8"}, {"nom":"$primary-400","alias":"$color-info,$link-hover-color,$resaltado","color":"#234C86"}, {"nom":"$primary-500","alias":"$primary,$focus_shadow_color(.46)","color":"#063a64"}, {"nom":"$propietary","alias":"","color":"#A0A8BE"}, {"nom":"$propietary-light","alias":"","color":"#F2F5F9"}, {"nom":"$propietary-medio","alias":"","color":"#C7CCDA"}, {"nom":"$red","alias":"$danger","color":"#a22553"}, {"nom":"$red_dark","alias":"","color":"#781c3e"}, {"nom":"$secondary","alias":"$link-color","color":"#204477"}, {"nom":"$secondary-light","alias":"$bg_component_01","color":"#E6F4FF"}, {"nom":"$white","alias":"$bg_body","color":"#FFFFFF"}, {"nom":"$yellow","alias":"$alert-warning,$btn-warning-back,$warning","color":"#f7f7c7"}, {"nom":"$yellow_dark","alias":"$btn-warning-hover","color":"#e4e441"}]"}';
+}
+
+/*# sourceMappingURL=def_colors_normal.css.map */

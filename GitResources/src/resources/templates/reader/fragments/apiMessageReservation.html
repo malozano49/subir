@@ -1,0 +1,9 @@
+<!-- :: [reader/fragments/apiMessageReservation] -->
+<!-- :: data-ctrl_btn_submit se opera desde [reservation.js] para controlar el disabled del boton submit -->
+<div class="fld_alert_apiMessageReservation col-md-12 mt-3" data-ctrl_btn_submit="true" aria-live="polite" aria-atomic="true" >
+  <div  class="alert alert-danger mb-0" role="alert" aria-atomic="true">
+    <span class="alert_titulo sr-only" th:text="#{alert.warning.title}"></span>
+    <span class="alert_texto" th:text="#{${apiMessage}}"></span>
+  </div>
+</div>
+<!-- :: /[reader/fragments/apiMessageReservation] -->

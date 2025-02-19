@@ -1,0 +1,62 @@
+<th:block th:fragment="main">
+  <th:block th:if="${GAEnabled}" th:insert="/public/home/ga.html"></th:block>
+  <th:block th:if="${GTMEnabled}" th:insert="/public/home/gtm.html"></th:block>		
+  <!-- :: [public/home/technicalheader.html] -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- :: EDGE: formato teléfono no clickable -->
+  <meta name="format-detection" content="telephone=no"/>
+  <meta name="application-name" th:content="'OpacDiscovery '+${applicationVersion}">
+  <meta name="author" th:content="Baratz">
+  <!-- :: description: max:160 caracteres - min:50 -->
+  <meta name="description" content="Opac">
+  <meta name="robots" content="index, follow">
+
+  <title th:text="#{company.name}"></title>
+
+  <!-- FAVICONS -->
+  <link rel="shortcut icon" type="image/x-icon" th:href="@{/img/favicons/favicon.ico}">
+  <link rel="apple-touch-icon" th:href="@{/img/favicons/apple-touch-icon.png}" sizes="180x180">
+  <link rel="icon" type="image/png" th:href="@{/img/favicons/favicon-32x32.png}" sizes="32x32">
+  <link rel="icon" type="image/png" th:href="@{/img/favicons/favicon-16x16.png}" sizes="16x16">
+
+  <link rel="mask-icon" th:href="@{/img/favicons/safari-pinned-tab.svg}" color="#062d64">
+
+  <meta name="apple-mobile-web-app-title" content="Opac Discovery">
+  <meta name="msapplication-TileColor" content="#062d64">
+  <meta name="theme-color" content="#062d64">
+  <meta name="msapplication-config" th:content="@{/img/favicons/browserconfig.xml}">
+
+  <link rel="manifest" th:href="@{/pwa/site.webmanifest}">
+
+  <!-- FONTS -->
+  <link rel="preload" th:href="@{/webfonts/fontawesome-free-5.11.2-web/webfonts/fa-brands-400.woff2}" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" th:href="@{/webfonts/fontawesome-free-5.11.2-web/webfonts/fa-regular-400.woff2}" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" th:href="@{/webfonts/fontawesome-free-5.11.2-web/webfonts/fa-solid-900.woff2}" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" th:href="@{/webfonts/SourceSansPro/SourceSansPro-Italic.woff2}" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" th:href="@{/webfonts/SourceSansPro/SourceSansPro-Regular.woff2}" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" th:href="@{/webfonts/SourceSansPro/SourceSansPro-SemiBold.woff2}" as="font" type="font/woff2" crossorigin>
+
+  <link type="text/css" rel="stylesheet" th:href="@{/webfonts/fontawesome-free-5.11.2-web/css/all.css}">
+  <link type="text/css" rel="stylesheet" th:href="@{/webfonts/SourceSansPro/all.css}">
+
+  <!-- STYLES -->
+  <!-- BSv4.4.1 -->
+  <link type="text/css" rel="stylesheet" th:href="@{/plugins/bootstrap/bootstrap.min.css}">
+
+  <!-- CSS CUSTOM -->
+  <!-- :: data-id="main" [utils.js] como ancla para la carga de css asincrono -->
+  <link type="text/css" rel="stylesheet" th:href="@{/css/opac/main.css}" th:if="${session == null || session.skin == null}" data-id="main">
+  <link type="text/css" rel="stylesheet" th:href="@{'/css/opac/' + ${session.skin.schemaValue} + '.css'}" th:if="${session != null && session.skin != null}" data-id="main">
+
+  <!-- /* External Modules */ -->
+  <th:block th:each="fragment:${TECHNICAL_HEADER}">
+  	<th:block th:insert="${fragment}"></th:block>
+  </th:block>
+
+  <!-- JS -->
+  <script th:data-page="${page}" th:attr="nonce=${#request.getAttribute('cspNonce')}" th:inline="javascript">/*<![CDATA[*/ const BaratzContextPath=/*[[@{/}]]*/ /*]]>*/</script>
+
+  <!-- :: /[public/home/technicalheader.html] -->
+</th:block>

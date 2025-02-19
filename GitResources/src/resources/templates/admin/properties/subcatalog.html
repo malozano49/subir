@@ -1,0 +1,115 @@
+<!-- :: [admin/properties/subcatalog.html] -->
+
+  <fieldset th:if="${adminProps.subcata.subcatalogEnabled}" class="w-100">
+    <h4 class="h3 d-block font-weight-bold mb-3" th:text="#{administration.properties.subcatalogs.area}"></h4>
+    <div class="form-row d-flex flex-wrap">
+    <ul class="col-lg-4 col-md-12 pl-0">
+      <li>
+       <div class="cont_form_group mb-3">
+          <div class="form-group cont_selectPicker" th:classappend="${!adminProps.editEnabled} ? 'cont_select_disabled' : ''">
+            <label for="subcatalog_type" class="bmd-label-floating" th:text="#{administration.properties.subcatalog.type}"></label>
+            <!-- :: data-ctrl_select_actions para acciones específicas sobre tag select en [scripts.js] -->
+            <!-- :: En este caso segun el valor se ocultan o muestran campos -->
+            <select id="subcatalog_type" name="subcatalog_type" class="form-control" data-ctrl_select_actions="subcatalog_type" data-actions_data="subcatalog_disposition" data-actions_time="initial" th:disabled="${!adminProps.editEnabled}" th:field="${adminProps.subcata.subcatalogType}" th:aria-label="#{administration.properties.subcatalog.type}">
+              <option value="AUTO"><th:block th:text="#{administration.properties.subcatalog.type.auto}"></th:block></option>
+              <option value="MANUAL"><th:block th:text="#{administration.properties.subcatalog.type.manual}"></th:block></option>
+            </select>
+            <span id="subcatalog_type_help" class="bmd-help" th:text="#{administration.properties.subcatalog.type.info}"></span>
+          </div>
+          <!-- :: /.form-group -->
+        </div>
+        <!-- :: /.cont_form_group -->
+      </li>
+    </ul>
+
+    <ul id="subcatalog_disposition" class="col-lg-8 col-md-12 pl-0 pr-0" th:if="${adminProps.subcata.subcatalogType == 'AUTO'}">
+      <li>
+        <div class="cont_form_group">
+          <div class="form-group">
+            <label for="auto_levels" class="bmd-label-floating" th:text="#{administration.properties.subcatalog.auto.levels}"></label>
+            <input type="text" id="auto_levels" class="form-control" autocomplete="off" name="auto_levels"
+            th:disabled="${!adminProps.editEnabled}" th:value="*{adminProps.subcata.autoSubcataLevels}" th:field="*{adminProps.subcata.autoSubcataLevels}">
+            <span id="auto_levels_help" class="bmd-help" th:text="#{administration.properties.subcatalog.auto.levels.info}"></span>
+          </div>
+          <!-- :: /.form-group -->
+        </div>
+        <!-- :: /.cont_form_group -->
+      </li>
+      <li>
+        <div class="cont_form_group">
+          <div class="form-group">
+            <label for="auto_location_filter" class="bmd-label-floating" th:text="#{administration.properties.subcatalog.auto.location.filter}"></label>
+            <input type="text" id="auto_location_filter" class="form-control" autocomplete="off" name="auto_location_filter"
+            th:disabled="${!adminProps.editEnabled}" th:value="*{adminProps.subcata.autoOptionComboFilter}" th:field="*{adminProps.subcata.autoOptionComboFilter}">
+            <span id="auto_location_filter_help" class="bmd-help" th:text="#{administration.properties.subcatalog.auto.location.filter.info}"></span>
+          </div>
+          <!-- :: /.form-group -->
+        </div>
+        <!-- :: /.cont_form_group -->
+      </li>
+      <li>
+        <div class="cont_form_group">
+          <div class="form-group">
+            <label for="auto_copy_filter" class="bmd-label-floating" th:text="#{administration.properties.subcatalog.auto.copy.filter}"></label>
+            <input type="text" id="auto_copy_filter" class="form-control" autocomplete="off" name="auto_copy_filter"
+            th:disabled="${!adminProps.editEnabled}" th:value="*{adminProps.subcata.autoCopyFilter}" th:field="*{adminProps.subcata.autoCopyFilter}">
+            <span id="auto_copy_filter_help" class="bmd-help" th:text="#{administration.properties.subcatalog.auto.copy.filter.info}"></span>
+          </div>
+          <!-- :: /.form-group -->
+        </div>
+        <!-- :: /.cont_form_group -->
+      </li>
+    </ul>
+    </div>
+  </fieldset>
+
+  <fieldset th:if="${adminProps.subcata.subcatalogEnabled}" class="w-100">
+    <h4 class="h3 d-block font-weight-bold mb-3" th:text="#{administration.properties.subcatalog.paths}"></h4>
+
+    <div class="w-100 mt-3">
+      <div class="auto-search form-row d-flex flex-wrap col-md-12 pr-0 pl-0 m-0" th:if="${adminProps.home.branchPaths != null}" th:each="branchPath,iterStat : ${adminProps.home.branchPaths}">
+
+        <div class="col-lg-2 col-sm-4 col-12 pt-3 d-flex justify-content-end">
+            <p class="text-break" th:text="${thymeleafMap.get('PUBLIC_HOME_PATH')}+'/'"></p>
+        </div>
+
+        <div class="cont_form_group col-lg-2 col-sm-8 col-12 pr-lg-3 pr-0">
+         <div class="form-group">
+            <label th:for="'home.branchPaths['+${iterStat.index}+'].path'" class="bmd-label-floating" th:text="#{administration.properties.subcatalog.paths.path}"></label>
+            <input type="text" th:id="'home.branchPaths['+${iterStat.index}+'].path'" th:name="'home.branchPaths['+${iterStat.index}+'].path'" class="form-control" autocomplete="off" disabled="disabled" th:value="${branchPath.path}">
+            <input type="hidden" th:id="'home.branchPaths['+${iterStat.index}+'].path'" th:name="'home.branchPaths['+${iterStat.index}+'].path'" class="form-control" th:value="${branchPath.path}">
+            <span class="bmd-help" th:text="#{administration.properties.subcatalog.paths.path.help}"></span>
+          </div>
+          <!-- :: /.form-group -->
+        </div>
+        <!-- :: /.cont_form_group -->
+
+        <div class="auto-search cont_selects selects_dependientes_js col-lg-8 d-flex flex-wrap pl-0 pr-0">
+          <th:block th:each="pathValue,iterpValues : ${branchPath.pathValues}">
+            <div class="cont_form_group col-sm-6 col-12 pl-0 pr-0 mb-3">
+              <div th:id="'divSelect'+${iterpValues.index+1}" class="form-group cont_selectPicker">
+                <label th:for="'home.branchPaths['+${iterStat.index}+'].pathValues['+${iterpValues.index}+'].optionSelected'" class="bmd-label-floating" th:text="#{administration.properties.subcatalog.paths.subcatalog}"></label>
+                 <!--/* :: WARNING: Si el select dependiente no tiene la clase '.con_literal_subcatalogo', la opcion Todos los subcatálogos se oculta y se proporciona inicialmente al select el value de la siguiente opcion */-->
+                <select th:name="'home.branchPaths['+${iterStat.index}+'].pathValues['+${iterpValues.index}+'].optionSelected'"
+                      th:id="'home.branchPaths['+${iterStat.index}+'].pathValues['+${iterpValues.index}+'].optionSelected'"
+                      class="sub-cata-select form-control" th:aria-label="#{search.subcatalog.selection}"
+                      th:attr="data-select_num=${iterpValues.index}"
+                      th:disabled="${!adminProps.editEnabled}"
+                      data-live-search="true">
+                  <th:block th:each="item,iterpValue : ${pathValue.optionsSelect}">
+                  <option th:selected="${pathValue.optionSelected == item.value}" th:utext="${item.text}"  th:value="${item.value}" th:class="${item.level}"></option>
+                  </th:block>
+                </select>
+                <span class="bmd-help" th:text="#{administration.properties.subcatalog.paths.subcatalog.help}"></span>
+              </div>
+              <!-- :: /.form-group.cont_selectPicker-->
+            </div>
+            <!-- :: /.cont_form_group -->
+          </th:block>
+        </div>
+      </div>
+      <!-- :: /.form-row -->
+    </div>
+  </fieldset>
+
+<!-- :: /[admin/properties/subcatalog.html] -->

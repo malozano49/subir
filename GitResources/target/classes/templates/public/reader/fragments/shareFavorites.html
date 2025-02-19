@@ -1,0 +1,49 @@
+
+<!-- :: [/public/reader/fragments/shareFavorites.html] -->
+<div class="cont_botonera share_favs" sec:authorize="isAuthenticated()">
+  <button class="btn_favorites_share_mail btn btn-outline-secondary modal_js"
+    data-modal_tipo="light"
+    data-modal_target="#modal_share_favorites"
+    data-modal_discriminador="modal_favorites_share_mail"
+    th:data-modal_title="#{email.modal.text.button}"
+    data-modal_html="#dmh_modal_share_favorites"
+    data-modal_footer="false"
+    th:title="#{email.modal.text.button}">
+    <span class="icono fas fa-envelope" aria-hidden="true"></span>
+    <span class="btn_titulo" th:text="#{email.modal.text.button}"></span>
+  </button>
+
+  <div id="dmh_modal_share_favorites" class="d-none" aria-hidden="true">
+    <div class="alert alert-info alert_icon alert-dismissible w-100 fade show">
+      <span class="icono fas fa-question-circle"></span>
+      <span class="alert_titulo sr-only" th:text="#{alert.info.title}"></span>
+      <span class="alert_texto" th:text="#{favorite.email.share.alert}"></span>
+      <button type="button" class="close" data-dismiss="alert" th:aria-label="#{general.alerts.btn_close.title}" th:title="#{general.alerts.btn_close.title}">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <form th:action="@{${thymeleafMap.get('SENDMAILALLFAVORITES')}}" method="POST">
+      <fieldset>
+        <legend th:text="#{favorite.email.share.info}"></legend>
+        <div class="cont_form_group col-md-12">
+          <div class="form-group">
+            <label class="bmd-label-floating" for="input_email" th:text="#{favorite.email.share.email}"></label>
+            <input id="input_email" class="form-control" type="email" name="recipientEmail" value=""/>
+            <span class="bmd-help" th:text="#{email.to}"></span>
+          </div>
+        </div>
+      </fieldset>
+      <div class="alert mt-3 d-none" role="alert" aria-atomic="true">
+
+        <span class="alert_titulo sr-only" th:text="#{alert.error.title}"></span>
+        <span class="alert_texto">.alert.alert-info</span>
+      </div>
+      <div class="cont_botonera_form col-md-12 d-flex justify-content-center mt-3">
+        <button type="button" class="btn btn-outline-secondary mr-2" data-dismiss="modal" th:text="#{email.close}"></button>
+        <button type="submit" class="btn btn-primary mailto" th:text="#{email.modal.text.button}"></button>
+      </div>
+    </form>
+  </div>
+
+</div>
+<!-- :: /[/public/reader/fragments/shareFavorites.html] -->

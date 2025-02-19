@@ -1,0 +1,85 @@
+<!-- :: [reader/circulation/reserve/fragments/reservesData.html] -->
+<section class="card-body cont_datos page_reserve col-md-12 col-sm-12 col-xs-12" aria-labelledby="sct_reserve_title">
+  <h2 id="sct_reserve_title" class="sr-only" th:text="#{reserves.sct_reserve_title}"></h2>
+  <div class="cont_progress_bar mb-0">
+    <th:block th:insert="/reader/circulation/fragments/progressBar :: frag(#{progress.bar.title.ok}, 100,#{progress.bar1},#{progress.bar2})"></th:block>
+  </div>
+  <!-- :: /.cont_progress_bar-->
+
+  <div class="cont_alerts_reserve d-flex col-lg-12 col-md-12 col-sm-12 mt-5 mb-5" aria-live="polite" aria-atomic="true">
+      <th:block th:if="${fail==null || !fail}">
+        <div class="alert alert-info alert_icon">
+          <span class="icono fas fa-cogs"></span>
+          <span class="alert_titulo sr-only" th:text="#{reserves.information}"></span>
+          <span class="alert_titulo" th:text="${name} + ' ' + #{reserves.ok.reserved}"></span>
+          <p class="alert_texto text-center my-2">
+            <span class="mx-1" th:text="#{reserves.ok.branch} + ' ' + ${branch}"></span>
+            <span th:if="${desk!=null}" class="ml-1" th:text="#{reserves.ok.desk} + ' ' + ${desk}"></span>
+          </p>
+        </div>
+      </th:block>
+
+      <th:block th:if="${fail!=null && fail}">
+        <div class="alert alert-danger alert_icon" role="alert" aria-atomic="true">
+          <span class="icono fas fa-exclamation-triangle"></span>
+          <span class="alert_titulo" th:text="${name} + ' ' + #{reserves.no.reserved}"></span>
+        </div>
+      </th:block>
+  </div>
+  <!-- :: /.cont_alerts -->
+
+  <div class="cont_message_reserve d-flex justify-content-center flex-column col-lg-6 col-md-8 col-sm-12 ml-auto mr-auto mb-5">
+    <!--<h3 th:text="#{reserves.ok.list.title}" class="cont_message_reserve--title inline-block m-auto"></h3>-->
+    <div class="cont_message_reserve--cont_messages inline-block m-auto">
+        <p th:each="element : ${readerRequests}" class="m-2">
+          <th:block th:if="${element.attributes.get('subcodeMsg')!=null}">
+            <span class="fas fa-exclamation-circle text-error mx-1"></span>
+            <th:block th:insert="/reader/circulation/reserve/fragments/copyReservationState :: frag(${element})"></th:block>
+            <span th:text="#{reserves.fail.unavailable}" class="text-error font-weight-bold mx-1"></span>
+            <span th:text="#{${element.attributes.get('subcodeMsg')}}" class="mx-1"></span>
+          </th:block>
+          <th:block th:if="${element.attributes.get('requestType') == thymeleafMap.get('RESERV')}">
+            <th:block th:if="${element.attributes.get('subcodeMsg')==null and (element.numberOfReservesBefore==null or element.numberOfReservesBefore<2) and #dates.format(element.activationDate, 'dd/MM/yyyy')!=null}">
+              <span class="fas fa-check-square text-success mx-1"></span>
+              <th:block th:insert="/reader/circulation/reserve/fragments/copyReservationState :: frag(${element})"></th:block>
+              <span th:text="#{reserves.ok.available.now}" class="text-success font-weight-bold mx-1"></span>
+              <span th:text="#{reserves.ok.last.available.day} + ' ' + ${#dates.format(element.finalDate, 'dd/MM/yyyy')}" class="mx-1"></span>
+            </th:block>
+            <th:block th:if="${element.attributes.get('subcodeMsg')==null and (element.numberOfReservesBefore==null or element.numberOfReservesBefore<2) and #dates.format(element.activationDate, 'dd/MM/yyyy')==null}">
+              <span class="fas fa-check-square text-success mx-1"></span>
+              <th:block th:insert="/reader/circulation/reserve/fragments/copyReservationState :: frag(${element})"></th:block>
+              <span th:text="#{reserves.ok.not.available}" class="text-success font-weight-bold mx-1"></span>
+              <span th:if="${element.attributes.get('returnDate') != null}" th:text="#{reserves.ok.loan.final.date} + ' ' + ${#dates.format(element.attributes.get('returnDate'), 'dd/MM/yyyy')}" class="mx-1"></span>
+            </th:block>
+            <th:block th:if="${element.attributes.get('subcodeMsg')==null and (element.numberOfReservesBefore!=null and element.numberOfReservesBefore>1)}">
+              <span class="fas fa-check-square text-success mx-1"></span>
+              <th:block th:insert="/reader/circulation/reserve/fragments/copyReservationState :: frag(${element})"></th:block>
+              <span th:text="#{reserves.ok.waiting.list}" class="text-info font-weight-bold mx-1"></span>
+              <span th:text="#{reserves.ok.reserves.num} + ' ' + ${element.numberOfReservesBefore} + '. ' + #{reserves.ok.reserves.info}" class="mx-1"></span>
+            </th:block>
+          </th:block>
+          <th:block th:if="${element.attributes.get('requestType') == thymeleafMap.get('REQUEST')}">
+ 	        <th:block th:if="${element.attributes.get('subcodeMsg')==null}">
+              <th:block th:if="${element.requestBranch==element.copyBranch}">
+                <span th:text="#{reserves.ok.today}" class="mx-1"></span>
+              </th:block>
+              <th:block th:if="${element.requestBranch!=element.copyBranch}">
+                <span th:text="#{reserves.ok.reserves.info}" class="mx-1"></span>
+              </th:block>
+            </th:block>
+        </th:block>
+      </p>
+    </div>
+    <!-- :: /.cont_message_reserve--cont_messages -->
+
+    <div class="cont_botonera_reserve col-lg-12 col-md-12 col-sm-12 mt-3 pt-3 pb-3 d-flex justify-content-center">
+      <a class="btn btn-primary btn-sm" th:href="@{${thymeleafMap.get('READER_RESERVATION_PATH')}}" th:text="#{reserves.ok.link}"></a>
+    </div>
+    <!-- :: /.cont_botonera_reserve -->
+
+  </div>
+  <!-- ::/.cont_message_reserve -->
+
+</section>
+
+<!-- :: /[reader/circulation/reserve/fragments/reservesData.html] -->

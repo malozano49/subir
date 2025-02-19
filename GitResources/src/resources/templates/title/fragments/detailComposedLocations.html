@@ -1,0 +1,34 @@
+<th:block th:fragment="main">
+	<th:block th:if="${propertyCommonCatalogs && composedLocations != null}">
+  		<!-- :: [title/fragments/detailComposedLocations.html] -->
+
+	  		<div class="copy-location d-flex">
+	  			<div class="cont_librarys col-md-12">
+					<article th:class="'facets facets_'+${display}+' position-relative d-flex flex-column pt-2 bg-white'">
+					   	<div class="cont_filters navbar-collapse m-2 p-0">
+	        				<div th:id="${display}+'_collapseLocations'" class="hide cont_filters_with_buttons collapse show" style="">
+	           					<ul class="filtros_lista m-0">
+				  					<th:block th:each="mvalor, iterStat : ${composedLocations}">
+			           					<li class="display_none">
+						  					<th:block th:insert="/title/fragments/composedLocationURL.html"></th:block>
+	              						</li>
+					  				</th:block>
+	           					</ul>
+	           					<div class="cont_locations_controls mb-2 mt-2 " aria-hidden="true" data-steps="5">
+	           						<button type="button" class="btn btn-link facet-control minus display_none" data-action="minus">
+	              						<span class="btn_title" th:text="#{facet.less}"></span>
+	              						<span class="icono fas fa-minus-square pl-2" aria-hidden="true"></span>
+	           						</button>
+	           						<button type="button" th:if="${#lists.size(composedLocations)>5}" class="btn btn-link facet-control more" data-action="more">
+	              						<span class="btn_title" th:text="#{facet.more}"></span>
+	              						<span class="icono fas fa-plus-square pl-2" aria-hidden="true"></span>
+	           						</button>
+	           					</div>
+	           				</div>
+	   					</div>   						
+	  				</article>
+	  		</div>
+	  	</div>
+  		<!-- :: /[title/fragments/detailComposedLocations.html] -->
+	</th:block>
+</th:block>

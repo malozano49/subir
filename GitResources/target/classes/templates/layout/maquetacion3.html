@@ -1,0 +1,497 @@
+<th:block th:insert="/public/home/html_type"></th:block>
+<head>
+  <th:block th:insert="/public/home/technicalheader::main" th:with="page='opac-maquetacion-3'"></th:block>
+  <!-- :: ESPECIFICO MAQUETACION -->
+  <link type="text/css" rel="stylesheet" th:href="@{/css/opac/maquetacion/maquetacion.css}" media="all">
+</head>
+<body class="page_type_layout layout_maquetacion3">
+<!-- :: [layout/maquetacion3.html] -->
+<header class="header_principal">
+    <th:block th:with="pageLocation='home'" th:insert="/public/home/header"></th:block>
+</header>
+<main id="acc_anchor_main">
+
+  <th:block th:insert="/layout/fragments/enlaces_internos"></th:block>
+
+  <h2 class="w-100 mt-3 mb-3">Línea Maquetación 3: Interactives</h2>
+
+<!-- :: INTERACTIVES -->
+  <section class="cont_interactives mb-3">
+
+    <article class="cont cont_help_with_button mb-3">
+      <h3 class="w-100 pl-2">ALERTS WITH BUTTON</h3>
+      <sub>Despliegue de alert a través de boton, común a toda la app</sub>
+      <div class="cont_botonera_help">
+<!-- :: RENAME -->
+        <button type="button" class="btn btn_show_help"th:title="#{general.btn_show_help.title}" th:aria-label="#{general.btn_show_help.title}">
+          <span class="icono fas fa-info" aria-hidden="true"></span>
+        </button>
+      </div>
+      <!-- :: /.cont_botonera_help -->
+      <div class="alert alert-info alert-dismissible mt-3">
+        <span class="alert_titulo mb-2" th:text="#{interest.link.info.use.title}"></span>
+        <span class="alert_texto" th:text="#{interest.link.info.use.line.1}"></span>
+        <span class="alert_texto" th:text="#{interest.link.info.use.line.2}"></span>
+        <span class="alert_texto">
+          <span th:text="#{interest.link.info.use.line.3}"></span>
+          <span aria-hidden="true" class="icono fas fa-ellipsis-v mr-1 ml-1"></span>
+        </span>
+      <!-- :: RENAME -->
+        <button type="button" class="close" data-dismiss="alert" aria-label="Cerrar" title="Cerrar">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <!-- :: /.alert -->
+    </article>
+    <!-- :: /.cont_help_with_button -->
+
+
+    <article class="cont_sortable">
+      <h3 class="w-100 pl-2">Sortable.js</h3>
+      <sub>
+        <a href="https://github.com/SortableJS/Sortable" target="_blank" rel="noopener noreferer">https://github.com/SortableJS/Sortable</a>
+      </sub>
+
+      <div class="container">
+        <h4 class="font-weight-bold">Simple list example</h4>
+        <div class="cont_sortable cont_form_group d-flex justify-content-center">
+          <input type="hidden" name="sortable" value="">
+          <ul id="example1" class="list-group col-6 cmp_sortable cmp_sortable_list">
+            <li class="list-group-item">Item 1</li>
+            <li class="list-group-item">Item 2</li>
+            <li class="list-group-item">Item 3</li>
+            <li class="list-group-item">Item 4</li>
+            <li class="list-group-item">Item 5</li>
+            <li class="list-group-item">Item 6</li>
+          </ul>
+        </div>
+        <div class="w-100 d-flex flex-column">
+          <pre>
+new Sortable(example1, {
+  animation: 150,
+  ghostClass: 'blue-background-class'
+});
+          </pre>
+        </div>
+      </div>
+
+      <hr />
+
+      <div class="container">
+        <h4 class="font-weight-bold">Grid Example</h4>
+        <div class="cont_sortable d-flex justify-content-center">
+          <input type="hidden" name="sortable" value="">
+          <ul id="gridDemo" class="cmp_sortable cmp_sortable_list list-group col-6 d-flex flex-row">
+            <li class="grid-square">Item 1</li>
+            <li class="grid-square">Item 2</li>
+            <li class="grid-square">Item 3</li>
+            <li class="grid-square">Item 4</li>
+            <li class="grid-square">Item 5</li>
+            <li class="grid-square">Item 6</li>
+          </ul>
+        </div>
+        <div class="w-100 d-flex flex-column">
+          <pre>
+new Sortable(example1, {
+  animation: 150,
+  ghostClass: 'blue-background-class'
+});
+          </pre>
+        </div>
+      </div>
+
+      <hr />
+
+      <div class="container">
+        <h4 class="font-weight-bold">MultiDrag</h4>
+        <div class="cont_sortable d-flex justify-content-center">
+          <input type="hidden" name="sortable" value="">
+          <ul id="multiDragDemo" class="cmp_sortable cmp_sortable_list list-group col-6 d-flex flex-row" data-multiDrag="true">
+            <li class="grid-square">Item 1</li>
+            <li class="grid-square">Item 2</li>
+            <li class="grid-square">Item 3</li>
+            <li class="grid-square">Item 4</li>
+            <li class="grid-square">Item 5</li>
+            <li class="grid-square">Item 6</li>
+          </ul>
+        </div>
+        <div class="w-100 d-flex flex-column">
+          <pre>
+new Sortable(multiDragDemo, {
+  multiDrag: true, // Enable multi-drag
+  selectedClass: 'selected', // The class applied to the selected items
+  ghostClass: 'blue-background-class',
+  fallbackTolerance: 3, // So that we can select items on mobile
+  animation: 150
+});
+          </pre>
+        </div>
+      </div>
+
+
+      <div class="container">
+        <h4 class="font-weight-bold">Ejemplo .cont_sortable.cont_sortable_admin-section > li.cmp_sortable_item_min</h4>
+        <div class="cont_sortable cont_sortable_admin-section cont_form_group">
+          <div class="alert alert-info alert-dismissible fade show d-flex flex-column w-auto mt-3">
+            <span class="alert_titulo mb-2">Orden de campos</span>
+            <span class="alert_texto">- Ordene los campos arrastrando cada item a su nueva posición.</span>
+            <span class="alert_texto">- Puede añadirse nuevos items al final de la lista a través del campo de inserción y luego reordenarlos.</span>
+            <span class="alert_texto">- El orden de lectura de la lista es de izquierda a derecha por cada línea.</span>
+            <span class="alert_texto">- Recuerde guardar el formulario al finalizar para registrar los cambios.</span>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="cont_sortable_add_item w-100 mb-3 mt-3">
+            <div class="sortable_add_item cont_form_group input_con_iconos w-100">
+              <div class="form-group w-100 mb-0">
+                <label for="input_sortable_new_items_00" class="bmd-label-floating">Inserte los nuevos valores separados por comas.</label>
+                <input id="input_sortable_new_items_00" type="text" class="input_sortable_add_item form-control" autocomplete="off" value="">
+                <span class="bmd-help">Inserte el valor o los valores necesarios separados por ',' y pulse el botón para añadirlos a la lista.</span>
+              </div>
+              <div class="cont_botonera_input d-flex flex-row justify-content-start">
+                <button type="button" class="btn_borra_input btn btn-white" aria-label="Borrar la entrada." title="Borrar la entrada.">
+                  <span class="icono fas fa-times" aria-hidden="true"></span>
+                </button>
+                <button type="button" class="btn_add_item_sortable btn btn-primary" aria-label="Aceptar la entrada." title="Aceptar la entrada.">
+                  <span class="icono fas fa-paper-plane" aria-hidden="true"></span>
+                </button>
+              </div>
+              <!-- :: /.cont_botonera_input -->
+            </div>
+            <!-- :: /.cont_form_group-->
+          </div>
+          <input type="hidden" name="sortable" value="">
+          <div class="cont_select_standard_view_fields w-100 mb-3">
+            <ul id="select_standard_view_fields" class="cmp_sortable cmp_sortable_list">
+
+              <th:block th:insert="/layout/fragments/li_sortable"></th:block>
+
+            </ul>
+            <div class="botonera_select_standard_view_fields w-100 d-flex justify-content-end pt-3">
+              <button class="btn btn-primary btn_delete_all_items modal_js"
+                data-modal_title="Borrado de items"
+                data-modal_size="modal-md"
+                data-modal_target="#cmp_sortable_remove_all_items"
+                data-modal_tipo="warning"
+                data-modal_discriminador="modal_sortable_remove_all_items"
+                data-modal_html="#modal_remove_all_items"
+                data-modal_footer="false"
+              >Borrar todos</button>
+              <div id="modal_remove_all_items" class="d-none" aria-hidden="true">
+                <span class="float-left w-100 mb-4">¿Seguro que desea borrar todos los items?</span>
+                <div class="modal-footer">
+                  <button type="button" class="btn_cerrar btn btn-outline-secondary" data-dismiss="modal" aria-label="Cerrar ventana modal.">Cancelar</button>
+                  <button type="button" class="btn_eliminar_items btn btn-primary" aria-label="Eliminar todos los items.">Eliminar</button>
+                </div>
+              </div>
+              <!-- :: /#modal_remove_all_items -->
+            </div>
+            <!-- :: #botonera_select_standard_view_fields -->
+          </div>
+          <!-- :: /.cont_select_standard_view_fields -->
+        </div>
+        <!-- :: /.cont_sortable -->
+      </div>
+      <!-- :: /.container -->
+
+      <div class="container mt-5">
+        <h4 class="font-weight-bold">Ejemplo .cont_sortable.cont_sortable_admin-section > li.cmp_sortable_item.cmp_sortable_item_form_row</h4>
+        <div class="cont_sortable cont_sortable_admin-section">
+          <div class="alert alert-info alert-dismissible fade show d-flex flex-column w-auto ">
+            <span class="alert_titulo mb-2">Orden de campos</span>
+            <span class="alert_texto">- Ordene los campos arrastrando cada item a su nueva posición.</span>
+            <span class="alert_texto">- Recuerde guardar el formulario al finalizar para registrar los cambios.</span>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <!-- :: /.alert-info -->
+          <input type="hidden" name="sortable_most_recent" value="0,1,2">
+          <div class="cont_select_most_recent w-100 mb-3 mt-3">
+            <div class="item_base_clone d-none">
+
+    <!-- :: ELEMENTO BASE PARA CLONADO -->
+    <div class="cmp_sortable_item cmp_sortable_item_form_row form-row d-flex flex-wrap w-100 pr-4 pt-3 pl-2 m-0 border" data-order-init="2">
+
+      <div class="cont_form_group col-lg-4 col-md-6 col-sm-12">
+        <div class="form-group cont_input">
+          <label for="mostRecentName_2" class="bmd-label-floating">Nombre</label>
+          <input type="text" id="mostRecentName_2" class="form-control" autocomplete="off" name="home.mostRecent[2].name" value="">
+          <span id="mostRecentName_2help" class="bmd-help">Nombre sin traducir del grupo de más recientes</span>
+        </div>
+        <!-- :: /.form-group -->
+      </div>
+      <!-- :: /.cont_form_group -->
+
+      <div class="cont_form_group col-lg-3 col-md-6 col-sm-12">
+        <div class="form-group cont_input">
+          <label for="mostRecentSource_2" class="bmd-label-floating">Orígen</label>
+          <input type="text" id="mostRecentSource_2" class="form-control" autocomplete="off" name="home.mostRecent[2].source" value="">
+          <span id="mostRecentSource_2help" class="bmd-help">Orígen del grupo de más recientes</span>
+        </div>
+        <!-- :: /.form-group -->
+      </div>
+      <!-- :: /.cont_form_group -->
+
+      <div class="cont_form_group col-lg-2 col-md-6 col-sm-12 mb-3">
+        <div class="form-group cont_selectPicker">
+          <label for="mostRecentViewType_2" class="bmd-label-floating">Tipo de visualización</label>
+          <select id="mostRecentViewType_2" class="form-control" name="home.mostRecent[2].viewType">
+            <option value="CAROUSEL">CAROUSEL</option>
+            <option value="MOSAIC">MOSAIC</option>
+            <option value="LIST">LIST</option>
+            <option value="TABLE">TABLE</option>
+          </select>
+          <span id="mostRecentViewType_2help" class="bmd-help">Tipo de visualización del grupo de más recientes</span>
+        </div>
+        <!-- :: /.form-group -->
+      </div>
+      <!-- :: /.cont_form_group -->
+
+      <div class="cont_form_group col-lg-1 col-md-6 col-sm-12">
+        <div class="form-group cont_input">
+          <label for="mostRecentMaxResults_2" class="bmd-label-floating">Max.</label>
+          <input type="number" id="mostRecentMaxResults_2" class="form-control" autocomplete="off" name="home.mostRecent[2].maxResults" value="">
+          <span id="mostRecentMaxResults_2help" class="bmd-help">Número máximo de títulos más recientes a visualizar</span>
+        </div>
+        <!-- :: /.form-group -->
+      </div>
+      <!-- :: /.cont_form_group -->
+
+      <div class="cont_form_group col-lg-2 col-md-6 col-sm-12 pl-2 pr-2 mb-3 d-flex align-items-center">
+        <div class="form-group cont_check cont_check_tunned d-flex pt-0">
+          <label class="mb-0" for="mostRecentShowButton_2">Botón Mostrar Todos</label>
+          <input type="checkbox" id="mostRecentShowButton_2" name="home.mostRecent[2].showAllButton" value="false" checked="checked">
+          <input type="hidden" name="_home.mostRecent[2].showAllButton" value="0,1,2">
+        <span class="cont_nuevo_check activado" aria-hidden="true"></span></div>
+        <!-- :: /.form-group -->
+      </div>
+      <!-- :: /.cont_form_group -->
+
+      <button type="button" class="btn_cmp_sortable_item_form_row--remove_item" title="Eliminar este item de la lista" aria-label="Eliminar este item de la lista"></button>
+    </div>
+    <!-- :: /.cmp_sortable_item -->
+    <!-- :: /ELEMENTO BASE PARA CLONADO -->
+
+            </div>
+            <!-- :: /.item_base_clone -->
+
+            <ul id="select_most_recent" class="cmp_sortable cmp_sortable_list" data-multidrag="false">
+              <li class="cmp_sortable_item cmp_sortable_item_form_row form-row d-flex flex-wrap col-md-12 pr-4 pt-3 pl-2 m-0 border" data-order-init="0">
+
+                <div class="cont_form_group col-lg-4 col-md-6 col-sm-12">
+                  <div class="form-group cont_input is-filled">
+                    <label for="mostRecentName_0" class="bmd-label-floating">Nombre</label>
+                    <input type="text" id="mostRecentName_0" class="form-control" autocomplete="off" name="home.mostRecent[0].name" value="nombre.explorador.mas.reciente.absys.net">
+                    <span id="mostRecentName_0help" class="bmd-help">Nombre sin traducir del grupo de más recientes</span>
+                  </div>
+                  <!-- :: /.form-group -->
+                </div>
+                <!-- :: /.cont_form_group -->
+
+                <div class="cont_form_group col-lg-3 col-md-6 col-sm-12">
+                  <div class="form-group cont_input is-filled">
+                    <label for="mostRecentSource_0" class="bmd-label-floating">Orígen</label>
+                    <input type="text" id="mostRecentSource_0" class="form-control" autocomplete="off" name="home.mostRecent[0].source" value="AbsysNET">
+                    <span id="mostRecentSource_0help" class="bmd-help">Orígen del grupo de más recientes</span>
+                  </div>
+                  <!-- :: /.form-group -->
+                </div>
+                <!-- :: /.cont_form_group -->
+
+                <div class="cont_form_group col-lg-2 col-md-6 col-sm-12 mb-3">
+                  <div class="form-group cont_selectPicker">
+                    <label for="mostRecentViewType_0" class="bmd-label-floating">Tipo de visualización</label>
+                    <select id="mostRecentViewType_0" class="form-control" name="home.mostRecent[0].viewType">
+                      <option value="CAROUSEL" selected="selected">CAROUSEL</option>
+                      <option value="MOSAIC">MOSAIC</option>
+                      <option value="LIST">LIST</option>
+                      <option value="TABLE">TABLE</option>
+                    </select>
+                    <span id="mostRecentViewType_0help" class="bmd-help">Tipo de visualización del grupo de más recientes</span>
+                  </div>
+                  <!-- :: /.form-group -->
+                </div>
+                <!-- :: /.cont_form_group -->
+
+                <div class="cont_form_group col-lg-1 col-md-6 col-sm-12">
+                  <div class="form-group cont_input is-filled">
+                    <label for="mostRecentMaxResults_0" class="bmd-label-floating">Max.</label>
+                    <input type="number" id="mostRecentMaxResults_0" class="form-control" autocomplete="off" name="home.mostRecent[0].maxResults" value="10">
+                    <span id="mostRecentMaxResults_0help" class="bmd-help">Número máximo de títulos más recientes a visualizar</span>
+                  </div>
+                  <!-- :: /.form-group -->
+                </div>
+                <!-- :: /.cont_form_group -->
+
+                <div class="cont_form_group col-lg-2 col-md-6 col-sm-12 pl-2 pr-2 mb-3 d-flex align-items-center">
+                  <div class="form-group cont_check cont_check_tunned d-flex pt-0">
+                    <label class="mb-0" for="mostRecentShowButton_0">Botón Mostrar Todos</label>
+                    <input type="checkbox" id="mostRecentShowButton_0" name="home.mostRecent[0].showAllButton" value="true" checked="checked"><input type="hidden" name="_home.mostRecent[0].showAllButton" value="0,1,2">
+                  <span class="cont_nuevo_check activado" aria-hidden="true"></span></div>
+                  <!-- :: /.form-group -->
+                </div>
+                <!-- :: /.cont_form_group -->
+    <!-- :: RENAME -->
+                <button type="button" class="btn_cmp_sortable_item_form_row--remove_item" title="Eliminar este item de la lista" aria-label="Eliminar este item de la lista"></button>
+              </li>
+              <li class="cmp_sortable_item cmp_sortable_item_form_row form-row d-flex flex-wrap col-md-12 pr-4 pt-3 pl-2 m-0 border" data-order-init="1">
+
+                <div class="cont_form_group col-lg-4 col-md-6 col-sm-12">
+                  <div class="form-group cont_input is-filled">
+                    <label for="mostRecentName_1" class="bmd-label-floating">Nombre</label>
+                    <input type="text" id="mostRecentName_1" class="form-control" autocomplete="off" name="home.mostRecent[1].name" value="nombre.explorador.mas.reciente.efilm">
+                    <span id="mostRecentName_1help" class="bmd-help">Nombre sin traducir del grupo de más recientes</span>
+                  </div>
+                  <!-- :: /.form-group -->
+                </div>
+                <!-- :: /.cont_form_group -->
+
+                <div class="cont_form_group col-lg-3 col-md-6 col-sm-12">
+                  <div class="form-group cont_input is-filled">
+                    <label for="mostRecentSource_1" class="bmd-label-floating">Orígen</label>
+                    <input type="text" id="mostRecentSource_1" class="form-control" autocomplete="off" name="home.mostRecent[1].source" value="efilm">
+                    <span id="mostRecentSource_1help" class="bmd-help">Orígen del grupo de más recientes</span>
+                  </div>
+                  <!-- :: /.form-group -->
+                </div>
+                <!-- :: /.cont_form_group -->
+
+                <div class="cont_form_group col-lg-2 col-md-6 col-sm-12 mb-3">
+                  <div class="form-group cont_selectPicker">
+                    <label for="mostRecentViewType_1" class="bmd-label-floating">Tipo de visualización</label>
+                    <select id="mostRecentViewType_1" class="form-control" name="home.mostRecent[1].viewType">
+                      <option value="CAROUSEL" selected="selected">CAROUSEL</option>
+                      <option value="MOSAIC">MOSAIC</option>
+                      <option value="LIST">LIST</option>
+                      <option value="TABLE">TABLE</option>
+                    </select>
+                    <span id="mostRecentViewType_1help" class="bmd-help">Tipo de visualización del grupo de más recientes</span>
+                  </div>
+                  <!-- :: /.form-group -->
+                </div>
+                <!-- :: /.cont_form_group -->
+
+                <div class="cont_form_group col-lg-1 col-md-6 col-sm-12">
+                  <div class="form-group cont_input is-filled">
+                    <label for="mostRecentMaxResults_1" class="bmd-label-floating">Max.</label>
+                    <input type="number" id="mostRecentMaxResults_1" class="form-control" autocomplete="off" name="home.mostRecent[1].maxResults" value="10">
+                    <span id="mostRecentMaxResults_1help" class="bmd-help">Número máximo de títulos más recientes a visualizar</span>
+                  </div>
+                  <!-- :: /.form-group -->
+                </div>
+                <!-- :: /.cont_form_group -->
+
+                <div class="cont_form_group col-lg-2 col-md-6 col-sm-12 pl-2 pr-2 mb-3 d-flex align-items-center">
+                  <div class="form-group cont_check cont_check_tunned d-flex pt-0">
+                    <label class="mb-0" for="mostRecentShowButton_1">Botón Mostrar Todos</label>
+                    <input type="checkbox" id="mostRecentShowButton_1" name="home.mostRecent[1].showAllButton" value="true" checked="checked"><input type="hidden" name="_home.mostRecent[1].showAllButton" value="0,1,2">
+                  <span class="cont_nuevo_check activado" aria-hidden="true"></span></div>
+                  <!-- :: /.form-group -->
+                </div>
+                <!-- :: /.cont_form_group -->
+    <!-- :: RENAME -->
+                <button type="button" class="btn_cmp_sortable_item_form_row--remove_item" title="Eliminar este item de la lista" aria-label="Eliminar este item de la lista"></button>
+              </li>
+              <li class="cmp_sortable_item cmp_sortable_item_form_row form-row d-flex flex-wrap w-100 pr-4 pt-3 pl-2 m-0 border" data-order-init="2">
+
+                <div class="cont_form_group col-lg-4 col-md-6 col-sm-12">
+                  <div class="form-group cont_input is-filled">
+                    <label for="mostRecentName_2" class="bmd-label-floating">Nombre</label>
+                    <input type="text" id="mostRecentName_2" class="form-control" autocomplete="off" name="home.mostRecent[2].name" value="nombre.explorador.mas.reciente.dialnet-derecho">
+                    <span id="mostRecentName_2help" class="bmd-help">Nombre sin traducir del grupo de más recientes</span>
+                  </div>
+                  <!-- :: /.form-group -->
+                </div>
+                <!-- :: /.cont_form_group -->
+
+                <div class="cont_form_group col-lg-3 col-md-6 col-sm-12">
+                  <div class="form-group cont_input is-filled">
+                    <label for="mostRecentSource_2" class="bmd-label-floating">Orígen</label>
+                    <input type="text" id="mostRecentSource_2" class="form-control" autocomplete="off" name="home.mostRecent[2].source" value="Dialnet-Derecho">
+                    <span id="mostRecentSource_2help" class="bmd-help">Orígen del grupo de más recientes</span>
+                  </div>
+                  <!-- :: /.form-group -->
+                </div>
+                <!-- :: /.cont_form_group -->
+
+                <div class="cont_form_group col-lg-2 col-md-6 col-sm-12 mb-3">
+                  <div class="form-group cont_selectPicker">
+                    <label for="mostRecentViewType_2" class="bmd-label-floating">Tipo de visualización</label>
+                    <select id="mostRecentViewType_2" class="form-control" name="home.mostRecent[2].viewType">
+                      <option value="CAROUSEL" selected="selected">CAROUSEL</option>
+                      <option value="MOSAIC">MOSAIC</option>
+                      <option value="LIST">LIST</option>
+                      <option value="TABLE">TABLE</option>
+                    </select>
+                    <span id="mostRecentViewType_2help" class="bmd-help">Tipo de visualización del grupo de más recientes</span>
+                  </div>
+                  <!-- :: /.form-group -->
+                </div>
+                <!-- :: /.cont_form_group -->
+
+                <div class="cont_form_group col-lg-1 col-md-6 col-sm-12">
+                  <div class="form-group cont_input is-filled">
+                    <label for="mostRecentMaxResults_2" class="bmd-label-floating">Max.</label>
+                    <input type="number" id="mostRecentMaxResults_2" class="form-control" autocomplete="off" name="home.mostRecent[2].maxResults" value="4">
+                    <span id="mostRecentMaxResults_2help" class="bmd-help">Número máximo de títulos más recientes a visualizar</span>
+                  </div>
+                  <!-- :: /.form-group -->
+                </div>
+                <!-- :: /.cont_form_group -->
+
+                <div class="cont_form_group col-lg-2 col-md-6 col-sm-12 pl-2 pr-2 mb-3 d-flex align-items-center">
+                  <div class="form-group cont_check cont_check_tunned d-flex pt-0">
+                    <label class="mb-0" for="mostRecentShowButton_2">Botón Mostrar Todos</label>
+                    <input type="checkbox" id="mostRecentShowButton_2" name="home.mostRecent[2].showAllButton" value="true" checked="checked">
+                    <input type="hidden" name="_home.mostRecent[2].showAllButton" value="0,1,2">
+                  <span class="cont_nuevo_check activado" aria-hidden="true"></span></div>
+                  <!-- :: /.form-group -->
+                </div>
+                <!-- :: /.cont_form_group -->
+    <!-- :: RENAME -->
+                <button type="button" class="btn_cmp_sortable_item_form_row--remove_item" title="Eliminar este item de la lista" aria-label="Eliminar este item de la lista"></button>
+              </li>
+            </ul>
+
+            <div class="botonera_select_standard_view_fields w-100 d-flex justify-content-end pt-3">
+              <button type="button" class="btn btn-primary btn-add_new btn-add_new--recent mr-2" title="Añadir un nuevo item" aria-label="Añadir un nuevo item">
+                <span class="btn_title" aria-hidden="true">Añadir</span>
+              </button>
+              <button type="button" class="btn btn-primary btn_delete_all_items modal_js" title="Borar todos los items de la lista" aria-label="Borar todos los items de la lista" data-modal_title="Borrado de items" data-modal_size="modal-md" data-modal_target="#cmp_sortable_remove_all_items--most_recent" data-modal_tipo="warning" data-modal_discriminador="modal_sortable_remove_all_items--most_recent" data-modal_html="#modal_remove_all_items--most_recent" data-modal_footer="false" data-btn_modal_id="0">
+                <span class="btn_title" aria-hidden="true">Borrar todos</span>
+              </button>
+              <div id="modal_remove_all_items--most_recent" class="d-none" aria-hidden="true">
+                <span class="float-left col-md-12 mb-4">¿Seguro que desea borrar todos los items de 'Mas recientes'?</span>
+                <div class="modal-footer">
+                  <button type="button" class="btn_cerrar btn btn-outline-secondary" data-dismiss="modal" aria-label="Cerrar ventana modal.">Cancelar</button>
+                  <button type="button" class="btn_eliminar_items btn btn-primary" aria-label="Eliminar todos los items.">Eliminar</button>
+                </div>
+              </div>
+              <!-- :: /#modal_remove_all_items -->
+            </div>
+            <!-- :: #botonera_select_standard_view_fields -->
+          </div>
+          <!-- :: /.cont_select_most_recent -->
+        </div>
+        <!-- :: /.cont_sortable -->
+      </div>
+      <!-- :: /.container -->
+
+
+
+    </article>
+    <!-- :: /.cont_sortable-->
+  </section>
+  <!-- :: /.cont_interactives -->
+</main>
+<footer class="footer_principal">
+    <th:block th:insert="/public/home/footer"></th:block>
+</footer>
+<th:block th:insert="/public/home/technicalfooter" th:with="page='opac-maquetacion-3'"></th:block>
+
+<!-- :: /[layout/maquetacion3.html] -->
+   </body>
+
+</html>

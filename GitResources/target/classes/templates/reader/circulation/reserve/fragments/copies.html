@@ -1,0 +1,106 @@
+<!-- :: [reader/circulation/reserve/fragments/copies.html] -->
+<th:block th:fragment="main">
+<div class="cont_copies d-flex w-100 justify-content-center">
+
+    <form class="position-relative float-left w-100 " th:unless="${#lists.isEmpty(copyList)}" th:action="@{${thymeleafMap.get('RESERVE_ACTION_PATH')}}" method="post" th:object="${reserve}">
+      <input type="hidden" th:value="${reserve.idDetail}" id="idDetail" name="reserve.idDetail" >
+      <input type="hidden" th:field="${reserve.copyBranch}" >
+      <input type="hidden" th:value="${reserve.tabId}" id="tabId" name="reserve.tabId" >
+      <input type="hidden" th:field="${reserveInfo.selectedCopyId}" >
+      <input type="hidden" th:field="${reserveInfo.selectedTitleId}" >
+      <input type="hidden" name="source" th:value="${copyList[0].source}" >
+
+      <div class="cont_bloque cont_bloque_data col-12 float-left p-4 mb-3">
+
+        <div class="w-100 cont_titles">
+          <div class="cont_title">
+            <span class="legend-title font-weight-bold" th:text="#{reserves.library}"></span>
+            <span class="legend-value" th:text="${copyList[0].libraryDescription}"></span>
+          </div>
+          <div class="cont_title">
+            <span class="legend-title font-weight-bold" th:text="#{reserves.branch}"></span>
+            <span class="legend-value" th:text="${copyList[0].branchDescription}"></span>
+          </div>
+        </div>
+        <!-- :: /.cont_titles -->
+
+        <fieldset class="copies cont_table_big_00 w-100 mt-5">
+          <legend class="tb_00_title col-lg-8 col-md-12 pl-0 pr-0 float-none">
+            <h4 class="type_title font-weight-bold" th:text="#{reserves.select}"></h4>
+          </legend>
+
+          <div class="table_big_00 col-lg-8 col-md-12 pl-0 pr-0 float-none">
+            <!-- :: TITULOS DESKTOP -->
+            <ul class="tb_00_titles desktop_flex d-flex col-md-auto m-0">
+              <li class="typeDescription w-100 order_desktop_1" data-order_desktop="1">
+                <span class="type_title font-weight-bold" th:text="#{copy.location}"></span>
+              </li>
+              <li class="volume w-100 order_desktop_2" data-order_desktop="2">
+                <span class="type_title font-weight-bold" th:text="#{copy.type}"></span>
+              </li>
+              <li class="locationDescription w-100 order_desktop_3" data-order_desktop="3">
+                <span class="type_title font-weight-bold" th:text="#{copy.volume}"><!-- reserves.library --></span>
+              </li>
+              <li class="check w-100 order_desktop_4" data-order_desktop="4">
+                <span class="type_title font-weight-bold">&nbsp;</span>
+              </li>
+            </ul>
+
+            <div class="cont_data col-md-auto pl-0 pr-0">
+              <ul class="tb_00_data d-flex col-md-auto m-0" th:each="copy, iStat: ${copyList}">
+                <li class="type_data volume w-100 order_desktop_1 order_mobile_1 w-100" data-order_desktop="1">
+                	<span class="title mobile" th:text="#{copy.location}"></span>
+                    <span class="data" th:text="${copyList[0].locationDescription}"></span>
+                </li>
+                <li class="type_data typeDescription order_desktop_2 order_mobile_2 w-100" data-order_desktop="2">
+                  <span class="title mobile" th:text="#{copy.type}"></span>
+                  <span class="data" th:text="${copy.typeDescription}"></span>
+                </li>
+                <li class="type_data locationDescription order_desktop_3 order_mobile_3 w-100" data-order_desktop="3">
+                  <span class="title mobile" th:text="#{copy.volume}"></span>
+                  <span class="data" th:text="${copy.volumeIdentifier}"></span>
+                </li>
+                <li class="type_data check order_desktop_4 order_mobile_4 w-100" data-order_desktop="4">
+                  <div class="form-group cont_check cont_check_tunned cont_check_graphic">
+                    <label th:for="${copy.barcode} + '_barcode'" class="d-none" th:text="#{reserves.copy.locationDescription.title}"></label>
+                    <input th:id="${copy.barcode} + '_barcode'" type="checkbox" class="d-none" th:value="${copy.barcode}" name="reserve.barcodes" readonly checked>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <!-- :: /.cont_data-->
+          </div>
+          <!-- :: /.table_big_00 -->
+
+        </fieldset>
+        <!-- :: /.cont_table_big_00 -->
+      </div>
+      <!-- :: /.cont_bloque -->
+
+      <!-- Adds component view adders -->
+        <th:block th:each="fragment:${CIRCULATION_REQUEST_DESK}">
+        	<th:block th:insert="${fragment}"></th:block>
+        </th:block>
+
+      <div class="cont_botonera botonera_general">
+        <th:block th:if="${breadcrumb!=null and !breadcrumb.empty}" th:with="back=${breadcrumb[__${#lists.size(breadcrumb) - 2}__]}">
+        <a th:href="@{${back.link}}"  class="btn btn-outline-primary btn-form_reserve_return mr-2">
+          <span class="btn_titleWhite" th:text="#{reserves.back.to.detail}"></span>
+          <span class="icono fas fa-reply pl-2" aria-hidden="true"></span>
+        </a>
+        </th:block>
+        <a th:if="${urlBack}" th:href="@{${urlBack}}" class="btn btn-outline-secondary btn-form_reserve_reset mr-2">
+          <span class="btn_title" th:text="#{mylibrary.reader.cancel}"></span>
+          <span class="icono fas fa-eraser pl-2" aria-hidden="true"></span>
+        </a>
+        <button type="submit" class="btn btn-outline-primary btn-form_reserve_search" th:aria-label="#{reserves.reserve}">
+          <span class="btn_titleWhite" th:text="#{reserves.reserve}"></span>
+          <span class="icono fas fa-search-plus pl-2" aria-hidden="true"></span>
+        </button>
+      </div>
+      <!-- :: /.cont_botonera -->
+
+    </form>
+  </div>
+</th:block>
+<!-- :: /[reader/circulation/reserve/fragments/copies.html] -->

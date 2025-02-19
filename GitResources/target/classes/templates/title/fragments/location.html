@@ -1,0 +1,182 @@
+<!-- :: [title/fragments/location.html] -->
+<div class="summary-data  d-flex">
+
+  <div class="summary-actions ml-0 pl-0 blq">
+  	<a th:if="${userManagementEnabled}" sec:authorize="!isAuthenticated()" class="btn_detail_item_title_list btn btn-secondary" th:href="@{${thymeleafMap.get('READER_MY_LIST_MODAL_SEARCH')}(detailId=${detail.catalog.oaiIdentifierB64})}"
+        th:aria-label="#{list.title.modal.text.button}" th:title="#{list.title.modal.text.button}">
+      <span class="icono fas fa-list" aria-hidden="true"></span>
+      <span class="btn_title" th:text="#{list.title}"></span>
+    </a>
+    <button sec:authorize="isAuthenticated() and principal.hasRole(#vars.thymeleafMap.get('READER_AUTHORITY'))"
+      th:class="'btn_detail_item_title_list btn btn-secondary btn modal_js ' + ${#lists.size(listsByTitleId) > 0? 'active':''}"
+      data-modal_tipo="light"
+      data-modal_size="modal-lg"
+      th:data-modal_target="'#modal_title_list_'+${detail.catalog.oaiIdentifierB64}"
+      data-modal_discriminador="modal_detail_item_title_list"
+      th:data-modal_title="#{list.title.modal.text.button}"
+      th:data-modal_html="'#list_title_form_'+${detail.catalog.oaiIdentifierB64}"
+      data-modal_footer="false"
+      th:aria-label="#{list.title.modal.text.button}" th:title="#{list.title.modal.text.button}" th:id="'b_title_list_'+${detail.catalog.oaiIdentifierB64}"
+    >
+      <span class="icono fas fa-list" aria-hidden="true"></span>
+      <span class="btn_title" th:text="#{list.title}"></span>
+    </button>
+
+    <div th:id="'list_title_form_'+${detail.catalog.oaiIdentifierB64}" class="list_title_form d-none" aria-hidden="true">
+      <form th:action="@{${thymeleafMap.get('READER_API_ADD_LIST')}}" method="POST">
+        <input	type="hidden" name="id" th:value="${detail.catalog.oaiIdentifierB64}">
+
+        <div th:class="'content_myList ' + ${(listsByTitleId != null && #lists.size(listsByTitleId) > 0) ? 'd-flex flex-column col-md-12 mb-3' : 'd-none'}">
+          <h3 th:text="#{list.title.modal.list}"></h3>
+          <div class="cont_list-group d-flex border w-100 mt-3 mb-3">
+            <ul th:id="'myList_'+${detail.catalog.oaiIdentifierB64}" class="list-group d-flex col-12">
+              <th:block th:each="myL : ${listsByTitleId}">
+              <input type="hidden" name="idList" th:value="(${myL.id} ? ${myL.id})" >
+      		  <input type="hidden" name="titleId" th:value="(${detail.catalog.oaiIdentifierB64} ? ${detail.catalog.oaiIdentifierB64})" >
+              <li th:id="'list_'+${detail.catalog.oaiIdentifierB64}+'_'+${myL.id}" class="list_item">
+                <span class="list_title" th:text="${myL.name}" />
+                <button type="button" th:data-listid="${myL.id}" class="deleteTitleListItem btn btn-secondary" th:title="#{list.title.modal.delete.button}" th:aria-label="#{list.title.modal.delete.button}">
+                  <span class="icono fas fa-trash" aria-hidden="true" ></span>
+                </button>
+              </li>
+              </th:block>
+            </ul>
+          </div>
+          <!-- :: /.cont_list-group -->
+        </div>
+        <!-- /.content_myList -->
+
+        <div class="content_old_title_list col-md-12 mb-3">
+          <div class="alert alert-info w-100" >
+            <span class="alert_texto" th:text="#{list.title.modal.info}"></span>
+          </div>
+          <!-- :: /.alert-info -->
+          <h3 th:text="#{title.list.select}"></h3>
+          <div class="cont_form_group d-flex">
+            <div class="form-group cont_selectPicker col-md-12 pl-0 pr-0">
+              <label class="sr-only" th:for="'idList_'+${detail.catalog.oaiIdentifierB64}" th:text="#{title.list.select}" />
+              <select th:id="'idList_'+${detail.catalog.oaiIdentifierB64}" name="idList" class="selectMyList form-control" >
+                <option value="" th:text="#{title.list.select.choose}" selected />
+                <option th:each="list : ${listsTitle}" th:value="${list.id}" th:text="${list.name}" />
+              </select>
+              <span class="bmd-help" th:text="#{title.list.select.help}"></span>
+            </div>
+            <!-- /.form-group.cont_selectPicker -->
+          </div>
+          <!-- /.cont_form_group -->
+        </div>
+        <!-- /.content_old_title_list -->
+
+        <div class="content_new_title_list col-md-12 mb-3">
+          <div class="alert alert-info w-100">
+            <span class="alert_texto" th:text="#{list.title.modal.add.list.info}"></span>
+          </div>
+          <!-- :: /.alert-info -->
+          <h3 th:text="#{list.title.modal.text.title}"></h3>
+          <div class="cont_form_group d-flex">
+            <div class="form-group col-md-12 pl-0 pr-0">
+              <label th:for="'listName'+${detail.catalog.oaiIdentifierB64}" class="bmd-label-floating" th:text="#{title.list.name}"></label>
+              <input th:id="'listName'+${detail.catalog.oaiIdentifierB64}" class="form-control" type="text" name="listName" value=""/>
+              <span class="bmd-help" th:text="#{title.list.name.help}"></span>
+            </div>
+             <!-- :: /.form-group -->
+          </div>
+          <!-- :: /.cont_form_group -->
+        </div>
+        <!-- ::/.content_new_title_list -->
+
+        <div class="cont_alert col-md-12" aria-live="polite" aria-atomic="true">
+          <div class="alert alert-process w-100 mt-3 mb-0 d-none">
+            <span class="alert_titulo sr-only"></span>
+            <span class="alert_texto"></span>
+          </div>
+          <!-- :: /.alert -->
+        </div>
+        <!-- ::/.cont_alert -->
+
+        <div class="cont_botonera_form col-md-12 d-flex justify-content-center mt-3">
+
+          <button type="button" class="btn btn-outline-secondary mr-2" data-dismiss="modal" th:text="#{modal.exit}"></button>
+
+          <button type="submit" class="btn btn-primary addTitleListItem mr-2" th:text="#{list.title.modal.add.info.title}"></button>
+
+          <button type="button" class="btn btn-primary btn-old-title-list">
+            <span class="icono fas fa-chevron-left" aria-hidden="true"></span>
+            <span class="btn_title" th:text="#{list.title.modal.add.list}"></span>
+          </button>
+
+          <button type="button" class="btn btn-primary btn-add-title-list">
+            <span class="btn_title" th:text="#{list.title.modal.add.button.title}"></span>
+            <span class="icono fas fa-chevron-right" aria-hidden="true"></span>
+          </button>
+        </div>
+        <!-- :: /.cont_botonera_form -->
+      </form>
+    </div>
+    <!-- :: /.list_title_form -->
+
+    <button type="button"
+      th:class="'btn_message_js btn_favorite btn btn-secondary float-right'+${#sets.size(favorites)>=favoriteLimit?' btn_limite_alcanzado':''}"
+      th:classappend="${#sets.contains(favorites, detail.catalog.oaiIdentifierB64)}?active:''"
+      data-btn_action="favorite_toggle"
+      th:data-message_activo="#{summary.favorite.add.title}"
+      th:data-message_no_activo="#{summary.favorite.delete.title}"
+      th:data-message_limit_warning="#{favorite.list.limit.exceeded}"
+
+      th:attr="data-id=${detail.catalog.oaiIdentifierB64},
+        aria-label=${#sets.contains(favorites, detail.catalog.oaiIdentifierB64)}?#{summary.favorite.add.title}:#{summary.favorite.title},
+        title=${#sets.contains(favorites, detail.catalog.oaiIdentifierB64)}?#{summary.favorite.add.title}:#{summary.favorite.title},
+        data-title_initial=#{summary.favorite.title},
+        data-fav-limit=${favoriteLimit},
+        data-fav-size=${#sets.size(favorites)},
+        data-fav-message=#{favorite.limit}"
+    >
+      <!-- :: Botón en detalle del item -->
+      <span class="icono far fa-bookmark mt-auto mr-1" aria-hidden="true" ></span>
+       <span class="btn_title" aria-hidden="true" th:text="#{summary.favorite.label}"></span>  
+    </button>
+
+    <!-- :: BOTONES RECOMENDAR -->
+    <th:block th:insert="/title/fragments/recommendedBtnModal" th:with="fragment_insert='location'"></th:block>
+    <!-- :: /BOTONES RECOMENDAR -->
+
+
+
+  </div>
+  <!-- :: /.summary-actions-->
+
+ <div class="summary-share">
+    <th:block th:insert="/title/share_column.html"></th:block>
+  </div>
+  <!-- :: /.summary-share-->
+ 	
+ 	
+  	</th:block>
+  	<div id="share" class="detail-share detail-share--column">
+  <div class="share_items_list share_items_list--column">
+
+
+
+  
+  <div id="utilitiesDisplayTop"  class="utilitiesDisplayTop"><p id="textoUtilidades">Seleccione el centro</p><p id="xcerrarUtilidades">X</p></div>
+<div id="utilitiesDisplay"  class="utilitiesDisplay">
+
+<th:block th:if="${utilities != null}" th:each="utility : ${utilities}">  
+
+<a class="enlacesUtilities" th:href="${utility.url}" th:attr="title='Enlace externo a: '+${utility.url}">
+<span th:text="${utility.description}" class="btn_enlace_title"></span>
+</a>
+
+</th:block>
+</div>
+  
+  <!-- ::/.share_items_list -->
+
+</div>
+</div>
+<!-- :: /.summary-data -->
+</div>
+
+
+
+<!-- :: [title/fragments/location.html] -->

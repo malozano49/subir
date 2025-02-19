@@ -1,0 +1,101 @@
+<!-- :: [reader/buysuggestions/buySuggestionsForm.html] -->
+<form id="form_addBuySuggestion" class="register_form" th:action="@{${thymeleafMap.get('READER_BUY_SUGGESTIONS_ADD')}}" th:object="${buySuggestionWebVO}" method="post">
+	<fieldset>
+	<!--<legend><h3 class="text-primary" th:text="#{suggestion.form.text}"></h3></legend>-->
+	
+	<div class="form-row register-row cont_selects  selects_dependientes_js">
+		<div class="cont_form_group register_group col-sm-6 mb-2">
+			<label for="library" th:text="#{suggestion.buy.form.library}"></label><span class="mandatory">*</span>
+			<div class="form-group cont_input cont_selectPicker">
+	 			<select aria-describedby=""  class="sub-cata-select form-control" name="library" id="library" data-live-search="true"> 
+            		<th:block  th:each="item : ${libraries}" >
+              			<option  th:selected="${item.code == selectedLibrary}" th:utext="${item.description}"  th:value="${item.code}"></option>
+         			 </th:block>
+         		</select>
+          		<span id="error-comment-text" class="error" th:if="${#fields.hasErrors('library')}" th:errors="*{library}"></span>
+          		<span id="library-error" class="error-front"></span>
+			</div>
+		</div>
+		<div class="cont_form_group register_group col-sm-6 mb-2">
+			<label for="branch" th:text="#{suggestion.buy.form.branch}"></label>
+			<div class="form-group cont_input sucu_js cont_selectPicker">
+	 				<th:block th:insert="reader/buysuggestions/buySuggestionsBranchForm.html"></th:block>
+	 			</div>
+      	<span id="error-comment-text" class="error" th:if="${#fields.hasErrors('branch')}" th:errors="*{branch}"></span>			
+		</div>
+	</div>
+	
+	<div class="form-row register-row">
+		<div class="cont_form_group register_group col-lg-8 mb-2">
+			<label for="title" th:text="#{suggestion.buy.form.title}"></label><span class="mandatory">*</span>
+			<div class="form-group cont_input">
+				<input id="title" name="title" class="form-control" th:field="*{title}" maxLength="128"></input>
+				<span id="error-comment-text" class="error" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span>
+				<span id="title-error" class="error-front"></span>
+			</div>
+		</div>
+		<div class="cont_form_group register_group col-lg-4 mb-2">
+			<label for="author" th:text="#{suggestion.buy.form.author}"></label>
+			<div class="form-group cont_input">
+				<input id="author" name="author" class="form-control" th:field="*{author}" maxLength="60"></input>
+				<span id="error-comment-text" class="error" th:if="${#fields.hasErrors('author')}" th:errors="*{author}"></span>
+			</div>
+		</div>
+	</div>
+	
+	<div class="form-row register-row">
+		<div class="cont_form_group register_group col-lg-8 mb-2">
+			<label for="editorial" th:text="#{suggestion.buy.form.editorial}"></label>
+			<div class="form-group cont_input">
+				<input id="editorial" name="editorial" class="form-control" th:field="*{editorial}" maxLength="50"></input>
+				<span id="error-comment-text" class="error" th:if="${#fields.hasErrors('editorial')}" th:errors="*{editorial}"></span>
+			</div>
+		</div>
+		
+		<div class="cont_form_group register_group col-lg-4 col-md-4 col-6 mb-2">
+			<label for="edition" th:text="#{suggestion.buy.form.edition}"></label>
+			<div class="form-group cont_input">
+				<input id="edition" name="edition" class="form-control" th:field="*{edition}" maxLength="20"></input>
+				<span id="error-comment-text" class="error" th:if="${#fields.hasErrors('edition')}" th:errors="*{edition}"></span>
+			</div>
+		</div>
+		
+		<div class="cont_form_group register_group col-lg-4 col-md-4 col-6 mb-2">
+			<label for="issuesDate" th:text="#{suggestion.buy.form.issuesDate}"></label>
+			<div class="form-group cont_input">
+				<input id="issuesDate" name="issuesDate" class="form-control" th:field="*{issuesDate} " maxLength="15"></input>
+				<span id="error-comment-text" class="error" th:if="${#fields.hasErrors('issuesDate')}" th:errors="*{issuesDate}"></span>
+			</div>
+		</div>
+		
+		<div class="cont_form_group register_group col-lg-8 col-md-4 mb-2">
+			<label for="isbn" th:text="#{suggestion.buy.form.isbn}"></label>
+			<div class="form-group cont_input">
+				<input id="isbn" name="isbn" class="form-control" th:field="*{isbn}" maxLength="20"></input>
+				<span id="error-comment-text" class="error" th:if="${#fields.hasErrors('isbn')}" th:errors="*{isbn}"></span>
+			</div>
+		</div>
+	</div>
+	
+	<div class="form-row register-row">
+		<div class="cont_form_group register_group col-12 mb-2">
+			<label for="comment" th:text="#{suggestion.buy.form.comment}"></label>
+			<div class="form-group cont_input cont_textarea cont_textarea_comment">
+				<textarea id="comment" name="comment" class="form-control" th:field="*{comment}" maxLength="255"></textarea>
+				<span id="error-comment-text" class="error" th:if="${#fields.hasErrors('comment')}" th:errors="*{comment}"></span>
+			</div>
+		</div>
+	</div>
+	
+	<div class="form-row register-row justify-content-end">
+		<button class="btn btn-outline-secondary cancel_bs" type="button" th:aria-label="#{mylibrary.reader.cancel}" data-toggle="collapse" data-target="#add_buysuggestions" aria-expanded="false" aria-controls="add_buysuggestions">
+			<th:block th:text="#{mylibrary.reader.cancel}"></th:block>
+		</button>
+		<button class="btn btn-outline-primary btn-search busuggestion-save save-buysuggestion-btn ml-3" id="save-buysuggestion" type="button" th:aria-label="#{mylibrary.reader.save}">
+			<th:block th:text="#{mylibrary.reader.save}"></th:block>
+		</button>
+	</div>	
+	
+	</fieldset>
+</form> 
+<!-- :: [reader/buysuggestions/buySuggestionsForm.html] -->

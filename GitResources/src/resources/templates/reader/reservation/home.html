@@ -1,0 +1,19 @@
+<th:block th:insert="/public/home/html_type"></th:block>
+   <head>
+      <th:block th:insert="/public/home/technicalheader::main" th:with="page='opac-reader-reservation'"></th:block>
+   </head>
+   <body class="page_type_reader reader_reservation myReserves vista_reader bg-propietary-light" data-tipo_vista="reader,reservation">
+      <!-- :: reader/reservation/home.html -->
+      <header class="header_principal">
+         <th:block th:insert="/public/home/header"></th:block>
+         <th:block th:insert="/fragments/breadcrums"></th:block>
+      </header>
+      <main id="acc_anchor_main">
+         <th:block th:insert="/reader/reservation/home1_12"></th:block>
+      </main>
+      <footer class="footer_principal">
+         <th:block th:insert="/public/home/footer"></th:block>
+      </footer>
+      <th:block th:insert="/public/home/technicalfooter" th:with="page='opac-reader-reservation'"></th:block>
+   </body>
+</html>

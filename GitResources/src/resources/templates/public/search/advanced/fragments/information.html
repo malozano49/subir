@@ -1,0 +1,9 @@
+<!-- :: [public/search/advanced/fragments/information.html] -->
+  <div class="advanced-info alert alert-info" aria-live="polite" aria-atomic="true">
+    <span class="alert_titulo mb-2" th:text="#{ba.format.area.title}"></span>
+    <div class="info_ranges" th:utext="${solrSearchWeb.solrSearch.query}"></div>
+    <div class="info_filters"></div>
+    <div class="info_dates"></div>
+  </div>
+  <!-- :: /.advanced-info -->
+<!-- :: /[public/search/advanced/fragments/information.html] -->

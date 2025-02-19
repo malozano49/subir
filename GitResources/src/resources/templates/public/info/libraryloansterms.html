@@ -1,0 +1,34 @@
+<th:block th:insert="/public/home/html_type"></th:block>
+   <th:block th:insert="/public/info/infobase::infoHead"  th:with="page='opac-libraryloansterms'"/>
+   <body class="page_type_info opac-libraryloansterms bg-propietary-light">
+      <!-- :: public/info/libraryloansterms.html -->
+      <th:block th:insert="/public/info/infobase::infoHeader"/>
+      <main id="acc_anchor_main" class="container-fluid">
+
+          <section id="firstRow" class="container pt-4" aria-labelledby="sct_title">
+            <h2 id="sct_title" class="sr-only" th:text="#{info.loans.requests.term.title}"></h2>
+             <article class="bg-white">
+
+                       <h3 class="h2">Lorem Ipsum [libraryloansterms.html]</h3>
+
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas venenatis elit vitae velit commodo, eu malesuada magna luctus. Aliquam maximus libero nisl, et placerat felis cursus in. Praesent libero magna, venenatis ut iaculis non, porta dignissim massa. Sed pellentesque feugiat metus sed porta. Mauris facilisis pharetra auctor. Quisque tempus neque et est tincidunt mattis. Nullam tristique sem eget enim placerat, sit amet dapibus purus varius. Donec consectetur in ex quis interdum. Sed fermentum nunc lacus, ac fringilla urna mollis non. Morbi sit amet ultrices diam. Proin bibendum sit amet tellus eu volutpat.</p>
+                    <p>Morbi aliquet enim sollicitudin facilisis aliquet. In finibus sodales nunc vitae venenatis. Cras fermentum nunc magna, ac blandit ipsum tempus in. Mauris auctor fringilla arcu ut elementum. Ut luctus tortor id finibus cursus. Proin mattis rutrum velit et malesuada. Vestibulum vel ipsum id lorem sollicitudin pulvinar in vitae erat. In posuere urna leo, a ultrices dui malesuada fermentum. In hac habitasse platea dictumst. Nulla facilisi. Proin at elit vel turpis fermentum convallis ac nec magna. Duis nec elementum nisi, nec dictum lacus.</p>
+                    <p>Fusce sed felis tincidunt, imperdiet magna ac, imperdiet mi. Etiam tincidunt erat at libero bibendum aliquet. Sed commodo, neque non consectetur commodo, quam leo tempus risus, a sagittis leo erat vitae libero. Nullam ullamcorper viverra venenatis. Mauris quis tortor vitae ante cursus accumsan sed at ligula. Donec nisl nunc, finibus vitae sem ut, dictum faucibus erat. Donec euismod finibus pharetra. In eu mi eget enim varius fermentum id non lectus.</p>
+
+                       <p class="blockquote">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...</p>
+                       <p class="blockquote font-italic">No hay nadie que ame el dolor mismo, que lo busque, lo encuentre y lo quiera, simplemente porque es el dolor.</p>
+
+           </article>
+        </section>
+    <div class="cont_botonera botonera_flotante_btn_actions d-none" aria-hidden="true">
+      <a th:href="@{${thymeleafMap.get('HOME_URL')}}" class="btn_navigation btn_home" th:aria-label="#{sidebar.btn_home.title}" th:title="#{sidebar.btn_home.title}">
+        <span class="icono fas fa-home" aria-hidden="true"></span>
+      </a>
+    </div>
+    <!-- :: /.cont_botonera -->
+    </main>
+    <th:block th:insert="/public/info/infobase::infoFooter" th:with="page='opac-libraryloansterms'"/>
+
+    <th:block th:insert="/public/home/technicalfooter" th:with="page='opac-libraryloansterms'"></th:block>
+  </body>
+</html>

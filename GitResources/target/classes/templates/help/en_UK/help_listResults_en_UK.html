@@ -1,0 +1,252 @@
+<th:block th:insert="/public/home/html_type"></th:block>
+<th:block th:insert="/public/home/technicalheader::main" th:with="page=${'opac-help-listResults-es_ES'}"></th:block>
+<script type="text/javascript">
+	var menu = document.getElementById('menu');
+	Stickyfill.add(menu);
+</script>
+<body>
+
+<div id="burger-menu" class="burger-menu">
+  <span></span>
+  			<div id="menu2" class="menu menu2">
+			<div class=""><nav class="sn-contents" aria-label="Secondary">
+      <ul class="sidenav--list">
+			<li><a href="#list">View in List Mode</a>
+			   <ul class="tab3-help">
+			      <li><a href="#order">How to Sort Search Results</a></li>
+			      <li><a href="#move">How to Navigate Through the List of Results in the Search</a></li>
+			      <li><a href="#filter">How to Filter Search Results</a></li>
+			      <li><a href="#mark">How to Mark Records as Favorites in the Search</a></li>
+			      <li><a href="#addlist">How to Add a New Favorites List from the List View</a></li>
+			      <li><a href="#addrecord">How to Add a Record to My Favorites Lists from the View in Mode</a></li>
+			   </ul>
+			</li>
+			<li><a href="#complete">Access to Complete Record View</a></li>
+			<li><a href="#searchAuthorities">Access to Authority Search</a></li>
+			<li><a href="#searchIndexes">Access to Index Search</a></li>
+			<li><a href="#lastSearch">Access to Recent Searches</a></li>
+			<li><a href="#historySearch">Access to Saved Searches</a></li>
+			<li><a href="#favorites">Access to Favorites</a></li>
+			<li><a href="#profile">Access to My Profile</a></li>
+			<li><a href="#home">Access to Homepage</a></li>
+			</ul>
+			</nav>
+			</div>
+			</div>
+			</div>
+			<div class="wrapper cf">
+			<div id="menu" class="menu">
+			<div class="sidenav"><nav class="sn-contents" aria-label="Secondary">
+			   <ul class="sidenav--list">
+			      <li><a href="#list">View in List Mode</a>
+			         <ul class="tab3-help">
+			            <li><a href="#order">How to Sort Search Results</a></li>
+			            <li><a href="#move">How to Navigate Through the List of Results in the Search</a></li>
+			            <li><a href="#filter">How to Filter Search Results</a></li>
+			            <li><a href="#mark">How to Mark Records as Favorites in the Search</a></li>
+			            <li><a href="#addlist">How to Add a New Favorites List from the List View</a></li>
+			            <li><a href="#addrecord">How to Add a Record to My Favorites Lists from the View in Mode</a></li>
+			         </ul>
+			      </li>
+			      <li><a href="#complete">Access to Complete Record View</a></li>
+			      <li><a href="#searchAuthorities">Access to Authority Search</a></li>
+			      <li><a href="#searchIndexes">Access to Index Search</a></li>
+			      <li><a href="#lastSearch">Access to Recent Searches</a></li>
+			      <li><a href="#historySearch">Access to Saved Searches</a></li>
+			      <li><a href="#favorites">Access to Favorites</a></li>
+			      <li><a href="#profile">Access to My Profile</a></li>
+			      <li><a href="#home">Access to Homepage</a></li></ul></nav>
+			</div>
+			</div>
+			<div class="content">
+			<a name="top"></a>
+			<a name="list"></a>
+			<h2 class="title-help">View in List Mode</h2>
+			<p>By default, search results are displayed in list mode.</p>
+			<div class="">
+			   <img th:src="@{/img/help/results-list.png}" alt="Results List" width="750px"/>
+			</div>
+			<p>By default, the following information is shown in list mode:</p>
+			<ul class="tab4-help margen5">
+			   <li>Cover</li>
+			   <li>Author</li>
+			   <li>Title</li>
+			   <li>Publication</li>
+			   <li>ISBN/ISSN</li>
+			   <li>Material Type</li>
+			   <li>Information about the copies associated with the record:
+			      <ul class="tab5-help margen5">
+			         <li>- Location</li>
+			         <li>- Total number of copies associated with the record</li>
+			         <li>- Number of available copies</li>
+			      </ul>
+			   </li>
+			</ul>
+			<a name="order"></a> 
+			<h4 class="title-help">How to Sort Search Results</h4>
+			<p class="tab2-help">Records are displayed by default in <span class="text-bold-help">Author/Title</span> order.</p> 
+			<p class="tab2-help">Other sorting options include:</p>
+			<ul class="tab4-help margen5">
+			   <li>1. <b>Relevance</b></li>
+			   <li>2. <b>Title</b></li>
+			   <li>3. <b>Publication Date:</b>
+			      <p class="tab4-help">When sorting by publication date, records are displayed in <span class="text-bold-help">descending order</span>.</p>
+			   </li>
+			</ul>
+			<a name="move"></a> 
+			<h4 class="title-help">How to Navigate Through the List of Results in the Search</h4>
+			<p class="tab2-help">By default, search results are displayed in groups of 10, but you can group the results by 25 or 35.</p>
+			<p class="tab5-help"><img th:src="@{/img/help/results-by-page.png}" alt="Results per page" width="250px"></p>
+			<p class="tab2-help">To navigate through the different pages of the results, you have the following options:</p>
+			<ul class="tab4-help margen5">
+			   <li>Click on <img th:src="@{/img/help/next.png}" alt="Next" width="75px"> to go to the next page.</li>
+			   <li>Click on <img th:src="@{/img/help/back.png}" alt="Previous" width="75px"> to go to the previous page.</li>
+			   <li>Click on the page number you want to view
+			      <br><br><img th:src="@{/img/help/number-by-page.png}" alt="Page number" width="350px">
+			   </li>
+			   <li>Click on the number 1 to view the first page
+			      <br><br><img th:src="@{/img/help/first-page.png}" alt="First page" width="350px"/>
+			   </li>
+			   <li>Click on the number before Next to go to the last page
+			      <br><br><img th:src="@{/img/help/last-page.png}" alt="Last page" width="350px"/>
+			   </li>
+			</ul>
+			<a name="filter"></a>
+			<h4 class="title-help">How to Filter Search Results</h4>
+			<p class="tab2-help">Faceted searches allow you to group the content of certain fields of the records located in the search into categories.</p>
+			<ul class="tab4-help margen5">
+			   <li>By default, the <span class="text-bold-help">facet groups</span> displayed are as follows:
+			      <br><span class="tab4-help margen5"><img th:src="@{/img/help/facets.png}" alt="Facets" width="150px"/></span>
+			   </li>
+			   <li>Facets are sorted by the number of documents that contain them in descending order, except for date-type facets, which are sorted chronologically in ascending order.
+			      <ul class="tab3-help"><b>Example:</b>
+			         <li class="tab5-help margen5">Order Titles:
+			            <br><span class="tab4-help margen5"><img th:src="@{/img/help/order-title.png}" alt="Order title"  width="250px"/></span>
+			         </li>
+			         <br>
+			         <li class="tab5-help margen5">Order Publication Date:
+			            <br><span class="tab4-help margen5"><img th:src="@{/img/help/order-date.png}" alt="Order date"  width="250px"/></span>
+			         </li>   
+			      </ul>
+			   </li>
+			   <br>
+			   <li class="margen5">By default, 5 terms are displayed in each facet group.
+			      <ul>
+			         <li class="margen5">- If you want to view 5 more terms, click on <img th:src="@{/img/help/view-plus.png}" alt="View more"  width="100px"/>
+			            <br><span class="tab5-help "><img th:src="@{/img/help/facets-5-terms.png}" alt="5 terms"  width="250px"/></span>
+			         </li>
+			         <br>
+			         <li class="margen5">- The maximum number of facets that can be displayed in each group is <span class="text-bold-help">100</span></li>
+			      </ul>
+			   </li>
+			</ul>
+			<a name="mark"></a> 
+			<h4 class="title-help">How to Mark Records as Favorites in the Search</h4>
+			<p class="tab2-help">To mark any of the records located in the search as favorites, click on the <img th:src="@{/img/help/icon-favorites.png}" alt="Favorites Icon" /> option associated with the record you want to add as a favorite.</p>
+			<span class="tab5- margen5"><img th:src="@{/img/help/favorites-record.png}" alt="Favorites in the Record" width="350px"/></span>
+			<p class="tab2-help">If you want to view the records marked as favorites in the current session, click on Favorites.</p>
+			<ul class="tab4-help margen5">
+			   <li>By default, you can store a maximum of <span class="text-bold-help">100</span> favorites.</li>
+			   <li>Favorites are displayed in order of <span class="text-bold-help">author/title</span>.</li>
+			   <li>To unmark a favorite, click on the <img th:src="@{/img/help/favorites-icon-selected.png}" alt="Selected Favorites Icon" /></span> option of the record you want to remove from favorites.
+			      <ul class="tab5-help margen10">
+			         <li>- Records can also be unmarked from list view or detail view.</li>
+			      </ul>   
+			   </li>
+			</ul>
+			
+			<a name="addlist"></a> 
+			<h4 class="title-help">How to Add a New Favorites List from List View</h4>
+			<p>To create a new favorites list,</p>
+			<ul class="tab5-help margen10">
+			   <li>1. Click on the option <img th:src="@{/img/help/icon-add-list.png}" alt="Add List Icon"/> associated with the record you want to add to the new list.</li>
+			   <li>2. Click on the option <img th:src="@{/img/help/btn-add-list.png}" alt="New List Button" width="100px"/>.</li>
+			   <li>3. Enter the description you want to associate with the new list.</li>
+			   <br><img th:src="@{/img/help/name-list.png}" alt="List Name" width="150px"/>
+			   <br>
+			   <li>4. Click on <img th:src="@{/img/help/btn-add-title-list.png}" alt="Add Title to List Button" width="250px"/>
+			      <br><br>
+			      <ul class="tab3-help margen5">
+			         <li>A new list is created with the associated record.</li>
+			         <li>Records belonging to a favorites list are shown with the following distinctive image:
+			            <img th:src="@{/img/help/icon-record-in-list.png}" alt="Record in Lists Icon" />
+			         </li>
+			         <li>If you want to view the lists you have created, click on your user profile and select the "My Lists" option.
+			         <br><br>
+			         <span class="tab5-help margen5"><img th:src="@{/img/help/view-list.png}" alt="View Lists" width="250px"/></span>
+			         </li>
+			      </ul>
+			   </li>
+			</ul>
+			
+			<a name="addrecord"></a>
+			<h4 class="title-help">How to Add a Record to One of My Favorites Lists from List View</h4>
+			<p>To add a record to one of the existing favorites lists,</p>
+			<ul class="tab5-help margen10">
+			   <li>1. Click on the option <img th:src="@{/img/help/icon-add-list.png}" alt="Favorites Icon" /> associated with the record you want to add to one of the lists you have already created.</li>
+			   <li>2. Select the list you are interested in.
+			      <br>
+			      <span class="tab5-help margen5"><img th:src="@{/img/help/combox-add-list.png}" alt="Add List Combobox" width="250px"/></span>
+			   </li><br>                    
+			   <li>3. Click on <img th:src="@{/img/help/btn-add-title-list.png}" alt="Add a Title to a List Button" width="250px"/>
+			      <ul class="tab4-help margen5">
+			         <li>The record is associated with the selected list.</li>
+			         <li>Records belonging to a favorites list are shown with the following distinctive image:
+			            <img th:src="@{/img/help/icon-record-in-list.png}" alt="Record in Lists Icon" width="50px"/>
+			         </li>  
+			         <li>By default, only <span class="text-bold-help">200</span> favorites can be stored in the same list.</li>
+			         <li>The same record can be associated with multiple favorites lists.</li>
+			      </ul>
+			   </li>
+			</ul>
+			
+			<a name="complete"></a> 
+			<h2 class="title-help">Access to Complete Record View</h2>
+			<p>To view a record located in the search results in detailed mode, click on it.</p>
+			
+			<a name="searchAuthorities"></a> 
+			<h2 class="title-help">Access to Authority Search</h2>
+			<p>To perform an authority search that allows you to locate records containing a specific authority, click on the "Authority Search" option.</p>			
+			<a name="searchIndexes"></a> 
+			<h2 class="title-help">Access to Index Search</h2>
+			<p>To perform a search that locates words or word patterns similar to the entered term or terms, click on the "Index Search" option.</p>			
+			<a name="lastSearch"></a> 
+			<h2 class="title-help">Access to Recent Searches</h2>
+			<p>To view the last <span class="text-bold-help">10</span> searches that have returned results during the current OPAC session, click on "Recent Searches."</p>			
+			<a name="historySearch"></a>
+			<h2 class="cont cont_title title-help">Access to Saved Searches</h2>
+			<p>If you want to save any of the searches you have performed to execute them at another time, click on "Saved Searches."</p>
+			<ul class="tab5-help">
+			   <li>To save searches, you need to identify yourself beforehand.</li>
+			</ul>			
+			<a name="favorites"></a> 
+			<h2 class="title-help">Access to Favorites</h2>
+			<p>To view the records you have marked as favorites, click on "Favorites."</p>
+			<a name="profile"></a> 
+			<h2 class="title-help">Access to My Profile</h2>
+			<p>Click on the "My Profile" option and identify yourself to access the following <span class="text-bold-help">ODA</span> utilities:</p>
+			<ul class="tab5-help margen10">
+			   <li>Personal Information</li>
+			   <li>Requests</li>
+			   <li>Active Loans</li>
+			   <li>Loan History</li>
+			   <li>Renew Loans</li>
+			   <li>Cancel Reservations</li>
+			   <li>Save Searches</li>
+			   <li>Create Favorites Lists</li>
+			</ul>
+			<p class="tab2-help">• To identify yourself as a user, you can use any of these 3 methods:</p>
+			<ul class="tab5-help margen10">
+			   <li>Library card number</li>
+			   <li>Email address provided to your library</li>
+			   <li>Mobile phone number provided to your library</li>
+			</ul>
+			<a name="home"></a> 
+			<h2 class="title-help">Access to the Homepage</h2>
+			<p>To go to the homepage, click on "Home."</p>
+			<p class="top-help"><a href="#top">Top</a></p>
+			</div>
+			</div>
+			<th:block th:insert="/public/home/technicalfooter" th:with="page='opac-dataprivacyterms'"/>
+</body>
+</html>

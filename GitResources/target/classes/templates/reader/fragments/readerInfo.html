@@ -1,0 +1,78 @@
+<!-- :: [reader/fragments/readerInfo.html] -->
+<div class="art_readerInfo reader-info card_readerInfo">
+	<div class="tipo_readerInfo ">
+		
+		<div class="row">
+			<div class="col-md-3  cont_image">
+	         <div th:insert="/public/catalog/fragments/imageNotFound :: image('1')" class="user-portrait border border-primary rounded-circle mx-3 mb-3"></div>
+	        </div>
+	        <div class="col-md-12 no_cont_image">
+	        <div class="cont_botonera">
+          <a th:if="${editReaderData}" th:href="@{${thymeleafMap.get('READER_DATA_PATH')}}" class="btn btn-link btn_edition ">
+            <span class="icono far fa-edit" aria-hidden="true"></span>
+            <span class="label_icono" th:text="#{mylibrary.reader.edit.exit}"/>
+          </a>
+          <a th:unless="${editReaderData}" th:href="@{${thymeleafMap.get('READER_DATA_EDIT_PATH')}}" class="btn btn-link btn_edition ">
+            <span class="icono far fa-edit" aria-hidden="true"></span>
+            <span class="label_icono" th:text="#{mylibrary.reader.edit}"/>
+          </a>
+        </div>
+		        <span id="mainAccessLink" th:text="${reader.firstName} + ' ' + ${reader.surname} " class="mb-1 type_mainAccessLink"></span>
+		        
+				<ul class="data_loans">
+				<span class="btn-tienes"  id="" th:text="#{mylibrary.reader.have}+':'"></span>
+				<li class="tipo_reader_loans">		
+					<a th:href="@{${thymeleafMap.get('READER_LOANS_PATH')}}"
+						class="badge badge-primary"
+						th:aria-label="${reader.apiLoanCount}?#{mylibrary.reader.loans.aria.info}+' '+${reader.apiLoanCount}+' '+#{mylibrary.reader.loans}:#{mylibrary.reader.loans.aria.info}+' 0 '+#{mylibrary.reader.loans}">
+	          			<span aria-hidden="true" th:text="${reader.apiLoanCount}?${reader.apiLoanCount}+' '+#{mylibrary.reader.loans}:'0 '+#{mylibrary.reader.loans}"></span>
+					</a>
+					</li>
+	            <li class="tipo_reader_reservations">
+	              <a th:href="@{${thymeleafMap.get('READER_RESERVATION_PATH')}}"
+	                class="badge badge-primary"
+	                th:aria-label="${reader.apiRequestCount}?#{mylibrary.reader.requests.aria.info}+' '+${reader.apiRequestCount}+' '+#{mylibrary.reader.requests}:#{mylibrary.reader.requests.aria.info}+' 0 '+#{mylibrary.reader.requests}">
+	                <span aria-hidden="true" th:text="${reader.apiRequestCount}?${reader.apiRequestCount}+' '+#{mylibrary.reader.requests}:'0 '+#{mylibrary.reader.requests}"></span>
+	              </a>
+	            </li>
+	            <li th:if="${commentsEnabled and reader.comments>0}" class="tipo_reader_comments">
+	              <a th:href="@{${thymeleafMap.get('READER_COMMENTS')}}"
+	                class="badge badge-primary"
+	                th:aria-label="${reader.comments}+' '+#{dockbar.biblio.comment}">
+	                <span aria-hidden="true" th:text="${reader.comments}+' '+#{dockbar.biblio.comment}"></span>
+	              </a>
+	            </li>
+	            <li th:if="${suggestionsEnabled and reader.suggestions>0}" class="tipo_reader_suggestions">
+	              <a th:href="@{${thymeleafMap.get('READER_SUGGESTIONS')}}"
+	                class="badge badge-primary"
+	                th:aria-label="${reader.suggestions}+' '+#{dockbar.biblio.suggestions}">
+	                <span aria-hidden="true" th:text="${reader.suggestions}+' '+#{dockbar.biblio.suggestions}"></span>
+	              </a>
+	            </li>
+	            
+	            <li th:if="${buySuggestionsEnabled and reader.buySuggestions>0}" class="tipo_reader_buysuggestions">
+	              <a th:href="@{${thymeleafMap.get('READER_BUY_SUGGESTIONS')}}"
+	                class="badge badge-primary"
+	                th:aria-label="${reader.buySuggestions}+' '+#{dockbar.biblio.suggestions}">
+	                <span aria-hidden="true" th:text="${reader.buySuggestions}+' '+#{dockbar.biblio.buysuggestions}"></span>
+	              </a>
+	            </li>
+	            
+	            <li th:if="${buySuggestionsEnabled and reader.acceptedSuggestions>0}" class="tipo_reader_buysuggestions">
+	              <a th:href="@{${thymeleafMap.get('READER_BUY_SUGGESTIONS_ACEPTED')}}"
+	                class="badge badge-primary"
+	                th:aria-label="${reader.acceptedSuggestions}+' '+#{dockbar.biblio.suggestions.acepted}">
+	                <span aria-hidden="true" th:text="${reader.acceptedSuggestions}+' '+#{dockbar.biblio.buysuggestions.acepted}"></span>
+	              </a>
+	            </li>
+	            
+	            
+			</ul>
+			
+			</div>
+        </div>
+        
+        
+	</div>
+</div>
+<!-- :: /[reader/fragments/readerInfo.html] -->

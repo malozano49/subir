@@ -1,0 +1,60 @@
+<th:block th:insert="/public/home/html_type"/>
+	<head>
+  		<th:block th:insert="/public/home/technicalheader::main" th:with="page='opac-last-searches'"/>
+	</head>
+  <body class="page_type_reader reader_lastSearchs opac_page_lastSearchs">
+    <!-- :: [public/reader/lastSearchs.html] -->
+    <header class="header_principal">
+       <th:block th:with="pageLocation='history'" th:insert="/public/home/header"/>
+       <th:block th:insert="/fragments/breadcrums"></th:block>
+    </header>
+    <main id="acc_anchor_main" class="main_type_records cont_page_lastSearchs container-fluid container_color_back">
+      <div class="layout_1-2-1 col-lg-9 col-md-12 mr-auto ml-auto pt-3 pb-3">
+        <section id="firstRow" class="sct_busquedas d-flex col-md-12 ml-auto mr-auto mt-3" aria-labelledby="sct_title_00">
+          <h2 id="sct_title_00" class="sr-only" th:text="#{search.record.last.title}+'.'"></h2>
+          <div id="lastSearch_list" class="lastSearch_list article col-md-12 mt-5 mb-4 border">
+            <nav class="d-flex justify-content-center cont_pills" aria-labelledby="records_menu_title" th:with="activePill='lastSearchs'" th:insert="/public/reader/fragments/recordsUpMenu"></nav>
+            <div class="w-auto anchor_title">
+	            <div id="sct_busquedas_title" class="h2">
+	                <span class="icono fas fa-history mr-2"  aria-hidden="true"></span>
+	                <span th:text="#{search.record.last.title}"></span>
+	            </div>
+            </div>
+            <div class="cont_alert col-lg-12 col-md-12 col-sm-12 mt-3" aria-live="polite" aria-atomic="true">
+              <div class="alert alert alert-info alert-dismissible">
+                <span class="alert_titulo mb-2" th:text="#{search.record.alert.alert_titulo}"></span>
+                <span class="alert_texto" th:text="#{search.record.alert.alert_texto.line_one}"></span>
+                <span class="alert_texto" th:text="#{search.record.alert.alert_texto.line_two}"></span>
+                <button type="button" class="close" data-dismiss="alert" th:aria-label="#{general.alerts.btn_close.title}" th:title="#{general.alerts.btn_close.title}">
+                  <span aria-hidden="true">×</span>
+                </button>
+               </div>
+              <!-- :: /.alert -->
+              <article class="contenido col-md-12 d-flex no_border pt-0" aria-labelledby="art_title_00">
+	              <h3 id="art_title_00" class="sr-only" th:text="#{search.record.last.aria.label}"></h3>
+	              <div class="cont_resultados w-100">
+			          <div class="row listado-resultados-desktop justify-content-center py-3">
+			          	<th:block th:insert="/public/catalog/fragments/record.html::limit(-1)"/>
+		              </div>
+	              </div>
+              </article>
+            </div>
+
+            <!-- /.cont_alert -->
+          </div>
+   
+          <!-- /.lastSearch_list -->
+        </section>
+        <!-- :: /.firstRow -->
+      
+      </div>
+      <!-- :: /.layout_1-2-1 -->
+      
+    </main>
+    <footer class="footer_principal">
+       <th:block th:insert="/public/home/footer"/>
+    </footer>
+    <th:block th:insert="/public/home/technicalfooter" th:with="page='opac-last-searches'"/>
+    <!-- :: [public/reader/lastSearchs.html] -->
+  </body>
+</html>

@@ -1,0 +1,5 @@
+<!-- :: [title/fragments/selectDetail.html] -->
+<li th:if="${detail != null}" class="page-item px-1" th:classappend="${item}==${detail.selectedViewDocumentType} ? 'active disabled'"  th:disabled="${item}==${detail.selectedViewDocumentType}" th:each="item : ${detail.viewDocumentTypes}">
+   <button type="submit" class="page-link" th:formaction="@{/public/catalog/detail/} + ${id} + '/' + ${item}" th:text="#{${item}}"></button>
+</li>
+<!-- :: /[title/fragments/selectDetail.html] -->

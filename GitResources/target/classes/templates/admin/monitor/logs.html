@@ -1,0 +1,49 @@
+<!-- :: [admin/monitor/logs.html] -->
+
+<article th:if="${!levels.empty}" class="widget mb-0">
+  <h3 class="widget-header mb-4">
+    <span class="icono fas fa-cogs" aria-hidden="true"></span>
+    <th:block th:text="#{administration.monitor.log.title}"/>
+  </h3>
+  <form id="form_level_logs" th:action="@{${thymeleafMap.get('ADMIN_MONITOR_LEVEL_PATH')}}" method="post">
+ <!-- :: RENAME -->
+		<fieldset aria-label="Hay que poner el aria-label">
+
+        <div class="cont_form_group col-md-9 col-sm-12 pl-0">
+          <div class="form-group cont_selectPicker selectLivesearch">
+            <label for="package_log" class="bmd-label-floating" th:text="#{administration.monitor.package}"></label>
+            <select id="package_log" name="package_log" class="form-control selectpicker" data-live-search="true" >
+              <option th:each="logger : ${loggers}" th:value="${logger}" th:text="${logger}" />
+            </select>
+            <span id="package_log_help" class="bmd-help" th:text="#{administration.monitor.package.info}"></span>
+          </div>
+          <!-- :: /.form-group -->
+        </div>
+        <!-- :: /.cont_form_group -->
+
+        <div class="cont_form_group col-md-3 col-sm-12 pl-0 pr-0">
+          <div class="form-group cont_selectPicker">
+            <label for="log_level" class="bmd-label-floating" th:text="#{administration.monitor.level.type}"></label>
+            <select id="log_level" name="log_level" class="form-control" >
+              <option th:each="level : ${levels}" th:value="${level}" th:text="${level}" />
+            </select>
+            <span id="level_help" class="bmd-help" th:text="#{administration.monitor.level.info}"></span>
+          </div>
+          <!-- :: /.form-group -->
+        </div>
+        <!-- :: /.cont_form_group.cont_selectPicker -->
+
+      <div class="cont_botonera row text-right py-3">
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary" th:title="#{administration.monitor.level.update}">
+            <th:block th:text="#{administration.monitor.level.update}"/>
+          </button>
+        </div>
+      </div>
+
+		</fieldset>
+	</form>
+	<div id="logContent" class="container container_general border pb-3"></div>
+</article>
+<!-- :: /.widget -->
+<!-- :: /[admin/monitor/logs.html] -->

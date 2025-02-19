@@ -1,0 +1,148 @@
+<!-- :: [/public/catalog/fragments/searchListElement_view.html] -->
+<th:block th:with="elementUrl=${host != null} ? ${host}+@{${thymeleafMap.get('CATALOG_MAPPING_DETAIL_VIEW_NO_VIEW_NO_PARAM')}}+${item.oaiIdentifierB64} : @{${thymeleafMap.get('CATALOG_MAPPING_DETAIL_VIEW_NO_VIEW_NO_PARAM')}}+${item.oaiIdentifierB64} ">
+	<li th:data-id="${item.oaiIdentifierB64}">
+      <figure th:with="elementTitle = (${(item.dtFields.get('t245ab')==null or #strings.isEmpty(item.dtFields.get('t245ab')[0]))}) ? ((${(item.marcFields.get('t240')==null or #strings.isEmpty(item.marcFields.get('t240')[0]))}) ? #{explore.no.title} : ${item.marcFields.get('t240')[0]})  : ${item.dtFields.get('t245ab')[0]} ">
+
+        <div class="cont_image invisible">
+          <span class="btn_image_title ellipsis_multiline" aria-hidden="true" th:utext="${elementTitle}"></span>
+
+          <a th:if="${expo.type=='list'}" class="btn_image" th:href="${elementUrl}"  tabindex="-1" th:title="#{result.detail}+' de '+${elementTitle}" th:aria-label="#{result.detail}+' de '+${elementTitle}" >
+            <th:block th:insert="/public/catalog/fragments/recordImage :: image(${item.oaiIdentifierB64})"></th:block>
+          </a>
+          <button th:if="${expo.type=='carousel'}" type="button" class="btn_image" tabindex="-1" th:title="#{result.detail}+' de '+${elementTitle}" th:aria-label="#{result.detail}+' de '+${elementTitle}">
+             <th:block th:insert="/public/catalog/fragments/recordImage :: image(${item.oaiIdentifierB64})"></th:block>
+          </button>
+          <div th:if="${expo.type=='mosaic'}" class="btn_image">
+             <th:block th:insert="/public/catalog/fragments/recordImage :: image(${item.oaiIdentifierB64})"></th:block>
+          </div>
+          <div th:if="${expo.type=='tabla'}" class="btn_image">
+            <th:block th:insert="/public/catalog/fragments/recordImage :: image(${item.oaiIdentifierB64})"></th:block>
+         </div>
+         <div th:if="${expo.type=='mosaic_columns'}" class="btn_image">
+            <th:block th:insert="/public/catalog/fragments/recordImage :: image(${item.oaiIdentifierB64})"></th:block>
+         </div>
+         
+         <div th:if="${expo.type=='vertical'}" class="btn_image">
+            <th:block th:insert="/public/catalog/fragments/recordImage :: image(${item.oaiIdentifierB64})"></th:block>
+         </div>
+        </div>
+
+        <!-- :: /.cont_image -->
+        <figcaption class="card-body">
+         <div class="cont_item_data">
+            <a class="link cont_title" th:href="${elementUrl}" th:title="${item.translateMe(elementTitle)}" th:aria-label="${item.translateMe(elementTitle)}"  th:data-id="${item.oaiIdentifierB64}">
+              <span class="item-title btn_title ellipsis_multiline" aria-hidden="true" th:utext="${elementTitle}"></span>
+            </a>
+            <div class="item-author" th:if="${item.marcFields.get('t100') != null or item.marcFields.get('t110') != null or item.marcFields.get('t111') != null or item.marcFields.get('t700') != null or item.marcFields.get('t710') != null or item.marcFields.get('t711') != null}">
+              <div class="cont_ellipsized">
+                <span class="sr-only"th:utext="#{search.result.element.author.title}">Autor/es: </span>
+                <span>
+                  <th:block th:if="${item.marcFields.get('t100') != null}" th:each="mvalor: ${item.marcFields.get('t100')}" th:utext="${mvalor} + ' '"></th:block>
+
+                  <th:block th:if="${item.marcFields.get('t110') != null}" th:each="mvalor: ${item.marcFields.get('t110')}" th:utext="${mvalor} + ' '"></th:block>
+
+                  <th:block th:if="${item.marcFields.get('t111') != null}" th:each="mvalor: ${item.marcFields.get('t111')}" th:utext="${mvalor} + ' '"></th:block>
+
+                  <th:block th:if="${item.marcFields.get('t700') != null}" th:each="mvalor: ${item.marcFields.get('t700')}" th:utext="${mvalor} + ' '"></th:block>
+
+                  <th:block th:if="${item.marcFields.get('t710') != null}" th:each="mvalor: ${item.marcFields.get('t710')}" th:utext="${mvalor} + ' '"></th:block>
+
+                  <th:block th:if="${item.marcFields.get('t711') != null}" th:each="mvalor: ${item.marcFields.get('t711')}" th:utext="${mvalor} + ' '"></th:block>
+                </span>
+              </div>
+              <!-- :: /.cont_ellipsized -->
+            </div>
+            <!-- /.item-author -->
+
+            <div class="item-publication d-flex mt-1" th:if="${item.marcFields.get('t260') != null or item.marcFields.get('t264') != null}">
+              <div class="cont_ellipsized">
+                <span class="sr-only"th:utext="#{search.result.element.publication.title}"></span>
+                <th:block th:if="${item.marcFields.get('t260') != null}" th:each="mvalor: ${item.marcFields.get('t260')}">
+                  <th:block th:utext="${mvalor} + ' '"></th:block>
+                </th:block>
+                <th:block th:if="${item.marcFields.get('t264') != null}" th:each="mvalor: ${item.marcFields.get('t264')}">
+                  <th:block th:utext="${mvalor} + ' '"></th:block>
+                </th:block>
+              </div>
+              <!-- :: /.cont_ellipsized -->
+            </div>
+            <!-- /.item-publication -->
+
+            <div class="item_data">
+              <div class="cont_item-format col-3 pl-0 pr-0 d-flex">
+                  <span class="sr-only" th:utext="#{search.result.element.format.title}"></span>
+                  <span class="item-format pl-0"><th:block th:if="${item.recordFormatType.value != 'undefined'}" th:text="#{desc.format. + ${item.recordFormatType.value}}"/></span>
+              </div>
+              <!-- :: /.cont_item-format-->
+              <div class="item-location desktop_flex col-9">
+                  <div class="cont_location" th:if="${item.numPlaces > 0}" >
+                    <span class="icono fas fa-map-marker-alt mr-1"></span>
+                    <span class="cont_titulo mr-2" th:text="#{result.localized.at}"></span>
+                    <a th:href="${elementUrl}+'#copias'"  th:if="${item.numPlaces > 1}" class="link" th:title="${item.numPlaces} + ' ' + #{result.locations}">
+                      <th:block th:text="${item.numPlaces} + ' ' + #{result.locations}"></th:block>
+                    </a>
+                    <a th:href="${elementUrl}+'#copias'"  th:if="${item.numPlaces == 1 }" class="link"  th:title="${item.titleLocation[0].branchDescription} + ', ' + ${item.titleLocation[0].libraryDescription}">
+                      <th:block th:text="${item.titleLocation[0].branchDescription} + ', ' + ${item.titleLocation[0].libraryDescription}"></th:block>
+                    </a>
+                  </div>
+                  <!-- :: /.cont_location -->
+                  <div class="cont_num_ejemplares">
+                    <a class="link" th:href="${elementUrl}+'#copias'" th:if="${item.totalCopiesByPage != null and item.totalCopiesByPage > 0}">
+                      <th:block th:text="#{result.copies} + ' :'  + ${item.totalCopiesByPage}"/>
+                    </a>
+                  </div>
+                  <!-- :: /.cont_num_ejemplares -->
+                  <div class="cont_disponibles">
+                    <a class="link" th:href="${elementUrl}+'#copias'"   th:if="${item.availableCopies != null and item.totalCopiesByPage != null and item.totalCopiesByPage > 0}">
+                      <th:block th:text="#{result.copies.available} + ': ' + ${item.availableCopies}"/>
+                    </a>
+                  </div>
+                  <!-- :: /.cont_disponibles -->
+              </div>
+              <!-- :: /.item-location -->
+            </div>
+            <!-- :: /.item_data -->
+
+            <div class="cont_tableBotonera" th:if="${exploreView == 'manager'}" >
+                <button class="btn_move_item btn btn-outline-secondary modal_js" th:title="#{result.item.move.title}" th:aria-label="#{result.item.move.title}"
+                  th:data-modal_title="#{result.item.move.new.position.modal.title} +' '+ ${(expo.page*expo.maxResults) + iterStat.index + 1}"
+                  data-modal_size="modal-md"
+                  data-modal_target="#modal_item_manager_recommended_reposicion"
+                  data-modal_tipo="light"
+                  data-datos_modal=""
+                  data-modal_discriminador="modal_item_manager_recommended_reposicion"
+                  data-modal_html="#modal_item_manager_recommended_reposicion_html"
+                  data-modal_footer="false"
+                >
+                  <span aria-hidden="true" class="item_ordinal" th:text="${(expo.page*expo.maxResults) + iterStat.index + 1}"></span>
+                </button>
+
+                <button class="btn_delete_recommended btn btn-outline-secondary modal_js" th:title="#{result.item.delete.title}" th:aria-label="#{result.item.delete.title}"
+                  th:data-modal_title="#{result.item.delete.modal.title}"
+                  data-modal_size="modal-md"
+                  data-modal_target="#modal_confirmacion_borrado_manager_recommended"
+                  data-modal_tipo="light"
+                  data-datos_modal=""
+                  data-modal_discriminador="modal_confirmacion_borrado_manager_recommended"
+                  data-modal_html="#modal_confirmacion_borrado_manager_recommended_html"
+                  data-modal_footer="false"
+                >
+                  <span class="icono fas fa-trash" aria-hidden="true"></span>
+                </button>
+            </div>
+            <!-- :: /.cont_tableBotonera -->
+
+          </div>
+          <!-- :: /.cont_item_data -->
+
+        </figcaption>
+      </figure>
+      <div class="cont_item-format col-3 pl-0 pr-0 d-flex">
+         <span class="sr-only" th:text="#{search.result.element.format.title}"></span>
+         <span class="item-format pl-0"><th:block th:if="${item.recordFormatType.value != 'undefined'}" th:text="#{desc.format. + ${item.recordFormatType.value}}"/></span>
+      </div>
+      <!-- :: /.cont_item-format-->
+
+    </li>
+</th:block>
+<!-- :: /[/public/catalog/fragments/searchListElement_view.html] -->

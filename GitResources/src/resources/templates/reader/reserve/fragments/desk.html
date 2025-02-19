@@ -1,0 +1,86 @@
+<!-- :: [/reader/reserve/fragments/desk.html] -->
+<div class="cont_bloque cont_bloque_selects col-12 float-left my-4">
+        <fieldset class="d-flex flex-wrap w-100">
+
+<th:block th:if="${(optionSucursal != null && optionSucursal.size()>1)||(optionMostrador != null && optionMostrador.size()>1)}">
+          <legend class="cont_titulo">
+            <span class="icono fas fa-map-marker-alt" aria-hidden="true"></span>
+            <span class="legend_title font-weight-bold" th:text="#{reserves.where}"></span>
+          </legend>
+</th:block>
+
+          <div class="cont_alert alert_general w-100 d-flex flex-wrap" th:if="${apiMessage != null}">
+          	<th:block th:insert="/reader/fragments/apiMessageReservation"></th:block>
+          </div>
+
+<th:block th:if="${(optionSucursal != null && optionSucursal.size()>1)||(optionMostrador != null && optionMostrador.size()>1)}">
+
+          <div class="fld_text_info col-md-12">
+            <p class="d-flex flex-wrap align-items-center">
+              <a class="btn btn-link btn_enlace text-left ml-3" data-toggle="collapse" href="#collapse_selects" role="button" aria-expanded="false" aria-controls="collapse_selects" th:text="#{reserves.other.desks.info}"></a>
+            </p>
+          </div>
+          <!-- :: /.fld_text_info -->
+
+          <div id="collapse_selects" class="collapse collapse_selects col-12 p-0">
+            <div class="card card-body flex-row flex-wrap w-100">
+
+              <div class="cont_alert d-flex col-12 p-0 mb-3">
+                <div class="alert alert-info alert-dismissible fade show">
+                  <span class="alert_titulo" th:text="#{reserves.other.desks.info.title}"></span>
+                  <span class="alert_texto mt-2" th:text="#{reserves.other.desks.info.text1}"></span>
+                  <span class="alert_texto"  th:text="#{reserves.other.desks.info.text2}"></span>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                  </button>
+                </div>
+                <!-- :: /.alert -->
+              </div>
+
+              <div class="cont_selects selects_dependientes_js d-flex flex-wrap col-md-7 col-sm-12 col-xs-12 pl-0 pr-0 ">
+
+                  <div class="cont_form_group col-lg-6 col-md-6 col-sm-12 pl-0">
+                    <div class="form-group cont_selectPicker">
+                      <label class="bmd-label-floating" for="reserve.branch" th:text="#{reserves.branch}"></label>
+                      <select id="reserve.branch" name="reserve.branch" class="form-control" data-type="slc_reserve" th:aria-label="#{search.subcatalog.selection}" >
+                          <th:block th:insert="/public/search/subCataOptions :: options(collection=${optionSucursal},mselected=${optionSucursalSelected})"></th:block>
+                      </select>
+                      <span class="bmd-help">
+                        <th:block th:text="#{reserves.branch}"/>
+                      </span>
+                    </div>
+                    <!-- :: /.form-group-->
+                  </div>
+                  <!-- :: /.cont_form_group-->
+
+                  <div class="cont_form_group col-lg-6 col-md-6 col-sm-12 pl-0">
+                    <div class="form-group cont_selectPicker" th:classappend="${optionMostrador.size() < 2 ? 'cont_select_disabled' : ''}">
+                      <label class="bmd-label-floating" for="reserve.desk" th:text="#{reserves.desk}"></label>
+                      <select id="reserve.desk" name="reserve.desk" class="form-control" data-type="slc_reserve" th:aria-label="#{search.subcatalog.selection}" th:disabled="${optionMostrador.size() < 2}">
+                        <th:block th:insert="/public/search/subCataOptions :: options(collection=${optionMostrador},mselected='')"></th:block>
+                      </select>
+                      <span class="bmd-help">
+                        <th:block th:text="#{reserves.desk}"/>
+                      </span>
+                    </div>
+                    <!-- :: /.form-group -->
+                  </div>
+                  <!-- :: /.cont_form_group -->
+
+              </div>
+              <!-- :: /.cont_selects -->
+            </div>
+            <!-- :: /.card.card-body -->
+          </div>
+          <!-- :: /.collapse-->
+</th:block>
+<th:block th:unless="${(optionSucursal != null && optionSucursal.size()>1)||(optionMostrador != null && optionMostrador.size()>1)}">
+          <input type='hidden' id="reserve.branch" name="reserve.branch" th:value="${optionSucursal != null ? ( optionSucursal.size() > 0 ? optionSucursal.get(0) : null ) : null}">
+          <input type='hidden' id="reserve.desk" name="reserve.desk" th:value="${optionMostrador != null ? ( optionMostrador.size() > 0 ? optionMostrador.get(0) : null ) : null}">
+</th:block>
+
+        </fieldset>
+
+      </div>
+      <!-- :: /.cont_bloque.cont_bloque_selects -->
+<!-- :: [/reader/reserve/fragments/desk.html] -->  

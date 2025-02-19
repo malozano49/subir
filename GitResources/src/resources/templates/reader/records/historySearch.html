@@ -1,0 +1,52 @@
+<th:block th:insert="/public/home/html_type"/>
+	<head>
+  		<th:block th:insert="/public/home/technicalheader::main"/>
+	</head>
+  <body class="page_type_reader reader_records_historySearch opac_page_historySearch" th:with="page='opac-reader-history-search'">
+    <!-- :: [reader/records/historySearch.html] -->
+    <header class="header_principal">
+       <th:block th:with="pageLocation='history'" th:insert="/public/home/header"/>
+       <th:block th:insert="/fragments/breadcrums"></th:block>
+    </header>
+    <main id="acc_anchor_main" class="main_type_records cont_page_historySearch container-fluid container_color_back">
+      <div class="layout_1-2-1 col-lg-9 col-md-12 mr-auto ml-auto pt-3 pb-3">
+        <section id="firstRow" class="sct_history d-flex col-md-12 ml-auto mr-auto mt-3" aria-labelledby="sct_title_00">
+          <h2 id="sct_title_00" class="sr-only" th:text="#{search.record.stored.title}+'.'"></h2>
+          <div id="historySearch_list" class="historySearch_list article col-md-12 mt-5 mb-4 border">
+
+            <nav class="d-flex justify-content-center cont_pills" th:with="activePill='storedSearchs'" aria-labelledby="records_menu_title" th:insert="/public/reader/fragments/recordsUpMenu"></nav>
+
+            <div class="w-auto anchor_title">
+              <div class="h2">
+                <span class="icono far fa-bookmark mr-2" aria-hidden="true"></span>
+                <span th:text="#{search.record.stored.title}"></span>
+              </div>
+            </div>
+
+            <article th:if="${storedRecordsPage != null}" class="art_contenido col-md-12 d-flex no_border pt-0" aria-labelledby="art_title_00">
+
+              <h3 id="art_title_00" class="sr-only" th:text="#{mylibrary.loanhistory.list.title}"></h3>
+              <div id="refreshWrapper" class="container p-0">
+                <div class="cont_resultados w-100">
+                  <div class="row listado-resultados-desktop justify-content-center py-3">
+                    <th:block th:insert="/reader/fragments/storedRecord"/>
+                  </div>
+                </div>
+                <!-- :: /.cont_resultados -->
+              </div>
+              <!-- :: /.container -->
+            </article>
+
+          </div>
+          <!-- :: /.historySearch_list -->
+
+        </section>
+      </div>
+      <!-- :: /.layout_1-2-1 -->
+    </main>
+    <footer class="footer_principal">
+       <th:block th:insert="/public/home/footer"/>
+    </footer>
+    <th:block th:insert="/public/home/technicalfooter" th:with="page='opac-reader-history-search'"/>
+  </body>
+</html>

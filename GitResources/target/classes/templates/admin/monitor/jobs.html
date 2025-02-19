@@ -1,0 +1,163 @@
+<!-- :: [admin/monitor/jobs.html] -->
+
+  <article class="widget" th:if="${managerData.jobs != null}">
+     <h3 class="widget-header mb-4">
+        <span class="icono fas fa-cogs" aria-hidden="true"></span>
+        <th:block th:text="#{administration.job.title}"/>
+     </h3>
+
+    <th:block th:each="jobs: ${managerData.jobs}">
+
+      <article class="no_border d-flex container-fluid p-0 mt-3 mb-0">
+        <div th:class="'cont_table cont_table_'+${jobs.key}+' cont_table_big_00 col-md-12'">
+          <h4 class="h3 tb_00_legend col-md-12">
+            <span class="cont_title">
+              <span class="tb_00_legend-title font-weight-bold" th:text="#{administration.job}"></span>
+              <span class="tb_00_legend-value" th:text="#{'administration.job.status.' + ${jobs.key}}"></span>
+            </span>
+          </h4>
+          <!--/* data-btn_in_modal : Pinta el botón para ver el resto de columnas en la columna que se define aqui */-->
+          <!--/* data-view_in_modal : Columnas a mostrar sólo en la modal para la vista desktop */-->
+          <div th:id="'table_'+${jobs.key}" class="table_big_00 col-md-12 p-0 mb-0" data-btn_in_modal=".jobName" data-view_in_modal=".metadataPrefix,.set,.identifierPrefix,.catalog,.origin,.from,.until,.linkFields,.mapper,.url,.timestamp,.path,.encoding">
+
+            <ul class="tb_00_titles desktop_flex d-flex col-md-12 m-0">
+              <li class="type_title jobName">
+                <span class="title font-weight-bold" th:text="#{administration.job.jobName}" ></span>
+              </li>
+              <li class="type_title jobLabel">
+                <span class="title font-weight-bold" th:text="#{administration.job.jobLabel}" ></span>
+              </li>
+              <li class="type_title startTime">
+                <span class="title font-weight-bold" th:text="#{administration.job.startTime}" ></span>
+              </li>
+              <li class="type_title endTime">
+                <span class="title font-weight-bold" th:text="#{administration.job.endTime}" ></span>
+              </li>
+              <li class="type_title exitDescription" th:if="${jobs.key.unsuccessful}">
+                <span class="title font-weight-bold" th:text="#{administration.job.exitDescription}" ></span>
+              </li>
+              <li class="type_title tb_00_cont_botonera">
+                <div class="contenedor">
+                  <div class="cont_button">
+                    <div class="title w-100 desktop">
+                      <span class="btn_title btn_mark" th:text="#{administration.job.logs}" ></span>
+                    </div>
+                  </div>
+                  <!-- :: /.cont_button -->
+                  <div class="cont_button" th:if="${jobs.key.unsuccessful or #strings.equals(jobs.key, 'STOPPED')}">
+                    <div class="b-tooltip title w-100 desktop">
+                      <span class="btn_title" th:text="#{administration.job.run}" ></span>
+                    </div>
+                  </div>
+                  <div class="cont_button" th:if="${jobs.key.running}">
+                    <div class="b-tooltip title w-100 desktop">
+                      <span class="btn_title" th:text="#{administration.job.stop}" ></span>
+                    </div>
+                  </div>
+                  <!-- :: /.cont_button -->
+                </div>
+              </li>
+            </ul>
+            <!-- :: /TITULOS DESKTOP -->
+
+            <div class="cont_data col-md-12">
+              <ul class="tb_00_data d-flex col-md-12 m-0 p-0" th:each="job: ${jobs.value}">
+
+                <li class="type_data jobName">
+<!--/* :: @TODO Estos titulos son para movil y están mal todos */-->
+                  <span class="title mobile font-weight-bold" th:text="${job.jobName}" ></span>
+                  <span class="data" th:text="${job.jobName}" ></span>
+                </li>
+                <li th:each="parameter: ${job.execution.jobParameters.parameters}" th:class="'type_data '+ ${parameter.key} +' despliegue_mobile'" th:if="${not #strings.isEmpty(parameter.value)}" >
+                  <span class="title font-weight-bold" th:text="${parameter.key}" ></span>
+                  <span class="data" th:text="${parameter.value}" ></span>
+                </li>
+                <li class="type_data jobLabel">
+                  <span class="title mobile font-weight-bold" th:text="${job.jobLabel}" ></span>
+                  <span class="data" th:text="${job.jobLabel}" ></span>
+                </li>
+                <li class="type_data startTime">
+                  <span class="title mobile font-weight-bold" th:text="#{administration.job.startTime}" ></span>
+                  <span class="data" th:text="${#dates.format(job.execution.startTime, 'dd-MM-yyyy HH:mm:ss')}" ></span>
+                </li>
+                <!--/* ::COLUMNA CON BOTON PARA DESPLIEGUE EN MOBILE */-->
+                <li class="type_data endTime cont_btn_desplegar">
+                  <span class="title mobile font-weight-bold" th:text="#{administration.job.endTime}" ></span>
+                  <span class="data" th:text="${#dates.format(job.execution.endTime, 'dd-MM-yyyy HH:mm:ss')}" ></span>
+                  <!--/* :: este boton solo aparece en mobile para la vista de ciertas columnas en un collapse */-->
+                  <button type="button" class="tb_00_btn_collapse mobile" data-target=".metadataPrefix,.set,.identifierPrefix,.catalog,.origin,.from,.until,.linkFields,.mapper,.url,.timestamp,.path,.encoding" aria-expanded="false" th:title="#{administration.job.btn_expand_info.title}" th:aria-label="#{administration.job.btn_expand_info.title}">
+                    <span class="icono fas fa-angle-down text-danger" aria-hidden="true"></span>
+                  </button>
+                </li>
+                <li class="type_data exitDescription" th:title="${job.execution.exitStatus.exitDescription}" th:if="${jobs.key.unsuccessful}">
+                  <span class="title mobile font-weight-bold" th:text="#{administration.job.exitDescription}"></span>
+                  <span class="data" th:text="${#strings.abbreviate(job.execution.exitStatus.exitDescription,50)}" ></span>
+                </li>
+
+                <li class="type_data tb_00_cont_botonera">
+                  <div class="contenedor">
+
+                    <div class="cont_button">
+                        <button type="button" class="btn btn-outline-secondary modal_js modal_logs" th:aria-label="#{administration.job.btn_modal_logs.title}" th:title="#{administration.job.btn_modal_logs.title}"
+                         data-modal_size="modal-xl"
+                         th:data-modal_target="'#modalLogs_'+${job.Id}"
+                         data-modal_tipo="success"
+                         th:attr="data-jobid=${job.Id},data-modal_title=#{administration.job.modal_logs.title} + ${job.Id} + '_' + ${job.jobLabel}"
+                         data-modal_discriminador="logs_batch"
+                         data-modal_html="#modal_logs">
+                          <span class="icono fas fa-list" aria-hidden="true"></span>
+                      </button>
+                    </div>
+    	              <!-- :: /.cont_button -->
+
+    	              <div class="cont_button" th:if="${jobs.key.unsuccessful or #strings.equals(jobs.key, 'STOPPED') }">
+                      <!--/* :: .no_icono_loading : Forms con submit que no necesitan icono loading */-->
+                      <form class="no_icono_loading" th:id="'form_restart_job_'+${job.Id}" th:action="@{${thymeleafMap.get('ADMIN_RESTART_JOB')}}" method="post">
+                        <input type="hidden" name="jobExecutionId" th:value="${job.execution.id}"/>
+                        <button type="submit" class="btn btn-outline-secondary btn_reexecute" th:aria-label="#{administration.job.btn_reexecute.title}" th:title="#{administration.job.btn_reexecute.title}">
+                          <span class="icono fas fa-redo" aria-hidden="true"></span>
+                        </button>
+                       </form>
+                     </div>
+                     <!-- :: /.cont_button -->
+
+                     <div class="cont_button" th:if="${jobs.key.running}">
+                       <!--/* :: .no_icono_loading : Forms con submit que no necesitan icono loading */-->
+                      <form class="no_icono_loading" th:id="'form_stop_job_'+${job.Id}" th:action="@{${thymeleafMap.get('ADMIN_STOP_JOB')}}" method="post">
+                        <input type="hidden" name="jobExecutionId" th:value="${job.execution.id}"/>
+                        <button type="submit" class="btn btn-outline-secondary btn_stop_action " th:aria-label="#{administration.job.btn_stop_action.title}" th:title="#{administration.job.btn_stop_action.title}">
+                          <span class="icono fas fa-stop" aria-hidden="true"></span>
+                        </button>
+                       </form>
+                     </div>
+                    <!-- :: /.cont_button -->
+
+                  </div>
+                  <!-- :: /.contenedor -->
+                </li>
+              </ul>
+              <!-- :: /.tb_00_data -->
+            </div>
+            <!-- :: /.cont_data -->
+          </div>
+          <!-- :: /.table_big_00 -->
+        </div>
+
+      </article>
+
+    </th:block>
+
+    <div id="modal_logs" class="d-none" aria-hidden="true">
+    </div>
+    <!-- ::/#modal_logs -->
+
+
+
+  </article>
+  <!-- :: /.widget -->
+
+
+
+
+
+<!-- :: /[admin/data/jobs.html] -->

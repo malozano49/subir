@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": ";AAAA;;;;;;;;oGAQoG;ACRpG;;;;;;;;oGAQoG;ADkBlG,wBAAQ;EAAC,OAAO,EEgCE,22EAAoB",
+"sources": ["../../../../../../src/resources/sass/maquetacion/def_colors_high.scss","../../../../../../src/resources/sass/high/_colors.scss","../../../../../../src/resources/static/plugins/sass-to-js/sass/_sass-to-js.scss"],
+"names": [],
+"file": "def_colors_high.css"
+}

@@ -1,0 +1,11 @@
+<!-- :: [public/search/subCataSelect.html] -->
+<fieldset class="auto-search w-100 m-0 anchor_title_search fieldsect--selects-subcat" id="fieldsect--selects-subcat">
+  <legend class="mb-3" th:text="#{search.subcatalog.selection.label}"></legend>
+  <!-- :: /.col-md-3 -->  
+   <th:block th:if="${solrSearchWeb}" th:replace="/public/search/subCataSelectDiv :: selectname(sname='solrSearchWeb.solrSearch.subCatalog.subCatalogs',sfield='solrSearch.subCatalog.subCatalogs',showBtnCambiar='true',padSeleSubcata='true',var=${solrSearchWeb.solrSearch.subCatalog.subCatalogs},ncomb=${solrSearchWeb.solrSearch.subCatalog.numCombo})"></th:block>
+   </fieldset>
+   
+     
+<!-- :: /.auto-search -->
+
+<!-- :: /[public/search/subCataSelect.html] -->

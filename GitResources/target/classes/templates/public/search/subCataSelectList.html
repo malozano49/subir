@@ -1,0 +1,11 @@
+<!-- :: [public/search/subCataSelectList.html] -->
+<div class="bs-searchbox">
+   <input id="subCatalistSearch" type="text" class="form-control" autocomplete="off" role="textbox" aria-label="Search">
+</div>
+<ul id="subCatalist">
+   <li th:each="item : ${solrSearchWeb.solrSearch.subCatalog.optionsSelect}" th:utext="${item.text}"  th:value="${item.value}" th:class=" dropdown-item+' '+|${item.level}|">
+      <span class="text">
+      </span>
+   </li>
+</ul>
+<!-- :: /[public/search/subCataSelectList.html] -->

@@ -1,0 +1,70 @@
+<!-- :: /[public/index/search/results.html] -->
+<th:block th:insert="/public/home/html_type"></th:block>
+
+<head>
+   <th:block th:insert="/public/home/technicalheader::main" th:with="page='opac-index-results'"></th:block>
+</head>
+
+<body class="page_type_index index_results">
+   <header class="header_principal">
+      <th:block th:insert="/public/home/header"></th:block>
+   </header>
+   <main id="acc_anchor_main" class="authority_results">
+
+      <!-- :: Primer row engloba buscador y menos de 10 resultados -->
+      <section id="firstRow" class="sct_firstRow" aria-labelledby="sct_index_search_title">
+         <div class="cont_general_resultados">
+            <!-- :: Buscador Simple / Avanzado -->
+            <div class="cont_results">
+               <th:block th:insert="/public/index/search/search"></th:block>
+            </div>
+            <!-- :: /.cont_results -->
+         </div>
+         <!-- :: /.container -->
+      </section>
+      <!-- :: Segundo row barra controles del listado de resultados -->
+      <section id="secondRow" class="row" aria-labelledby="results_description">
+         <h2 id="results_description" class="sr-only" th:text="#{search.authority.results.title}"></h2>
+         <!-- :: Menos de 10 resultados -->
+         <th:block th:insert="/public/index/fragments/spellchecker"></th:block>
+         <th:block
+            th:if="${solrSearchWeb.solrSearch.results == null or #lists.isEmpty(solrSearchWeb.solrSearch.results.resultList)}">
+            <div class="container-sm cont_alert_wrapper my-2 text-center" aria-live="polite" aria-atomic="true">
+               <div class="alert alert-warning alert_icon alert_search h5" role="alert" aria-atomic="true">
+                  <span class="icono fas fa-search-minus" aria-hidden="true"></span>
+                  <span class="alert_texto" th:text="#{result.noresult}"></span>
+               </div>
+            </div>
+         </th:block>
+         <div id="refreshWrapper" class="container-sm">
+            <th:block
+               th:if="${solrSearchWeb.solrSearch.results != null and not #lists.isEmpty(solrSearchWeb.solrSearch.results.resultList)}">
+               <th:block th:insert="/public/catalog/fragments/totalResults"></th:block>
+               <div class="container cont_resultados w-100">
+                  <div class="row listado-resultados-desktop justify-content-center py-3">
+                     <!-- :: Listado de resultados -->
+                     <div class="portadas-list w-100">
+                        <th:block th:insert="/public/catalog/fragments/catalogView"></th:block>
+                     </div>
+                     <!-- :: /.portadas-list -->
+                  </div>
+                  <!-- :: /.listado-resultados-desktop -->
+               </div>
+               <!-- :: /.container -->
+            </th:block>
+         </div>
+         <!-- :: /#refreshWrapper -->
+      </section>
+      <!-- :: /#secondRow -->
+
+   </main>
+   <footer class="footer_principal">
+      <th:block th:insert="/public/home/footer"></th:block>
+   </footer>
+   <th:block th:insert="/public/home/technicalfooter" th:with="page='opac-index-results'"></th:block>
+</body>
+
+</html>
+
+</html>
+<!-- :: /[public/index/search/results.html] -->

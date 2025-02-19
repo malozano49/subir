@@ -1,0 +1,215 @@
+<!-- :: [title/fragments/recommendedBtnModal.html] -->
+
+<th:block th:if='${fragment_insert=="searchListElement"}'>
+
+          <button th:if="${managerLevels != null and #lists.size(managerLevels) == 1}"
+            type="button"
+            th:class="'btn_message_js btn_recommended btn btn-secondary float-right'+${item.recommendedSize >= recommendedStoredLimit?' btn_limite_alcanzado':''}"
+            th:classappend="${item.recommended}?'active':''"
+
+            data-btn_action="recommended_toggle"
+            data-btn_recommended_type="recommended_one_level"
+
+            th:data-message_activo="#{recommended.modal.add.ok}"
+            th:data-message_no_activo="#{recommended.delete.ok}"
+            th:data-message_limit_warning="#{recommended.list.error}"
+
+            th:attr="data-id=${item.oaiIdentifierB64},
+              data-level=${#strings.replace(managerLevels[0].code,' ','_')},
+              aria-label=${item.recommended}?#{recommended.button.active.title}:#{recommended.button.inactive.title},
+              title=${item.recommended}?#{recommended.button.active.title}:#{recommended.button.inactive.title},
+              data-title_initial=#{summary.save.recommended.text},
+              data-recommended-limit=${recommendedStoredLimit},
+              data-recommended-size=${item.recommendedSize},
+              data-recommended-message=#{recommended.limit}"
+          >
+            <!-- :: Botón en lista de resultados de búsqueda -->
+            <span class="icono fas fa-flag mt-auto mr-1" aria-hidden="true"></span>
+          </button>
+
+          <button th:if="${managerLevels != null and #lists.size(managerLevels) > 1}"
+            type="button"
+            class="btn_message_js btn_recommended btn_recommended_level modal_js btn btn-secondary float-right"
+            th:classappend="${item.recommended}?'active':''"
+
+            data-modal_tipo="light"
+            data-modal_size="modal-lg"
+            th:data-modal_target="'#modal_recommended_'+${item.oaiIdentifierB64}"
+            data-modal_discriminador="modal_recommended_levels"
+            th:data-modal_title="#{recommended.modal.title}"
+            th:data-modal_html="'#modal_recommended_levels_form_'+${item.oaiIdentifierB64}"
+            data-modal_footer="false"
+
+            data-btn_action="recommended_toggle"
+            data-btn_recommended_type="recommended_multilevel"
+
+            th:data-message_activo="#{recommended.modal.add.ok}"
+            th:data-message_no_activo="#{recommended.delete.ok}"
+            th:data-message_limit_warning="#{recommended.list.error}"
+
+            th:attr="data-id=${item.oaiIdentifierB64},
+              aria-label=${item.recommended}?#{recommended.button.active.title}:#{recommended.button.inactive.title},
+              title=${item.recommended}?#{recommended.button.active.title}:#{recommended.button.inactive.title},
+              data-title_initial=#{summary.save.recommended.text},
+              data-recommended-limit=${recommendedStoredLimit},
+              data-recommended-size=${recommendedSize},
+              data-recommended-message=#{recommended.limit}"
+          >
+            <!-- :: Botón en manager lista de resultados de búsqueda -->
+            <!-- :: Al ser multinivel no lleva control de límites -->
+            <span class="icono fas fa-flag mt-auto mr-1" aria-hidden="true"></span>
+          </button>
+          <div th:if="${managerLevels != null and #lists.size(managerLevels) > 1}" th:id="'modal_recommended_levels_form_'+${item.oaiIdentifierB64}" class="modal_recommended_levels_form d-none" aria-hidden="true">
+            <form class="recommended_modal_form_list_items" th:action="@{${thymeleafMap.get('MANAGER_RECOMMENDED_ADD_BRANCH')}}" method="POST">
+              <input type="hidden" name="id" th:value="${item.oaiIdentifierB64}">
+              <div class="content_recommended recommended_modal_form_list_items d-flex flex-column col-md-12 mb-3">
+                <div class="alert alert-info alert-info_initial alert_icon alert-dismissible fade show">
+                  <span class="icono fas fa-info-circle"></span>
+                  <span class="alert_titulo mb-2" th:text="#{recommended.modal.add.info.header}"></span>
+                  <span class="alert_texto mb-1" th:text="#{recommended.modal.add.info.line.1}"></span>
+                  <span class="alert_texto mb-1" th:text="#{recommended.modal.add.info.line.2}"></span>
+                  <span class="alert_texto mb-1" th:text="#{recommended.modal.add.info.line.3}"></span>
+                  <span class="alert_texto" th:text="#{recommended.modal.add.info.line.4}"></span>
+                  <button type="button" class="close" data-dismiss="alert" th:aria-label="#{modal.close}">
+                    <span aria-hidden="true">×</span>
+                  </button>
+                </div>
+                <fieldset class="cont_form_group w-100 mb-2 pl-0">
+                  <legend class="sr-only" th:text="#{recommended.modal.add.actions}"></legend>
+                  <div class="cont_botonera_recommend_buttons  w-100 d-flex justify-content-center mt-3">
+                    <button type="button" th:id="recommend_all_levels_on+${item.oaiIdentifierB64}" name="recommend_all_levels_on" class="btn btn-outline-secondary mr-2" th:text="#{recommended.modal.add.all}" />
+                    <button type="button" th:id="recommend_all_levels_off+${item.oaiIdentifierB64}" name="recommend_all_levels_off" class="btn btn-outline-secondary" th:text="#{recommended.modal.add.none}" />
+                  </div>
+                  <!-- /.cont_botonera_form -->
+                </fieldset>
+                <fieldset class="cont_all_checks_of_levels w-100 mb-2">
+                  <legend class="sr-only" th:text="#{recommended.modal.add.levels.title}"></legend>
+                  <div class="form-group cont_check cont_check_tunned" th:each="level : ${managerLevels}">
+                    <input type="checkbox" class="level_recommended data_prueba" th:title="#{${'level.'+level.level}(${level.text})}" th:id="'level_' + ${item.oaiIdentifierB64} + '_' + ${#strings.replace(level.code,' ','_')}" name="levelRecommended" th:value="${level.code}" th:checked="${#sets.contains(item.levelRecommended, level.code)}"  th:disabled="${level.maxReached and !#sets.contains(item.levelRecommended, level.code)}"/>
+                    <label th:for="'level_' + ${item.oaiIdentifierB64} + '_' + ${#strings.replace(level.code,' ','_')}" th:text="#{${'level.'+level.level}(${level.text})}" />
+                  </div>
+                </fieldset>
+              </div>
+              <!-- /.content_recommended -->
+              <div class="cont_alerts alerts_action w-100 d-flex flex-column" aria-live="polite" aria-atomic="true"></div>
+
+              <div class="cont_botonera_form recommended_modal_form_list_items w-100 d-flex justify-content-center mt-3">
+                <button class="btn btn-outline-secondary mr-2" data-dismiss="modal" th:text="#{modal.exit}" />
+                <button type="submit" class="btn btn-primary btn-add-recommended">
+                  <span class="" th:text="#{recommended.modal.add.button}"></span>
+                 </button>
+              </div>
+              <!-- :: /.cont_botonera_form -->
+            </form>
+          </div>
+          <!-- :: /.modal_recommended_levels_form -->
+</th:block>
+
+<th:block th:if='${fragment_insert=="location"}'>
+
+      <button th:if="${#lists.size(managerLevels) == 1}"
+        type="button"
+        th:class="'btn_message_js btn_recommended btn btn-secondary float-right'+${recommendedSize >= recommendedStoredLimit?' btn_limite_alcanzado':''}"
+        th:classappend="${recommendedActive}?'active':''"
+
+        th:data-message_activo="#{recommended.modal.add.ok}"
+        th:data-message_no_activo="#{recommended.delete.ok}"
+        th:data-message_limit_warning="#{recommended.list.error}"
+
+        data-btn_action="recommended_toggle"
+        data-btn_recommended_type="recommended_one_level"
+
+        th:attr="data-id=${detail.catalog.oaiIdentifierB64},
+          data-level=${#strings.replace(managerLevels[0].code,' ','_')},
+          aria-label=${recommendedActive}?#{recommended.button.active.title}:#{recommended.button.inactive.title},
+          title=${recommendedActive}?#{recommended.button.active.title}:#{recommended.button.inactive.title},
+          data-title_initial=#{summary.save.recommended.text},
+          data-recommended-limit=${recommendedStoredLimit},
+          data-recommended-size=${recommendedSize},
+          data-recommended-message=#{recommended.limit}"
+      >
+        <!-- :: Botón en detalle del item -->
+        <span class="icono fas fa-flag mt-auto mr-1" aria-hidden="true" ></span>
+       <!--  <span class="btn_title" aria-hidden="true" th:text="#{summary.save.recommended.text}"></span>  -->
+      </button>
+
+      <button th:if="${#lists.size(managerLevels) > 1}"
+        type="button"
+        th:class="'btn_message_js btn_recommended btn_recommended_level modal_js btn btn-secondary float-right'+${recommendedActive?' active':''}"
+
+        data-modal_tipo="light"
+        data-modal_size="modal-lg"
+        th:data-modal_target="'#modal_recommended_'+${detail.catalog.oaiIdentifierB64}"
+        data-modal_discriminador="modal_recommended_levels"
+        th:data-modal_title="#{recommended.title}"
+        th:data-modal_html="'#recommended_modal_form_'+${detail.catalog.oaiIdentifierB64}"
+        data-modal_footer="false"
+
+        th:data-message_activo="#{recommended.modal.add.ok}"
+        th:data-message_no_activo="#{recommended.delete.ok}"
+
+        data-btn_action="recommended_toggle"
+        data-btn_recommended_type="recommended_multilevel"
+
+        th:attr="
+          data-id=${detail.catalog.oaiIdentifierB64},
+          aria-label=${recommendedActive}?#{recommended.button.active.title}:#{recommended.button.inactive.title},
+          title=${recommendedActive}?#{recommended.button.active.title}:#{recommended.button.inactive.title},
+          data-title_initial=#{summary.save.recommended.text},
+          data-recommended-limit=${recommendedStoredLimit},
+          data-recommended-size=${recommendedSize},
+          data-recommended-message=#{recommended.limit}"
+      >
+        <!-- :: Botón en manager detalle del item multinivel -->
+        <!-- :: Al ser multinivel no lleva control de límites -->
+        <span class="icono fas fa-flag mt-auto mr-1" aria-hidden="true" ></span>
+      <!--    <span class="btn_title" aria-hidden="true" th:text="#{summary.save.recommended.text}"></span> -->
+      </button>
+
+      <div th:id="'recommended_modal_form_'+${detail.catalog.oaiIdentifierB64}" class="recommended_modal_form d-none" aria-hidden="true">
+        <form class="recommended_modal_form_detail_item" th:action="@{${thymeleafMap.get('MANAGER_RECOMMENDED_ADD_BRANCH')}}" method="POST">
+          <input type="hidden" name="id" th:value="${detail.catalog.oaiIdentifierB64}">
+
+          <div class="content_recommended recommended_modal_form_detail_item d-flex flex-column col-md-12 mb-3">
+            <div class="alert alert-info alert-info_initial alert_icon alert-dismissible fade show">
+              <span class="icono fas fa-info-circle"></span>
+              <span class="alert_titulo mb-2" th:text="#{recommended.modal.add.info.header}"></span>
+              <span class="alert_texto mb-1" th:text="#{recommended.modal.add.info.line.1}"></span>
+              <span class="alert_texto mb-1" th:text="#{recommended.modal.add.info.line.2}"></span>
+              <span class="alert_texto mb-1" th:text="#{recommended.modal.add.info.line.3}"></span>
+              <span class="alert_texto" th:text="#{recommended.modal.add.info.line.4}"></span>
+              <button type="button" class="close" data-dismiss="alert" th:aria-label="#{modal.close}">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <fieldset class="cont_form_group w-100 mb-2 pl-0">
+              <legend class="sr-only" th:text="#{recommended.modal.add.actions}"></legend>
+              <div class="cont_botonera_recommend_buttons  w-100 d-flex justify-content-center mt-3">
+                <button type="button" th:id="recommend_all_levels_on+${detail.catalog.oaiIdentifierB64}" name="recommend_all_levels_on" class="btn btn-outline-secondary mr-2" th:text="#{recommended.modal.add.all}" />
+                <button type="button" th:id="recommend_all_levels_off+${detail.catalog.oaiIdentifierB64}" name="recommend_all_levels_off" class="btn btn-outline-secondary" th:text="#{recommended.modal.add.none}" />
+              </div>
+              <!-- /.cont_botonera_form -->
+            </fieldset>
+            <fieldset class="cont_all_checks_of_levels w-100 mb-2">
+              <legend class="sr-only" th:text="#{recommended.modal.add.levels.title}"></legend>
+              <div class="form-group cont_check cont_check_tunned" th:each="level : ${managerLevels}">
+                <input type="checkbox" class="" th:id="'level_' + ${#strings.replace(level.code,' ','_')}" name="levelRecommended" th:value="${level.code}" th:checked="${level.recommended}" th:disabled="${level.maxReached and !level.recommended}"/>
+                <label th:for="'level_' + ${#strings.replace(level.code,' ','_')}" th:text="#{${'level.'+level.level}(${level.text})}" />
+              </div>
+            </fieldset>
+          </div>
+          <!-- /.content_recommended -->
+          <div class="cont_alerts alerts_action w-100 d-flex flex-column" aria-live="polite" aria-atomic="true"></div>
+
+          <div class="cont_botonera_form recommended_modal_form_detail_item w-100 d-flex justify-content-center mt-3">
+            <button type="button" class="btn btn-outline-secondary mr-2" data-dismiss="modal" th:text="#{modal.exit}" />
+            <button type="submit" class="btn btn-primary btn-add-recommended">
+              <span class="btn_title" th:text="#{recommended.modal.add.button}"></span>
+            </button>
+          </div>
+          <!-- :: /.cont_botonera_form -->
+        </form>
+      </div>
+      <!-- :: /.recommended_modal_form -->
+</th:block>
+<!-- :: /[title/fragments/recommendedBtnModal.html] -->

@@ -1,0 +1,38 @@
+<!-- :: [manager/fragments/alertMarcas.html]-->
+
+<!--/* :: desde insertaMarca() se recuperan iconos y title para aportar en la lista */-->
+<div class="cont cont_help_with_button mt-3">
+  <div class="cont_botonera_help">
+    <button type="button" class="btn btn_show_help" th:title="#{general.btn_show_help.title}" th:aria-label="#{general.btn_show_help.title}">
+      <span class="icono fas fa-info" aria-hidden="true"></span>
+    </button>
+  </div>
+  <!-- :: /.cont_botonera_help -->
+  <div class="alert dispose_icons_js alert-info alert_icon alert-dismissible mt-3 mb-0">
+    <span class="icono fas fa-info-circle pr-3" aria-hidden="true"></span>
+    <span class="alert_titulo mb-2" th:text="#{alert.info.title}"></span>
+
+    <div class="alert_texto">
+        <span class="marca_color out"></span>
+        <span th:text="#{manager.item.color.out.of.date}"></span>
+        <span tabindex="0" data-type="out" role="definition" th:aria-label="#{manager.mark.out.of.time}" th:title="#{manager.mark.out.of.time}" class="icono_js fas fa-calendar-times"></span>
+    </div>
+    <div class="alert_texto">
+      <span class="marca_color add"></span>
+      <span th:text="#{manager.item.color.new}"></span>
+      <span tabindex="0" data-type="add" role="definition" th:aria-label="#{manager.mark.new}" th:title="#{manager.mark.new}" class="icono_js fas fa-plus-circle"></span>
+    </div>
+    <div class="alert_texto">
+      <span class="marca_color mod"></span>
+      <span th:text="#{manager.item.color.updated}"></span>
+      <span tabindex="0" data-type="mod" role="definition" th:aria-label="#{manager.mark.changed}" th:title="#{manager.mark.changed}" class="icono_js fas fa-edit"></span>
+    </div>
+    <button type="button" class="close" data-dismiss="alert" th:aria-label="#{modal.close.title}" th:title="#{modal.close.title}">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <!-- :: /.alert -->
+</div>
+<!-- :: /.cont_help_with_button -->
+
+<!-- :: /[manager/fragments/alertMarcas.html]-->

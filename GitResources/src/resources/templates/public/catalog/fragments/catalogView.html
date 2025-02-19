@@ -1,0 +1,29 @@
+<!-- :: [/public/catalog/fragments/catalogView.html] -->
+<div id="refreshData" class="listadoResultados">
+   <!-- sorting/pagination -->
+   <th:block th:insert="/public/catalog/fragments/searchPagination.html" th:with="position='top'"></th:block>
+   <!--result list-->
+   <div class="cont_catalog_result_list d-flex">
+      <ul id="resultList" class="catalog-result-list list-unstyled table-striped">
+         <th:block th:each="item, iterStat : ${solrSearchWeb.solrSearch.results.resultList}">
+         	<th:block th:unless="${thymeleafMap.get('AUTHORITY') == solrSearchWeb.solrSearch.queryType or thymeleafMap.get('INDEX') == solrSearchWeb.solrSearch.queryType}">
+         		<th:block th:if=${item.hasDataResourceSolr}>
+         		<!--Recursos existente Solr-->
+         			<th:block th:insert="/public/catalog/fragments/searchListElement.html"></th:block>
+       			</th:block>
+       			<th:block th:unless=${item.hasDataResourceSolr}>
+       			<!--Recursos no existente en Solr-->
+       				<th:block th:insert="/public/catalog/fragments/searchListElementMissing.html"></th:block>
+       			</th:block>	
+       		</th:block>
+       		<th:block th:if="${thymeleafMap.get('AUTHORITY') == solrSearchWeb.solrSearch.queryType}" th:insert="/public/catalog/fragments/searchListAuthorityElement.html"></th:block>
+            <th:block th:if="${thymeleafMap.get('INDEX') == solrSearchWeb.solrSearch.queryType}" th:insert="/public/catalog/fragments/searchListIndexElement.html"></th:block>
+         </th:block>
+      </ul>
+   </div>
+   <!-- sorting/pagination -->
+   <th:block th:insert="/public/catalog/fragments/searchPagination.html" th:with="position='bottom'"></th:block>
+</div>
+<!-- :: /#refreshData -->
+
+<!-- :: /[/public/catalog/fragments/catalogView.html] -->

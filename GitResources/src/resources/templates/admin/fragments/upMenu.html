@@ -1,0 +1,34 @@
+<!-- :: [admin/fragments/upMenu.html] -->
+<nav aria-labelledby="nav_admin--title">
+
+  <h2 id="nav_admin--title" class="sr-only" th:text="#{administration.up.menu.title}"></h2>
+  <ul class="pagination justify-content-end row">
+     <li class="page-item" th:classappend="${adminSection=='properties'} ? active : ''">
+        <a th:href="@{${thymeleafMap.get('ADMIN_PROPERTIES_PATH')}}" th:text="#{administration.properties.area}" class="page-link" >
+        </a>
+     </li>
+     <li class="page-item" th:classappend="${adminSection=='oai'} ? active : ''">
+        <a th:href="@{${thymeleafMap.get('ADMIN_OAI_PATH')}}" th:text="#{administration.oai.area}" class="page-link" >
+        </a>
+     </li>
+     <li class="page-item" th:classappend="${adminSection=='data'} ? active : ''">
+        <a th:href="@{${thymeleafMap.get('ADMIN_DATA_PATH')}}" th:text="#{administration.data.area}" class="page-link">
+        </a>
+     </li>
+     <li class="page-item" th:classappend="${adminSection=='monitor'} ? active : ''">
+        <a th:href="@{${thymeleafMap.get('ADMIN_MONITOR_PATH')}}" th:text="#{administration.monitor.area}" class="page-link link_monitor">
+        </a>
+     </li>
+     <li class="page-item" th:classappend="${adminSection=='password'} ? active : ''">
+        <a th:href="@{${thymeleafMap.get('ADMIN_PASSWORD_PATH')}}" th:text="#{administration.password.area}" class="page-link">
+        </a>
+     </li>
+     
+     <!-- Adds component view adders -->
+        <th:block th:each="fragment:${ADMIN_ADMIN_ENTRY}">
+        	<th:block th:insert="${fragment}"></th:block>
+        </th:block>
+     
+  </ul>
+</nav>
+<!-- :: /[admin/fragments/upMenu.html] -->

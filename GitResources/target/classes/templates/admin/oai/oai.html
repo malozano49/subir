@@ -1,0 +1,165 @@
+<!-- :: [admin/oai/oai.html] -->
+	<fieldset class="col-md-12 pr-0 pl-0 mb-3">
+    <h4 class="h3 d-block font-weight-bold mt-2 mb-3" th:text="#{administration.properties.oai.sources}"></h4>
+    <div class="cont_sortable cont_sortable_admin-section" th:classappend="${adminProps.editEnabled}? '' : 'sortable_disabled'" data-sortable='{"peticion":"oaiSourcesAjax"}'>
+      <div th:if="${adminProps.editEnabled}" class="alert alert-info alert-dismissible fade show d-flex flex-column w-auto ">
+        <span class="alert_titulo mb-2" th:text="#{administration.properties.drag.drop.title}"></span>
+        <span class="alert_texto" th:text="#{administration.properties.drag.drop.text.1}"></span>
+        <span class="alert_texto" th:text="#{administration.properties.drag.drop.text.2}"></span>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <!-- :: /.alert-info -->
+      <input type="hidden" name="oai.oaiSourcesOrder" value="">
+      <div class="cont_select_oai w-100 mb-3 mt-3">
+
+        <ul id="select_oai" class="cmp_sortable cmp_sortable_list" data-multidrag=false>
+          <li class="cmp_sortable_item cmp_sortable_item_form_row form-row d-flex flex-wrap col-md-12 pr-4 pt-3 pl-2 m-0 border" th:if="${adminProps.oai.oaiSources != null}" th:data-order-init="${iStat.index}"th:each="source,iStat: ${adminProps.oai.oaiSources}">
+
+            <input class="propietary" type="hidden" th:id="${'catalog_' + __${iStat.index}__}" th:field="${adminProps.oai.oaiSources[__${iStat.index}__].catalog}">
+            <input class="propietary" type="hidden" th:id="${'lastFrom_' + __${iStat.index}__}" th:field="${adminProps.oai.oaiSources[__${iStat.index}__].lastFrom}">
+            <input class="propietary" type="hidden" th:id="${'identifierPrefix_' + __${iStat.index}__}" th:field="${adminProps.oai.oaiSources[__${iStat.index}__].identifierPrefix}">
+            <input class="propietary" type="hidden" th:id="${'linkFields_' + __${iStat.index}__}" th:field="${adminProps.oai.oaiSources[__${iStat.index}__].linkFields}">
+
+            <div class="cont_form_group col-lg-2 col-md-5 col-sm-12">
+                <div class="form-group">
+                  <label th:for="${'originCode_' + __${iStat.index}__}" class="bmd-label-floating" th:text="#{administration.properties.oai.source.code}"></label>
+                  <input type="text" th:id="${'originCode_' + __${iStat.index}__}" class="form-control" autocomplete="off" th:disabled="${!adminProps.editEnabled}" th:field="${adminProps.oai.oaiSources[__${iStat.index}__].originCode}">
+                  <span class="bmd-help" th:text="#{administration.properties.oai.source.code.info}"></span>
+                </div>
+                <!-- :: /.form-group -->
+            </div>
+            <!-- :: /.cont_form_group -->
+
+            <div class="cont_form_group col-lg-6 col-md-7 col-sm-12">
+                <div class="form-group">
+                  <label th:for="${'url_' + __${iStat.index}__}" class="bmd-label-floating" th:text="#{administration.properties.oai.source.url}"></label>
+                  <input type="text" th:id="${'url_' + __${iStat.index}__}" class="form-control" autocomplete="off" th:disabled="${!adminProps.editEnabled}" th:field="${adminProps.oai.oaiSources[__${iStat.index}__].url}">
+                  <span class="bmd-help" th:text="#{administration.properties.oai.source.url.info}"></span>
+                </div>
+                <!-- :: /.form-group -->
+            </div>
+            <!-- :: /.cont_form_group -->
+
+            <div class="cont_form_group col-lg-2 col-md-5 col-sm-12 mb-3">
+              <div class="form-group cont_selectPicker" th:classappend="${!adminProps.editEnabled} ? 'cont_select_disabled' : ''">
+                <label th:for="'subcatalog_type_'+${iStat.index}" class="bmd-label-floating" th:text="#{administration.properties.oai.source.metadata.prefix}"></label>
+                <select th:id="'subcatalog_type_'+${iStat.index}" name="subcatalog_type" class="form-control" th:disabled="${!adminProps.editEnabled}" th:field="${adminProps.oai.oaiSources[__${iStat.index}__].metadataPrefix}" th:aria-label="#{administration.properties.oai.source.metadata.prefix}">
+                  <option th:each="subcatalog_type_opt : ${thymeleafMap.get('MetadataPrefixType')}" th:value="${subcatalog_type_opt}" th:text="${subcatalog_type_opt}"></option>
+                </select>
+                <span class="bmd-help" th:text="#{administration.properties.oai.source.metadata.prefix.info}"></span>
+              </div>
+              <!-- :: /.form-group.cont_selectPicker -->
+            </div>
+            <!-- :: /.cont_form_group -->
+
+            <div class="cont_form_group col-lg-2 col-md-7 col-sm-12">
+              <div class="form-group">
+                <label th:for="${'set_' + __${iStat.index}__}" class="bmd-label-floating" th:text="#{administration.properties.oai.source.set}"></label>
+                <input type="text" th:id="${'set_' + __${iStat.index}__}" class="form-control" autocomplete="off" th:disabled="${!adminProps.editEnabled}" th:field="${adminProps.oai.oaiSources[__${iStat.index}__].set}">
+                <span class="bmd-help" th:text="#{administration.properties.oai.source.set.info}"></span>
+              </div>
+              <!-- :: /.form-group -->
+            </div>
+            <!-- :: /.cont_form_group -->
+
+            <div class="cont_form_group col-lg-2 col-md-5 col-sm-12">
+              <div class="form-group">
+                <label th:for="${'mapper_' + __${iStat.index}__}" class="bmd-label-floating" th:text="#{administration.properties.oai.source.mapper}"></label>
+                <input type="text" th:id="${'mapper_' + __${iStat.index}__}" class="form-control" autocomplete="off" th:disabled="${!adminProps.editEnabled}" th:field="${adminProps.oai.oaiSources[__${iStat.index}__].mapper}">
+                <span class="bmd-help" th:text="#{administration.properties.oai.source.mapper.info}"></span>
+              </div>
+              <!-- :: /.form-group -->
+            </div>
+            <!-- :: /.cont_form_group -->
+
+            <div class="cont_form_group col-lg-3 col-md-4 col-sm-12">
+              <div class="form-group">
+                <label th:for="${'cron_' + __${iStat.index}__}" class="bmd-label-floating" th:text="#{administration.properties.oai.source.cron.expression}"></label>
+                <input type="text" th:id="${'cron_' + __${iStat.index}__}" class="form-control" autocomplete="off" th:disabled="${!adminProps.editEnabled}" th:field="${adminProps.oai.oaiSources[__${iStat.index}__].cron}">
+                <span class="bmd-help" th:text="#{administration.properties.oai.source.cron.expression.info}"></span>
+              </div>
+              <!-- :: /.form-group -->
+            </div>
+            <!-- :: /.cont_form_group -->
+
+            <div class="cont_form_group col-lg-3 col-md-3 col-sm-12 pl-2 pr-2 mb-3 d-flex align-items-center">
+              <div class="form-group cont_check cont_check_tunned pt-lg-3 pt-md-0">
+                <label class="mb-lg-2 mb-md-0" th:for="${'active_' + __${iStat.index}__}" th:text="#{administration.properties.oai.source.active}"></label>
+                <input type="checkbox" th:id="${'active_' + __${iStat.index}__}" th:field="${adminProps.oai.oaiSources[__${iStat.index}__].active}" th:disabled="${!adminProps.editEnabled}">
+              </div>
+              <!-- :: /.form-group -->
+            </div>
+            <!-- :: /.cont_form_group -->
+
+            <button type="button" class="btn_cmp_sortable_item_form_row--remove_item" th:title="#{administration.properties.buttons.delete.title}" th:aria-label="#{administration.properties.buttons.delete.title}"></button>
+          </li>
+        </ul>
+        <div class="botonera_select_standard_view_fields w-100 d-flex justify-content-end pt-3">
+          <button type="button" class="btn btn-primary btn-add_new btn-add_new--recent mr-2" th:title="#{administration.properties.buttons.add.title}" th:aria-label="#{administration.properties.buttons.add.title}">
+            <span class="btn_titleWhite" aria-hidden="true" th:text="#{administration.properties.buttons.add}"></span>
+          </button>
+          <button type="button" class="btn btn-primary btn_delete_all_items modal_js" th:title="#{administration.properties.buttons.delete.all.title}" th:aria-label="#{administration.properties.buttons.delete.all.title}"
+            th:data-modal_title="#{administration.properties.buttons.delete.all}"
+            data-modal_size="modal-md"
+            data-modal_target="#cmp_sortable_remove_all_items--most_recent"
+            data-modal_tipo="warning"
+            data-modal_discriminador="modal_sortable_remove_all_items--most_recent"
+            data-modal_html="#modal_remove_all_items--most_recent"
+            data-modal_footer="false"
+          >
+          <span class="btn_titleWhite" aria-hidden="true" th:text="#{administration.properties.buttons.delete.all}"></span>
+        </button>
+          <div id="modal_remove_all_items--most_recent" class="d-none" aria-hidden="true">
+            <span class="float-left col-md-12 mb-4" th:text="#{administration.properties.buttons.delete.all.confirmation(#{administration.properties.oai.sources})}"></span>
+            <div class="modal-footer">
+              <button type="button" class="btn_cerrar btn btn-outline-secondary" data-dismiss="modal" th:aria-label="#{administration.properties.buttons.delete.all.confirmation.cancel.aria.label}" th:text="#{administration.properties.buttons.delete.all.confirmation.cancel}"></button>
+              <button type="button" class="btn_eliminar_items btn btn-primary" th:aria-label="#{administration.properties.buttons.delete.all.confirmation.remove.aria.label}" th:text="#{administration.properties.buttons.delete.all.confirmation.remove}"></button>
+            </div>
+          </div>
+          <!-- :: /#modal_remove_all_items -->
+        </div>
+        <!-- :: #botonera_select_standard_view_fields -->
+      </div>
+      <!-- :: /.cont_select_oai -->
+    </div>
+    <!-- :: /.cont_sortable.cont_sortable_admin-section -->
+
+    <div th:unless="${adminProps.oai.oaiSources != null}">
+      <div class="alert alert-warning alert_icon" role="alert" aria-atomic="true">
+        <span class="icono fas fa-search-minus"></span>
+
+        <span class="alert_titulo sr-only" th:text="#{alert.error.title}"></span>
+        <span class="alert_texto" th:text="#{administration.properties.oai.sources.empty.list}"></span>
+      </div>
+    </div>
+
+	</fieldset>
+
+	<fieldset class="cont_selects col-md-12 pr-0 pl-0 mb-3">
+    <h4 class="h3 d-block font-weight-bold mt-2 mb-3" th:text="#{administration.properties.oai.cron.scheduler}"></h4>
+    <div class="form-row d-flex flex-wrap col-md-12 pr-0 pl-0 m-0">
+      <div class="cont_form_group col-lg-6 col-md-10 col-sm-12">
+        <div class="form-group">
+          <label for="oai_cron_expression" class="bmd-label-floating" th:text="#{administration.properties.oai.cron.expression}"></label>
+          <input type="text" id="oai_cron_expression" class="form-control" autocomplete="off" name="oai_cron_expression" tabindex="-1" th:disabled="${!adminProps.editEnabled}" th:field="*{adminProps.oai.oaiCronExpression}">
+          <span id="oai_cron_expression_help" class="bmd-help" th:text="#{administration.properties.oai.cron.expression.info}"></span>
+        </div>
+        <!-- :: /.form-group -->
+      </div>
+      <!-- :: /.cont_form_group -->
+
+      <div class="cont_form_group col-lg-1 col-md-2 col-sm-12">
+        <div class="form-group cont_check cont_check_tunned">
+          <label th:for="oai_cron_expression_active" th:text="#{administration.properties.oai.cron.active}"></label>
+          <input type="checkbox" th:id="oai_cron_expression_active" th:field="*{adminProps.oai.oaiCronExpressionActive}" th:disabled="${!adminProps.editEnabled}">
+        </div>
+        <!-- :: /.form-group -->
+      </div>
+      <!-- :: /.cont_form_group -->
+    </div>
+    <!-- :: /.form-row -->
+	</fieldset>
+
+<!-- :: /[admin/oai/oai.html] -->

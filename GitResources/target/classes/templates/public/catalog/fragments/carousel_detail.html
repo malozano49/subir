@@ -1,0 +1,70 @@
+<!-- :: [catalog/fragments/carousel_detail.html] -->
+    <li class="swiper-slide">
+      <figure>
+          <div class="cont_image invisible">
+             <button type="submit" class="page-link align-self-center"  tabindex="-1" th:title="#{result.detail}" th:aria-label="#{result.detail}">
+                <th:block th:insert="/public/catalog/fragments/recordImage :: image(${item.oaiIdentifierB64})"></th:block>
+             </button>
+          </div>
+          <figcaption class="card-body">
+               <h3 class="item-title" th:unless="${(item.marcFields.get('t245')==null or #strings.isEmpty(item.marcFields.get('t245')[0]))}">
+                  <button type="submit" th:text="${item.marcFields.get('t245')[0]}" class="page-link text-left" th:title="${item.marcFields.get('t245')[0]}"
+                     th:aria-label="${item.marcFields.get('t245')[0]}" th:id="${item.oaiIdentifierB64}"></button>
+               </h3>
+               <th:block th:if="${(item.marcFields.get('t245')==null or #strings.isEmpty(item.marcFields.get('t245')[0]))}">
+                  <h3 class="item-title" th:unless="${(item.marcFields.get('t240')==null or #strings.isEmpty(item.marcFields.get('t240')[0]))}">
+                     <button type="submit" th:text="${item.marcFields.get('t240')[0]}" class="page-link text-left" th:title="${item.marcFields.get('t240')[0]}" 
+                        th:aria-label="${item.marcFields.get('t240')[0]}"  th:id="${item.oaiIdentifierB64}"></button>
+                  </h3>
+               </th:block>
+               <p class="item-authority" 
+                  th:if="${item.marcFields.get('t100') != null or item.marcFields.get('t110') != null or item.marcFields.get('t111') != null or item.marcFields.get('t700') != null or item.marcFields.get('t710') != null or item.marcFields.get('t711') != null}">
+                  <th:block th:if="${item.marcFields.get('t100') != null}" th:each="mvalor: ${item.marcFields.get('t100')}">
+                     <span >
+                        <th:block th:text="${mvalor} + ' '"></th:block>
+                     </span>
+                  </th:block>
+                  <th:block th:if="${item.marcFields.get('t110') != null}" th:each="mvalor: ${item.marcFields.get('t110')}">
+                     <span >
+                        <th:block th:text="${mvalor} + ' '"></th:block>
+                     </span>
+                  </th:block>
+                  <th:block th:if="${item.marcFields.get('t111') != null}" th:each="mvalor: ${item.marcFields.get('t111')}">
+                     <span >
+                        <th:block th:text="${mvalor} + ' '"></th:block>
+                     </span>
+                  </th:block>
+                  <th:block th:if="${item.marcFields.get('t700') != null}" th:each="mvalor: ${item.marcFields.get('t700')}">
+                     <span >
+                        <th:block th:text="${mvalor} + ' '"></th:block>
+                     </span>
+                  </th:block>
+                  <th:block th:if="${item.marcFields.get('t710') != null}" th:each="mvalor: ${item.marcFields.get('t710')}">
+                     <span >
+                        <th:block th:text="${mvalor} + ' '"></th:block>
+                     </span>
+                  </th:block>
+                  <th:block th:if="${item.marcFields.get('t711') != null}" th:each="mvalor: ${item.marcFields.get('t711')}">
+                     <span >
+                        <th:block th:text="${mvalor} + ' '"></th:block>
+                     </span>
+                  </th:block>
+               </p>
+               <p th:if="${item.marcFields.get('t260') != null or item.marcFields.get('t264') != null}" class="item-publication">
+                  <th:block th:if="${item.marcFields.get('t260') != null}" th:each="mvalor: ${item.marcFields.get('t260')}">
+                     <span >
+                        <th:block th:text="${mvalor} + ' '"></th:block>
+                     </span>
+                  </th:block>
+                  <th:block th:if="${item.marcFields.get('t264') != null}" th:each="mvalor: ${item.marcFields.get('t264')}">
+                     <span >
+                        <th:block th:text="${mvalor} + ' '"></th:block>
+                     </span>
+                  </th:block>
+               </p>
+          </figcaption>
+      </figure>
+    </li>
+
+
+<!-- :: /[catalog/fragments/carousel_detail.html] -->

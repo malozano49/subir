@@ -1,0 +1,238 @@
+<th:block th:insert="/public/home/html_type"></th:block>
+<th:block th:insert="/public/home/technicalheader::main" th:with="page=${'opac-help-favorites-es_ES'}"></th:block>
+<script type="text/javascript">
+	var menu = document.getElementById('menu');
+	Stickyfill.add(menu);
+</script>
+<body>
+<div id="burger-menu" class="burger-menu">
+  <span></span>
+  			<div id="menu2" class="menu menu2">
+			<div class=""><nav class="sn-contents" aria-label="Secondary">
+      <ul class="sidenav--list">
+<li><a href="#favorites">Favoritos</a>
+					</li>
+						<li><a href="#emailFavorites">Como compartir por email los favoritos</a></li>
+						<li><a href="#addListFavorites">Como crear listas de favoritos</a></li>
+						<li><a href="#appendRecordList">Como añadir registros a una de mis listas de favoritos</a></li>
+						<li><a href="#moviFavorites">Como mover un favorito a otra lista existente</a></li>
+						<li><a href="#delRecordList">Como eliminar registros de listas existentes</a></li>
+						<li><a href="#modifyDescList">Como modificar la descripción asociada a una lista</a></li>
+						<li><a href="#delList">Como eliminar una lista</a></li>
+
+				
+				<li><a href="#searchAuthority">Acceso a búsqueda en autoridades</a></li>
+				<li><a href="#searchIndexes">Acceso a búsqueda en los índices</a></li>
+				<li><a href="#lastSearh">Acceso a últimas búsquedas realizadas</a></li>
+				<li><a href="#historySearch">Acceso a búsquedas guardadas</a></li>
+				<li><a href="#profil">Acceso a Mi perfil</a></li>
+				<li><a href="#home">Acceso a la página de inicio</a></li></ul></nav>
+</div>
+		</div>
+</div>
+
+	<div class="wrapper cf">
+	<div id="menu" class="menu">
+			<div class="sidenav"><nav class="sn-contents" aria-label="Secondary">
+      <ul class="sidenav--list">
+ <li><a href="#favorites">Favoritos</a>
+					</li>
+						<li><a href="#emailFavorites">Como compartir por email los favoritos</a></li>
+						<li><a href="#addListFavorites">Como crear listas de favoritos</a></li>
+						<li><a href="#appendRecordList">Como añadir registros a una de mis listas de favoritos</a></li>
+						<li><a href="#moviFavorites">Como mover un favorito a otra lista existente</a></li>
+						<li><a href="#delRecordList">Como eliminar registros de listas existentes</a></li>
+						<li><a href="#modifyDescList">Como modificar la descripción asociada a una lista</a></li>
+						<li><a href="#delList">Como eliminar una lista</a></li>
+
+				
+				<li><a href="#searchAuthority">Acceso a búsqueda en autoridades</a></li>
+				<li><a href="#searchIndexes">Acceso a búsqueda en los índices</a></li>
+				<li><a href="#lastSearh">Acceso a últimas búsquedas realizadas</a></li>
+				<li><a href="#historySearch">Acceso a búsquedas guardadas</a></li>
+				<li><a href="#profil">Acceso a Mi perfil</a></li>
+				<li><a href="#home">Acceso a la página de inicio</a></li></ul></nav>
+</div>
+		</div>
+		<div class="content">
+			<a name="top"></a>
+			<a name="favorites"></a>
+			<h2 class="title-help">Favoritos</h2>
+			<p>Desde esta opción se visualizan los registros que haya marcado como favoritos. </p>
+			<p class="tab2-help">Por defecto, el resultado de la búsqueda se muestra ordenado en grupos de 10, pero existe la posibilidad de agrupar los resultados de 25 en 25 o de 35 en 35.</p>
+			<p class="tab5-help margen10"><img th:src="@{/img/help/results-by-page.png}" alt="Resultados por página" width="250px"></p>
+			<p class="tab2-help">Para moverse por las diferentes páginas de los resultados obtenidos existen las siguientes opciones:</p>
+			<ul class="tab4-help margen5">
+				<li>Haga clic en <img th:src="@{/img/help/next.png}" alt="Siguiente" width="75px"> para moverse a la siguiente página.</li>
+				<li>Haga clic en <img th:src="@{/img/help/back.png}" alt="Anterior" width="75px"> para moverse a la página anterior.</li>
+				<li>Haga clic en el nº de página que le interese visualizar
+					<br><br><img th:src="@{/img/help/number-by-page.png}" alt="Numero de pagina" width="350px">
+				</li>
+				<li>Haga clic en el nº 1 para visualizar la primera página
+					<br><br><img th:src="@{/img/help/first-page.png}" alt="Primera pagina" width="350px"/>
+				</li>
+				<li>Haga clic en el nº anterior a Siguiente para ir a la última página
+					<br><br><img th:src="@{/img/help/last-page.png}" alt="Ultima pagina" width="350px"/>
+				</li>
+			</ul>
+			<a name="emailFavorites"></a>
+			<h4 class="title-help">Cómo compartir por email los favoritos</h4>
+			<p>Si quiere compartir por correo electrónico los registros que ha marcado como favoritos</p>
+			<ul class="tab5-help margen5">
+				<li>1. Haga clic en <img th:src="@{/img/help/icon-favorites.png}" alt="Icono favoritos"/></li>  
+				<li>2. Haga clic en <img th:src="@{/img/help/btn-share-email1.png}" alt="Botón Compartir email 1" width="150px"/></li>  
+				<li>3. Se abre una ventana para que introduzca un correo electrónico <br>
+					<span class="center-text-help"><img th:src="@{/img/help/share-email.png}" alt="Compartir email" width="350px"/></span>
+				</li>
+				<li>4. Haga clic en <img th:src="@{/img/help/btn-share-email2.png>" alt="Botòn Compartir email 2" width="150px"/> para enviar los favoritos al correo electrónico introducido</li>
+			</ul>
+			<a name="addListFavorites"></a>
+			<h4 class="title-help">Cómo crear listas de favoritos</h4>
+			<ul class="tab5-help margen5">
+				<li>1. Haga clic en la opción <img th:src="@{/img/help/icon-add-list.png>" alt="Icono añadir Lista"/>   asociada al registro que quiere  añadir a la nueva lista.
+				<li>2. Haga clic en la opción <img th:src="@{/img/help/btn-add-list.png>" alt="Botón nueva lista" width="100px"/>
+				<li>3. Introduzca la descripción que quiere asociar a la nueva lista.<br>
+					<span class="tab3-help margen5"><img th:src="@{/img/help/append-list-new.png>" alt="Añadir nueva lista" width="200px"/>
+				</li>
+				<li>4. Haga clic en <img th:src="@{/img/help/btn-add-title-list.png>" alt="Botón añadir lista seleccionada" width="200px"/>
+					<ul class="tab3-help margen5">
+						<li>se crea la nueva lista con el registro asociado</li>
+						<li>los registros pertenecientes a una lista de favoritos, se muestran con la siguiente imagen distintiva:
+							<img th:src="@{/img/help/icon-record-in-list.png>" alt="Registro en listas"/>
+						</li>  
+						<li>si desea visualizar las listas que tiene creadas, haga clic en su usuario y seleccione la opción <i>Mis listas</i><br>
+							<span class="tab5-help margen5"><img th:src="@{/img/help/my-lists.png>" alt="Mis listas" width="150px"/>
+						</li>
+					</ul>
+				</li>
+			</ul>
+			<a name="appendRecordList"></a>
+			<h4 class="title-help">Como engadir rexistros a unha das miñas listas de favoritos</h4>
+			<p>Se desexa engadir rexistros a unha das súas listas de favoritos,</p>
+			<ul class="tab5-help margen5">
+			    <li>1. Faga clic na opción <img th:src="@{/img/help/icon-add-list.png}" alt="Ícono de engadir lista"/> asociada ao rexistro que desexa engadir a unha das listas xa creadas.
+			    <li>2. Seleccione a lista que lle interese.<br>
+			        <span class="tab5-help margen5"><img th:src="@{/img/help/list-selection.png}" alt="Seleccionar lista" width="250px"/></span>
+			    </li>
+			    <li>3. Faga clic en <img th:src="@{/img/help/btn-add-title-list.png}" alt="Botón de engadir lista" width="200px"/>
+			    </li>
+			</ul>
+			
+			<a name="moviFavorites"></a>
+			<h4 class="title-help">Como mover un favorito a outra lista existente</h4>
+			<p>Se quere mover algún dos rexistros que ten nunha lista a outra diferente, debe identificarse previamente. Para iso, faga clic en
+			    <img th:src="@{/img/help/my-profile.png}" alt="O meu perfil" width="65px"/>.
+			</p>
+			<ul class="tab5-help margen10">
+			    <li>1. Faga clic no seu usuario e seleccione a opción <i>As miñas listas</i><br>
+			        <span class="tab5-help margen5"><img th:src="@{/img/help/my-lists.png}" alt="As miñas listas" width="250px"/></span>
+			    </li>
+			    <li>2. Faga clic na lista onde se atopa o rexistro que quere mover<br>
+			        <span class="tab5-help margen5"><img th:src="@{/img/help/list-my.png}" alt="As miñas listas" width="350px"/></span>
+			    </li>
+			    <li>3. Faga clic na opción <img th:src="@{/img/help/icon-share.png}" alt="Ícono de compartir" /> asociada ao rexistro que quere cambiar de lista.</li>
+			    <li>4. Seleccione a lista á que quere mover o rexistro
+			        </br><span class="tab5-help margen5"><img th:src="@{/img/help/move-list.png}" alt="Mover lista" width="250px"/></span>
+			    </li>
+			    <li>5. Faga clic en <img th:src="@{/img/help/update.png}" alt="Botón de actualizar" width="100px"/> para mover o rexistro á lista seleccionada.
+			    </li>
+			</ul>
+			<a name="delRecordList"></a>
+			<h4 class="title-help">Como eliminar rexistros de listas existentes</h4>
+			<p>Se desexa eliminar algún dos rexistros dunha lista, debe identificarse previamente. Para iso, faga clic en
+			    <img th:src="@{/img/help/my-profile.png}" alt="O meu perfil" width="65px"/>.
+			</p>
+			<p>Unha vez que estea identificado,</p>
+			<ul class="tab5-help margen10">
+			    <li>1. Faga clic no seu usuario e seleccione a opción <i>As miñas listas</i> <br>
+			        <span class="tab5-help margen5"><img th:src="@{/img/help/my-lists.png}" alt="As miñas listas" width="250px"/></span>
+			    </li>
+			    <li>2. Faga clic na lista onde se atopa o rexistro que quere eliminar<br>
+			        <span class "tab5-help margen5"><img th:src="@{/img/help/list-my.png}" alt="As miñas listas" width="350px"/></span>
+			    </li>
+			    <li>3. Faga clic na opción <img th:src="@{/img/help/icon-paper-bin-1.png}" alt="Ícono de papelera"/> asociada ao rexistro que quere eliminar
+			        <br><span class="tab5-help margen5"><img th:src="@{/img/help/records.png}" alt="Rexistro" width="350px"/></span>
+			        <ul class="tab3-help">
+			            <li>Para volver a visualizar as listas que ten creadas, faga clic en <img th:src="@{/img/help/return.png}" alt="Volver" width="50px"/></li>
+			        </ul>
+			    </li>
+			</ul>
+			<a name="modifyDescList"></a>
+			<h4 class="title-help">Como modificar a descrición asociada a unha lista</h4>
+			<p>Se desexa modificar a descrición asociada a unha lista de favoritos, debe identificarse previamente. Para iso, faga clic en
+			    <img th:src="@{/img/help/my-profile.png}" alt="O meu perfil" width="65px"/>.
+			</p>
+			<p>Unha vez que estea identificado,</p>
+			<ul class="tab5-help margen10">
+			    <li>1. Faga clic no seu usuario e seleccione a opción <i>As miñas listas</i><br>
+			        <span class="tab5-help margen5"><img th:src="@{/img/help/my-lists.png}" alt="As miñas listas" width="200px"/></span>
+			    </li>
+			    <li>2. Faga clic na opción <img th:src="@{/img/help/icon-update.png}" alt="Ícono de modificar lista"/> asociada á lista da que quere modificar a descrición.</li>
+			    <li>3. Modifique a descrición da lista<br>
+			        <span class="tab5-help margen5"><img th:src="@{/img/help/box-update-list.png}" alt="Caixa de modificar lista" width="350px"/></span>
+			        <ul class="tab3-help">
+			            <li>Se non quere gardar a modificación, faga clic en <img th:src="@{/img/help/icon-close.png}" alt="Ícono de pechar lista"/>.</li>
+			            <li>Se quere gardar o cambio, faga clic en <img th:src="@{/img/help/icon-accept.png}" alt="Ícono de aceptar"/>.</li>
+			        </ul>
+			    </li>
+			</ul>
+			<a name="delList"></a>
+			<h4 class="title-help">Como eliminar unha lista</h4>
+			<p>Se desexa eliminar unha das súas listas de favoritos, debe identificarse previamente. Para iso, faga clic en
+			    <img th:src="@{/img/help/my-profile.png}" alt="O meu perfil" width="65px"/>.
+			</p>
+			<p>Unha vez que estea identificado,</p>
+			<ul class="tab5-help margen10">
+			    <li>1. Faga clic no seu usuario e seleccione a opción <i>As miñas listas</i><br>
+			        <span class="tab5-help margen5"><img th:src="@{/img/help/my-lists.png}" alt="As miñas listas" width="200px"/></span>
+			    </li>
+			    <li>2. Faga clic na opción <img th:src="@{/img/help/icon-paper-bin-1.png}" alt="Ícono de papelera"/> asociada á lista que desexa eliminar.</li>
+			    <li>3. Aparece unha mensaxe pedindo confirmación da eliminación<br>
+			        <span class="tab5-help margen5"><img th:src="@{/img/help/del-confirmation.png}" alt="Botón confirmación" width="300px"/></span><p>
+			        <ul class="tab3-help">
+			            <li>Se non quere eliminar a lista, faga clic en <img th:src="@{/img/help/btn-close.png}" alt="Botón de pechar lista" width="50px"/></li><p>  
+			            <li>Se quere eliminar a lista, faga clic en <img th:src="@{/img/help/btn-del-list.png}" alt="Botón de borrar lista" width "100px"/></li>
+			        </ul> 
+			    </li>
+			</ul>
+			<a name="searchAuthority"></a>
+			<h2 class="title-help">Acceso á busca en autoridades</h2>
+			<p>Para realizar unha busca de autoridades que permita localizar rexistros que conteñen unha autoridade específica, faga clic na opción <i>Busca autoridades</i>.</p>
+			<a name="searchIndexes"></a>
+			<h2 class="title-help">Acceso á busca nos índices</h2>
+			<p>Para realizar unha busca que localice palabras ou patróns de palabras parecidas ao termo ou termos introducidos, faga clic na opción <i>Busca índices</i>.</p>
+			<a name="lastSearh"></a>
+			<h2 class="title-help">Acceso ás últimas buscas realizadas</h2>
+			<p>Para visualizar as <span class="text-bold-help">10</span> últimas buscas realizadas que devolveron resultados durante a sesión do Opac, faga clic en <i>Últimas buscas</i>.</p>
+			<a name="historySearch"></a>
+			<h2 class="title-help">Acceso a buscas gardadas</h2>
+			<p>Se quere gardar algunha das buscas que realizou para poder executalas noutro momento, faga clic en <i>Buscas gardadas</i>.</p>
+			<p class="tab2-help">* Para poder gardar buscas é necesario que se identifique previamente</p>
+			<a name="profile"></a>
+			<h2 class="title-help">Acceso a Mi Perfil</h2>
+			<p>Faga clic na opción <i>Mi perfil</i> e identifíquese para poder acceder ás seguintes utilidades de <span class="text-bold-help">ODA</span>:</p>	
+			<ul class="tab5-help margen10">
+			    <li>Datos persoais</li>
+			    <li>Solicitudes</li>
+			    <li>Préstamos activos</li>
+			    <li>Histórico de préstamos</li>
+			    <li>Renovar préstamos</li>
+			    <li>Anular reservas</li>
+			    <li>Gardar buscas</li>
+			    <li>Crear listas de favoritos</li>
+			</ul>
+			<p>Para identificarse como usuario pode utilizar calquera destes 3 métodos:</p>
+			<ul class="tab5-help margen10">
+			    <li>nº de carné</li>
+			    <li>correo electrónico que forneceu á súa biblioteca</li>
+			    <li>teléfono móbil que forneceu á súa biblioteca</li>
+			</ul>
+			<a name="home"></a>
+			<h2 class="title-help">Acceso á páxina de inicio</h2>
+			<p>Para ir á páxina de inicio, faga clic en <i>Inicio</i>.</p>
+			<p class="top-help"><a href="#top">Arriba</a></p>
+		</div>			 
+	</div>	
+	<th:block th:insert="/public/home/technicalfooter" th:with="page='opac-dataprivacyterms'"/>
+</body>
+</html>

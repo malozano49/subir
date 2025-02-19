@@ -1,0 +1,49 @@
+<!-- :: [reader/fragments/lateralMenu.html] -->
+<div class="reader-menu tipo_lateralMenu d-flex navbar-expand-lg">
+	<div class="menu-title mb-3">
+    <button class="navbar-toggler btn_expand_menu active" type="button" data-toggle="collapse" data-target="#lateralMenu" aria-controls="lateralMenu" aria-expanded="false" >
+      <span class="sr-only" th:text="#{dockbar.biblio.menu}"></span>
+      <span class="icono fas fa-list navbar-toggler-icon"></span>
+    </button>
+		<span th:text="#{dockbar.biblio.title}" class="h2 ml-3 mb-0"></span>
+	</div>
+  <!-- :: /.menu-title -->
+  <nav id="lateralMenu" class="menu_lateral navbar-collapse collapse" aria-labelledby="reader-menu_description">
+    <h2 id="reader-menu_description" class="sr-only" th:text="#{mylibrary.lateral.menu.title}"></h2>
+    <div class="nav reader-menu-items">
+      <ul class="lateral_menu_options">
+        <li class="nav-item">
+          <a th:href="@{${thymeleafMap.get('READER_DATA_PATH')}}" th:title="'Enlace a '+#{dockbar.biblio.personal.data}" class="nav-link" th:classappend="${activeMenu=='data'} ? active : ''"><span class="nav-item_title" th:text="#{dockbar.biblio.personal.data}"></span></a>
+        </li>
+        <li class="nav-item">
+          <a th:href="@{${thymeleafMap.get('READER_TITLE_LIST')}}" th:title="#{dockbar.biblio.personal.title.list.link}" class="nav-link" th:classappend="${activeMenu=='titleList'} ? active : ''"><span class="nav-item_title" th:text="#{dockbar.biblio.personal.title.list}"></span></a>
+        </li>
+        <li class="nav-item">
+          <a th:href="@{${thymeleafMap.get('READER_LOANS_PATH')}}" th:title="#{dockbar.biblio.loans.reservations}" class="nav-link" th:classappend="${activeMenu=='loans'} ? active : ''"><span class="nav-item_title" th:text="#{dockbar.biblio.loans.reservations}"></span></a>
+        </li>
+        <li class="nav-item"  th:if="${commentsEnabled}">
+         <a th:href="@{${thymeleafMap.get('READER_COMMENTS')}}" th:title="#{dockbar.biblio.comment}" class="nav-link" th:classappend="${activeMenu=='comments'} ? active : ''"><span class="nav-item_title" th:text="#{dockbar.biblio.comment}"></span></a>
+        </li>
+        <li class="nav-item"  th:if="${suggestionsEnabled}">
+         <a th:href="@{${thymeleafMap.get('READER_SUGGESTIONS')}}" th:title="#{dockbar.biblio.suggestions}" class="nav-link" th:classappend="${activeMenu=='suggestions'} ? active : ''"><span class="nav-item_title" th:text="#{dockbar.biblio.suggestions}"></span></a>
+        </li>
+        <li class="nav-item"  th:if="${buySuggestionsEnabled}">
+         <a th:href="@{${thymeleafMap.get('READER_BUY_SUGGESTIONS')}}" th:title="#{dockbar.biblio.buysuggestions}" class="nav-link" th:classappend="${activeMenu=='buysuggestions'} ? active : ''"><span class="nav-item_title" th:text="#{dockbar.biblio.buysuggestions}"></span></a>
+        </li>
+        <li class="nav-item"  th:if="${buySuggestionsEnabled}">
+         <a th:href="@{${thymeleafMap.get('READER_BUY_SUGGESTIONS_ACEPTED')}}" th:title="#{dockbar.biblio.buysuggestions.acepted}" class="nav-link" th:classappend="${activeMenu=='buysuggestionsAcepted'} ? active : ''"><span class="nav-item_title" th:text="#{dockbar.biblio.buysuggestions.acepted}"></span></a>
+        </li>
+        <!-- <li class="nav-item disabled">
+          <a href="#" th:title="#{dockbar.biblio.warning}" class="nav-link" tabindex="-1" aria-disabled="true"><span class="nav-item_title" th:text="#{dockbar.biblio.warning}"></span></a>
+        </li>
+        <li class="nav-item disabled">
+          <a href="#" th:title="#{dockbar.biblio.list}" class="nav-link" tabindex="-1" aria-disabled="true"><span class="nav-item_title" th:text="#{dockbar.biblio.list}"></span></a>
+        </li> -->
+      </ul>
+    </div>
+    <!-- :: /.reader-menu-items -->
+  </nav>
+  <!-- :: /#lateralMenu -->
+</div>
+<!-- :: /.reader-menu-->
+<!-- :: /[reader/fragments/lateralMenu.html] -->

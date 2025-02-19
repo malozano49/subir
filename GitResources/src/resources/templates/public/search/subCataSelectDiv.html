@@ -1,0 +1,28 @@
+<th:block th:fragment="selectname(sname,sfield,var,ncomb,showBtnCambiar,padSeleSubcata)">
+  <!-- :: [public/search/subCataSelectDiv.html] -->
+ <div class="auto-search selects_dependientes_js">
+    <th:block th:each="comb,iter : ${var}">
+      <div class="cont_form_group busqueda-catalogos">
+        <div class="form-group cont_selectPicker">
+          <label th:for="${sfield}+${iter.index}+'.optionSelected'" class="sr-only" th:text="#{search.subcatalog.selection}"></label> 
+          <!--/* :: WARNING: Si el select dependiente no tiene la clase '.con_literal_subcatalogo', la opcion Todos los subcatálogos se oculta y se proporciona inicialmente al select el value de la siguiente opcion */-->
+          <select aria-describedby="Modifica el subcatálogo" th:field="*{__${sfield}__[__${iter.index}__].optionSelected}" class="sub-cata-select form-control "  th:attr="data-select_num=${iter.index+1}" data-live-search="true">
+            <!-- <th:block  th:insert="/public/search/subCataOptions :: options(collection=${comb.optionsSelect},mselected=${comb.optionSelected},sfield=${sfield})"></th:block>-->
+            <th:block  th:each="item : ${comb.optionsSelect}" >
+              <option  th:selected="${item.value == comb.optionSelected}" th:utext="${item.text}"  th:value="${item.value}" th:class="${item.level}"></option>
+            </th:block>
+          </select>
+          <span id="subcathalog" class="sr-only">Modifica el subcatálogo ya sea por paises, ciudades o bibliotecas para que al usuario se le muestren unas opciones más acorde con su perfil</span>
+          <span class="bmd-help" th:text="#{search.subcatalog.selection.help}"></span>
+        </div>
+      </div>
+    </th:block>
+      <!-- if origin as select -->   
+      <th:block th:if="${originView=='select'}"  th:insert="/public/search/copySourcesSelect"/>   
+      <!-- /if --> 
+      <!-- if origin as radiobuttons -->   
+      <th:block th:if="false" th:insert="/public/search/copySources"/> 
+      <!-- /if --> 
+  </div>
+  <!-- :: [public/search/subCataSelectDiv.html] -->
+ </th:block>

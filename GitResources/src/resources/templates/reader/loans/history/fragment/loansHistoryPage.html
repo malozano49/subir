@@ -1,0 +1,89 @@
+
+<!-- :: [reader\loans\history\fragment\loansHistoryPage.html]-->
+
+   <div th:id="'cont_table_'+${source}" th:if="${not loanPagVO.loansVOList.isEmpty()}" class="librarys cont_table_big_00 w-100"  aria-live="polite" aria-atomic="true">
+
+    <!-- Origen del histórico de préstamos -->
+    <th:block th:if="${loanPagVO != null} and not ${loanPagVO.loansVOList.isEmpty()}">
+      <span th:if="${source==thymeleafMap.get('ABSYSNET_SOURCE')}" th:id="'titulo_situacion_'+ ${source}" class="location_title" th:text="#{mylibrary.loan.library.copies}"></span>
+      <span th:unless="${source==thymeleafMap.get('ABSYSNET_SOURCE')}" th:id="'titulo_situacion_'+ ${source}" class="location_title" th:text="${source}"></span>
+    </th:block>
+
+    <!-- :: barra paginacion superior -->
+     <th:block th:if="${not #lists.isEmpty(loanPagVO.loansVOList)}" th:insert="/reader/loans/history/fragment/loansHistoryPageNav" th:with="position_bar='top'"></th:block>
+
+     <th:block th:if="${not #lists.isEmpty(loanPagVO.loansVOList)}" th:each="value, iterStat : ${loanPagVO.loansVOList}">
+       <th:block th:if="${iterStat.index == 0 or (iterStat.index > 0 and loanPagVO.loansVOList[iterStat.index-1].loanLibrary.description != value.loanLibrary.description)}">
+         <h4 class="tb_00_legend col-md-12">
+           <span class="cont_title">
+             <span class="tb_00_legend-title font-weight-bold" th:text="#{copy.library.label} + ':'"></span>
+             <span class="tb_00_legend-value" th:text="${value.loanLibrary.description}"></span>
+           </span>
+         </h4>
+       </th:block>
+	       <div th:data-id="'table_'+${source} + '_'+ ${iterStat.index}" class="table_big_00 col-md-12 pl-0 pr-0">
+	         <!-- :: TITULOS DESKTOP -->
+	         <ul class="tb_00_titles desktop_flex d-flex col-md-12 mb-2" th:if="${iterStat.index == 0 or (iterStat.index > 0 and loanPagVO.loansVOList[iterStat.index-1].loanLibrary.description != value.loanLibrary.description)}">
+	           <li class="type_title col_branchDescription">
+	             <span class="title font-weight-bold" th:text="#{mylibrary.loanhistory.branchDescription}"></span>
+	           </li>
+	           <li class="type_title col_title">
+	             <span class="title font-weight-bold" th:text="#{mylibrary.loanhistory.title}"></span>
+	           </li>
+	           <li class="type_title col_author">
+	             <span class="title font-weight-bold" th:text="#{mylibrary.loanhistory.author}"></span>
+	           </li>
+	           <li class="type_title col_loanDate">
+	             <span class="title font-weight-bold" th:text="#{mylibrary.loanhistory.loanDate}"></span>
+	           </li>
+	           <li class="type_title col_returnDate">
+	             <span class="title font-weight-bold" th:text="#{mylibrary.loanhistory.returnDate}"></span>
+	           </li>
+	         </ul>
+	         <!-- :: /TITULOS DESKTOP -->
+	         <div class="cont_data col-md-12">
+	           <ul class="tb_00_data d-flex col-md-12 m-0 p-0">
+	             <li class="type_data col_branchDescription">
+	               <span class="title font-weight-bold mobile" th:text="#{mylibrary.loanhistory.branchDescription}" th:classappend="${(iterStat.index > 0 and loanPagVO.loansVOList[iterStat.index-1].loanLibrary.description == value.loanLibrary.description) ? 'd-md-none' : ''}"></span>
+	               <span class="data" th:text="${value.loanBranch.description}"></span>
+	             </li>
+	             <li class="type_data col_title">
+	               <span class="title mobile" th:text="#{mylibrary.loanhistory.title}" th:classappend="${(iterStat.index > 0 and loanPagVO.loansVOList[iterStat.index-1].loanLibrary.description == value.loanLibrary.description) ? 'd-md-none' : ''}"></span>
+	               <a class="data" th:href="@{/public/catalog/detail/{id}(id=${value.id})}">
+	                 <th:block th:if="${value.tfields !=null}" th:insert="/reader/fragments/title :: frag(${value.tfields}, ${value.id})" th:aria-labelledby="${'title_' + value.id}"/>
+	               </a>
+	             </li>
+	             <!-- :: Este contenedor lleva boton de despliegue para la version movil -->
+	             <li class="type_data cont_btn_desplegar col_author">
+	               <span class="title mobile" th:text="#{mylibrary.loanhistory.author}" th:classappend="${(iterStat.index > 0 and loanPagVO.loansVOList[iterStat.index-1].loanLibrary.description == value.loanLibrary.description) ? 'd-md-none' : ''}"></span>
+	               <div class="data" th:if="${value.tfields !=null}" th:insert="/reader/fragments/author :: frag(${value.tfields}, ${value.id})"></div>
+	               <!-- :: Este boton solo aparece en mobile y en el attr data-target se encuentran las clases a ocultar (con el caracter '.') separadas por el caracter ',' -->
+	               <button type="button" class="tb_00_btn_collapse mobile" data-target=".col_loanDate,.col_returnDate" aria-expanded="false">
+	                 <span class="sr-only" th:text="#{mylibrary.loanhistory.expand.author.title}"></span>
+	                 <span class="icono fa text-danger fa-angle-down" aria-hidden="true"></span>
+	               </button>
+	             </li>
+	             <!-- :: Este contenedor esta oculto en version movil -->
+	             <li class="type_data col_loanDate">
+	               <span class="title mobile" th:text="#{mylibrary.loanhistory.loanDate}" th:classappend="${(iterStat.index > 0 and loanPagVO.loansVOList[iterStat.index-1].loanLibrary.description == value.loanLibrary.description) ? 'd-md-none' : ''}"></span>
+	               <span class="data value_date" th:text="${#dates.format(value.loanDate, 'dd/MM/yyyy')}"></span>
+	             </li>
+	             <!-- :: Este contenedor esta oculto en version movil -->
+	             <li class="type_data col_returnDate">
+	               <span class="title mobile" th:text="#{mylibrary.loanhistory.returnDate}" th:classappend="${(iterStat.index > 0 and loanPagVO.loansVOList[iterStat.index-1].loanLibrary.description == value.loanLibrary.description) ? 'd-md-none' : ''}"></span>
+	               <span class="data value_date" th:text="${#dates.format(value.returnDate, 'dd/MM/yyyy')}"></span>
+	             </li>
+	           </ul>
+	         </div>
+	         <!-- :: /.cont_data -->
+	       </div>
+	       <!-- :: /.table_big_00 -->
+      </th:block>
+
+      <!-- :: barra paginacion inferior -->
+      <!-- :: dejamos paginacion al final si elegimos mas de 10 elementos por pagina y hay al menos 9 en la página-->
+      <th:block th:if="${loanPagVO.elementPage > 10 and loanPagVO.loansVOList.size() > 10}" th:insert="/reader/loans/history/fragment/loansHistoryPageNav" th:with="position_bar='bottom'"></th:block>
+    </div>
+    <!-- :: /.cont_table_big_00 -->
+
+<!-- :: /[reader\loans\history\fragment\loansHistoryPage.html]-->

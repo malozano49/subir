@@ -1,0 +1,78 @@
+<!-- :: [title/stickySidebar.html] -->
+<span class="d-none stickySidebar" th:text="${page}"></span>
+
+<th:block th:if="${page == 'opac-detail'}">
+  <div class="blq cont_anchors" >
+    <a href="#share" class="btn_anchor" th:title="#{sidebar.share.title}" th:aria-label="#{sidebar.share.title}">
+      <span class="icono fas fa-share-alt" aria-hidden="true"></span>
+    </a>
+    <a href="#tlocalizaciones-tab" class="btn_anchor js-tabOpen" th:title="#{sidebar.copy.info.title}" th:aria-label="#{sidebar.copy.info.title}">
+      <span class="icono fas fa-map-marker-alt" aria-hidden="true"></span>
+    </a>
+    <a href="#tmoredetails-tab" class="btn_anchor js-tabOpen" th:title="#{sidebar.copy.details}" th:aria-label="#{sidebar.copy.details}">
+      <span class="icono fas fa-newspaper" aria-hidden="true"></span>
+    </a>
+    <a href="#comments" class="btn_anchor" th:title="#{sidebar.comments.title}" th:aria-label="#{sidebar.comments.title}">
+      <span class="icono fas fa-comments" aria-hidden="true"></span>
+    </a>
+    <a href="#suggestions" class="btn_anchor"  th:title="#{sidebar.explore.title}" th:aria-label="#{sidebar.explore.title}">
+      <span class="icono fab fa-wpexplorer" aria-hidden="true"></span>
+    </a>
+    <a href="#cont_relationed" class="btn_anchor"  th:title="#{sidebar.relationed.title}" th:aria-label="#{sidebar.relationed.title}">
+      <span class="icono fas fa-award" aria-hidden="true"></span>
+    </a>
+  </div>
+  <!-- :: /.cont_anchors -->
+</th:block>
+
+<th:block th:if="${page == 'opac-home'}">
+  <div class="blq cont_anchors" >
+    <a href="#sct_buscador" class="btn_anchor" th:title="#{sidebar.btn_buscador.title}" th:aria-label="#{sidebar.btn_buscador.title}">
+      <span class="icono fas fa-search" aria-hidden="true"></span>
+    </a>
+    <a href="#recommendations_art_suggest_0" class="btn_anchor" th:title="#{sidebar.btn_recomendados.title}" th:aria-label="#{sidebar.btn_recomendados.title}">
+      <span class="icono fas fa-award" aria-hidden="true"></span>
+    </a>
+    <a href="#sct_other" class="btn_anchor" th:title="#{sidebar.btn_recientes.title}" th:aria-label="#{sidebar.btn_recientes.title}">
+      <span class="icono fas fa-calendar-check" aria-hidden="true"></span>
+    </a>
+    <a href="#art_links" class="btn_anchor" th:title="#{sidebar.btn_interest_links.title}" th:aria-label="#{sidebar.btn_interest_links.title}">
+      <span class="icono fas fa-external-link-square-alt" aria-hidden="true"></span>
+    </a>
+    <a href="#art_agenda" class="btn_anchor" th:title="#{sidebar.btn_activities.title}" th:aria-label="#{sidebar.btn_activities.title}">
+      <span class="icono fas fa-calendar-alt" aria-hidden="true"></span>
+    </a>
+  </div>
+  <!-- :: /.cont_anchors -->
+</th:block>
+
+<th:block th:if="${page == 'opac-properties'}">
+  <div class="blq cont_anchors mr-1" >
+    <a href="#art_pagina_inicio" class="btn_anchor" th:title="#{sidebar.btn_home.title}" th:aria-label="#{sidebar.btn_home.title}">
+      <span class="icono fas fa-home" aria-hidden="true"></span>
+    </a>
+    <a href="#art_lector" class="btn_anchor" th:title="#{sidebar.btn_lector.title}" th:aria-label="#{sidebar.btn_lector.title}">
+      <span class="icono fas fa-book" aria-hidden="true"></span>
+    </a>
+    <a href="#art_detalle" class="btn_anchor" th:title="#{sidebar.btn_title_detail.title}" th:aria-label="#{sidebar.btn_title_detail.title}">
+      <span class="icono fab fa-discourse" aria-hidden="true"></span>
+    </a>
+    <a href="#art_subcatalogo" class="btn_anchor" th:title="#{sidebar.btn_subcatalog.title}" th:aria-label="#{sidebar.btn_subcatalog.title}">
+      <span class="icono fab fa-elementor" aria-hidden="true"></span>
+    </a>
+  </div>
+  <!-- :: /.cont_anchors -->
+</th:block>
+
+<th:block th:if="${page == 'opac-oai'}">
+  <div class="blq cont_anchors mr-1" >
+    <a href="#art_oai" class="btn_anchor" th:title="#{sidebar.btn_oai.title}" th:aria-label="#{sidebar.btn_oai.title}">
+      <span class="icono fas fa-file-code" aria-hidden="true"></span>
+    </a>
+    <a href="#art_cover" class="btn_anchor" th:title="#{sidebar.btn_cover_provider.title}" th:aria-label="#{sidebar.btn_cover_provider.title}">
+      <span class="icono fas fa-book-medical" aria-hidden="true"></span>
+    </a>
+  </div>
+  <!-- :: /.cont_anchors -->
+</th:block>
+<!-- :: /[title/stickySidebar.html] -->

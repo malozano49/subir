@@ -1,0 +1,101 @@
+<!-- :: [reader/fragments/storedRecord.html] -->
+
+<div class="cont_form_group col-md-12">
+  <div class="form-group cont_input">
+    <label for="searchHistoryFinder" class="bmd-label-floating" th:text="#{search.record.stored.filter.title}"></label>
+    <input type="text" id="searchHistoryFinder" class="input_li_filter form-control" autocomplete="off" value="">
+    <span id="term_2help" class="bmd-help" th:text="#{search.record.stored.filter.help}"></span>
+  </div>
+</div>
+
+<ul th:if="records!=null" id="ul_filtered_hiliter_00" class="ul_filtered_js records_list w-100">
+  <li th:each="record,iter : ${storedRecordsPage}" class="li_filtered_js card w-100">
+    <span class="sr-only" th:text="#{search.record.stored.pagination.text(${iter.index+1},${iter.size})}"></span>
+    <div class="card-body w-100 d-flex">
+      <div class="cont_dateTime">
+<!--/* @TODO 210114 Insertar fecha traducida en attr data-fecha_accesible, el attr data-fecha_string se trata desde js para pintar la hoja de almanaque desde Baratz.tmpls_actions.DATETIME_ALMANAC() */-->
+        <span aria-hiden="true" class="record_datetime js_transform_datetime d-none" data-print_hora="false"  th:data-fecha_accesible="${#dates.format(record.storedDate, 'dd/MM/yyyy HH:mm:ss')}" th:data-fecha_string="${#dates.format(record.storedDate, 'dd/MM/yyyy HH:mm:ss')}"/>
+      </div>
+      <!-- :: /.cont_dateTime -->
+      <div class="cont_data_search">
+       <div class="cont_search w-100">
+          <span class="cont__title sr-only" th:text="#{search.record.query}"></span>
+          <th:block th:if="${thymeleafMap.get('ADVANCED') == record.solrSearchVO.queryType}">
+            <h4 class="cont_link">
+              <a class="search_highlighted cont_link__link_js link" th:href="@{${thymeleafMap.get('ADVANCED_SEARCH_ACTION')}(tabId=${record.solrSearchVO.tabId})}">
+                <th:block th:each="avanced : ${record.solrSearchVO.solrAdvancedSearchRows}">
+                  <th:block th:if="${avanced.query != null and avanced.query != '' }">
+                    <span class="operator_00" th:if="${avanced.operator != null and !#strings.isEmpty(avanced.operator)}" th:text="' '+#{${avanced.operator}}"></span>
+                    <span class="operator_01" th:if="${avanced.field != null and !#strings.isEmpty(avanced.field)}" th:text="' '+#{${avanced.field}}"></span>
+                    <span class="operator_02" th:if="${avanced.query != null and !#strings.isEmpty(avanced.query)}" th:text="': '+${avanced.query}"></span>
+                    <span class="operator_03" th:if="${avanced.filter != null and !#strings.isEmpty(avanced.filter)}" th:text="' ('+#{${avanced.filter}} + ')'"></span>
+                    <span class="end_point sr-only">.</span>
+                  </th:block>
+                </th:block>
+                <th:block th:if="${record.solrSearchVO.solrAdvancedSearchFilters != null}">
+                  <span class="filter_00" th:if="${record.solrSearchVO.solrAdvancedSearchFilters.language != null and !#strings.isEmpty(record.solrSearchVO.solrAdvancedSearchFilters.language)}" th:text="', '+#{ba.idioma} + ': '+ #{${record.solrSearchVO.solrAdvancedSearchFilters.language}}"></span>
+                  <span class="filter_01" th:if="${record.solrSearchVO.solrAdvancedSearchFilters.country != null and !#strings.isEmpty(record.solrSearchVO.solrAdvancedSearchFilters.country)}" th:text="', '+#{ba.pais} + ': '+ #{${record.solrSearchVO.solrAdvancedSearchFilters.country}}"></span>
+                  <span class="filter_02" th:if="${record.solrSearchVO.solrAdvancedSearchFilters.format != null and !#strings.isEmpty(record.solrSearchVO.solrAdvancedSearchFilters.format)}" th:text="', '+#{ba.format} + ': '+ #{${record.solrSearchVO.solrAdvancedSearchFilters.format}}"></span>
+                  <span class="filter_03" th:if="${record.solrSearchVO.solrAdvancedSearchFilters.mediaType != null and !#strings.isEmpty(record.solrSearchVO.solrAdvancedSearchFilters.mediaType)}" th:text="', '+#{ba.mediaType} + ': '+ #{${record.solrSearchVO.solrAdvancedSearchFilters.mediaType}}"></span>
+                  <span class="filter_04" th:if="${record.solrSearchVO.solrAdvancedSearchFilters.geoArea != null and !#strings.isEmpty(record.solrSearchVO.solrAdvancedSearchFilters.geoArea)}" th:text="', '+#{ba.geoArea} + ': '+ #{${record.solrSearchVO.solrAdvancedSearchFilters.geoArea}}"></span>
+                  <span class="filter_05" th:if="${record.solrSearchVO.solrAdvancedSearchFilters.fepuInit != null and !#strings.isEmpty(record.solrSearchVO.solrAdvancedSearchFilters.fepuInit)}" th:text="', '+#{ba.initDate} + ': '+ ${record.solrSearchVO.solrAdvancedSearchFilters.fepuInit}"></span>
+                  <span class="filter_06" th:if="${record.solrSearchVO.solrAdvancedSearchFilters.fepuEnd != null and !#strings.isEmpty(record.solrSearchVO.solrAdvancedSearchFilters.fepuEnd)}" th:text="', '+#{ba.finalDate} + ': '+ ${record.solrSearchVO.solrAdvancedSearchFilters.fepuEnd}"></span>
+                </th:block>
+                <span class="end_point sr-only">.</span>
+              </a>
+            </h4>
+            <!-- :: /.cont_link-->
+          </th:block>
+          <th:block th:unless="${thymeleafMap.get('ADVANCED') == record.solrSearchVO.queryType}">
+            <h4 class="cont_link">
+              <a class="cont_link__link_js search_highlighted link" th:href="@{${thymeleafMap.get('SEARCH_ACTION')}(tabId=${record.solrSearchVO.tabId})}" th:text="${record.solrSearchVO.query}"></a><span class="end_point sr-only">.</span>
+            </h4>
+            <!-- :: /.cont_link-->
+          </th:block>
+        </div>
+        <!-- :: /.cont_search -->
+
+        <div class="cont cont_origin">
+          <span class="cont__title sr-only" th:text="#{search.record.origin}"></span>
+          <span class="search_highlighted origin_00" th:if="${record.solrSearchVO.origin == null or record.solrSearchVO.origin == ''}" th:text="#{search.source.any.source}"/>
+          <span class="search_highlighted origin_01" th:if="${record.solrSearchVO.origin != null and record.solrSearchVO.origin == 'AbsysNET'}" th:text="#{search.source.absysnet}"/>
+          <span class="search_highlighted origin_02" th:if="${record.solrSearchVO.origin != null and record.solrSearchVO.origin != '' and record.solrSearchVO.origin != 'AbsysNET'}" th:text="${record.solrSearchVO.origin}"/>
+          <span class="end_point sr-only">.</span>
+        </div>
+        <!-- :: /.cont_origin -->
+
+        <div class="cont cont_catalog" th:if="${SUBCATALOG_ENABLED}">
+          <span class="cont__title sr-only" th:text="#{search.record.catalog}"/>
+
+          <th:block th:if="${record?.solrSearchVO?.subCatalog?.subCatalogs}">
+        <th:block th:if="${#lists.size(record?.solrSearchVO?.subCatalog?.subCatalogs) == 0}">
+          <span class="value" th:text="#{search.subcatalog.all}"/>
+        </th:block>
+
+        <th:block th:if="${#lists.size(record?.solrSearchVO?.subCatalog?.subCatalogs) > 0}">
+          <th:block th:each="subcata : ${record?.solrSearchVO?.subCatalog?.subCatalogs}">
+            <th:block th:each="option : ${subcata.optionsSelect}" >
+              <span class="value" th:if="${option.value == subcata.optionSelected}" th:utext="${option?.text}"/>
+            </th:block>
+          </th:block>
+        </th:block>
+        </th:block>
+
+          <span class="end_point sr-only">.</span>
+        </div>
+        <!-- :: /.cont_catalog -->
+
+        <div class="cont_button d-inline-block">
+          <button type="button" class="btn_record btn_message_js btn btn-link" data-btn_action="record_remove" th:attr="data-id=${record.solrSearchVO.tabId},title=#{search.record.stored.remove.button}" th:aria-label="'Botón '+#{search.record.stored.remove.button} +'.'">
+            <span class="btn_title d-none" th:text="#{search.record.stored.remove.button}"></span>
+            <span class="icono fas fa-trash-alt" aria-hidden="true"></span>
+          </button>
+        </div>
+        <!-- :: /.cont_button -->
+      </div>
+    </div>
+    <!-- :: /.card-body -->
+  </li>
+</ul>
+
+<!-- :: /[reader/fragments/storedRecord.html] -->

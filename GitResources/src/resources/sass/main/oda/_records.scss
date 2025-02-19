@@ -1,0 +1,21 @@
+/******************************************************/
+/**** PAGINA DE FAVORITOS para ODA Master ****/
+/*****************************************************/
+.main_type_records.cont_page_favorites{
+	#favoritos_titulo{
+		width: 50%;
+		text-align: right;
+		
+		@include media_max(xs){
+			width:100%;
+			margin: auto;
+			text-align: center;
+		}
+	}
+	
+		.share_favs {
+			@include media_max(xs){
+				margin: 15px auto 0;
+			}
+		}
+} 

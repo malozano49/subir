@@ -1,0 +1,78 @@
+<!-- :: [/title/fragments/explorePagination.html] -->
+
+  <!-- :: <span th:text="${page}" /> -->
+  <div class="cont_pagination pagination_flex" th:classappend="'cont_'+${pagination_position}">
+    <div class="cont_data_view" th:data-items_total="${totalItems}" th:data-items_page="${itemsPage}">
+      <span class="cont_text cont_items_total" th:text="#{search.pagination.results.total} + ${totalItems}" />
+      <span class="cont_text cont_items_page" th:text="#{search.pagination.results.per.page} + ${itemsPage}" />
+    </div>
+    <!-- :: /.cont_data_view -->
+    <div class="pagination_normal" th:classappend="${pagination_position}" th:data-page_active="${page}" th:data-pages_total="${totalPages}">
+        <nav th:aria-labelledby="'explore_title_nav_pages_in_'+${pagination_position}">
+          <h4 th:id="'explore_title_nav_pages_in_'+${pagination_position}" class="sr-only title_pagination" th:text="#{search.pagination.page.aria}+' '+${pagination_position}"></h4>
+          <ul class="pagination">
+            <li class="btn_anterior btn_mobile preview page-item" th:classappend="${page == 1} ? 'disabled'">
+                <button type="button" class="btn btn-white page-link" th:title="#{search.pagination.page.previous}" data-type="back">
+                  <span class="icono fas fa-angle-left" aria-hidden="true"></span>
+                  <span class="btn_title" th:text="#{search.pagination.page.previous}"></span>
+                </button>
+            </li>
+            <li class="btn_inicio btn_mobile page-item" th:classappend="${page == 1} ? 'active'">
+                <button type="button" class="btn btn-white page-link" th:aria-label="#{search.pagination.first.page}" th:title="#{search.pagination.first.page}" data-type="initial">
+                  <span class="icono fas fa-angle-double-left" aria-hidden="true"></span>
+                  <span class="btn_titlewhite" aria-hidden="true">1</span>
+                </button>
+            </li>
+            <li class="page-item" th:if="${page < 4 && totalPages > 2}" th:classappend="${page == 2} ? 'active'">
+                <button type="button" class="btn btn-white page-link" data-type="paginate">2</button>
+            </li>
+            <li class="page-item" th:if="${page < 4 && totalPages > 3}" th:classappend="${page == 3} ? 'active'">
+                <button type="button" class="btn btn-white page-link" data-type="paginate">3</button>
+            </li>
+            <li class="page-item" th:if="${page < 4  && totalPages > 4}">
+                <button type="button" class="btn btn-white page-link" data-type="paginate">4</button>
+            </li>
+            <li th:if="${page > 3}" class="page-item" >
+              <button class="btn btn_and" th:aria-label="#{search.pagination.intermediate.pages}" th:title="#{search.pagination.intermediate.pages}" data-type="intermediate" disabled>&hellip;</button>
+            </li>
+            <li class="page-item" th:if="${(page > 3) && (page <= (totalPages-3))}">
+                <button type="button" class="btn btn-white page-link" data-type="paginate" th:text="${page-1}" />
+            </li>
+            <li  class="page-item active my-auto" th:if="${(page > 3) && (page <= (totalPages-3))}">
+              <button type="button" class="btn btn-white page-link" th:text="${page}" data-type="paginate" />
+            </li>
+            <li class="page-item"  th:if="${(page > 3) && (page <= (totalPages-3))}">
+              <button type="button" class="btn btn-white page-link" th:text="${page+1}" data-type="paginate" />
+            </li>
+            <li th:if="${page <= (totalPages-3)}" class="page-item" >
+              <button class="btn btn_and" th:aria-label="#{search.pagination.intermediate.pages}" th:title="#{search.pagination.intermediate.pages}" data-type="intermediate" disabled>&hellip;</button>
+            </li>
+            <li class="page-item" th:if="${page > 3 && page > (totalPages-3)}">
+                <button type="button" class="btn btn-white page-link" th:text="${totalPages-3}" data-type="paginate" />
+            </li>
+            <li class="page-item" th:if="${page > 3 && page > (totalPages-3)}" th:classappend="${page == totalPages-2} ? 'active'">
+                <button type="button" class="btn btn-white page-link" th:text="${totalPages-2}" data-type="paginate" />
+            </li>
+            <li class="page-item" th:if="${page > 3 && page > (totalPages-3)}" th:classappend="${page == totalPages-1} ? 'active'">
+                <button type="button" class="btn btn-white page-link" th:text="${totalPages-1}" data-type="paginate"></button>
+            </li>
+            <li class="btn_final btn_mobile page-item" th:if="${totalPages > 1}" th:classappend="${page == totalPages} ? 'active'" >
+                <button type="button" class="btn btn-white page-link" th:aria-label="#{search.pagination.last.page} +' '+ ${totalPages}" th:title="#{search.pagination.last.page} +' '+ ${totalPages}" data-type="final">
+                  <span class="btn_title" th:text="${totalPages}" aria-hidden="true"></span>
+                  <span class="icono fas fa-angle-double-right" aria-hidden="true"></span>
+                </button>
+            </li>
+            <li class="btn_siguiente btn_mobile next page-item" th:classappend="${page == totalPages} ? 'disabled'">
+                <button type="button" class="btn btn-white page-link" th:title="#{search.pagination.page.next}" data-type="next">
+                  <span class="btn_title" th:text="#{search.pagination.page.next}"></span>
+                  <span class="icono fas fa-angle-right" aria-hidden="true"></span>
+                </button>
+            </li>
+          </ul>
+        </nav>
+
+    </div>
+    <!-- :: /.pagination_normal -->
+  </div>
+  <!-- :: /.pagination_flex -->
+<!-- :: /[/title/fragments/explorePagination.html] -->

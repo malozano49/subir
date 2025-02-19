@@ -1,0 +1,250 @@
+<th:block th:insert="/public/home/html_type"></th:block>
+<th:block th:insert="/public/home/technicalheader::main" th:with="page=${'opac-help-listResults-es_ES'}"></th:block>
+<script type="text/javascript">
+	var menu = document.getElementById('menu');
+	Stickyfill.add(menu);
+</script>
+<body>
+
+<div id="burger-menu" class="burger-menu">
+  <span></span>
+  			<div id="menu2" class="menu menu2">
+			<div class=""><nav class="sn-contents" aria-label="Secondary">
+      <ul class="sidenav--list">
+ <li><a href="#list">Visualización en modo lista</a>
+					<ul class="tab3-help">
+						<li><a href="#order">Cómo ordenar el resultado de la búsqueda</a></li>
+						<li><a href="#move">Cómo moverse por el listado de resultados localizados en la búsqueda</a></li>
+						<li><a href="#filter">Cómo filtrar los resultados de búsquedas</a></li>
+						<li><a href="#mark">Cómo marcar como favoritos registros localizados en la búsqueda</a></li>
+						<li><a href="#addlist">Cómo añadir una nueva lista de favoritos desde la visualización en modo lista</a></li>
+						<li><a href="#addrecord">Cómo añadir un registro una de mis listas de favoritos desde la visualización en modo</a></li>
+					</ul>
+				</li>
+				<li><a href="#complete">Acceso a la visualización completa de un registro</a></li>
+				<li><a href="#searchAuthorities">Acceso a búsqueda en autoridades</a></li>
+				<li><a href="#searchIndexes">Acceso a búsqueda en los índices</a></li>
+				<li><a href="#lastSearch">Acceso a últimas búsquedas realizadas</a></li>
+				<li><a href="#historySearch">Acceso a búsquedas guardadas</a></li>
+				<li><a href="#favorites">Acceso a favoritos</a></li>
+				<li><a href="#profile">Acceso a Mi Perfil</a></li>
+				<li><a href="#home">Acceso a la página de inicio</a></li></ul></nav>
+</div>
+		</div>
+</div>
+
+	<div class="wrapper cf">
+	
+		<div id="menu" class="menu">
+			<div class="sidenav"><nav class="sn-contents" aria-label="Secondary">
+      <ul class="sidenav--list">
+<li><a href="#list">Visualización en modo lista</a>
+					<ul class="tab3-help">
+						<li><a href="#order">Cómo ordenar el resultado de la búsqueda</a></li>
+						<li><a href="#move">Cómo moverse por el listado de resultados localizados en la búsqueda</a></li>
+						<li><a href="#filter">Cómo filtrar los resultados de búsquedas</a></li>
+						<li><a href="#mark">Cómo marcar como favoritos registros localizados en la búsqueda</a></li>
+						<li><a href="#addlist">Cómo añadir una nueva lista de favoritos desde la visualización en modo lista</a></li>
+						<li><a href="#addrecord">Cómo añadir un registro una de mis listas de favoritos desde la visualización en modo</a></li>
+					</ul>
+				</li>
+				<li><a href="#complete">Acceso a la visualización completa de un registro</a></li>
+				<li><a href="#searchAuthorities">Acceso a búsqueda en autoridades</a></li>
+				<li><a href="#searchIndexes">Acceso a búsqueda en los índices</a></li>
+				<li><a href="#lastSearch">Acceso a últimas búsquedas realizadas</a></li>
+				<li><a href="#historySearch">Acceso a búsquedas guardadas</a></li>
+				<li><a href="#favorites">Acceso a favoritos</a></li>
+				<li><a href="#profile">Acceso a Mi Perfil</a></li>
+				<li><a href="#home">Acceso a la página de inicio</a></li></ul></nav>
+</div>
+		</div>
+		
+		<div class="content">
+			<a name="top"></a>
+			<a name="list"></a>
+			<h2 class="title-help">Visualización en modo lista</h2>
+			<p>Cuando se realiza una búsqueda, los resultados se visualizan en modo lista <span class="text-bold-help">por defecto</span>.<p>
+			<div class="">
+				<img th:src="@{/img/help/results-list.png}" alt="Lista de resultados" width="750px"/>
+			</div>
+			<p>En la visualización en modo lista se muestra, por defecto, la siguiente información:</p>
+			<ul class="tab4-help margen5">
+				<li>Portada</li>
+				<li>Autor</li>
+				<li>Título</li>
+				<li>Publicación</li>
+				<li>ISBN/ISSN</li>
+				<li>Tipo de material</li>
+				<li>Información sobre los ejemplares asociados al registro:
+					<ul class="tab5-help margen5">
+						<li>- Localización</li>
+						<li>- Nº de ejemplares totales asociados al registro</li>
+						<li>- Nº de ejemplares disponibles</li>
+					</ul>
+				</li>
+			</ul>
+			<a name="order"></a> 
+			<h4 class="title-help">Cómo ordenar el resultado de la búsqueda</h4>
+			<p class="tab2-help">Los registros se visualizan ordenados por defecto por <span class="text-bold-help">Autor/Título</span>.</p> 
+			<p class="tab2-help">Otras posibilidades de ordenación son las siguientes:</p>
+			<ul class="tab4-help margen5">
+				<li>1. <b>Relevancia</b></li>
+				<li>2. <b>Título</b></li>
+				<li>3. <b>Fecha de publicación:</b>
+					<p class="tab4-help">Cuando se activa el orden por fecha de publicación, se visualizan los registros ordenados por fecha de publicación en <span class="text-bold-help">orden descendente</span>.</p>
+				</li>
+			</ul>
+			<a name="move"></a> 
+			<h4 class="title-help">Cómo moverse por el listado de resultados localizados en la búsqueda</h4>
+			<p class="tab2-help">Por defecto, el resultado de la búsqueda se muestra ordenado en grupos de 10, pero existe la posibilidad de agrupar los resultados de 25 en 25 o de 35 en 35.</p>
+			<p class="tab5-help"><img th:src="@{/img/help/results-by-page.png}" alt="Resultados por pagina" width="250px"></p>
+			<p class="tab2-help">Para moverse por las diferentes páginas de los resultados obtenidos existen las siguientes opciones:</p>
+			<ul class="tab4-help margen5">
+				<li>Haga clic en <img th:src="@{/img/help/next.png}" alt="Siguiente" width="75px"> para moverse a la siguiente página.</li>
+				<li>Haga clic en <img th:src="@{/img/help/back.png}" alt="Anterior" width="75px"> para moverse a la página anterior.</li>
+				<li>Haga clic en el nº de página que le interese visualizar
+					<br><br><img th:src="@{/img/help/number-by-page.png}" alt="Numero de pagina" width="350px">
+				</li>
+				<li>Haga clic en el nº 1 para visualizar la primera página
+					<br><br><img th:src="@{/img/help/first-page.png}" alt="Primera pagina" width="350px"/>
+				</li>
+				<li>Haga clic en el nº anterior a Siguiente para ir a la última página
+					<br><br><img th:src="@{/img/help/last-page.png}" alt="Ultima pagina" width="350px"/>
+				</li>
+			</ul>
+			<a name="filter"></a>
+			<h4 class="title-help">Cómo filtrar los resultados de búsquedas</h4>
+			<p class="tab2-help">Las búsquedas facetadas permiten agrupar por categorías el contenido de determinados campos de los registros localizados en la búsqueda.</p>
+			<ul class="tab4-help margen5">
+				<li>Por defecto, los<span class="text-bold-help"> grupos de facetas</span> que se visualizan son los siguientes:
+					<br><span class="tab4-help margen5"><img th:src="@{/img/help/facets.png}" alt="Facetas" width="150px"/></span>
+				</li>
+				<li>Las facetas se ordenan por nº de documentos que la contienen en orden descendente, excepto las facetas tipo fecha que se ordenan por orden cronológico de modo ascendente.
+					<ul class="tab3-help"><b>Ejemplo:</b>
+						<li class="tab5-help margen5">Orden Títulos:
+							<br><span class="tab4-help margen5"><img th:src="@{/img/help/order-title.png}" alt="Orden titulo"  width="250px"/></span>
+						</li>
+						<br>
+						<li class="tab5-help margen5">Orden Fecha de publicación:
+							<br><span class="tab4-help margen5"><img th:src="@{/img/help/order-date.png}" alt="Orden fecha"  width="250px"/></span>
+						</li>	
+					</ul>
+				</li>
+				<br>
+				<li class="margen5">Por defecto, se visualizan 5 términos en cada grupo de faceta.
+					<ul>
+						<li class="margen5">- si desea visualizar 5 términos más, haga clic en <img th:src="@{/img/help/view-plus.png}" alt="Ver más"  width="100px"/>
+							<br><span class="tab5-help "><img th:src="@{/img/help/facets-5-terms.png}" alt="5 terminos"  width="250px"/></span>
+						</li>
+						<br>
+						<li class="margen5">- el máximo nº de facetas que se pueden visualizar en cada grupo es <span class="text-bold-help">100</span></li>
+					</ul>
+				</li>
+			</ul>
+			<a name="mark"></a> 
+			<h4 class="title-help">Cómo marcar como favoritos registros localizados en la búsqueda</h4>
+			<p class="tab2-help">Para marcar alguno de los registros localizados en la , haga clic en la opción <img th:src="@{/img/help/icon-favorites.png}" alt="Icono favoritos" />asociada al registro que quiere añadir como favorito.</p>
+			<span class="tab5- margen5"><img th:src="@{/img/help/favorites-record.png}" alt="Favoritos en el registro"  width="350px"/></span>
+			<p class="tab2-help">Si desea consultar los registros marcados como favoritos en la sesión de trabajo, haga clic en Favoritos</p>
+			<ul class="tab4-help margen5">
+				<li>Por defecto, se pueden almacenar un máximo de <span class="text-bold-help">100</span>favoritos</li>
+				<li>Los favoritos se muestran ordenadas por <span class="text-bold-help">autor/título</span></li>
+				<li>Para desmarcar alguno de los favoritos, haga clic en la opción <img th:src="@{/img/help/favorites-icon-selected.png}" alt="Icono de favoritos seleccionado"/></span>del registro que quiere eliminar de favoritos.
+					<ul class="tab5-help margen10">
+						<li >- los registros también se pueden desmarcar desde la visualización en modo lista o en modo detalle</li>
+					</ul>	
+				</li>
+			</ul>
+			<a name="addlist"></a> 
+			<h4 class="title-help">Cómo añadir una nueva lista de favoritos desde la visualización en modo lista</h4>
+			<p>Para crear una lista de favoritos,</p> 
+			<ul class="tab5-help margen10">
+				<li>1. Haga clic en la opción <img th:src="@{/img/help/icon-add-list.png}" alt="Icono añadir lista"/>asociada al registro que quiere añadir a la nueva lista.</li>
+				<li>2. Haga clic en la opción <img th:src="@{/img/help/btn-add-list.png}" alt="Botón nueva lista" width="100px"/></li>
+				<li>3. Introduzca la descripción que quiere asociar a la nueva lista.</li>
+				<br><img th:src="@{/img/help/name-list.png}" alt="Nombre de lista" width="150px"/>
+				<br>
+				<li>4. Haga clic en <img th:src="@{/img/help/btn-add-title-list.png}" alt="Botón de añadir titulo en una lista" width="250px"/>
+					<br><br>
+					<ul class="tab3-help margen5">
+						<li>se crea la nueva lista con el registro asociado</li>
+						<li>los registros pertenecientes a una lista de favoritos, se muestran con la siguiente imagen distintiva:
+							<img th:src="@{/img/help/icon-record-in-list.png}" alt="Registro en una listas" />
+						</li>
+						<li>si desea visualizar las listas que tiene creadas, haga clic en su usuario y seleccione la opción Mis listas
+						<br><br>
+						<span class="tab5-help margen5"><img th:src="@{/img/help/view-list.png}" alt="Ver lista" width="250px"/></span>
+						</li>
+					</ul>
+				</li>
+			</ul>
+			
+			<a name="addrecord"></a>
+			<h4 class="title-help">Cómo añadir un registro una de mis listas de favoritos desde la visualización en modo</h4>
+			<p>Para añadir un registro a una de las listas de favoritos ya creadas,</p>
+			<ul class="tab5-help margen10">
+				<li>1. Haga clic en la opción <img th:src="@{/img/help/icon-add-list.png}" alt="Icono favoritos" />asociada al registro que quiere añadir a una de las listas que tiene ya creadas.</li>
+				<li>2. Selecione la lista que le interese.
+					<br>
+					<span class="tab5-help margen5"><img th:src="@{/img/help/combox-add-list.png}" alt="Combox de añadir lista" width="250px"/></span>
+				</li><br>					
+				<li>3. Haga clic en <img th:src="@{/img/help/btn-add-title-list.png}" alt="Botón de añadir un titulo a una lista" width="250px"/>
+					<ul class="tab4-help margen5">
+						<li>el registro se asocia a la lista seleccionada</li>
+						<li>los registros pertenecientes a una lista de favoritos, se muestran con la siguiente imagen distintiva:
+							<img th:src="@{/img/help/icon-record-in-list.png}" alt="Registro en listas" width="50px"/>
+						</li>  
+						<li>por defecto, sólo se pueden almacenar <span class="text-bold-help">200</span>favoritos en una misma lista.</li>
+						<li>un mismo registro puede estar asociado a varias listas de favoritos</li>
+					</ul>
+				</li>
+			</ul>
+			<a name="complete"></a> 
+			<h2 class="title-help">Acceso a la visualización completa de un registro</h2>
+			<p>Para visualizar un registro de los localizados en la búsqueda en modo detalle, haga clic sobre  él</p>
+			<a name="searchAuthorities"></a> 
+			<h2 class="title-help">Acceso a búsqueda en autoridades</h2>
+			<p>Para realizar una búsqueda de autoridades que permita localizar registros que contienen una autoridad específica, haga clic en la opción <i>Búsqueda autoridades</i>.</p>
+			<a name="searchIndexes"></a> 
+			<h2 class="title-help">Acceso a búsqueda en los índices</h2>
+			<p>Para realizar una búsqueda que localice palabras o patrones de palabras parecidas al término o términos introducidos, haga clic en la opción <i>Búsqueda índices</i>.</p>
+			<a name="lastSearch"></a> 
+			<h2 class="title-help">Acceso a últimas búsquedas realizadas</h2>
+			<p>Para visualizar las <span class="text-bold-help">10</span> últimas búsquedas realizadas que han devuelto resultados durante la sesión del Opac, haga clic en <i>Últimas búsquedas</i>.</p>
+			<a name="historySearch"></a>
+			<h2 class="cont cont_title title-help">Acceso a búsquedas guardadas</h2>
+			<p>Si quiere guardar alguna de las búsquedas que ha realizado para poder ejecutarlas en otro momento, haga clic en <i>Búsquedas guardadas</i>.</p>
+			<ul class="tab5-help">
+				<li>Para poder guardar búsquedas es necesario que se identifique previamente</li>
+			</ul>
+			<a name="favorites"></a> 
+			<h2 class="title-help">Acceso a favoritos</h2>
+			<p>Para visualizar los registros que ha marcado como favoritos, haga clic en <i>Favoritos</i>.</p>
+			<a name="profile"></a> 
+			<h2 class="title-help">Acceso a Mi Perfil</h2>
+			<p>Haga clic en la opción <i>Mi perfil</i> e identifíquese para poder acceder a las siguientes utilidades de <span class="text-bold-help">ODA</span>: </p>
+			<ul class="tab5-help margen10">
+				<li>Datos personales</li>
+				<li>Solicitudes</li>
+				<li>Préstamos activos</li>
+				<li>Histórico de préstamos</li>
+				<li>Renovar préstamos</li>
+				<li>Anular reservas</li>
+				<li>Guardar búsquedas</li>
+				<li>Crear listas de favoritos</li>
+			</ul>
+			<p class="tab2-help">•	Para identificarse como usuario puede utilizar cualquiera de estos 3 métodos:</p>
+			<ul class="tab5-help margen10">
+				<li>nº de carné</li>
+				<li>correo electrónico que haya proporcionado a su biblioteca</li>
+				<li>teléfono móvil que haya proporcionado a su biblioteca</li>
+			</ul>
+			<a name="home"></a> 
+			<h2 class="title-help">Acceso a la página de inicio</h2>
+			<p>Para ir a la página de inicio, haga clic en <i>Inicio</i>.</p>
+			<p class="top-help"><a href="#top">Arriba</a></p>
+		</div>
+	</div>
+	<th:block th:insert="/public/home/technicalfooter" th:with="page='opac-dataprivacyterms'"/>
+</body>
+</html>

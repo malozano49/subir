@@ -1,0 +1,3 @@
+<!-- :: [public/authority/fragments/authOptions.html] -->
+<option th:fragment="options(collection,selected)" th:selected="${item.value == selected}"  th:each="item : ${collection}" th:utext="#{${item.text}}"  th:value="${item.value}" th:class="${item.level}"></option>
+<!-- :: [public/authority/fragments/authOptions.html] -->

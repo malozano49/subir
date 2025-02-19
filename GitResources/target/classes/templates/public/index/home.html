@@ -1,0 +1,27 @@
+<th:block th:insert="/public/home/html_type"></th:block>
+
+<head>
+   <th:block th:insert="/public/home/technicalheader::main" th:with="page='opac-index-search'"></th:block>
+</head>
+<!-- :: [public/index/home.html] -->
+
+<body class="page_type_index index_search">
+
+   <header class="header_principal">
+      <th:block th:with="pageLocation='index'" th:insert="/public/home/header"></th:block>
+   </header>
+   <main id="acc_anchor_main">
+      <section id="firstRow" class="sct_firstRow" aria-labelledby="sct_index_search_title">
+         <!-- Buscador -->
+         <th:block th:insert="/public/index/search/search"></th:block>
+
+      </section>
+   </main>
+   <footer class="footer_principal">
+      <th:block th:insert="/public/home/footer"></th:block>
+   </footer>
+   <th:block th:insert="/public/home/technicalfooter" th:with="page='opac-index-search'"></th:block>
+</body>
+<!-- :: /[public/index/home.html] -->
+
+</html>

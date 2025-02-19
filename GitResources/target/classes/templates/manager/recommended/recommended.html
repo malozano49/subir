@@ -1,0 +1,86 @@
+<th:block th:fragment="main">
+<!-- :: [manager/recommended/recommended.html] -->
+
+<!-- Manager messages -->
+<section class="manager-section manager-catalog manager-messages mt-5">
+  <h2 class="sr-only" th:text="#{alert.general.messages}"></h2>
+	<div class="container cont_message" th:insert="/manager/fragments/warningData"></div>
+</section>
+<!-- :: /.admin-messages -->
+
+<div class="manager-section manager-catalog manager-recommended mt-5 mb-5">
+  <div class="container container_menu">
+    <div th:insert="/manager/fragments/upMenu" class="cont_up_menu d-flex justify-content-center"></div>
+    <!-- :: /.cont_up_menu -->
+  </div>
+  <!-- :: /.container_menu -->
+
+  <section class="container container_general border pb-3">
+    <h2 class="d-block font-weight-bold section__title">
+      <span class="icono fas fa-server mr-1" aria-hidden="true"></span>
+      <th:block th:text="#{manager.recommended.area}"/>
+    </h2>
+
+    <div id="manageRecommended" class="cont_manageRecommended d-flex flex-column w-100 mt-lg-5 mt-3 pl-3 pr-3">
+
+      <th:block th:if="${#lists.size(recommendeds.keySet()) > 1}" th:insert="/manager/fragments/filtrable"></th:block>
+
+      <th:block th:each="recommended, iterRecommended : ${recommendeds}">
+      	<div th:id="'contRecomendations::'+${#strings.replace(recommended.key.code,' ','_')}" class="sct_recomendations d-flex w-100 no_border m-0 p-0" th:data-level="${#strings.replace(recommended.key.code,' ','_')}">
+          <div class="component d-flex w-100" th:insert="/title/explore.html :: frag(${recommended.value},title,${recommended.key.edit},${iterRecommended.index})" th:with="explore='recommendations',exploreType='explore_collapse',exploreView='manager', levelCode=${recommended.key.code}"></div>
+          <!-- :: /.component -->
+        </div>
+      </th:block>
+    </div>
+    <!-- :: /.cont_manageRecommended -->
+  </section>
+  <!-- :: /.container_general -->
+</div>
+<!-- :: /.manager-recommended -->
+
+<!-- :: Modal común para solicitud de reposición de elementos de la vista -->
+<div id="modal_item_manager_recommended_reposicion_html" class="d-none" aria-hidden="true">
+  <div class="alert alert-info">
+    <span class="alert_texto" th:text="#{recommended.move.modal.info.line.1}"></span>
+    <span class="alert_texto" th:text="#{recommended.move.modal.info.line.2}"></span>
+  </div>
+  <div class="cont_form_group input_con_iconos min-height">
+    <div class="form-group w-100">
+      <label for="recommended_new_position" class="bmd-label-floating" th:text="#{recommended.move.modal.new.position.title}"></label>
+      <input class="form-control" type="text" id="recommended_new_position" name="recommended_new_position" value=""/>
+      <span class="bmd-help" th:text="#{recommended.move.modal.new.position.help}"></span>
+    </div>
+    <div class="cont_botonera_input d-flex flex-row justify-content-start">
+      <button type="button" class="btn_cancelar btn btn-outline-secondary" th:aria-label="#{recommended.move.modal.btn_cancelar.title}" th:title="#{recommended.move.modal.btn_cancelar.title}">
+        <span class="icono fas fa-times" aria-hidden="true"></span>
+      </button>
+    </div>
+    <!-- :: /.cont_botonera_input -->
+  </div>
+  <!-- :: /.cont_form_group -->
+  <div class="form-group cont_check cont_check_tunned mb-0">
+    <label for="check_reposicionamiento" th:text="#{recommended.move.model.view.in.new.position.title}"></label>
+    <input type="checkbox" id='check_reposicionamiento' name="check_reposicionamiento" value="" />
+  </div>
+  <div class="cont_alerts alerts_action w-100 d-flex flex-column mt-3" aria-live="polite" aria-atomic="true"></div>
+  <div class="modal-footer">
+    <button type="button" class="btn_cerrar btn btn-outline-secondary" data-dismiss="modal" th:text="#{modal.close}" aria-label="#{modal.close.title}"></button>
+    <button type="button" class="btn_mover btn btn-primary" th:text="#{recommended.move.button.move}" th:aria-label="#{recommended.move.button.move.title}"></button>
+  </div>
+</div>
+<!-- ::/#modal_item_manager_recommended_reposicion_html -->
+
+<!-- :: Modal común para confirmacion de borrado elementos de la vista -->
+<div id="modal_confirmacion_borrado_manager_recommended_html" class="d-none">
+  <span class="modal_question" th:text="#{recommended.modal.edit.confirm.text}"></span>
+  <div class="cont_botonera_form d-flex justify-content-center mt-4">
+    <button type="button" class="btn_cerrar btn btn-outline-secondary mr-2" data-dismiss="modal" th:text="#{interest.link.modal.edit.cancel.button}"></button>
+    <button type="button" class="btn_borrar btn btn-primary" th:text="#{recommended.modal.edit.confirm.button}"></button>
+  </div>
+  <!-- :: /.cont_botonera -->
+</div>
+<!-- :: /#modal_confirmacion_borrado_manager_recommended_html -->
+
+<!-- :: /[manager/recommended/recommended.html] -->
+
+</th:block>

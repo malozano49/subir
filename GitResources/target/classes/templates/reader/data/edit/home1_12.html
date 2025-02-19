@@ -1,0 +1,25 @@
+<th:block>
+   <!-- :: [reader/data/edit/home1_12.html] -->
+   <div class="layout_1-12 container-fluid">
+      <div id="firstRow" class="cont_menu_datos_type_00 row bg-propietary-light pt-2">
+         <div class="col-lg-3 col-md-12 component">
+            <th:block th:with="activeMenu='data'" th:insert="/reader/fragments/lateralMenu"></th:block>
+         </div>
+         <!-- :: /.component -->
+         <div class="col-lg-9 col-md-12 cont_apart cont_data_user">
+            <div class="component type_readerInfo">
+               <th:block th:insert="/reader/fragments/readerInfo"></th:block>
+            </div>
+            <!-- :: /.type_readerInfo -->
+            <div class="component type_editData">
+               <th:block th:insert="/reader/data/edit/editData"></th:block>
+            </div>
+            <!-- :: /.type_editData -->
+         </div>
+         <!-- :: /.cont_data_user-->
+      </div>
+      <!-- :: /#firstRow -->
+   </div>
+   <!-- :: /.layout_1-12 -->
+   <!-- :: /[reader/data/edit/home1_12.html] -->
+</th:block>

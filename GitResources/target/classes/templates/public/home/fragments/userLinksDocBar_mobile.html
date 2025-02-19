@@ -1,0 +1,71 @@
+<!-- :: [/public/home/fragments/userLinksDocBar_mobile.html] -->
+<!--/* :: Este menú se duplica por necesidades de posicion de pintado en mobile (userLinksDocBar.html) */-->
+
+   <li class="item_user_login nav-item px-md-2 px-sm-1" sec:authorize="${!isAuthenticated()}">
+    <a class="nav-link con_icono" th:href="@{${thymeleafMap.get('LOGIN_PATH')}}" th:title="#{dockbar.login.label}">
+      <span class="icono fas fa-user mr-xl-1" aria-hidden="true"></span>
+      <span class="link_title" th:text="#{dockbar.login.title}"></span>
+    </a>
+  </li>
+  <li class="item_user_data nav-item px-md-2 px-sm-1" sec:authorize="${isAuthenticated()}">
+    <div class="dropdown type_reader dropdown_menu_desktop" sec:authorize="${principal.hasRole(#vars.thymeleafMap.get('READER_AUTHORITY'))}">
+      <button class="btn con_icono btn-secondary dropdown-toggle text-white btn_menu_mobile" type="button" id="dropdown-menu-mobile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" th:value="${#authentication.getPrincipal().getFirstName()}">
+        <span th:insert="/public/catalog/fragments/imageNotFound :: image('notMobile')" class="cont_avatar" aria-hidden="true"></span>
+        <span class="link_title" th:text="${#authentication.getPrincipal().getFirstName() + ' ' + #authentication.getPrincipal().getSurname()}"></span>
+      </button>
+      <div class="dropdown-menu dropdown-menu-right bg-white userMenu">
+<!--/* :: TODO: Falta incluir correctamente la clase active según la vista visitada */-->
+        <ul>
+          <li class="user_name">
+            <span class="user_name__label" th:text="#{dockbar.login.user.title}"></span>
+            <span class="user_name__data" th:text="${#authentication.getPrincipal().getFirstName() + ' ' + #authentication.getPrincipal().getSurname()}"></span>
+          </li>
+          <li class="nav_title mt-2">
+            <span class="nav_title-mi_perfil" th:text="#{dockbar.biblio.title}"/>
+          </li>
+          <li>
+            <a class="nav-link" th:href="@{${thymeleafMap.get('READER_DATA_PATH')}}">
+              <span class="link_title" th:text="#{dockbar.biblio.personal.data}"></span>
+              <span class="icono_despliegue fas fa-angle-right" aria-hidden="true"></span>
+            </a>
+          </li>
+          <li>
+            <a class="nav-link" th:href="@{${thymeleafMap.get('READER_TITLE_LIST_PATH')}}">
+              <span class="link_title" th:text="#{dockbar.title.list.title}"></span>
+              <span class="icono_despliegue fas fa-angle-right" aria-hidden="true"></span>
+            </a>
+          </li>
+          <li>
+              <a class="nav-link" th:href="@{${thymeleafMap.get('READER_LOANS_PATH')}}">
+                <span class="link_title" th:text="#{dockbar.biblio.loans.reservations}"></span>
+                <span class="icono_despliegue fas fa-angle-right" aria-hidden="true"></span>
+              </a>
+          </li>
+        </ul>
+      </div>
+      <!-- :: /.dropdown-menu -->
+    </div>
+    <!-- :: /.dropdown -->
+
+    <div class="dropdown type_manager" sec:authorize="${principal.hasRole(#vars.thymeleafMap.get('CONTENT_MANAGER_AUTHORITY'))}">
+       <!-- :: MANAGER -->
+       <button class="btn_user_manager btn con_icono btn-secondary dropdown-toggle text-white btn_menu_mobile" type="button" id="dropdown-menu-mobile-manager" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" th:value="${#authentication.getPrincipal().getFirstName()}" th:aria-label="${#authentication.getPrincipal().getFirstName() + ' ' + #authentication.getPrincipal().getSurname()}">
+          <span class="icono fas fa-user" th:title="#{dockbar.login.label}" aria-hidden="true"></span>
+          <span class="link_title" th:text="${#authentication.getPrincipal().getFirstName() + ' ' + #authentication.getPrincipal().getSurname()}"></span>
+       </button>
+       <div class="dropdown-menu dropdown-menu-right bg-primary managerMenu">
+          <ul>
+             <li>
+                <a class="nav-link" th:href="@{${thymeleafMap.get('MANAGEMENT_AREA_PATH')}}">
+                  <span class="link_title" th:text="#{dockbar.manager.title}"></span>
+                  <span class="icono_despliegue fas fa-angle-right" aria-hidden="true"></span>
+                </a>
+             </li>
+          </ul>
+       </div>
+       <!-- :: /.dropdown-menu -->
+    </div>
+    <!-- :: /.dropdown -->
+  </li>
+  
+<!-- :: [/public/home/fragments/userLinksDocBar_mobile.html] -->

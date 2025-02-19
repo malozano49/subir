@@ -1,0 +1,4 @@
+<!-- :: [(OpacNotificationsModule) admin/notifications/fragments/tecnicalheader.html] -->
+<link type="text/css" rel="stylesheet" th:href="@{/css/opac/notifications-main.css}" th:if="${session == null || session.skin == null}">
+<link type="text/css" rel="stylesheet" th:href="@{'/css/opac/notifications-' + ${session.skin.schemaValue} + '.css'}" th:if="${session != null && session.skin != null}">
+<!-- :: /[(OpacNotificationsModule) admin/notifications/fragments/tecnicalheader.html] -->

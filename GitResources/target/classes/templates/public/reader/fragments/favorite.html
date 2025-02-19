@@ -1,0 +1,15 @@
+<!-- :: [public/reader/fragments/favorite.html] -->
+<th:block th:if="favoritePage?.favorites!=null">
+  <ul th:unless="${#lists.isEmpty(favoritePage?.favorites)}" >
+    <li th:each=" fav: ${favoritePage?.favorites}" class="card">
+      <div class="card-body">
+        <a class="fav" th:href="@{/public/catalog/detail/{id}(id=${fav.id})}" th:aria-labelledby="${'title_' + fav.id}">
+          <th:block th:if="${fav.tfields !=null}" th:insert="/reader/fragments/title :: frag(${fav.tfields}, ${fav.id})"></th:block>
+        </a>
+        <button type="button" class="btn_favorite btn_message_js favorite_list btn btn-sm btn-primary float-right mt-2 active" data-btn_action="favorite_remove" th:text="#{favorite.delete}" th:attr="data-id=${fav.id}"></button>
+      </div>
+      <!-- :: /.card-body -->
+    </li>
+  </ul>
+</th:block>
+<!-- :: [public/reader/fragments/favorite.html] -->

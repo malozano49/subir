@@ -1,0 +1,263 @@
+﻿﻿<th:block th:insert="/public/home/html_type"></th:block>
+<th:block th:insert="/public/home/technicalheader::main" th:with="page=${'opac-help-home-es_ES'}"></th:block>
+<script type="text/javascript">
+	var menu = document.getElementById('menu');
+	Stickyfill.add(menu);
+</script>
+
+<body>	
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="jquery.fittext.js"></script>
+
+<div id="burger-menu" class="burger-menu">
+  <span></span>
+  			<div id="menu2" class="menu menu2">
+			<div class=""><nav class="sn-contents" aria-label="Secondary">
+      <ul class="sidenav--list">
+  <li>
+<a href="#find" class="page-link">Cerca senzilla</a></li><li>
+<a href="#findAdvanced" class="page-link">Accés a cerca avançada</a></li><li>
+<a href="#findAuthorities" class="page-link">Accés a cerca en autoritats</a></li><li>
+<a href="#searchIndexes" class="page-link">Accés a cerca en els Índexs</a></li><li>
+<a href="#lastSearch" class="page-link">Accés a les últimes cerques realitzades</a></li><li>
+<a href="#historySearch" class="page-link">Accés a cerques emmagatzemades</a></li><li>
+<a href="#favorites" class="page-link">Accés als preferits</a></li><li>
+<a href="#profile" class="page-link">Accés al Meu Perfil</a></li></ul></nav>
+</div>
+		</div>
+</div>
+
+
+	<div class="wrapper cf">
+
+		<div id="menu" class="menu">
+			<div class="sidenav"><nav class="sn-contents" aria-label="Secondary">
+      <ul class="sidenav--list">
+  <li>
+<a href="#find" class="page-link">Cerca senzilla</a></li><li>
+<a href="#findAdvanced" class="page-link">Accés a cerca avançada</a></li><li>
+<a href="#findAuthorities" class="page-link">Accés a cerca en autoritats</a></li><li>
+<a href="#searchIndexes" class="page-link">Accés a cerca en els Índexs</a></li><li>
+<a href="#lastSearch" class="page-link">Accés a les últimes cerques realitzades</a></li><li>
+<a href="#historySearch" class="page-link">Accés a cerques emmagatzemades</a></li><li>
+<a href="#favorites" class="page-link">Accés als preferits</a></li><li>
+<a href="#profile" class="page-link">Accés al Meu Perfil</a></li></ul></nav>
+</div>
+		</div>
+		
+		
+		<div class="content">
+			<a name="top"></a>
+			<a name="find"></a>
+			<h2 class="title-help">Cerca senzilla</h2>
+			<p>La cerca senzilla és la que apareix per defecte a la pàgina inicial.</p>
+			<div class="flexx flexcentro">
+				<img class="img-busqueda-sencilla-help" th:src="@{/img/help/simple-search.png}" height="150px" width="100px" alt="cercar senzill.png">
+			</div>
+			<a name="filter"></a> 
+			<h4 class="title-help">Filtres que es poden aplicar a una cerca</h4>
+			<span class="tab2-help">Quan es realitza una cerca es pot consultar en totes les <span class="text-bold-help">fonts</span> disponibles o en una en concret. </span>
+			<div class=" mb-4">
+				<img  class="img-filtro-help" th:src="@{/img/help/search-filters.png}" alt="filtres de cerca.png">
+			</div>
+			<p>Per defecte, la cerca es realitza en totes les fonts disponibles. Si vol que la cerca es realitzi en una font concreta, seleccioni-la:</p>
+			<div class=" mb-4">
+				<img class "img-filtro-help" th:src="@{/img/help/filter-efilm.png}" alt="filtre d'Efilm">
+			</div>
+			<p>A més de poder seleccionar les fonts en les quals es pot realitzar la cerca, <span class="text-bold-help">ODA</span> permet restringir la cerca a un conjunt de registres concrets (per exemple, els que pertanyen a una biblioteca concreta), als quals anomenarem <span class="text-bold-help">subcatàlegs</span></p>
+			
+			<ul>
+				<li><span class="tab4-help margen5">Es pot seleccionar un subcatàleg des de la llista de subcatàlegs o localitzar-lo a partir de la introducció de determinats caràcters.</span> 
+				</li>
+				</ul>
+				
+				<div class="flexcentro">
+					<img class="img-subcatalogos-help" th:src="@{/img/help/write-in-subcatalogs.png}" alt="Escriure en subcatàlegs"/>
+				</div>
+				<br> 
+				
+				<a name="howToSearch"></a> 
+				<h4 class="title-help">Com buscar</h4>
+				<p>Abans de començar a buscar tingui en compte els següents punts:</p>
+				<ul class="tab4-help margen10">
+					<li>Els termes de cerca es poden introduir de qualsevol manera, és a dir, en majúscules o minúscules i diacrítics, accents, dièresi, etc., o sense ells, etc., o sense ells.</li>
+					<li>Qualsevol terme introduït es considera com a terme de cerca: una paraula, un número, una cadena de caràcters, etc.</li>
+					<li><span class="text-bold-help">No</span> existeixen <span class="text-bold-help">paraules</span> definides com a <span class="text-bold-help">buides</span>. S'ha decidit mantenir les preposicions, articles, etc. com a buscables per facilitar la localització exacta dels documents.</li>
+					<li>Quan s'introdueixen diversos termes de cerca en la mateixa consulta es poden unir amb un <span class="text-bold-help">operador</span> que indicarà la seva relació en cada un dels documents. El significat de cadascun dels operadors que es poden utilitzar és el següent:</li>
+			</ul>
+			<table class="table-help">
+				<tr class="tr-help">
+					<th class="td-help th-help border-right-help">Operador</th>
+					<th class="td-help th-help" >Descripció</th>
+				</tr>
+				<tr class="tr-help">
+					<td class="td-help col-help">AND (&)</td>
+					<td class="td-help">Localitza els registres que contenen tots els termes units amb aquest operador.</td>
+				</tr>
+				<tr class="tr-help">
+					<td class="td-help col-help border-top-help">OR (|)</td>
+					<td class="td-help border-top-help">Localitza els registres que contenen algun dels termes units amb aquest operador o ambdós.</td>
+				</tr>
+				<tr class="tr-help">
+					<td class="td-help col-help border-top-help">NOT</td>
+					<td class="td-help border-top-help">Localitza els registres que contenen el primer terme unit amb aquest operador però no el segon.</td>
+				</tr>
+			</table>			
+			<br>
+			<ul class="tab4-help margen10">
+				<li>Es poden realitzar <span class="text-bold-help">cerques exactes</span> englobant tots els termes entre cometes ("). <br>
+					D'aquesta manera, es localitzen tots els registres que contenen el text introduït entre cometes en el mateix ordre en què es van introduir en la cerca.
+				</li>
+				<li>Es pot utilitzar <span class="text-bold-help">troncaments</span> per localitzar parts de paraules. Els troncaments poden ser de dos tipus:</li>
+			</ul>
+			<table class="table-help">
+				<tr class="tr-help">
+					<th class="td-help th-help border-right-help"></th>
+					<th class="td-help th-help">Descripció</th>
+				</tr>
+				<tr class="tr-help">
+					<td class="td-help col-help">?</td>
+					<td class="td-help border-top-help">Situat en qualsevol posició del terme de cerca, cada ? substitueix un únic caràcter. D'aquesta manera, es localitzaran tots els documents que compleixin el patró de cerca i que en el lloc on es troba el signe ? continguin qualsevol caràcter.</td>
+				</tr>
+				<tr>
+					<td class="td-help col-help border-top-help">*</td>
+					<td class="td-help border-top-help">Situat en qualsevol posició del terme, o en diversos alhora, substitueix una cadena de caràcters. L'asterisc * localitzarà tots els documents que compleixin el patró de cerca i que en el lloc on es troba el signe * continguin qualsevol nombre de caràcters.</td>
+				</tr>
+			</table>
+			<br>
+			<p>Es poden realitzar les següents cerques:</p>
+						<div class="margen10"><ul class="tab5-help">
+							<li>- Per un terme</li>
+							<li>- Per diversos termes</li>
+							<li>Cerques exactes</li>
+						</ul></div>
+			
+			<a name="searchesByTerm"></a> 
+			<h5 class="subtitle-help">Cerca per un terme</h5>
+			<span class="tab2-help">1. Introduïu el terme de cerca que voleu localitzar.</span>
+			<div class=" mb-4">
+				<img class="img-buscar-termino-help" th:src="@{/img/help/search-text.png}" alt="Caixa de cerca de text"/>
+			</div>
+			<span class="tab2-help">2. Feu clic <img class="img-btn-buscar-help" th:src="@{/img/help/btn-search.png}" alt="Botó de cercar"/> per localitzar els registres que contenen el terme introduït.</span>
+			<br><br>
+			<div class="tab4-help flexcentro">
+				<div "box-help">
+						Recordeu que també podeu realitzar la cerca utilitzant trunca ments
+				</div>
+			</div>
+			<a name="searchesSeveralTerms"></a> 
+			<h5 class="subtitle-help">Cerca per diversos termes</h5>
+			<span class="tab2-help">1. Introduïu els termes de cerca que voleu localitzar units amb un dels operadors explicats anteriorment.</span>
+			<div class="flexcentro">
+				<img class="img-buscar-termino-help" th:src="@{/img/help/search-multiple-terms.png}" alt="Caixa de cerca de diversos termes"/>
+			</div>
+			<span class="tab2-help">2. Feu clic <img class="img-btn-buscar-help" th:src="@{/img/help/btn-search.png}" alt="Botó de cercar"/> per localitzar els registres que contenen els termes introduïts.</span>
+			<br><br>
+			<div class="tab4-help flexcentro">
+				<div "box-help">
+						Recordeu que també podeu realitzar la cerca utilitzant trunca ments
+				</div>
+			</div>
+			<a name="exactSearches"></a> 
+			<h5 class="subtitle-help">Cerques exactes</h5>
+			<p>Aquesta cerca recupera els registres que contenen l'expressió buscada tal com es va introduir <p>
+			<span class="tab2-help">1. Introduïu els termes de cerca que voleu localitzar entre cometes.</span>
+			<div class=" mb-4">
+				<img class="img-buscar-entre-comillas-help" th:src="@{/img/help/search-in-quotes.png}" alt="Cerca entre cometes"/>
+			</div>
+			<span class="tab2-help">2. Feu clic <img class="img-btn-buscar-help" th:src="@{/img/help/btn-search.png}" alt="Botó de cercar"/> per localitzar els registres que contenen l'expressió buscada tal com es va introduir.</span>
+			<br><br>
+			<div class="tab4-help flexcentro">
+				<div "box-help">
+						Recordeu que també podeu realitzar la cerca utilitzant trunca ments
+				</div>
+			</div>
+			<a name="deleteTerms"></a>
+			<h5 class="subtitle-help">Com eliminar els termes de cerca introduïts</h5>
+			<p>Per eliminar els termes de cerca introduïts, feu clic a <img th:src="@{/img/help/btn-clean.png}" alt="Botó d'esborrar"/>
+			<div class="flexcentro">
+				<img class="img-buscar-terminos-help" th:src="@{/img/help/search-multiple-terms.png}" alt="Caixa de cerca de text"/>
+			</div>
+			<a name="automaticSearch"></a>
+			<h5 class="subtitle-help">Suggeriments de cerca automàtica</h5>
+			<p><span class="text-bold-help">ODA</span> proporciona les següents possibilitats de suggeriments de cerca automàtica:</p>
+			<div class="margen5"><ul class="tab4-help">
+			<ul class="tab5-help">
+				<li>1."Vol dir"</li>
+				<li>2.cerca en autoritats</li>
+			</ul>
+			</div>
+			<h5 class="paragraph-help">"Vol dir"</h5>
+			<p>Si en la cerca no s'han trobat cap resultat o s'han localitzat menys de 10 registres, <span class="text-bold-help">ODA</span> suggereix termes als usuaris que puguin ajudar-los a obtenir registres que puguin interessar-los basat en spellchecking.</p>
+			<p>El spellchecking és una comprovació ortogràfica que consisteix a revisar la consulta introduïda per l'usuari i suggerir-li una consulta alternativa ortogràficament correcta.</p>
+			<b>Exemple:</b>
+			<div class="flexcentro"><ul class="tab4-help">
+			<ul class="tab5-help">
+				<li>1. Es introduceix el terme estilmismo
+					<div class=" mb-4">
+						<img class="img-caja-mas-btn-help"  th:src="@{/img/help/box-text-btn-search.png}" alt="Caixa de busqueda de texto mÃ¡s botÃ³n"/>
+					</div>
+				</li>
+				<li>2. Com que la cerca no dóna resultats, ofereix com a suggeriments els següents termes:
+					<div class=" mb-4">
+						<img class="img-caja-mas-btn-help" th:src="@{/img/help/did-you-mean.png}" alt="Vol dir"/>
+					</div>
+				</li>
+				<li>3. Si es fa clic en algun dels termes suggerits, es fa una consulta per localitzar els registres que continguin el terme seleccionat</li>
+			</ul>
+			</div>
+			<h5 class="paragraph-help">Cerca en autoritats</h5>
+			<p>Si en la cerca no s'han trobat cap resultat o s'han localitzat menys de 10 registres,<span class="text-bold-help"> ODA</span> realitza una cerca a la base de dades d'autoritats per veure si localitza alguna autoritat que es correspongui amb la cerca introduïda.</p>
+			<a name="findAdvanced"></a>
+			<h2 class="title-help">Accés a cerca avançada</h2>
+			<p>Per accedir a la cerca avançada, feu clic a l'opció <i>cerca avançada</i> que apareix a la pàgina inicial.</p>
+			<div class="flexcentro">
+				<img class="img-busqueda-avanzada-help" th:src="@{/img/help/advanced-search.png}" alt="Cerca avançada"/>
+			</div>
+			<a name="findAuthorities"></a>
+			<h2 class="title-help">Accés a cerca en autoritats</h2>
+			<p>Per realitzar una cerca d'autoritats que permeti localitzar registres que contenen una autoritat específica, feu clic a l'opció <span class="text-bold-help">cerca autoritats</span>.</p>
+			<a name="searchIndexes"></a>
+			<h2 class="title-help">Accés a cerca en els índexs</h2>
+			<p>Per realitzar una cerca que localitzi paraules o patrons de paraules semblants al terme o termes introduïts, feu clic a l'opció <span class="text-bold-help">cerca índexs</span>.</p>
+			<a name="lastSearch"></a>
+			<h2 class="title-help">Accés a les últimes cerques realitzades</h2>
+			<p>Per visualitzar les <span class="text-bold-help">10</span> últimes cerques realitzades que han tornat resultats durant la sessió de l'Opac, feu clic a <span class="text-bold-help">últimes cerques</span></p>
+			<a name="historySearch"></a>
+			<h2 class="title-help">Accés a cerques guardades</h2>
+			<p>Si voleu desar alguna de les cerques que heu realitzat per poder executar-les en un altre moment, feu clic a <span class="text-bold-help">cerques guardades</span>.</p>
+			<ul class="tab5-help">
+				<li>Per poder desar cerques és necessari que us identifiqueu prèviament</li>
+			</ul>
+			<a name="favorites"></a>
+			<h2 class="title-help">Accés a preferits</h2>
+			<p>Per visualitzar els registres que heu marcat com a preferits, feu clic a 
+			<span class="text-bold-help">Preferits</span></p>
+			<a name="profile"></a>
+			<h2 class="title-help">Accés al Meu Perfil</h2>
+			<p>Fes clic a l'opció <i>El meu perfil</i> i identifiqueu-vos per poder accedir a les següents utilitats de <span class="text-bold-help">ODA</span>:</p>	
+			<ul class="tab5-help margen10">
+				<li> Dades personals</li>
+				<li> Sol·licituds</li>
+				<li> Préstecs actius</li>
+				<li> Històric de préstecs</li>
+				<li> Renovar préstecs</li>
+				<li> Anul·lar reserves </li>
+				<li> Desar cerques</li>
+				<li> Crear llistes de preferits</li>
+			</ul>			
+			<p>Per identificar-vos com a usuari podeu utilitzar qualsevol d'aquests 3 mètodes:</p>			
+			<ul class="tab5-help margen10">
+				<li> nº de carné</li>
+				<li> correu electrònic que hagi proporcionat a la vostra biblioteca</li>
+				<li> telèfon mòbil que hagi proporcionat a la vostra biblioteca</li>
+			</ul>
+			<p class="top-help"><a href="#top">Amunt</a></p>
+	 		
+	</div>
+</div>
+</div>
+	<th:block th:insert="/public/home/technicalfooter" th:with="page='opac-dataprivacyterms'"/>
+	
+</body>
+</html>

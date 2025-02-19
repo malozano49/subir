@@ -1,0 +1,24 @@
+<!-- :: [title/summary.html] -->
+<!-- :: data-skip_to_content [scripts.js] -> ACCESIBLE_SKIP_TO_CONTENT() -->
+<article id="detail" class="article detail-summary row" data-skip_to_content="share" aria-labelledby="art_detail_tite">
+   <h3 id="art_detail_tite" class="sr-only stc_title" th:text="#{title.detail.area.description}"></h3>
+   <div class="card-body cont_image col-md-2 col-sm-12 col-xs-12">
+      <th:block th:with="item = ${detail.catalog}" th:insert="/public/catalog/fragments/recordImage.html :: image(${detail.catalog.oaiIdentifierB64})"></th:block>
+    <!-- Comentarios-->
+		<th:block th:if="${commentsEnabled}" th:with="numComments = ${detail.catalog.numComments}" th:insert="/title/comments/commentsDetail.html"></th:block>
+	<!-- /Comentarios  -->
+   </div>
+   <!-- :: /.card-body.cont_image -->
+   <div class="card-body cont_datos col-md-10 col-sm-12 col-xs-12" th:data-id_element="${detail.catalog.oaiIdentifierB64}">
+      <th:block th:insert="/title/fragments/titleSummary.html"></th:block>
+      <div class="the-locations">	   
+      		<th:block th:insert="/title/fragments/location.html"></th:block>
+      </div>
+   </div>
+   <!-- :: /.card-body.cont_datos -->
+   <div class="card-body cont_actions col-md-3 col-sm-12 col-xs-12">
+   </div>
+   <!-- :: /.card-body.cont_actions -->
+</article>
+<!-- :: /.detail-summary -->
+<!-- :: /[title/summary.html] -->

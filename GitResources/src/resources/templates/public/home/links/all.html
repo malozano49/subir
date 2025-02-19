@@ -1,0 +1,48 @@
+<th:block th:insert="/public/home/html_type"></th:block>
+  <head>
+    <th:block th:insert="/public/home/technicalheader::main" th:with="page='opac-links'"></th:block>
+  </head>
+  <body class="page_type_home home_links page_viewAll page_opac-links bg-propietary-light">
+<!-- :: public/home/links/all.html -->
+    <header class="header_principal">
+      <th:block th:with="pageLocation='links'" th:insert="/public/home/header"></th:block>
+      <th:block th:insert="/fragments/breadcrums"></th:block>
+    </header>
+    <main id="acc_anchor_main">
+      <div class="container-fluid">
+        <section class="sct_messages d-flex flex-column mt-5" aria-labelledby="sct_alerts_title">
+          <h2 id="sct_alerts_title" class="sr-only">Mensajes de alerta generales</h2>
+          <div class="container cont_alert" aria-live="polite" aria-atomic="true"></div>
+        </section>
+        <section class="container container_general mt-3 mb-5 p-0" aria-labelledby="art_links_title">
+
+          <div class="widget_links widget widget_all" th:if="${links != null }">
+            <div class="widget-cont_header">
+              <span class="icono fas fa-external-link-alt mr-2"></span>
+              <h2 id="art_links_title" class="anchor_title stc_title widget-header h2" th:text="#{info.links}"></h2>
+              <span class="badge alertbul5" th:text="${links.size()}"/>
+            </div>
+            <!-- :: /.widget-cont_header -->
+            <div class="widget_cont">
+              <ul class="category-list">
+                <li th:each="link: ${links}">
+                  <a class="link" th:href="${link.link}" th:title="#{info.links.link.description(${link.text})}" th:aria-label="#{info.links.link.description(${link.text})}" target="_blank" rel="external noopener noreferrer" >
+                      <span class="desc" th:text="${link.text}" aria-hidden="true"></span>
+                    </a>
+                </li>
+              </ul>
+            </div>
+            <!-- :: /.widget_cont -->
+          </div>
+          <!-- :: /.widget -->
+
+        </section>
+      </div>
+      <!-- :: /.container-fluid -->
+    </main>
+    <footer class="footer_principal">
+      <th:block th:insert="/public/home/footer" th:with="page='opac-links'"></th:block>
+    </footer>
+    <th:block th:insert="/public/home/technicalfooter" th:with="page='opac-links'"></th:block>
+  </body>
+</html>

@@ -1,0 +1,64 @@
+<th:block th:fragment="main">
+   <!-- :: [/public/catalog/fragments/spellchecker.html] -->
+   <div class="container container--spellchecker" th:if="${solrSearchWeb !=null and solrSearchWeb.solrSearch.spellchecker !=null
+      and (solrSearchWeb.solrSearch.spellchecker.suggestions != null and not #lists.isEmpty(solrSearchWeb.solrSearch.spellchecker.suggestions)
+      or solrSearchWeb.solrSearch.spellchecker.lessThan10Results != null and not solrSearchWeb.solrSearch.spellchecker.lessThan10Results.isEmpty())}">
+      <div class="spellchecker spellchecker--resultados border col-md-12 col-12" th:if="${not #lists.isEmpty(solrSearchWeb.solrSearch.spellchecker.suggestions)}">
+        <p class="spellchecker__title">
+          <th:block th:text="#{spellchecker.encontrado}"/>
+          <th:block th:if="${not #lists.isEmpty(solrSearchWeb.solrSearch.spellchecker.suggestions)}" th:text="${solrSearchWeb.solrSearch.results.totalResults}"></th:block>
+          <th:block th:text="#{spellchecker.resultados}"/>
+        </p>
+         <ul class="list-inline m-0 p-0">
+            <li class="list-inline-item ">
+              <span class="btn btn--simil btn--spellcheker text-danger" th:text="#{spellchecker.suggestions}"/>
+            </li>
+        <form method="post" th:id="solrSearch.spellchecker+${iter.index}" name="solrSearchWeb" class="m-0" th:with="url=${thymeleafMap.get('EXPERT') == solrSearchWeb.solrSearch.queryType}?'/public/search/action':'/public/search/advanced/action'" th:action="@{${url}+'#searchResul'}" th:each="item,iter : ${solrSearchWeb.solrSearch.spellchecker.suggestions}">
+          <input type="hidden" name="solrSearch.solrCollection" th:value="${solrSearchWeb.solrSearch.solrCollection}">
+          <input type="hidden" name="solrSearch.queryType" th:value="${solrSearchWeb.solrSearch.queryType}">
+          <input type="hidden" name="solrSearch.origin" th:value="${solrSearchWeb.solrSearch.origin}">
+          <input type="hidden" name="solrSearch.tabId" th:value="${solrSearchWeb.solrSearch.tabId}">
+          <th:block th:each="sub,iter  : ${solrSearchWeb?.solrSearch?.subCatalog?.subCatalogs}">
+            <input type="hidden" th:name="'solrSearch.subCatalog.subCatalogs['+${iter.index}+'].optionSelected'"  th:value="${sub.optionSelected}"/>
+          </th:block>
+          <!--/* hidden que debe tener el ID sin añadirle espeficificacion (variable usada por ajax) */-->
+          <!--/* FIXME subcatalog
+          <input type="hidden" name="selectValuesSpellchecker" id="selectValues" th:value="${solrSearchWeb.solrSearch.subCatalog.subcatalogSelect}">
+          */-->
+            <li class="list-inline-item">
+              <input type="submit" name="solrSearch.spellchecker.spellQuery" th:id="'spellQuery_'+${iter.index}" th:value="${item}" class="btn btn-link btn--submit text-capitalize text-info">
+            </li>
+        	</form>
+         </ul>
+      </div>
+      <!-- :: /.spellchecker--resultados -->
+      <div class="spellchecker spellchecker--autoridades col-md-12 col-12" th:if="not ${solrSearchWeb.solrSearch.spellchecker.lessThan10Results.isEmpty()}">
+        <p class="spellchecker__title">
+          <th:block th:text="#{spellchecker.authority}"/>
+        </p>
+        <form method="post" th:id="solrSearch.spellchecker.lessThan10Results+${iter.index}" class="m-0" name="solrSearchWeb" th:action="@{${thymeleafMap.get('SEARCH_ACTION')}}+'#searchResul'" th:each="item,iter : ${solrSearchWeb.solrSearch.spellchecker.lessThan10Results}">
+          <input type="hidden" name="solrSearch.solrCollection" id="solrCollection.spellchecker.lessThan10Results" th:value="${solrSearchWeb.solrSearch.solrCollection}">
+          <input type="hidden" name="solrSearch.queryType" id="queryType.spellchecker.lessThan10Results" th:value="${thymeleafMap.get('EXPERT')}">
+          <input type="hidden" name="solrSearch.origin" id="origin.spellchecker.lessThan10Results" th:value="${solrSearchWeb.solrSearch.origin}">
+        <th:block th:each="sub,iter  : ${solrSearchWeb?.solrSearch?.subCatalog?.subCatalogs}">
+          <input type="hidden" th:name="'solrSearch.subCatalog.subCatalogs['+${iter.index}+'].optionSelected'" th:value="${sub.optionSelected}"/>
+        </th:block>
+          <!--/* hidden que debe tener el ID sin añadirle espeficificacion (variable usada por ajax) */-->
+          <!--/* FIXME subcatalog
+          <input type="hidden" name="selectValuesLessThan10Results" id="selectValues" th:value="${solrSearchWeb.solrSearch.subCatalog.subcatalogSelect}">
+          */-->
+          <ul>
+            <li class="list-inline-item a" >
+              <input type="hidden" name="solrSearch.hiddenQuery" th:value="${item.key}">
+              <button type="submit" name="solrSearch.query" th:id="'query.spellchecker_'+${iter.index}" th:value="${item.value}" th:text="${item.value}" class="btn btn-link btn--spellcheker text-capitalize text-info"></button>
+            </li>
+          </ul>
+        </form>
+      </div>
+      <!-- :: /.spellchecker--autoridades -->
+    </div>
+    <!-- :: /.container_spellchecker -->
+
+
+   <!-- :: /[/public/catalog/fragments/spellchecker.html] -->
+</th:block>

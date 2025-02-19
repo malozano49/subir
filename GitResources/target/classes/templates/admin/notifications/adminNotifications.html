@@ -1,0 +1,36 @@
+<!-- :: [(OpacNotificationsModule) admin/notifications/adminNotifications.html] -->
+
+<!-- Administrator messages -->
+<section class="admin-section admin-notifications admin-messages mt-5">
+  <h2 class="sr-only" th:text="#{alert.general.messages}"></h2>
+  <div class="container cont_message" th:insert="/admin/fragments/warningData"></div>
+</section>
+<!-- :: /.admin-messages -->
+
+<div class="admin-section admin-notifications admin-data mt-5 mb-5">
+  <div class="container container_menu">
+    <div th:insert="/admin/fragments/upMenu" class="cont_up_menu d-flex justify-content-center"></div>
+    <!-- :: /.cont_up_menu -->
+  </div>
+  <!-- :: /.container_menu -->
+
+    <section class="container container_general border pb-3">
+    <h2 class="h2 d-block font-weight-bold section__title">
+      <span class="icono fas fa-chart-line mr-1" aria-hidden="true"></span>
+      <th:block th:text="#{administration.notifications.area}"/>
+    </h2>
+
+    <div id="notifyAll" class="cont cont_notify mt-5">
+      <div class="cont cont__notify col-md-12">
+        <div class="component" th:insert="/admin/notifications/notifyAll"></div>
+      </div>
+    </div>
+    <!-- :: /.cont_notify -->
+
+  </section>
+  <!-- :: /.container_general -->
+
+</div>
+<!-- :: /.admin-section -->
+
+<!-- :: /[(OpacNotificationsModule) admin/notifications/adminNotifications.html] -->

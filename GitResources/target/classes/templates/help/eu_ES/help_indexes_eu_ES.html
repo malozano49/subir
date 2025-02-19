@@ -1,0 +1,152 @@
+<th:block th:insert="/public/home/html_type"></th:block>
+<th:block th:insert="/public/home/technicalheader::main" th:with="page=${'opac-help-index-es_ES'}"></th:block>
+<script type="text/javascript">
+	var menu = document.getElementById('menu');
+	Stickyfill.add(menu);
+</script>
+<body>
+
+<div id="burger-menu" class="burger-menu">
+  <span></span>
+  			<div id="menu2" class="menu menu2">
+			<div class=""><nav class="sn-contents" aria-label="Secondary">
+      <ul class="sidenav--list">
+<li><a href="#searchIndexes"> Bilaketa indizeak</a></li>
+					<ul class="tab3-help"><li><a href="#typeSearach">Bilaketa motak</a></li>
+						<li><a href="#moveList">Nola mugitu emaitzen zerrendan bilakatzen</a></li>
+						<li><a href="#locateRecords">Nola kokatu bilaketaren emaitzen erregistroak indizean bilakatzen</a></li>
+					</ul>
+						
+				
+				<li><a href="#findAuthorities">Autoreen bilaketa sarrera</a></li>
+				<li><a href="#lastSearch">Azken bilaketa egiteko sarrera</a></li>	
+				<li><a href="#historySearch">Gorde diren bilaketetara sarrera</a></li>	
+				<li><a href="#favorites">Gogokoenetara sarrera</a></li>
+				<li><a href="#profile">Nire Profila atzitzeko sarrera</a></li>
+				<li><a href="#home">Hasierako orrira sarrera</a></li></ul></nav>
+</div>
+		</div>
+</div>
+
+	<div class="wrapper cf">
+		
+		<div id="menu" class="menu">
+			<div class="sidenav"><nav class="sn-contents" aria-label="Bigarren mailako">
+      <ul class="sidenav--list">
+ <li><a href="#searchIndexes">Bilaketa indizeak</a></li>
+					
+		<ul class="tab3-help"><li><a href="#typeSearach">Bilaketa motak</a></li>
+						<li><a href="#moveList">Nola mugitu emaitzen zerrendan bilakatzen</a></li>
+						<li><a href="#locateRecords">Nola kokatu bilaketaren emaitzen erregistroak indizean bilakatzen</a></li>
+					</ul>
+						
+				
+				<li><a href="#findAuthorities">Autoreen bilaketa sarrera</a></li>
+				<li><a href="#lastSearch">Azken bilaketa egiteko sarrera</a></li>	
+				<li><a href="#historySearch">Gorde diren bilaketetara sarrera</a></li>	
+				<li><a href="#favorites">Gogokoenetara sarrera</a></li>
+				<li><a href="#profile">Nire Profila atzitzeko sarrera</a></li>
+				<li><a href="#home">Hasierako orrira sarrera</a></li></ul></nav>
+</div>
+		</div>
+		<div class="content margen5">
+			<a name="top"></a>
+			<a name="searchIndexes"></a>
+			<h2 class="title-help">Bilaketa indizeak</h2>
+			<p>Bilaketa indizeen aukera hitz edo hitz eredu parekatuak bilatzeko aukera ematen du.</p>
+			<p>Bilaketaren emaitzak berezko <span class="text-bold-help">alfabetikoki</span> ordenatzen dira.</p>
+			<a name="typeSearach"></a>
+			<h4 class="title-help">Bilaketaren motak</h4>
+			<p>Hurrengo bilaketak egin ditzakezu:</p>
+			<ul class="tab5-help margen10">
+				<li>Zehazki bateko eremuan bilaketak</li>
+				<li>Guztiak diren eremuetan bilaketak</li>
+				<li>Hitz edo hitz ereduaren bilaketaren parekoak diren bilaketak</li>
+				<li>Hasi egiten duten bilaketak</li>
+			</ul>
+			<p class="tab3-help paragraph-help">Zehazki bateko eremuan bilaketak</p>
+			<p class="tab4-help">Zerrenda bilaketa batean berezko eremu batean bilaketa egiten da lehenetsi bezala. Beste eremu batean bilaketa egin nahi baduzu, interesa duzun eremua hautatu behar duzu Eremu hautapen aukeran. Berezkoz, bilaketa egin dezakezu hurrengo eremu hauetan:</p>
+			<span class="tab5-help margen10"><img th:src="@{/img/help/comb-filters-indexes.png}" alt="Indizeen iragazki kutxa" width="350px"/></span>
+			<p class="tab4-help">Zure eginen bilaketak hautatutako eremu bakar batean izango du kontuan.</p>
+			<p class="tab3-help paragraph-help">b. Guztiak diren eremuetan bilaketak</p>
+			<p class="tab4-help">Bilaketa berri guztiak eremu guztietan egin nahi badituzu, hautatu Eremu guztiak aukera.</p>
+			<span class="tab5-help margen5"><img th:src="@{/img/help/selection-fields.png}" alt="Eremu hautapena"  width="350px"/></span>
+			<p class="tab4-help">Zure eginen bilaketak datu-basearen eremuetan erabil daitezkeen guztiak kontuan izango ditu.</p>
+			<p class="tab3-help paragraph-help">c. Hitz edo hitz ereduaren bilaketaren parekoak diren bilaketak</p>
+			<p class="tab4-help">Zerrendan bilaketaren parekoak diren erregistroak lokalizatzeko, erabili <i>Bilaketako iragazki kutxa</i> aukera.</p>
+			<span class="tab5-help margen5"><img th:src="@{/img/help/filter-contains.png}" alt="Iragazki bilaketako iragazki kutxa" width="350px"/></span>
+			<p class="tab3-help paragraph-help">d. Hasi egiten duten bilaketak</p>
+			<p class="tab4-help">Zerrendan bilaketaren parekoak diren erregistroak bilatzeko, <i>Bilaketako iragazki kutxa</i> aukeratu.</p>
+			<span class="tab5-help margen10">
+			<img th:src="@{/img/help/filters-term.png}" alt="Hitz bilaketaren iragazki kutxa" width="320px"/></span>
+			<a name="moveList"></a>
+			<h4 class="title-help">Nola mugitu bilaketaren emaitzen zerrendan</h4>
+			<p>Berezkoz, bilaketaren emaitza 10eko taldekako ordenatzen da, baina emaitzak 25eko taldekako edo 35eko taldekako ordenatzeko aukera ere badago.</p>
+			<span class="tab3-help margen10"><img th:src="@{/img/help/results-by-page.png}" alt="Orriko emaitzak" width="320px"/></span>
+			<p>Zerrendan talde desberdinak arakatzeko,</p>
+			<ul class="tab5-help margen5">
+				<li>Egin klik <img th:src="@{/img/help/next.png}" alt="Hurrengoa" width="80px"/> hurrengo orriara mugitzeko.</li>
+				<li>Egin klik <img th:src="@{/img/help/back.png}" alt="Aurrekoa" width="80px"/> aurreko orrira mugitzeko.</li>
+				<li>Egin klik interesatzen zaitzan orri zenbakian
+					<span class="tab3-help"><img th:src="@{/img/help/number-by-page.png}" alt="Orri zenbakia" width="320px"/></span>
+				</li>
+				<li>Egin klik 1 zenbakian lehen orria ikusteko
+					<span class="tab3-help"><img th:src="@{/img/help/first-page.png}" alt="Lehen orria" width="320px"/></span>
+				</li>
+ 				<li>Egin klik Hurrengo aurrekoa zenbakia azpimarratzeko azkeneko orrira joateko
+ 					<span class="tab3-help"><img th:src="@{/img/help/last-page.png}" alt="Azken orria" width="320px"/></span>
+ 				</li>
+			</ul>
+			<a name="locateRecords"></a>
+			<h4 class="title-help">Nola aurkitu bilaketetan aurkeztutako emaitzen erregistroak</h4>
+			<p>Interesatzen zaizkion bilaketa egin ondoren, bilaketa sarrera batekin bat egiten denean, aurkeztutako bilaketen bat dagoen agiri zerrenda erakusten da eta aurkeztutako terminoak dituzten erregistroen zenbakia adierazten da.</p>
+			<p class="tab2-help"><b>Adibidea:</b></p>
+			<p class="tab4-help margen5">Bilaketa sarrera bat egiten da "quijote" terminoarekin hasten diren termino parekatuak Título atalean.</p>
+			<span class="tab5-help margen5"><img th:src="@{/img/help/search-title.png}" alt="Títuluaren bila" width="500px"/></span>
+			<p class="tab4-help margen5">Zerrenda moduko aurkeztutako terminoak erakusten dira eta haien artean dauden erregistroen zenbakia adierazten da:</p>
+			<span class="tab5-help margen5"><img th:src="@{/img/help/search-list.png}" alt="Emaitzen zerrenda" width="400px"/></span>
+			<p class="tab2-help margen5">Interesatzen zaizkionetako batean klik egin erregistroak ikusteko.</p>
+			<a name="findAuthorities"></a>
+			<h2 class="title-help">Aholkularitza bilaketa</h2>
+			<p>Aholkularitzaren bilaketa egin nahi baduzu, aholkularitzak dute aukera erregistroak dituzten aholkularitate zehatz bat aurkitzeko, "Bilaketa aholkularitzak" aukera sakatu.</p>
+			<a name="lastSearch"></a>
+			<h2 class="title-help">Azken bilaketak ikusteko sarbidea</h2>
+			<p>Opac-eko saioan emaitza eman duten azken <span class="text-bold-help">10</span> bilaketa ikusteko, "Azken bilaketa" aukera sakatu.</p>
+			<a name="historySearch"></a>
+			<h2 class="title-help">Gorde diren bilaketa ikusteko sarbidea</h2>
+			<p>Bilaketa bat gordetzeko nahi baduzu, "Gorde bilaketa" aukera sakatu, beraiekin gauzatzeko momentuan.</p>
+			<ul class="tab5-help">
+				<li>Bilaketa bat gorde ahal izateko, lehendik identifikatu behar da</li>
+			</ul>
+			<a name="favorites"></a>
+			<h2 class="title-help">Gogokoak ikusteko sarbidea</h2>
+			<p>Gogoko gabe markatu dituzun erregistroak ikusteko, "Gogokoen" aukera sakatu.</p>
+			<a name="profile"></a>
+			<h2 class="title-help">Nire Profila ikusteko sarbidea</h2>
+			<p>Klik egin "Nire profila" aukera izango dituzun <span class="text-bold-help">ODA</span> erabilera gailurako sartzeko:</p>
+			<ul class="tab5-help margen5">
+				<li>Datu pertsonalak</li>
+				<li>Eskaerak</li>
+				<li>Préstamo aktiboak</li>
+				<li>Préstamo historia</li>
+				<li>Préstamo berritzeko</li>
+				<li>Erreserba bertan behera uztea</li>
+				<li>Bilaketak gorde</li>
+				<li>Gogoko zerrendak sortu</li>
+			</ul>
+			<p class="tab2-help">Erabiltzaile gisa identifikatzeko, hiru bideetatik edozein erabil ditzakezu:</p>
+			<ul class="tab5-help margen5">
+				<li>Karnet zenbakia</li>
+				<li>Zure liburutegiari emandako posta elektronikoa</li>
+				<li>Zure liburutegiari emandako mugikorra</li>
+			</ul>
+			<a name="home"></a>
+			<h2 class="title-help">Hasierako orriaren sarbidea</h2>
+			<p>Hasierako orriara joateko, "Hasi" aukera sakatu.</p>
+			<p class="top-help"><a href="#top">Goitik</a></p>
+		</div>
+	</div>
+	<th:block th:insert="/public/home/technicalfooter" th:with="page='opac-dataprivacyterms'"/>
+</body>
+</html>
+</html>

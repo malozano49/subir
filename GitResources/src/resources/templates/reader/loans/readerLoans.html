@@ -1,0 +1,144 @@
+<!-- :: [reader/loans/readerLoans.html] -->
+<section class="card my-library-section sct_reader_loans reader-loans item-detail container pb-4" aria-labelledby="sct_reader_loans_title">
+  <h2 id="sct_reader_loans_title" class="sr-only" th:text="#{mylibrary.loan.section.title}"></h2>
+
+  <nav class="menuLoans" aria-label="myLibrary_menu" th:insert="/reader/fragments/upMenu" />
+
+  <article class="detail-copies art_detail_copies article border pb-0" aria-labelledby="art_detail_copies_title">
+
+    <h3 id="art_detail_copies_title" class="d-block font-weight-bold fieldset__title">
+      <span class="icono far fa-calendar-plus mr-1" aria-hidden="true"></span>
+      <th:block th:text="#{mylibrary.loan.section.title}"/>
+    </h3>
+
+    <th:block th:if="not ${readerLoans.isEmpty()}" th:each="loansEntry : ${readerLoans}">
+
+      <div class="cont_alerts" aria-live="polite" aria-atomic="true"></div>
+
+      <div th:id="'cont_table_'+${loansEntry.key}" th:if="${not #lists.isEmpty(loansEntry.value)}" class="librarys cont_table_big_00 w-100"  aria-live="polite" aria-atomic="true">
+
+        <!-- Origen de los préstamos -->
+        <th:block th:if="${loansEntry.value != null} and not ${loansEntry.value.isEmpty()}">
+          <span th:if="${loansEntry.key==thymeleafMap.get('ABSYSNET_SOURCE')}" th:id="'titulo_situacion_'+ ${loansEntry.key}" class="location_title" th:text="#{mylibrary.loan.library.copies}"></span>
+          <span th:unless="${loansEntry.key==thymeleafMap.get('ABSYSNET_SOURCE')}" th:id="'titulo_situacion_'+ ${loansEntry.key}" class="location_title" th:text="${loansEntry.key}"></span>
+        </th:block>
+
+        <th:block th:each="loan, iterStat : ${loansEntry.value}">
+
+          <th:block th:if="${iterStat.index == 0 or (iterStat.index > 0 and loansEntry.value[iterStat.index-1].copyLibrary.description != loan.copyLibrary.description)}">
+    	      <h4 class="tb_00_legend col-md-12">
+    	        <span class="cont_title">
+    	          <span class="tb_00_legend-title font-weight-bold" th:text="#{copy.library.label} + ':'"></span>
+    	          <span class="tb_00_legend-value" th:text="${loan.copyLibrary.description}"></span>
+    	        </span>
+    	      </h4>
+          </th:block>
+
+          <div th:data-id="'table_'+${loansEntry.key}" class="table_big_00 col-md-12 pl-0 pr-0">
+
+            <div class="cont_loans_tbl_titles" th:if="${iterStat.index==0}">
+
+              <ul class="tb_00_titles desktop_flex d-flex col-md-12 mb-2"
+              		th:classappend="${(iterStat.index == 0 or (iterStat.index > 0 and loansEntry.value[iterStat.index-1].copyLibrary.description != loan.copyLibrary.description) ? 'first-row' : '') +
+              						  (iterStat.index == readerLoans.size()-1 or loansEntry.value[iterStat.index].copyLibrary.description != loan.copyLibrary.description ? ' last-row' : '')}">
+
+                <li class="type_title col_branchDescription">
+                  <span class="title font-weight-bold" th:text="#{mylibrary.loan.branchDescription}"></span>
+                </li>
+                <li class="type_title col_title">
+                  <span class="title font-weight-bold" th:text="#{mylibrary.loan.title}"></span>
+                </li>
+                <li class="type_title col_author">
+                  <span class="title font-weight-bold" th:text="#{mylibrary.loan.author}"></span>
+                </li>
+                <li class="type_title col_loanDate">
+                  <span class="title font-weight-bold" th:text="#{mylibrary.loan.loanDate}"></span>
+                </li>
+                <li class="type_title col_returnDate">
+                  <span class="title font-weight-bold" th:text="#{mylibrary.loan.returnDate}"></span>
+                </li>
+                <li class="copy-col col_comments">
+                  <span class="title font-weight-bold"></span>
+                </li>
+              </ul>
+            </div>
+            <!-- :: /.cont_loans_tbl_titles -->
+
+            <div class="cont_data col-md-12">
+              <ul class="tb_00_data d-flex col-md-12 m-0 p-0" th:data-rowindex="${iterStat.index +1}"
+              		th:classappend="${(iterStat.index == 0 or (iterStat.index > 0 and loansEntry.value[iterStat.index-1].copyLibrary.description != loan.copyLibrary.description) ? 'first-row' : '') +
+              						  (iterStat.index == readerLoans.size()-1 or loansEntry.value[iterStat.index].copyLibrary.description != loan.copyLibrary.description ? 'last-row' : '')}">
+
+    			      <li class="type_data col_branchDescription">
+                  <span class="title font-weight-bold mobile" th:text="#{mylibrary.loan.branchDescription}" th:classappend="${(iterStat.index > 0 and loansEntry.value[iterStat.index-1].copyLibrary.description == loan.copyLibrary.description) ? 'd-md-none' : ''}"></span>
+                  <span class="data" th:text="${loan.copyBranch.description}"/>
+                </li>
+                <li class="type_data col_title">
+                  <span class="title font-weight-bold mobile" th:text="#{mylibrary.loan.title}" th:classappend="${(iterStat.index > 0 and loansEntry.value[iterStat.index-1].copyLibrary.description == loan.copyLibrary.description) ? 'd-md-none' : ''}"></span>
+                  <a class="data" th:href="@{/public/catalog/detail/{id}(id=${loan.id})}">
+                    <th:block th:if="${loan.tfields !=null}" th:insert="/reader/fragments/title :: frag(${loan.tfields}, ${loan.id})"></th:block>
+                  </a>
+                </li>
+                <!-- :: Este contenedor lleva boton de despliegue para la version movil -->
+                <li class="type_data cont_btn_desplegar col_author">
+                  <span class="title mobile" th:text="#{mylibrary.loan.author}" th:classappend="${(iterStat.index > 0 and loansEntry.value[iterStat.index-1].copyLibrary.description == loan.copyLibrary.description) ? 'd-md-none' : ''}"></span>
+                  <div class="data" th:if="${loan.tfields !=null}" th:insert="/reader/fragments/author :: frag(${loan.tfields}, ${loan.id})"/>
+                  <!-- :: Este boton solo aparece en mobile y en el attr data-target se encuentran las clases a ocultar (con el caracter '.') separadas por el caracter ',' -->
+                  <button type="button" class="tb_00_btn_collapse mobile" data-target=".col_loanDate,.col_returnDate" aria-expanded="false">
+                    <span class="sr-only" th:text="#{mylibrary.loan.expand.info}"></span>
+                    <span class="icono fa text-danger fa-angle-down" aria-hidden="true"></span>
+                  </button>
+                </li>
+                <!-- :: Este contenedor esta oculto en version movil -->
+                <li class="type_data col_loanDate">
+                  <span class="title mobile" th:text="#{mylibrary.loan.loanDate}" th:classappend="${(iterStat.index > 0 and loansEntry.value[iterStat.index-1].copyLibrary.description == loan.copyLibrary.description) ? 'd-md-none' : ''}"></span>
+                  <span class="data value_date" th:text="${#dates.format(loan.loanDate, 'dd/MM/yyyy')}"/>
+                </li>
+                <!-- :: Este contenedor esta oculto en version movil -->
+                <li class="type_data col_returnDate">
+                  <span class="title mobile" th:text="#{mylibrary.loan.returnDate}" th:classappend="${(iterStat.index > 0 and loansEntry.value[iterStat.index-1].copyLibrary.description == loan.copyLibrary.description) ? 'd-md-none' : ''}"></span>
+                  <span th:if="${loan.daysLoanSurpassed<=0 and loan.numberOfReserves<=0}" class="data value_date" th:text="${#dates.format(loan.returnDate, 'dd/MM/yyyy')}"></span>
+
+                  <div th:if="${loan.daysLoanSurpassed>0 and loan.numberOfReserves>0}"  class="data text-danger font-weight-bold">
+                    <span class="value_date" th:text="${#dates.format(loan.returnDate, 'dd/MM/yyyy')}"></span>
+                    <span class="sr-only" th:text="#{mylibrary.loan.exceeded}"></span>
+                    <span class="icono fas fa-exclamation-circle fa-lg value ml-1" aria-hidden="true" th:title="#{mylibrary.loan.exceeded}"></span>
+                    <span class="sr-only" th:text="#{mylibrary.loan.reserved}"></span>
+                    <span class="icono fas fa-info-circle fa-lg value text-warning ml-1" aria-hidden="true" th:title="#{mylibrary.loan.reserved}"></span>
+                  </div>
+                  <div th:if="${loan.daysLoanSurpassed>0 and loan.numberOfReserves<=0}" th:title="#{mylibrary.loan.exceeded}" class="data text-danger font-weight-bold">
+                    <span class="value_date" th:text="${#dates.format(loan.returnDate, 'dd/MM/yyyy')}"></span>
+                    <span class="icono fas fa-exclamation-circle fa-lg value ml-1" aria-hidden="true"></span>
+                  </div>
+                  <div th:if="${loan.daysLoanSurpassed<=0 and loan.numberOfReserves>0}" th:title="#{mylibrary.loan.reserved}" class="data text-success">
+                    <span class="value_date" th:text="${#dates.format(loan.returnDate, 'dd/MM/yyyy')}"></span>
+                    <span class="icono fas fa-info-circle fa-lg value ml-1" aria-hidden="true"></span>
+                  </div>
+                  <!--<div class="tooltip" role="tooltip"><div class="arrow"></div><div class="tooltip-inner"></div></div>-->
+                </li>
+                <!-- :: botonera -->
+                <li class="type_data tb_00_cont_botonera">
+                  <span class="title mobile" th:classappend="${(iterStat.index > 0 and loansEntry.value[iterStat.index-1].copyLibrary.description == loan.copyLibrary.description) ? 'd-md-none' : ''}"></span>
+                  <div class="contenedor">
+                    <div class="cont_button">
+                      <form th:action="@{${thymeleafMap.get('RENEW_ACTION')}}" method="post" th:if="${hasRenewsAllowed and loan.renewable}">
+                        <input  name="barcode" type="hidden" th:value="${loan.barcode}">
+                        <input  name="source" type="hidden" th:value="${loan.source}">
+                        <button  type="submit" class="btn btn-outline-primary btn_renew"><span class="btn_titleWhite" th:text="#{renovate}"></span></button>
+                      </form>
+                        <th:block th:insert="/fragments/streaming :: streaming(ssource=${loansEntry.key}, sbarcode=${loan.barcode}, surl=${loan.attributes['url_display']})"></th:block>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <!-- :: /.cont_data -->
+          </div>
+          <!-- :: /.table_big_00 -->
+        </th:block>
+      </div>
+      <!-- :: /.cont_table_big_00 -->
+    </th:block>
+  </article>
+</section>
+<!-- :: /[reader/loans/readerLoans.html] -->

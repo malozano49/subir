@@ -1,0 +1,171 @@
+<th:block th:fragment="main">
+	<th:block th:if="${ resourceUrlOiginal != null and  detail.copy != null and not #lists.isEmpty(detail.copy) and (hasCirculation or tfields['t856'] == null)}">
+		<th:block th:insert="/title/fragments/copiesPagination" th:with="position='top'"></th:block><!-- Opcional? -->
+			<div class="copy-location d-flex">
+				<div class="cont_librarys col-md-12">
+					<th:block th:each="value, iterStat : ${detail.copy}">
+						<div th:id="'cont_table_'+${iterStat.index}" class="librarys cont_table_big_00 w-100"  aria-live="polite" aria-atomic="true">
+							<div class="tb_00_legend h3 col-md-12" th:if="${iterStat.index == 0 or (iterStat.index > 0 and detail.copy[iterStat.index-1].libraryDescription != value.libraryDescription)}">
+								<div class="cont_title">
+									<span class="tb_00_legend-title font-weight-bold" th:text="#{copy.library.label} + ':'"></span>
+									 <!-- <span class="tb_00_legend-value mobile" th:text="${value.libraryDescription}"></span>-->
+									<th:block th:insert="/title/fragments/linkLibrary"></th:block>
+								</div>
+							</div>
+							<div th:id="'table_'+${iterStat.index}" class="table_big_00 col-md-12 pl-0 pr-0" data-btn_in_modal=".col_5" data-view_in_modal=".col_6,.col_7,.col_8,.col_9,.col_10,.col_11,.col_12,.col_13,.col_14,.col_15,.col_16">
+								<!-- :: TITULOS DESKTOP -->
+								<ul class="tb_00_titles desktop_flex d-flex col-md-12 m-0" th:if="${iterStat.index == 0 or (iterStat.index > 0 and detail.copy[iterStat.index-1].libraryDescription != value.libraryDescription)}">
+									<li th:data-id="'table_'+${iterStat.index}+'_branchDescription'" class="type_title branchDescription">
+										<span class="title font-weight-bold" th:text="#{copy.branchDescription}"></span>
+									</li>
+									<!-- Adds component view adders -->
+									<th:block th:each="fragment:${DETAIL_COPIES_REQUEST_TITLE}">
+									      <th:block th:insert="${fragment}"></th:block>
+									</th:block>
+									<li th:id="'table_'+${iterStat.index}+'_external_link'"	class="type_title external_link" th:if="${!hasCirculation}">
+										<span class="title font-weight-bold" th:text="#{copy.online.external.link.title}"></span>
+									</li>
+						        </ul>
+						        <!-- :: /TITULOS DESKTOP -->
+						        <div class="cont_data col-md-12">
+							        <ul class="tb_00_data d-flex col-md-12 m-0 p-0">
+								        <li th:data-id="'table_value_'+${iterStat.index}+'_branchDescription_2'" class="type_data branchDescription">
+								        	<th:block th:if="${iterStat.index == 0 or (iterStat.index > 0 and detail.copy[iterStat.index-1].branchDescription != value.branchDescription)}">
+								        		<span class="title font-weight-bold mobile" th:text="#{copy.branch}"></span>
+								        		<th:block th:insert="/title/fragments/linkBranch"></th:block>
+								       		</th:block>
+								        </li>
+										<li class="type_title external_link">
+											<a target="_blank" class="online-copies__enlace btn btn-white"  
+												th:href="${resourceUrlOiginal} + ${tfields['t001'][0].controlValue}"
+												th:title="#{copy.online.external.link.resource.origin}" rel="noopener noreferrer">
+													<span th:text="#{copy.online.external.link.resource.origin}"></span>
+											</a>
+										</li>
+							  		</ul>
+							        <!-- :: /.tb_00_data -->
+						        </div>
+					     	   <!-- :: /.cont_data -->
+							</div>
+						</div>
+					</th:block>
+				</div>
+			</div>
+	</th:block>
+
+<th:block th:if="${detail.copy != null and not #lists.isEmpty(detail.copy) and (hasCirculation or tfields['t856'] != null)}">
+  <!-- :: [title/fragments/detailCopies.html] -->
+
+  <th:block th:insert="/title/fragments/copiesPagination" th:with="position='top'"></th:block>
+
+  <div  id="copias" class="copy-location d-flex">
+  <div class="cont_librarys col-md-12">
+  
+
+  <th:block th:each="value, iterStat : ${detail.copy}">
+    <div th:id="'cont_table_'+${iterStat.index}" class="librarys cont_table_big_00 w-100"  aria-live="polite" aria-atomic="true">
+      <div class="tb_00_legend h3 col-md-12" th:if="${iterStat.index == 0 or (iterStat.index > 0 and detail.copy[iterStat.index-1].libraryDescription != value.libraryDescription)}">
+        <div class="cont_title">
+          <span class="tb_00_legend-title font-weight-bold" th:text="#{copy.library.label} + ':'"></span>
+          <!-- <span class="tb_00_legend-value mobile" th:text="${value.libraryDescription}"></span>-->
+          <th:block th:insert="/title/fragments/linkLibrary"></th:block>
+        </div>
+      </div>
+      <div th:id="'table_'+${iterStat.index}" class="table_big_00 col-md-12 pl-0 pr-0" data-btn_in_modal=".col_5" data-view_in_modal=".col_6,.col_7,.col_8,.col_9,.col_10,.col_11,.col_12,.col_13,.col_14,.col_15,.col_16">
+        <!-- :: TITULOS DESKTOP -->
+        <ul class="tb_00_titles desktop_flex d-flex col-md-12 m-0" th:if="${iterStat.index == 0 or (iterStat.index > 0 and detail.copy[iterStat.index-1].libraryDescription != value.libraryDescription)}">
+   			
+          <li th:data-id="'table_'+${iterStat.index}+'_branchDescription'" class="type_title branchDescription">
+            <span class="title font-weight-bold" th:text="#{copy.branchDescription}"></span>
+          </li>
+          <th:block th:each="field, colStat : ${detailFields}">
+            <li th:data-id="'table_'+${iterStat.index}+'_'+${field}" th:class="'type_title ' + ${field} + ' col_' + ${colStat.index}">
+              <span class="title font-weight-bold" th:text="#{__${'copy.' + field}__}"></span>
+            </li>
+          </th:block>
+          <!-- Adds component view adders -->
+        <th:block th:each="fragment:${DETAIL_COPIES_REQUEST_TITLE}">
+          <th:block th:insert="${fragment}"></th:block>
+        </th:block>
+    <li th:id="'table_'+${iterStat.index}+'_external_link'"	class="type_title external_link" th:if="${!hasCirculation}">
+      <span class="title font-weight-bold" th:text="#{copy.online.external.link.title}"></span>
+    </li>
+        </ul>
+        <!-- :: /TITULOS DESKTOP -->
+        <div class="cont_data col-md-12">
+          <ul class="tb_00_data d-flex col-md-12 m-0 p-0">
+            <li th:data-id="'table_value_'+${iterStat.index}+'_branchDescription'" class="type_data branchDescription">
+              <th:block th:if="${iterStat.index == 0 or (iterStat.index > 0 and detail.copy[iterStat.index-1].branchDescription != value.branchDescription)}">
+                  <span class="title font-weight-bold mobile" th:text="#{copy.branch}"></span>
+                  <th:block th:insert="/title/fragments/linkBranch"></th:block>
+              </th:block>
+            </li>
+            <th:block th:each="field, colStat : ${detailFields}">
+              <li th:data-id="'table_value_'+${iterStat.index}+'_'+${field}" th:class="'type_data ' + ${field} + ' col_' + ${colStat.index}" th:classappend="${colStat.index == 1}?' cont_btn_desplegar':''">
+                  <span class="title mobile" th:text="#{__${'copy.'+field}__}"></span>
+                  <th:block th:if="${field == 'availability'}">
+                  <th:block th:switch="${value.availability}">
+                    <span class="data"
+                      th:case="${thymeleafMap.get('AVAILABLE_AFTER')}"
+                      th:text="#{${value.availability.type}} + ' ' + ${#dates.format(value.loanReturnDate, 'dd/MM/yyyy')}" ></span>
+                    <span class="data"
+                      th:case="${thymeleafMap.get('AVAILABLE_AFTER_QUARANTINE')}"
+                      th:text="#{${value.availability.type}} + ' ' + ${#dates.format(value.endQuarantineDate, 'dd/MM/yyyy')}"></span>
+                    <span class="data"
+                      th:case="*"
+                      th:text="#{${value.availability.type}}" ></span>
+                  </th:block>
+                  </th:block>
+                  <span th:if="${field == 'registrationDate'}" class="data"
+                    th:text="${value.registrationDate != null} ? ${#dates.format(value.registrationDate, 'dd/MM/yyyy')} : ''"></span>
+                  <span th:if="${field != 'availability' and field != 'registrationDate'}" class="data" th:text="${__${'value.'+field}__}"></span>
+                  <!-- :: Este boton solo aparece en mobile y en el attr data-target se encuentran las clases a ocultar (con el caracter '.') separadas por el caracter ',' -->
+                  <button th:if="${colStat.index == 1}" type="button" class="tb_00_btn_collapse mobile" data-target=".col_2,.col_3,.col_4,.col_5,.col_6,.col_7,.col_8,.col_9,.col_10,.col_11,.col_12,.col_13,.col_14,.col_15,.col_16" aria-expanded="false" aria-hidden="true">
+                    <span class="icono fas fa-angle-down text-danger" aria-hidden="true"></span>
+                  </button>
+                </li>
+            </th:block>
+			
+            <th:block th:if="${!hasCirculation}">
+            <!-- :: sin circulacion por defecto -->
+              	<th:block th:insert="/title/fragments/detailCopiesButtonDefault"></th:block>
+            </th:block>
+            <th:block th:if="${hasCirculation}">
+              <li th:data-id="'table_'+${iterStat.index}+'_data_9'" class="type_data tb_00_cont_botonera">
+                <!-- :: tengo circulacion  -->
+                <th:block th:if="${hasLoansAllowed and (null == value.lentToReader or !value.lentToReader)}">
+                  <!-- :: permito prestamo  -->
+                  <th:block th:if="${value.availability == thymeleafMap.get('AVAILABLE')}">
+                      <!-- :: esta disponible -->
+                      <th:block th:insert="/title/fragments/detailCopiesButtonLoan :: hide(false)"></th:block>
+                  </th:block>
+                  <th:block th:unless="${value.availability == thymeleafMap.get('AVAILABLE')}">
+                  <!-- :: no esta disponible -->
+                      <th:block th:insert="/title/fragments/detailCopiesRequest"></th:block>
+                  </th:block>
+                </th:block>
+                <th:block th:unless="${hasLoansAllowed and (null == value.lentToReader or !value.lentToReader)}">
+                <!-- :: no permito prestamo -->
+                  <th:block th:insert="/title/fragments/detailCopiesRequest"></th:block>
+                </th:block>
+              </li>
+            </th:block>
+          </ul>
+          <!-- :: /.tb_00_data -->
+        </div>
+        <!-- :: /.cont_data -->
+      </div>
+      <!-- :: /.table_big_00 -->
+  </div>
+  <!-- :: /.cont_table_big_00 -->
+  </th:block>
+  </div>
+  <!-- :: /.cont_librarys -->
+  </div>
+  <!-- :: /.copy-location -->
+
+  <th:block th:insert="/title/fragments/copiesPagination" th:with="position='bottom'"></th:block>
+
+    <!-- :: /[title/fragments/detailCopies.html] -->
+</th:block>
+</th:block>

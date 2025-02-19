@@ -1,0 +1,55 @@
+<!-- :: [title/fragments/linkLibrary.html] -->
+<th:block th:if="${value.libraryExternalEMail != null or value.libraryLatitude != null or value.libraryLongitude != null or (value.libraryAddress != null and (#lists.size(value.libraryAddress) == 3) and (value.libraryAddress[0] != null or value.libraryAddress[1] !=null or value.libraryAddress[2] !=null)) }"
+	th:with="auxAddress=${null!=value.libraryAddress?(null!=value.libraryAddress[0]?value.libraryAddress[0]:'')+(null!=value.libraryAddress[1]?','+value.libraryAddress[1]:'')+(null!=value.libraryAddress[2]?','+value.libraryAddress[2]:''):''}">
+	<button type="button"
+		class="btn btn-white btn-link btn_library_location modal_js"
+		th:title="#{copies.library.btn_library_location.title}"
+		th:aria-label="#{copies.library.btn_library_location.title}"
+		data-modal_target="modal_library_location" data-modal_size="modal-md"
+		data-modal_tipo="info" data-modal_discriminador="modal_libraryLocation"
+		data-modal_footer="false"
+		th:data-modal_title="#{copies.library.modal_libraryLocation.modal_title}"
+		th:data-modal_html="'#modal_libraryLocation_'+${iterStat.index}"
+		th:data-modal_datos='|{
+                          "nombre"    : "${value.libraryDescription}",
+                          "direccion" : "${auxAddress}",
+                          "email"     : "${value.libraryExternalEMail}",
+                          "lat"       : "${value.libraryLatitude}",
+                          "long"      : "${value.libraryLongitude}"
+                      }|'>
+		<span class="icono fas fa-map-marker-alt" aria-hidden="true"></span>
+    <span class="dato data_libraryDescription tb_00_legend-value"
+			th:text="${value.libraryDescription}"></span>
+	</button>
+	<div th:id="'modal_libraryLocation_'+${iterStat.index}" class="d-none"
+		aria-hidden="true">
+		<div class="library_datos">
+			<div class="library_datos-cont cont_name">
+				<span class="cont_label"
+					th:text="#{copies.library.modal_libraryLocation.cont_name.label}"></span>
+				<span class="cont_data" th:text="${value.libraryDescription}"></span>
+			</div>
+			<div class="library_datos-cont cont_dir" th:if="${'' != auxAddress}">
+				<span class="cont_label"
+					th:text="#{copies.library.modal_libraryLocation.cont_dir.label}"></span>
+				<span class="cont_data" th:text="${auxAddress}"></span>
+			</div>
+
+			<div class="library_datos-cont cont_email"
+				th:if="${value.libraryExternalEMail != null}">
+				<span class="cont_label"
+					th:text="#{copies.library.modal_libraryLocation.cont_email.label}"></span>
+				<span class="cont_data" th:text="${value.libraryExternalEMail}"></span>
+			</div>
+		</div>
+		<div class="library_botonera">
+			<a class="btn btn-primary btn_map" href="#" target="_blank"
+				th:text="#{copies.library.modal_libraryLocation.btn_map.title}"></a>
+		</div>
+	</div>
+</th:block>
+<th:block th:if="${value.libraryExternalEMail == null and value.libraryLatitude == null and value.libraryLongitude == null and (value.libraryAddress == null or (#lists.size(value.libraryAddress) != 3) or (value.libraryAddress[0] == null and value.libraryAddress[1] == null and value.libraryAddress[2] ==null)) }" >
+   <span class="tb_00_legend-value" th:text="${value.libraryDescription}"></span>
+</th:block>
+
+<!-- :: [title/fragments/linkLibrary.html] -->

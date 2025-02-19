@@ -1,0 +1,52 @@
+<th:block th:insert="/public/home/html_type"></th:block>
+  <head>
+    <th:block th:insert="/public/home/technicalheader::main" th:with="page='opac-agenda'"></th:block>
+  </head>
+  <body class="page_type_home home_agenda page_viewAll page_opac-agenda bg-propietary-light">
+<!-- :: public/home/agenda/all.html -->
+    <header class="header_principal">
+      <th:block th:with="pageLocation='agenda'" th:insert="/public/home/header"></th:block>
+      <th:block th:insert="/fragments/breadcrums"></th:block>
+    </header>
+    <main id="acc_anchor_main">
+      <div class="container-fluid">
+        <section class="sct_messages d-flex flex-column mt-5" aria-labelledby="sct_alerts_title">
+          <h2 id="sct_alerts_title" class="sr-only">Mensajes de alerta generales</h2>
+          <div class="container cont_alert" aria-live="polite" aria-atomic="true"></div>
+        </section>
+        <section class="container container_general mt-3 mb-5 p-0" aria-labelledby="art_agenda_title">
+
+          <div class="widget_agenda widget widget_all" th:if="${activities != null}">
+            <div class="widget-cont_header">
+              <span class="icono fas fa-calendar-times mr-2"></span>
+              <h2 id="art_agenda_title" class="anchor_title stc_title widget-header h2" th:text="#{info.activities}"></h2>
+              <span class="badge alertbul5" th:text="${activities.size()}"/>
+            </div>
+            <!-- :: /.widget-cont_header -->
+            <div class="widget_cont">
+              <ul class="category-list">
+                <li th:each="activity: ${activities}">
+                  <a class="link" th:href="${activity.link}" th:aria-label="#{info.activities.link.description(${activity.text},${activity.activityDateStart})}" th:title="#{info.activities.link.description(${activity.text},${activity.activityDate})}" target="_blank" rel="external noopener noreferrer">
+                      <span class="desc" th:text="${activity.text}" aria-hidden="true"></span>
+                      <span class="date">
+                        <span class="icono fas fa-calendar-alt mr-1" aria-hidden="true"></span>
+                        <span class="date_title" th:text="${#dates.format(activity.activityDateStart, 'dd/MM/yyyy')}?:'00/00/0000'"></span>
+                      </span>
+                    </a>
+                  </li>
+              </ul>
+            </div>
+            <!-- :: /.widget_cont -->
+          </div>
+          <!-- :: /.widget -->
+
+        </section>
+      </div>
+      <!-- :: /.container-fluid -->
+    </main>
+    <footer class="footer_principal">
+      <th:block th:insert="/public/home/footer" th:with="page='opac-agenda'"></th:block>
+    </footer>
+    <th:block th:insert="/public/home/technicalfooter" th:with="page='opac-agenda'"></th:block>
+  </body>
+</html>

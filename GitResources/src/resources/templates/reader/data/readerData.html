@@ -1,0 +1,107 @@
+<!-- :: [reader/data/readerData.html] -->
+<section class="card reader-data card_readerData" aria-labelledby="card_readerData_description">
+  <h2 id="card_readerData_description" class="sr-only" th:text="#{mylibrary.reader.data.area}"></h2>
+	<th:block th:if="${updateResult != null}">
+		<div th:if="${updateResult}" class="alert alert-success m-2">
+      <span class="alert_titulo sr-only" th:text="#{alert.success.title}"></span>
+			<span class="alert_texto" th:text="#{mylibrary.reader.update.ok}"></span>
+		</div>
+		<div th:unless="${updateResult}" class="alert alert-danger m-2" role="alert" aria-atomic="true">
+      <span class="alert_titulo sr-only" th:text="#{alert.error.title}"></span>
+			<span class="alert_texto" th:text="#{mylibrary.reader.update.ko}"></span>
+		</div>
+	</th:block>
+    <!-- <div class="row mx-5 mt-4 mb-3">
+      <div class="col-md-12 d-flex cont_header">
+        <div class="col-md-auto col-sm-12 col-xs-12 pl-0 pr-0 cont_image">
+          <div th:insert="/public/catalog/fragments/imageNotFound :: image('1')" class="user-portrait border border-primary rounded-circle mx-3 mb-3"></div>
+          <h3 th:text="${reader.firstName + ' ' + reader.surname}" class="d-block font-weight-bold"></h3>
+        </div>
+        <div class="col-md-auto ml-auto col-sm-12 col-xs-12 cont_botonera">
+          <a th:if="${editReaderData}" th:href="@{${thymeleafMap.get('READER_DATA_PATH')}}" class="btn btn-link btn_edition ">
+            <span class="icono far fa-edit" aria-hidden="true"></span>
+            <span class="label_icono" th:text="#{mylibrary.reader.edit.exit}"/>
+          </a>
+          <a th:unless="${editReaderData}" th:href="@{${thymeleafMap.get('READER_DATA_EDIT_PATH')}}" class="btn btn-link btn_edition ">
+            <span class="icono far fa-edit" aria-hidden="true"></span>
+            <span class="label_icono" th:text="#{mylibrary.reader.edit}"/>
+          </a>
+        </div>
+      </div>
+    </div> -->
+    <div class="row mx-5 my-3 d-flex">
+      <div class="columna col-md-5">
+        <h4 th:text="#{mylibrary.contact.data.title}" class="font-weight-bold"></h4>
+        <ul>
+          <li class="">
+            <span class="icono fas fa-envelope mr-2" aria-hidden="true"></span>
+            <span class="sr-only" th:text="#{mylibrary.reader.email}"></span>
+            <span th:text="${reader.email}" class="reader-data-value"></span>
+          </li>
+          <li class="type_phone">
+            <span class="icono fas fa-phone-volume mr-2" aria-hidden="true"></span>
+            <span class="sr-only" th:text="#{mylibrary.reader.phone}"></span>
+            <span th:text="${reader.phone}" class="reader-data-value"></span>
+          </li>
+          <li class="type_phone">
+            <span class="icono fas fa-mobile-alt mr-2" aria-hidden="true"></span>
+            <span class="sr-only" th:text="#{mylibrary.reader.mobile.phone}"></span>
+            <span th:text="${reader.mobilePhone}" class="reader-data-value"></span>
+          </li>
+          <li class="" th:if="${reader.address != null and not #lists.isEmpty(reader.address)}">
+            <span class="icono fas fa-map-marker-alt mr-2" aria-hidden="true"></span> <!--  th:aria-label="#{mylibrary.reader.address}"  -->
+            <span th:each="a, iterStat : ${reader.address}" th:text="!${iterStat.last} ? ${a==null?'':a} + ',': ${a}"></span>
+          </li>
+        </ul>
+      </div>
+      <div class="columna col-md-6 control_label">
+        <h4 th:text="#{mylibrary.reader.data.title}" class="font-weight-bold"></h4>
+        <ul>
+          <li class="reader-data-item">
+            <span th:text="#{mylibrary.reader.barcode}" class="reader-data-title mr-2"></span>
+            <span th:text="${reader.barcode}" class="reader-data-value"></span>
+          </li>
+          <li class="reader-data-item">
+            <span th:text="#{mylibrary.reader.alias}" class="reader-data-title mr-2"></span>
+            <span th:text="${reader.alias}" class="reader-data-value"></span>
+          </li>
+          <li class="reader-data-item">
+            <span th:text="#{mylibrary.reader.alias.description}" class="reader-data-title mr-2"></span>
+            <span th:text="${reader.aliasDescription}" class="reader-data-value"></span>
+          </li>
+           <li class="reader-data-item" th:if="${reader.opacBranch != null and not #lists.isEmpty(reader.opacBranch)}">
+            <span th:text="#{mylibrary.reader.opac.branch.description}" class="reader-data-title mr-2"></span>
+            <span th:text="${reader.subCatalogText}"></span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="row mx-5 d-flex mt-4 last_row">
+      <div class="columna col-md-6">
+        <h4 th:text="#{mylibrary.security.data.title}" class="font-weight-bold"></h4>
+        <ul>
+          <li class="">
+            <span th:text="#{mylibrary.reader.password}" class="reader-data-title"></span>
+            <span class="reader-data-value">*******</span>
+          </li>
+        </ul>
+      </div>
+      <div class="columna col-md-6 oculto">
+        <h4 th:text="#{mylibrary.warning.data.title}" class="font-weight-bold"></h4>
+        <ul>
+          <li class="ml-2 mt-4 cont_notify_mail">
+            <div class="form-group cont_check cont_check_tunned d-inline-block pt-0 pl-0 pb-0">
+              <label for="activeEmail1" th:text="#{mylibrary.reader.email.check}"></label>
+              <!--/* :: TODO: 191205 Para el attr checked hace falta una condicion de timeleaf */-->
+              <input type="checkbox" id="activeEmail1" name="activeEmail1" disabled th:checked="${reader.activeEmail}" th:field="${reader.activeEmail}" />
+            </div>
+          </li>
+          <!-- /* External Modules */ -->
+		  <th:block th:each="fragment:${READER_DATA_NOTIFY}">
+		  	<th:block th:with="edit='false'" th:insert="${fragment}"></th:block>
+		  </th:block>
+        </ul>
+      </div>
+  </div>
+</section>
+<!-- :: /[reader/data/readerData.html] -->

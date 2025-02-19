@@ -1,0 +1,14 @@
+<!-- :: /home/fragments/mostrecent.html -->
+<section id="sct_other" class="sct_other article d-flex flex-column container" data-skip_to_content="art_links" aria-labelledby="title_sct_other">
+    <h2 id="title_sct_other" class="anchor_title stc_title font-weight-bold" th:text="#{most.recent.title}"></h2>
+    <div class="art_covers component pl-0 pr-0 pb-0" th:insert="/title/explore.html :: frag(${mostRecents},most.recent.title, false,1)" th:with="explore='other_recommendations',exploreType='explore_no_collapse'"></div>
+    <!-- :: /.component -->
+
+    <div class="msg_charge">
+      <div aria-live="polite" id="c-polite_other" class="sr-only">
+        <span th:text="#{message.fincargarecientes}"></span>
+      </div>
+      <div aria-live="assertive" id="c-assertive_other" class="sr-only"></div>
+    </div>
+</section>
+<!-- :: /home/fragments/mostrecent.html -->

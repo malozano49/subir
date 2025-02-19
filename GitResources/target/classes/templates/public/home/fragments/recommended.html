@@ -1,0 +1,15 @@
+<!-- :: /home/fragments/recommended.html -->
+<section id="sct_recomendations" class="sct_recomendations article d-flex container" th:if="${recommendedList !=null}" aria-labelledby="title_sct_recomendations">
+    <h2 id="title_sct_recomendations" class="sr-only font-weight-bold stc_title " th:text="#{recommended.title}"></h2>
+    <div class="component col-md-12" th:insert="/title/explore.html :: frag(${recommendedList},recommended.title,false,0)" th:with="explore='recommendations',exploreType='explore_no_collapse'"></div>
+    <!-- :: /.component -->
+
+    <div class="msg_charge">
+      <div aria-live="polite" id="c-polite_recomendarions" class="sr-only">
+        <span th:text="#{message.fincargarecomendados}"></span>
+      </div>
+      <div aria-live="assertive" id="c-assertive_recomendations" class="sr-only"></div>
+    </div>
+    
+  </section>
+<!-- :: /home/fragments/recommended.html -->

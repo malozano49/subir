@@ -1,0 +1,24 @@
+/*!
+ *  @file        : _cookies_bar.scss
+ *
+ *  @description : ABSYS aplicacion estilos
+ *
+ *  @author      : http://www.baratz.es/
+ *
+ *  @ref         : Estilos barra fija flotante para gestión de las cookies
+--------------------------------------------------------------------------------------------------*/
+
+.cookies_bar{position:fixed;display:flex;z-index:9999;top:-100%;width:auto;max-width:$max-width-container;
+
+  .contenedor_principal{position:relative;display:flex;flex-flow:row wrap;padding:30px 30px 15px 15px;box-shadow:0 0 5px;}
+  .cont_botonera{position:relative;display:flex;flex-flow:row wrap;width:100%;margin-top:8px;justify-content:center}
+  .btn_cookies{position:relative;margin-right:15px;}
+  .btn_close{position:absolute;display:block;top:5px;right:0;padding:0 5px 0 5px;
+    .icono{font-size:2rem;line-height:1em}
+  }
+
+  @include media_max(sm){
+    .cont_botonera{flex-flow:column wrap;padding-left:15px;}
+    .btn_cookies{width:100%;margin-right:0;margin-bottom:15px;}
+  }
+}

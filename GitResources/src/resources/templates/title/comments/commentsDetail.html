@@ -1,0 +1,13 @@
+<!-- :: /title/comments/commentsDetail.html -->
+<th:block th:if="${commentsEnabled}">
+	<div class="cont_titulo comments-actions mt-3">		
+		<div class="l3">
+		<th:block th:if="${numComments} > 0">			
+				<th:block th:with="comment = ${detail.catalog}, avg=${mediacomment}"  th:insert="/title/comments/toolBarComments.html"></th:block>			
+		</th:block>
+		</div>
+		<th:block th:with="numComments = ${detail.catalog.numComments}"  th:insert="/title/comments/addComment"></th:block>
+	  <p class="comments-error error"></p>
+	</div>
+</th:block>
+<!-- :: /title/comments/commentsDetail.html -->

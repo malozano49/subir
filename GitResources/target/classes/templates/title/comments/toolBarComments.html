@@ -1,0 +1,15 @@
+<!-- :: /title/comments/toolBarComments.html -->
+<th:block th:if="${numComments} > 0">
+	<!-- <a class="link" th:href="@{${thymeleafMap.get('COMMENT_LIST_PAGE')}(id=${comment.oaiIdentifierB64}, page=0, vista=${vistaComentarios},tabid= ${solrSearchWeb.solrSearch.tabId})}"> -->
+	 <a class="link cont_anchors view-comments" att-hash="#tcomments-tab" th:href="@{${thymeleafMap.get('CATALOG_MAPPING_DETAIL_VIEW_NO_VIEW_NO_PARAM')}+${comment.oaiIdentifierB64}(tabId=${solrSearchWeb.solrSearch.tabId})}+'#tcomments-tab'">
+	    <meter th:id="${comment.oaiIdentifierB64}" class="average-rating" min="0" max="5" th:value="${avg}" th:title="${avg}+' de 5'" th:text="${avg}+' de 5'"></meter>	
+	    <input type="hidden" th:value="5" id="total-stars" name="total-stars" />
+		<span class="view-comments" th:text="#{comment.btn}+' ('+${numComments}+')'"></span>		
+	</a>
+</th:block>
+<th:block th:unless="${numComments} > 0">	
+<a class="link cont_anchors view-comments" att-hash="#tcomments-tab" th:href="@{${thymeleafMap.get('CATALOG_MAPPING_DETAIL_VIEW_NO_VIEW_NO_PARAM')}+${comment.oaiIdentifierB64}(tabId=${solrSearchWeb.solrSearch.tabId})}+'#tcomments-tab'">
+	<span class="icono fa fa-comment" aria-hidden="true"></span> <span class="view-comments" th:text="#{comment.first.text}"></span>
+</a>
+</th:block>
+<!-- :: /title/comments/toolBarComments.html -->

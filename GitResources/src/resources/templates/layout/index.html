@@ -1,0 +1,76 @@
+<th:block th:insert="/public/home/html_type"></th:block>
+	<head>
+  		<th:block th:insert="/public/home/technicalheader::main" th:with="page='opac-indice'"></th:block>
+	</head>
+   <body class="page_type_layout layout_home">
+<!-- :: [layout/indice.html] -->
+      <header class="header_principal">
+         <th:block th:with="pageLocation='home'" th:insert="/public/home/header"></th:block>
+      </header>
+      <main id="acc_anchor_main">
+
+        <h2 class="col-12 mt-3 mb-3">Línea Maquetación: INDICE</h2>
+
+        <section class="container-fluid">
+
+          <th:block th:insert="/layout/fragments/enlaces_internos"></th:block>
+
+          <article class="p-3 border">
+            <h2 class="col-12 mt-3 mb-3">Línea Maquetación: CONTENIDOS</h2>
+            <div class="container">
+              <h3>Tablas de Colores</h3>
+              <ul class="d-flex flex-column ml-3">
+                <li class="list-item-group">Colorimetria normal</li>
+                <li class="list-item-group">Colorimetria alto contraste</li>
+              </ul>
+            </div>
+
+            <div class="container">
+              <h3>Componentes simples</h3>
+              <ul class="d-flex flex-column ml-3">
+                <li class="list-item-group">Alertas</li>
+                <li class="list-item-group">Botones y links</li>
+                <li class="list-item-group">Forms componentes</li>
+                <li class="list-item-group">Tablas</li>
+              </ul>
+            </div>
+
+            <div class="container">
+              <h3>Social iconos y componente Vistas</h3>
+              <ul class="d-flex flex-column ml-3">
+                <li class="list-item-group">Social iconos</li>
+                <li class="list-item-group">Vistas
+                  <ul class="mt-1 ml-3">
+                    <li class="list-item-group">Carouseles</li>
+                    <li class="list-item-group">Lista</li>
+                    <li class="list-item-group">Mosaico</li>
+                    <li class="list-item-group">Tabla</li>
+                  </ul>
+                </li>
+
+              </ul>
+            </div>
+
+            <div class="container">
+              <h3>Interactives</h3>
+              <ul class="d-flex flex-column ml-3">
+                <li class="list-item-group">Sortable.js</li>
+              </ul>
+            </div>
+          </article>
+
+
+        </section>
+        <!-- :: /.container-fluid -->
+
+
+
+      </main>
+      <footer class="footer_principal">
+         <th:block th:insert="/public/home/footer"></th:block>
+      </footer>
+      <th:block th:insert="/public/home/technicalfooter" th:with="page='opac-indice'"></th:block>
+
+<!-- :: /[layout/indice.html] -->
+   </body>
+</html>

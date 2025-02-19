@@ -1,0 +1,21 @@
+<th:block th:fragment="main()">
+
+  <!-- :: [public/home/home121.html] -->
+  <div class="home_121" id="chargeHome">
+
+    <section id="sct_buscador" class="sct_buscador" data-skip_to_content="recommendations_art_suggest_0" aria-labelledby="title_sct_buscador">
+      <h2 id="title_sct_buscador" class="anchor_title stc_title sr-only" th:text="#{home.search.section.title}"></h2>
+      <th:block th:insert="/public/search/type::main"></th:block>
+    </section>
+    <!-- :: /.sct_buscador -->
+	<th:block th:insert="/public/home/fragments/recommended.html" ></th:block>
+    <!-- :: /.sct_recomendations -->
+	<th:block th:insert="/public/home/fragments/mostrecent.html" ></th:block>
+    <!-- :: /.sct_other -->
+	<th:block th:insert="/public/home/fragments/info.html" ></th:block>
+    <!-- :: /.sct_sidebar -->
+  </div>
+  <!-- :: /.home_121 -->
+
+<!-- :: /[public/home/home121.html] -->
+</th:block>

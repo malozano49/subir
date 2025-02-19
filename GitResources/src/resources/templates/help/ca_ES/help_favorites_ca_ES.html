@@ -1,0 +1,239 @@
+<th:block th:insert="/public/home/html_type"></th:block>
+<th:block th:insert="/public/home/technicalheader::main" th:with="page=${'opac-help-favorites-es_ES'}"></th:block>
+<script type="text/javascript">
+	var menu = document.getElementById('menu');
+	Stickyfill.add(menu);
+</script>
+<body>
+<div id="burger-menu" class="burger-menu">
+  <span></span>
+  			<div id="menu2" class="menu menu2">
+			<div class=""><nav class="sn-contents" aria-label="Secondary">
+      <ul class="sidenav--list">
+<li><a href="#favorites">Preferits</a>
+					</li>
+						<li><a href="#emailFavorites">Compartir els preferits per correu electrònic</a></li>
+						<li><a href="#addListFavorites">Com crear llistes de preferits</a></li>
+						<li><a href="#appendRecordList">Com afegir registres a una de les meves llistes de preferits</a></li>
+						<li><a href="#moviFavorites">Com moure un preferit a una altra llista existent</a></li>
+						<li><a href="#delRecordList">Com eliminar registres de llistes existents</a></li>
+						<li><a href="#modifyDescList">Com modificar la descripció associada a una llista</a></li>
+						<li><a href="#delList">Com eliminar una llista</a></li>
+			
+				
+				<li><a href="#searchAuthority">Accés a la cerca en autoritats</a></li>
+				<li><a href="#searchIndexes">Accés a la cerca en els índexs</a></li>
+				<li><a href="#lastSearh">Accés a les últimes cerques realitzades</a></li>
+				<li><a href="#historySearch">Accés a les cerques desades</a></li>
+				<li><a href="#profil">Accés al Meu Perfil</a></li>
+				<li><a href="#home">Accés a la pàgina d'inici</a></li></ul></nav>
+</div>
+		</div>
+</div>
+
+	<div class="wrapper cf">
+	<div id="menu" class="menu">
+			<div class="sidenav"><nav class="sn-contents" aria-label="Secondary">
+      <ul class="sidenav--list">
+<li><a href="#favorites">Preferits</a>
+					</li>
+						<li><a href="#emailFavorites">Compartir els preferits per correu electrònic</a></li>
+						<li><a href="#addListFavorites">Com crear llistes de preferits</a></li>
+						<li><a href="#appendRecordList">Com afegir registres a una de les meves llistes de preferits</a></li>
+						<li><a href="#moviFavorites">Com moure un preferit a una altra llista existent</a></li>
+						<li><a href="#delRecordList">Com eliminar registres de llistes existents</a></li>
+						<li><a href="#modifyDescList">Com modificar la descripció associada a una llista</a></li>
+						<li><a href="#delList">Com eliminar una llista</a></li>
+			
+				
+				<li><a href="#searchAuthority">Accés a la cerca en autoritats</a></li>
+				<li><a href="#searchIndexes">Accés a la cerca en els índexs</a></li>
+				<li><a href="#lastSearh">Accés a les últimes cerques realitzades</a></li>
+				<li><a href="#historySearch">Accés a les cerques desades</a></li>
+				<li><a href="#profil">Accés al Meu Perfil</a></li>
+				<li><a href="#home">Accés a la pàgina d'inici</a></li></ul></nav>
+</div>
+		</div>
+		<div class="content">
+			<a name="top"></a>
+			<a name="favorites"></a>
+			<h2 class="title-help">Preferits</h2>
+			<p>Des d'aquesta opció es poden veure els registres que hagi marcat com a preferits.</p>
+			<p class="tab2-help">Per defecte, els resultats de la cerca es mostren ordenats en grups de 10, però existeix la possibilitat d'agrupar els resultats de 25 en 25 o de 35 en 35.</p>
+			<p class="tab5-help margen10"><img th:src="@{/img/help/results-by-page.png}" alt="Resultats per pàgina" width="250px"></p>
+			<p class="tab2-help">Per moure's per les diferents pàgines dels resultats obtinguts, existeixen les següents opcions:</p>
+			<ul class="tab4-help margen5">
+			    <li>Feu clic a <img th:src="@{/img/help/next.png}" alt="Següent" width="75px"> per anar a la següent pàgina.</li>
+			    <li>Feu clic a <img th:src="@{/img/help/back.png}" alt="Anterior" width="75px"> per anar a la pàgina anterior.</li>
+			    <li>Feu clic al número de pàgina que vulgueu veure
+			        <br><br><img th:src="@{/img/help/number-by-page.png}" alt="Número de pàgina" width="350px">
+			    </li>
+			    <li>Feu clic al número 1 per veure la primera pàgina
+			        <br><br><img th:src="@{/img/help/first-page.png}" alt="Primera pàgina" width="350px"/>
+			    </li>
+			    <li>Feu clic al número anterior a Següent per anar a l'última pàgina
+			        <br><br><img th:src="@{/img/help/last-page.png}" alt="Última pàgina" width="350px"/>
+			    </li>
+			</ul>
+			<a name="emailFavorites"></a>
+			<h4 class="title-help">Compartir per correu electrònic els preferits</h4>
+			<p>Si vol compartir per correu electrònic els registres que ha marcat com a preferits</p>
+			<ul class="tab5-help margen5">
+			    <li>1. Feu clic a <img th:src="@{/img/help/icon-favorites.png}" alt="Icona preferits"/></li>
+			    <li>2. Feu clic a <img th:src="@{/img/help/btn-share-email1.png}" alt="Botó Compartir correu electrònic 1" width="150px"/></li>
+			    <li>3. S'obri una finestra perquè introduïu una adreça de correu electrònic
+			        <br>
+			        <span class="center-text-help"><img th:src="@{/img/help/share-email.png}" alt="Compartir per correu electrònic" width="350px"/></span>
+			    </li>
+			    <li>4. Feu clic a <img th:src="@{/img/help/btn-share-email2.png}" alt="Botó Compartir correu electrònic 2" width="150px"/> per enviar els preferits a l'adreça de correu electrònic introduïda</li>
+			</ul>
+			<a name="addListFavorites"></a>
+			<h4 class="title-help">Com crear llistes de preferits</h4>
+			<ul class="tab5-help margen5">
+			    <li>1. Feu clic a l'opció <img th:src="@{/img/help/icon-add-list.png}" alt="Icona afegir llista"/>   associada al registre que vol afegir a la nova llista.
+			    <li>2. Feu clic a l'opció <img th:src="@{/img/help/btn-add-list.png}" alt="Botó nova llista" width="100px"/></li>
+			    <li>3. Introduïu la descripció que vol associar a la nova llista.
+			        <br>
+			        <span class="tab3-help margen5"><img th:src="@{/img/help/append-list-new.png}" alt="Afegir nova llista" width="200px"/></span>
+			    </li>
+			    <li>4. Feu clic a <img th:src="@{/img/help/btn-add-title-list.png}" alt="Botó afegir llista seleccionada" width="200px"/>
+			        <ul class="tab3-help margen5">
+			            <li>es crea la nova llista amb el registre associat</li>
+			            <li>els registres pertanyents a una llista de preferits, es mostren amb la següent imatge distintiva:
+			                <img th:src="@{/img/help/icon-record-in-list.png}" alt="Registre a llistes"/>
+			            </li>
+			            <li>si vol veure les llistes que té creades, feu clic al seu usuari i seleccioneu l'opció <i>Les meves llistes</i>
+			                <br>
+			                <span class="tab5-help margen5"><img th:src="@{/img/help/my-lists.png}" alt="Les meves llistes" width="150px"/></span>
+			            </li>
+			        </ul>
+			    </li>
+			</ul>
+			<a name="appendRecordList"></a>
+			<h4 class="title-help">Com afegir registres a una de les meves llistes de preferits</h4>
+			<p>Si desitja afegir registres a alguna de les seves llistes de preferits,</p>
+			<ul class="tab5-help margen5">
+			    <li>1. Feu clic a l'opció <img th:src="@{/img/help/icon-add-list.png}" alt="Icona afegir llista"/> associada al registre que vol afegir a una de les llistes que ja té creades.
+			    <li>2. Seleccioneu la llista que us interessi.<br>
+			        <span class="tab5-help margen5"><img th:src="@{/img/help/list-selection.png}" alt="Seleccionar llista" width="250px"/></span> </li>
+			    <li>3. Feu clic a <img th:src="@{/img/help/btn-add-title-list.png}" alt="Botó afegir Llista" width="200px"/>
+			    </li>
+			</ul>
+			<a name="moviFavorites"></a>	
+			<h4 class="title-help">Com moure un favorit a una altra llista existent</h4>
+			<p>Si vol moure un dels registres que té en una llista a una altra diferent, ha d'identificar-se prèviament. Per fer-ho, feu clic a
+			    <img th:src="@{/img/help/my-profile.png}" alt="El meu perfil" width="65px"/>
+			</p>
+			<ul class="tab5-help margen10">
+			    <li>1. Feu clic al vostre usuari i seleccioneu l'opció <i>Les meves llistes</i><br>
+			        <span class="tab5-help margen5"><img th:src="@{/img/help/my-lists.png}" alt="Les meves llistes" width="250px"/></span>
+			    </li>
+			    <li>2. Feu clic a la llista on es troba el registre que vol moure<br>
+			        <span class="tab5-help margen5"><img th:src="@{/img/help/list-my.png}" alt="Les meves llistes" width="350px"/></span>
+			    </li>
+			    <li>3. Feu clic a l'opció <img th:src="@{/img/help/icon-share.png}" alt="Icona de compartir" /> associada al registre que vol canviar de llista</li>
+			    <li>4. Seleccioneu la llista a la qual vol moure el registre
+			        </br><span class="tab5-help margen5"><img th:src="@{/img/help/move-list.png}" alt="Moure llista" width="250px"/></span>
+			    </li>
+			    <li>5. Feu clic a <img th:src="@{/img/help/update.png}" alt="Botó actualitzar" width="100px"/>  per moure el registre a la llista seleccionada.					
+				</li>
+			</ul>
+			<a name="delRecordList"></a>
+			<h4 class="title-help">Com eliminar registres de llistes existents</h4>
+			<p>Si desitja eliminar algun dels registres d'una llista, ha d'identificar-se prèviament. Per fer-ho, feu clic a
+			    <img th:src="@{/img/help/my-profile.png}" alt="El meu perfil" width="65px"/>
+			</p>
+			<p>Un cop estigui identificat, </p> 
+			<ul class="tab5-help margen10">
+			    <li>1. Feu clic al vostre usuari i seleccioneu l'opció <i>Les meves llistes</i> <br>
+			        <span class="tab5-help margen5"><img th:src="@{/img/help/my-lists.png}" alt="Les meves llistes" width="250px"/></span>
+			    <li>
+			    <li>2. Feu clic a la llista on es troba el registre que vol eliminar<br>
+			        <span class="tab5-help margen5"><img th:src="@{/img/help/list-my.png}" alt="Les meves llistes" width="350px"/></span>
+			    <li>
+			    <li>3. Feu clic a l'opció <img th:src="@{/img/help/icon-paper-bin-1.png}" alt="Icona Paperera"/> associada al registre que vol eliminar
+			        <br><span class="tab5-help margen5"><img th:src="@{/img/help/records.png}" alt="Registre"  width="350px"/></span>
+			        <ul class="tab3-help">
+			            <li>Per tornar a visualitzar les llistes que té creades, feu clic a <img th:src="@{/img/help/return.png}" alt="Tornar" width="50px"/></li>
+			        </ul>
+			    <li>
+			</ul>
+			<a name="modifyDescList"></a>
+			<h4 class="title-help">Com modificar la descripció associada a una llista</h4>
+			<p>Si desitja modificar la descripció associada a una llista de preferits, ha d'identificar-se prèviament. Per fer-ho, feu clic a
+			    <img th:src="@{/img/help/my-profile.png}" alt="El meu perfil" width="65px"/>
+			</p>
+			<p>Un cop estigui identificat,</p>
+			<ul class="tab5-help margen10">
+			    <li>1. Feu clic al vostre usuari i seleccioneu l'opció <i>Les meves llistes</i><br>
+			        <span class="tab5-help margen5"><img th:src="@{/img/help/my-lists.png}" alt="Les meves llistes" width="200px"/></span>
+			    </li> 
+			    <li>2. Feu clic a l'opció <img th:src="@{/img/help/icon-update.png}" alt="Icona Modificar Llista"/>associada la llista de la qual vol modificar la descripció</li>
+			    <li>3. Modifiqueu la descripció de la llista<br>
+			        <span class="tab5-help margen5"><img th:src="@{/img/help/box-update-list.png}" alt="Caixa de Modificar Llista" width="350px"/></span>
+			        <ul class="tab3-help">
+			            <li>Si no vol desar la modificació, feu clic a <img th:src="@{/img/help/icon-close.png}" alt="Icona tancar llista"/></li>  
+			            <li>Si vol desar el canvi, feu clic a <img th:src="@{/img/help/icon-accept.png}" alt="Icona d'acceptar"/></li>
+			        </ul>
+			    </li>
+			</ul>
+			<a name="delList"></a>
+			<h4 class="title-help">Com eliminar una llista</h4>
+			<p>Si desitja eliminar una de les seves llistes de preferits, ha d'identificar-se prèviament. Per fer-ho, feu clic a
+			    <img th:src="@{/img/help/my-profile.png}" alt="El meu perfil" width="65px"/>
+			</p>
+			<p>Un cop estigui identificat,</p> 
+			<ul class="tab5-help margen10">
+			    <li>1. Feu clic al vostre usuari i seleccioneu l'opció <i>Les meves llistes</i><br>
+			        <span class="tab5-help margen5"><img th:src="@{/img/help/my-lists.png}" alt="Les meves llistes" width="200px"/></span>
+			    </li> 
+			    <li>2. Feu clic a l'opció <img th:src="@{/img/help/icon-paper-bin-1.png}" alt="Icona paperera"/> associada la llista que vol eliminar</li>
+			    <li>3. Apareix un missatge demanant confirmació de l'eliminació<br>
+			        <span class="tab5-help margen5"><img th:src="@{/img/help/del-confirmation.png}" alt="Botó confirmació" width="300px"/></span><p>
+			        <ul class="tab3-help">
+			            <li>Si no vol eliminar la llista, feu clic a <img th:src="@{/img/help/btn-close.png}" alt="Botó tancar llista" width="50px"/></li><p>  
+			            <li>Si vol eliminar la llista, feu clic a <img th:src="@{/img/help/btn-del-list.png}" alt="Botó suprimir llista" width="100px"/></li>
+			        </ul> 
+			    </li>
+			</ul>
+			<a name="searchAuthority"></a>
+			<h2 class="title-help">Accés a la cerca a les autoritats</h2>
+			<p>Per realitzar una cerca d'autoritats que permeti localitzar registres que contenen una autoritat específica, feu clic a l'opció <i>Cerca autoritats</i>.</p>
+			<a name="searchIndexes"></a>
+			<h2 class="title-help">Accés a la cerca als índexs</h2>
+			<p>Per realitzar una cerca que localitzi paraules o patrons de paraules similars al terme o termes introduïts, feu clic a l'opció <i>Cerca índexs</i>.</p>
+			<a name="lastSearh"></a>
+			<h2 class="title-help">Accés a les últimes cerques realitzades</h2>
+			<p>Per visualitzar les <span class="text-bold-help">10</span> últimes cerques realitzades que han retornat resultats durant la sessió de l'Opac, feu clic a <i>Últimes cerques</i>.</p>
+			<a name="historySearch"></a>
+			<h2 class="title-help">Accés a les cerques desades</h2>
+			<p>Si desitgeu desar alguna de les cerques que heu realitzat per poder executar-les en un altre moment, feu clic a <i>Cerques desades</i>.</p>
+			<p class="tab2-help">* Per poder desar cerques és necessari que us identifiqueu prèviament</p>
+			<a name="profile"></a>
+			<h2 class="title-help">Accés al Meu Perfil</h2>
+			<p>Fes clic a l'opció <i>El meu perfil</i> i identifiqueu-vos per poder accedir a les següents utilitats de <span class="text-bold-help">ODA</span>:</p>	
+			<ul class="tab5-help margen10">
+			    <li>Dades personals</li>
+			    <li>Sol·licituds</li>
+			    <li>Prestecs actius</li>
+			    <li>Historial de prestecs</li>
+			    <li>Renovar prestecs</li>
+			    <li>Cancelar reserves</li>
+			    <li>Desar cerques</li>
+			    <li>Crear llistes de preferits</li>
+			</ul>
+			<p>Per identificar-vos com a usuari podeu utilitzar qualsevol d'aquests 3 mètodes:</p>
+			<ul class="tab5-help margen10">
+			    <li>núm. de carnet</li>
+			    <li>adreça de correu electrònic que hàgiu proporcionat a la vostra biblioteca</li>
+			    <li>telèfon mòbil que hàgiu proporcionat a la vostra biblioteca</li>
+			</ul>
+			<a name="home"></a>
+			<h2 class="title-help">Accés a la pàgina d'inici</h2>
+			<p>Per anar a la pàgina d'inici, feu clic a <i>Inici</i>.</p>
+			<p class="top-help"><a href="#top">Amunt</a></p>
+		</div>			 
+	</div>	
+	<th:block th:insert="/public/home/technicalfooter" th:with="page='opac-dataprivacyterms'"/>
+</body>
+</html>

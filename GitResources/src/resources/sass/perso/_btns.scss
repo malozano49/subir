@@ -1,0 +1,208 @@
+/*!
+ *  @file        : _btns_personalization.scss
+ *
+ *  @description : ABSYS aplicacion estilos
+ *
+ *  @author      : http://www.baratz.es/
+ *
+ *  @ref         : Hoja de estilos de personalizacion de botones vista personalization
+--------------------------------------------------------------------------------------------------*/
+
+
+// =============================================================================
+//    Botones / links clase .btn
+// =============================================================================
+.page-link{color:$link-color}
+.btn{
+  &.btn-success{background-color:$btn-success-back;color:$dark;border:$border-width solid $btn-success-hover;
+    &:hover{background-color:$btn-success-hover;color:$white}
+    &:focus{}
+  }
+  &.btn-info{background-color:$btn-info-back;color:$dark;border:$border-width solid $btn-info-hover;
+    &:hover{background-color:$btn-info-hover;color:$white}
+    &:focus{}
+  }
+  &.btn-warning{background-color:$btn-warning-back;color:$dark;border:$border-width solid $btn-warning-hover;
+    &:hover{background-color:$btn-warning-hover;}
+    &:focus{}
+  }
+  &.btn-danger{background-color:$btn-danger-back;color:$dark;border:$border-width solid $btn-danger-hover;
+    &:hover{background-color:$btn-danger-hover;color:$white}
+    &:focus{}
+  }
+
+	&.btn-primary{color:$white;background-color:$primary;border:$border-width solid $secondary;
+		&:hover{color:$white;text-decoration:$link-hover-decoration;background-color:$link-hover-color}
+		&:focus{background-color:$primary;color:$white}
+    &:not(:disabled):not(.disabled){
+      &.active,
+      &:active{color:$white;background-color:$primary;border-color:transparent;}
+    }
+	}
+
+	&.btn-secondary{color:$primary !important ;background-color:transparent;border:$border-width solid transparent;
+		&:hover{color:$link-hover-color;background-color:transparent;text-decoration:$link-hover-decoration}
+		&:focus{background-color:transparent;color:$link-color}
+    &:not(:disabled):not(.disabled){
+      &.active,
+      &:active{color:$primary !important;background-color:transparent;border-color:transparent;
+        .show>.btn-outline-secondary.dropdown-toggle{background-color:$primary!important;border:$border-width solid $link-color;color:$white}
+      }
+    }
+	}
+
+
+
+	&.btn-outline-primary{color:$white;background-color:$secondary;border:$border-width solid $secondary;text-transform:initial;
+		&:hover,
+    &.active,
+    &:not(:disabled):not(.disabled){
+      &.active,
+      &:active {background-color:$link-hover-color;color:$white}
+    }
+		&:focus{color:$white;background:$primary}
+	}
+
+	&.btn-outline-secondary{background-color:$white;color:$link-color;border:$border-width solid $link-color;text-transform:initial;
+		&:hover:not(:disabled):not(.disabled){background-color:$link-color;border:$border-width solid $link-color;color:$white;
+      &.active,
+      &:active {
+        .show>.btn-outline-secondary.dropdown-toggle{background-color:$link-color;border:$border-width solid $link-color;color:$white}
+      }
+    }
+		&:focus{background-color:transparent;border:$border-width solid $link-color;color:$link-color}
+	}
+
+  &.page-link{display:inline-block;border:$border-width solid transparent;border-radius:0;box-shadow:none;font-size:0.9375rem;color:$link-propietary;
+ 		&:hover,
+    &.active,
+    &:focus{background-color:$link-propietary-hover;}
+  }
+
+	&.btn-white{color:$black;background:none;background-color:$white;border:$border-width solid $border-color;text-transform:initial;transition:background-color .6s ease;
+		&:hover,
+    &.active,
+    &:focus{background-color:$border-color;background-color:$secondary-light;color:$black}
+	}
+
+  &.btn-link{color:$link-color; }
+
+  &.btn-white.btn-link{
+    &.active {background-color:$link-color;color:$white;}
+  }
+  &.btn--simil{cursor:default; }
+
+  &.btn_view_pass{
+    &:hover{text-decoration:none;}
+    &.active{
+      .icono:before{content:"\f070"}
+    }
+  }
+}
+
+%btn-outline-secondary_hover{color:$white;background-color:$link-color;border:$border-width solid $link-color;}
+.btn-outline-secondary{
+  &:not(:disabled):not(.disabled){
+    &:hover,
+    &.active,
+    &:active{@extend %btn-outline-secondary_hover;}
+  }
+}
+
+.show>.btn-outline-secondary.dropdown-toggle{@extend %btn-outline-secondary_hover;}
+
+button.btn-link{text-decoration:none!important}
+.btn-link{
+  &.btn_enlace{
+    &:hover{text-decoration:underline!important}
+  }
+}
+.link{position:relative;display:inline-block;padding-right:5px;line-height:1.3em;color:$link-color;}
+
+
+.show>.btn-outline-secondary.dropdown-toggle{background-color:$link-color;border:$border-width solid $link-color;color:$white}
+
+
+/// por accesibilidad siempre una capa por encima
+.active{
+  .btn-white.btn-link{color:$white;background-color:$link-color;border:$border-width solid $link-color;}
+}
+.disabled{cursor:not-allowed;
+  .btn{pointer-events:none}
+  .btn-white.btn-link{color:$black;background-color:$disabled;border:$border-width solid $disabled;}
+}
+
+
+// =============================================================================
+//    BOTON MOVIL DESPLIEGUE MENUS
+// =============================================================================
+.navbar-dark{
+	.navbar-toggler{color:$white;border-color:transparent;font-size:1.5rem}
+}
+
+
+// =============================================================================
+//    FOCUS
+// =============================================================================
+
+a,
+button,
+.btn,
+[type="button"],
+.page-link,
+.btn_link,
+.form-control,
+.btn-outline-primary{
+	&:focus{@extend %focus_button;border-radius:.2rem}
+}
+input[type="checkbox"]{
+	&:focus{@extend %focus_button;border-radius:.5rem}
+}
+
+.bg-primary{
+	a,
+  .page-link{color:$white;
+		&:focus{color:$white}
+	}
+	.hidden-link{color:$primary;
+		&:hover{color:$primary!important}
+		&:focus{background-color:$primary;color:$primary}
+	}
+}
+.bg-highlight{
+	.hidden-link{color:$light;
+		&:hover{color:$light!important}
+		&:focus{background-color:$light;color:$light;}
+	}
+}
+
+
+
+// =============================================================================
+//    PAGINACIONES
+// =============================================================================
+.pagination {margin:auto;
+  .page-item {
+    .btn_title{display:block}
+    .icono{display:none;font-size:1.4rem;}
+    .btn{margin-right:3px;
+      &:hover,
+      &:focus{text-decoration:none!important}
+      &.btn_and{cursor:default}
+    }
+    &.active{cursor:not-allowed;
+      .btn{color:$white!important;background-color:$link-color!important;border:$border-width solid $link-color!important;pointer-events:none}
+    }
+    &.disabled{
+      .btn{color:$dark!important;background-color:$disabled!important;border:$border-width solid $disabled!important;}
+    }
+  }
+  // plugin jquery.simplePagination.mod.js
+  &.simple-pagination{
+    .page-item {
+      .btn{
+        &.btn_and{cursor:pointer}
+      }
+    }
+  }
+}

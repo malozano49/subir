@@ -1,0 +1,38 @@
+<!-- :: [title/moreDetails.html] -->
+<!-- :: data-skip_to_content [scripts.js] -> ACCESIBLE_SKIP_TO_CONTENT() -->
+<article id="detail-plus_anchor" class="detail-more-details article detail-plus" data-skip_to_content="comments" aria-labelledby="art_moreDetails_title">
+    <div id="detailTitle" class="cont_menu_details  col-md-5  col-sm-5  col-xs-5  ml-3 ml-xs-1 pl-0">
+    	<fieldset class="d-flex  align-items-center">
+        	<legend class="sr-only">Cambiar el formato de visualización</legend>
+        	<label for="select_masDetalles" class="mb-0 mr-2">Formato:</label>
+	        <select id="select_masDetalles" th:if="${detail != null}" class="custom-select js-evn-formatChange" aria-describedby="info_masDetalles">
+	          <th:block th:each="viewType : ${detail.viewDocumentTypes}">
+	            <option th:selected="${viewType == detail.selectedViewDocumentType}"
+	              th:data-url="@{${thymeleafMap.get('CATALOG_MAPPING_DETAIL_VIEW_NO_VIEW_NO_PARAM')} + ${id} + '/' + ${viewType} + '#detailTitle'(tabId=${solrSearchWeb.solrSearch.tabId})}"
+	              th:text="#{${'copy.more.details.format.' + viewType}}">
+	            </option>
+	          </th:block>
+	        </select>
+        	<div class="js-evn-formatLoad d-none m-2">
+          		<span role="img" class="icono fas fa-circle-notch fa-spin" aria-label="Cargando datos del documento" tabindex="0"></span>
+        	</div>
+        	<p id="info_masDetalles" class="d-none">Al seleccionar un formato, se actualizarán los datos de la sección "Más detalles"</p>
+      </fieldset>
+    </div> 
+	<div class="js-evn-formatDetail">
+	      <h3 class="sr-only" th:text="#{copy.more.details.label}"></h3>
+	      <div class="detail-more-details-format col-md-12">
+	        <div class="cont_datos col-md-12">
+	           <th:block th:switch="${detail.selectedViewDocumentType}">
+	              <th:block th:case="MARC" th:insert="/title/marc/marcTable.html"></th:block>
+	              <th:block th:case="ESTANDAR" th:insert="/title/estandar/estandar.html"></th:block>
+	              <th:block th:case="*" th:insert="/title/estandar/estandar.html"></th:block>
+	           </th:block>
+	        </div>
+	       <!-- :: /.cont_datos -->
+	     </div>
+     		<!-- :: /.detail-more-details-format -->
+   	</div>
+    <!-- :: /.cont_menu_details -->
+</article>
+<!-- :: /[title/moreDetails.html] -->

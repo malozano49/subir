@@ -1,0 +1,95 @@
+<th:block th:insert="/public/home/html_type"></th:block>
+	<head>
+  		<th:block th:insert="/public/home/technicalheader::main" th:with="page='opac-maquetacion-2'"></th:block>
+    <!-- :: ESPECIFICO MAQUETACION -->
+    <link type="text/css" rel="stylesheet" th:href="@{/css/opac/maquetacion/maquetacion.css}" media="all">
+	</head>
+   <body class="page_type_layout layout_maquetacion2">
+<!-- :: [layout/maquetacion2.html] -->
+      <header class="header_principal">
+         <th:block th:with="pageLocation='home'" th:insert="/public/home/header"></th:block>
+      </header>
+      <main id="acc_anchor_main">
+
+        <th:block th:insert="/layout/fragments/enlaces_internos"></th:block>
+
+        <h2 class="m-3">Línea Maquetación 2: Social iconos y Vistas componentes</h2>
+<!-- :: COMPARTIR -->
+          <section class="cont_jssocials mb-3">
+            <h3 class="font-weight-bold ml-3">JS SOCIAL SHARE</h3>
+            <div class="art_view_share col-lg-12 col-md-12 col-sm-12">
+              <div id="shareIcons_00" class="jssocials"></div>
+            </div>
+            <!-- :: /.view_share-->
+          </section>
+          <!-- :: /.cont_jssocials -->
+
+          <hr/>
+
+          <h2 class="m-3">COMPONENTE VISTAS</h2>
+
+<!-- :: VISTAS -->
+          <section class="cont_carousel mb-3">
+            <h3 class="font-weight-bold ml-3">VISTA Carousel</h3>
+
+<!-- :: VISTA CAROUSEL COMPLETE -->
+            <article class="cont_carousel_complete view_type_carousel col-lg-12 col-md-12 col-sm-12" aria-label="Bloque vista carousel completo">
+              <th:block th:insert="/layout/carousel/carousel_complete"></th:block>
+            </article>
+            <!-- :: /.cont_carousel_complete.view_type_carousel-->
+
+<!-- :: VISTA CAROUSEL MINI -->
+            <article class="cont_carousel_min view_type_carousel col-lg-12 col-md-12 col-sm-12" aria-label="Bloque vista carousel mini">
+              <th:block th:insert="/layout/carousel/carousel_min"></th:block>
+            </article>
+            <!-- :: /.cont_carousel_min.view_type_carousel-->
+          </section>
+          <!-- :: /.cont_carousel -->
+
+<!-- :: VISTA LISTA -->
+          <section class="cont_list mb-3">
+            <h3 class="font-weight-bold ml-3">VISTA lista</h3>
+            <div class="cont_views view_type_list col-lg-12 col-md-12 col-sm-12">
+              <th:block th:insert="/layout/fragments/m2_list"></th:block>
+            </div>
+            <!-- :: /.view_type_lista-->
+          </section>
+          <!-- :: /.cont_lista -->
+
+<!-- :: VISTA MOSAICO -->
+          <section class="cont_mosaico mb-3">
+            <h3 class="font-weight-bold ml-3">VISTA mosaico</h3>
+            <div class="cont_views view_type_mosaic col-lg-12 col-md-12 col-sm-12">
+              <th:block th:insert="/layout/fragments/m2_mosaic"></th:block>
+            </div>
+            <!-- :: /.view_type_mosaic-->
+          </section>
+          <!-- :: /.cont_mosaico -->
+
+<!-- :: VISTA TABLA -->
+          <section class="cont_tabla mb-3">
+            <h3 class="font-weight-bold ml-3">VISTA tabla</h3>
+            <div class="cont_views view_type_tabla col-lg-12 col-md-12 col-sm-12">
+
+              <!-- :: PAGINACION TOP -->
+              <div class="pagination_normal pagination_js pagination-top" data-items_page="1" data-anchors="false"></div>
+
+              <th:block th:insert="/layout/fragments/m2_table"></th:block>
+
+              <!-- :: PAGINACION BOTTOM -->
+              <div class="pagination_normal pagination_js pagination-bottom" data-items_page="1" data-anchors="false"></div>
+
+            </div>
+          </section>
+          <!-- :: /.cont_tabla -->
+
+      </main>
+      <footer class="footer_principal">
+         <th:block th:insert="/public/home/footer"></th:block>
+      </footer>
+      <th:block th:insert="/public/home/technicalfooter" th:with="page='opac-maquetacion-2'"></th:block>
+
+<!-- :: /[layout/maquetacion2.html] -->
+   </body>
+
+</html>

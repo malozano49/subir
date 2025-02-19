@@ -1,0 +1,43 @@
+/*!
+ *  @file        : main_highcontrast.scss
+ *
+ *  @description : ABSYS aplicacion estilos alto contraste
+ *
+ *  @author      : http://www.baratz.es/
+ *
+ *  @ref         : Hoja de compilacion de modulos de estilos para alto contraste
+--------------------------------------------------------------------------------------------------*/
+
+/**Importando Variables**/
+@import "variables";
+
+/**Importando Colores**/
+@import "./high/colors";
+
+/**Importando Fuentes**/
+@import "./high/fonts";
+
+@import "./high/color_components";
+
+@import "./high/btns";
+
+/**Importando hojas**/
+@import "layout";
+
+@import "forms";
+@import "login";
+@import "navigation";
+@import "footer";
+@import "results";
+@import "detail";
+@import "myLibrary";
+@import "view_types";
+@import "record";
+@import "modales";
+
+
+@import "custom";
+@import "pages_type_faq";
+
+@import "cookies_bar";
+

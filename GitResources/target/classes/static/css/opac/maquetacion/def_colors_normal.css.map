@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": ";AAAA;;;;;;;;oGAQoG;ACRpG;;;;;;;;;;;;;oGAaoG;ADalG,0BAAQ;EAAC,OAAO,EEgCE,mzEAAoB",
+"sources": ["../../../../../../src/resources/sass/maquetacion/def_colors_normal.scss","../../../../../../src/resources/sass/main/_colors.scss","../../../../../../src/resources/static/plugins/sass-to-js/sass/_sass-to-js.scss"],
+"names": [],
+"file": "def_colors_normal.css"
+}

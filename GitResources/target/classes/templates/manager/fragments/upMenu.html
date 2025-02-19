@@ -1,0 +1,23 @@
+<!-- :: [manager/fragments/upMenu.html] -->
+<nav aria-labelledby="nav_manager-title">
+  <h2 id="nav_manager-title" class="sr-only" th:text="#{manager.menu.title}"></h2>
+  <ul class="pagination justify-content-end row">
+     <li class="page-item" th:classappend="${managerSection=='recommended'} ? active : ''">
+        <a th:href="@{${thymeleafMap.get('MANAGER_RECOMMENDED')}}" th:text="#{manager.recommended.area}" class="page-link" >
+        </a>
+     </li>
+     <li class="page-item" th:classappend="${managerSection=='activities'} ? active : ''">
+        <a th:href="@{${thymeleafMap.get('MANAGER_ACTIVITIES')}}" th:text="#{manager.activities.area}" class="page-link">
+        </a>
+     </li>
+     <li class="page-item" th:classappend="${managerSection=='interestLinks'} ? active : ''">
+        <a th:href="@{${thymeleafMap.get('MANAGER_INTEREST_LINKS')}}" th:text="#{manager.interest.links.area}" class="page-link">
+        </a>
+     </li>
+     <li th:if="${commentsEnabled}" class="page-item" th:classappend="${managerSection=='comments'} ? active : ''">
+        <a th:href="@{${thymeleafMap.get('MANAGER_COMMENTS')}(page=0)}" th:text="#{manager.comments.area}" class="page-link">
+        </a>
+     </li>
+  </ul>
+</nav>
+<!-- :: /[manager/fragments/upMenu.html] -->

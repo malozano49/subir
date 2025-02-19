@@ -1,0 +1,64 @@
+/*!
+ *  @file        : main.scss
+ *
+ *  @description : ABSYS aplicacion estilos
+ *
+ *  @author      : http://www.baratz.es/
+ *
+ *  @ref         : Hoja de compilacion de modulos de estilos
+--------------------------------------------------------------------------------------------------*/
+
+/**Importando Variables**/
+@import "variables";
+
+/**Importando Colores**/
+@import "./main/colors";
+
+/**Importando Fuentes**/
+@import "./main/fonts";
+
+@import "./main/color_components";
+
+@import "./main/btns";
+
+/**Importando hojas**/
+@import "layout";
+
+@import "forms";
+@import "login";
+@import "navigation";
+@import "footer";
+@import "results";
+@import "detail";
+@import "myLibrary";
+@import "view_types";
+@import "record";
+@import "modales";
+@import "comments";
+@import "manager";
+
+
+@import "custom";
+@import "pages_type_faq";
+
+@import "cookies_bar";
+@import "help";
+
+@import "manager";
+/**Importando Estilos Master ODA**/
+@import "./main/oda/custom";
+@import "./main/oda/header";
+@import "./main/oda/search";
+@import "./main/oda/footer";
+@import "./main/oda/login";
+@import "./main/oda/reserves";
+@import "./main/oda/detail";
+@import "./main/oda/profile";
+@import "./main/oda/profile-lists";
+@import "./main/oda/profile-loans";
+@import "./main/oda/home";
+@import "./main/oda/alerts";
+@import "./main/oda/records";
+@import "./main/oda/registerForm";
+@import "./main/oda/suggestions";
+@import "./main/oda/comments";

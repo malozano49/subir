@@ -1,0 +1,190 @@
+/*!
+ *  @file        : _fonts.scss
+ *
+ *  @description : ABSYS aplicacion estilos
+ *
+ *  @author      : http://www.baratz.es/
+ *
+ *  @ref         : Importacion de fuentes y aplicacion de bases para fuentes
+--------------------------------------------------------------------------------------------------*/
+
+
+// =============================================================================
+//    MIXIN Font Face
+//    https://www.w3schools.com/cssref/css3_pr_font-face_rule.asp
+// =============================================================================
+//@mixin font-face($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg) {
+@mixin font-face($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg) {
+  $src: null;
+  $extmods: ( eot: "?", svg: "#" + str-replace($name, " ", "_") );
+  $formats: ( otf: "opentype", ttf: "truetype" );
+  @each $ext in $exts {
+      $extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext);
+      $format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+      $src: append($src, url(quote($path + "." + $extmod)) format(quote($format)), comma);
+  }
+  @font-face {
+      font-family: quote($name);
+      font-style: $style;
+      font-weight: $weight;
+      src: $src;
+      font-display: swap;
+  }
+}
+
+
+// =============================================================================
+//    Inclusión de fuentes
+// =============================================================================
+
+// SourceSansPro
+/* @include font-face("SourceSansPro", '/OpacDiscovery/webfonts/SourceSansPro/SourceSansPro-Regular');
+@include font-face("SourceSansPro Italic", '/OpacDiscovery/webfonts/SourceSansPro/SourceSansPro-Italic');
+@include font-face("SourceSansPro SemiBold", '/OpacDiscovery/webfonts/SourceSansPro/SourceSansPro-SemiBold'); */
+
+/*
+  FONTAWESOME: Se incluye css vía url en el header
+
+  Solid: font-family: 'Font Awesome 5 Free;font-weight: 900;
+  Regular: font-family: 'Font Awesome 5 Free';font-weight: 400;
+  Brands: font-family: 'Font Awesome 5 Brands';
+*/
+
+
+// =============================================================================
+//    Variables
+// =============================================================================
+
+//$font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
+
+$font-family-sans-serif : Arial, sans-serif !default;
+$font-family-custom     : SourceSansPro !default;
+$font-family-bold       : 'SourceSansPro SemiBold' !default;
+$font-family-italic     : 'SourceSansPro Italic' !default;
+$font-family-base       : $font-family-sans-serif !default;
+$fontawesome            : "Font Awesome 5 Free"!default;
+$fontawesome-brands     : "Font Awesome 5 Brands"!default;
+
+$font-size-base     : 1rem !default; // Assumes the browser default, typically `16px`
+/*$font-size-lg       : ($font-size-base * 1.25) !default;
+$font-size-sm       : ($font-size-base * .875) !default;
+ */
+$font-weight-light  : 300 !default;
+$font-weight-normal : 400 !default;
+$font-weight-bold   : 700 !default;
+
+$font-weight-base   : $font-weight-normal !default;
+$line-height-base   : 1.5 !default;
+
+$font-stretch-base  : normal !default;
+
+$text-uppercase     : uppercase;
+$text-capitalize    : capitalize;
+$text-color         : $dark;
+
+
+// =============================================================================
+//    TIPOS FONTAWESOME
+//  https://fontawesome.com/v5.15/how-to-use/on-the-web/referencing-icons/basic-use
+//
+//  fas - solid
+//  far - regular
+//  fab - brands
+//
+//  fal - light -> Pro
+//  fal - duotone -> Pro
+//
+//
+//   .fa,.far,.fas{font-family:"Font Awesome 5 Free"}
+//   .fab{font-family:"Font Awesome 5 Brands"}
+//
+// =============================================================================
+@mixin fontawesome-solid   {font-family: $fontawesome;font-weight: 900;}
+@mixin fontawesome-regular {font-family: $fontawesome;font-weight: 400;}
+@mixin fontawesome-brands  {font-family: $fontawesome-brands;font-weight: 400;}
+
+//@mixin fontawesome-light   {font-family: $fontawesome;font-weight: 300;} // Pro
+//@mixin fontawesome-duotone {font-family: $fontawesome;font-weight: 900;} // Pro
+
+
+
+// =============================================================================
+//    Reemplazando items de bootstrap
+// =============================================================================
+@mixin font-weight-bold{font-family:$font-family-bold;font-weight:normal!important}
+.font-weight-bold{@include font-weight-bold;}
+.font-italic{font-family:$font-family-italic}
+@mixin font-italic-bold{font-family:$font-family-italic;font-weight:$font-weight-bold}
+.font-italic-bold{@include font-italic-bold;}
+
+
+// =============================================================================
+// Declaraciones css (clases placeholder) comunes
+// =============================================================================
+%ellipsis{position:relative;float:left;width:100%;padding-left:3px;line-height:1.5em;white-space:nowrap;overflow:hidden;text-overflow: ellipsis;}
+
+
+// =============================================================================
+// Fuentes comunes generales
+// =============================================================================
+body {
+	font-family      : $font-family-custom, $font-family-base;
+	font-size        : $font-size-base;
+	font-weight      : $font-weight-normal;
+	font-stretch     : $font-stretch-base;
+  text-rendering:optimizeLegibility;
+	h1, .h1 {
+		font-size: 1.625rem;
+		line-height: $line-height-base;
+	}
+
+	h2, .h2 {
+		font-size: 1.375rem;
+	}
+
+	h3, .h3 {
+		font-size: 1.25rem;
+		line-height: 1.3em;
+	}
+
+	h4, .h4 {
+		font-size: 1.125rem;
+		font-weight: $font-weight-normal;
+	}
+
+	h5, .h5 {
+		font-size: 1rem;
+	}
+
+	p{font-size: $font-size-base;}
+
+  h2, h4, p {
+		line-height: $line-height-base;
+	}
+
+	ol, ul {
+	  list-style: none;
+	}
+
+	a {
+		text-decoration: none;
+		&:hover{
+      /* text-decoration:underline!important; */
+      .item-title{text-decoration:underline}
+		}
+    &[aria-disabled="true"],
+    &.disabled{
+      &:hover{text-decoration:none!important}
+    }
+	}
+
+  .error-code{
+		font-size: 10rem;
+	}
+}
+
+/// Footer version
+.version{font-size:0.7rem;@include font-weight-bold;text-align:center;text-transform:uppercase;letter-spacing:.05em;}
+
+
+

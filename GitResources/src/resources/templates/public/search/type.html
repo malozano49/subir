@@ -1,0 +1,6 @@
+<th:block th:fragment="main()">
+   <!-- :: [public/search/type.html] -->
+   <div th:if="${thymeleafMap.get('ADVANCED').getValue() == search} or ${(solrSearchWeb!=null and thymeleafMap.get('ADVANCED') == solrSearchWeb.solrSearch.queryType)}" class="component w-100 no_border mb-0" th:insert="/public/search/advanced/index"></div>  
+   <div th:if="${thymeleafMap.get('EXPERT').getValue() == search} or ${(solrSearchWeb!=null and thymeleafMap.get('EXPERT') == solrSearchWeb.solrSearch.queryType)}" class="component w-100 no_border mb-0" th:insert="/public/search/quick/index"></div>
+   <!-- :: /[public/search/type.html] -->
+</th:block>

@@ -1,0 +1,91 @@
+<th:block th:insert="/public/home/html_type"></th:block>
+<th:block th:insert="/public/home/technicalheader::main" th:with="page=${'opac-help-historySearch-es_ES'}"></th:block>
+<script type="text/javascript">
+	var menu = document.getElementById('menu');
+	Stickyfill.add(menu);
+</script>
+<body>
+<div id="burger-menu" class="burger-menu">
+  <span></span>
+  			<div id="menu2" class="menu menu2">
+			<div class=""><nav class="sn-contents" aria-label="Secondary">
+      <ul class="sidenav--list">
+			<li><a href="#historySearch">Saved Searches</a></li>
+			<li><a href="#searchAuthorities">Access to Authority Search</a></li>
+			<li><a href="#searchIndexes">Access to Index Search</a></li>
+			<li><a href="#favorites">Access to Favorites</a></li>
+			<li><a href="#profile">Access to My Profile</a></li>
+			<li><a href="#home">Access to the Home Page</a></li></ul></nav>
+		</div>
+		</div>
+		</div>
+		<div class="wrapper cf">
+		<div id="menu" class="menu">
+		<div class="sidenav"><nav class="sn-contents" aria-label="Secondary">
+		<ul class="sidenav--list">
+			<li><a href="#historySearch">Saved Searches</a></li>
+			<li><a href="#searchAuthorities">Access to Authority Search</a></li>
+			<li><a href="#searchIndexes">Access to Index Search</a></li>
+			<li><a href="#favorites">Access to Favorites</a></li>
+			<li><a href="#profile">Access to My Profile</a></li>
+			<li><a href="#home">Access to the Home Page</a></li></ul></nav>
+		</div>
+		</div>
+		<div class="content">
+		<a name="top"></a>
+		<a name="historySearch"></a>
+		<h2 class="title-help">Saved Searches</h2>
+		<p>From this option, you can view the searches you have saved in previous sessions.</p>
+		<ul class="tab4-help margin5">
+			<li>Searches are displayed in descending order by date.
+			<li>If you want to delete a saved search, click on the option
+			<img th:src="@{/img/help/icon-paper-bin-1.png}" alt="Trash Can Icon"/>
+			associated with the search you're interested in.
+			</li>
+		</ul>
+		<p>From this option, you can also view the most recent searches you have conducted during the current session. To do this, click on <i>Recent Searches</i>.</p>
+		<ul class="tab4-help margin5">
+			<li>If you want to save any of the searches, click on the option <img th:src="@{/img/help/icon-save.png}" alt="Save Icon"/> associated with the search you're interested in.
+		<ul class="tab5-help margin5">
+		<li>- By default, you can save a maximum of <span class="text-bold-help">50</span> searches.</li>
+		</ul>
+		</li>
+		</ul>
+		<a name="searchAuthorities"></a>
+		<h2 class="title-help">2. Access to Authority Search</h2>
+		<p>To perform an authority search that allows you to locate records containing a specific authority, click on the <i>Authority Search</i> option.</p>
+		<a name="searchIndexes"></a>
+		<h2 class="title-help">3. Access to Index Search</h2>
+		<p>To perform a search that locates words or patterns of words similar to the term or terms entered, click on the <i>Index Search</i> option.</p>
+		<a name="favorites"></a>
+		<h2 class="title-help">4. Access to Favorites</h2>
+		<p>To view the records you have marked as favorites, click on <i>Favorites</i>.</p>
+		<a name="profile"></a>
+		<h2 class="title-help">5. Access to My Profile</h2>
+		<p>Click on the <i>My Profile</i> option and identify yourself to access the following <span class="text-bold-help">ODA</span> utilities:</p>
+		<ul class="tab5-help margin10">
+			<li>Personal information</li>
+			<li>Requests</li>
+			<li>Active loans</li>
+			<li>Loan history</li>
+			<li>Renew loans</li>
+			<li>Cancel reservations</li>
+			<li>Save searches</li>
+			<li>Create favorite lists</li>
+		</ul>
+		<p class="tab3-help">• To identify yourself as a user, you can use any of these 3 methods:</p>
+		<ul class="tab5-help margin10">
+			<li>Library card number</li>
+			<li>Email provided to your library</li>
+			<li>mobile phone number provided to your library</li>
+		</ul>
+		<a name="home"></a>
+		<h2 class="title-help">6. Access to the Home Page</h2>
+		<p>To return to the home page, click on <i>Home</i>.</p>
+		<p class="top-help"><a href="#top">Top</a></p>
+		</div>
+	</div>
+	<th:block th:insert="/public/home/technicalfooter" th:with="page='opac-dataprivacyterms'"/>
+</body>
+</html>
+

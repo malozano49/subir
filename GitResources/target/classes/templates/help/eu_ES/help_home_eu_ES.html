@@ -1,0 +1,265 @@
+﻿﻿<th:block th:insert="/public/home/html_type"></th:block>
+<th:block th:insert="/public/home/technicalheader::main" th:with="page=${'opac-help-home-es_ES'}"></th:block>
+<script type="text/javascript">
+	var menu = document.getElementById('menu');
+	Stickyfill.add(menu);
+</script>
+
+<body>	
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="jquery.fittext.js"></script>
+
+<div id="burger-menu" class="burger-menu">
+  <span></span>
+  			<div id="menu2" class="menu menu2">
+			<div class=""><nav class="sn-contents" aria-label="Secondary">
+      <ul class="sidenav--list">
+  <li>
+<a href="#find" class="page-link">Bilaketa sinplea</a></li><li>
+  <a href="#findAdvanced" class="page-link">Bilaketa aurreratua atzitzea</a></li><li>
+  <a href="#findAuthorities" class="page-link">Autortasunetan bilaketa atzitzea</a></li><li>
+  <a href="#searchIndexes" class="page-link">Indizetan bilaketa atzitzea</a></li><li>
+  <a href="#lastSearch" class="page-link">Eginiko azken bilaketetara sartzeko</a></li><li>
+ <a href="#historySearch" class="page-link">Gordetako bilaketak atzitzea</a></li><li>
+  <a href="#favorites" class="page-link">Gogokoetara sartzeko</a></li><li>
+  <a href="#profile" class="page-link">Nire Profila atzitzea</a></li></ul></nav>
+</div>
+		</div>
+</div>
+
+
+<div class="wrapper cf">
+
+		<div id="menu" class="menu">
+			<div class="sidenav"><nav class="sn-contents" aria-label="Bigarren maila">
+      <ul class="sidenav--list">
+  <li>
+ <a href="#find" class="page-link">Bilaketa sinplea</a></li><li>
+  <a href="#findAdvanced" class "page-link">Bilaketa aurreratua atzitzea</a></li><li>
+  <a href="#findAuthorities" class="page-link">Autortasunetan bilaketa atzitzea</a></li><li>
+  <a href="#searchIndexes" class="page-link">Indizetan bilaketa atzitzea</a></li><li>
+  <a href="#lastSearch" class="page-link">Eginiko azken bilaketetara sartzeko</a></li><li>
+ <a href="#historySearch" class="page-link">Gordetako bilaketak atzitzea</a></li><li>
+  <a href="#favorites" class="page-link">Gogokoetara sartzeko</a></li><li>
+  <a href="#profile" class="page-link">Nire Profila atzitzea</a></li></ul></nav>
+</div>
+		</div>
+		
+		
+		<div class="content">
+			<a name="top"></a>
+			<a name="find"></a>
+			<h2 class="title-help">Bilaketa sinplea</h2>
+			<p>Bilaketa sinplea aurkibaturik dago orrialde nagusian.</p>
+			<div class="flexx flexcentro">
+				<img class="img-busqueda-sencilla-help" th:src="@{/img/help/simple-search.png}" height="150px" width="100px" alt="busqueda sencilla.png">
+			</div>
+			<a name="filter"></a> 
+			<h4 class="title-help">Bilaketari aplikatu daitezkeen iragazkiak</h4>
+			<span class="tab2-help">Bilaketa bat gauzatzean, eskuragarri dauden <span class="text-bold-help">iturri guztietan</span> edo bakarrik bakoitzean kontsultatu daiteke.</span>
+			<div class=" mb-4">
+				<img  class="img-filtro-help" th:src="@{/img/help/search-filters.png}" alt="bilaketaren iragazkiak.png">
+			</div>
+			<p>Lehenetsi bezala, bilaketa iturri guztietan gauzatzen da. Bilaketa bakarrik zehaztu nahi izanez gero, hautatu iturri bat:</p>
+			<div class=" mb-4">
+				<img class="img-filtro-help" th:src="@{/img/help/filter-efilm.png}" alt="Efilm iragazkia">
+			</div>
+			<p>Aparteko azalpena: Bilaketak oinarrizko katalogoak bezala egin ditzake (adibidez, liburutegi batzuk dutenak) <span class="text-bold-help">azpigatalagoi</span> izango diegunak.</p>
+			
+			
+			<ul>
+			<li><span class="tab4-help margen5">Azpigatalo bat hautatu daiteke azpigataloen zerrendatik edo karaktere zehatzak sartuz aurki daitezke.</span> 
+			</li>
+			</ul>
+			
+			<div class="flexcentro">
+				<img class="img-subcatalogos-help" th:src="@{/img/help/write-in-subcatalogs.png}" alt="Azpigataloetan idatzi"/>
+			</div>
+			<br> 
+			
+			<a name="howToSearch"></a> 
+			<h4 class="title-help">Nola bilatu</h4>
+			<p>Bilaketa hasi aurretik kontuan izan beharreko punturik garrantzitsuenak hauek dira:</p>
+			<ul class="tab4-help margen10">
+				<li>Bilaketa egiteko terminoak edozein eran sartu daitezke, hau da, maiuskulaz edo minuskulaz, acentuaz, diakritikoaz, eta besteak bezala, edo horiek gabe ere.</li>
+				<li>Bilaketa termino bakoitza, hitza, zenbakia, karaktere katea, eta abar, bilaketa termino bezala kontsideratzen da.</li>
+				<li><span class="text-bold-help">Hitz hutsik</span> definitzen diren <span class="text-bold-help">hitzik ez</span> daude. Preposizioak, artikuluak, eta abar, bilatzeko ahalik eta zehatzenean dokumentuak aurkitzeko mantentzea erabaki da.</li>
+				<li>Bilaketa kontsultan hainbat bilaketa termino sartzen direnean, termino bakoitza hainbat <span class="text-bold-help">eragilekin</span> lotu daitezkeen. Erabil daitezkeen eragileen esanahia honako hau da:</li>
+			</ul>
+			<table class="table-help">
+			    <tr class="tr-help">
+			        <th class="td-help th-help border-right-help">Operadorea</th>
+			        <th class="td-help th-help" >Deskribapena</th>
+			    </tr>
+			    <tr class="tr-help">
+			        <td class="td-help col-help">ETA (&)</td>
+			        <td class="td-help">Erregistroak bilatzen ditu operadore hau erabiliz elkarrekin loturiko termino guztiak edukitzeko.</td>
+			    </tr>
+			    <tr class="tr-help">
+			        <td class="td-help col-help border-top-help">EDO (|)</td>
+			        <td class="td-help border-top-help">Erregistroak bilatzen ditu operadore hau erabiliz edo termino batzuk edukitzeko edo biak.</td>
+			    </tr>
+			    <tr class="tr-help">
+			        <td class="td-help col-help border-top-help">EZ</td>
+			        <td class="td-help border-top-help">Erregistroak bilatzen ditu operadore hau erabiliz lehenengo terminoa baina bigarrena ez duenak.</td>
+			    </tr>
+			</table>			
+			<br>
+			<ul class="tab4-help margen10">
+			    <li><span class="text-bold-help">Bilaketa zehatza</span> egin daiteke termino guztiak komentzat hartuta (").<br>
+			        Horrela, komentzatzen dituzten erregistro guztiak aurkituko dira, komentatutako testua bilaketan sartutako ordenean berdin.
+			    </li>
+			    <li><span class="text-bold-help">Truntzeak</span> erabil ditzakezu hitz zatiak aurkitzeko. Truntzeak bi motatakoak izan daitezke:</li>
+			</ul>
+			<table class="table-help">
+			    <tr class="tr-help">
+			        <th class="td-help th-help border-right-help"></th>
+			        <th class="td-help th-help">Deskribapena</th>
+			    </tr>
+			    <tr class="tr-help">
+			        <td class="td-help col-help">?</td>
+			        <td class="td-help border-top-help">Bilaketako terminoaren edozein posizioan jarrita, ? bakoitza karaktere bakarra ordezkatzen du. Horrela, bilaketako ereduarekin bat datorren eta ? ikurra duen tokian edozein karaktere izango duten dokumentu guztiak aurkituko dira.</td>
+			    </tr>
+			    <tr>
+			        <td class="td-help col-help border-top-help">*</td>
+			        <td class="td-help border-top-help">Bilaketako terminoaren edozein posizioan, edo hainbatetan batera, karaktere kate bat ordezkatzen du. * izeneko aztikia dokumentu guztiak aurkituko ditu, bilaketa ereduari egokitzen zaion eta * ikurra duen tokian karaktere zenbaki batzuk dituztenak.</td>
+			    </tr>
+			</table>
+			<br>
+			<p>Hauek dira egin ditzakezun bilaketak:</p>
+			<div class="margen10"><ul class="tab5-help">
+			    <li>- Terminorik gabe</li>
+			    <li>- Hainbat terminorekin</li>
+			    <li>Bilaketa zehatza</li>
+			</ul></div>
+			
+			<a name="searchesByTerm"></a> 
+			<h5 class="subtitle-help">Bilaketa termino batekin</h5>
+			<span class="tab2-help">1. Bilatu nahi duzun bilaketarako terminoa sartu.</span>
+			<div class=" mb-4">
+			    <img class="img-buscar-termino-help" th:src="@{/img/help/search-text.png}" alt="Testu bilaketaren kutxaren irudia"/>
+			</div>
+			<span class="tab2-help">2. Klikatu <img class="img-btn-buscar-help" th:src="@{/img/help/btn-search.png}" alt="Bilatu botoia"/> sartu duzun terminoa dauzkan erregistroak aurkitzeko.</span>
+			<br><br>
+			<div class="tab4-help flexcentro">
+			    <div class="box-help">
+			        Gogoratu bilaketa motzak ere egin ditzakezula
+			    </div>
+			</div>
+			<a name="searchesSeveralTerms"></a> 
+			<h5 class="subtitle-help">Hainbat terminorekin bilaketa</h5>
+			<span class="tab2-help">1. Lotutako operadoreetako bat erabiliz bilatzeko terminoak sartu.</span>
+			<div class="flexcentro">
+			    <img class="img-buscar-termino-help" th:src="@{/img/help/search-multiple-terms.png}" alt="Hainbat terminoren bilaketa-kaxa"/>
+			</div>
+			<span class="tab2-help">2. Klikatu <img class="img-btn-buscar-help" th:src="@{/img/help/btn-search.png}" alt="Bilatu botoia"/> sartutako terminoak dauzkan erregistroak aurkitzeko.</span>
+			<br><br>
+			<div class="tab4-help flexcentro">
+			    <div class="box-help">
+			        Gogoratu bilaketa motzak ere egin ditzakezula
+			    </div>
+			</div>
+			<a name="exactSearches"></a> 
+			<h5 class="subtitle-help">Bilaketa zehatzak</h5>
+			<p>Hau da bilaketa honek bilatu duen esaldiaren edukia berez sartutako moduan daukan erregistroak berreskuratzen ditu <p>
+			<span class="tab2-help">1. Lotutako operadoreetako bat erabiliz terminoak sartu komentatu.</span>
+			<div class=" mb-4">
+			    <img class="img-buscar-entre-comillas-help" th:src="@{/img/help/search-in-quotes.png}" alt="Komentatutako bilaketa"/>
+			</div>
+			<span class="tab2-help">2. Klikatu <img class="img-btn-buscar-help" th:src="@{/img/help/btn-search.png}" alt="Bilatu botoia"/> sartutako esaldiaren edukia berez daukan erregistroak aurkitzeko.</span>
+			<br><br>
+			<div class="tab4-help flexcentro">
+			    <div class="box-help">
+			        Gogoratu bilaketa motzak ere egin ditzakezula
+			    </div>
+			</div>
+			<a name="deleteTerms"></a>
+			<h5 class="subtitle-help">Sartutako terminoak nola kendu</h5>
+			<p>Sartutako terminoak kentzeko, klikatu <img th:src="@{/img/help/btn-clean.png}" alt="Garbitu botoia"/>
+			<div class="flexcentro">
+			    <img class="img-buscar-terminos-help" th:src="@{/img/help/search-multiple-terms.png}" alt="Testu bilaketaren kutxaren irudia"/>
+			</div>
+			<a name="automaticSearch"></a> 
+			<h5 class="subtitle-help">Bilaketa automatikoen iradokizunak</h5>
+			<p><span class="text-bold-help">ODA</span> honek bilaketa automatikoak burutzeko hurrengo aukera ematen ditu:</p>
+			<div class="margen5"><ul class="tab4-help">
+			    <ul class="tab5-help">
+			        <li>1."Ihementzea nahi zuen"</li>
+			        <li>2.autoritateetan bilaketa</li>
+			    </ul>
+			</div>
+			<h5 class="paragraph-help">"Ihementzea nahi zuen"</h5>
+			<p>Bilaketak ez badu emaitzarik aurkitu edo 10 edo gutxiago erregistro aurkitu badira, <span class="text-bold-help">ODA</span> erabiltzaileei spellchecking-an oinarritutako galdetegiak egitea iradokizten die erregistro interesgarriak eskuratzeko ahalik eta espezifikoenei lotutako hitzak. </p>
+			<p>Spellchecking bat, erabiltzaileak sartu duen galderaren edukia berrikusteko ortografikoki egiten den ikuskatze ortografikoa da, eta erabiltzaileari ortografikoki zuzenak diren alternatibako galdera eman diezaguke.</p>
+			<b>Adibidea:</b>
+			<div class="flexcentro"><ul class="tab4-help">
+			<ul class="tab5-help">
+			    <li>1. Estilmismo terminoa sartu da
+			        <div class=" mb-4">
+			            <img class="img-caja-mas-btn-help"  th:src="@{/img/help/box-text-btn-search.png}" alt="Testu bilaketaren kutxa eta botoia"/>
+			        </div>
+			    </li>
+			    <li>2. Bilaketa ez du emaitzarik ekarri ezkero, hurrengo terminoak proposatzen ditu:
+			        <div class=" mb-4">
+			            <img class="img-caja-mas-btn-help" th:src="@{/img/help/did-you-mean.png}" alt="Ihementzea nahi zuen"/>
+			        </div>
+			    </li>
+			    <li>3. Proposatutako terminoetako bat klikatzen bada, hautatutako terminoa daukan erregistroak bilatzeko kontsulta egiten da</li>
+			</ul>
+			</div>
+			<h5 class="paragraph-help">Autoritateetan bilaketa</h5>
+			<p>Bilaketak ez badu emaitzarik aurkitu edo 10 edo gutxiago erregistro aurkitu badira, <span class="text-bold-help">ODA</span> erabiltzaileei spellchecking-an oinarritutako galdetegiak egitea iradokizten die, erabiltzaileak sartutako bilaketa ereduarekin bat datozten edo datozkaten edozein autoritatea aurkitzea nola aurkitu dezaketela ikusteko.</p>
+			<a name="findAdvanced"></a>
+			<h2 class="title-help">Bilaketa aurreratua</h2>
+			<p>Bilaketa aurreratzera sartzeko, sakatu hasiera orrian agertzen den <i>bilaketa aurreratua</i> aukera.</p>
+			<div class="flexcentro">
+			    <img class="img-bilaketa-aurreratua-help" th:src="@{/img/help/advanced-search.png}" alt="Bilaketa aurreratua"/>
+			</div>
+			<a name="findAuthorities"></a>
+			<h2 class="title-help">Bilaketa autoritateetan</h2>
+			<p>Zehatzago identifikatutako erregistroak aurkitzeko erabiltzen den bilaketa bat burutzeko, sakatu <span class="text-bold-help">bilaketa autoritateetan</span> aukera.</p>
+			<a name="searchIndexes"></a>
+			<h2 class="title-help">Indizxeetan bilaketa</h2>
+			<p>Hitzen edo hitz ereduaren itxura duen termino edo terminoak aurkitzen dituzten bilaketa bat burutzeko, sakatu <span class="text-bold-help">bilaketa indizxeetan</span> aukera.</p>
+			<a name="lastSearch"></a> 
+			<h2 class="title-help">Azkenekotan burututako bilaketak ikustea</h2>
+			<p>Opac-aren saio batean emaitzak ekarri duten azken 10 bilaketa ikusteko, sakatu <span class="text-bold-help">azken bilaketa</span></p>
+			<a name="historySearch"></a> 
+			<h2 class="title-help">Gordetako bilaketak ikustea</h2>
+			<p>Zure konserbatu nahi dituzun bilaketak gordetzeko edo beste une batean exekutatu ahal izateko, sakatu <span class="text-bold-help">gordetako bilaketak</span>.</p>
+			<ul class="tab5-help">
+			    <li>Bilaketa bat gordetzeko, lehenik identifikatu behar duzu</li>
+			</ul>
+			<a name="favorites"></a>
+			<h2 class="title-help">Gogokoak ikustea</h2>
+			<p>Lehenengotik gogokoen dituzun erregistroak ikusteko, sakatu
+			<span class="text-bold-help">Gogokoak</span></p>
+			<a name="profile"></a> 
+			<h2 class="title-help">Nire Profila ikustea</h2>
+			<p>Sakatu <i>Nire profila</i> aukera eta identifikatu behar duzu <span class="text-bold-help">ODA</span>eko hurrengo tresnetara sartzeko:</p>	
+			
+			<ul class="tab5-help margen10">
+			    <li> Datu pertsonalak</li>
+			    <li> Eskariak</li>
+			    <li> Uneko alokairuak</li>
+			    <li> Alokairuen historia</li>
+			    <li> Alokairuak berritzeko</li>
+			    <li> Erreserba-ezezteko </li>
+			    <li> Bilaketa gordetzeko</li>
+			    <li> Gogoko zerrendak sortu</li>
+			</ul>			
+			<p>Erabiltzaile gisa identifikatu nahi baduzu, hurrengo 3 metodoetatik bat erabil dezakezu:</p>			
+			<ul class="tab5-help margen10">
+			    <li> karnet zenbakia</li>
+			    <li> zure liburutegiak emandako posta elektronikoa</li>
+			    <li> zure liburutegiak emandako mugikorraren zenbakia</li>
+			</ul>
+			<p class="top-help"><a href="#top">Gora</a></p>
+	 		
+	</div>
+</div>
+</div>
+	<th:block th:insert="/public/home/technicalfooter" th:with="page='opac-dataprivacyterms'"/>
+	
+</body>
+</html>

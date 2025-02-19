@@ -1,0 +1,96 @@
+<th:block th:insert="/public/home/html_type"></th:block>
+<th:block th:insert="/public/home/technicalheader::main" th:with="page=${'opac-help-lasrSearch-es_ES'}"></th:block>
+<script type="text/javascript">
+	var menu = document.getElementById('menu');
+	Stickyfill.add(menu);
+</script>
+<body>
+<div id="burger-menu" class="burger-menu">
+  <span></span>
+  			<div id="menu2" class="menu menu2">
+			<div class=""><nav class="sn-contents" aria-label="Secondary">
+      <ul class="sidenav--list">
+<li><a href="#lastSearch">Últimes cerques</a></li>
+				<li><a href="#searchAuthorities">Accés a la cerca d'autoritats</a></li>
+				<li><a href="#searchIndexes">Accés a la cerca als índexs</a></li>
+				<li><a href="#favorites">Accés als preferits</a></li>
+				<li><a href="#profile">Accés al meu perfil</a></li>	
+				<li><a href="#home">Accés a la pàgina d'inici</a></li></ul></nav>
+</div>
+		</div>
+		
+</div>
+	<div class="wrapper cf">
+		<div id="menu" class="menu">
+			<div class="sidenav"><nav class="sn-contents" aria-label="Secundari">
+      <ul class="sidenav--list">
+<li><a href="#lastSearch">Últimes cerques</a></li>
+				<li><a href="#searchAuthorities">Accés a la cerca d'autoritats</a></li>
+				<li><a href="#searchIndexes">Accés a la cerca als índexs</a></li>
+				<li><a href="#favorites">Accés als preferits</a></li>
+				<li><a href="#profile">Accés al meu perfil</a></li>	
+				<li><a href="#home">Accés a la pàgina d'inici</a></li></ul></nav>
+</div>
+		</div>
+		<div class="content">
+			<a name="top"></a>
+			<a name="lastSearch"></a>	
+			<h2 class="title-help">Últimes cerques</h2>
+			<p>Des d'aquesta opció, podeu visualitzar les últimes 5 cerques que hagueu realitzat.</p>
+			<ul class="tab4-help margen5">
+				<li>Per visualitzar la llista completa de les últimes cerques, feu clic a
+					<br><img th:src="@{/img/help/btn-complete-list-last-searches.png}" alt="Llista completa d'últimes cerques"/>
+				</li>
+				<li>Les cerques es mostren ordenades de forma <span class="text-bold-help">descendent</span></li>
+				<li>S'hi visualitza la següent informació relacionada amb la cerca:
+					<ul class="tab5-help margen10">
+						<li> la cerca realitzada</li>
+						<li> l'origen de dades seleccionat</li>
+						<li> el subcatàleg utilitzat</li>
+					</ul>
+				</li>
+				<li>Per executar-ne alguna, feu clic sobre la que us interessi i es visualitzaran de forma llista els registres localitzats.</li>
+				<li>Si voleu desar-ne alguna, identifiqueu-vos i feu clic a l'opció
+				<img th:src="@{/img/help/icon-save.png}" alt="Icona desar"/> associada a la cerca que us interessi.
+					<ul class="tab4-help">
+						<li>Per defecte, podeu emmagatzemar un màxim de <span class="text-bold-help">50</span> cerques</li>
+					</ul>
+				</li>
+			</ul>
+			<a name="searchAuthorities"></a>	
+			<h2 class="title-help">Accés a la cerca d'autoritats</h2>
+			<p>Per realitzar una cerca d'autoritats que us permeti localitzar registres que contenen una autoritat específica, feu clic a l'opció <i>Cerca d'autoritats</i>.</p>
+			<a name="searchIndexes"></a>	
+			<h2 class "title-help">Accés a la cerca als índexs</h2>
+			<p>Per realitzar una cerca que localitzi paraules o patrons de paraules semblants al terme o termes introduïts, feu clic a l'opció <i>Cerca als índexs</i>. </p>
+			<a name="favorites"></a>	
+			<h2 class="title-help">Accés als preferits</h2>
+			<p>Per visualitzar els registres que hagueu marcat com a preferits, feu clic a <i>Preferits</i>. </p>
+			<a name="profile"></a>	
+			<h2 class="title-help">Accés al meu perfil</h2>
+			<p>Fa clic a l'opció <i>El meu perfil</i> i identifiqueu-vos per poder accedir a les següents utilitats de <span class="text-bold-help">ODA</span>: </p>
+			<ul class="tab5-help margen5">
+				<li>Dades personals</li>
+				<li>Sol·licituds</li>
+				<li>Préstecs actius</li>
+				<li>Històric de préstecs</li>
+				<li>Renovar préstecs</li>
+				<li>Cancelar reserves</li>
+				<li>Desar cerques</li>
+				<li>Crear llistes de preferits</li>
+			</ul>
+			<p  class="tab3-help">•	Per identificar-vos com a usuari podeu utilitzar qualsevol d'aquests 3 mètodes:</p>
+			<ul class="tab5-help margen5">
+				<li>núm. de carnet</li>
+				<li>correu electrònic que hagueu proporcionat a la vostra biblioteca</li>
+				<li>telèfon mòbil que hagueu proporcionat a la vostra biblioteca</li>
+			</ul>
+			<a name="home"></a>	
+			<h2 class="title-help">Accés a la pàgina d'inici</h2>
+			<p>Per anar a la pàgina d'inici, feu clic a <i>Inici</i>.</p>
+			<p class="top-help"><a href="#top">Amunt</a></p>
+		</div>
+	</div>
+	<th:block th:insert="/public/home/technicalfooter" th:with="page='opac-dataprivacyterms'"/>
+</body>
+</html>

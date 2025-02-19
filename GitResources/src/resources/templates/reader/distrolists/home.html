@@ -1,0 +1,34 @@
+<th:block th:insert="/public/home/html_type"></th:block>
+   <head>
+      <th:block th:insert="/public/home/technicalheader::main" th:with="page='opac-reader-distrolist'"></th:block>
+   </head>
+   <body class="page_type_distrolists distrolists_home myBiblio bg-propietary-light">
+      <!-- :: reader/distrolist/home.html -->
+      <header class="header_principal">
+         <th:block th:insert="/public/home/header"></th:block>
+         <th:block th:insert="/fragments/breadcrums"></th:block>
+      </header>
+      <main id="acc_anchor_main">
+         <div class="readerData">
+            <th:block th:insert="/reader/fragments/readerInfo"></th:block>
+         </div>
+         <!-- :: /.readerData -->
+         <div class="menuTitle">
+            <th:block th:insert="/reader/fragments/myBiblio"></th:block>
+         </div>
+         <!-- :: /.menuTitle -->
+         <div class="lateralMenu">
+            <th:block th:insert="/reader/fragments/lateralMenu"></th:block>
+         </div>
+         <!-- :: /.lateralMenu -->
+         <div class="content">
+            <th:block th:insert="/reader/distroLists/distroLists"></th:block>
+         </div>
+         <!-- :: /.content -->
+      </main>
+      <footer class="footer_principal">
+         <th:block th:insert="/public/home/footer"></th:block>
+      </footer>
+      <th:block th:insert="/public/home/technicalfooter" th:with="page='opac-reader-distrolist'"></th:block>
+   </body>
+</html>

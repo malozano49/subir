@@ -1,0 +1,103 @@
+<!-- :: [title/pdf/summary.html] -->
+<div id="detail" class="article detail-summary">
+
+   <table><tr>
+    <td>
+   	<div class="card-body cont_image">
+      <th:block th:with="item = ${detail.catalog}" th:insert="/title/pdf/recordImage.html :: image(${detail.catalog.oaiIdentifierB64})"></th:block>
+   	</div>
+   	<!-- :: /.card-body.cont_image -->
+    </td>
+    <td>
+    <div class="card-body cont_datos">
+		<div th:if="${tfields != null}" class="summary">
+		   <h3 class="h2 item-title w-100">
+		      <span th:if="${tfields['t245']!=null}" class="d-block type_t245">
+		         <th:block th:if="${tfields['t245'][0]!=null}" th:each="subField : ${tfields['t245'][0].subFields}">
+		            <th:block th:if="${#strings.equals(subField.dollar,'a')}" th:text="${subField.subFieldValue}"></th:block>
+		            <th:block th:if="${#strings.equals(subField.dollar,'b')}" th:text="${subField.subFieldValue}"></th:block>
+		         </th:block>
+		      </span>
+		      <span th:if="${tfields['t245']==null and tfields['t240']!=null}" class="d-block type_t240">
+		         <th:block th:if="${tfields['t240'][0]!=null}" th:each="subField : ${tfields['t240'][0].subFields}">
+		            <th:block th:if="${#strings.equals(subField.dollar,'a')}" th:text="${subField.subFieldValue}"></th:block>
+		         </th:block>
+		      </span>
+		   </h3>
+		   <!-- :: /.item-title -->
+		   <div class="item-authority w-100 mb-2" th:if="${(tfields['t100'] != null or tfields['t110'] != null or tfields['t111'] != null or tfields['t130'] != null)}">
+		      <th:block th:if="${tfields['t100'] != null}" th:each="mvalor: ${tfields['t100']}">
+		      	<th:block th:insert="/title/pdf/enlace.html"></th:block>
+		      </th:block>
+		      <th:block th:if="${tfields['t110'] != null}" th:each="mvalor: ${tfields['t110']}">
+		         <th:block th:insert="/title/pdf/enlace.html"></th:block>
+		      </th:block>
+		      <th:block th:if="${tfields['t111'] != null}" th:each="mvalor: ${tfields['t111']}">
+		        <th:block th:insert="/title/pdf/enlace.html"></th:block>
+		      </th:block>
+		      <th:block th:if="${tfields['t130'] != null}" th:each="mvalor: ${tfields['t130']}">
+		       	<th:block th:insert="/title/pdf/enlace.html"></th:block>
+		      </th:block>
+		   </div>
+		   <!-- :: /.item-authority -->
+		   <div class="item-authority w-100 mb-2" th:unless="${(tfields['t100'] != null or tfields['t110'] != null or tfields['t111'] != null or tfields['t130'] != null)}">
+		      <th:block th:if="${tfields['t700'] != null}" th:each="mvalor: ${tfields['t700']}">
+		        	<th:block th:insert="/title/pdf/enlace.html"></th:block>
+		      </th:block>
+		   </div>
+		   <!-- :: /.item-authority -->
+		   <div class="item-publication w-100 mb-2" th:if="${tfields['t260'] != null}">
+		      <th:block th:if="${tfields['t260'] != null}" th:each="mvalor: ${tfields['t260']}">
+		         <th:block th:if="${tfields['t260'][0]!=null}" th:each="subField : ${tfields['t260'][0].subFields}">
+		            <span class="d-block type_t260">
+		               <th:block th:if="${#strings.equals(subField.dollar,'b')}" th:text="${subField.subFieldValue}"></th:block>
+		            </span>
+		            <span class="d-block type_t260">
+		               <th:block th:if="${#strings.equals(subField.dollar,'c')}" th:text="${subField.subFieldValue}"></th:block>
+		            </span>
+		         </th:block>
+		      </th:block>
+		   </div>
+		   <!-- :: /.item-publication -->
+		   <div class="item-subject w-100 type_t655">
+		      <th:block th:if="${tfields['t655'] != null}" th:each="mvalor: ${tfields['t655']}">
+		         <th:block th:if="${mvalor!=null}" th:each="subField : ${mvalor.subFields}">
+		            <span class="badge badge-primary">
+		               <th:block th:if="${#strings.equals(subField.dollar,'a')}" th:text="${subField.subFieldValue}"></th:block>
+		            </span>
+		         </th:block>
+		      </th:block>
+		   </div>
+		   <!-- :: /.item-subject -->
+		   <p class="item-format w-100 type_recordFormatType">
+		      <span class="d-block" th:if="${detail.recordFormatType.value != 'undefined'}" th:text="#{desc.format. + ${detail.recordFormatType.value}}"></span>
+		   </p>
+		   <!-- :: /.item-format -->
+		</div>
+      </div>
+      </td>
+   	  <!-- :: /.card-body.cont_datos -->
+    </tr></table>
+    <div class="card-body cont_datos">
+      <div th:if="${tfields != null}" class="summary">
+          <p class="item-summary">
+            <th:block th:if="${tfields['t520'] != null}" th:each="mvalor: ${tfields['t520']}">
+               <th:block th:if="${tfields['t520'][0]!=null}" th:each="subField : ${tfields['t520'][0].subFields}">
+                  <span class="d-block ellipsis_multiline multiline_expand" data-btn_expand="btn_expand">
+                     <th:block th:if="${#strings.equals(subField.dollar,'a')}" th:text="${subField.subFieldValue}"></th:block>
+                  </span>
+               </th:block>
+            </th:block>
+          </p>
+          <!-- :: /.item-summary -->
+          <div class="item-link">
+              <span class="btn_enlace_title" th:text="${hostName} + @{/public/catalog/detail/} + ${id}"></span>
+           </div>
+           <!-- :: /.item-link -->
+      </div>
+    </div>
+
+</div>
+<!-- :: /.detail-summary -->
+
+<!-- :: /[title/pdf/summary.html] -->

@@ -1,0 +1,68 @@
+/*!
+ *  @file        :_home.scss
+ *
+ *  @description :Estilos personlizados MASTER Oda
+ *
+ *  @author      :http://www.baratz.es/
+ *
+ *  @ref         :Hoja de estilos de personalización para MASTER Oda home y resultados de la búsqueda
+--------------------------------------------------------------------------------------------------*/
+
+/*
+Sobreescribir estilos para mejorar la vista de la home y los resultados de la busqueda de cara al  MASTER Oda
+en sass/_custom.scss, sass/_forms.scss, sass/_results
+*/
+.page_type_home {
+	main {
+		max-width: inherit !important;
+		.cont_radio_tunned {
+			margin-bottom:0 !important;		
+		}
+		section.article {
+		    padding: 1rem 3% 1rem 3% !important;	
+		    margin-bottom: 0 !important;	
+		    h2 {
+				margin: 1.5rem 0 2rem;
+			}
+		}
+	}
+	.view_type_carousel .swiper-container .card-body .btn-link, 
+	.view_type_carousel .swiper-container .card-body {
+		figcaption {
+			margin-bottom:0;
+		}
+		.link {
+			padding:0;
+			margin-bottom: 0.5rem;
+			.item-title {
+			    font-size: 1rem;
+			    line-height: 1.3em;
+			}
+		}
+		.item-publication {
+			margin-top:0 !important;
+		}
+	}
+	h3,h2 {
+		&.stc_title {
+			color: $primary;
+		}
+	}
+}
+
+/*
+RESULTADOS DE LA BÚSQUEDA
+*/
+.page_type_catalog.catalog_results {
+	.media-body {
+		h3.item-title {
+		    margin: 0;
+		}	
+	}
+	.cont_catalog_result_list .catalog-result-list .catalog-item .cont_datos .cont_item-format .item-format {
+		padding-bottom: 1rem;
+	}	
+	.catalog-item{
+		padding-top: 0.5rem !important;
+	}
+}

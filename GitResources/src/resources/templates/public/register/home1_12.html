@@ -1,0 +1,41 @@
+<th:block>
+   <!-- :: [public/register/home1_12.html] -->
+   <div class="layout_1-12 container-fluid">
+      <div id="firstRow" class="cont_menu_datos_type_00 row pt-2">      
+         <div class="col-lg-8 col-md-12 col-sm-12 mx-auto cont_apart cont_data_loans">           
+             <div class="component type_readerregister">
+              <h3 class="text-primary" th:text="#{login.reader.register}"></h3>
+              
+              <div class="cont_help">
+              	<th:block th:insert="/public/register/help_register"></th:block>
+              </div>
+              
+               <th:block th:if="${msg != null}">
+               <div class="cont_alerts_general" aria-live="polite" aria-atomic="true">
+	           		<div class="alert alert-success">
+	                	<span class="alert_titulo" th:text="#{${msg}}"></span>
+					</div>
+				</div>
+               </th:block>
+               
+              <section class="" aria-labelledby="sct_alerts_title">
+              <h2 id="sct_alerts_title" class="sr-only" th:text="#{alert.zone.title}"></h2>
+               <div class="cont_alerts_general" aria-live="polite" aria-atomic="true">
+                <th:block th:if="${userWarning != null and #lists.size(userWarning) > 0}">
+                    <th:block th:insert="/reader/fragments/userWarningReservation"></th:block>
+                </th:block>
+              </div>         
+          </section>
+              
+              <th:block th:insert="/public/register/registerForm.html"></th:block>
+            </div>
+            <!-- /.type_readerbuysuggestions -->
+         </div>
+         <!-- :: /.cont_data_loans-->
+         
+      </div>
+      <!-- :: /#firstRow -->
+   </div>
+   <!-- :: /.layout_1-12 -->
+   <!-- :: /[public/register/home1_12.html] -->
+</th:block>

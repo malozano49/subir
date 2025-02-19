@@ -1,0 +1,134 @@
+<!-- :: [title/pdf/moreDetails.html] -->
+<article id="detail-plus_anchor" class="detail-more-details article detail-plus border-top">
+
+    <div id="detailTitle" class="cont_menu_details">
+      <div class="detail-more-details-format">
+        <div class="cont_datos">
+           		<!-- :: [title/estandar/estandar.html] -->
+				<div class="standard-copy-format">
+				   <th:block th:if="${tfields != null}" th:each="mykey : ${detail.fieldsToShow}">
+				      <th:block th:if="${tfields[__${mykey}__] != null and tfields[__${mykey}__].size() == 1}" th:each="mvalor , iterStat: ${tfields[__${mykey}__]}">
+				         <th:block th:if="${!#strings.isEmpty(mvalor) and !#lists.isEmpty(mvalor.subFields)}">
+				            <div class="linea pb-2">
+				               <div class="field-title">
+				                  <span th:text="#{${mykey}} + ': '" class="copy-field-label font-weight-bold"></span>
+				               </div>
+				               <div class="field-content">
+				                  <div class="field-content_internal mr-2">
+				                  <th:block th:switch="${mykey}">
+				                     <th:block th:case="'t700'">
+				                        <th:block th:insert="/title/pdf/enlace.html"></th:block>
+				                     </th:block>
+				                     <th:block th:case="'t650'">
+				                        <th:block th:insert="/title/pdf/enlace.html"></th:block>
+				                     </th:block>
+				                     <th:block th:case="'t856'">
+				                        <th:block th:each="subcampo : ${mvalor.subFields}">
+										   <!-- :: [title/fragments/t856URL.html] -->
+										   <span class="page-link_title mr-2" th:if="${!#strings.equals(subcampo.dollar,'u') and !#strings.equals(subcampo.dollar,'z') and !#strings.equals(subcampo.dollar,'x')}"
+										      th:text="${subcampo.subFieldValue}"></span>
+										   <span th:if="${#strings.equals(subcampo.dollar,'u') and mvalor.getMapSubFields()['z'] != null}" th:text="${mvalor.getMapSubFields()['z'][0]}" class="btn_enlace_title"></span>
+									       <span th:if="${#strings.equals(subcampo.dollar,'u') and mvalor.getMapSubFields()['z'] == null}" th:text="${subcampo.subFieldValue}" class="btn_enlace_title"></span>
+										   <span class="page-link_title ml-2" th:if="${#strings.equals(subcampo.dollar,'z') and mvalor.getMapSubFields()['u'] == null}" th:text="${subcampo.subFieldValue}"></span>
+										   <!-- :: /[title/fragments/t856URL.html] -->
+										</th:block>
+				                     </th:block>
+				                     <th:block th:case="'t508'">
+				                        <th:block th:each="subcampos : ${mvalor.subFields}">
+											<th:block th:unless="${#strings.contains(subcampos.subFieldValue, '$guion') or #strings.contains(subcampos.subFieldValue, '$musica') or #strings.contains(subcampos.subFieldValue, '$fotografia')}"
+													  th:insert="/title/fragments/subfieldValue">
+											</th:block>
+											<th:block th:if="${#strings.contains(subcampos.subFieldValue, '$guion')}">
+												<span th:text="#{estandar.guion.label} + ': ' + ${#strings.replace(subcampos.subFieldValue,'$guion','')}"></span>
+											</th:block>
+											<th:block th:if="${#strings.contains(subcampos.subFieldValue, '$musica')}">
+												<span th:text="#{estandar.musica.label} + ': ' + ${#strings.replace(subcampos.subFieldValue,'$musica','')}"></span>
+											</th:block>
+											<th:block th:if="${#strings.contains(subcampos.subFieldValue, '$fotografia')}">
+												<span th:text="#{estandar.fotografia.label} + ': ' + ${#strings.replace(subcampos.subFieldValue,'$fotografia','')}"></span>
+											</th:block>
+										</th:block>
+				                     </th:block>
+				                     <th:block th:case="*">
+				                        <th:block th:each="subcampos : ${mvalor.subFields}">
+											<th:block th:insert="/title/fragments/subfieldValue"></th:block>
+										</th:block>
+				                     </th:block>
+				                  </th:block>
+				                  </div>
+				               </div>
+				            </div>
+				            <!-- :: /.linea -->
+				         </th:block>
+				      </th:block>
+				      <th:block th:if="${tfields[__${mykey}__] != null and tfields[__${mykey}__].size() > 1 and !#strings.isEmpty(tfields[__${mykey}__][0]) and !#lists.isEmpty(tfields[__${mykey}__][0].subFields)}">
+				      <div  class="linea pb-2">
+				         <div class="field-title">
+				            <span th:text="#{${mykey}} + ': '" class="copy-field-value font-weight-bold"></span>
+				         </div>
+				         <!-- :: /.field-title -->
+				         <div class="field-content">
+				            <th:block th:each="mvalor , iterStat: ${tfields[__${mykey}__]}">
+				               <div class="field-content_internal mr-2">
+				                  <th:block th:if="${iterStat.index} < ${iterStat.size}">
+				                     <th:block th:switch="${mykey}">
+				                        <th:block th:case="'t700'">
+				                           <th:block th:insert="/title/pdf/enlace.html"></th:block>
+				                        </th:block>
+				                        <th:block th:case="'t650'">
+				                           <th:block th:insert="/title/pdf/enlace.html"></th:block>
+				                        </th:block>
+				                        <th:block th:case="'t856'">
+					                        <th:block th:each="subcampo : ${mvalor.subFields}">
+											   <!-- :: [title/fragments/t856URL.html] -->
+											   <span class="page-link_title mr-2" th:if="${!#strings.equals(subcampo.dollar,'u') and !#strings.equals(subcampo.dollar,'z') and !#strings.equals(subcampo.dollar,'x')}"
+											      th:text="${subcampo.subFieldValue}"></span>
+										        <span th:if="${#strings.equals(subcampo.dollar,'u') and mvalor.getMapSubFields()['z'] != null}" th:text="${mvalor.getMapSubFields()['z'][0]}" class="btn_enlace_title"></span>
+										        <span th:if="${#strings.equals(subcampo.dollar,'u') and mvalor.getMapSubFields()['z'] == null}" th:text="${subcampo.subFieldValue}" class="btn_enlace_title"></span>
+											   <span class="page-link_title ml-2" th:if="${#strings.equals(subcampo.dollar,'z') and mvalor.getMapSubFields()['u'] == null}" th:text="${subcampo.subFieldValue}"></span>
+											   <!-- :: /[title/fragments/t856URL.html] -->
+											</th:block>
+					                     </th:block>
+				                        <th:block th:case="'t508'">
+				                        	<th:block th:each="subcampos : ${mvalor.subFields}">
+												<th:block th:unless="${#strings.contains(subcampos.subFieldValue, '$guion') or #strings.contains(subcampos.subFieldValue, '$musica') or #strings.contains(subcampos.subFieldValue, '$fotografia')}"
+														  th:insert="/title/fragments/subfieldValue">
+												</th:block>
+												<th:block th:if="${#strings.contains(subcampos.subFieldValue, '$guion')}">
+													<span th:text="#{estandar.guion.label} + ': ' + ${#strings.replace(subcampos.subFieldValue,'$guion','')}"></span>
+												</th:block>
+												<th:block th:if="${#strings.contains(subcampos.subFieldValue, '$musica')}">
+													<span th:text="#{estandar.musica.label} + ': ' + ${#strings.replace(subcampos.subFieldValue,'$musica','')}"></span>
+												</th:block>
+												<th:block th:if="${#strings.contains(subcampos.subFieldValue, '$fotografia')}">
+													<span th:text="#{estandar.fotografia.label} + ': ' + ${#strings.replace(subcampos.subFieldValue,'$fotografia','')}"></span>
+												</th:block>
+											</th:block>
+				                     	</th:block>
+				                        <th:block th:case="*">
+				                           	<th:block th:each="subcampos : ${mvalor.subFields}">
+												<th:block th:insert="/title/fragments/subfieldValue"></th:block>
+											</th:block>
+				                        </th:block>
+				                     </th:block>
+				                  </th:block>
+				               </div>
+				            </th:block>
+				         </div>
+				         <!-- ::/.field-content -->
+				      </div>
+				      <!-- :: /.linea -->
+				      </th:block>
+				   </th:block>
+
+				</div>
+				<!-- :: /.standard-copy-format -->
+				<!-- :: /[title/estandar/estandar.html] -->
+        </div>
+        <!-- :: /.cont_datos -->
+      </div>
+      <!-- :: /.detail-more-details-format -->
+    </div>
+    <!-- :: /.cont_menu_details -->
+</article>
+<!-- :: /[title/pdf/moreDetails.html] -->
