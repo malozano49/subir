@@ -1,0 +1,9 @@
+<!-- public/search/subCataSelectHidden.html  -->
+<th:block th:fragment="selectname(sname,sfield,var,ncomb)">
+    <th:block th:each="comb,iter : ${var}">
+      <th:block  th:each="item : ${comb.optionsSelect}">          
+       <input type="hidden" th:if="${item.value == comb.optionSelected}"  th:field="*{__${sfield}__[__${iter.index}__].optionSelected}" th:value="${item.value}">
+      </th:block>     
+     </th:block>
+ </th:block>
+<!-- public/search/subCataSelectHidden.html  -->

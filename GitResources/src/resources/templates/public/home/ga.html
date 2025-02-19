@@ -1,0 +1,10 @@
+<!-- /public/home/ga.html -->
+<!-- Google tag (gtag.js) -->
+<script th:attr="nonce=${#request.getAttribute('cspNonce')}" async th:src="${'https://www.googletagmanager.com/gtag/js?id='+GACode}" ></script>
+<script th:attr="nonce=${#request.getAttribute('cspNonce')}" type="text/javascript" th:inline="javascript">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config','[(${GACode})]'); 
+</script>
+<!-- /public/home/ga.html -->

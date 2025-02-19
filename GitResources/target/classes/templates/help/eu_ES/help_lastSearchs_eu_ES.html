@@ -1,0 +1,96 @@
+<th:block th:insert="/public/home/html_type"></th:block>
+<th:block th:insert="/public/home/technicalheader::main" th:with="page=${'opac-help-lasrSearch-es_ES'}"></th:block>
+<script type="text/javascript">
+	var menu = document.getElementById('menu');
+	Stickyfill.add(menu);
+</script>
+<body>
+<div id="burger-menu" class="burger-menu">
+  <span></span>
+  			<div id="menu2" class="menu menu2">
+			<div class=""><nav class="sn-contents" aria-label="Secondary">
+      <ul class="sidenav--list">
+<li><a href="#lastSearch">Azken bilaketak</a></li>
+<li><a href="#searchAuthorities">Aholkularitza bilaketa</a></li>
+<li><a href="#searchIndexes">Indizeetako bilaketa</a></li>
+<li><a href="#favorites">Gogokoen sarbidea</a></li>
+<li><a href="#profile">Nire Profila</a></li>
+<li><a href="#home">Hasierako orriaren sarbidea</a></li></ul></nav>
+</div>
+		</div>
+		
+</div>
+	<div class="wrapper cf">
+		<div id="menu" class "menu">
+			<div class="sidenav"><nav class="sn-contents" aria-label="Bigarren maila">
+      <ul class="sidenav--list">
+<li><a href="#lastSearch">Azken bilaketak</a></li>
+<li><a href="#searchAuthorities">Aholkularitza bilaketa</a></li>
+<li><a href="#searchIndexes">Indizeetako bilaketa</a></li>
+<li><a href="#favorites">Gogokoen sarbidea</a></li>
+<li><a href="#profile">Nire Profila</a></li>
+<li><a href="#home">Hasierako orriaren sarbidea</a></li></ul></nav>
+</div>
+		</div>
+		<div class="content">
+			<a name="top"></a>
+			<a name="lastSearch"></a>	
+			<h2 class="title-help">Azken bilaketak</h2>
+			<p>Atal hauetik azken 5 bilaketa ikusten dira.</p>
+			<ul class="tab4-help margen5">
+				<li>Azken bilaketak osoko zerrenda ikusteko, klik egin
+					<br><img th:src="@{/img/help/btn-complete-list-last-searches.png}" alt="Azken bilaketen osoko zerrenda"/>
+				</li>
+				<li>Bilaketak <span class="text-bold-help">beheranzko moduan</span> erakusten dira</li>
+				<li>Bilaketarekin erlazionatutako hurrengo informazioa ikusten da:
+					<ul class="tab5-help margen10">
+						<li> egin den bilaketa</li>
+						<li> hautatutako datu-iturria</li>
+						<li> erabilitako azpisaila</li>
+					</ul>
+				</li>
+				<li>Bilaketarik baten exekutatzeko, klik egin interesatzen zaizkoen baten gainean, eta zerrenda moduan erakutsiko dira aurkitutako erregistroak.</li>
+				<li>Interesatzen zaizkion bilaketa bat gordetzeko, identifikatu eta klik egin bilaketa hori interesatzen zaizkoenaren inguruko 
+				<img th:src="@{/img/help/icon-save.png}" alt="Ikonu gordearen elkarrizketa"/> aukerarekin.
+					<ul class="tab4-help">
+						<li>Lehenetsita, <span class="text-bold-help">50</span> bilaketa gehienez gorde daiteke</li>
+					</ul>
+				</li>
+			</ul>
+			<a name="searchAuthorities"></a>	
+			<h2 class="title-help">Aholkularitza bilaketa</h2>
+			<p>Eraldatzeko bilaketa egin nahi baduzu, aholkularitzak aukera ematen du erregistroak dute aholkularitate espezifiko bat. Sakatu <i>Aholkularitza bilaketa</i> aukera.</p>
+			<a name="searchIndexes"></a>	
+			<h2 class="title-help">Indizeetako bilaketa</h2>
+			<p>Hitzak edo hitzen ereduak bilatu nahi badituzu, sartu <i>Indizeetako bilaketa</i> aukeran.</p>
+			<a name="favorites"></a>	
+			<h2 class="title-help">Gogokoen sarbidea</h2>
+			<p>Zure gogokoak markatutako erregistroak ikusteko, klik egin <i>Gogokoen</i> aukeran.</p>
+			<a name="profile"></a>	
+			<h2 class="title-help">Nire Profila</h2>
+			<p> Klik egin <i>Nire Profila</i> aukeran eta identifikatu, <span class="text-bold-help">ODA</span>-ren hurrengo erabilera aukeratzeko:</p>
+			<ul class="tab5-help margen5">
+				<li>Datu pertsonalak</li>
+				<li>Eskaerak</li>
+				<li>Préstamo aktiboak</li>
+				<li>Préstamo historia</li>
+				<li>Préstamo berritzeko</li>
+				<li>Erreserba bertan behera uztea</li>
+				<li>Bilaketak gorde</li>
+				<li>Gogoko zerrendak sortu</li>
+			</ul>
+			<p  class="tab3-help">•	Erabiltzaile gisa identifikatzeko, hiru bideetatik edozein erabil ditzakezu:</p>
+			<ul class="tab5-help margen5">
+				<li>Karnet zenbakia</li>
+				<li>Zure liburutegiari emaniko posta elektronikoa</li>
+				<li>Zure liburutegiari emaniko telefono mugikorra</li>
+			</ul>
+			<a name="home"></a>	
+			<h2 class="title-help">Hasierako orriaren sarbidea</h2>
+			<p>Hasierako orrira joateko, klik egin <i>Hasierako orri</i> aukeran.</p>
+			<p class="top-help"><a href="#top">Goitik</a></p>
+		</div>
+	</div>
+	<th:block th:insert="/public/home/technicalfooter" th:with="page='opac-dataprivacyterms'"/>
+</body>
+</html>

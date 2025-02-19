@@ -1,0 +1,101 @@
+<!-- :: [title/fragments/copiesPagination.html] -->
+<div th:class="'cont_total_results_bar w-100 position_'+${position}">
+  <div class="total-results-bar navbar bg-highlight">
+     <div class="results-pagination d-flex">
+     <th:block th:with="currentUrl=(${thymeleafMap.get('CATALOG_MAPPING_DETAIL_VIEW_NO_VIEW_NO_PARAM')} + ${id} + '/' + ${detail.selectedViewDocumentType} + '#copias')">
+           <div class="cont cont_datos pagination-element d-flex">
+              <span class="cont_datos__blq my-auto mr-1" th:text="#{copy.totalCopies.part.1}  + ' ' + ${#lists.size(detail.copy)}  + ' ' + #{copy.totalCopies.part.2} + ' ' + ${detail.totalCopiesByPage} + ' ' + #{copy.totalCopies.part.3}"></span>
+              <span class="cont_datos__blq my-auto font-weight-bold" th:text="'(' + ${detail.availableCopiesScreenRestricted} + ' ' + #{copy.availableCopies} + ')'"></span>
+           </div>
+           <!-- :: /.cont_datos -->
+           <div class="cont cont_pagination pagination-element d-flex" th:if="${detail.totalPageCopiesNumber > 1}">
+              <nav class="mx-auto" th:aria-labelledby="'copies_title_nav_pages_in_'+${position}" th:data-position="${position}">
+                <h3 th:id="'copies_title_nav_pages_in_'+${position}" class="sr-only" th:text="#{copy.pagination.page.aria}+' '+${position}"></h3>
+                <ul class="pagination pt-1">
+                  <li class="btn_anterior btn_mobile page-item" th:classappend="${detail.pageCopies == 1} ? 'disabled'">
+                    <a th:href="@{${currentUrl}(pageCopies=${detail.pageCopies-1})}" class="btn page-link" data-type="back" th:title="#{search.pagination.page.previous}" th:aria-label="#{search.pagination.page.previous}">
+                      <span class="icono fas fa-angle-left" aria-hidden="true"></span>
+                      <span class="btn_title" th:text="#{search.pagination.page.previous}"></span>
+                    </a>
+                  </li>
+                  <li data-id="firstPage" class="btn_inicio btn_mobile page-item" th:classappend="${detail.pageCopies == 1} ? 'active'">
+                    <a th:href="@{${currentUrl}(pageCopies=1,setAvailable=${detail.available},tabId=${solrSearchWeb.solrSearch.tabId},branch=${detail.screenRestriction})}" class="btn page-link" th:aria-label="#{search.pagination.first.page}" th:title="#{search.pagination.first.page}">
+                      <span class="icono fas fa-angle-double-left" aria-hidden="true"></span>
+                      <span class="btn_title" aria-hidden="true">1</span>
+                    </a>
+                  </li>
+                  <li data-id="secondPage" class="page-item" th:if="${detail.pageCopies < 4 && detail.totalPageCopiesNumber > 2}" th:classappend="${detail.pageCopies == 2} ? 'active'">
+                    <a th:href="@{${currentUrl}(pageCopies=2,setAvailable=${detail.available},tabId=${solrSearchWeb.solrSearch.tabId},branch=${detail.screenRestriction})}" class="btn page-link">2</a>
+                  </li>
+                  <li data-id="thirdPage" class="page-item" th:if="${detail.pageCopies < 4 && detail.totalPageCopiesNumber > 3}" th:classappend="${detail.pageCopies == 3} ? 'active'">
+                      <a th:href="@{${currentUrl}(pageCopies=3,setAvailable=${detail.available},tabId=${solrSearchWeb.solrSearch.tabId},branch=${detail.screenRestriction})}" class="btn page-link">3</a>
+                  </li>
+                  <li data-id="fourthPage" class="page-item" th:if="${detail.pageCopies < 4  && detail.totalPageCopiesNumber > 4}">
+                      <a th:href="@{${currentUrl}(pageCopies=4,setAvailable=${detail.available},tabId=${solrSearchWeb.solrSearch.tabId},branch=${detail.screenRestriction})}" class="btn page-link">4</a>
+                  </li>
+                  <li data-id="before" th:if="${detail.pageCopies > 3}" class="page-item " >
+                    <button class="btn btn_and" th:aria-label="#{search.pagination.intermediate.pages}" th:title="#{search.pagination.intermediate.pages}" data-type="intermediate" disabled>&hellip;</button>
+                  </li>
+                  <li data-id="pageMinusOne" class="page-item" th:if="${(detail.pageCopies > 3) && (detail.pageCopies <= (detail.totalPageCopiesNumber-3))}">
+                      <a th:href="@{${currentUrl}(pageCopies=${detail.pageCopies-1},setAvailable=${detail.available},tabId=${solrSearchWeb.solrSearch.tabId},branch=${detail.screenRestriction})}" class="btn page-link" th:text="${detail.pageCopies-1}" th:title="#{detail.page-1}"/>
+                  </li>
+                  <li data-id="pageCopias" class="page-item active my-auto" th:if="${(detail.pageCopies > 3) && (detail.pageCopies <= (detail.totalPageCopiesNumber-3))}">
+                    <a th:href="@{${currentUrl}(pageCopies=${detail.pageCopies},setAvailable=${detail.available},tabId=${solrSearchWeb.solrSearch.tabId},branch=${detail.screenRestriction})}" class="btn page-link" th:text="${detail.pageCopies}" th:title="#{detail.pageCopies}"/>
+                  </li>
+                  <li data-id="pagePlusOne" class="page-item"  th:if="${(detail.pageCopies > 3) && (detail.pageCopies <= (detail.totalPageCopiesNumber-3))}">
+                    <a th:href="@{${currentUrl}(pageCopies=${detail.pageCopies+1},setAvailable=${detail.available},tabId=${solrSearchWeb.solrSearch.tabId},branch=${detail.screenRestriction})}" class="btn page-link" th:text="${detail.pageCopies+1}" th:title="#{detail.page+1}"/>
+                  </li>
+                  <li data-id="after" th:if="${detail.pageCopies <= (detail.totalPageCopiesNumber-3)}" class="page-item " >
+                    <button class="btn btn_and" th:aria-label="#{search.pagination.intermediate.pages}" th:title="#{search.pagination.intermediate.pages}" data-type="intermediate" disabled>&hellip;</button>
+                  </li>
+                  <li data-id="lastPageMinusThree" class="page-item" th:if="${detail.pageCopies > 3 && detail.pageCopies > (detail.totalPageCopiesNumber-3)}">
+                      <a th:href="@{${currentUrl}(pageCopies=${detail.totalPageCopiesNumber-3},setAvailable=${detail.available},tabId=${solrSearchWeb.solrSearch.tabId},branch=${detail.screenRestriction})}" class="btn page-link" th:text="${detail.totalPageCopiesNumber-3}" th:title="#{detail.totalPagesNumber-3}"/>
+                  </li>
+                  <li data-id="lastPageMinusTwo" class="page-item" th:if="${detail.pageCopies > 3 && detail.pageCopies > (detail.totalPageCopiesNumber-3)}" th:classappend="${detail.pageCopies == detail.totalPageCopiesNumber-2} ? 'active'">
+                    <a th:href="@{${currentUrl}(pageCopies=${detail.totalPageCopiesNumber-2},setAvailable=${detail.available},tabId=${solrSearchWeb.solrSearch.tabId},branch=${detail.screenRestriction})}" class="btn page-link" th:text="${detail.totalPageCopiesNumber-2}" th:title="#{detail.totalPagesNumber-2}"/>
+                  </li>
+                  <li data-id="lastPageMinusOne" class="page-item" th:if="${detail.pageCopies > 3 && detail.pageCopies > (detail.totalPageCopiesNumber-3)}" th:classappend="${detail.pageCopies == detail.totalPageCopiesNumber-1} ? 'active'">
+                    <a th:href="@{${currentUrl}(pageCopies=${detail.totalPageCopiesNumber-1},setAvailable=${detail.available},tabId=${solrSearchWeb.solrSearch.tabId},branch=${detail.screenRestriction})}" class="btn page-link" th:text="${detail.totalPageCopiesNumber-1}" th:title="#{detail.totalPagesNumber-1}">
+                    </a>
+                  </li>
+                  <li data-id="lastPage" class="btn_final btn_mobile page-item" th:if="${detail.totalPageCopiesNumber > 1}" th:classappend="${detail.pageCopies == detail.totalPageCopiesNumber} ? 'active'">
+                      <a th:href="@{${currentUrl}(pageCopies=${detail.totalPageCopiesNumber},setAvailable=${detail.available},tabId=${solrSearchWeb.solrSearch.tabId},branch=${detail.screenRestriction})}" class="btn page-link" th:aria-label="#{search.pagination.go.last.page} + ' (' + ${detail.totalPageCopiesNumber} +')'">
+                      <span class="btn_title" th:text="${detail.totalPageCopiesNumber}" aria-hidden="true"></span>
+                      <span class="icono fas fa-angle-double-right" aria-hidden="true"></span>
+                      </a>
+                  </li>
+                  <li class="btn_siguiente btn_mobile page-item" th:classappend="${detail.pageCopies == detail.totalPageCopiesNumber} ? 'disabled'">
+                    <a th:href="@{${currentUrl}(pageCopies=${detail.pageCopies+1},setAvailable=${detail.available},tabId=${solrSearchWeb.solrSearch.tabId},branch=${detail.screenRestriction})}" class="btn page-link" data-type="forward" th:aria-label="#{search.pagination.page.next}" th:title="#{search.pagination.page.next}">
+                      <span class="btn_title" th:text="#{search.pagination.page.next}"></span>
+                      <span class="icono fas fa-angle-right" aria-hidden="true"></span>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+           </div>
+           <div class="cont cont_filter_select pagination-element d-flex" th:if="${libraryBranchFilter != null and not #lists.isEmpty(libraryBranchFilter)}">
+              <th:block th:insert="/title/fragments/locationFilter.html" th:with="position=${position}"></th:block>
+           </div>
+           <!-- :: /.cont_pagination -->
+           <div class="cont cont_filtros pagination-element d-flex">
+              <span class="cont_datos__blq mr-2">
+                 <span class="icono fas fa-filter mr-1"></span>
+                 <th:block th:text="#{copy.filter.by.availability}"></th:block>
+              </span>
+              <ul class="pagination">
+                 <li class="page-item btn_mobile" th:classappend="${detail.available!=null && detail.available==true} ? 'disabled'">
+                     <a th:href="@{${currentUrl}(setAvailable=true,tabId=${solrSearchWeb.solrSearch.tabId},branch=${detail.screenRestriction})}" class="btn page-link" th:text="#{copy.yes}"></a>
+                 </li>
+                 <li class="page-item btn_mobile" th:classappend="${detail.available==null || detail.available==false} ? 'disabled'">
+                    <a th:href="@{${currentUrl}(setAvailable=false,tabId=${solrSearchWeb.solrSearch.tabId},branch=${detail.screenRestriction})}" class="btn page-link" th:text="#{copy.no}"></a>
+                 </li>
+              </ul>
+           </div>
+           <!-- :: /.cont_filtros -->
+        </th:block>
+     </div>
+     <!-- :: /.results-pagination -->
+  </div>
+</div>
+<!-- :: /.cont_total_results_bar -->
+<!-- :: /[title/fragments/copiesPagination.html] -->

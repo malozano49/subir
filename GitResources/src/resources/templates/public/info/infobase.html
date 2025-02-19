@@ -1,0 +1,31 @@
+    <head th:fragment="infoHead">
+      <th:block th:insert="/public/home/technicalheader::main" th:with="page=${page}"></th:block>
+   </head>
+   <body class="page_type_info opac-infobase bg-propietary-light">
+      <!-- :: public/info/infobase.html -->
+      <header class="header_principal" th:fragment="infoHeader">
+        <th:block th:with="simpleHeader='true'" th:insert="/public/home/header"></th:block>
+      </header>
+      <main id="acc_anchor_main" class="container-fluid">
+
+        <section id="firstRow" class="container pt-4">
+           <article>
+            <h2>
+               OpacDiscovery
+               <th:block th:text="${applicationVersion}"></th:block>
+            </h2>
+         </article>
+        </section>
+      <div class="cont_botonera botonera_flotante_btn_actions d-none" aria-hidden="true">
+        <a class="btn_accion btn_cancel" data-action="cancel_adminProperties" th:href="@{/public/home}" aria-label="Ir a la página anterior" title="Ir a la página anterior">
+          <span class="icono fas fa-undo" aria-hidden="true"></span>
+        </a>
+      </div>
+      <!-- :: /.cont_botonera -->
+      </main>
+
+      <footer  class="footer_principal" th:fragment="infoFooter">
+         <th:block th:insert="/public/home/footer" th:with="page=${page}"></th:block>
+      </footer>
+   </body>
+</html>

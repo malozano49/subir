@@ -1,0 +1,27 @@
+ <!-- :: [/public/index/fragments/spellchecker.html] -->
+   <div class="container-sm container--spellchecker mt-2" th:if="${solrSearchWeb !=null and solrSearchWeb.solrSearch.spellchecker !=null 
+      and (solrSearchWeb.solrSearch.spellchecker.suggestions != null and not #lists.isEmpty(solrSearchWeb.solrSearch.spellchecker.suggestions)
+      or solrSearchWeb.solrSearch.spellchecker.lessThan10Results != null and not solrSearchWeb.solrSearch.spellchecker.lessThan10Results.isEmpty())}">
+      <div class="spellchecker spellchecker--resultados border col-md-12 col-12" th:if="${not #lists.isEmpty(solrSearchWeb.solrSearch.spellchecker.suggestions)}">
+         <p class="spellchecker__title m-0">
+            <th:block th:text="#{spellchecker.encontrado}"/>
+            <th:block th:if="${not #lists.isEmpty(solrSearchWeb.solrSearch.spellchecker.suggestions)}" th:text="${solrSearchWeb.solrSearch.results.totalResults}"></th:block>
+            <th:block th:text="#{spellchecker.resultados}"/>
+         </p>
+          <ul class="list-inline m-0 p-0">
+            <li class="list-inline-item ">
+              <span class="btn btn--simil btn--spellcheker text-danger" th:text="#{spellchecker.suggestions}"/>
+            </li>       
+            <li class="list-inline-item" th:each="item,iter : ${solrSearchWeb.solrSearch.spellchecker.suggestions}">
+            	<form method="post" th:id="solrSearch.spellchecker+${iter.index}" name="solrSearchWeb" class="m-0" th:action="@{${thymeleafMap.get('INDEX_SEARCH_ACTION')}}+'#searchResul'">
+		          <input type="hidden" name="solrSearch.indexSearchField"  th:value="${solrSearchWeb.solrSearch.indexSearchField}">
+		          <input type="hidden" name="solrSearch.indexSearchFilter" th:value="${solrSearchWeb.solrSearch.indexSearchFilter}">
+		          <input type="hidden" name="solrSearch.queryType" th:value="${solrSearchWeb.solrSearch.queryType}">
+		          <input type="hidden" name="solrSearch.solrCollection" th:value="${solrSearchWeb.solrSearch.solrCollection}">
+		          <input type="submit" name="solrSearch.query" th:value="${item}" class="btn btn-link text-capitalize text-info">
+               </form>
+            </li>
+          </ul>
+      </div>    
+   </div>     
+<!-- :: /[/public/index/fragments/spellchecker.html] -->

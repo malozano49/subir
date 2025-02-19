@@ -1,0 +1,82 @@
+/*!
+ *  @file        : maquetacion.scss
+ *
+ *  @description : ABSYS aplicacion estilos
+ *
+ *  @author      : http://www.baratz.es/
+ *
+ *  @ref         : Linea de maquetacion
+--------------------------------------------------------------------------------------------------*/
+
+
+// =============================================================================
+// IMPORTACIONES
+// =============================================================================
+
+@import "../variables";
+
+@import"../main/colors";
+
+@import "../main/fonts";
+
+/*!
+  ESTILOS MAQUETACION [COLORES]
+--------------------------------------------------------------------------------------------------*/
+.cont_colores{position:relative;display:flex;flex-direction:row;flex-wrap:wrap;justify-content:center}
+.cont_colors_sass {display:none}
+.container_color{position:relative;display:flex;flex-direction:column;justify-content:flex-end;min-height:85%;min-width:175px;max-width:200px;padding:8px 3px 8px 3px;
+  .color_name{position:relative;width:100%;font-size:0.8125rem;@include font-weight-bold;}
+  .color_alias{position:relative;width:100%;font-size:0.8125rem}
+  .color{position:relative;float:left;width:100%;height:80px;border:1px dashed #ddd}
+  .cont_color_hex{position:relative;width:100%;text-align:center;font-size:.875rem;@include font-weight-bold;}
+  .color_hex{position:relative;float:left;width:100%;text-align:center;padding-right:1.5em}
+  .btn_color_hex{position:absolute;bottom:0;right:0;line-height:1em;
+    .icono{font-size:.9rem}
+  }
+}
+
+
+/*!
+  ESTILOS GENERALES
+--------------------------------------------------------------------------------------------------*/
+article{position:relative;display:flex;flex-direction:column}
+
+
+/*!
+  MAQUETACION4 GRIDS MODELOS
+--------------------------------------------------------------------------------------------------*/
+.grid-container {display: grid;grid-template-rows:auto auto;grid-template-columns:1fr;grid-auto-flow:row;justify-items: stretch;}
+
+  .grid__item{position:relative;justify-self:stretch;display:flex;flex-flow:row wrap;align-content:center;justify-content:center;border:1px solid red}
+
+  .uno {
+    background:skyblue;}
+  .dos {background:orange;
+    /// alineacion del ultimo elemento en descuadre a la izquierda
+    /*
+    ::after {
+      content: "";
+      flex: auto;
+    }
+    */
+    /// alineacion de los ultimos elementos en descuadre a la derecha
+    .item_cont:last-child{
+      margin-left:auto
+    }
+
+  }
+  .tres{
+    background:cyan}
+  .cuatro{
+    background:chocolate}
+  .cinco{background:ghostwhite;
+    /// alineacion de los ultimos elementos en descuadre a la izquierda
+    .item_cont:last-child{
+      margin-right:auto
+    }
+  }
+  .seis{
+    background:greenyellow}
+    .item_cont{position:relative;width:200px;height:200px;border:1px solid green;}
+
+

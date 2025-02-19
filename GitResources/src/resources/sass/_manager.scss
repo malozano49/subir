@@ -1,0 +1,22 @@
+/*!
+ *  @file        : _manager.scss
+ *
+ *  @description : ABSYS aplicación estilos
+ *
+ *  @author      : http://www.baratz.es/
+ *
+ *  @ref         : Hoja de estilos para gestor de contenidos
+--------------------------------------------------------------------------------------------------*/
+.page_type_manager {
+	.btn_user_manager.btn-secondary,
+	.btn_user_manager.btn-secondary >span{
+			color: white !important;
+		}
+}
+
+article{
+	&.art_agenda,
+	&.art_links {
+		box-shadow: none !important;
+	}	
+}

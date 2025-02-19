@@ -1,0 +1,15 @@
+<!-- :: [reader/loans/history/readerLoansHistory.html] -->
+<section class="card my-library-section reader-loans-history item-detail container pb-4" aria-labelledby="readerLoansHistory_title">
+  <h2 id="readerLoansHistory_title" class="sr-only" th:text="#{mylibrary.loan.reserve.title}"></h2>
+  <nav class="menuLoans" aria-label="myLibrary_menu" th:insert="/reader/fragments/upMenu"></nav>
+  <article class="detail-copies article border pb-0" aria-labelledby="detail-copies_title">
+    <h3 id="detail-copies_title" class="d-block font-weight-bold fieldset__title">
+      <span class="icono fas fa-history mr-1" aria-hidden="true"></span>
+      <th:block th:text="#{mylibrary.loanhistory.section.title}"/>
+    </h3>
+    <th:block th:if="not ${history.isEmpty()}" th:each="mapSources : ${history}">
+      <th:block th:insert="/reader/loans/history/fragment/loansHistoryPage.html" th:with="source=${mapSources.key}, loanPagVO=${mapSources.value}" ></th:block>
+    </th:block>
+  </article>
+</section>
+<!-- :: /[reader/loans/history/readerLoansHistory.html] -->

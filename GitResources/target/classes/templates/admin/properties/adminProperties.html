@@ -1,0 +1,127 @@
+<th:block th:fragment="main">
+<!-- :: [admin/properties/adminProperties.html] -->
+
+<!-- Administrator messages -->
+<section th:if="${!adminProps.editEnabled}" class="admin-section admin-properties admin-messages mt-5">
+  <h2 class="sr-only" th:text="#{alert.general.messages}"></h2>
+	<div class="container cont_message" th:insert="/admin/fragments/warningData"></div>
+</section>
+<!-- :: /.admin-messages -->
+
+<div class="admin-section admin-properties mb-5 mt-5">
+  <div class="container container_menu">
+    <div th:if="${!adminProps.editEnabled}" th:insert="/admin/fragments/upMenu" class="cont_up_menu d-flex justify-content-center"></div>
+    <!-- :: /.cont_up_menu -->
+  </div>
+  <!-- :: /.container_menu -->
+  <section class="container container_general border pb-3">
+    <h2 class="d-block font-weight-bold section__title">
+      <span class="icono far fa-list-alt mr-1" aria-hidden="true"></span>
+      <th:block th:text="#{administration.properties.area}"/>
+    </h2>
+    <div class="cont_botonera_superior mt-4 mb-4">
+
+      <div class="cont_button" >
+        <form th:if="${!adminProps.editEnabled}" th:action="@{${thymeleafMap.get('ADMIN_DATA_PATH')}}" th:object="${managerData}" method="post">
+          <button type="submit" name="reloadConfAction" value="reloadConfAction" class="btn btn-white">
+            <span class="icono fas fa-sync-alt mr-1 mt-1"></span>
+            <span class="label_icono" th:text="#{administration.properties.conf.reload}"></span>
+          </button>
+        </form>
+      </div>
+
+      <div th:if="${!adminProps.editEnabled}" class="cont_button">
+        <a class="btn btn-link" th:href="@{${thymeleafMap.get('ADMIN_PROPERTIES_PATH_EDIT')}}">
+          <span class="icono far fa-edit"></span>
+          <span class="label_icono" th:text="#{administration.properties.button.edit}"></span>
+        </a>
+      </div>
+
+      <div th:if="${adminProps.editEnabled}" class="cont_button">
+        <span class="icono far fa-edit"></span>
+        <span class="label_icono" th:text="#{administration.properties.label.editing}"></span>
+      </div>
+
+    </div>
+    <!-- :: /.cont_botonera_superior -->
+
+    <th:block th:if="${!adminProps.editEnabled}">
+
+      <article id="art_pagina_inicio" class="border mt-2 pl-md-3 pr-md-3">
+        <h3 class="anchor_title article_title w-auto">
+          <span class="icono fas fa-home mr-1" aria-hidden="true"></span>
+          <span class="titulo" th:text="#{administration.properties.home.area}"></span>
+        </h3>
+        <div class="cont cont_home w-100 pl-xl-3 pr-xl-3 sortable_disabled" th:insert="/admin/properties/home"></div>
+        <!-- :: /.cont_home -->
+      </article>
+
+      <article id="art_lector" class="border pl-md-3 pr-md-3 mt-3">
+        <h3 class="anchor_title article_title w-auto"><span class="icono fas fa-book mr-1" aria-hidden="true"></span><span class="titulo" th:text="#{administration.properties.reader.area}"></span></h3>
+        <div class="cont cont_reader w-100 pl-xl-3 pr-xl-3" th:insert="/admin/properties/reader"></div>
+        <!-- :: /.cont_reader -->
+      </article>
+
+      <article id="art_detalle" class="border pl-md-3 pr-md-3 mt-3">
+        <h3 class="anchor_title article_title w-auto"><span class="icono fab fa-discourse mr-1" aria-hidden="true"></span><span class="titulo" th:text="#{administration.properties.title.detail.area}"></span></h3>
+        <div class="cont cont_titleDetail w-100 pl-xl-3 pr-xl-3 sortable_disabled" th:insert="/admin/properties/titleDetail"></div>
+        <!-- :: /.cont_titleDetail -->
+      </article>
+
+      <article id="art_subcatalogo" class="border pl-md-3 pr-md-3 mt-3">
+        <h3 class="anchor_title article_title w-auto"><span class="icono fab fa-elementor mr-1" aria-hidden="true"></span><span class="titulo" th:text="#{administration.properties.subcatalogs.area}"></span></h3>
+        <div class="cont cont_subcatalog w-100 pl-xl-3 pr-xl-3" th:insert="/admin/properties/subcatalog"></div>
+        <!-- :: /.cont_subcatalog -->
+      </article>
+
+    </th:block>
+
+    <th:block th:if="${adminProps.editEnabled}">
+	    <form id="form_adminProps" th:action="@{${thymeleafMap.get('ADMIN_PROPERTIES_PATH_EDIT')}}" method="post">
+
+        <article id="art_pagina_inicio" class="border mt-2 pl-md-3 pr-md-3">
+          <h3 class="anchor_title article_title w-auto"><span class="icono fas fa-home mr-1" aria-hidden="true"></span><span class="titulo" th:text="#{administration.properties.home.area}"></span></h3>
+          <div class="cont cont_home w-100 pl-xl-3 pr-xl-3" th:insert="/admin/properties/home"></div>
+          <!-- :: /.cont_home -->
+        </article>
+
+	      <article id="art_lector" class="border pl-md-3 pr-md-3 mt-3">
+	        <h3 class="anchor_title article_title w-auto"><span class="icono fas fa-book mr-1" aria-hidden="true"></span><span class="titulo" th:text="#{administration.properties.reader.area}"></span></h3>
+	        <div class="cont cont_reader w-100 pl-xl-3 pr-xl-3" th:insert="/admin/properties/reader"></div>
+	        <!-- :: /.cont_reader -->
+	      </article>
+
+        <article id="art_detalle" class="border pl-md-3 pr-md-3 mt-3">
+          <h3 class="anchor_title article_title w-auto"><span class="icono fab fa-discourse mr-1" aria-hidden="true"></span><span class="titulo" th:text="#{administration.properties.title.detail.area}"></span></h3>
+          <div class="cont cont_titleDetail w-100 pl-xl-3 pr-xl-3" th:insert="/admin/properties/titleDetail"></div>
+          <!-- :: /.cont_titleDetail -->
+        </article>
+
+	      <article id="art_subcatalogo" class="border pl-md-3 pr-md-3 mt-3">
+          <h3 class="anchor_title article_title w-auto"><span class="icono fab fa-elementor mr-1" aria-hidden="true"></span><span class="titulo" th:text="#{administration.properties.subcatalogs.area}"></span></h3>
+	        <div class="cont cont_subcatalog w-100 pl-xl-3 pr-xl-3" th:insert="/admin/properties/subcatalog"></div>
+	        <!-- :: /.cont_subcatalog -->
+	      </article>
+
+	      <div class="cont_botonera botonera_flotante_btn_actions d-none" aria-hidden="true">
+	        <button type="submit" class="btn_accion btn_submit" data-action="submit_adminProperties" data-form_afectado="form_adminProps"
+	        th:aria-label="#{administration.properties.button.save}" th:title="#{administration.properties.button.save}">
+	          <span class="icono fas fa-save" aria-hidden="true"></span>
+	        </button>
+	        <a class="btn_accion btn_cancel" data-action="cancel_adminProperties" th:href="@{${thymeleafMap.get('ADMIN_PROPERTIES_PATH')}}" th:aria-label="#{administration.properties.button.cancel}" th:title="#{administration.properties.button.cancel}">
+	          <span class="icono fas fa-times" aria-hidden="true"></span>
+	        </a>
+	      </div>
+	      <!-- :: /.cont_botonera -->
+
+	    </form>
+
+    </th:block>
+  </section>
+  <!-- :: /.container_general-->
+</div>
+<!--:: /.admin-properties -->
+
+
+<!-- :: /[admin/properties/adminProperties.html] -->
+</th:block>

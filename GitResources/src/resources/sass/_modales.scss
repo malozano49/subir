@@ -1,0 +1,235 @@
+/*!
+ *  @file        : _modales.scss
+ *
+ *  @description : ABSYS aplicacion estilos
+ *
+ *  @author      : http://www.baratz.es/
+ *
+ *  @ref         : Hoja de estilos para modales
+--------------------------------------------------------------------------------------------------*/
+
+
+$modal-border-radius : 2px !default;
+
+//
+//     GENERAL
+//
+.modal{text-align:left;
+  &.modal_type_primary{
+    @include modal_type(primary);
+  }
+  &.modal_type_secondary{
+    @include modal_type(secondary);
+  }
+  &.modal_type_success{
+    @include modal_type(success);
+  }
+  &.modal_type_danger{
+    @include modal_type(danger);
+  }
+  &.modal_type_warning{
+    @include modal_type(warning);
+  }
+  &.modal_type_info{
+     @include modal_type(info);
+  }
+  &.modal_type_light{
+    @include modal_type(light);
+  }
+  &.modal_type_dark{
+    @include modal_type(dark);
+  }
+  &.modal_type_custom{
+
+  }
+  .alert{width:100%;}
+  .modal-content{border-radius:$modal-border-radius;
+    .modal-header{padding:15px;border-top-left-radius:$modal-border-radius;border-top-right-radius:$modal-border-radius;
+      .modal-title{@extend %ellipsis;font-size:1.2rem;@include font-weight-bold;}
+    }
+    .modal-body{
+      legend{font-size:1.2rem;padding-left:0;padding-right:0;color:$dark}
+      .cont_botonera,
+      .cont_botonera_form{align-items:center}/* IE11 FIX BUTTONS */
+    }
+  }
+  .alert{
+    .loading{position:relative;display:flex;width:70px;height:70px;margin:auto;
+      .spinner-border{position:relative;top:0;left:0}
+    }
+  }
+}
+@include media_max(md){
+  .modal{padding-right:0!important}
+}
+
+
+//
+//  Modales compartir por email
+//      Lista de favoritos
+//      Mis listas
+//
+.modal{
+  &.modal_favorites_share_mail,
+  &.modal_detail_item_share_mail,
+  &.modal_mylist_share_mail{
+    .modal-content .modal-body{
+      .alert{margin-bottom:1rem}
+      legend{font-size:1rem}
+      .cont_form_group{padding-left:0;padding-right:0}
+      form .alert{
+        &>.alert_texto{margin-top:0!important}
+      }
+    }
+  }
+}
+
+//
+//     Modales LOG
+//     Administracion
+//
+.logs_batch{
+  .modal-body{
+    .bloque_logs{position:relative;float:left;width:100%;max-height:35vh;margin-bottom:15px;font-size:.875rem;overflow:auto;overflow-x:hidden}
+  }
+
+}
+
+
+//
+//     Modales Añadir item a listas
+//     Cada item (de favoritos y resultados de busquedas)
+//
+.modal_detail_item_title_list{
+  // Solución a los problemas de accesiblidad con los selectpickers
+  .modal-dialog{
+    .modal-content{overflow:visible;
+      .modal-body{overflow:visible}
+    }
+  }
+  .content_myList{
+    .cont_list-group{
+      .list-group{padding-left:15px;padding-right:0;}
+      .list_item{position:relative;display:flex;align-items:center;justify-content:space-between;cursor:default;
+        .list_title,
+        .icono{font-size:1rem;}
+        button{cursor:pointer;}
+      }
+    }
+  }
+  .content_old_title_list,
+  .content_new_title_list{
+    &>.alert{margin-bottom:1rem}
+  }
+  @include media_max(md){
+    .cont_botonera_form{flex-wrap:wrap;
+      .btn{margin-bottom:15px}
+    }
+  }
+  @include media_max(sm){
+    .modal-body{padding-left:2%;padding-right:2%;}
+    .cont_botonera_form{
+      .btn{margin-right:0!important;width:100%}
+    }
+  }
+}
+
+
+//
+//     Modales Mover item de lista
+//     Cada item (de listas)
+//
+.modal_detail_item_move{
+  // Solución a los problemas de accesiblidad con los selectpickers
+  .modal-dialog{
+    .modal-content{overflow:visible;
+      .modal-body{overflow:visible;
+        .alert{margin-bottom:1rem}
+        .cont_form_group{padding-right:0}
+
+      }
+
+    }
+  }
+}
+
+
+//
+//     Modales Crear nueva lista
+//
+.modal_add_list{
+  .cont_titleList_form_modify{flex:0 0 100%;max-width:none;}
+}
+
+
+//
+//     Modales share permalink
+//
+.modal_detail_item_share_permalink{
+  .cont_permalink{position:relative;float:left;width:100%;
+    textarea{position:relative;float:left;width:100%;min-height:125px;padding:5px;}
+  }
+  .cont_botonera{position:relative;float:left;width:100%;margin-top:1rem;display:flex;justify-content:center}
+}
+
+
+//
+//     Modales Manager recomendar
+//
+.modal_recommended_levels{
+  .content_recommended{padding-left:2%;padding-right:2%;
+    .cont_check{position:relative;float:left;padding-left:30px;padding-right:2%;
+      .cont_nuevo_check{position:absolute;left:0}
+    }
+    .cont_all_checks_of_levels{position:relative;float:left;width:100%;padding:15px 2% 15px 2%;
+      .cont_check{padding-top:0;margin-bottom:.2rem;
+        &:first-of-type{width:100%;
+          label{@include font-weight-bold;}
+        }
+        label{max-width:100%;margin-bottom:0}
+      }
+    }
+  }
+}
+
+//
+//     Modales Manager Añadir actividades (para datetimepicker)
+//
+.modal_add_manager_link,
+.modal_modificar_manager_link,
+.modal_add_manager_activity,
+.modal_modificar_manager_activity{
+  .modal-dialog .modal-content .modal-body{overflow:visible}
+}
+.modal_modificar_manager_link .modal-dialog{margin-top:7rem}
+
+
+//
+//     Modales Detalle del item Localizacion de sede
+//
+.modal_branchLocation{
+  .modal-body{position:relative;float:left;display:flex;flex-direction:column;}
+  .branch_datos{position:relative;float:left;display:flex;flex-direction:column;padding-left:15px;padding-right:15px;}
+  .branch_datos-cont{position:relative;float:left;display:flex;flex-direction:row;justify-content:flex-start;width:100%;margin-bottom:5px;
+    .cont_label{position:relative;float:left;min-width:100px;font-weight:bold}
+    .cont_data{}
+  }
+  .branch_botonera{position:relative;float:left;display:flex;flex-flow:row wrap;align-items:center;justify-content:center;margin-top:15px;}
+}
+.modal_libraryLocation{
+  .modal-body{position:relative;float:left;display:flex;flex-direction:column;}
+  .library_datos{position:relative;float:left;display:flex;flex-direction:column;padding-left:15px;padding-right:15px;}
+  .library_datos-cont{position:relative;float:left;display:flex;flex-direction:row;justify-content:flex-start;width:100%;margin-bottom:5px;
+    .cont_label{position:relative;float:left;min-width:100px;font-weight:bold}
+    .cont_data{}
+  }
+  .library_botonera{position:relative;float:left;display:flex;flex-flow:row wrap;align-items:center;justify-content:center;margin-top:15px;}
+}
+
+
+
+
+
+
+
+

@@ -1,0 +1,236 @@
+<th:block th:insert="/public/home/html_type"></th:block>
+<th:block th:insert="/public/home/technicalheader::main" th:with="page=${'opac-help-myProfile-es_ES'}"></th:block>
+<script type="text/javascript">
+	var menu = document.getElementById('menu');
+	Stickyfill.add(menu);
+</script>
+<body><div id="burger-menu" class="burger-menu">
+  <span></span>
+  			<div id="menu2" class="menu menu2">
+			<div class=""><nav class="sn-contents" aria-label="Secondary">
+      <ul class="sidenav--list">
+<ul><a href="#modifyPersonalData">Como modificar os datos persoais</a>
+	<li><a href="#viewListActiveLoans">Como visualizar os préstamos activos</a>
+		<ul>
+			<li><a href="#moveListActiveLoans">Como moverse pola lista de préstamos activos</a></li>
+		</ul>
+	</li>
+	<li><a href="#viewListLoanHistory">Como visualizar o histórico de préstamos</a>
+		<ul>
+			<li><a href="#moveListLoanHistory">Como moverse pola lista de histórico de préstamos</a></li>
+		</ul>
+	</li>
+	<li><a href="#viewRequests">Como visualizar as solicitudes</a>
+		<ul>
+			<li><a href="#moveListRequests">Como moverse pola lista de solicitudes</a></li>
+		</ul>
+	</li>
+	<li><a href="#cancelReservation">Como anular unha solicitude de tipo reserva</a></li>
+	<li><a href="#cancelRequest">Como anular unha solicitude de tipo petición</a></li>
+	<li><a href="#renewloans">Como renovar préstamos</a></li>
+	<li><a href="#home">Acceso á páxina de inicio</a></li>
+	<li><a href="#searchAuthority">Acceso á busca en autoridades</a></li>
+	<li><a href="#searchIndexes">Acceso á busca nos índices</a></li>
+	<li><a href="#lastSearch">Acceso ás últimas buscas realizadas</a></li>
+	<li><a href="#historySearch">Acceso ás buscas gardadas</a></li>
+	<li><a href="#favorites">Acceso a favoritos</a></li>
+</ul>
+</nav>
+</div>
+</div>
+
+<div class="wrapper cf">
+
+<div id="menu" class="menu">
+<div class="sidenav">
+<nav class="sn-contents" aria-label="Secundario">
+  <ul class="sidenav--list">
+	<li><a href="#modifyPersonalData">Como modificar os datos persoais</a>
+		<li><a href="#viewListActiveLoans">Como visualizar os préstamos activos</a>
+			<ul>
+				<li><a href="#moveListActiveLoans">Como moverse pola lista de préstamos activos</a></li>
+			</ul>
+		</li>
+		<li><a href="#viewListLoanHistory">Como visualizar o histórico de préstamos</a>
+			<ul>
+				<li><a href="#moveListLoanHistory">Como moverse pola lista de histórico de préstamos</a></li>
+			</ul>
+		</li>
+		<li><a href="#viewRequests">Como visualizar as solicitudes</a>
+			<ul>
+				<li><a href="#moveListRequests">Como moverse pola lista de solicitudes</a></li>
+			</ul>
+		</li>
+		<li><a href="#cancelReservation">Como anular unha solicitude de tipo reserva</a></li>
+		<li><a href="#cancelRequest">Como anular unha solicitude de tipo petición</a></li>
+		<li><a href="#renewloans">Como renovar préstamos</a></li>
+		<li><a href="#home">Acceso á páxina de inicio</a></li>
+		<li><a href="#searchAuthority">Acceso á busca en autoridades</a></li>
+		<li><a href="#searchIndexes">Acceso á busca nos índices</a></li>
+		<li><a href="#lastSearch">Acceso ás últimas buscas realizadas</a></li>
+		<li><a href="#historySearch">Acceso ás buscas gardadas</a></li>
+		<li><a href="#favorites">Acceso a favoritos</a></li>
+	</li>
+  </ul>
+</nav>
+</div>
+</div>
+
+<div class="content">
+<a name="top"></a>
+<a name="modifyPersonalData"></a>
+<h2 class="title-help">Como modificar os datos persoais</h2>
+<ul class="tab5-help margen5">
+	<li>1. Fai clic en <img th:src="@{/img/help/btn-edit.png}" alt="Botón editar"/> para modificar os datos que che interesen</li>
+	<li>2. Realiza os cambios que che interesen</li>
+	<li>3. Fai clic en <img th:src="@{/img/help/btn-save.png}" alt="Botón gardar" width="75px"/> para gardar as modificacións</li>
+</ul>
+<a name="viewListActiveLoans"></a>
+<h2 class="title-help">Como visualizar os préstamos activos</h2>
+<ul class="tab5-help margen5">
+	<li>1. En <img th:src="@{/img/help/btn-current.png}" alt="Botón actuais" width="75px"/> mostrase o listado dos teus préstamos activos
+		<ul class="tab5-help margen5">
+			<li>Amósanse os seguintes datos relacionados co préstamo:
+				<ul class="tab5-help margen10">
+					<li>Biblioteca do exemplar</li>
+					<li>Sucursal da solicitude</li>
+					<li>Título</li>
+					<li>Autor</li>
+					<li>Data do préstamo</li>
+					<li>Data da devolución</li>
+					<li>A opción <img th:src="@{/img/help/btn-streaming.png}" alt="Botón Streaming" width="100px"/> se a solicitude é un contido de efilm</li>
+				</ul>
+			</li>
+			<li>Os préstamos mostranse ordenados por data de devolución en modo ascendente</li>
+			<li>Se fas clic en calquera dos préstamos, amosaranse os datos do título asociado</li>
+		</ul>
+	</li>
+</ul>
+			<a name="moveListActiveLoans"></a>
+			<h4 class="title-help">Como moverse pola lista de préstamos activos</h4>
+			<p>Por defecto, o resultado da busca amósase ordenado en grupos de <span class="text-bold-help">10</span>, pero existe a posibilidade de agrupar os resultados de 25 en 25 ou de 35 en 35.</p>
+			<span class="tab5-help margen10"><img th:src="@{/img/help/results-by-page.png}" alt="Resultados por páxina" width="320px"/></span>
+			<p>Para moverse polas diferentes páxinas dos resultados obtidos existen as seguintes opcións:</p>
+			<ul class="tab5-help margen5">
+				<li>Fai clic en <img th:src="@{/img/help/next.png}" alt="Seguinte" width="80px"/> para moverse á seguinte páxina.</li>
+				<li>Fai clic en <img th:src="@{/img/help/back.png}" alt="Anterior" width="80px"/> para moverse á páxina anterior.</li>
+				<li>Fai clic no nº de páxina que che interese visualizar
+					<span class="tab3-help"><img th:src="@{/img/help/number-by-page.png}" alt="Número de páxina" width="320px"/></span>
+				</p></li>
+				<li>Fai clic no nº 1 para visualizar a primeira páxina</li>
+				<span class="tab3-help"><img th:src="@{/img/help/first-page.png}" alt="Primeira páxina" width="320px"/></span>
+				</p>
+				<li>Fai clic no nº anterior a Seguinte para ir á última páxina
+					<span class="tab3-help"><img th:src="@{/img/help/last-page.png}" alt="Última páxina" width="320px"/></span>
+				</li>
+			</ul>
+			<a name="viewListLoanHistory"></a>
+			<h2 class="title-help">Como visualizar o histórico de préstamos</h2>
+			<ul class="tab3-help">
+				<li>Fai clic en <img th:src="@{/img/help/btn-histority.png}" alt="Botón histórico" width="75px"/>
+					<ul class="tab4-help margen5">
+						<li>Amósanse os seguintes datos relacionados co préstamo:
+							<ul class="tab5-help margen5">
+								<li>Biblioteca do exemplar</li>
+								<li>Sucursal da solicitude</li>
+								<li>Título</li>
+								<li>Autor</li>
+								<li>Data do préstamo</li>
+								<li>Data da devolución</li>
+							</ul>
+						</li>
+						<li>Os préstamos amósanse ordenados por data de devolución en modo descendente</li>
+						<li>Se fas clic en calquera dos préstamos, amosaranse os datos do título asociado</li>
+					</ul>
+				</li>
+			</ul>
+			<a name="moveListLoanHistory"></a>
+			<h4 class="title-help">Como moverse pola lista de histórico de préstamos</h4>
+			<p>Por defecto, o resultado da busca amósase ordenado en grupos de <span class="text-bold-help">10</span>, pero existe a posibilidade de agrupar os resultados de 25 en 25 ou de 35 en 35.</p>
+			<span class="tab5-help margen10"><img th:src="@{/img/help/results-by-page.png}" alt="Resultados por páxina" width="320px"/></span>
+			<p>Para moverse polas diferentes páxinas dos resultados obtidos existen as seguintes opcións:</p>
+			<ul class="tab5-help margen5">
+				<li>Fai clic en <img th:src="@{/img/help/next.png}" alt="Seguinte" width="80px"/> para moverse á seguinte páxina.</li>
+				<li>Fai clic en <img th:src="@{/img/help/back.png}" alt "Anterior" width="80px"/> para moverse á páxina anterior.</li>
+				<li>Fai clic no nº de páxina que che interese visualizar
+					<span class="tab3-help"><img th:src="@{/img/help/number-by-page.png}" alt="Número de páxina" width="320px"/></span>
+				</p></li>
+				<li>Fai clic no nº 1 para visualizar a primeira páxina</li>
+				<span class="tab3-help"><img th:src="@{/img/help/first-page.png}" alt="Primeira páxina" width="320px"/></span>
+				</p>
+				<li>Fai clic no nº anterior a Seguinte para ir á última páxina
+					<span class="tab3-help"><img th:src="@{/img/help/last-page.png}" alt="Última páxina" width="320px"/></span>
+				</li>
+			</ul>
+			<a name="moveListRequests"></a>
+			<h4 class="title-help">Como moverse pola lista de solicitudes</h4>
+			<p>Por defecto, o resultado da busca mostrase ordenado en grupos de <span class="text-bold-help">10</span>, pero existe a posibilidade de agrupar os resultados de 25 en 25 ou de 35 en 35
+			<span class="tab5-help"><img th:src="@{/img/help/results-by-page.png}" alt="Resultados por páxina" width="320px"/></span>
+			<p>Para moverse polas diferentes páxinas dos resultados obtidos existen as seguintes opcións:</p>
+			<ul class="tab5-help margen5">
+			    <li>Faga clic en <img th:src="@{/img/help/next.png}" alt="Seguinte" width="80px"/> para moverse á seguinte páxina.</li>
+			    <li>Faga clic en <img th:src="@{/img/help/back.png}" alt="Anterior" width="80px"/> para moverse á páxina anterior.</li>
+			    <li>Faga clic no número de páxina que lle interese visualizar
+			        <span class="tab3-help"><img th:src="@{/img/help/number-by-page.png}" alt="Número de páxina" width="320px"/></span>
+			    </li>
+			    <li>Faga clic no número 1 para visualizar a primeira páxina</li>
+			    <span class="tab3-help"><img th:src="@{/img/help/first-page.png}" alt="Primeira páxina" width="320px"/></span>
+			    </li>
+			    <li>Faga clic no número anterior a Seguinte para ir á última páxina
+			        <span class="tab3-help"><img th:src="@{/img/help/last-page.png}" alt="Última páxina" width="320px"/></span>
+			    </li>
+			</ul>
+			<a name="cancelReservation"></a>
+			<h2 class="title-help">Como anular unha solicitude tipo reserva</h2>
+			<ul class="tab5-help margen5">
+			    <li>1. Faga clic en <img th:src="@{/img/help/my-requests.png}" alt="As miñas solicitudes" width="100px"/><p></li>
+			    <li>2. Faga clic na opción <img th:src="@{/img/help/btn-cancel.png}" alt="Anular" width="50px"/> asociada á reserva que queira anular
+			    </li>
+			    <p class="tab5-help margen5">- Aparece unha mensaxe pedindo confirmación </p>
+			    <span class="tab4-help margen5"><img th:src="@{/img/help/cancel-request.png}" alt="Cancelar solicitude" width="400px"/></span><p>
+			    <li>3.Faga clic na opción <img th:src="@{/img/help/btn-cancel.png}" alt="Anular" width="50px"/> para eliminar a solicitude</li>
+			</ul>
+			<div class="tab5-help">
+			    <div class="box-help">Só se poden anular as reservas que non están activadas, é dicir, as que aínda non están dispoñibles para recoller.</div>
+			</div>
+			<a name="cancelRequest"></a>
+			<h2 class="title-help">Como anular unha solicitude tipo petición</h2>
+			<ul class="tab5-help margen5">
+			    <li>1. Faga clic en <img th:src="@{/img/help/my-requests.png}" alt="As miñas solicitudes" width="100px"/><p></li>
+			    <li>2. Faga clic na opción <img th:src="@{/img/help/btn-cancel.png}" alt="Anular" width="50px"/> asociada á petición que queira anular</li>
+			    <p class="tab5-help margen5">- Aparece unha mensaxe pedindo confirmación </p>
+			    <span class="tab4-help margen5"><img th:src="@{/img/help/cancel-request.png}" alt="Cancelar solicitude" width="400px"/></span><p>
+			    <li>3. Faga clic na opción <img th:src="@{/img/help/btn-cancel.png}" alt="Anular" width="50px"/> para eliminar a solicitude</li>
+			</ul>
+			<div class="tab5-help">
+			    <div class="box-help">Só se poden anular as peticións que estean en estado R-Petición.</div>
+			</div>
+			<a name="renewloans"></a>
+			<h2 class="title-help">Como renovar préstamos</h2>
+			<p class="tab5-help margen5">1. Faga clic en <img th:src="@{/img/help/btn-current.png}" alt="Botón actuais" width="75px"/></p>
+			<p class="tab5-help margen5">2. Faga clic na opción <img th:src="@{/img/help/btn-renew.png}" alt="Botón renovar" width="75px"/> asociada ao préstamo que queira renovar</p>
+			<a name="home"></a>
+			<h2 class="title-help">Acceso á páxina de inicio</h2>
+			<p>Para ir á páxina de inicio, faga clic en <i>Inicio</i> .</p>
+			<a name="searchAuthority"></a>
+			<h2 class="title-help">Acceso á busca en autoridades</h2>
+			<p>Para realizar unha busca de autoridades que permita localizar rexistros que conteñen unha autoridade específica, faga clic na opción <i>Busca autoridades</i>.</p>
+			<a name="searchIndexes"></a>
+			<h2 class="title-help">Acceso á busca nos índices</h2>
+			<p>Para realizar unha busca que localize palabras ou patróns de palabras parecidas ao termo ou termos introducidos, faga clic na opción <i>Busca índices</i>.</p>
+			<a name="lastSearh"></a>
+			<h2 class="title-help">Acceso ás últimas buscas realizadas</h2>
+			<p>Para visualizar as <span class="text-bold-help">10</span> últimas buscas realizadas que devolveron resultados durante a sesión do Opac, faga clic en <i>Últimas buscas</i>.</p>
+			<a name="historySearch"></a>
+			<h2 class="title-help">Acceso ás buscas gardadas</h2>
+			<p>Se quere gardar algunha das buscas que realizou para poder executalas noutro momento, faga clic en <i>Buscas gardadas</i>.</p>
+			<p class="tab2-help">* Para poder gardar buscas é necesario que se identifique previamente</p>
+			<a name="favorites"></a>
+			<h2 class="title-help">Acceso a favoritos</h2>
+			<p>Para visualizar os rexistros que marcou como favoritos, faga clic en <i>Favoritos</i>.</p>
+			<p class="top-help"><a href="#top">Arriba</a></p>
+		</div>
+	</div>
+	<th:block th:insert="/public/home/technicalfooter" th:with="page='opac-dataprivacyterms'"/>
+</body>
+</html>

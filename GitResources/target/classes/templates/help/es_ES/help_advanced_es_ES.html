@@ -1,0 +1,325 @@
+<th:block th:insert="/public/home/html_type"></th:block>
+<th:block th:insert="/public/home/technicalheader::main" th:with="page=${'opac-help-advanced-es_ES'}"></th:block>
+<script type="text/javascript">
+	var menu = document.getElementById('menu');
+	Stickyfill.add(menu);
+</script>
+<body>
+<div id="burger-menu" class="burger-menu">
+  <span></span>
+  			<div id="menu2" class="menu menu2">
+			<div class=""><nav class="sn-contents" aria-label="Secondary">
+      <ul class="sidenav--list">
+<li><a href="#searchAllFields">Búsquedas en todos los campos</a></li>
+								<li><a href="#searchsSpecificField">Búsquedas en un campo concreto </a></li>
+								<li><a href="#searchsByTerm">Búsquedas por un término </a></li>
+								<li><a href="#searchsSeveralTerms">Búsquedas por varios términos </a></li>
+								<li><a href="#searchsContainTerms">Búsquedas que contengan todos los términos introducidos </a></li>
+								<li><a href="#searchesSomeTerms">Búsquedas que contengan alguno o todos los términos introducidos </a></li>
+								<li><a href="#searchExact">Búsquedas exactas</a></li>
+								<li><a href="#searchsOperators">Búsquedas utilizando operadores</a></li>
+								<li><a href="#searchsFilters">Búsquedas utilizando filtros</a></li>
+								<li><a href="#searchsFepu">Búsquedas por Año de publicación </a></li>
+								<li><a href="#removeSearchTerms">Cómo eliminar los términos de búsqueda introducidos</a></li>
+								<li><a href="#viewInforSearch">Cómo visualizar información sobre la búsqueda que se va a realizar</a></li>
+								<li><a href="#examplesSearchs">Ejemplos de Búsquedas</a></li>
+								<li><a href="#suggestionsSearchs">Sugerencias de búsqueda automáticas</a></li></ul></nav>
+</div>
+		</div>
+		
+</div>
+	<div class="wrapper cf">
+			<div id="menu" class="menu">
+			<div class="sidenav"><nav class="sn-contents" aria-label="Secondary">
+      <ul class="sidenav--list">
+<li><a href="#searchAllFields">Búsquedas en todos los campos</a></li>
+								<li><a href="#searchsSpecificField">Búsquedas en un campo concreto </a></li>
+								<li><a href="#searchsByTerm">Búsquedas por un término </a></li>
+								<li><a href="#searchsSeveralTerms">Búsquedas por varios términos </a></li>
+								<li><a href="#searchsContainTerms">Búsquedas que contengan todos los términos introducidos </a></li>
+								<li><a href="#searchesSomeTerms">Búsquedas que contengan alguno o todos los términos introducidos </a></li>
+								<li><a href="#searchExact">Búsquedas exactas</a></li>
+								<li><a href="#searchsOperators">Búsquedas utilizando operadores</a></li>
+								<li><a href="#searchsFilters">Búsquedas utilizando filtros</a></li>
+								<li><a href="#searchsFepu">Búsquedas por Año de publicación </a></li>
+								<li><a href="#removeSearchTerms">Cómo eliminar los términos de búsqueda introducidos</a></li>
+								<li><a href="#viewInforSearch">Cómo visualizar información sobre la búsqueda que se va a realizar</a></li>
+								<li><a href="#examplesSearchs">Ejemplos de Búsquedas</a></li>
+								<li><a href="#suggestionsSearchs">Sugerencias de búsqueda automáticas</a></li></ul></nav>
+</div>
+		</div>
+		<div class="content">
+			<a name="top"></a>
+			<a name="searchAdvance"></a>
+			<h2 class="title-help">Búsqueda avanzada</h2>
+			<a name="filtersSearch"></a>
+			<h4 class="title-help">Filtros que se pueden aplicar a una búsqueda</h4>
+			<p>Cuando se realiza una búsqueda se puede consultar en todas las <span class="text-bold-help">fuentes</span> disponibles o en una en concreto.</p> 
+ 			<p class="tab4-help margen5"><img th:src="@{/img/help/filters-origin.png}" alt="Filtros de los origenes"  width="450px"/></p>
+			<p>Por defecto, la búsqueda se realiza en todas las fuentes disponibles. Si quiere que la búsqueda se realice en una fuente determinada, selecciónela:</p>
+			<p class="tab4-help margen5"><img th:src="@{/img/help/filter-efilm.png}" alt="Filtros de los origenes"  width="450px"/></p>
+			<p>Además de poder selecionar las fuentes en las que se puede realizar la búsqueda <span class="text-bold-help">ODA</span> permite restringir la búsqueda a un conjunto de registros en concreto (p.e, los que pertenecen a una biblioteca concreta) a los que vamos a llamar <span class="text-bold-help">subcatálogos</span></p>
+ 			<p><b>Ejemplo:</b></p>
+			<ul class="tab5-help margen5">
+				<li>La red de bibliotecas está compuesta de 2 bibliotecas:
+					<ul class="tab5-help margen5">
+						<li>Biblioteca Baratz:
+							<ul class="tab5-help margen10">
+								<li>- Sucursal Madrid</li>
+								<li>- Sucursal Granada</li>
+							</ul>
+						</li>
+						<li>Biblioteca Central:
+							<ul class="tab5-help margen10"><li>- Sucursal Central</li></ul>
+						</li>
+					</ul>
+				</li>
+				<li>En el desplegable del subcatálogo vemos las 2 bibliotecas:
+ 					<p class="tab4-help margen5"><img th:src="@{/img/help/dropdown-subcatalogs.png}" alt="Subcatalogos"  width="450px"/></p>
+ 					<ul class="tab5-help" >
+ 						<li>se puede seleccionar un subcatálogo desde la lista de subcatálogos o localizarlo a partir de la introducción de determinados caracteres
+ 						<p class="tab4-help margen5"><img th:src="@{/img/help/write-in-subcatalogs.png}" alt="Escribir en subcatalogo"  width="450px"/></p>
+ 				
+ 						</li> 
+ 						<li>para que se active el subcatálogo seleccionado, haga clic en la opción 
+ 						<img th:src="@{/img/help/btn-change.png}" alt="Botón cambiar"  width="100px"/>
+ 						</li>
+ 					</ul>  
+				</li>
+			</ul>			
+			<a name="howtoSearch"></a>
+			<h4 class="title-help">Cómo buscar</h4>
+			<p>Antes de comenzar a buscar tenga en cuenta los siguientes puntos:</p>
+			<ul class="tab3-help margen5">
+				<li>Los términos de búsqueda pueden introducirse de cualquier manera, es decir en mayúsculas o minúsculas y con diacríticos, acentos, diéresis, etc., o sin ellos.</li>
+				<li>Cualquier término introducido es considerado cómo término de búsqueda: una palabra, un número, una cadena de caracteres, etc.</li>
+				<li>No existen palabras definidas como vacías. Se ha decidido mantener las preposiciones, artículos, etc. como buscables para facilitar la localización exacta de los documentos.</li>
+				<li>Cuando se introducen varios términos de búsqueda en la misma consulta se pueden unir  con un operador  que indicará su relación en cada uno de los documentos. El significado de cada uno de los operadores que se pueden utilizar es el siguiente:
+					
+					<table class="table-help">
+						<tr class="tr-help">
+							<th class="td-help th-help border-right-help">Operador</th>
+							<th class="td-help th-help" >Descripción</th>
+						</tr>
+						<tr class="tr-help">
+							<td class="td-help col-help">AND (&)</td>
+							<td class="td-help">Localiza los registros que contienen todos los tèrminos unidos con este operador.</td>
+						</tr>
+						<tr class="tr-help">
+							<td class="td-help col-help border-top-help">OR (|)</td>
+							<td class="td-help border-top-help">Localiza los registros que contienen alguno de los tèrminos unidos con este operador o ambos.</td>
+						</tr>
+						<tr class="tr-help">
+							<td class="td-help col-help border-top-help">NOT</td>
+							<td class="td-help border-top-help">Localiza los registros que contienen el primer tèrmino unido con este operador pero no el segundo.</td>
+						</tr>
+					</table>			
+				</li>
+				<li>Se pueden realizar Búsquedas exactas englobando todos los términos entre comillas (").
+					<p>De esta manera, se localizan todos los registros que contienen el texto introducido entre comillas en el mismo orden en el que se introdujeron en la búsqueda.</p>
+				</li>
+				<li>Se puede utilizar truncamientos para localizar partes de palabras. Los truncamientos pueden ser de dos tipos:
+					<table class="table-help">
+						<tr class="tr-help">
+							<th class="td-help th-help border-right-help"></th>
+							<th class="td-help th-help">Descripción</th>
+						</tr>
+						<tr class="tr-help">
+							<td class="td-help col-help">?</td>
+							<td class="td-help border-top-help">Situado en cualquier posiciòn del tèrmino de bùsqueda, cada ? sustituye un ùnico caràcter. De esta manera, se localizaràn todos los documentos que cumplan el patròn de bùsqueda y que en el lugar en donde se encuentra el signo ? contengan cualquier caràcter.</td>
+						</tr>
+						<tr>
+							<td class="td-help col-help border-top-help">*</td>
+							<td class="td-help border-top-help">Situado en cualquier posiciòn del tèrmino, o en varios a la vez, sustituye una cadena de caracteres. El asterisco *  localizarà todos los documentos que cumplan el patròn de bùsqueda y que en el lugar donde se encuentra el signo * contengan cualquier nùmero de caracteres.</td>
+						</tr>
+					</table>
+					<p>Se pueden realizar las siguientes Búsquedas:</p>
+					<ul  class="tab5-help margen10">
+						<li>Búsquedas en todos los campos</li>
+						<li>Búsquedas en un campo concreto</li>
+						<li>Búsquedas por un término</li>
+						<li>Búsquedas por varios términos</li>
+						<li>Búsquedas que contengan todos los términos introducidos</li>
+						<li>Búsquedas que contengan alguno de los términos introducidos</li> 
+						<li>Búsquedas exactas</li>
+						<li>Búsquedas utilizando operadores</li>
+						<li>Búsquedas utilizando filtros</li>
+						<li>Búsqueda por Año de publicación</li>
+					</ul>
+				</li>
+			</ul>
+			<a name="searchAllFields"></a>
+			<h5 class="subtitle-help">Búsquedas en todos los campos</h5>
+			<p>Por defecto, la búsqueda avanzada se realiza en <i>Cualquier campo</i>.
+			<p class="tab5-help margen5"><img th:src="@{/img/help/search-range.png}" alt="Rango de bùsqueda" width="300px"/></p>
+			<p>La búsqueda que realice tendrá en cuenta todos los campos de la base de datos que estén definidos como buscables.</p>
+			<a name="searchsSpecificField"></a>
+			<h5 class="subtitle-help">Búsquedas en un campo concreto</h5>
+			<p>Para realizar una búsqueda en un campo concreto, seleccione el que le interese en la opción <i>Campo</i>. Por defecto, los campos en los que se puede realizar la búsqueda son los siguientes:</p>
+			<p class="tab5-help margen10"><img th:src="@{/img/help/combox-search-range.png}" alt="Rango de bùsqueda" width="300px"/></p>
+			<p>La búsqueda que realice sólo tendrá en cuenta el campo seleccionado.</p>
+			<a name="searchsByTerm"></a>	
+			<h5 class="subtitle-help">Búsquedas por un término</h5>
+			<p class="tab2-help">1. Introduzca el término de búsqueda que quiere localizar en el campo <i>Término</i> a buscar.</p>
+			<p class="tab5-help margen5"><img th:src="@{/img/help/search-term.png}" alt="Tèrmino de bùsqueda" width="750px"/></p>
+			<p class="tab2-help">2. Haga clic en <img th:src="@{/img/help/btn-search-advanced.png}" alt="botón de bùsqueda" width="100px"/>  para localizar los registros que contienen el término introducido.</p>
+			<div class="tab5-help margen5">
+				<p class="box-help margen5">Recuerde que también puede realizar Búsquedas utilizando truncamientos</p>
+			</div>
+			<a name="searchsSeveralTerms"></a>
+			<h5 class="subtitle-help">Búsquedas por varios términos</h5>
+			<p class="tab2-help">1.	Introduzca los términos de búsqueda que quiere localizar en el campo <i>Término</i> a buscar</p>
+			<p class="tab5-help margen5"><img th:src="@{/img/help/search-terms.png}" alt="Varios tèrmino de bùsqueda" width="750px"/></p>
+ 			<p class="tab2-help">2.	Haga clic en <img th:src="@{/img/help/btn-search-advanced.png}" alt="Botón de bùsqueda" width="100px"/>  para localizar los registros que contienen los términos introducidos.</p>
+			<div class="tab5-help margen10">
+				<p class="box-help">Recuerde que también puede realizar Búsquedas utilizando truncamientos</p>
+			</div>
+			<a name="searchsContainTerms"></a>	
+			<h5 class="subtitle-help">Búsquedas que contengan todos los términos introducidos</h5>
+			<p>Por defecto, la búsqueda avanzada localiza todos los términos de búsqueda introducidos</p>
+			<p class="tab5-help margen5"><img th:src="@{/img/help/search-terms.png}" alt="Varios tèrmino de bùsqueda" width="750px"/></p>
+			<a name="searchesSomeTerms"></a>
+			<h5 class="subtitle-help">Búsquedas que contengan alguno o todos los términos introducidos</h5>
+			<p>Si desea que la búsqueda sólo localice alguno o todos los términos de búsqueda introducidos, seleccione la opción <i>Alguna palabra</i>.</p>
+			<p class="tab5-help margen5"><img th:src="@{/img/help/some-words.png}" alt="Algunas palabra" width="500px"/></p>
+			<a name="searchExact"></a>
+			<h5 class="subtitle-help">Búsquedas exactas</h5>
+			<p>Si desea que la búsqueda recupere los registros que contienen la expresión buscada tal y como se introdujo, seleccione la opción <i>Frase exacta</i>.</p>
+			<p class="tab5-help margen5"><img th:src="@{/img/help/exact-phrase.png}" alt="Frase exacta" width="500px"/></p>
+			<a name="searchsOperators"></a>
+			<h5 class="subtitle-help">Búsquedas utilizando operadores</h5>
+			<p>Los operadores que se pueden utilizar en la búsqueda avanzada son los siguientes:</p>
+			<p class="tab5-help margen10"><img th:src="@{/img/help/operators.png}" alt="Operadores" width="150px"/></p>
+			<ul class="tab5-help">
+				<li>El operador por defecto utilizado en la búsqueda avanzada es <b>Y</b>.</li>
+				<li>La búsqueda por operadores se muestra cuando se utiliza la opción <img th:src="@{/img/help/btn-new-line.png}" alt="Botón de nueva lìnea" width="150px"/>  para combinar varias Búsquedas.</li>
+				<li>Si quiere eliminar alguna de las combinaciones añadidas, haga clic en la opción <img th:src="@{/img/help/btn-del-line.png}" alt="botón" width="45px"/>  asociada a la que no le interese aplicar</li>
+			</ul>
+			<p class="tab5-help margen5"><img th:src="@{/img/help/form-search-advanced.png}" alt="Formulario de bùsqueda advanzada" width="750px"/></p>
+			<a name="searchsFilters"></a>
+			<h5 class="subtitle-help">Búsquedas utilizando filtros</h5>
+			<p>Por defecto, en la búsqueda avanzada se pueden utilizar los siguientes filtros:</p>
+			<ul class="tab5-help margen10">
+				<li>Idioma</li>
+				<li>País</li>
+				<li>Soporte</li>
+				<li>Tipo documental</li>
+			</ul>
+			<p class="tab4-help"><img th:src="@{/img/help/filters-advanced.png}" alt="Filtros de bùsqueda advanzada" width="750px"/></p>
+			<a name="searchsFepu"></a>
+			<h5 class="subtitle-help">Búsquedas por Año de publicación</h5>
+			<p>Por defecto, en la búsqueda avanzada está habilitada la búsqueda por el año de publicación.</p> 
+			 <dl class="tab5-help"> 
+			   	<dt>Cómo buscar registros publicados en un año concreto</dt>
+			   	<dd class="tab2-help">Para localizar los registros publicados en un año concreto, introduzca el año que le interese los campos Año inicio y Año fin.
+			   		<p class="tab3-help margen10"><img th:src="@{/img/help/specific-year.png}" alt="Año concreto" width="500px"/></p>
+			   	</dd> 
+			   	<dt>Cómo buscar registros publicados a partir de un año</dt>
+			   	<dd class="tab2-help">Para localizar los registros publicados a partir de un año concreto, introduzca el año que le interese en el campo Año inicio.
+			   		<p class="tab3-help margen10"><img th:src="@{/img/help/from-year.png}" alt="A partir de un año" width="500px"/></p>
+			   	</dd>
+			   	<dt>Cómo buscar registros publicados antes de un año</dt> 
+			   	<dd class="tab2-help">Para localizar los registros publicados antes de un año concreto, introduzca el año que le interese en el campo Año fin.
+			   		<p class="tab3-help margen10"><img th:src="@{/img/help/before-year.png}" alt="A antes de un año" width="500px"/></p>
+			   	</dd>
+			   	<dt>Cómo buscar registros publicados en un período determinado</dt> 
+			   	<dd class="tab2-help">Para localizar los registros publicados en un periodo determinado,
+			   		<ul class="tab5-help margen5">
+			   			<li>1. Introduzca el primer año en el campo Año inicio.</li>
+			   			<li>2. Introduzca el último año en el campo Año fin.
+			   				<p class="tab3-help"><img th:src="@{/img/help/determined-period.png}" alt="Periodo determinado" width="500px"/></p>
+			   			</li>
+			   		</ul>
+			   	</dd>
+ 			</dl>
+			<a name="removeSearchTerms"></a>
+			<h5 class="subtitle-help">Cómo eliminar los términos de búsqueda introducidos</h5>
+			<p>Para eliminar las condiciones de búsqueda introducidas, haga clic en
+				<img th:src="@{/img/help/btn-remove-advanced.png}" alt="Botón de limpiar" width="100px"/>
+			</p>
+			<a name="viewInforSearch"></a>
+			<h5 class="subtitle-help">Cómo visualizar información sobre la búsqueda que se va a realizar</h5>
+			<p>En la parte inferior de la ventana de Búsqueda avanzada se muestra información sobre la búsqueda que se va a ejecutar.</p>
+			<p class="tab5-help"><img th:src="@{/img/help/format-search.png}" alt="Formato de búsqueda" width="500px"/></p>
+			<a name="examplesSearchs"></a>
+			<h5 class="subtitle-help">Ejemplos de Búsquedas</h5>
+			<p class="tab5-help margen5">Cómo localizar publicaciones de Alfaguara de los años 2020 y 2021 que estén en inglés y que sean novela negra</p>
+			<p class="tab5-help margen10"><img th:src="@{/img/help/example-1-search-advanced.png}" alt="Formato de búsqueda" width="500px"/></p>
+			<p class="tab3-help margen5">Cómo localizar fotografías de Diane Arbus relacionadas con el mundo de la moda</p>
+			<p class="tab5-help margen10"><img th:src="@{/img/help/example-2-search-advanced.png}" alt="Formato de búsqueda" width="500px"/></p>
+			<a name="suggestionsSearchs"></a>
+			<h5 class="subtitle-help">Sugerencias de búsqueda automáticas</h5>
+			<p><span class="text-bold-help">ODA</span> proporciona las siguientes posibilidades de sugerencias de bùsquedas automàticas:</p>
+			<ul class="tab5-help margen5">
+				<li>1.	"Quiso decir"</li>
+				<li>2.	bùsqueda en autoridades</li>
+			</ul>
+			<h5 class="paragraph-help">"Quiso decir"</h5>
+			<p>Si en la bùsqueda no se han encontrado ningùn resultado o se han localizado menos de 10 registros, <span class="text-bold-help">ODA</span> sugiere tèrminos a los usuarios que puedan ayudarles a obtener registros que puedan interesarles basado en spellchecking.</p>
+			<p>El spellchecking es una comprobación ortográfica que consiste en revisar la consulta introducida por el usuario y sugerirle una consulta alternativa ortográficamente correcta.</p>
+			<b>Ejemplo:</b>
+			<ul class="tab5-help">
+				<li>Se introduce el término estilismo
+					
+					<img class="img-caja-mas-btn-help margen5"  th:src="@{/img/help/box-text-btn-search.png}" alt="Caja de busqueda de texto màs botón" width="10px"/>
+					
+				</li>
+				<li>Como la bùsqueda no devuelve resultados, ofrece como sugerencias los siguientes tèrminos:
+					<div class="margen5">
+						<img class="img-caja-mas-btn-help" th:src="@{/img/help/did-you-mean.png}" alt="Quiso decir"/>
+					</div>
+				</li>
+				<li>Si se hace clic en alguno de los tèrminos sugeridos, realiza una consulta para localizar los registros que contengan el tèrmino seleccionado</li>
+			</ul>
+			<h5 class="paragraph-help">Bùsqueda en autoridades</h5>
+			<p>Si en la bùsqueda no se han encontrado ningùn resultado o se han localizado menos de 10 registros,<span class="text-bold-help"> ODA</span> realiza una bùsqueda en la base de datos de autoridades para ver si localiza alguna autoridad que se corresponda con la bùsqueda introducida.</p>
+			<a name="searchSimple"></a> 
+			<h2 class="title-help">Acceso a búsqueda sencilla</h2>
+			<p>Para acceder a la búsqueda sencilla, haga clic en la opción <i>Búsqueda sencilla</i></p>
+			<p class="tab5-help margen5"><img th:src="@{/img/help/searchsimple.png}" alt="Localización" width="500px"/></p>
+			<a name="searchAuthorities"></a> 
+			<h2 class="title-help">Acceso a búsqueda en autoridades</h2>
+			<p>Para realizar una búsqueda de autoridades que permita localizar registros que contienen una autoridad específica, haga clic en la opción <i>Búsqueda autoridades</i>.</p>
+			<a name="searchIndexes"></a> 
+			<h2 class="title-help">Acceso a búsqueda en los índices</h2>
+			<p>Para realizar una búsqueda que localice palabras o patrones de palabras parecidas al término o términos introducidos, haga clic en la opción <i>Búsqueda índices</i>.</p>
+			<a name="lastSearch"></a> 
+			<h2 class="title-help">Acceso a últimas Búsquedas realizadas</h2>
+			<p>Para visualizar las <span class="text-bold-help">10</span> últimas Búsquedas realizadas que han devuelto resultados durante la sesión del Opac, haga clic en <i>Últimas Búsquedas</i>.</p>
+			<a name="historySearch"></a>
+			<h2 class="cont cont_title title-help">Acceso a Búsquedas guardadas</h2>
+			<p>Si quiere guardar alguna de las Búsquedas que ha realizado para poder ejecutarlas en otro momento, haga clic en <i>Búsquedas guardadas</i>.</p>
+			<ul class="tab3-help margen5">
+				<li>Para poder guardar Búsquedas es necesario que se identifique previamente</li>
+			</ul>
+			<a name="favorites"></a> 
+			<h2 class="title-help">Acceso a favoritos</h2>
+			<p>Para visualizar los registros que ha marcado como favoritos, haga clic en <i>Favoritos</i>.</p>
+			<a name="profile"></a> 
+			<h2 class="title-help">Acceso a Mi Perfil</h2>
+			<p>Haga clic en la opción <i>Mi perfil</i> e identifíquese para poder acceder a las siguientes utilidades de <span class="text-bold-help">ODA</span>: </p>
+			<ul class="tab5-help margen10">
+				<li>Datos personales</li>
+				<li>Solicitudes</li>
+				<li>Préstamos activos</li>
+				<li>Histórico de préstamos</li>
+				<li>Renovar préstamos</li>
+				<li>Anular reservas</li>
+				<li>Guardar Búsquedas</li>
+				<li>Crear listas de favoritos</li>
+			</ul>
+			<p class="tab5-help">Para identificarse como usuario puede utilizar cualquiera de estos 3 métodos:</p>
+			<ul class="tab5-help margen10">
+				<li>nº de carné</li>
+				<li>correo electrónico que haya proporcionado a su biblioteca</li>
+				<li>teléfono móvil que haya proporcionado a su biblioteca</li>
+			</ul>
+			<a name="home"></a> 
+			<h2 class="title-help">Acceso a la página de inicio</h2>
+			<p>Para ir a la página de inicio, haga clic en <i>Inicio</i>.</p>
+			<p class="top-help"><a href="#top">Arriba</a></p>
+		</div>
+	</div>
+	<th:block th:insert="/public/home/technicalfooter" th:with="page='opac-dataprivacyterms'"/>
+</body>
+</html>

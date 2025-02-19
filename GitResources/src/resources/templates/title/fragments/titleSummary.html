@@ -1,0 +1,132 @@
+<!-- :: [title/fragments/titleSummary.html] -->
+<div class="cont_image w-100 d-flex justify-content-center mobile_flex mt-3 mb-3">
+  <th:block th:with="item = ${detail.catalog}" th:insert="/public/catalog/fragments/recordImage.html :: image('title_mobile')"></th:block>
+  </div>
+<!-- :: /.cont_image -->
+<div class="add_opinion_mobile">
+	<th:block th:if="${commentsEnabled}" th:with="numComments = ${detail.catalog.numComments}"  th:insert="/title/comments/addComment"></th:block>
+	<p class="comments-error error"></p>
+</div>
+
+<div th:if="${tfields != null}" class="summary">
+   <span class="h2 item-title w-100 mr-3">
+      <span th:if="${tfields['t245']!=null}" class="d-block type_t245">
+         <th:block th:if="${tfields['t245'][0]!=null}" th:utext="${tfields['t245'][0].getSubFieldValue('ab')}"></th:block>
+      </span>
+      <span th:if="${tfields['t245']==null and tfields['t240']!=null}" class="d-block type_t240">
+         <th:block th:if="${tfields['t240'][0]!=null}" th:utext="${tfields['t240'][0].getSubFieldValue('a')}"></th:block>
+      </span>
+   </span>
+   <!-- :: /.item-title -->
+   <div class="item-authority w-100 mb-2" th:if="${(tfields['t100'] != null or tfields['t110'] != null or tfields['t111'] != null or tfields['t130'] != null)}">
+      <th:block th:if="${tfields['t100'] != null and subfieldsByDollar != null and subfieldsByDollar['t100'] != null} " th:each="mvalor: ${subfieldsByDollar['t100']}">
+      <th:block th:each="listsubfield, iter : ${mvalor}">
+      	<th:block th:insert="/title/estandar/enlaceTS.html"></th:block>
+      	</th:block>
+      </th:block>
+      <th:block th:if="${tfields['t110'] != null and subfieldsByDollar != null and subfieldsByDollar['t110'] != null}" th:each="mvalor: ${subfieldsByDollar['t110']}">
+      <th:block th:each="listsubfield, iter : ${mvalor}">
+         <th:block th:insert="/title/estandar/enlaceTS.html"></th:block>
+      </th:block>
+      </th:block>
+      <th:block th:if="${tfields['t111'] != null and subfieldsByDollar != null and subfieldsByDollar['t111']!= null} " th:each="mvalor: ${subfieldsByDollar['t111']}">
+        <th:block th:each="listsubfield, iter : ${mvalor}">
+        <th:block th:insert="/title/estandar/enlaceTS.html"></th:block>
+        </th:block>
+      </th:block>
+      <th:block th:if="${tfields['t130'] != null and subfieldsByDollar != null and subfieldsByDollar['t130']!= null}" th:each="mvalor: ${subfieldsByDollar['t130']}">
+       	<th:block th:each="listsubfield, iter : ${mvalor}">
+       	<th:block th:insert="/title/estandar/enlaceTS.html"></th:block>
+       	</th:block>
+      </th:block>
+   </div>
+   <!-- :: /.item-authority -->
+   <div class="item-authority w-100 mb-2" th:unless="${(tfields['t100'] != null or tfields['t110'] != null or tfields['t111'] != null or tfields['t130'] != null)}">
+      <th:block th:if="${tfields['t700'] != null and subfieldsByDollar != null and subfieldsByDollar['t700']!= null}" th:each="mvalor: ${subfieldsByDollar['t700']}">
+        	<th:block th:each="listsubfield, iter : ${mvalor}">
+        	<th:block th:insert="/title/estandar/enlaceTS.html"></th:block>
+        	</th:block>
+      </th:block>
+   </div>
+   <!-- :: /.item-authority -->
+   <div class="item-publication w-100 mb-2" th:if="${tfields['t260'] != null}">
+      <th:block th:if="${tfields['t260'] != null}" th:each="mvalor, iter: ${tfields['t260']}">
+         <th:block th:if="${tfields['t260'][0]!=null}">
+            <span class="d-block type_t260">
+               <th:block th:utext="${tfields['t260'][iter.index].getSubFieldValue('b')}"></th:block>
+            </span>
+            <span class="d-block type_t260">
+               <th:block th:utext="${tfields['t260'][iter.index].getSubFieldValue('c')}"></th:block>
+            </span>
+         </th:block>
+      </th:block>
+   </div>
+   
+   <div>
+	   
+   
+   <!-- :: /.item-publication -->
+   <div class="item-subject w-100 type_t655">
+      <th:block th:if="${tfields['t655'] != null}" th:each="mvalor, iter: ${tfields['t655']}">
+         <th:block th:if="${mvalor!=null}">
+            <span class="badge badge-primary">
+               <th:block th:text="${tfields['t655'][iter.index].getSubFieldValue('a')}"></th:block>
+            </span>
+         </th:block>
+      </th:block>
+   </div>
+   <!-- :: /.item-subject -->
+   <div class="cont_ellipsis_multiline w-100 type_t520">
+      <div class="item-summary">
+        <th:block th:if="${tfields['t520'] != null}" th:each="mvalor, iter: ${tfields['t520']}">
+           <th:block th:if="${tfields['t520'][iter.index]!=null}">
+              <p class="d-block ellipsis_multiline multiline_expand" data-btn_expand="btn_expand">
+                 <th:block th:text="${tfields['t520'][iter.index].getSubFieldValue('a')}"></th:block>
+              </p>
+           </th:block>
+        </th:block>
+      </div>
+      <button type="button" class="btn btn-outline-primary btn_expand float-right mt-2 d-none" tabindex="-1">
+        <span class="btn_titleWhite mr-2" th:text="#{summary.view.label}"></span>
+        <span class="icono fas fa-plus" aria-hidden="true"></span>
+      </button>
+   </div>
+   <!-- :: /.item-summary -->
+   <p class="item-format w-100 type_recordFormatType">
+      <span class="d-block" th:if="${detail.recordFormatType.value != 'undefined'}" th:text="#{desc.format. + ${detail.recordFormatType.value}}"></span>
+   </p>
+   
+   </div>
+   <!-- :: /.item-format -->
+   
+	<div>
+	   <div class="summary-location-and-available ml-0 pl-0 col-md-12 col-sm-12 col-xs-12">
+	   		<!-- <div class="summary-location blq desktop_flex">
+		   		<div class="blq_title">
+		     			<span class="icono fas fa-map-marker-alt mr-1" aria-hidden="true"></span>
+		     			<span class="texto mr-2" th:text="#{summary.localized.at}"></span>
+		   		</div>
+		   		<a class="link_ubicacion link float-right" th:if="${detail.numPlaces>1}" href="#copias" th:text="${detail.numPlaces} + ' ' + #{result.locations}" th:title="${detail.numPlaces} + ' ' + #{result.locations}"></a>
+		   		<a class="link_ubicacion link float-right" th:if="${detail.numPlaces==1}" href="#copias" th:text="${detail.titleLocationDescription}" th:title="${detail.titleLocationDescription}"></a>
+		   		<a class="link_ubicacion link float-right" th:if="${detail.numPlaces==null or detail.numPlaces==0}" href="#copias" th:text="${detail.catalog.origin}" th:title="${detail.catalog.origin}"></a>
+	 		</div> -->
+	 		<!-- :: /.summary-location-->
+	
+	  		<th:block th:if="${(detail.numPlaces > 0) and (hasCirculation or tfields['t856'] != null)}">
+		    <div class="summary-copies blq desktop" th:if="${detail.totalCopies != null and detail.totalCopies > 0}">
+		    	<a class="link_ejemplares link float-left" th:text="#{result.copies} + ' : ' + ${detail.totalCopies}" href="#copias"></a>
+		    </div>
+		    <!-- :: /.summary-copies-->
+		
+		    <div class="summary-availability blq  desktop" th:if="${detail.availableCopies != null }">
+		    	<a class="link_disponibles link " th:text="#{result.copies.available} + ' : ' + ${detail.availableCopies}" href="#copias"></a>
+		    </div>
+		    <!-- :: /.summary-availability-->   
+	   </div>
+	   
+   </div>
+   
+</div>
+
+
+<!-- :: /[title/fragments/titleSummary.html] -->

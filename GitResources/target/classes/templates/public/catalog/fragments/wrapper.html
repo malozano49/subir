@@ -1,0 +1,106 @@
+<th:block th:fragment="main()">
+   <th:block th:insert="/public/home/html_type"></th:block>
+
+   <head>
+      <th:block th:insert="/public/home/technicalheader::main" th:with="page = 'opac-catalog-results'"></th:block>
+   </head>
+
+   <th:block
+      th:if="${thymeleafMap.get('ADVANCED').getValue() == search} or ${(solrSearchWeb!=null and thymeleafMap.get('ADVANCED') == solrSearchWeb.solrSearch.queryType)}">
+      <body class="page_type_catalog catalog_results page_type_advanced">
+   </th:block>
+
+   <th:block
+      th:if="${thymeleafMap.get('EXPERT').getValue() == search} or ${(solrSearchWeb!=null and thymeleafMap.get('EXPERT') == solrSearchWeb.solrSearch.queryType)}">
+      <body class="page_type_catalog catalog_results page_type_simple">
+   </th:block>
+
+   <!-- :: /public/catalog/fragments/wrapper.html -->
+   <header class="header_principal">
+      <th:block th:insert="/public/home/header"></th:block>
+      <th:block th:insert="/fragments/breadcrums"></th:block>
+   </header>
+   <main id="acc_anchor_main">
+
+      <!-- :: Primer row engloba buscador y menos de 10 resultados -->
+      <section id="firstRow" class="sct_firstRow" aria-labelledby="search_zone_description">
+         <h2 id="search_zone_description" class="sr-only" th:text="#{search.total.results.zone.title}"></h2>
+         <div class="cont_general_resultados">
+            <!-- :: Buscador Simple / Avanzado -->
+            <div class="cont_results">
+               <th:block th:insert="/public/search/type::main"></th:block>
+               <!-- :: Menos de 10 resultados -->
+               <th:block th:insert="/public/catalog/fragments/spellchecker::main"></th:block>
+               <th:block
+                  th:if="${solrSearchWeb.solrSearch.results == null or solrSearchWeb.solrSearch.results.resultList == null or #lists.isEmpty(solrSearchWeb.solrSearch.results.resultList)}">
+                  <div class="cont_alert_wrapper col-md-12 mt-2 mb-4" aria-live="polite" aria-atomic="true">
+                     <div class="alert alert-warning alert_icon alert_search h5" role="alert" aria-atomic="true">
+                        <span class="icono fas fa-search-minus pr-3" aria-hidden="true"></span>
+                        <span th:text="#{result.noresult}" class="alert_texto font-weight-bold mb-2"></span>
+                        <span th:text="#{result.noresult.aid}" class="alert_texto"></span>
+                     </div>
+                  </div>
+               </th:block>
+            </div>
+            <!-- :: /.cont_results -->
+         </div>
+         <!-- :: /.container -->
+      </section>
+
+      <th:block  th:if="${solrSearchWeb.solrSearch.results != null and solrSearchWeb.solrSearch.results.resultList != null and not #lists.isEmpty(solrSearchWeb.solrSearch.results.resultList)}"  th:with="maxRecords=${solrSearchWeb.solrSearch.results.totalResults} > ${configMaxRecords}">
+         <th:block th:insert="/public/catalog/fragments/firstRowMax" th:if="${solrSearchWeb.solrSearch.results!=null and maxRecords}"></th:block>
+
+         <!-- :: Segundo row barra controles del listado de resultados -->
+         <section id="secondRow" class="container_detail sct_secondRow" aria-labelledby="results_description">
+            <h2 id="results_description" class="sr-only" th:text="#{search.total.results.title}"></h2>
+            <div id="refreshWrapper" class="container-fluid">
+               <!--/* :: FIXME: FALTA MAQUETAR. MENSAJE DE BUSQUEDA CUANDO SE SIGUE UN ENLACE */-->
+               <th:block th:if="${solrSearchWeb!=null and solrSearchWeb.solrSearch.hiddenQuery!=null}">
+                  <div class="cont_alert_general container align-items-center mt-3 mb-1" aria-live="polite"
+                     aria-atomic="true">
+                     <div class="alert_general alert no_centered alert-info w-auto mb-4">
+                        <span class="alert_titulo sr-only" th:text="#{alert.info.title}"></span>
+                        <span class="alert_texto" th:text="#{search.follow.link}"></span>
+                        <span class="alert_texto" th:text="${solrSearchWeb.solrSearch.queryEscapeSolr}"></span>
+                     </div>
+                     <!-- :: /.alert_general -->
+                  </div>
+               </th:block>
+               <!--/* :: /FIXME: FALTA MAQUETAR. MENSAJE DE BUSQUEDA CUANDO SE SIGUE UN ENLACE */-->
+               <th:block
+                  th:if="${solrSearchWeb.solrSearch.results != null and not #lists.isEmpty(solrSearchWeb.solrSearch.results.resultList)}">
+                  <th:block th:unless="${maxRecords}">
+                     <th:block th:insert="/public/catalog/fragments/totalResults"></th:block>
+                     <div class="container cont_resultados w-100">
+                        <div class="row listado-resultados-desktop py-3">
+                           <!-- :: Listado de resultados -->
+                           <div class="col-md-9 col-sm-7 py-3 pb-0 portadas-list">
+                              <th:block th:insert="/public/catalog/fragments/catalogView"></th:block>
+                           </div>
+                           <!-- :: /.portadas-list -->
+                           <div class="col-md-3 col-sm-5 p-3 d-xs-none desktop facetas">
+                              <th:block th:with="display='desktop'" th:insert="/public/catalog/fragments/facets.html">
+                              </th:block>
+                           </div>
+                           <!-- :: /.facetas -->
+                        </div>
+                        <!-- :: /.listado-resultados-desktop -->
+                     </div>
+                     <!-- :: /.container -->
+                  </th:block>
+               </th:block>
+            </div>
+            <!-- :: /#refreshWrapper -->
+         </section>
+         <!-- :: /#secondRow -->
+      </th:block>
+
+   </main>
+   <footer class="footer_principal">
+      <th:block th:insert="/public/home/footer"></th:block>
+   </footer>
+   <th:block th:insert="/public/home/technicalfooter" th:with="page = 'opac-catalog-results'"></th:block>
+   </body>
+
+   </html>
+</th:block>

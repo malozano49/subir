@@ -1,0 +1,55 @@
+<!-- :: [title/fragments/linkBranch.html] -->
+<th:block th:if="${value.branchExternalEMail != null or value.branchLatitude != null or value.branchLongitude != null or (value.branchAddress != null and (#lists.size(value.branchAddress) == 3) and (value.branchAddress[0] != null or value.branchAddress[1] !=null or value.branchAddress[2] !=null)) }"
+	th:with="auxAddress=${null!=value.branchAddress?(null!=value.branchAddress[0]?value.branchAddress[0]:'')+(null!=value.branchAddress[1]?','+value.branchAddress[1]:'')+(null!=value.branchAddress[2]?','+value.branchAddress[2]:''):''}">
+	<button type="button"
+		class="btn btn-white btn-link btn_branch_location modal_js"
+		th:title="#{copies.branch.btn_branch_location.title}"
+		th:aria-label="#{copies.branch.btn_branch_location.title}"
+		data-modal_target="modal_branch_location" data-modal_size="modal-md"
+		data-modal_tipo="info" data-modal_discriminador="modal_branchLocation"
+		data-modal_footer="false"
+		th:data-modal_title="#{copies.branch.modal_branchLocation.modal_title}"
+		th:data-modal_html="'#modal_branchLocation_'+${iterStat.index}"
+		th:data-modal_datos='|{
+                          "nombre"    : "${value.branchDescription}",
+                          "direccion" : "${auxAddress}",
+                          "email"     : "${value.branchExternalEMail}",
+                          "lat"       : "${value.branchLatitude}",
+                          "long"      : "${value.branchLongitude}"
+                      }|'>
+		<span class="icono fas fa-map-marker-alt" aria-hidden="true"></span> <span
+			class="dato data_branchDescription"
+			th:text="${value.branchDescription}"></span>
+	</button>
+	<div th:id="'modal_branchLocation_'+${iterStat.index}" class="d-none"
+		aria-hidden="true">
+		<div class="branch_datos">
+			<div class="branch_datos-cont cont_name">
+				<span class="cont_label"
+					th:text="#{copies.branch.modal_branchLocation.cont_name.label}"></span>
+				<span class="cont_data" th:text="${value.branchDescription}"></span>
+			</div>
+			<div class="branch_datos-cont cont_dir" th:if="${'' != auxAddress}">
+				<span class="cont_label"
+					th:text="#{copies.branch.modal_branchLocation.cont_dir.label}"></span>
+				<span class="cont_data" th:text="${auxAddress}"></span>
+			</div>
+
+			<div class="branch_datos-cont cont_email"
+				th:if="${value.branchExternalEMail != null}">
+				<span class="cont_label"
+					th:text="#{copies.branch.modal_branchLocation.cont_email.label}"></span>
+				<span class="cont_data" th:text="${value.branchExternalEMail}"></span>
+			</div>
+		</div>
+		<div class="branch_botonera">
+			<a class="btn btn-primary btn_map" href="#" target="_blank"
+				th:text="#{copies.branch.modal_branchLocation.btn_map.title}"></a>
+		</div>
+	</div>
+</th:block>
+<th:block th:if="${value.branchExternalEMail == null and value.branchLatitude == null and value.branchLongitude == null and (value.branchAddress == null or (#lists.size(value.branchAddress) != 3) or (value.branchAddress[0] == null and value.branchAddress[1] == null and value.branchAddress[2] ==null)) }" >
+   <span class="data data_branchDescription"	th:text="${value.branchDescription}"></span>
+</th:block>
+
+<!-- :: [title/fragments/linkBranch.html] -->

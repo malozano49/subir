@@ -1,0 +1,41 @@
+<!-- :: [public/authority/fagments/select.html] -->
+
+<div class="auto-search search_authority form-row">
+  <div class="blq_select col-md-6">
+    <div class="cont_label mb-3">
+      <span class="icono fas fa-search icono_red" aria-hidden="true"></span>
+      <span th:text="#{search.authority.fields.selection}" class="label ml-1"></span>
+    </div>
+    <!-- :: /.cont_label -->
+   <div id="selectRow" class="cont_form_group">
+      <div id="divSelect1" class="form-group cont_selectPicker">
+        <select id="select1" name="solrSearchWeb.solrSearch.authSearchField" class="sub-cata-select form-control" th:aria-label="#{search.authority.fields.selection}" th:field="${solrSearchWeb.solrSearch.authSearchField}" data-size="10">
+          <th:block  th:insert="/public/authority/fragments/authOptions :: options(collection=${solrSearchWeb.authSearchFields},selected=${solrSearchWeb.solrSearch.authSearchField})"></th:block>
+        </select>
+      </div>
+      <!-- :: /.cont_selectPicker -->
+    </div>
+    <!-- :: /.cont_form_group -->
+  </div>
+  <!-- :: /.blq_select -->
+
+  <div class="blq_select col-md-6">
+    <div class="cont_label mb-3">
+      <span class="icono fas fa-filter icono_red" aria-hidden="true"></span>
+      <span th:text="#{search.authority.filters.label}" class="label ml-1"></span>
+    </div>
+    <!-- :: /.cont_label -->
+    <div class="cont_form_group">
+      <div id="divSelect2" class="form-group cont_selectPicker">
+        <select id="select2" name="solrSearchWeb.solrSearch.authSearchFilter" class="sub-cata-select form-control" th:aria-label="#{search.subcatalog.selection}"  th:field="${solrSearchWeb.solrSearch.authSearchFilter}" data-size="10">
+          <th:block  th:insert="/public/authority/fragments/authOptions :: options(collection=${solrSearchWeb.authSearchFilters},selected=${solrSearchWeb.solrSearch.authSearchFilter})"></th:block>
+        </select>
+      </div>
+      <!-- :: /.cont_selectPicker -->
+    </div>
+    <!-- :: /.cont_form_group -->
+  </div>
+  <!-- :: /.blq_select -->
+</div>
+
+<!-- :: [public/authority/fagments/select.html] -->

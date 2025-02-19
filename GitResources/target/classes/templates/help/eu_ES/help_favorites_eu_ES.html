@@ -1,0 +1,239 @@
+<th:block th:insert="/public/home/html_type"></th:block>
+<th:block th:insert="/public/home/technicalheader::main" th:with="page=${'opac-help-favorites-es_ES'}"></th:block>
+<script type="text/javascript">
+	var menu = document.getElementById('menu');
+	Stickyfill.add(menu);
+</script>
+<body>
+<div id="burger-menu" class="burger-menu">
+  <span></span>
+  			<div id="menu2" class="menu menu2">
+			<div class=""><nav class="sn-contents" aria-label="Secondary">
+      <ul class="sidenav--list">
+<li><a href="#favorites">Gogokoak</a>
+					</li>
+						<li><a href="#emailFavorites">Nola partekatu posta elektroniko bidez gogokoak</a></li>
+						<li><a href="#addListFavorites">Nola sortu gogoko zerrendak</a></li>
+						<li><a href="#appendRecordList">Nola gehitu nire zerrenda batean erregistroak</a></li>
+						<li><a href="#moviFavorites">Nola mugitu gogokoa beste existitzen den zerrenda batera</a></li>
+						<li><a href="#delRecordList">Nola ezabatu existitzen diren zerrendetatik erregistroak</a></li>
+						<li><a href="#modifyDescList">Nola aldatu zerrendarekin erlazionatutako deskribapena</a></li>
+						<li><a href="#delList">Nola ezabatu zerrenda bat</a></li>
+
+				
+				<li><a href="#searchAuthority">Sarrera agintaritzetan bilaketarako</a></li>
+				<li><a href="#searchIndexes">Sarrera indizetan bilaketarako</a></li>
+				<li><a href="#lastSearh">Azken egindako bilaketetarako sarrera</a></li>
+				<li><a href="#historySearch">Gorde diren bilaketetarako sarrera</a></li>
+				<li><a href="#profil">Nire profila sartzeko</a></li>
+				<li><a href="#home">Hasierako orrira sartzeko</a></li></ul></nav>
+</div>
+		</div>
+</div>
+
+	<div class="wrapper cf">
+	<div id="menu" class="menu">
+			<div class="sidenav"><nav class="sn-contents" aria-label="Secondary">
+      <ul class="sidenav--list">
+  <li><a href="#favorites">Gogokoak</a>
+					</li>
+						<li><a href="#emailFavorites">Nola partekatu posta elektroniko bidez gogokoak</a></li>
+						<li><a href="#addListFavorites">Nola sortu gogoko zerrendak</a></li>
+						<li><a href="#appendRecordList">Nola gehitu nire zerrenda batean erregistroak</a></li>
+						<li><a href="#moviFavorites">Nola mugitu gogokoa beste existitzen den zerrenda batera</a></li>
+						<li><a href="#delRecordList">Nola ezabatu existitzen diren zerrendetatik erregistroak</a></li>
+						<li><a href="#modifyDescList">Nola aldatu zerrendarekin erlazionatutako deskribapena</a></li>
+						<li><a href="#delList">Nola ezabatu zerrenda bat</a></li>
+
+				
+				<li><a href="#searchAuthority">Sarrera agintaritzetan bilaketarako</a></li>
+				<li><a href="#searchIndexes">Sarrera indizetan bilaketarako</a></li>
+				<li><a href="#lastSearh">Azken egindako bilaketetarako sarrera</a></li>
+				<li><a href="#historySearch">Gorde diren bilaketetarako sarrera</a></li>
+				<li><a href="#profil">Nire profila sartzeko</a></li>
+				<li><a href="#home">Hasierako orrira sartzeko</a></li></ul></nav>
+</div>
+		</div>
+		<div class="content">
+			<a name="top"></a>
+			<a name="favorites"></a>
+			<h2 class="title-help">Gogokoak</h2>
+			<p>Hautatu dituzun erregistroak ikusteko aukera hau da. </p>
+			<p class="tab2-help">Lehenetsi bezala, bilaketaren emaitzak 10erako taldeetan erakusten dira, baina aukera dago emaitzak 25etan edo 35etan taldeetan erakusteko.</p>
+			<p class="tab5-help margen10"><img th:src="@{/img/help/results-by-page.png}" alt="Emaitzak orrialdeka" width="250px"></p>
+			<p class="tab2-help">Lortutako emaitzen orrialde desberdinak ikusteko, hurrengo aukerak daude:</p>
+			<ul class="tab4-help margen5">
+				<li>Egin klik <img th:src="@{/img/help/next.png}" alt="Hurrengoa" width="75px"> hurrengo orrialdera mugitzeko.</li>
+				<li>Egin klik <img th:src="@{/img/help/back.png}" alt="Aurrekoa" width="75px"> aurreko orrialdera mugitzeko.</li>
+				<li>Egin klik ikusi nahi duzun orrialde zenbakian
+					<br><br><img th:src="@{/img/help/number-by-page.png}" alt="Orrialde zenbakia" width="350px">
+				</li>
+				<li>Egin klik 1 zenbakian lehen orrialdea ikusteko
+					<br><br><img th:src="@{/img/help/first-page.png}" alt="Lehen orria" width="350px"/>
+				</li>
+				<li>Egin klik Hurrengoaren aurreko zenbakiaren arabera, azken orrialdera joateko
+					<br><br><img th:src="@{/img/help/last-page.png}" alt="Azken orria" width="350px"/>
+				</li>
+			</ul>
+			<a name="emailFavorites"></a>
+			<h4 class="title-help">Nola partekatu posta elektroniko bidez gogokoak</h4>
+			<p>Posta elektroniko bidez gogoko gisa markatu dituzun erregistroak partekatu nahi badituzu</p>
+			<ul class="tab5-help margen5">
+				<li>1. Egin klik <img th:src="@{/img/help/icon-favorites.png}" alt="Gogokoak ikurra"/></li>  
+				<li>2. Egin klik <img th:src="@{/img/help/btn-share-email1.png}" alt="Partekatu email 1 botoia" width="150px"/></li>  
+				<li>3. Leiho bat irekitzen da posta elektronikoa sartzeko <br>
+					<span class="center-text-help"><img th:src="@{/img/help/share-email.png}" alt="Posta elektronikoa partekatu" width="350px"/></span>
+				</li>
+				<li>4. Egin klik <img th:src="@{/img/help/btn-share-email2.png}" alt="Partekatu email 2 botoia" width="150px"/> posta elektronikoan sartzeko gogokoak</li>
+			</ul>
+			<a name="addListFavorites"></a>
+			<h4 class="title-help">Nola sortu gogoko zerrendak</h4>
+			<ul class="tab5-help margen5">
+				<li>1. Egin klik aukera <img th:src="@{/img/help/icon-add-list.png}" alt="Zerrenda bat gehitu ikurra"/> erregistroa gehitu nahi duzun berri bat sortzeko.
+				<li>2. Egin klik aukera <img th:src="@{/img/help/btn-add-list.png}" alt="Zerrenda berri bat" width="100px"/></li>
+				<li>3. Sartu zerrendari lotutako deskribapena.<br>
+					<span class="tab3-help margen5"><img th:src="@{/img/help/append-list-new.png}" alt="Zerrenda berria gehitu" width="200px"/></span>
+				</li>
+				<li>4. Egin klik <img th:src="@{/img/help/btn-add-title-list.png}" alt="Zerrenda hautatua gehitu botoia" width="200px"/>
+					<ul class="tab3-help margen5">
+						<li>Zerrenda berria erregistroarekin sortuko da</li>
+						<li>Gogoko zerrenden zerrenda duten erregistroak hurrengo ikurra erabiliz erakusten dira:
+							<img th:src="@{/img/help/icon-record-in-list.png}" alt="Erregistroa zerrendetan"/>
+						</li>  
+						<li>Zerrendak sortu dituzun zerrendak ikusi nahi badituzu, egin klik zure erabiltzailearen eta aukeratu aukera <i>Nire zerrendak</i><br>
+							<span class="tab5-help margen5"><img th:src="@{/img/help/my-lists.png}" alt="Nire zerrendak" width="150px"/></span>
+						</li>
+					</ul>
+				</li>
+			</ul>
+			<a name="appendRecordList"></a>
+			<h4 class="title-help">Nire gogoko zerrendetan erregistroak nola gehitu</h4>
+			<p>Erregistro batzuk zure gogoko zerrendetarik batera gehitu nahi badituzu,</p> 
+			<ul class="tab5-help margen5">
+			    <li>1. Egin klik aukera <img th:src="@{/img/help/icon-add-list.png}" alt="Zerrenda bat gehitu ikurra"/> erregistroa gehitu nahi duzun berri bat sortzeko.
+			    <li>2. Hautatu interesa duzun zerrenda.<br>
+			        <span class="tab5-help margen5"><img th:src="@{/img/help/list-selection.png}" alt="Zerrenda hautatzea" width="250px"/></span> </li>
+			    <li>3. Egin klik <img th:src="@{/img/help/btn-add-title-list.png}" alt="Zerrenda bat gehitu botoia" width="200px"/> 
+			    </li>
+			</ul>
+			
+			<a name="moviFavorites"></a>
+			<h4 class="title-help">Nola gogoko bat beste zerrenda batera mugitu</h4>
+			<p>Erregistro batzuk zerrenda batetik beste batera mugitu nahi badituzu, lehendabizi identifikatu behar zara. Hori egiteko, egin klik
+			    <img th:src="@{/img/help/my-profile.png}" alt="Nire profila" width="65px"/>
+			</p>
+			<ul class="tab5-help margen10">
+			    <li>1. Egin klik zure erabiltzailea eta aukeratu <i>Nire zerrendak</i> hautatzea <br>
+			        <span class="tab5-help margen5"><img th:src="@{/img/help/my-lists.png}" alt="Nire zerrendak" width="250px"/></span>
+			    </li>
+			    <li>2. Egin klik erregistroa mugitu nahi duzun zerrenda non dagoen hautatzeko <br>
+			        <span class="tab5-help margen5"><img th:src="@{/img/help/list-my.png}" alt="Nire zerrenda" width="350px"/></span>
+			    </li>
+			    <li>3. Egin klik aukera <img th:src="@{/img/help/icon-share.png}" alt="Elkarbanatu ikurra" erregistroa zerrenda aldatu nahi duzun aurretik</li>
+			    <li>4. Hautatu erregistroa non mugitu nahi duzun zerrenda
+			        </br><span class="tab5-help margen5"><img th:src="@{/img/help/move-list.png}" alt="Zerrenda mugitu" width="250px"/></span>
+			    </li>
+			    <li>5. Egin klik <img th:src="@{/img/help/update.png}" alt="Eguneratu botoia" erregistroa aukeratutako zerrendara mugitzeko.
+			    </li>
+			</ul>
+			
+			<a name="delRecordList"></a>
+			<h4 class="title-help">Nola ezabatu zerrenda batetako erregistroak</h4>
+			<p>Erregistro batzuk zerrenda batekoak ezabatu nahi badituzu, lehendabizi identifikatu behar zara. Hori egiteko, egin klik
+			    <img th:src="@{/img/help/my-profile.png}" alt="Nire profila" width="65px"/>
+			</p>
+			<p>Identifikatuta dagoenean, </p>
+			<ul class="tab5-help margen10">
+			    <li>1. Egin klik zure erabiltzailea eta aukeratu aukera <i>Nire zerrendak</i> hautatzea <br>
+			        <span class="tab5-help margen5"><img th:src="@{/img/help/my-lists.png}" alt="Nire zerrendak" width="250px"/></span>
+			    <li>
+			    <li>2. Egin klik erregistroa ezabatu nahi duzun zerrenda non dagoen hautatzeko <br>
+			        <span class="tab5-help margen5"><img th:src="@{/img/help/list-my.png}" alt="Nire zerrenda" width="350px"/></span>
+			    <li>
+			    <li>3. Egin klik aukera <img th:src="@{/img/help/icon-paper-bin-1.png}" alt="Papera ikurra"/> erregistroa ezabatu nahi duzun aurretik
+			        <br><span class="tab5-help margen5"><img th:src="@{/img/help/records.png}" alt="Erregistroa"  width="350px"/></span>
+			        <ul class="tab3-help">
+			            <li>Zure sortu dituzun zerrendak berriz ikusteko, egin klik <img th:src="@{/img/help/return.png}" alt="Itzuli botoia" width="50px"/></li>
+			        </ul>
+			    <li>
+			</ul>
+			<a name="modifyDescList"></a>
+			<h4 class="title-help">Nola aldatu zerrenda bati atxikitako deskribapena</h4>
+			<p>Zerrenda batetako atxikitako deskribapena aldatu nahi baduzu, lehendabizi identifikatu behar zara. Hori egiteko, egin klik
+			    <img th:src="@{/img/help/my-profile.png}" alt="Nire profila" width="65px"/>
+			</p>
+			<p>Identifikatuta dagoenean,</p>
+			<ul class="tab5-help margen10">
+			    <li>1. Egin klik zure erabiltzailea eta aukeratu aukera <i>Nire zerrendak</i><br>
+			        <span class="tab5-help margen5"><img th:src="@{/img/help/my-lists.png}" alt="Nire zerrendak" width="200px"/></span>
+			    </li> 
+			    <li>2. Egin klik aukera <img th:src="@{/img/help/icon-update.png}" alt="Zerrenda aldatu ikurra"/> erregistroa aldatu nahi duzun zerrendaren deskribapena aldatu nahi duzun zerrenda.
+			    </li>
+			    <li>3. Zerrendaren deskribapena aldatu<br>
+			        <span class="tab5-help margen5"><img th:src="@{/img/help/box-update-list.png}" alt="Zerrenda eguneratu kaxa" width="350px"/></span>
+			        <ul class="tab3-help">
+			            <li>Aldaketarik egin nahi ez baduzu, egin klik <img th:src="@{/img/help/icon-close.png}" alt="Itxi ikurra"/></li>  
+			            <li>Aldaketa gordetzeko nahi baduzu, egin klik <img th:src="@{/img/help/icon-accept.png}" alt="Onartu ikurra"/></li>
+			        </ul>
+			    </li>
+			</ul>
+			<a name="delList"></a>
+			<h4 class="title-help">Nola zerrenda bat ezabatu</h4>
+			<p>Zure gustoko zerrendetatik bat ezabatu nahi baduzu, lehendik identifikatu behar zara. Horretarako, egin klik
+			    <img th:src="@{/img/help/my-profile.png}" alt="Nire profila" width="65px"/>.
+			</p>
+			<p>Identifikatu ondoren,</p>
+			<ul class="tab5-help margen10">
+			    <li>1. Egin klik zure erabiltzailea eta hautatu <i>Nire zerrendak</i><br>
+			        <span class="tab5-help margen5"><img th:src="@{/img/help/my-lists.png}" alt="Nire zerrendak" width="200px"/></span>
+			    </li>
+			    <li>2. Egin klik <img th:src="@{/img/help/icon-paper-bin-1.png}" alt="Paper-kontenedorearen ikurra"/> ezabatu nahi duzun zerrenda lotura duen aukeran.</li>
+			    <li>3. Ezabatzea berretzeko konfirmazio mezua agertzen da<br>
+			        <span class="tab5-help margen5"><img th:src="@{/img/help/del-confirmation.png}" alt="Berretzeko botoia" width="300px"/></span><p>
+			        <ul class="tab3-help">
+			            <li>Ez baduzu zerrenda ezabatu nahi, egin klik <img th:src="@{/img/help/btn-close.png}" alt="Itxi zerrendaren botoia" width="50px"/></li><p>  
+			            <li>Zerrenda ezabatu nahi baduzu, egin klik <img th:src="@{/img/help/btn-del-list.png}" alt="Zerrenda ezabatzeko botoia" width="100px"/></li>
+			        </ul> 
+			    </li>
+			</ul>
+			<a name="searchAuthority"></a>
+			<h2 class="title-help">Autoretasun bilaketa sarbidea</h2>
+			<p>Espreski autoretasun zehatz bat duten erregistroak aurkitu ahal izateko autoretasun bilaketa egiteko, egin klik <i>Autoretasun bilaketa</i> aukera.</p>
+			<a name="searchIndexes"></a>
+			<h2 class="title-help">Indizeetan bilaketa sarbidea</h2>
+			<p>Hitz edo hitz ereduak aurkitu ditzazten bilaketa bat egiteko, egin klik <i>Indizeetan bilaketa</i> aukera.</p>
+			<a name="lastSearh"></a>
+			<h2 class="title-help">Azken bilaketa egiteko sarbidea</h2>
+			<p>Eskaintzen diren emaitzak ekarri dituzten azken <span class="text-bold-help">10</span> bilaketa ikusgarrienak bistaratzeko, egin klik <i>Azken bilaketa</i> aukera.</p>
+			<a name="historySearch"></a>
+			<h2 class="title-help">Bilaketa gordeketarako sarbidea</h2>
+			<p>Gauza batzuk bilatu ondoren galdetu nahi badituzu, beraien berriro exekutatzeko, egin klik <i>Gordetako bilaketak</i> aukera.</p>
+			<p class="tab2-help">Bilaketak gordetzeko, lehendik identifikatu behar zara</p>
+			<a name="profile"></a>
+			<h2 class="title-help">Nire Profila sarbidea</h2>
+			<p>Nire profila egiaztatzeko eta <span class="text-bold-help">ODA</span>-ren honako tresna hauetara sartzeko, egin klik <i>Nire profila</i>:</p>	
+			<ul class="tab5-help margen10">
+			    <li>Datu pertsonalak</li>
+			    <li>Eskaerak</li>
+			    <li>Préstamo aktiboak</li>
+			    <li>Préstamo historia</li>
+			    <li>Préstamoak berritzeko</li>
+			    <li>Erreserba bertan behera utzi</li>
+			    <li>Bilaketak gorde</li>
+			    <li>Gustoko zerrendak sortu</li>
+			</ul>
+			<p>Erabiltzaile gisa identifikatu nahi badira, hiru metodo horietako edozein erabil dezakete:</p>
+			<ul class="tab5-help margen10">
+			    <li>Karnet zenbaki</li>
+			    <li>Liburutegiari emaniko posta elektronikoa</li>
+			    <li>Liburutegiari emaniko mugikorra</li>
+			</ul>
+			<a name="home"></a>
+			<h2 class="title-help">Hasiera orrira sartzeko sarbidea</h2>
+			<p>Hasiera orrira joateko, egin klik <i>Hasiera</i> aukera.</p>
+			<p class="top-help"><a href="#top">Gora</a></p>
+		</div>			 
+	</div>	
+	<th:block th:insert="/public/home/technicalfooter" th:with="page='opac-dataprivacyterms'"/>
+</body>
+</html>

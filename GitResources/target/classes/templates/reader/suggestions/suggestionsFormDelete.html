@@ -1,0 +1,8 @@
+<!-- :: [reader/suggestions/suggestionsFormDelete.html] -->
+<form id="form_deleteSuggestion" th:action="@{${thymeleafMap.get('READER_SUGGESTIONS_DELETE')}}" method="post">
+	<button class="btn btn-outline-primary btn-search open-delsuggestion-modal" id="del-suggestion" type="button" th:title="#{suggestion.delete}" th:aria-label="#{suggestion.delete}">
+		<input type="hidden" name="id" th:value="${suggestion.id}"/>
+		<span class="icono fas fa-trash" aria-hidden="true"></span>
+	</button>
+</form> 
+<!-- :: [reader/suggestions/suggestionsFormDelete.html] -->

@@ -1,0 +1,299 @@
+/*!
+ *  @file        :_detail.scss
+ *
+ *  @description :Estilos personlizados MASTER Oda Detalle
+ *
+ *  @author      :http://www.baratz.es/
+ *
+ *  @ref         :Hoja de estilos de personalización para MASTER Oda parte del detalle de un archivo
+--------------------------------------------------------------------------------------------------*/
+
+.page_type_title{
+	#detail_nav {
+		margin-top: 2rem;
+		display: flex;
+		justify-content: flex-end;
+		.pagination {
+			margin: 0;
+			margin-bottom: -1px;
+			.page-item {
+				display: flex;
+				align-items: stretch;
+				.page-link {
+					display: flex;
+					align-items: center;
+					position: relative;
+					padding: 0.5rem 0.75rem;
+					margin-left: -1px;
+					margin-right: 0;
+					line-height: 1.25;
+					border: 1px solid #dee2e6;
+				}
+			}
+			.page-item.btn_anterior {
+				.page-link {
+					border-radius: 0.25rem 0 0 0;
+				}
+				.icono {
+					display: inline-block;
+					margin-right: 5px;
+				}
+			}
+			.page-item.btn_siguiente {
+				.page-link {
+					border-radius: 0 0.25rem 0 0;
+				}
+				.icono {
+					display: inline-block;
+					margin-left: 5px;
+				}
+			}
+			.page-item.page-count {
+				display: flex;
+				align-items: stretch;
+				justify-content: center;
+				.page-link {
+					align-items: stretch;
+					.page-actual {
+						font-family:"SourceSansPro SemiBold";
+						font-weight: normal !important;
+						color: $secondary;
+						display: flex;
+						align-items: center;
+						padding: 0 5px;
+					}
+					.page-sep {
+						color: $secondary;
+						display: flex;
+						align-items: center;
+						padding: 0 5px;
+					}
+					.page-total {
+						color: $secondary;
+						display: flex;
+						align-items: center;
+						padding: 0 5px;
+					}
+				}
+			}
+		}
+	}
+	
+	.card-body.cont_image {
+		width: 100%;
+		padding: 0;
+		max-height: 100%;
+		img {
+			width: 160px;
+		}
+	}
+	.item-detail {
+		 .detail-summary {
+			 margin-top: 1rem;
+			 
+			 .summary-data {			 
+    			 flex-direction: row;
+				  .summary-actions {
+					   .btn_detail_item_title_list {						   
+					   		padding-top: 8px;
+					   		&:first-child {
+								   padding-left: 0;
+							   }
+					   }
+				   }
+				 
+			 }
+			 .item-detail .detail-share.detail-share--column {
+				 width: 100%;
+				 justify-content: flex-start;
+				 padding: 15px 0.9% 15px 0.8%;
+			 }
+			 .summary-actions {
+				 min-width: 185px;
+			 }
+			 .summary-share {
+				 margin-left: 0.5rem;
+				 .cont_button_share,
+				 .jssocials {
+					 .icono {
+						 width: 0.5rem;
+						 height: 0.5rem;
+						 
+						 &::before {
+							 font-size: 1rem;
+						 }
+					 }
+				 }
+			 }
+			 .summary {
+				 .item-format,
+				 & > span {
+					 font-weight: 900;
+				 }
+				 .summary-location-and-available {
+					 font-size: 0.8125rem;
+					 .summary-location {
+					     font-size: 0.875rem;
+						 .blq_title {
+							  .texto,
+							  .icono::before {
+							     color: #a22553;
+							 }
+						 }
+						 a.link_ubicacion {
+							 line-height: 1.5;
+						 }
+					}
+					.summary-copies,
+					.summary-availability {
+						a {
+							line-height: 2.3rem;
+						}
+					}
+				 }
+			 }
+			.card-body {
+				padding:0;
+			}
+		}
+		
+		.detail-share {
+			.share_items_list {
+				.share_item,
+				.jssocials-share-link {
+					color: $secondary;
+				}
+			}
+		} 
+	}
+	.btn.btn-white.btn-link.btn_library_location,
+	.active .btn-white.btn-link {
+	    background-color: #FFFFFF;
+	    border: 1px solid #E8E8E8;
+	    text-transform: initial;
+	    transition: background-color .6s ease;
+	    color: $secondary;
+	}
+	.btn.btn-white:hover, .btn.btn-white.active, .btn.btn-white:focus {
+	    background-color: #E6F4FF;
+	    color: #1D1D1D;
+	}
+	.tab-content.border {
+		border-top:0 !important;
+		height: 100%;
+		margin-bottom: 5rem;
+	}
+	.nav-tabs {
+		.nav-item {
+			margin-bottom: 0;
+			border:0;
+		}
+	}
+	.item-detail .detail-more-details .cont_menu_details {
+    	padding-top: 1rem;
+    	padding-right: 0.8rem;
+    	@include media_max(xs){			 
+	    	padding: 0.5rem;
+	    	margin-left: 2px;
+		 }
+			 
+	}
+	.standard-copy-format {
+	    column-rule: 1px solid #dee2e6!important;
+	}
+	#detail-plus_anchor .cont_datos .marc-copy-format .cr {
+	    font-weight: 900 !important;
+	    color: $secondary
+	}
+	.table-striped tbody tr:nth-of-type(odd) {
+	    background-color: #E6F4FF;
+	}
+	
+	.jssocials {
+		height: 20px;
+	}
+	 .item-detail .detail-share.detail-share--column .jssocials-shares, .item-detail .detail-share.detail-share--column .share_items_list {
+			width: 100% !important;	 
+			//padding: 6px;
+	 }
+	 .item-detail .detail-share.detail-share--column .jssocials-shares{
+		 padding-top: 0;
+	 }
+	 .item-detail .detail-share.detail-share--column .detail-share--cont_title {		 
+		  padding-top:0.7em !important;
+	 }
+	 .item-detail .detail-share .jssocials-shares, .item-detail .detail-share .share_items_list {
+		 flex-wrap: nowrap;
+	 }
+	 @include media_max(xs){
+		.item-detail .detail-copies .cont_total_results_bar {
+		    padding-left: 0;
+		    padding-right: 0;
+		}
+	}
+	 @include media_max(lg){
+      .item-detail .detail-share.detail-share--column{
+		  flex-direction:row;
+		  justify-content:flex-start;
+		  padding:0;
+		  border:0; 
+          margin-top: -10px;
+	      .blq_title{
+			   display:none;
+	          .icono{display:none;}
+	          .texto{display:none;}
+	       }
+           .share_items_list{
+				padding-left:0;
+				padding-right:0;
+			}        
+      }
+   }
+     @include media_max(sm){
+	   .item-detail .detail-summary .summary-data {
+		  flex-direction:column !important;
+		  .summary-share {
+			  margin-left: -0.9rem;
+			  margin-top:-20px !important;			  
+		  }
+	  }
+   }
+   
+   @include media_max(xs){
+	   .share_items_list.share_items_list--column {
+		   flex-wrap: wrap !important;
+		   margin-bottom:10px;
+	   }
+   }
+    .cont_table_big_00 .tb_00_cont_botonera ,
+   .cont_table_big_00 .tb_00_cont_botonera {
+	   flex-direction: row !important;
+   }
+   .cont_button   .title.w-100.mobile  {
+	   display:none !important;
+   }
+   .tb_00_data .data {
+	   background-color: transparent !important;
+   }
+   .article.detail-copies {
+	   padding-top: 0;
+	   padding-bottom: 0;
+   }
+   .total-results-bar.navbar.bg-highlight {
+	   .cont.cont_datos.pagination-element {
+		   font-size: 15px;
+	   }
+   }
+    @include media_max(xs){
+	   .item-detail .detail-share .share_items_list.share_items_list--column .jssocials-share-link, 
+	   .item-detail .detail-share .share_items_list.share_items_list--column .share_item {
+	    	min-width: 31px;
+	    }
+	    .item-detail .detail-share.detail-share--column .jssocials-shares .share_item, 
+	    .item-detail .detail-share.detail-share--column .jssocials-shares .jssocials-share-link, 
+	    .item-detail .detail-share.detail-share--column .share_items_list .share_item, 
+	    .item-detail .detail-share.detail-share--column .share_items_list .jssocials-share-link {
+	    	margin-right: 4px;	    
+	    }
+	}
+}

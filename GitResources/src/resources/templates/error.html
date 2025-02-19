@@ -1,0 +1,113 @@
+<th:block th:insert="/public/home/html_type"></th:block>
+<head>
+<meta http-equiv="Pragma" content="no-cache"/>
+<meta http-equiv="Expires" content="0"/>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<title th:text="#{error.page.title}"></title>
+<link rel="shortcut icon" type="image/x-icon" th:href="@{/img/fav.jpg}"/>
+<link href="https://fonts.googleapis.com/css?family=Jaldi:400,700" rel="stylesheet" type="text/css"/>
+  <style type="text/css">
+    /* Layout */
+    body {
+      background: #eff1f2;
+      color: #333;
+      font: 16px "Helvetica Neue", Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    html, body { height: 100%; }
+    .table     {
+      display: table;
+      width: 90%;
+      max-width: 500px;
+      height: 100%;
+      text-align: center;
+      margin: 0 auto;
+    }
+    .table-cell {
+      display: table-cell;
+      vertical-align: middle;
+      padding-bottom: 30px;
+    }
+
+    /* Typography */
+    h1 {
+      font: 120px/1em "Jaldi", sans-serif;
+      color: #333;
+      margin: 40px 0 0;
+      padding: 0;
+    }
+    h2 {
+      font: 30px/1em "Jaldi", sans-serif;
+      text-transform: uppercase;
+      margin: 0 0 30px;
+      padding: 0;
+      color: #777;
+    }
+    a {
+      color: #236690;
+      text-decoration: none;
+    }
+    a:hover      { text-decoration: underline; }
+    p            {
+      margin: 0;
+      padding: 0;
+      line-height: 24px;
+    }
+    p.button {
+      margin: 30px 0;
+    }
+    p.button a {
+      background-color: #236690;
+      border-radius: 2px;
+      color: #fff;
+      font: 600 14px/18px "Jaldi",sans-serif !important;
+      text-transform: uppercase;
+      padding: 12px 14px 9px;
+      cursor: pointer;
+    }
+    p.button a:hover {
+      background-color: #2772a1;
+      text-decoration: none;
+    }
+    p.button a:active {
+      position: relative;
+      top: 1px;
+    }
+    p.disclaimer {
+      font-size: 14px;
+      line-height: 20px;
+      color: #666;
+      text-shadow: none;
+    }
+    span i.fas{
+    	font-size:5em;
+    	color:#c4c4c4;
+    }
+
+    /* Responsiveness */
+    @media (max-width: 320px) {
+      h1  { font-size: 48px;  margin-top: 0; }
+      h2  { font-size: 18px; }
+      img { display: none; }
+    }
+  </style>
+</head>
+
+<body class="page_type_error error_404">
+<!-- :: error.html -->
+  <div class="table">
+    <div class="table-cell">
+      <span><span class="fas fa-road"></span></span>
+      <h1>404</h1>
+      <h2 th:text="#{error.header.404}"></h2>
+
+      <p th:text="#{error.description.404}"></p>
+      <p class="button"><a th:href="@{/home}" th:text=#{error.go.home}></a></p>
+
+  </div>
+</div>
+</html>

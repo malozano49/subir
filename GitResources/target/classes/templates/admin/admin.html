@@ -1,0 +1,35 @@
+<th:block th:insert="/public/home/html_type"></th:block>
+	<head>
+  		<th:block th:insert="/public/home/technicalheader::main" th:with="page='opac-admin'"></th:block>
+	</head>
+
+	<body th:class="'page_type_admin admin_'+${adminSection}">
+		<!-- :: admin/admin.html -->
+		<header class="header_principal">
+			<th:block th:insert="/public/home/header"></th:block>
+		</header>
+
+		<main id="acc_anchor_main" class="ie_fix_column container-fluid">
+
+        <th:block th:if="${adminSection == 'properties'}" th:insert="/admin/properties/adminProperties::main"></th:block>
+        <th:block th:if="${adminSection == 'oai'}" th:insert="/admin/oai/adminOai::main"></th:block>
+        <th:block th:if="${adminSection == 'data'}" th:insert="/admin/data/adminData::main"></th:block>
+        <th:block th:if="${adminSection == 'monitor'}" th:insert="/admin/monitor/adminMonitor::main"></th:block>
+        <th:block th:if="${adminSection == 'password'}" th:insert="/admin/password/adminPassword::main"></th:block>
+        
+        <!-- Adds component view adders -->
+        <th:block th:each="fragment:${ADMIN_UPMENU_ENTRY}">
+        	<th:block th:insert="${fragment}"></th:block>
+        </th:block>
+		
+		</main>
+
+		<footer class="footer_principal">
+			<th:block th:insert="/public/home/footer" th:with="page='opac-'+${adminSection}"></th:block>
+		</footer>
+
+		<th:block th:insert="/public/home/technicalfooter" th:with="page='opac-'+${adminSection}"></th:block>
+
+	</body>
+
+</html>

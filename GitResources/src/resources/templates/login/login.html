@@ -1,0 +1,33 @@
+<th:block th:insert="/public/home/html_type"></th:block>
+   <head>
+      <th:block th:insert="/public/home/technicalheader::main" th:with="page='opac-login'"></th:block>
+   </head>
+   <body class="page_type_login">
+    <header class="header_principal">
+      <th:block th:with="pageLocation='home'" th:insert="/public/home/header"></th:block>
+    </header>
+      <!-- :: login/login.html -->
+      <main id="acc_anchor_main" class="main_type_login ie_fix_column container-fluid">
+         <div class="row">
+      
+            <!-- :: /.col_izqda -->
+            <div class="col_dcha col-md-12 col-12 col-lg-12 col-xl-12">
+               <div class="cont_blq_login col-12 col-md-5 col-lg-5 col-xl-5 mx-auto pb-4 pt-4">
+             
+                  <th:block th:insert="/login/loginform"></th:block>
+               </div>
+            </div>
+            <!-- :: /.col_dcha -->
+         </div>
+         <!-- :: /.row -->
+      </main>
+       <footer class="footer_principal">
+      <th:block th:insert="/login/loginFooter" th:with="page='opac-home'"></th:block>
+    </footer>
+      <th:block th:insert="/public/home/technicalfooter" th:with="page='opac-login'"></th:block>
+      
+   </body>
+</html>
+
+
+      

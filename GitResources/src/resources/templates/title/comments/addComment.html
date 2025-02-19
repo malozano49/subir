@@ -1,0 +1,23 @@
+<!-- :: /title/comments/addComment.html -->
+<th:block th:if="${AnonymousCommentPermited}">
+	<th:block th:insert="/title/comments/addCommentButton"></th:block>
+</th:block>
+<th:block th:unless="${AnonymousCommentPermited}">
+	<th:block sec:authorize="${isAuthenticated() AND principal.hasRole(#vars.thymeleafMap.get('READER_AUTHORITY'))}">
+		<th:block th:insert="/title/comments/addCommentButton"></th:block>
+	</th:block>
+	<th:block sec:authorize="${isAnonymous()}">
+	<!-- TODO poner el texto o el icono que se necesite -->
+	<div class="add-opinion-wrapper">
+		<div class="add-opinion-button">
+		<a th:href="@{${thymeleafMap.get('LOGIN_PATH')}}" th:title="#{comment.login}">
+			<button>
+				<span class="icono fa fa-comment" aria-hidden="true"></span> <span
+					th:text="#{comment.login}"></span>
+			</button>
+			</a>
+		</div>
+	</div>
+	</th:block>
+</th:block>
+<!-- :: /title/comments/addComment.html -->	       		

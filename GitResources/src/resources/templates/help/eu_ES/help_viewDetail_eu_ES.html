@@ -1,0 +1,235 @@
+<th:block th:insert="/public/home/html_type"></th:block>
+<th:block th:insert="/public/home/technicalheader::main" th:with="page=${'opac-help-seeDetail-es_ES'}"></th:block>
+<script type="text/javascript">
+	var menu = document.getElementById('menu');
+	Stickyfill.add(menu);
+</script>
+<body>
+<div id="burger-menu" class="burger-menu">
+  <span></span>
+  			<div id="menu2" class="menu menu2">
+			<div class=""><nav class="sn-contents" aria-label="Secondary">
+      <ul class="sidenav--list">
+		<li><a href="#viewdetail">Xehetasun moduan bistaratzea</a>
+		    <ul class="tab3-help">
+		        <li><a href="#markfavotites">Nola markatu bistaratzen ari den erregistroa gogokoen bezala</a></li>
+		        <li><a href="#addfavotitesview">Nola gehitu zerrenda berri bat xehetasun moduan bistaratzea</a></li>
+		        <li><a href="#addfavotites">Nola gehitu erregistroa nire zerrendetako bati</a></li>
+		        <li><a href="#viewcopy">Nola xehetasunak ikusteko aleen informazioa</a>
+		            <ul class="tab3-help"><li><a href="#movicopy">Nola mugitu aleen zerrendan</a></li></ul>
+		        </li>
+		        <li><a href="#requestcopy">Nola eskatu ale baten kopia</a></li>
+		        <li><a href="#listresults">Emaitzen zerrendara sartzea</a>
+		        <li><a href="#searchAuthorities">Autoritateetan bilaketa egiteko sarbidea</a></li>
+		        <li><a href="#searchIndexes">Indizesean bilaketa egiteko sarbidea</a></li>
+		        <li><a href="#lastSearch">Egin dituzun azken bilaketak ikustea</a></li>
+		        <li><a href="#historySearch">Gordetako bilaketak ikustea</a></li>
+		        <li><a href="#favorites">Gogokoak ikustea</a></li>
+		        <li><a href="#profile">Nire Profila ikustea</a></li>
+		        <li><a href="#home">Hasiera orrialdea ikustea</a></li>
+		    </ul>
+		</li>
+		</ul>
+		</nav>
+		</div>
+		</div>
+		</div>
+		<div class="wrapper cf">
+		<div id="menu" class="menu">
+		    <div class="sidenav">
+		        <nav class="sn-contents" aria-label="Bigarren Maila">
+		            <ul class="sidenav--list">
+		                <li><a href="#markfavotites">Nola markatu bistaratzen ari den erregistroa gogokoen bezala</a></li>
+		                <li><a href="#addfavotitesview">Nola gehitu zerrenda berri bat xehetasun moduan bistaratzea</a></li>
+		                <li><a href="#addfavotites">Nola gehitu erregistroa nire zerrendetako bati</a></li>
+		                <li><a href="#viewcopy">Nola xehetasunak ikusteko aleen informazioa</a>
+		                    <ul class="tab3-help"><li><a href="#movicopy">Nola mugitu aleen zerrendan</a></li></ul>
+		                </li>
+		                <li><a href="#requestcopy">Nola eskatu ale baten kopia</a></li>
+		                <li><a href="#listresults">Emaitzen zerrendara sartzea</a></li>
+		                <li><a href="#searchAuthorities">Autoritateetan bilaketa egiteko sarbidea</a></li>
+		                <li><a href="#searchIndexes">Indizesean bilaketa egiteko sarbidea</a></li>
+		                <li><a href="#lastSearch">Egin dituzun azken bilaketak ikustea</a></li>
+		                <li><a href="#historySearch">Gordetako bilaketak ikustea</a></li>
+		                <li><a href="#favorites">Gogokoak ikustea</a></li>
+		                <li><a href="#profile">Nire Profila ikustea</a></li>
+		                <li><a href="#home">Hasiera orrialdea ikustea</a></li>
+		            </ul>
+		        </nav>
+		    </div>
+		</div>
+		<div class="content">
+		    <a name="top"></a>
+		    <a name="viewdetail"></a>
+		    <h2 class="title-help">Xehetasun moduan bistaratzea</h2>
+		    <p>Xehetasun moduan bistaratzean, honako informazioa erakusten da:</p>
+		    <ul class="tab5-help margen5">
+		        <li>- Azala</li>
+		        <li>- Izenburua</li>
+		        <li>- Egilea</li>
+		        <li>- Argitalpena</li>
+		        <li>- Laburpena</li>
+		        <li>- Generoa</li>
+		        <li>- Material mota</li>
+		        <li>- Erregistroarekin erlazionaturiko aleen informazioa:
+		            <ul class="tab5-help margen5">
+		                <li>- Kokapena</li>
+		                <li>- Erregistroarekin erlazionaturiko guztira dauden ale kopurua</li>
+		                <li>- Eskuragarri dauden ale kopurua</li>
+		            </ul>
+		        </li>
+		    </ul>
+		    <ul class="tab4-help">
+		        <li>Besterik erregistroan dauden eremu batzuen informazioa ikusi nahi baduzu, klikatu flotatzen den aukera <img th:src="@{/img/help/icon-more-detail.png}" alt="Informazio gehiago ikusteko ikonoa" width="50px"/>.
+		        <br>
+		        <span class="tab4-help"><img th:src="@{/img/help/more-detail.png}" alt="Informazio gehiago" width="500px"/></span>
+		        </li>
+		        <br>
+		        <p class="tab4-help">MARC formatua aktibatu nahi baduzu, klikatu <img th:src="@{/img/help/marc.png}" alt="MARC formatua"/> 
+		        <li>* Beste <span class="text-bold-help">bat datuak duten erregistroak</span> aurkitzen badira erregistroa ikusten ari denaren zenbaki batzuetan, azpian karusel moduan erakusten dira. 
+		            <p>Erlazionaturiko beste erregistroetara sartzeko, klikatu flotatzen den aukera <img th:src="@{/img/help/icon-other-related-records.png}" alt="Beste erregistroak erlazionatuta" width="50px"/>.</p>
+		            <p>Erregistroak erlazionatuta daudela kontuan izan beharreko eremuak hauek dira:</p>
+		            <ul class="tab5-help margen10">
+		                <li>- editorea eta bilduma berak</li>
+		                <li>- generoa berak</li>
+		            </ul><br>
+		            <p class="tab4-help"><img th:src="@{/img/help/carrusell.png}" alt="Karuskela" width="500px"/></p>
+		        </li>
+		    </ul>
+		    <a name="markfavotites"></a>
+		    <h4 class="title-help">Nola markatu bistaratzen ari den erregistroa gogokoen bezala</h4>
+		    <p>Bistaratzen ari den erregistroa markatzeko, klikatu aukera honetan <img th:src="@{/img/help/icon-favorites.png}" alt="Gogokoen ikonoa"/> </p>
+		    <p>Bistaratzen ari den saioan gogokoen bezala markatutako erregistroak ikusi nahi badituzu, klikatu Gogokoak</p>
+		    <ul class="tab4-help margen5">
+		        <li>Lehenetsita, <span class="text-bold-help">100</span> gogoko markatu ditzakezu</li>
+		        <li>Gogoko markatutako erregistroak <span class="text-bold-help">egile/izenburu</span>aren arabera ordenaturik erakusten dira</li>
+		        <li>Bat gogoko markatzeko, klikatu erregistroa desmarkatzeko aukera <img th:src="@{/img/help/favorites-icon-selected.png}" alt="Aukeratutako gogoko ikonoa"/>.
+		            <ul class="tab5-help margen5">
+		                <li>- erregistroak ere desmarkatu ditzakezu zerrenda edo xehetasun moduan bistaratzen direnetik</li>
+		            </ul>
+		        </li>
+		    </ul>
+		    <a name="addfavotitesview"></a>
+		    <h4 class="title-help">Nola gehitu zerrenda berri bat xehetasun moduan bistaratzea</h4>
+		    <p>Zerrenda berri bat sortzeko,</p>
+		    <ul class="tab5-help margen5"> 
+		        <li>1. Klikatu xehetasun moduan bistaratzen ari den erregistroarekin erlazionaturik dagoen aukera <img th:src="@{/img/help/icon-add-list.png}" alt="Zerrenda gehitzeko ikonoa"/>.
+		        <li>2. Klikatu zerrenda berri bat gehitzeko aukera <img th:src="@{/img/help/btn-add-list.png}" alt="Zerrenda gehitzeko botoia" width="100px"/>
+		        <li>3. Sartu berri dagoen zerrendari lotutako deskribapena.
+		            <p class="tab4-help margen10"><img th:src="@{/img/help/name-list.png}" alt="Zerrendaren izena" width="200px"/></p>
+		        </li>
+		        <li>4. Klikatu <img th:src="@{/img/help/btn-add-title-list.png}" alt="Aukeratutako zerrendari izenburua gehitzeko botoia" width="200px"/>
+		            <ul class="tab4-help margen5">
+		                <li>Zerrenda berria sortzen da erregistroarekin erlazionatuta</li>
+		                <li>Gogokoen zerrendako erregistroak ikus daitezke ikono bereizgarri honekin: 
+		                    <img th:src="@{/img/help/icon-record-in-list.png}" alt="Zerrendako ikonoa erregistroan" width="50px"/>
+		                </li> 
+		                <li>* Zerrendak zerrendak dauzkan zerrendak ikusteko, klikatu zure erabiltzailea eta aukeratu <i>Nire zerrendak</i> aukera
+		                <p class="tab4-help margen5"><img th:src="@{/img/help/my-lists.png}" alt="Nire zerrendak" width="200px"/></p>
+		                </li>
+		            </ul>
+		        </li>
+		    </ul>
+			<a name="addfavotites"></a>
+			<h4 class="title-help">Nire gogokoen zerrendetan erregistroa nola gehitu</h4>
+			<p>Nire gogokoen zerrendetan erregistroa nola gehitu erregistroarekin batera,</p>
+			<ul class="tab5-help margen5">
+			    <li>1. Sakatu <img th:src="@{/img/help/icon-add-list.png}" alt="Zerrenda gehitu ikurra"/> erregistroarekin batera dagoen aukera.</li>
+			    <li>2. Aukeratu zure interese duen zerrenda.
+			        <p class="tab4-help margen5"><img th:src="@{/img/help/list-selection.png}" alt="Zerrenda hautatu" width="200px"/></p>
+			    </li>
+			    <li>3. Sakatu  <img th:src="@{/img/help/btn-add-title-list.png}" alt="Gehitu izenburua hautatutako zerrendari" width="200px"/>
+			        <ul class="tab3-margen5">
+			            <li>erregistroa hautatutako zerrendari lotuko da</li>
+			            <li>gogoko zerrendetako erregistroak hurrengo ikurrarekin erakusten dira:
+			                <img th:src="@{/img/help/icon-record-in-list.png}" alt="Zerrenda ikurra erregistroan" width="50px"/>
+			            </li>
+			            <li>By default, zerrenda bakoitzeko soilik <span class="text-bold-help">200</span> gogokoa gorde daiteke.</li>
+			            <li>berezko erregistroak hainbat zerrendetan lota egon daiteke</li>
+			        </ul>
+			    </li>
+			</ul>
+			<a name="viewcopy"></a>
+			<h4 class="title-help">Exemplamen informazioa nola ikusi</h4>
+			<p>Ikuspegi moduan erregistroak lotutako erregistroak ikusteko, sakatu <img th:src="@{/img/help/icon-visualization.png}" alt="Ikuspegi ikurra" width="35px"/> float barraren aukera</p>
+			<ul class="tab3-help margen5">
+			    <li>Gehiago jakiteko exemplamen informazioa nahi baduzu, sakatu <img th:src="@{/img/help/icon-see-more.png}" alt="Gehiago ikusi ikurra"/>
+			        <p class="tab5-help"><img th:src="@{/img/help/localization.png}" alt="Kokapena" width="500px"/></p>
+			    </li>
+			    <li>Exemplamenak erabilgarritasuna oinarriak diren arabera irakurtzeko nahi badituzu, aukeratu nahi duzun aukera <i>Erabilgarritasunaren arabera irakurri</i>:
+			        <p class="tab5-help"><img th:src="@{/img/help/filters-available.png}" alt="Erabilgarriak irudiak" width="250px"/></p>
+			    </li>
+			    <li>Erregistroak hainbat kokapeneko exemplamenak baditu eta orrialde bakoitzeko erakusten diren exemplamenak baino gehiago bada, kokapenaren arabera irakurritakoak dirudienak hauta ditzakezu. Horretarako, hautatu nahi duzun liburutegia edo bulegoa:
+			        <p class="tab5-help"><img th:src="@{/img/help/filter-bibio-branch.png}" alt="Liburutegi edo bulegoa irudiak" width="300px"/></p>
+			    </li>
+			</ul>
+			<a name="movicopy"></a>
+			<h5 class="subtitle-help">Nola mugitu emaileko zerrendan</h5>
+			<p>By default, exemplamenduak <span class="text-bold-help">10</span> taldeetan erakusten dira. Lortutako emaitzen orrialde desberdinak erabiltzeko, hurrengo aukerak daude:
+			</p>
+			<ul class="tab3-help margen5">
+			    <li>Sakatu <img th:src="@{/img/help/next.png}" alt="Hurrengoa" width="75px"> hurrengo orrialdera mugitzeko.</li>
+			    <li>Sakatu <img th:src="@{/img/help/back.png}" alt="Aurrekoa" width="75px"> aurreko orrialdera mugitzeko.</li>
+			    <li>Sakatu ikusi nahi duzun orrialde zenbakia
+			        <br><br><img th:src="@{/img/help/number-by-page.png}" alt="Orrialde zenbakia" width="350px">
+			    </li>
+			    <li>Sakatu 1 zenbakia lehen orrialdea ikusteko
+			        <br><br><img th:src="@{/img/help/first-page.png}" alt="Lehen orrialdea" width="350px"/>
+			    </li>
+			    <li>Sakatu Hurrengoaren aurreko zenbakia azken orrialdera joateko
+			        <br><br><img th:src="@{/img/help/last-page.png}" alt="Azken orrialdea" width="350px"/>
+			    </li>
+			</ul>
+			<a name="requestcopy"></a>
+			<h4 class="title-help">Nola eskatu exemplaren eskaera</h4>
+			<p>Ezazu erregistroarekin batera dagoen aukera egin nahi baduzunean, sakatu
+			<img th:src="@{/img/help/icon-request.png}" alt="Eskaera"/></p>
+			<a name="listresults"></a>
+			<h2 class="title-help">Emaitza zerrendara sartzeko aukera</h2>
+			<p>Zerrendan aurkitu diren erregistro guztiak berriro ikusteko nahi baduzunean, sakatu aukera <i>Emaitza zerrenda</i>.</p>
+			<a name="searchAuthorities"></a> 
+			<h2 class="title-help">Bilaketa autoritateetan sartzeko aukera</h2>
+			<p>Zehazki autoritate batean aurkitutako erregistroak bilatzeko bilaketa egin nahi baduzu, sakatu aukera <i>Autoritate bilaketa</i>.</p>
+			<a name="searchIndexes"></a> 
+			<h2 class="title-help">Azpiatalaketa bilatzeko aukera</h2>
+			<p>Hitz bat edo hitz eredu bat aurkitu nahi baduzu, sakatu aukera <i>Indizeen bilaketa</i>.</p>
+			<a name="lastSearch"></a> 
+			<h2 class="title-help">Azken bilaketak egindako sarrerak</h2>
+			<p>Zehazki emandako azken <span class="text-bold-help">10</span> sarrerak ikusi nahi badituzu Opac saio batean emandako bilaketenak, sakatu <i>Azken bilaketa</i>.</p>
+			<a name="historySearch"></a>
+			<h2 class="cont cont_title title-help">Gordetako bilaketen sarrerak</h2>
+			<p>Hauek eskaera batzuk gordetzeko nahi dituzula irudikatzeko, sakatu <i>Gordetako bilaketen sarrerak</i>.</p>
+			<ul class="tab3-help">
+			    <li>Gordetzeko bilaketa batzuk gordetzea, aurretik identifikatu beharra daukazu</li>
+			</ul>
+			<a name="favorites"></a> 
+			<h2 class="title-help">Gogokoak</h2>
+			<p>Zehazki zure gogokoak bezala markatu dituzun erregistroak ikusi nahi badituzu, sakatu <i>Gogokoak</i>.</p>
+			<a name="profile"></a> 
+			<h2 class="title-help">Nire Profila sartzea</h2>
+			<p>Sakatu aukera <i>Nire profila</i> eta identifikatu zure burua <span class="text-bold-help">ODA</span>-ren hurrengo aukeren erabilera:</p>
+			<ul class="tab5-help margen5">
+			    <li>- Datu pertsonalak</li>
+			    <li>- Eskariak</li>
+			    <li>- Uneko maileguak</li>
+			    <li>- Maileguaren historia</li>
+			    <li>- Maileguak berritu</li>
+			    <li>- Erreserbaak bertan behera utzi</li>
+			    <li>- Bilaketen gorde</li>
+			    <li>- Gogoko zerrendak sortu</li>
+			</ul>
+			<p class="tab2-help">• Erabiltzaile gisa identifikatu nahi baduzu, hiru metodo horietako edozein erabil ditzakezu:</p>
+			<ul class="tab5-help margen5">
+			    <li>- Carné zenbakia</li>
+			    <li>- Zure liburutegiak emaniko posta elektronikoa</li>
+			    <li>- Zure liburutegiari emandako mugikorra</li>
+			</ul>
+			<a name="home"></a> 
+			<h2 class="title-help">Hasierara sartzea</h2>
+			<p>Hasierara joateko, sakatu <i>Hasiera</i>.</p>
+			<p class="top-help"><a href="#top">Gora</a></p>
+		</div>
+	</div>
+	<th:block th:insert="/public/home/technicalfooter" th:with="page='opac-dataprivacyterms'"/>
+</body>
+</html>

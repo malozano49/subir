@@ -1,0 +1,134 @@
+/*!
+ *  @file        : _login.scss
+ *
+ *  @description : ABSYS aplicacion estilos
+ *
+ *  @author      : http://www.baratz.es/
+ *
+ *  @ref         : Hoja de estilos Login
+--------------------------------------------------------------------------------------------------*/
+/*
+Código modificado en main/oda/_custom.scss para adaptar a Master Oda 
+
+
+.page_type_login{
+  .cont_form_group{padding-right:0}
+  .col_izqda{min-height: 100vh;padding-left:2%;padding-right:5%;
+    h1{margin-bottom:25px}
+    .cont_logo{max-width:300px;
+      img{position:relative;float:left;width:100%;padding:15px;outline:none}
+    }
+  }
+  
+  
+  
+  .logoPrincipal{
+ position: absolute;
+    width: 500px;
+    left: 50%;
+    margin-left: -250px;
+}
+
+@media only all and (max-width:800px) { 
+ .logoPrincipal{
+ position: absolute;
+    width: 400px;
+    left: 50%;
+    margin-left: -200px;
+}
+
+}
+
+@media only all and (max-width:500px) { 
+ .logoPrincipal{
+ position: absolute;
+    width: 300px;
+    left: 50%;
+    margin-left: -150px;
+}
+}
+
+@media only all and (max-width:350px) { 
+ .logoPrincipal{
+ position: absolute;
+    width: 200px;
+    left: 50%;
+    margin-left: -100px;
+}
+
+}
+@media only all and (max-width:250px) { 
+ .logoPrincipal{
+ position: absolute;
+    width: 140px;
+    left: 50%;
+    margin-left: -70px;
+}
+
+
+}
+
+
+
+  .col_dcha{
+    .cont_blq_login{
+      .cont_form{position:relative;float:none;display:block;width:100%;max-width:485px;margin:auto;
+        legend{padding-left:0;padding-right:0}
+      }
+      .login_fieldset--title{font-size:1.625rem;text-align:left;}
+      .alert_lgpd{
+        .link_lgpd{font-weight:bold;text-decoration:underline;
+          &:hover{text-decoration:none}
+        }
+      }
+      .form-group{margin-bottom:35px;
+        &.cont_password,
+        &.cont_remember{margin-bottom:0}
+        &.cont_input__username {
+          .bmd-help{bottom:101%}
+        }
+        &.cont_lgpd_accept{
+          .icono{display:flex;align-items:center}
+          label{margin-bottom:0}
+          input{position:relative;left:auto;right:-1em;top:1.5em}
+        }
+      }
+      .cont_reset_password{text-align:right;
+        a{font-size:1rem}
+      }
+      .cont_remember{text-align:left;padding-top:0;margin-top:40px;
+        label{position:relative;top:0;left:0;margin-top:0;margin-right:0;padding-bottom:0;
+          .label{position:relative;top:-2px;font-size:1rem;color:$dark}
+        }
+      }
+      .cont_botonera{
+        .btn{max-width:145px}
+      }
+      .dropdown-divider{position:relative;float:left;width:100%}
+      .cont_newUser{text-align:left;
+        .label{position:relative;float:left;margin-right:.5em}
+        a{position:relative;width:auto}
+      }
+    }
+  }
+  
+  @include media_max(md){
+    .col_izqda{height:auto!important;min-height:15vh;padding-left:10%;padding-right:10%;text-align:center;
+      h1{margin-bottom:0;}
+      .login_fieldset--title{font-size:1.125rem}
+      .cont_logo{margin-top:15px!important;margin-bottom:0!important}
+    }
+    .col_dcha{
+      .cont_blq_login{margin-top:0!important;
+        .cont_form{margin-top:0!important;
+          legend{margin-bottom:2rem}
+        }
+        .form-group{margin-bottom:15px}
+        .login_fieldset--title{margin-bottom:0;font-size:1.5rem;text-align:center;}
+        .cont_reset_password{margin-top:20px;text-align:center}
+        .cont_remember{margin-top:20px;margin-bottom:5px;text-align:center}
+      }
+    }
+  }
+}
+*/

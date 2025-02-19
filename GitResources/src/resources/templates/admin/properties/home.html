@@ -1,0 +1,243 @@
+<!-- :: [admin/properties/home.html] -->
+  <fieldset class="w-100">
+
+    <h4 class="h3 d-block font-weight-bold mb-3" th:text="#{administration.properties.home.recommended}"></h4>
+
+    <div class="row w-100 mr-0 ml-0">
+      <div class="form-row d-flex flex-wrap col-md-12 pr-0 pl-0 m-0" th:if="${adminProps.home.configRecommended != null}">
+
+        <div class="cont_form_group col-lg-2 col-md-6 col-sm-12 mb-2">
+          <div class="form-group cont_check cont_check_tunned d-block pt-lg-0 pt-sm-3 mb-2">
+            <label class="mb-0 mr-2" for="configRecommendedShow" th:text="#{administration.properties.home.recommended.enabled}"></label>
+            <input type="checkbox" id="configRecommendedShow" th:field="${adminProps.home.configRecommended.show}" th:disabled="${!adminProps.editEnabled}">
+          </div>
+          <!-- :: /.form-group -->
+        </div>
+        <!-- :: /.cont_form_group -->
+
+        <div class="cont_form_group col-lg-4 col-md-6 col-sm-12">
+          <div class="form-group">
+            <label for="configRecommendedName" class="bmd-label-floating" th:text="#{administration.properties.home.recommended.name}"></label>
+            <input th:unless="${adminProps.editEnabled}" type="text" id="configRecommendedName" class="form-control" disabled="disabled" th:value="#{${adminProps.home.configRecommended.name}}">
+            <input th:if="${adminProps.editEnabled}" type="text" id="configRecommendedName" class="form-control" autocomplete="off" th:field="${adminProps.home.configRecommended.name}">
+            <span id="configRecommendedNamehelp" class="bmd-help" th:text="#{administration.properties.home.recommended.name.help}"></span>
+          </div>
+          <!-- :: /.form-group -->
+        </div>
+        <!-- :: /.cont_form_group -->
+
+        <div class="cont_form_group col-lg-2 col-md-6 col-sm-12 mb-3">
+          <div class="form-group cont_selectPicker" th:classappend="${!adminProps.editEnabled} ? 'cont_select_disabled' : ''">
+            <label for="configRecommendedViewType" class="bmd-label-floating" th:text="#{administration.properties.home.recommended.view.type}"></label>
+            <select id="configRecommendedViewType" class="form-control" th:disabled="${!adminProps.editEnabled}" th:field="${adminProps.home.configRecommended.viewType}">
+              <option th:each="view_type_opt : ${thymeleafMap.get('RelatedTitlesViewKind')}" th:value="${view_type_opt}" th:text="${view_type_opt}"></option>
+            </select>
+            <span id="configRecommendedViewTypehelp" class="bmd-help" th:text="#{administration.properties.home.recommended.view.type.help}"></span>
+          </div>
+          <!-- :: /.form-group -->
+        </div>
+        <!-- :: /.cont_form_group -->
+
+        <div class="cont_form_group col-lg-2 col-md-6 col-sm-12">
+          <div class="form-group">
+            <label for="configRecommendedMaxResults" class="bmd-label-floating" th:text="#{administration.properties.home.recommended.max.results}"></label>
+            <input type="number" id="configRecommendedMaxResults" class="form-control" autocomplete="off" th:disabled="${!adminProps.editEnabled}" th:field="${adminProps.home.configRecommended.maxResults}">
+            <span id="configRecommendedMaxResultshelp" class="bmd-help" th:text="#{administration.properties.home.recommended.max.results.help}"></span>
+          </div>
+          <!-- :: /.form-group -->
+        </div>
+        <!-- :: /.cont_form_group -->
+
+        <div class="cont_form_group col-lg-2 col-md-6 col-sm-12 mb-2">
+          <div class="form-group cont_check cont_check_tunned d-block pt-lg-0 pt-sm-3 mb-2">
+            <label class="mb-0 mr-2" for="configRecommendedShowButton" th:text="#{administration.properties.home.recommended.show.all.button}"></label>
+            <input type="checkbox" id="configRecommendedShowButton" th:field="${adminProps.home.configRecommended.showAllButton}" th:disabled="${!adminProps.editEnabled}">
+          </div>
+          <!-- :: /.form-group -->
+        </div>
+        <!-- :: /.cont_form_group -->
+      </div>
+      <!-- :: /.form-row -->
+      <div class="form-row d-flex flex-wrap col-lg-12 pr-0 pl-0 m-0" th:if="${adminProps.home.configRecommended != null}">
+        <div class="col-lg-2 col-0">
+        </div>
+        <!-- :: /.cont_form_group -->
+        <div class="cont_form_group col-lg-4 col-12">
+          <div class="form-group">
+            <label for="levelsValue" class="bmd-label-floating" th:text="#{administration.properties.home.recommended.levels}"></label>
+            <input type="text" id="levelsValue" class="form-control" autocomplete="off" th:disabled="${!adminProps.editEnabled}" th:field="${adminProps.home.levels}">
+            <span id="levelsValuehelp" class="bmd-help" th:text="#{administration.properties.home.recommended.levels.help}"></span>
+          </div>
+          <!-- :: /.form-group -->
+        </div>
+        <!-- :: /.cont_form_group -->
+      </div>
+      <!-- :: /.form-row -->
+    </div>
+  </fieldset>
+
+  <fieldset class="w-100">
+    <h4 class="h3 d-block font-weight-bold mb-3" th:text="#{administration.properties.home.more.recent}"></h4>
+
+    <div class="cont_sortable cont_sortable_admin-section" th:classappend="${adminProps.editEnabled}? '' : 'sortable_disabled'" data-sortable='{"peticion":"homeMostRecentAjax"}'>
+      <div th:if="${adminProps.editEnabled}" class="alert alert-info alert-dismissible fade show d-flex flex-column w-auto ">
+        <span class="alert_titulo mb-2" th:text="#{administration.properties.drag.drop.title}"></span>
+        <span class="alert_texto" th:text="#{administration.properties.drag.drop.text.1}"></span>
+        <span class="alert_texto" th:text="#{administration.properties.drag.drop.text.2}"></span>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <!-- :: /.alert-info -->
+      <input type="hidden" name="home.mostRecentOrder" value="">
+      <div class="cont_select_mostRecent w-100 mb-3 mt-3">
+
+        <ul id="select_mostRecent" class="cmp_sortable cmp_sortable_list" data-multidrag=false>
+          <li class="cmp_sortable_item cmp_sortable_item_form_row form-row d-flex flex-wrap col-md-12 pr-4 pt-3 pl-2 m-0 border" th:each="home,iStat: ${adminProps.home.mostRecent}" th:data-order-init="${iStat.index}"  th:if="${adminProps.home.mostRecent != null}">
+
+            <div class="cont_form_group col-lg-4 col-md-6 col-sm-12">
+              <div class="form-group">
+                <label th:for="${'mostRecentName_' + __${iStat.index}__}" class="bmd-label-floating" th:text="#{administration.properties.home.more.recent.name}"></label>
+                <input th:if="${adminProps.editEnabled}"type="text" th:id="${'mostRecentName_' + __${iStat.index}__}" class="form-control" autocomplete="off" th:disabled="${!adminProps.editEnabled}" th:field="${adminProps.home.mostRecent[__${iStat.index}__].name}">
+                <input th:unless="${adminProps.editEnabled}" type="text" th:id="${'mostRecentName_' + __${iStat.index}__}" class="form-control" disabled="disabled" th:value="#{${adminProps.home.mostRecent[__${iStat.index}__].name}}">
+                <span class="bmd-help" th:text="#{administration.properties.home.more.recent.name.help}"></span>
+              </div>
+              <!-- :: /.form-group -->
+            </div>
+            <!-- :: /.cont_form_group -->
+
+            <div class="cont_form_group col-lg-3 col-md-6 col-sm-12">
+              <div class="form-group">
+                <label th:for="${'mostRecentSource_' + __${iStat.index}__}" class="bmd-label-floating" th:text="#{administration.properties.home.more.recent.source}"></label>
+                <input type="text" th:id="${'mostRecentSource_' + __${iStat.index}__}" class="form-control" autocomplete="off" th:disabled="${!adminProps.editEnabled}" th:field="${adminProps.home.mostRecent[__${iStat.index}__].source}">
+                <span class="bmd-help" th:text="#{administration.properties.home.more.recent.source.help}"></span>
+              </div>
+              <!-- :: /.form-group -->
+            </div>
+            <!-- :: /.cont_form_group -->
+
+            <div class="cont_form_group col-lg-2 col-md-6 col-sm-12 mb-3">
+              <div class="form-group cont_selectPicker" th:classappend="${!adminProps.editEnabled} ? 'cont_select_disabled' : ''">
+                <label th:for="${'mostRecentViewType_' + __${iStat.index}__}" class="bmd-label-floating" th:text="#{administration.properties.home.more.recent.view.type}"></label>
+                <select th:id="${'mostRecentViewType_' + __${iStat.index}__}" class="form-control" th:disabled="${!adminProps.editEnabled}" th:field="${adminProps.home.mostRecent[__${iStat.index}__].viewType}">
+                  <option th:each="view_type_opt : ${thymeleafMap.get('RelatedTitlesViewKind')}" th:value="${view_type_opt}" th:text="${view_type_opt}"></option>
+                </select>
+                <span class="bmd-help" th:text="#{administration.properties.home.more.recent.view.type.help}"></span>
+              </div>
+              <!-- :: /.form-group -->
+            </div>
+            <!-- :: /.cont_form_group -->
+
+            <div class="cont_form_group col-lg-1 col-md-6 col-sm-12">
+              <div class="form-group">
+                <label th:for="${'mostRecentMaxResults_' + __${iStat.index}__}" class="bmd-label-floating" th:text="#{administration.properties.home.more.recent.max.results}"></label>
+                <input type="number" th:id="${'mostRecentMaxResults_' + __${iStat.index}__}" class="form-control" autocomplete="off" th:disabled="${!adminProps.editEnabled}" th:field="${adminProps.home.mostRecent[__${iStat.index}__].maxResults}">
+                <span class="bmd-help" th:text="#{administration.properties.home.more.recent.max.results.help}"></span>
+              </div>
+              <!-- :: /.form-group -->
+            </div>
+            <!-- :: /.cont_form_group -->
+
+            <div class="cont_form_group col-lg-2 col-md-6 col-sm-12 pl-2 pr-2 mb-3 d-flex align-items-center">
+              <div class="form-group cont_check cont_check_tunned d-flex pt-0">
+                <label class="mb-0" th:for="${'mostRecentShowButton_' + __${iStat.index}__}" th:text="#{administration.properties.home.more.recent.show.all.button}"></label>
+                <input type="checkbox" th:id="${'mostRecentShowButton_' + __${iStat.index}__}" th:field="${adminProps.home.mostRecent[__${iStat.index}__].showAllButton}" th:disabled="${!adminProps.editEnabled}">
+              </div>
+              <!-- :: /.form-group -->
+            </div>
+            <!-- :: /.cont_form_group -->
+            <button type="button" class="btn_cmp_sortable_item_form_row--remove_item" th:title="#{administration.properties.buttons.delete.title}" th:aria-label="#{administration.properties.buttons.delete.title}"></button>
+          </li>
+        </ul>
+
+        <div class="botonera_select_standard_view_fields w-100 d-flex justify-content-end pt-3">
+          <button type="button" class="btn btn-primary btn-add_new btn-add_new--recent mr-2" th:title="#{administration.properties.buttons.add.title}" th:aria-label="#{administration.properties.buttons.add.title}">
+            <span class="btn_titleWhite" aria-hidden="true" th:text="#{administration.properties.buttons.add}"></span>
+          </button>
+          <button type="button" class="btn btn-primary btn_delete_all_items modal_js" th:title="#{administration.properties.buttons.delete.all.title}" th:aria-label="#{administration.properties.buttons.delete.all.title}"
+            th:data-modal_title="#{administration.properties.buttons.delete.all}"
+            data-modal_size="modal-md"
+            data-modal_target="#cmp_sortable_remove_all_items--most_recent"
+            data-modal_tipo="warning"
+            data-modal_discriminador="modal_sortable_remove_all_items--most_recent"
+            data-modal_html="#modal_remove_all_items--most_recent"
+            data-modal_footer="false"
+          >
+          <span class="btn_titleWhite" aria-hidden="true" th:text="#{administration.properties.buttons.delete.all}"></span>
+        </button>
+          <div id="modal_remove_all_items--most_recent" class="d-none" aria-hidden="true">
+            <span class="float-left col-md-12 mb-4" th:text="#{administration.properties.buttons.delete.all.confirmation(#{administration.properties.home.more.recent})}"></span>
+            <div class="modal-footer">
+              <button type="button" class="btn_cerrar btn btn-outline-secondary" data-dismiss="modal" th:aria-label="#{administration.properties.buttons.delete.all.confirmation.cancel.aria.label}" th:text="#{administration.properties.buttons.delete.all.confirmation.cancel}"></button>
+              <button type="button" class="btn_eliminar_items btn btn-primary" th:aria-label="#{administration.properties.buttons.delete.all.confirmation.remove.aria.label}" th:text="#{administration.properties.buttons.delete.all.confirmation.remove}"></button>
+            </div>
+          </div>
+          <!-- :: /#modal_remove_all_items -->
+        </div>
+        <!-- :: #botonera_select_standard_view_fields -->
+      </div>
+      <!-- :: /.cont_select_mostRecent -->
+    </div>
+    <!-- :: /.cont_sortable.cont_sortable_admin-section -->
+  </fieldset>
+
+  <fieldset class="w-100 mt-4">
+    <h4 class="h3 d-block font-weight-bold mb-3" th:text="#{administration.properties.home.activities}"></h4>
+
+    <div class="w-100">
+      <div class="form-row d-flex flex-wrap col-md-12 pr-0 pl-0 m-0" th:if="${adminProps.home.activities != null}">
+
+        <div class="cont_form_group col-lg-4 col-md-5 col-sm-12 p-2">
+          <div class="form-group cont_check cont_check_tunned d-inline">
+            <label for="activitiesShow" th:text="#{administration.properties.home.activities.enable}"></label>
+            <input type="checkbox" id="activitiesShow" th:field="${adminProps.home.activities.show}" th:disabled="${!adminProps.editEnabled}">
+          </div>
+          <!-- :: /.form-group -->
+        </div>
+        <!-- :: /.cont_form_group -->
+
+        <div class="cont_form_group col-lg-8 col-md-7 col-sm-12 mb-3">
+          <div class="form-group">
+            <label for="activitiesText" class="bmd-label-floating" th:text="#{administration.properties.home.activities.title}"></label>
+            <input th:if="${adminProps.editEnabled}" type="text" id="activitiesText" class="form-control" autocomplete="off" th:field="${adminProps.home.activities.text}">
+            <input th:unless="${adminProps.editEnabled}" type="text" id="activitiesText" class="form-control" disabled="disabled" th:value="#{${adminProps.home.activities.text}}">
+            <span id="activitiesTexthelp" class="bmd-help" th:text="#{administration.properties.home.activities.title.help}"></span>
+          </div>
+          <!-- :: /.form-group -->
+        </div>
+        <!-- :: /.cont_form_group -->
+
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset class="w-100">
+    <h4 class="h3 d-block font-weight-bold mb-3" th:text="#{administration.properties.home.links}"></h4>
+
+    <div class="w-100">
+      <div class="form-row d-flex flex-wrap col-md-12 pr-0 pl-0 m-0" th:if="${adminProps.home.links != null}">
+
+        <div class="cont_form_group col-lg-4 col-md-5 col-sm-12 p-2">
+          <div class="form-group cont_check cont_check_tunned d-inline">
+            <label for="linksShow" th:text="#{administration.properties.home.links.enable}"></label>
+            <input type="checkbox" id="linksShow" th:field="${adminProps.home.links.show}" th:disabled="${!adminProps.editEnabled}">
+          </div>
+          <!-- :: /.form-group -->
+        </div>
+        <!-- :: /.cont_form_group -->
+
+        <div class="cont_form_group col-lg-8 col-md-7 col-sm-12 mb-3">
+          <div class="form-group">
+            <label for="linksText" class="bmd-label-floating" th:text="#{administration.properties.home.links.title}"></label>
+            <input th:if="${adminProps.editEnabled}" type="text" id="linksText" class="form-control" autocomplete="off" th:field="${adminProps.home.links.text}">
+            <input th:unless="${adminProps.editEnabled}" type="text" id="linksText" class="form-control" th:disabled="disabled" th:value="#{${adminProps.home.links.text}}">
+            <span class="bmd-help" th:text="#{administration.properties.home.links.help}"></span>
+          </div>
+          <!-- :: /.form-group -->
+        </div>
+        <!-- :: /.cont_form_group -->
+      </div>
+    </div>
+  </fieldset>
+
+<!-- :: /[admin/properties/home.html] -->

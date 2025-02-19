@@ -1,0 +1,237 @@
+<!-- :: [admin/properties/titleDetail.html] -->
+  <fieldset class="fld_titulos w-100">
+
+    <h4 class="h3 d-block font-weight-bold mb-3" th:text="#{administration.properties.title.detail.area}"></h4>
+
+    <h5 class="h5 w-100 font-weight-bold mb-3 pl-3" th:text="#{administration.properties.title.detail.standart.view.fields}"></h5>
+    <div class="cont_sortable cont_sortable_admin-section" th:classappend="${adminProps.editEnabled}? '' : 'sortable_disabled'">
+      <div th:if="${adminProps.editEnabled}" class="alert alert-info alert-dismissible fade show d-flex flex-column w-auto mt-3">
+        <span class="alert_titulo mb-2" th:text="#{administration.properties.drag.drop.title}"></span>
+        <span class="alert_texto" th:text="#{administration.properties.drag.drop.text.1}"></span>
+        <span class="alert_texto" th:text="#{administration.properties.drag.drop.text.3}"></span>
+        <span class="alert_texto" th:text="#{administration.properties.drag.drop.text.4}"></span>
+        <span class="alert_texto" th:text="#{administration.properties.drag.drop.text.2}"></span>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="cont_sortable_add_item w-100 pl-md-3 pl-0 pr-md-3 pr-0 mb-3 mt-3">
+        <div class="sortable_add_item cont_form_group input_con_iconos w-100">
+          <div class="form-group w-100 mb-0">
+
+            <label for="input_sortable_new_items_00" class="bmd-label-floating" th:text="#{administration.properties.title.detail.standart.view.fields.insert}"></label>
+            <input id="input_sortable_new_items_00" type="text" class="input_sortable_add_item form-control" autocomplete="off" value="">
+            <div class="bmd-help">
+              <span th:text="#{administration.properties.title.detail.standart.view.fields.insert.help}"></span>
+            </div>
+          </div>
+          <!-- :: /.form-group -->
+          <div class="cont_botonera_input d-flex flex-row justify-content-start">
+            <button type="button" class="btn_borra_input btn btn-white" th:aria-label="#{administration.properties.title.detail.btn_borra_input.title}" th:title="#{administration.properties.title.detail.btn_borra_input.title}">
+              <span class="icono fas fa-times" aria-hidden="true"></span>
+            </button>
+            <button type="button" class="btn_add_item_sortable btn btn-primary" th:aria-label="#{administration.properties.title.detail.btn_add_item_sortable.title}" th:title="#{administration.properties.title.detail.btn_add_item_sortable.title}">
+              <span class="icono fas fa-paper-plane" aria-hidden="true"></span>
+            </button>
+          </div>
+          <!-- :: /.cont_botonera_input -->
+        </div>
+        <!-- :: /.cont_form_group-->
+      </div>
+      <!-- :: /.cont_sortable_add_item -->
+      <input type="hidden" th:field="*{adminProps.titleDetail.standardViewFields}" value="">
+      <div class="cont_select_standard_view_fields pl-md-3 pr-md-3 mb-3">
+        <ul id="select_standard_view_fields" class="cmp_sortable cmp_sortable_list" data-multidrag=true>
+          <li th:each="opt : ${adminProps.titleDetail.standardViewFields}" class="cmp_sortable_item cmp_sortable_item_min" th:data-value="${opt}">
+            <span class="title" th:text="${opt}"></span>
+            <button type="button" class="btn_item_cmp_sortable_remove" th:aria-label="#{administration.properties.title.detail.standart.view.fields.delete}" th:title="#{administration.properties.title.detail.standart.view.fields.delete}"></button>
+          </li>
+        </ul>
+        <div class="botonera_select_standard_view_fields w-100 d-flex justify-content-end pt-3">
+          <button type="button" class="btn btn-primary btn_delete_all_items modal_js"
+            th:data-modal_title="#{administration.properties.buttons.delete.all}"
+            data-modal_size="modal-md"
+            data-modal_target="#cmp_sortable_remove_all_items"
+            data-modal_tipo="warning"
+            data-modal_discriminador="modal_sortable_remove_all_items"
+            data-modal_html="#modal_remove_all_items"
+            data-modal_footer="false"
+            th:text="#{administration.properties.buttons.delete.all}"></button>
+          <div id="modal_remove_all_items" class="d-none" aria-hidden="true">
+            <span class="float-left col-md-12 mb-4" th:text="#{administration.properties.buttons.delete.all.confirmation(#{administration.properties.oai.sources})}"></span>
+            <div class="modal-footer">
+              <button type="button" class="btn_cerrar btn btn-outline-secondary" data-dismiss="modal" th:aria-label="#{administration.properties.buttons.delete.all.confirmation.cancel.aria.label}" th:text="#{administration.properties.buttons.delete.all.confirmation.cancel}"></button>
+              <button type="button" class="btn_eliminar_items btn btn-primary" th:aria-label="#{administration.properties.buttons.delete.all.confirmation.remove.aria.label}" th:text="#{administration.properties.buttons.delete.all.confirmation.remove}"></button>
+            </div>
+          </div>
+          <!-- :: /#modal_remove_all_items -->
+        </div>
+        <!-- :: #botonera_select_standard_view_fields -->
+      </div>
+      <!-- :: /.cont_select_standard_view_fields -->
+    </div>
+    <!-- :: /.cont_sortable.cont_sortable_admin-section -->
+
+    <h5 class="h5 w-100 font-weight-bold mb-3 pl-3" th:text="#{administration.properties.title.detail.related.titles}"></h5>
+
+    <div class="cont_sortable cont_sortable_admin-section" th:classappend="${adminProps.editEnabled}? '' : 'sortable_disabled'" data-sortable='{"peticion":"titleDetailRelatedTitlesAjax"}'>
+      <div class="alert alert-info alert-dismissible fade show d-flex flex-column w-auto ">
+        <span class="alert_titulo mb-2" th:text="#{administration.properties.drag.drop.title}"></span>
+        <span class="alert_texto" th:text="#{administration.properties.drag.drop.text.1}"></span>
+        <span class="alert_texto" th:text="#{administration.properties.drag.drop.text.2}"></span>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <!-- :: /.alert-info -->
+      <input type="hidden" name="titleDetail.relatedTitlesOrder" value="">
+      <div class="cont_select_relatedTitle w-100 mb-3 mt-3">
+
+        <ul id="select_relatedTitle" class="cmp_sortable cmp_sortable_list" data-multidrag=false>
+          <li class="cmp_sortable_item cmp_sortable_item_form_row form-row d-flex flex-wrap col-md-12 pr-4 pt-3 pl-2 m-0 border" th:if="${adminProps.titleDetail.relatedTitles != null}" th:each="related,iStat: ${adminProps.titleDetail.relatedTitles}" th:data-order-init="${iStat.index}">
+
+            <div class="cont_form_group col-lg-4 col-md-6 col-sm-12">
+              <div class="form-group">
+                <label th:for="${'relatedName_' + __${iStat.index}__}" class="bmd-label-floating" th:text="#{administration.properties.title.detail.related.titles.name}"></label>
+                <input th:if="${adminProps.editEnabled}" type="text" th:id="${'relatedName_' + __${iStat.index}__}" class="form-control" autocomplete="off" th:field="${adminProps.titleDetail.relatedTitles[__${iStat.index}__].name}">
+                <input th:unless="${adminProps.editEnabled}" type="text" th:id="${'relatedName_' + __${iStat.index}__}" class="form-control" th:disabled="disabled" th:value="#{${adminProps.titleDetail.relatedTitles[__${iStat.index}__].name}}">
+                <span class="bmd-help" th:text="#{administration.properties.title.detail.related.titles.name.help}"></span>
+              </div>
+              <!-- :: /.form-group -->
+            </div>
+            <!-- :: /.cont_form_group -->
+
+            <div class="cont_form_group col-lg-3 col-md-6 col-sm-12">
+              <div class="form-group">
+                <label th:for="${'relatedQuery_' + __${iStat.index}__}" class="bmd-label-floating" th:text="administration.properties.title.detail.related.titles.query"></label>
+                <input type="text" th:id="${'relatedQuery_' + __${iStat.index}__}" class="form-control" autocomplete="off" th:disabled="${!adminProps.editEnabled}" th:field="${adminProps.titleDetail.relatedTitles[__${iStat.index}__].query}">
+                <span class="bmd-help" th:text="administration.properties.title.detail.related.titles.query.help"></span>
+              </div>
+              <!-- :: /.form-group -->
+            </div>
+            <!-- :: /.cont_form_group -->
+
+            <div class="cont_form_group col-lg-2 col-lg-2 col-md-6 col-sm-12 mb-3">
+              <div class="form-group cont_selectPicker" th:classappend="${!adminProps.editEnabled} ? 'cont_select_disabled' : ''">
+                <label th:for="${'relatedViewType_' + __${iStat.index}__}" class="bmd-label-floating" th:text="#{administration.properties.title.detail.related.titles.view.type}"></label>
+                <select th:id="${'relatedViewType_' + __${iStat.index}__}" class="form-control" th:disabled="${!adminProps.editEnabled}" th:field="${adminProps.titleDetail.relatedTitles[__${iStat.index}__].viewType}">
+                  <option th:each="view_type_opt : ${thymeleafMap.get('RelatedTitlesViewKind')}" th:value="${view_type_opt}" th:text="${view_type_opt}"></option>
+                </select>
+                <span class="bmd-help" th:text="#{administration.properties.title.detail.related.titles.view.type.help}"></span>
+              </div>
+              <!-- :: /.form-group -->
+            </div>
+            <!-- :: /.cont_form_group -->
+
+            <div class="cont_form_group col-lg-1 col-md-6 col-sm-12">
+              <div class="form-group">
+                <label th:for="${'relatedMaxResults_' + __${iStat.index}__}" class="bmd-label-floating" th:text="#{administration.properties.title.detail.related.titles.max.results}"></label>
+                <input type="number" th:id="${'relatedMaxResults_' + __${iStat.index}__}" class="form-control" autocomplete="off" th:disabled="${!adminProps.editEnabled}" th:field="${adminProps.titleDetail.relatedTitles[__${iStat.index}__].maxResults}">
+                <span class="bmd-help" th:text="#{administration.properties.title.detail.related.titles.max.results.help}"></span>
+              </div>
+              <!-- :: /.form-group -->
+            </div>
+            <!-- :: /.cont_form_group -->
+
+            <div class="cont_form_group col-lg-2 col-md-6 col-sm-12 pl-2 pr-2 mb-3 d-flex align-items-center">
+              <div class="form-group cont_check cont_check_tunned d-flex pt-0">
+                <label class="mb-0" th:for="${'relatedShowButton_' + __${iStat.index}__}" th:text="#{administration.properties.title.detail.related.titles.show.all.button}"></label>
+                <input type="checkbox" th:id="${'relatedShowButton_' + __${iStat.index}__}" th:field="${adminProps.titleDetail.relatedTitles[__${iStat.index}__].showAllButton}" th:disabled="${!adminProps.editEnabled}">
+              </div>
+              <!-- :: /.form-group -->
+            </div>
+            <!-- :: /.cont_form_group -->
+
+            <button type="button" class="btn_cmp_sortable_item_form_row--remove_item" th:title="#{administration.properties.buttons.delete.title}" th:aria-label="#{administration.properties.buttons.delete.title}"></button>
+          </li>
+        </ul>
+
+        <div class="botonera_select_standard_view_fields w-100 d-flex justify-content-end pt-3">
+          <button type="button" class="btn btn-primary btn-add_new btn-add_new--recent mr-2"  th:title="#{administration.properties.buttons.add.title}" th:aria-label="#{administration.properties.buttons.add.title}">
+            <span class="btn_titleWhite" aria-hidden="true" th:text="#{administration.properties.buttons.add}"></span>
+          </button>
+          <button type="button" class="btn btn-primary btn_delete_all_items modal_js" th:title="#{administration.properties.buttons.delete.all.title}" th:aria-label="#{administration.properties.buttons.delete.all.title}"
+            th:data-modal_title="#{administration.properties.buttons.delete.all}"
+            data-modal_size="modal-md"
+            data-modal_target="#cmp_sortable_remove_all_items--most_recent"
+            data-modal_tipo="warning"
+            data-modal_discriminador="modal_sortable_remove_all_items--most_recent"
+            data-modal_html="#modal_remove_all_items--most_recent"
+            data-modal_footer="false"
+            >
+            <span class="btn_titleWhite" aria-hidden="true" th:text="#{administration.properties.buttons.delete.all}"></span>
+          </button>
+          <div id="modal_remove_all_items--most_recent" class="d-none" aria-hidden="true">
+            <span class="float-left col-md-12 mb-4"th:text="#{administration.properties.buttons.delete.all.confirmation(#{administration.properties.title.detail.related.titles})}"></span>
+            <div class="modal-footer">
+              <button type="button" class="btn_cerrar btn btn-outline-secondary" data-dismiss="modal"  th:aria-label="#{administration.properties.buttons.delete.all.confirmation.cancel.aria.label}" th:text="#{administration.properties.buttons.delete.all.confirmation.cancel}"></button>
+              <button type="button" class="btn_eliminar_items btn btn-primary" th:aria-label="#{administration.properties.buttons.delete.all.confirmation.remove.aria.label}" th:text="#{administration.properties.buttons.delete.all.confirmation.remove}"></button>
+            </div>
+          </div>
+          <!-- :: /#modal_remove_all_items -->
+        </div>
+        <!-- :: #botonera_select_standard_view_fields -->
+      </div>
+      <!-- :: /.cont_select_relatedTitle -->
+    </div>
+    <!-- :: /.cont_sortable.cont_sortable_admin-section -->
+
+  </fieldset>
+  <!-- :: /.fld_titulos -->
+
+  <fieldset class="fld_ejemplares w-100 mt-3">
+    <h4 class="h3 w-100 font-weight-bold mb-3" th:text="#{administration.properties.title.detail.copies.area}"></h4>
+    <div class="row w-100 mr-0 ml-0 mt-2">
+      <div class="col-lg-8 col-md-12 mb-3">
+        <h5 class="h5 w-100 font-weight-bold" th:text="#{administration.properties.title.detail.visible.fields.area}"></h5>
+        <div class="cont_checks row w-100 pl-3">
+          <ul class="col-md-6">
+            <li th:each="field, iter : ${adminProps.titleDetail.copyFields}">
+              <div th:if="${iter.index <= 7}" class="form-group cont_check cont_check_tunned">
+                <label th:for="'check_' + ${field.key}" th:text="#{__${'copy.'+field.key}__}"></label>
+                <input type="checkbox" th:id="'check_' + ${field.key}"
+                  th:field="*{adminProps.titleDetail.copyFields[__${field.key}__]}" th:value="*{adminProps.titleDetail.copyFields[__${field.key}__]}"
+                  th:disabled="${!adminProps.editEnabled}">
+              </div>
+              <!-- :: /.form-group -->
+            </li>
+          </ul>
+          <ul class="col-md-6">
+            <li th:each="field, iter : ${adminProps.titleDetail.copyFields}">
+              <div th:if="${iter.index >= 8}" class="form-group cont_check cont_check_tunned">
+                <label th:for="'check_' + ${field.key}" th:text="#{__${'copy.'+field.key}__}"></label>
+                <input type="checkbox" th:id="'check_' + ${field.key}"
+                  th:field="*{adminProps.titleDetail.copyFields[__${field.key}__]}" th:value="*{adminProps.titleDetail.copyFields[__${field.key}__]}"
+                  th:disabled="${!adminProps.editEnabled}">
+              </div>
+              <!-- :: /.form-group -->
+            </li>
+          </ul>
+        </div>
+        <!-- :: /.cont_checks -->
+      </div>
+      <div class="col-lg-4 col-md-12 pr-0">
+        <h5 class="h5 w-100 font-weight-bold mt-2" th:text="#{administration.properties.title.detail.location}"></h5>
+        <div class="row w-100 mr-0 ml-0 mt-3">
+          <div class="cont_form_group col-lg-5 col-md-3 pl-0 pr-0">
+            <div class="form-group">
+              <label for="input_copy_page_size" class="bmd-label-floating" th:text="#{administration.properties.title.detail.location.page.size}"></label>
+              <input type="number" id="input_copy_page_size" class="form-control" th:field="*{adminProps.titleDetail.copiesPageSize}" th:disabled="${!adminProps.editEnabled}">
+              <span id="input_copy_page_size_help" class="bmd-help" th:text="#{administration.properties.title.detail.location.page.size.help}"></span>
+            </div>
+          </div>
+          <!-- :: /.cont_form_group -->
+          <div class="cont_form_group col-lg-7 col-md-6">
+            <div class="form-group">
+              <label for="input_copy_location" class="bmd-label-floating" th:text="#{administration.properties.title.detail.location.levels}"></label>
+              <input type="text" id="input_copy_location" class="form-control" th:field="*{adminProps.titleDetail.copyLocationInfoString}" th:disabled="${!adminProps.editEnabled}">
+              <span id="input_copy_location_help" class="bmd-help" th:text="#{administration.properties.title.detail.location.levels}"></span>
+            </div>
+          </div>
+          <!-- :: /.cont_form_group -->
+        </div>
+      </div>
+  </div>
+  </fieldset>
+
+<!-- :: /[admin/properties/titleDetail.html] -->

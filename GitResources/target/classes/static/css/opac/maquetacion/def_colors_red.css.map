@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": ";AAAA;;;;;;;;oGAQoG;ACRpG;;;;;;;;oGAQoG;AAEpG;;;;;;;;;;;;;oGAaoG;ADGlG,uBAAQ;EAAC,OAAO,EEgCE,gzEAAoB",
+"sources": ["../../../../../../src/resources/sass/maquetacion/def_colors_red.scss","../../../../../../src/resources/sass/red/_colors.scss","../../../../../../src/resources/static/plugins/sass-to-js/sass/_sass-to-js.scss"],
+"names": [],
+"file": "def_colors_red.css"
+}

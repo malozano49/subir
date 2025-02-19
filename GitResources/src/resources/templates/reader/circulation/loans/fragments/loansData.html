@@ -1,0 +1,73 @@
+<!-- :: [reader/circulation/loans/fragments/loansData.html] -->
+<section class="card-body cont_datos page_reserve col-md-12 col-sm-12 col-xs-12">
+  <article class="cont_progress_bar mb-0">
+    <th:block th:insert="/reader/circulation/fragments/progressBar :: frag(#{loan.progress.bar.title.ok}, 100,,#{loan.progress.bar1},#{loan.progress.bar2})"></th:block>
+    <div class="cont_alerts_reserve d-flex col-lg-12 col-md-12 col-sm-12 mt-5 mb-5" aria-live="polite" aria-atomic="true">
+      <div class="alert alert-info alert_icon">
+        <span class="alert_titulo sr-only" th:text="#{reserves.information}"></span>
+        <th:block th:if="${fail==null || !fail}">
+        <span class="alert_texto col-12" th:text="${name} + ' ' + #{loans.ok.loan}"></span>
+        <p class="alert_texto col-12 text-center my-2 oculto" th:if="${(branch != null and branch != '') or (desk !=null and desk != '')}">
+          <span th:if="${branch!=null and branch != ''}" class="mx-1" th:text="#{reserves.ok.branch} + ' ' + ${branch}"></span>
+          <span th:if="${desk!=null and desk != ''}" class="ml-1" th:text="#{reserves.ok.desk} + ' ' + ${desk}"></span>
+        </p>
+        </th:block>
+        <th:block th:if="${fail!=null && fail}">
+        <h3 class="alert_texto col-12" th:text="${name} + ' ' + #{reserves.no.reserved}"></h3>
+        </th:block>
+      </div>
+      
+    </div>
+    <!-- :: /.cont_alerts -->
+  <!--   <div class="cont_message_reserve d-flex justify-content-center flex-column col-lg-6 col-md-8 col-sm-12 ml-auto mr-auto mb-5">
+      <h3 th:text="#{reserves.ok.list.title}" class="cont_message_reserve--title inline-block m-auto"></h3>
+      <div class="cont_message_reserve--cont_messages inline-block m-auto">
+        <ul class="m-0">
+          <li th:each="element : ${readerRequests}" class="w-100 m-2">
+            <th:block th:if="${element.subcodeMsg!=null}">
+              <span class="fas fa-exclamation-circle text-error mx-1"></span>
+              <th:block th:insert="/reader/circulation/reserve/fragments/copyReservationState :: frag(${element})"></th:block>
+              <span th:text="#{reserves.fail.unavailable}" class="text-error font-weight-bold mx-1"></span>
+              <span th:text="#{${element.subcodeMsg}}" class="mx-1"></span>
+            </th:block>
+            <th:block th:if="${element.requestType == thymeleafMap.get('RESERV')}">
+	            <th:block th:if="${element.subcodeMsg==null and (element.numberOfReservesBefore==null or element.numberOfReservesBefore<2) and #dates.format(element.activationDate, 'dd/MM/yyyy')!=null}">
+	              <span class="fas fa-check-square text-success mx-1"></span>
+	              <th:block th:insert="/reader/circulation/reserve/fragments/copyReservationState :: frag(${element})"></th:block>
+	              <span th:text="#{reserves.ok.available.now}" class="text-success font-weight-bold mx-1"></span>
+	              <span th:text="#{reserves.ok.last.available.day} + ' ' + ${#dates.format(element.finalDate, 'dd/MM/yyyy')}" class="mx-1"></span>
+	            </th:block>
+	            <th:block th:if="${element.subcodeMsg==null and (element.numberOfReservesBefore==null or element.numberOfReservesBefore<2) and #dates.format(element.activationDate, 'dd/MM/yyyy')==null}">
+	              <span class="fas fa-check-square text-success mx-1"></span>
+	              <th:block th:insert="/circulation/reserve/fragments/copyReservationState :: frag(${element})"></th:block>
+	              <span th:text="#{reserves.ok.not.available}" class="text-success font-weight-bold mx-1"></span>
+	              <span th:if="${element.apiCopyVO!=null and element.apiCopyVO.loanVO!=null and element.apiCopyVO.loanVO.returnDate!=null}" th:text="#{reserves.ok.loan.final.date} + ' ' + ${#dates.format(element.apiCopyVO.loanVO.returnDate, 'dd/MM/yyyy')}" class="mx-1"></span>
+	            </th:block>
+	            <th:block th:if="${element.subcodeMsg==null and (element.numberOfReservesBefore!=null and element.numberOfReservesBefore>1)}">
+	              <span class="fas fa-check-square text-success mx-1"></span>
+	              <th:block th:insert="/reader/circulation/reserve/fragments/copyReservationState :: frag(${element})"></th:block>
+	              <span th:text="#{reserves.ok.waiting.list}" class="text-info font-weight-bold mx-1"></span>
+	              <span th:text="#{reserves.ok.reserves.num} + ': ' + ${element.numberOfReservesBefore}" class="mx-1"></span>
+	            </th:block>
+            </th:block>
+            <th:block th:if="${element.requestType == thymeleafMap.get('REQUEST')}">
+	            <th:block th:if="${element.subcodeMsg==null}">
+	              <span th:text="#{reserves.desk} + ': ' + ${element.deskDescription}" class="mx-1"></span>
+	            </th:block>
+	        </th:block>
+          </li>
+        </ul>
+      </div>
+    </div>  -->
+    <div class="cont_botonera_reserve col-lg-12 col-md-12 col-sm-12 d-flex justify-content-center mt-5 mb-5">
+    	<th:block th:insert="/fragments/streaming :: streaming(ssource=${loanSource}, sbarcode=${loanBarcode}, surl=${url_display})"></th:block>
+    </div>
+    <!-- :: /.cont_message_reserve -->
+    <div class="cont_botonera_reserve col-lg-12 col-md-12 col-sm-12 d-flex justify-content-center">
+      <a type="button" class="btn btn-primary btn-sm" th:href="@{${thymeleafMap.get('READER_LOANS_PATH')}}" th:text="#{loans.ok.link}"></a>
+    </div>
+    <!-- :: /.cont_botonera_reserve -->
+  </article>
+</section>
+
+<!-- :: /[reader/circulation/loans/fragments/loansData.html] -->

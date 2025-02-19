@@ -1,0 +1,34 @@
+<!-- :: [public/search/copySources.html] -->
+<fieldset class="type_copySources search-sources cont_form_group contform cont_radio_tunned col-md-12 origen-radios">
+  <legend class="sr-only" th:text="#{search.source.copies.aria.label}"></legend>
+  <div class="fieldset_title d-flex desktop_flex">
+    <span class="icono fas fa-search icono_red" aria-hidden="true"></span>
+    <span th:text="#{search.source.copies.from}" class="label ml-1"/>
+  </div>
+  <!-- :: /.fieldset_title -->
+  <div class="cont_checks d-flex">
+    <div class="form-group cont_radio col-auto form-check radio">
+      <label id="source" for="any-source" th:text="#{search.source.any.source}"></label>
+      <input type="radio" id="any-source" name="solrSearch.origin" value="" th:checked="${solrSearchWeb == null or solrSearchWeb.solrSearch.origin == '' or solrSearchWeb.solrSearch.origin == null} ? 'checked'">
+    </div>
+    <!-- :: /.col-auto-->
+
+    <div class="form-group cont_radio col-auto form-check radio">
+      <label id="absysnet" class="form-check-label" for="AbsysNET" th:text="#{search.source.absysnet}"></label>
+      <input type="radio" id="AbsysNET" name="solrSearch.origin" value="AbsysNET" th:checked="${solrSearchWeb != null and solrSearchWeb.solrSearch.origin != null and solrSearchWeb.solrSearch.origin == 'AbsysNET'} ? 'checked'">
+    </div>
+    <!-- :: /.col-auto-->
+
+    <div class="form-group cont_radio col-auto form-check radio" th:each="ori, iterStat: ${solrSearchWeb != null ? solrSearchWeb.originList : null } ">
+      <label th:id="${ori}+'_label'" class="form-check-label" th:for="${ori}" th:text="${ori}"></label>
+      <input type="radio" th:id="${ori}" name="solrSearch.origin" th:value="${ori}" th:checked="${solrSearchWeb != null and solrSearchWeb.solrSearch.origin != null and solrSearchWeb.solrSearch.origin == ori} ? 'checked'">
+    </div>
+    <!-- :: /.col-auto-->
+
+  </div>
+  <!-- :: /.cont_checks -->
+
+</fieldset>
+<!-- :: /.search-sources -->
+
+<!-- :: /[public/search/copySources.html] -->

@@ -1,0 +1,239 @@
+<th:block th:insert="/public/home/html_type"></th:block>
+<th:block th:insert="/public/home/technicalheader::main" th:with="page=${'opac-help-myProfile-es_ES'}"></th:block>
+<script type="text/javascript">
+	var menu = document.getElementById('menu');
+	Stickyfill.add(menu);
+</script>
+<body><div id="burger-menu" class="burger-menu">
+  <span></span>
+  			<div id="menu2" class="menu menu2">
+			<div class=""><nav class="sn-contents" aria-label="Secondary">
+      <ul class="sidenav--list">
+			<ul><a href="#modifyPersonalData">Zelan aldatu datu pertsonalak</a>
+				<li><a href="#viewListActiveLoans">Nola ikusi diru-prestamoak</a>
+					<ul>
+						<li><a href="#moveListActiveLoans">Nola mugitu diru-prestamo zerrendan</a></li>
+					</ul>
+				</li>
+				<li><a href="#viewListLoanHistory">Nola ikusi diru-prestamo historikoa</a>
+					<ul>
+						<li><a href="#moveListLoanHistory">Nola mugitu diru-prestamo historiko zerrendan</a></li>
+					</ul>
+				</li>
+				<li><a href="#viewRequests">Nola ikusi eskaerak</a>
+					<ul>
+						<li><a href="#moveListRequests">Nola mugitu eskaera zerrendan</a></li>
+					</ul>
+				</li>
+				<li><a href="#cancelReservation">Nola bertan behera uztea erreserka mota batean</a></li>
+				<li><a href="#cancelRequest">Nola bertan behera uztea eskaera mota batean</a></li>
+				<li><a href="#renewloans">Zelan berritu diru-prestamoak</a></li>
+				<li><a href="#home">Hasiera orrira sartu</a></li>
+				<li><a href="#searchAuthority">Nola egin bilaketa agintarietan</a></li>
+				<li><a href="#searchIndexes">Nola egin bilaketa eran indeksean</a></li>
+				<li><a href="#lastSearch">Nola sartu azken bilerak egindako bilaketetara</a></li>
+				<li><a href="#historySearch">Nola sartu gordetako bilaketa orrira</a></li>
+				<li><a href="#favorites">Nola sartu gogokoenetara</a></li>
+			</ul>
+			</nav>
+			</div>
+			</div>
+			
+			<div class="wrapper cf">
+			
+			<div id="menu" class="menu">
+			<div class="sidenav">
+			<nav class="sn-contents" aria-label="Bigarren maila">
+			  <ul class="sidenav--list">
+				<li><a href="#modifyPersonalData">Zelan aldatu datu pertsonalak</a>
+					<li><a href="#viewListActiveLoans">Nola ikusi diru-prestamoak</a>
+						<ul>
+							<li><a href="#moveListActiveLoans">Nola mugitu diru-prestamo zerrendan</a></li>
+						</ul>
+					</li>
+					<li><a href="#viewListLoanHistory">Nola ikusi diru-prestamo historikoa</a>
+						<ul>
+							<li><a href="#moveListLoanHistory">Nola mugitu diru-prestamo historiko zerrendan</a></li>
+						</ul>
+					</li>
+					<li><a href="#viewRequests">Nola ikusi eskaerak</a>
+						<ul>
+							<li><a href="#moveListRequests">Nola mugitu eskaera zerrendan</a></li>
+						</ul>
+					</li>
+					<li><a href="#cancelReservation">Nola bertan behera uztea erreserka mota batean</a></li>
+					<li><a href="#cancelRequest">Nola bertan behera uztea eskaera mota batean</a></li>
+					<li><a href="#renewloans">Zelan berritu diru-prestamoak</a></li>
+					<li><a href="#home">Hasiera orrira sartu</a></li>
+					<li><a href="#searchAuthority">Nola egin bilaketa agintarietan</a></li>
+					<li><a href="#searchIndexes">Nola egin bilaketa eran indeksean</a></li>
+					<li><a href="#lastSearch">Nola sartu azken bilerak egindako bilaketetara</a></li>
+					<li><a href="#historySearch">Nola sartu gordetako bilaketa orrira</a></li>
+					<li><a href="#favorites">Nola sartu gogokoenetara</a></li>
+				</li>
+			  </ul>
+			</nav>
+			</div>
+			</div>
+			
+			<div class="content">
+			<a name="top"></a>
+			<a name="modifyPersonalData"></a>
+			<h2 class="title-help">Zelan aldatu datu pertsonalak</h2>
+			<ul class="tab5-help margen5">
+				<li>1. Egin klik <img th:src="@{/img/help/btn-edit.png}" alt="Editatu botoia"/> datuak aldatu nahi dituzunak</li>
+				<li>2. Egin aldaketak nahi dituzun moduan</li>
+				<li>3. Egin klik <img th:src="@{/img/help/btn-save.png}" alt="Gorde botoia" width="75px"/> aldaketak gordeko dituzu</li>
+			</ul>
+			<a name="viewListActiveLoans"></a>
+			<h2 class="title-help">Nola ikusi diru-prestamoak</h2>
+			<ul class="tab5-help margen5">
+				<li>1. <img th:src="@{/img/help/btn-current.png}" alt="Uneko botoia" width="75px"/> ekialdeko diru-prestamo zerrenda erakusten da
+					<ul class="tab5-help margen5">
+						<li>Diru-prestamoarekin lotutako datuak honako hauek dira:
+							<ul class="tab5-help margen10">
+								<li>Liburutegia</li>
+								<li>Sukurtsala</li>
+								<li>Izenburua</li>
+								<li>Egilea</li>
+								<li>Prestamoen data</li>
+								<li>Itzulketaren data</li>
+								<li><img th:src="@{/img/help/btn-streaming.png}" alt="Streaming botoia" width="100px"/> aukera agertzen da, ekintza efilmaren edukia denean</li>
+							</ul>
+						</li>
+						<li>Prestamoak itzulketaren dataren arabera ordenatzen dira goranzko eran</li>
+						<li>Prestamo batean klik egiten baduzu, lotutako izenburuaren datuak agertuko zaizkizu</li>
+					</ul>
+				</li>
+			</ul>
+			<a name="moveListActiveLoans"></a>
+			<h4 class="title-help">Nola mugitzeko jasotako alokairu aktiboen zerrendan</h4>
+			<p>Lehengoekin, bilaketa emaitzak <span class="text-bold-help">10</span> taldeetan ordenatzen dira, baina 25etik 25era edo 35etik 35era emaitzak taldeatzea aukera dago.</p>
+			<span class="tab5-help margen10"><img th:src="@{/img/help/results-by-page.png}" alt="Orrialdeko emaitzak" width="320px"/></span>
+			<p>Emaitzak lortzeko orrialde ezberdinak mugitzeko, hurrengo aukerak daude:</p>
+			<ul class="tab5-help margen5">
+			    <li>Egin klik <img th:src="@{/img/help/next.png}" alt="Hurrengoa" width="80px"/> jarraitzeko.</li>
+			    <li>Egin klik <img th:src="@{/img/help/back.png}" alt="Aurrekoa" width="80px"/> aurreko orrialdera mugitzeko.</li>
+			    <li>Klik egin orrialde zenbaki bati, ikusi nahi duzun orria ikusteko
+			        <span class="tab3-help"><img th:src="@{/img/help/number-by-page.png}" alt="Orrialde zenbakia" width="320px"/></span>
+			    </li>
+			    <li>Klik egin 1 zenbakian lehen orria ikusteko</li>
+			    <span class="tab3-help"><img th:src="@{/img/help/first-page.png}" alt="Lehen orria" width="320px"/></span>
+			    </li>
+			    <li>Klik egin "Hurrengoa" baino aurreko zenbakian azken orrira joateko
+			        <span class="tab3-help"><img th:src="@{/img/help/last-page.png}" alt="Azken orria" width="320px"/></span>
+			    </li>
+			</ul>
+			<a name="viewListLoanHistory"></a>
+			<h2 class="title-help">Nola ikusi alokairuaren historia</h2>
+			<ul class="tab3-help">
+			    <li>Egin klik <img th:src="@{/img/help/btn-histority.png}" alt="Historiaren botoia" width="75px"/>
+			        <ul class="tab4-help margen5">
+			            <li>Hauekin erlazionatutako datuak ikusten dira alokairuarekin:
+			                <ul class="tab5-help margen5">
+			                    <li>Liburutegia</li>
+			                    <li>Sarrera eskualdea</li>
+			                    <li>Izenburua</li>
+			                    <li>Egilea</li>
+			                    <li>Alokairu data</li>
+			                    <li>Itzulketa data</li>
+			                </ul>
+			            </li>
+			            <li>Alokairuak data itzulera eran ordenaturik ageri dira</li>
+			            <li>Alokairu batean klik egiten baduzu, loturiko izenburuaren datuak ikusiko dira</li>
+			        </ul>
+			    </li>
+			</ul>
+			<a name="moveListLoanHistory"></a>
+			<h4 class="title-help">Nola mugitu alokairu historia zerrendan</h4>
+			<p>Lehengoekin, bilaketa emaitzak <span class="text-bold-help">10</span> taldeetan ordenatzen dira, baina 25etik 25era edo 35etik 35era emaitzak taldeatzea aukera dago.</p>
+			<span class="tab5-help margen10"><img th:src="@{/img/help/results-by-page.png}" alt="Orrialdeko emaitzak" width="320px"/></span>
+			<p>Emaitzak lortzeko orrialde ezberdinak mugitzeko, hurrengo aukerak daude:</p>
+			<ul class="tab5-help margen5">
+			    <li>Egin klik <img th:src="@{/img/help/next.png}" alt="Hurrengoa" width="80px"/> jarraitzeko.</li>
+			    <li>Egin klik <img th:src="@{/img/help/back.png}" alt "Aurrekoa" width="80px"/> aurreko orrialdera mugitzeko.</li>
+			    <li>Klik egin orrialde zenbaki bati, ikusi nahi duzun orria ikusteko
+			        <span class="tab3-help"><img th:src="@{/img/help/number-by-page.png}" alt="Orrialde zenbakia" width="320px"/></span>
+			    </li>
+			    <li>Klik egin 1 zenbakian lehen orria ikusteko</li>
+			    <span class="tab3-help"><img th:src="@{/img/help/first-page.png}" alt="Lehen orria" width="320px"/></span>
+			    </li>
+			    <li>Klik egin "Hurrengoa" baino aurreko zenbakian azken orrira joateko
+			        <span class="tab3-help"><img th:src="@{/img/help/last-page.png}" alt="Azken orria" width="320px"/></span>
+			    </li>
+			</ul>
+			<a name="moveListRequests"></a>
+			<h4 class="title-help">Nola mugitzeko eskaria zerrendan</h4>
+			<p>Lehenetsia da bilaketa emaitzak <span class="text-bold-help">10</span> taldeetan ordenatzea, baina emaitzak 25etik 25era edo 35etik 35era taldeatzea ere posible da
+			<span class="tab5-help"><img th:src="@{/img/help/results-by-page.png}" alt="Orrialdeko emaitzak" width="320px"/></span>
+			<p>Lortutako emaitzen orrialde ezberdinak mugitzeko, hurrengo aukerak daude:</p>
+			<ul class="tab5-help margen5">
+			    <li>Egin klik <img th:src="@{/img/help/next.png}" alt="Hurrengoa" width="80px"/> hurrengo orrialdera joateko.</li>
+			    <li>Egin klik <img th:src="@{/img/help/back.png}" alt="Aurrekoa" width="80px"/> aurreko orrialdera joateko.</li>
+			    <li>Egin klik orrialde zenbaki batean, ikusi nahi duzun orria ikusteko
+			        <span class="tab3-help"><img th:src="@{/img/help/number-by-page.png}" alt="Orrialde zenbakia" width="320px"/></span>
+			    </li>
+			    <li>Egin klik 1 zenbakian lehenengo orrialdea ikusteko</li>
+			    <span class="tab3-help"><img th:src="@{/img/help/first-page.png}" alt="Lehen orria" width="320px"/></span>
+			    </li>
+			    <li>Egin klik "Hurrengoa" aurreko orrialde zenbakia baino, azkenengo orrialdera joateko
+			        <span class="tab3-help"><img th:src="@{/img/help/last-page.png}" alt="Azken orria" width="320px"/></span>
+			    </li>
+			</ul>
+			<a name="cancelReservation"></a>
+			<h2 class="title-help">Nola ezeztatu erreserba motako eskaria</h2>
+			<ul class="tab5-help margen5">
+			    <li>1. Egin klik <img th:src="@{/img/help/my-requests.png}" alt="Nire eskariak" width="100px"/><p></li>
+			    <li>2. Egin klik ezeztatu nahi duzun erreserbaren bidezkoa den aukera <img th:src="@{/img/help/btn-cancel.png}" alt="Ezeztatu" width="50px"/>.
+			        asoziatua
+			    </li>
+			    <p class="tab5-help margen5">- Baieztapen eskatzen duen mezua agertzen da </p>
+			    <span class="tab4-help margen5"><img th:src="@{/img/help/cancel-request.png}" alt="Eskaria bertan behera utzi" width="400px"/></span><p>
+			    <li>3. Egin klik ezeztatu nahi duzun eskaria bertan behera uzteko <img th:src="@{/img/help/btn-cancel.png}" alt="Ezeztatu" width="50px"/>.</li>
+			</ul>
+			<div class="tab5-help">
+			    <div class="box-help">Aktibatutako erreserba bakarrik ezeztatu daiteke. Hau da, oraindik eskuragarri ez dagoenentzako.</div>
+			</div>
+			<a name="cancelRequest"></a>
+			<h2 class="title-help">Nola ezeztatu eskaria mota petizio bat</h2>
+			<ul class="tab5-help margen5">
+			    <li>1. Egin klik <img th:src="@{/img/help/my-requests.png}" alt="Nire eskariak" width="100px"/><p></li>
+			    <li>2. Egin klik ezeztatu nahi duzun eskaria mota petizio batekoa den aukera
+			        <img th:src="@{/img/help/btn-cancel.png}" alt="Ezeztatu" width="50px"/>. asoziatua
+			    </li>
+			    <p class="tab5-help margen5">- Baieztapen eskatzen duen mezua agertzen da </p>
+			    <span class="tab4-help margen5"><img th:src="@{/img/help/cancel-request.png}" alt="Eskaria bertan behera utzi" width="400px"/></span><p>
+			    <li>3. Egin klik ezeztatu nahi duzun eskaria bertan behera uzteko <img th:src="@{/img/help/btn-cancel.png}" alt="Ezeztatu" width="50px"/>.</li>
+			</ul>
+			<div class="tab5-help">
+			    <div class="box-help">R-Petizio egoeran dauden eskariak bakarrik ezeztatu daitezke.</div>
+			</div>
+			<a name="renewloans"></a>
+			<h2 class="title-help">Nola berritu alokairuak</h2>
+			<p class="tab5-help margen5">1. Egin klik <img th:src="@{/img/help/btn-current.png}" alt="Une honetako botoia" width="75px"/></p>
+			<p class="tab5-help margen5">2. Egin klik berritu nahi duzun alokairuari eutsiko dien aukera <img th:src="@{/img/help/btn-renew.png}" alt="Berritu botoia" width="75px"/>.</p>
+			<a name="home"></a>
+			<h2 class="title-help">Hasiera orrira sartzeko</h2>
+			<p>Hasiera orrira joateko, egin klik <i>Hasiera</i> izenburua.</p>
+			<a name="searchAuthority"></a>
+			<h2 class="title-help">Aurkikuntzak bilatzeko sarrera</h2>
+			<p>Aurkikuntzak bilatzeko, izen ematen duen aurkikuntza bat duten erregistroak aurkitu ahal izateko, egin klik <i>Aurkikuntzak bilatu</i> aukera.</p>
+			<a name="searchIndexes"></a>
+			<h2 class="title-help">Indizeetan bilatzeko sarrera</h2>
+			<p>Izena emandako termino edo termino parekatuei gertatzen zaizkien hitzak edo hitz-moldaketa bilatzeko, egin klik <i>Indizeetan bilatu</i> izenburua.</p>
+			<a name="lastSearh"></a>
+			<h2 class="title-help">Azken bilaketak ikusteko sarrera</h2>
+			<p>Ikusi <span class="text-bold-help">10</span> azkeneko bilaketa emaitzak, Opac saio batean emaitza eman dutenak, egin klik <i>Azken bilaketa</i> izenburua.</p>
+			<a name="historySearch"></a>
+			<h2 class="title-help">Gordeta dauden bilaketak ikusteko sarrera</h2>
+			<p>Zure bilaketetako batzuk gorde nahi badituzu, gauza berri batzuk aurkezteko momentu batean exekutatu ahal izateko, egin klik <i>Bilaketak gordeta</i> izenburua.</p>
+			<p class="tab2-help">* Bilaketak gorde ahal izateko, lehenago identifikatu behar zara.</p>
+			<a name="favorites"></a>
+			<h2 class="title-help">Gogokoak ikusteko sarrera</h2>
+			<p>Zure gogokoenetakoak bezala markatutako erregistroak ikusteko, egin klik <i>Gogokoak</i> izenburua.</p>
+			<p class="top-help"><a href="#goiburua">Goiburua</a></p>
+		</div>
+	</div>
+	<th:block th:insert="/public/home/technicalfooter" th:with="page='opac-dataprivacyterms'"/>
+</body>
+</html>

@@ -1,0 +1,115 @@
+
+<th:block th:fragment="limit(amount)">
+<!-- :: [public/catalog/fragments/record.html] -->
+<ul th:if="records!=null" class="records_list w-100">
+  <th:block th:each="record, iterStat : ${records}">
+  <li th:if="${((amount < 0) or (iterStat.index < amount) and record.queryType != null)}" class="card w-100">
+    <div class="card-body w-100 d-flex flex-wrap">
+
+      <div class="cont cont_search w-100">
+        <!-- <span class="cont__title d-none" th:text="#{search.record.query}"></span> -->
+        <th:block th:if="${thymeleafMap.get('ADVANCED') == record.queryType}">
+          <div class="cont_link">
+            <a class="cont_link__link" th:href="@{${thymeleafMap.get('ADVANCED_SEARCH_ACTION')}(tabId=${record.tabId})}">
+              <th:block th:each="avanced, iter : ${record.solrAdvancedSearchRows}">
+                <th:block th:if="${avanced.query != null and avanced.query != '' }">
+                  <span th:if="${avanced.operator != null and iter.index>0 and !#strings.isEmpty(avanced.operator)}" th:text="' '+#{${avanced.operator}}"></span>
+                  <span th:if="${avanced.field != null and !#strings.isEmpty(avanced.field)}" th:text="' '+#{${avanced.field}}"></span>
+                  <span th:if="${avanced.query != null and !#strings.isEmpty(avanced.query)}" th:text="': '+${avanced.query}"></span>
+                  <span th:if="${avanced.filter != null and !#strings.isEmpty(avanced.filter)}" th:text="' ('+#{${avanced.filter}} + ')'"></span>
+                </th:block>
+              </th:block>
+              <th:block th:if="${record.solrAdvancedSearchFilters != null}">
+              	<span th:if="${record.solrAdvancedSearchFilters.language != null and !#strings.isEmpty(record.solrAdvancedSearchFilters.language)}" th:text="', '+#{ba.idioma} + ': '+ #{${record.solrAdvancedSearchFilters.language}}"></span>
+              	<span th:if="${record.solrAdvancedSearchFilters.country != null and !#strings.isEmpty(record.solrAdvancedSearchFilters.country)}" th:text="', '+#{ba.pais} + ': '+ #{${record.solrAdvancedSearchFilters.country}}"></span>
+              	<span th:if="${record.solrAdvancedSearchFilters.format != null and !#strings.isEmpty(record.solrAdvancedSearchFilters.format)}" th:text="', '+#{ba.format} + ': '+ #{${record.solrAdvancedSearchFilters.format}}"></span>
+              	<span th:if="${record.solrAdvancedSearchFilters.mediaType != null and !#strings.isEmpty(record.solrAdvancedSearchFilters.mediaType)}" th:text="', '+#{ba.mediaType} + ': '+ #{${record.solrAdvancedSearchFilters.mediaType}}"></span>
+              	<span th:if="${record.solrAdvancedSearchFilters.geoArea != null and !#strings.isEmpty(record.solrAdvancedSearchFilters.geoArea)}" th:text="', '+#{ba.geoArea} + ': '+ #{${record.solrAdvancedSearchFilters.geoArea}}"></span>
+
+              	<span th:if="${record.solrAdvancedSearchFilters.fepuInit != null and !#strings.isEmpty(record.solrAdvancedSearchFilters.fepuInit)}" th:text="', '+#{ba.initDate} + ': '+ ${record.solrAdvancedSearchFilters.fepuInit}"></span>
+              	<span th:if="${record.solrAdvancedSearchFilters.fepuEnd != null and !#strings.isEmpty(record.solrAdvancedSearchFilters.fepuEnd)}" th:text="', '+#{ba.finalDate} + ': '+ ${record.solrAdvancedSearchFilters.fepuEnd}"></span>
+              </th:block>
+            </a>
+          </div>
+          <!-- :: /.cont_link-->
+        </th:block>
+        <th:block th:unless="${thymeleafMap.get('ADVANCED') == record.queryType}">
+          <div class="cont_link">
+            <a class="cont_link__link" th:href="@{${thymeleafMap.get('SEARCH_ACTION')}(tabId=${record.tabId})}" th:text="${record.queryEscapeSolr}"></a>
+          </div>
+          <!-- :: /.cont_link-->
+        </th:block>
+
+      </div>
+      <!-- :: /.cont_search -->
+
+      <div class="cont cont_origin" th:if="${record instanceof T(es.baratz.opac.commons.vo.catalog.solrsearch.TitleSearchVO) or record instanceof T(es.baratz.opac.commons.vo.catalog.solrsearch.AdvancedSearchVO)}">
+        <span class="cont__title d-none" th:text="#{search.record.origin}"></span>
+        <th:block th:if="${thymeleafMap.get('QueryType_ADVANCED').qtEquals(record.queryType) or thymeleafMap.get('QueryType_EXPERT').qtEquals(record.queryType)}">
+        	<span class="value" th:if="${record.origin == null or record.origin == ''}" th:text="#{search.source.any.source}"/>
+        	<span class="value" th:if="${record.origin != null and record.origin == 'AbsysNET'}" th:text="#{search.source.absysnet}"/>
+       		 <span class="vallue" th:if="${record.origin != null and record.origin != '' and record?.origin != 'AbsysNET'}" th:text="${record?.origin}"/>
+        </th:block>
+
+      </div>
+      <!-- :: /.cont_origin -->
+
+      <div class="cont cont_catalog" th:if="${record instanceof T(es.baratz.opac.commons.vo.catalog.solrsearch.TitleSearchVO) or record instanceof T(es.baratz.opac.commons.vo.catalog.solrsearch.AdvancedSearchVO)}">
+        <span class="cont__title d-none" th:text="#{search.record.catalog}"/>
+
+       <th:block th:if="${record?.subCatalog?.subCatalogs}">
+        <th:block th:if="${#lists.size(record?.subCatalog?.subCatalogs) == 0}">
+          <span class="value" th:text="#{search.subcatalog.all}"/>
+        </th:block>
+
+        <th:block th:if="${#lists.size(record?.subCatalog?.subCatalogs) > 0}">
+              <span class="value" th:text="${record?.subCatalog?.subCatalogText}"/>
+        </th:block>
+
+
+      </div>
+      <!-- :: /.cont_catalog -->
+
+<!--/* :: TODO falta control de pulsacion para la clase active como en el boton favoritos de searchListElement.html */-->
+	<th:block th:with="alreadySaved=${#sets.contains(__${thymeleafMap.get('STORED_RECORDS')}__, record.searchHash)}">
+	  <div class="cont_button" sec:authorize="hasAuthority('READER_AUTHORITY')">
+            <!-- :: search.record.stored.add.already.exists.message -->
+       	<button
+          type="button"
+          th:class="'btn_message_js btn_record btn '+${storedRecordsSaved >= searchHistoryStoredLimit?' btn_limite_alcanzado':''}"
+          th:classappend="${alreadySaved}?'active':''"
+          data-btn_action="record_save"
+          th:data-message_activo="#{search.record.stored.add.success.message}"
+          th:data-message_no_activo="#{search.record.save.button}"
+          th:data-message_limit_warning="#{search.record.save.warning.title}"
+          th:attr="data-id=${record.tabId},
+            aria-label=${alreadySaved} ? #{search.record.stored.add.success.message}:#{search.record.save.button},
+            title=${alreadySaved} ? #{search.record.stored.add.success.message}:#{search.record.save.button},
+            data-title_initial=#{search.record.save.button},
+            data-record-limit=${searchHistoryStoredLimit},
+            data-record-size=${storedRecordsSaved},
+            data-record-message=#{search.record.save.warning.message}"
+        >
+          <!-- :: Botón en menu header últimas búsquedas y vista Últimas búsquedas -->
+          <span class="btn_title d-none" aria-hidden="true" th:text="${alreadySaved} ? #{search.record.stored.add.success.message}:#{search.record.save.button}"></span>
+          <span class="icono fas fa-save" aria-hidden="true"></span>
+        </button>
+        
+         <!-- TODO  9928-->
+          <form class="recommended_modal_form_list_items" th:action="@{${thymeleafMap.get('READER_UPDATE_RECORD')}}" method="POST">
+          	<input type="hidden" name="tabId" th:value="${record.tabId}">
+          	<input type="hidden" name="action" th:value="${!alreadySaved}">
+          </form>
+         <!-- TODO  9928-->
+         
+      </div>
+    </th:block>
+      <!-- :: /.cont_button -->
+
+    </div>
+    <!-- :: /.card-body -->
+  </li>
+  </th:block>
+</ul>
+<!-- :: /[public/catalog/fragments/record.html] -->
+</th:block>

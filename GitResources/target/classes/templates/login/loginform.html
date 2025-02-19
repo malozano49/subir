@@ -1,0 +1,110 @@
+<!-- :: [login/loginform.html] -->
+<section class="cont_form py-2">
+
+  <h2 class="sr-only" th:text="#{login.form.title}"></h2>
+
+  <form name="abnetc" th:action="@{${thymeleafMap.get('LOGIN_PATH')}}" method="post" class="text-center pt-3">
+  	<input type="hidden" id="domain" name="domain" th:value="${domain}" />
+
+    <fieldset>
+
+      <legend><h3 class="login_fieldset--title text-primary" th:text="#{login.sesion}"></h3></legend>
+
+      <div class="cont_form_group cont_user">
+        <div class="form-group cont_input cont_input__username">
+          <label id="userLabel" for="user" class="bmd-label-floating" th:text="#{login.user.label}"></label>
+          <input id="user" type="text" name="username" class="form-control" required autocomplete="current-password"/>
+          <span id="userHelp" class="bmd-help" th:text="#{login.user.help}"></span>
+        </div>
+      <!-- :: /.form-group -->
+      </div>
+      <!-- :: /.cont_form_group -->
+
+      <div class="cont_form_group cont_password cont_input">
+        <div class="form-group cont_input">
+          <label id="passLabel" for="pass" th:text="#{login.pass.label}" class="bmd-label-floating"></label>
+          <div class="input-group cont_input">
+            <input id="pass" type="password" name="password" class="form-control" data-toggle="password" required autocomplete="current-password"/>
+            <div class="input-group-append">
+              <button type="button" class="btn btn-primary input-group-text btn_view_pass" th:aria-label="#{administration.password.btn_view_pass.title}" th:title="#{administration.password.btn_view_pass.title}">
+                <span class="icono far fa-eye" aria-hidden="true"></span>
+              </button>
+            </div>
+            <!-- /.input-group-append-->
+          </div>
+          <!-- /.input-group -->
+          <span id="passHelp" class="bmd-help" th:text="#{login.pass.help}"/>
+        </div>
+   
+      </div>
+      <!-- :: /.cont_form_group -->
+      <div class="cont_interactions">   
+      <div class="form-group cont_remember cont_check cont_check_tunned d-flex pl-0 pr-0"  th:if="${rememberme && #strings.equals(domain,thymeleafMap.get('READER_DOMAIN'))}">
+        <label for="rememberMe" th:text="#{login.remember.label}"></label>
+        <input type="checkbox" id='rememberMe' name="remember-me" />
+      </div>
+      <!-- :: /.form-group -->
+      <!-- :: /.cont_remember -->
+
+		<div class="cont_reset_password" th:if="${#strings.equals(domain,thymeleafMap.get('READER_DOMAIN'))}">
+        <a th:href="@{${thymeleafMap.get('READER_RESET_PASSWORD')}}" class="text-primary" th:text="#{login.titlePassForgot}"></a>
+      </div>
+       <!-- :: /.cont_reset_password -->
+      
+     	
+	</div>
+  
+   <div class="cont_register_home" th:if="@{${thymeleafMap.get('READER_REGISTER_ENABLED')}}" >
+    	<a th:href="@{${thymeleafMap.get('READER_REGISTER_HOME')}}" class="text-primary" th:text="#{login.reader.register}"></a>
+    </div>	
+
+
+<!-- :: 220201 @TODO: Aplicar condicional al bloque para que desaparezca al ser aceptado por el usuario -->
+      <th:block th:if="${rememberme && needAcceptedTerms && #strings.equals(domain,thymeleafMap.get('READER_DOMAIN'))}">
+        <div class="alert alert_lgpd alert-warning alert-dismissible mb-0 mt-3" >
+        
+          <span class="alert_texto" >
+         <!-- :: RENAME-->
+             <span th:text="#{lgpd.info}" th:aria-label="#{lgpd.info}"></span>
+             <a class="link link_lgpd" th:href="@{${thymeleafMap.get('DATA_PRIVACY_TERMS')}}" target="_blank" th:text="#{lgpd.info.link}"></a>
+          </span>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="form-group cont_lgpd_accept cont_check cont_check_tunned col-12 d-flex pl-0 pr-0">
+          <span class="icono text-danger fas fa-asterisk mr-1" aria-hidden="true"></span>
+          <label for="lgpd_accept">
+          <span th:text=#{lgpd.acept} th:aria-label="#{lgpd.acept}"></span>
+        
+        </label>
+          <input type="checkbox" id='lgpd_accept' name="lgpd_accept" required/>
+        </div>
+        <!-- :: /.cont_lgpd_accept -->
+      </th:block>
+
+      <div class="cont_botonera mt-4">
+      <div class="cont_inicio mb-2">
+                    <a class="cont_inicio_link" th:href="@{${thymeleafMap.get('HOME_URL')}}" id="backHome">
+                    <span class="icono fas fa-angle-double-left" aria-hidden="true"></span>
+                     <span class="link_title" th:text="#{login.back.home}"></span>
+                   	 </a>
+                  </div>
+        <button type="submit" class="btn btn-primary btn-send w-50 mb-2" th:text="#{login.button}"></button>
+      </div>
+      <!-- :: /.cont_botonera -->
+  
+    </fieldset>
+    
+    <div class="cont_alert d-flex"  aria-live="polite" aria-atomic="true">
+      <br>                   
+      <div th:if="${code}" class="alert alert-danger" role="alert" aria-atomic="true">
+         <span class="alert_titulo sr-only" th:text="#{alert.error.title}"></span>
+         <span class="alert_texto" th:if="${code}" th:text="#{${'error.login.' + code}}"></span>
+      </div>
+      <!-- :: /.alert -->
+    </div>
+  </form>
+</section>
+<!-- :: /.cont_form -->
+<!-- :: /[login/loginform.html] -->

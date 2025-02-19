@@ -1,0 +1,41 @@
+<th:block th:fragment="main">
+<!-- :: [manager/links/interestLinks.html] -->
+
+<!-- Manager messages -->
+<section class="manager-section manager-catalog manager-messages mt-5" aria-labelledby="sct_title_warnings">
+  <h2 id="sct_title_warnings" class="sr-only" th:text="#{alert.general.messages}"></h2>
+	<div class="container cont_message" th:insert="/manager/fragments/warningData"></div>
+</section>
+<!-- :: /.manager-messages -->
+
+<div class="manager-section manager-catalog manager-InterestLinks mt-5 mb-5">
+  <div class="container container_menu">
+    <div th:insert="/manager/fragments/upMenu" class="cont_up_menu d-flex justify-content-center"></div>
+    <!-- :: /.cont_up_menu -->
+  </div>
+
+  <!-- :: /.container_menu -->
+
+  <section class="container container_general border" aria-labelledby="sct_title_general">
+
+    <h2 id="sct_title_general" class="d-block font-weight-bold section__title">
+      <!-- manager.comments.area -->
+         <th:block th:text="#{manager.comments.area}"/>
+    </h2>
+   <!--/* :: WARNING: La clase .cont_global indica si el nuevo enlace de interés se debe insertar desde js en el resto de bloques */-->
+	<article  class="cont_InterestLinks  mt-3">
+		 <th:block th:insert="/title/comments/listComments.html"></th:block>
+    </article>
+    <!-- :: /.cont_InterestLinks -->
+  </section>
+  <!-- :: /.container_general -->
+</div>
+<!-- :: /.manager-InterestLinks -->
+
+
+<!-- :: /#modal_confirmacion_borrado_link_html -->
+
+
+<!-- :: /[manager/links/interestLinks.html] -->
+
+</th:block>

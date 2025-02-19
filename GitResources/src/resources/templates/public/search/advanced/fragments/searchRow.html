@@ -1,0 +1,70 @@
+<!-- :: [public/search/advanced/fragments/searchRow.html] -->
+<div class="form-row operator-advanced query">
+  <div class="cont_form_group col-2">
+   <div class="form-group cont_selectPicker">
+      <label th:id="${'operator_' + __${iStat.index}__ + 'label'}" th:for="${'operator_' + __${iStat.index}__}" class="bmd-label-floating">
+         <th:block th:text="#{search.advanced.operator.label}"/>
+      </label>
+      <select th:id="${'operator_' + __${iStat.index}__}" class="form-control" th:field="${solrSearchWeb.solrSearch.solrAdvancedSearchRows[__${iStat.index}__].operator}" th:aria-labelledby="${'operator_' + __${iStat.index}__ + 'help'}">
+         <th:block  th:insert="/public/search/advanced/fragments/options :: options(collection=${solrSearchWeb.advancedSearchOperators},selected=${solrSearchWeb.solrSearch.solrAdvancedSearchRows[__${iStat.index}__].operator})"></th:block>
+      </select>
+      <span th:id="${'operator_' + __${iStat.index}__ + 'help'}" class="bmd-help">
+         <th:block th:text="#{search.advanced.operator.help}"/>
+      </span>
+   </div>
+   <!-- :: /.form-group -->
+  </div>
+  <!-- :: /.cont_form_group -->
+  <div class="cont_form_group col-2">
+   <div class="form-group cont_selectPicker">
+      <label th:id="${'field_' + __${iStat.index}__ + 'label'}" th:for="${'field_' + __${iStat.index}__}" class="bmd-label-floating">
+         <th:block th:text="#{search.advanced.field.label}"/>
+      </label>
+      <select th:id="${'field_' + __${iStat.index}__}" class="form-control"  th:field="${solrSearchWeb.solrSearch.solrAdvancedSearchRows[__${iStat.index}__].field}" th:aria-labelledby="${'field_' + __${iStat.index}__ + 'help'}" >
+         <th:block  th:insert="/public/search/advanced/fragments/options :: options(collection=${solrSearchWeb.advancedSearchFields},selected=${solrSearchWeb.solrSearch.solrAdvancedSearchRows[__${iStat.index}__].field})"></th:block>
+      </select>
+      <span th:id="${'field_' + __${iStat.index}__ + 'help'}" class="bmd-help">
+         <th:block th:text="#{search.advanced.field.help}"/>
+      </span>
+   </div>
+   <!-- :: /.form-group -->
+  </div>
+  <!-- :: /.cont_form_group -->
+  <div class="cont_form_group col-2">
+   <div class="form-group filter cont_selectPicker">
+      <label th:id="${'filterContained_' + __${iStat.index}__ + 'label'}" th:for="${'filterContained_' + __${iStat.index}__}" class="bmd-label-floating">
+         <th:block th:text="#{search.advanced.filter.contained.label}"/>
+      </label>
+      <select th:id="${'filterContained_' + __${iStat.index}__}" class="form-control"  th:field="${solrSearchWeb.solrSearch.solrAdvancedSearchRows[__${iStat.index}__].filter}" th:aria-labelledby="${'filterContained_' + __${iStat.index}__ + 'help'}">
+         <th:block  th:insert="/public/search/advanced/fragments/options :: options(collection=${solrSearchWeb.advancedFieldFilters},selected='')"></th:block>
+      </select>
+      <span th:id="${'filterContained_' + __${iStat.index}__ + 'help'}" class="bmd-help">
+         <th:block th:text="#{search.advanced.filter.contained.help}"/>
+      </span>
+   </div>
+   <!-- :: /.form-group -->
+  </div>
+  <!-- :: /.cont_form_group -->
+  <div class="cont_form_group col">
+   <div class="form-group">
+      <label th:id="${'term_' + __${iStat.index}__ + 'label'}" th:for="${'term_' + __${iStat.index}__}" class="bmd-label-floating">
+         <th:block th:text="#{search.advanced.term.label}"/>
+      </label>
+      <input  type="text" th:id="${'term_' + __${iStat.index}__}" class="form-control"  th:field="${solrSearchWeb.solrSearch.solrAdvancedSearchRows[__${iStat.index}__].query}" autocomplete="off"/>
+      <span th:id="${'term_' + __${iStat.index}__ + 'help'}" class="bmd-help">
+         <th:block th:text="#{search.advanced.term.help}"/>
+      </span>
+   </div>
+   <!-- :: /.form-group -->
+  </div>
+  <!-- :: /.cont_form_group -->
+  <div class="cont_botonera col-0">
+      <button type="button" class="btn btn-dark delete-row-advanced" th:title="#{search.advanced.button.del.line}">
+        <span class="btn_text d-none" th:text="#{search.advanced.button.del.line}"></span>
+        <span class="icono fas fa-times" aria-hidden="true"></span>
+      </button>
+  </div>
+  <!-- :: /.cont_botonera -->
+</div>
+<!-- :: /.form-group-inline -->
+<!-- :: /[public/search/advanced/fragments/searchRow.html] -->

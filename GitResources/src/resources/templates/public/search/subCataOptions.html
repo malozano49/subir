@@ -1,0 +1,12 @@
+<!-- :: [public/search/subCataOptions.html]  -->
+<th:block th:fragment="options(collection,mselected)">
+
+<th:block  th:each="item : ${collection}" >
+
+<option  th:selected="${mselected==item.value}" th:utext="${item.text}"  th:value="${item.value}" th:class="${item.level}"></option>
+</th:block>
+
+
+</th:block>
+
+<!-- :: /[public/search/subCataOptions.html] -->

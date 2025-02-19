@@ -1,0 +1,21 @@
+
+<th:block th:fragment="frag(progressBarTitle,percent,progress1,progress2)">
+  <!-- :: [reader/circulation/fragments/progressBar.html] -->
+  <div class="cont_title w-100 d-flex justify-content-center">
+    <div id="sct_title h2" class="h2">
+      <span class="icono fas fa-cart-plus" aria-hidden="true"></span>
+      <span class="title" th:text="${progressBarTitle}"></span>
+    </div>
+  </div>
+  <!-- :: /.cont_title -->
+  <div class="progress_bar col-md-8 col-sm-12 col-xs-12 ml-auto mr-auto invisible" data-only_read="true" data-cursor_visible="false" data-con_cifra="false" data-literales="true">
+    <label for="rangeslider" class="sr-only" th:text="${progressBarTitle}"></label>
+    <input id="rangeslider" name="rangeslider" type="range" class="range_slider" th:value="${percent}" min="0" max="100" />
+    <span class="literal icono_inicial d-none" data-pos="0%" th:text="${progress1}"></span>
+    <span th:until="${percent==100}" class="literal icono_final d-none" data-pos="100%" th:text="${progress2}"></span>
+    <span th:if="${percent==100}" class="literal icono_inicial d-none" data-pos="100%" th:text="${progress2}"></span>
+  </div>
+  <!-- :: /.progress_bar -->
+  <!-- :: /[reader/circulation/fragments/progressBar.html] -->
+</th:block>
+

@@ -1,0 +1,268 @@
+<th:block>
+  <!-- :: [public/home/technicalfooter.html] -->
+
+  
+  <th:block th:if="${pwaEnabled}">
+  <!-- only if PWA is enabled -->
+  <script th:attr="nonce=${#request.getAttribute('cspNonce')}">
+    // En el load del navegador
+    window.addEventListener('load', () => {
+      if ('serviceWorker' in navigator){
+        navigator.serviceWorker.register('[[@{/service-worker.js}]]').then( reg => {
+          console.log("[technicalfooter.html] Service worker registered",reg)
+        }).catch( err => {
+          // registration failed :(
+          console.log('[technicalfooter.html] ServiceWorker registration failed: ', err);
+        });
+      }
+    });
+
+  </script>
+  <script th:src="@{/pwa/install.js}"></script>
+  <script th:src="@{/pwa/notifications.js}"></script>
+  </th:block>
+  
+  
+  <th:block th:unless="${pwaEnabled}">
+  <!-- if PWA is NOT enabled -->
+ 	<script th:src="@{/pwa/service-worker-unregister.js}"></script>
+  </th:block>
+  
+
+  <!--/* JAVASCRIPTS */-->
+  <script th:src="@{/plugins/jquery/jquery.min.js}"></script>
+
+  <!--/* Tooltip & popover positioning engine (Bootstrap's dropdowns require Popper.js)*/-->
+  <script th:src="@{/plugins/popper/popper.min.js}"></script>
+  <!--/* bootstrap */-->
+  <script th:src="@{/plugins/bootstrap/bootstrap.min.js}"></script> <!-- async -->
+  <!--/* Truncate (debe de cargarse en primera instancia) */-->
+  <script th:src="@{/plugins/truncate.js-master/dist/truncate.min.js}"></script> <!-- async -->
+
+  <!--/* utilidades js */-->
+  <script th:src="@{/js/commons/utils.js}"></script>
+
+
+  <!--/* Condicionales */-->
+  <!--/* pagina actual: :::::::::::: */-->
+  <span class="d-none" aria-hidden="true" th:text="${page}"></span>
+
+  <!--/* maquetación */-->
+  <th:block th:if="${page == 'opac-maquetacion-colorimetrias'}">
+    <script th:src="@{/js/init/layout/opac-maquetacion-colorimetrias.init.js}"></script>
+  </th:block>
+  <th:block th:if="${page == 'opac-maquetacion-1'}">
+    <script th:src="@{/js/init/layout/opac-maquetacion-1.init.js}"></script>
+  </th:block>
+  <th:block th:if="${page == 'opac-maquetacion-2'}">
+    <script th:src="@{/js/init/layout/opac-maquetacion-2.init.js}"></script>
+  </th:block>
+  <th:block th:if="${page == 'opac-maquetacion-3'}">
+    <script th:src="@{/js/init/layout/opac-maquetacion-3.init.js}"></script>
+  </th:block>
+
+  <!--/* administración */-->
+  <th:block th:if="${page == 'opac-properties'}">
+    <script th:src="@{/js/init/admin/opac-admin.properties.init.js}"></script>
+  </th:block>
+  <th:block th:if="${page == 'opac-oai'}">
+    <script th:src="@{/js/init/admin/opac-admin.oai.init.js}"></script>
+  </th:block>
+  <th:block th:if="${page == 'opac-data'}">
+    <script th:src="@{/js/init/admin/opac-admin.catalog.init.js}"></script>
+  </th:block>
+  <th:block th:if="${page == 'opac-monitor'}">
+    <script th:src="@{/js/init/admin/opac-admin.monitoring.init.js}"></script>
+  </th:block>
+  <th:block th:if="${page == 'opac-password'}">
+    <script th:src="@{/js/init/admin/opac-admin.credentials.init.js}"></script>
+  </th:block>
+
+  <!--/* manager */-->
+  <th:block th:if="${page == 'opac-manager-recommended'}">
+    <script th:src="@{/js/init/manager/opac-manager.recommended.init.js}"></script>
+  </th:block>
+  <th:block th:if="${page == 'opac-manager-activities'}">
+    <script th:src="@{/js/init/manager/opac-manager.activities.init.js}"></script>
+  </th:block>
+  <th:block th:if="${page == 'opac-manager-interestLinks'}">
+    <script th:src="@{/js/init/manager/opac-manager.interestLinks.init.js}"></script>
+  </th:block>
+  <th:block th:if="${page == 'opac-manager-comments'}">
+    <script th:src="@{/js/init/manager/opac-manager.comments.init.js}"></script>
+  </th:block>
+
+  <!--/* página de error controlado */-->
+  <th:block th:if="${page == 'opac-error'}">
+    <script th:src="@{/js/init/opac-error.init.js}"></script>
+  </th:block>
+
+  <!--/* Al no ser usuario e intentar reservar, despues de logarse si tiene prestamos sobrepasados*/-->
+  <th:block th:if="${page == 'opac-reader-reservation-error'}">
+    <script th:src="@{/js/init/opac-error.init.js}"></script>
+  </th:block>
+
+  <!--/* área de login/logout */-->
+  <th:block th:if="${page == 'opac-login'}">
+    <script th:src="@{/js/init/opac-login.init.js}"></script>
+  </th:block>
+  <th:block th:if="${page == 'opac-logout'}"></th:block>
+
+  <!--/* área de mi perfil de lector: Datos personales */-->
+  <th:block th:if="${page == 'opac-reader-data'}">
+    <script th:src="@{/js/init/opac-reader-data.init.js}"></script>
+  </th:block>
+  <th:block th:if="${page == 'opac-reader-edit-data'}">
+    <script th:src="@{/js/init/opac-reader-edit-data.init.js}"></script>
+  </th:block>
+  <th:block th:if="${page == 'opac-reader-edit-password'}">
+    <script th:src="@{/js/init/opac-reader-edit-password.init.js}"></script>
+  </th:block>
+
+  <!--/* área de mi perfil de lector: Mis Listas */-->
+  <th:block th:if="${page == 'opac-reader-title-list'}">
+    <script th:src="@{/js/init/opac-reader-title-list.init.js}"></script>
+  </th:block>
+  <th:block th:if="${page == 'opac-reader-title-list-items'}">
+    <script th:src="@{/js/init/opac-reader-title-list-items.init.js}"></script>
+  </th:block>
+  
+  <!--/* área de mi perfil de lector: Comentarios */-->
+  <th:block th:if="${page == 'opac-reader-comments'}">
+    <script th:src="@{/js/init/opac-reader-comments.init.js}"></script>
+  </th:block>
+  
+   <!--/* área de mi perfil de lector: Sugerencias */-->
+  <th:block th:if="${page == 'opac-reader-suggestions'}">
+    <script th:src="@{/js/init/opac-reader-suggestions.init.js}"></script>
+  </th:block>  
+
+  <!--/* área de mi perfil de lector: Préstamos y solicitudes */-->
+  <th:block th:if="${page == 'opac-reader-loans'}">
+    <script th:src="@{/js/init/opac-reader-loans.init.js}"></script>
+  </th:block>
+  <th:block th:if="${page == 'opac-reader-loans-history'}">
+    <script th:src="@{/js/init/opac-reader-loans-history.init.js}"></script>
+  </th:block>
+  <th:block th:if="${page == 'opac-reader-reservation'}">
+    <script th:src="@{/js/init/opac-reader-reservation.init.js}"></script>
+  </th:block>
+  
+   <!--/* área de mi perfil de lector: Sugerencias de compra */-->
+ <th:block th:if="${page == 'opac-reader-buysuggestions'}">
+    <script th:src="@{/js/init/opac-reader-buysuggestions.init.js}"></script>
+  </th:block>
+  <th:block th:if="${page == 'opac-reader-distrolist'}"></th:block>
+
+  <th:block th:if="${page == 'opac-records'}"></th:block>
+
+  <th:block th:if="${page == 'opac-reader-warnings'}"></th:block>
+
+  <!--/* home */-->
+  <th:block th:if="${page == 'opac-home'}">
+    <script th:src="@{/js/init/opac-home.init.js}"></script>
+  </th:block>
+
+  <!--/* favoritos del menú del header */-->
+  <th:block th:if="${page == 'opac-reader-favorites'}">
+     <script th:src="@{/js/init/opac-reader-favorites.init.js}"></script>
+  </th:block>
+
+  <!--/* últimas búsquedas del menú del header */-->
+  <th:block th:if="${page == 'opac-last-searches'}">
+    <script th:src="@{/js/init/opac-last-searches.init.js}"></script>
+  </th:block>
+
+  <!--/* búsquedas guardadas del menú del header */-->
+  <th:block th:if="${page == 'opac-reader-history-search'}">
+    <script th:src="@{/js/init/opac-reader-history-search.init.js}"></script>
+  </th:block>
+
+  <!--/* búsqueda autoridades */-->
+  <th:block th:if="${page == 'opac-authority'}">
+    <script th:src="@{/js/init/opac-authority.init.js}"></script>
+  </th:block>
+  <th:block th:if="${page == 'opac-authority-search'}">
+    <script th:src="@{/js/init/opac-authority.init.js}"></script>
+  </th:block>
+
+  <!--/* búsqueda índices */-->
+  <th:block th:if="${page == 'opac-index-search'}">
+    <script th:src="@{/js/init/opac-index-search.init.js}"></script>
+  </th:block>
+  <th:block th:if="${page == 'opac-index-results'}">
+    <script th:src="@{/js/init/opac-index-search.init.js}"></script>
+  </th:block>
+
+  <!--/* búsqueda avanzada */-->
+  <th:block th:if="${page == 'opac-advanced-search'}">
+    <script th:src="@{/js/init/opac-advanced-search.init.js}"></script>
+  </th:block>
+
+  <!--/* lista de resultados de la búsqueda */-->
+  <th:block th:if="${page == 'opac-catalog-results'}">
+    <script th:src="@{/js/init/opac-catalog-results.init.js}"></script>
+  </th:block>
+
+  <th:block th:if="${page == 'opac-reserve'}">
+    <script th:src="@{/js/init/opac-reserve.init.js}"></script>
+  </th:block>
+  <th:block th:if="${page == 'opac-request-reserve'}">
+    <script th:src="@{/js/init/opac-request-reserve.init.js}"></script>
+  </th:block>
+
+  <th:block th:if="${page == 'opac-loan'}">
+    <script th:src="@{/js/init/opac-loan.init.js}"></script>
+  </th:block>
+
+  <!--/* detalle del título */-->
+  <th:block th:if="${page == 'opac-detail'}">
+    <script th:src="@{/js/init/opac-detail.init.js}"></script>
+  </th:block>
+
+  <!--/* páginas de info footer (Ayuda, Información legal...) */-->
+  <th:block th:if="${page == 'opac-info'}"></th:block>
+
+  <!--/* has olvidado tu contraseña */-->
+  <th:block th:if="${page == 'opac-password-reset'}">
+    <script th:src="@{/js/init/opac-password-reset.init.js}"></script>
+  </th:block>
+
+  <th:block th:if="${page == 'opac-password-change'}"></th:block>
+
+  <!--/* Preguntas frecuentes */-->
+  <th:block th:if="${page == 'opac-faq'}">
+    <script th:src="@{/js/init/opac-faq.init.js}"></script>
+  </th:block>
+  <!--/* Política de cookies */-->
+  <th:block th:if="${page == 'opac-cookieterms'}">
+    <script th:src="@{/js/init/opac-cookieterms.init.js}"></script>
+  </th:block>
+  <!--/* Política de protección de datos */-->
+  <th:block th:if="${page == 'opac-dataprivacyterms'}">
+    <script th:src="@{/js/init/opac-dataprivacyterms.init.js}"></script>
+  </th:block>
+  <!--/* Mensajes al usuario */-->
+  <th:block th:if="${page == 'opac-user-message'}">
+    <script th:src="@{/js/init/opac-usermessage.init.js}"></script>
+  </th:block>
+  
+  <!--/* Registro usuario */-->
+  <th:block th:if="${page == 'opac-reader-register'}">
+    <script th:src="@{/js/init/opac-reader-register.init.js}"></script>
+  </th:block>
+
+  <!--/* Paginas `Ver Todos` Proximas actividades y Enlaces de interés */-->
+  <th:block th:if="${page == 'opac-agenda' or page == 'opac-links'}">
+    <script th:src="@{/js/init/opac-viewAll.init.js}"></script>
+  </th:block>
+
+  <!-- /* External Modules */ -->
+  <th:block th:each="fragment:${TECHNICAL_FOOTER}">
+  	<th:block th:insert="${fragment}"></th:block>
+  </th:block>
+
+  <th:block th:if="${cookiesAcceptTermsEnabled}" th:insert="/public/home/fragments/cookies_bar.html" th:with="page=${page}"></th:block>
+
+  <!-- :: /[public/home/technicalfooter.html] -->
+</th:block>

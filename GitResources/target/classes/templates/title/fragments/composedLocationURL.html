@@ -1,0 +1,13 @@
+<!-- :: [title/fragments/composedLocationURL.html] -->
+<th:block th:each="subcampo : ${mvalor.subFields}" >
+   <a class="btn btn-link btn_enlace" th:if="${#strings.equals(subcampo.dollar,locationSubfieldUrl) and mvalor.getMapSubFields()[#strings.substring(locationSubfieldDescription, 0)] != null}" target="_blank" rel="external noopener noreferrer" 
+      th:href="${subcampo.subFieldValue}" th:attr="title='Enlace externo a: '+${mvalor.getMapSubFields()[#strings.substring(locationSubfieldDescription, 0)][0]}">
+        <span th:text="${mvalor.getMapSubFields()[#strings.substring(locationSubfieldDescription, 0)][0]}" class="btn_enlace_title"></span>
+   </a>
+   <a class="btn btn-link btn_enlace" th:if="${#strings.equals(subcampo.dollar,locationSubfieldUrl) and mvalor.getMapSubFields()[#strings.substring(locationSubfieldDescription, 0)] == null}" target="_blank" rel="external noopener noreferrer"
+      th:href="${subcampo.subFieldValue}" th:attr="title='Enlace externo a: '+${subcampo.subFieldValue}">
+        <span th:text="${subcampo.subFieldValue}" class="btn_enlace_title"></span>
+   </a>
+   <span class="page-link_title ml-2" th:if="${#strings.equals(subcampo.dollar,locationSubfieldDescription) and mvalor.getMapSubFields()[#strings.substring(locationSubfieldUrl, 0)] == null}" th:text="${subcampo.subFieldValue}"></span>
+</th:block>
+<!-- :: /[title/fragments/composedLocationURL.html] -->

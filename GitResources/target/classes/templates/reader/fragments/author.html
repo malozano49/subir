@@ -1,0 +1,35 @@
+<th:block th:fragment="frag(item,id)">
+   <!-- :: [reader/fragments/autor.html] -->
+   <div th:data-id="${'author_' + id}" class="item-authority">
+   	<th:block th:if="${(item['t100'] != null or item['t110'] != null or item['t111'] != null or item['t130'] != null)}">
+   		<th:block th:if="${item['t100'] != null}" th:each="mvalor: ${item['t100']}">
+	         <div class="d-block cont_forms_t100">    
+	               <th:block th:insert="/title/estandar/enlace.html"></th:block>
+	         </div>
+	      </th:block>
+	      <th:block th:each="mvalor: ${item['t110']}">
+	         <div th:data-id="${'author_' + id}" class="d-block cont_forms_t110">
+	               <th:block th:insert="/title/estandar/enlace.html"></th:block>
+	         </div>
+	      </th:block>
+	      <th:block th:each="mvalor: ${item['t111']}">
+	         <div th:data-id="${'author_' + id}" class="d-block cont_forms_t111">
+	               <th:block th:insert="/title/estandar/enlace.html"></th:block>
+	         </div>
+	      </th:block>
+	      <th:block th:each="mvalor: ${item['t130']}">
+	         <div th:data-id="${'author_' + id}" class="d-block cont_forms_t130">
+	               <th:block th:insert="/title/estandar/enlace.html"></th:block>
+	         </div>
+	      </th:block>
+   	</th:block>
+   	<th:block th:unless="${(item['t100'] != null or item['t110'] != null or item['t111'] != null or item['t130'] != null)}">
+      <div th:if="${item['t700'] != null}" th:data-id="${'author_' + id}" class="d-block cont_forms_t700">
+   		  <th:block th:each="mvalor: ${item['t700']}">
+        	<th:block th:insert="/title/estandar/enlace.html"></th:block>
+        </th:block>
+      </div>
+   	</th:block>
+   </div>
+   <!-- :: /[reader/fragments/autor.html] -->
+</th:block>

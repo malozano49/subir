@@ -1,0 +1,290 @@
+<!-- :: [/public/catalog/fragments/searchListElement.html] -->
+<li class="media catalog-item border-bottom row no-gutters p-0 p-md-3 py-3" th:id="${'elem_' + item.oaiIdentifierB64}" th:data-id_element="${item.oaiIdentifierB64}">
+	<th:block th:if="${SUBCATALOG_ENABLED}">
+	<th:block  th:each="sub,iter  : ${solrSearchWeb.solrSearch.subCatalog.subCatalogs}">
+            <input type="hidden" th:name="'solrSearch.subCatalog.subCatalogs['+${iter.index}+'].optionSelected'"  th:value="${sub.optionSelected}"/>
+            </th:block>
+            </th:block>
+	<!-- ::  item-portrait -->
+      <div class="item-portrait col-lg-2 col-md-4 col-sm-12">
+         <!--<a th:href="@{${thymeleafMap.get('CATALOG_MAPPING_DETAIL_VIEW_NO_VIEW_NO_PARAM')}+${item.oaiIdentifierB64}(tabId=${solrSearchWeb.solrSearch.tabId})}" class="link align-self-center cont_image"  tabindex="-1" th:title="#{result.detail}" th:aria-label="#{result.detail}">-->
+          <span th:data-href="@{${thymeleafMap.get('CATALOG_MAPPING_DETAIL_VIEW_NO_VIEW_NO_PARAM')}+${item.oaiIdentifierB64}(tabId=${solrSearchWeb.solrSearch.tabId})}" class="link align-self-center cont_image">
+            <th:block th:insert="/public/catalog/fragments/recordImage :: image(${item.oaiIdentifierB64})"></th:block>
+         </span>
+      </div>
+      <!-- :: /. item-portrait -->
+      <!-- ::  media-body  -->
+      <div class="media-body">
+        <div class="cont_titles d-flex justify-content-between">
+          <div class="cont_item_titles d-flex flex-column">
+             <h3 class="h3 item-title" th:unless="${(item==null or item.dtFields['t245ab']==null or item.dtFields['t245ab'][0]==null or #strings.isEmpty(item.dtFields['t245ab'][0]))}">            	
+                <a th:href="@{${thymeleafMap.get('CATALOG_MAPPING_DETAIL_VIEW_NO_VIEW_NO_PARAM')}+${item.oaiIdentifierB64}(tabId=${solrSearchWeb.solrSearch.tabId})}" th:utext="${item.dtFields['t245ab'][0]}" class="link text-left" th:title="${item.getHTMLdata('t245',0)}" th:id="${item.oaiIdentifierB64}"></a>
+             </h3>
+             <th:block th:if="${(item==null or item.dtFields['t245ab']==null or item.dtFields['t245ab'][0]==null or #strings.isEmpty(item.dtFields['t245ab'][0]))}">
+              <h3 class="h3 item-title" th:unless="${(item.marcFields.get('t240')==null or #strings.isEmpty(item.marcFields.get('t240')[0]))}">
+                 <a th:href="@{${thymeleafMap.get('CATALOG_MAPPING_DETAIL_VIEW_NO_VIEW_NO_PARAM')}+${item.oaiIdentifierB64}(tabId=${solrSearchWeb.solrSearch.tabId})}" th:utext="${item.marcFields.get('t240')[0]}" class="link text-left" th:title="${item.getHTMLdata('t240',0)}" th:id="${item.oaiIdentifierB64}"></a>
+              </h3>
+             </th:block>
+             <div class="item-authority">
+             	<th:block th:if="${item.dtFields.get('t100ad') != null}" >
+            	     <th:block th:if="${item.dtFields.get('t100ad') != null}" th:include="/public/catalog/fragments/ltfield :: frag(lfield='t100ad')"></th:block>             
+             </th:block>
+                <th:block th:if="${item.marcFields.get('t110') != null}" >
+                     <th:block th:if="${item.ltFields.get('lt110') != null}" th:include="/public/catalog/fragments/ltfield :: frag(lfield='lt110')"></th:block>
+                </th:block>
+                <th:block th:if="${item.marcFields.get('t111') != null}" >
+                   <th:block th:if="${item.ltFields.get('lt111') != null}" th:include="/public/catalog/fragments/ltfield :: frag(lfield='lt111')"></th:block>
+                </th:block>
+                <th:block th:if="${item.marcFields.get('t700') != null}" >
+                   <th:block th:if="${item.ltFields.get('lt700') != null}" th:include="/public/catalog/fragments/ltfield :: frag(lfield='lt700')"></th:block>
+                </th:block>
+                <th:block th:if="${item.marcFields.get('t710') != null}" >
+                      <!-- <span th:text="${item.ltFields.get('lt710')}"></span> -->
+                      <th:block th:if="${item.ltFields.get('lt710') != null}" th:include="/public/catalog/fragments/ltfield :: frag(lfield='lt710')"></th:block>
+                </th:block>
+                <th:block  th:if="${item.marcFields.get('t711') != null}" >
+                      <th:block th:if="${item.ltFields.get('lt711') != null}" th:include="/public/catalog/fragments/ltfield :: frag(lfield='lt711')"></th:block>
+                </th:block>
+             </div>
+             <!-- :: /.item-authority -->
+             <div th:if="${item.marcFields.get('t260') != null or item.marcFields.get('t264') != null}" class="item-publication d-flex mt-3">
+                <th:block th:if="${item.marcFields.get('t260') != null}" th:each="mvalor: ${item.marcFields.get('t260')}">
+                        <th:block th:utext="${mvalor} + ' '"></th:block>
+                </th:block>
+                <th:block th:if="${item.marcFields.get('t264') != null}" th:each="mvalor: ${item.marcFields.get('t264')}">
+                   <th:block th:utext="${mvalor} + ' '"></th:block>
+                </th:block>
+             </div>
+             <!-- :: /.item-publication -->
+          </div>
+          <!-- :: /.cont_item_titles -->
+          <div class="item-action-icons d-flex flex-row align-items-start">
+            <button type="button"
+              th:class="'btn_message_js btn_favorite btn btn-secondary'+${#sets.size(favorites)>=favoriteLimit?' btn_limite_alcanzado':''}"
+              th:classappend="${#sets.contains(favorites, item.oaiIdentifierB64)}?active:''"
+              data-btn_action="favorite_toggle"
+              th:data-message_activo="#{summary.favorite.add.title}"
+              th:data-message_no_activo="#{summary.favorite.delete.title}"
+              th:data-message_limit_warning="#{favorite.list.limit.exceeded}"
+              th:attr="data-id=${item.oaiIdentifierB64},
+                aria-label=${#sets.contains(favorites, item.oaiIdentifierB64)}?#{summary.favorite.add.title} :#{summary.favorite.title},
+                title=${#sets.contains(favorites, item.oaiIdentifierB64)}?#{summary.favorite.add.title} :#{summary.favorite.title},
+                data-title_initial=#{summary.favorite.title},
+                data-fav-limit=${favoriteLimit},
+                data-fav-size=${#sets.size(favorites)},
+                data-fav-message=#{favorite.limit}"
+            >
+              <!-- :: Botón en la vista de favoritos y resultados de búsqueda -->
+              <span class="icono far fa-bookmark" aria-hidden="true"></span>
+            </button>
+            
+          
+          <form class="recommended_modal_form_list_items" th:action="@{${thymeleafMap.get('READER_FAVORITE')}}" method="POST">
+          	<input type="hidden" name="id" th:value="${item.oaiIdentifierB64}">
+          	<input type="hidden" name="action" th:value="${!#sets.contains(favorites, item.oaiIdentifierB64)}">
+          </form>
+         
+            
+            <!-- :: BOTONES RECOMENDAR -->
+            <th:block th:insert="/title/fragments/recommendedBtnModal" th:with="fragment_insert='searchListElement'"></th:block>
+            <!-- :: /BOTONES RECOMENDAR -->
+            <a class="btn_detail_item_share btn btn-secondary" th:href="@{${thymeleafMap.get('CATALOG_MAPPING_DETAIL_VIEW_NO_VIEW_NO_PARAM')}+${item.oaiIdentifierB64}(tabId=${solrSearchWeb.solrSearch.tabId})}  + '#share'" th:aria-label="#{summary.social.network.access.title}" th:title="#{summary.social.network.access.title}">
+            <!-- <a class="btn_detail_item_share btn btn-secondary" href="#" aria-label="Acceder a la zona de redes sociales para compartir este item" title="Acceder a la zona de redes sociales para compartir este item"> -->
+              <span class="icono fas fa-share-alt" aria-hidden="true"></span>
+            </a>
+
+            <a  th:if="${userManagementEnabled}" sec:authorize="!isAuthenticated()" class="btn_detail_item_title_list btn btn-secondary" th:href="@{${thymeleafMap.get('READER_MY_LIST_MODAL_SEARCH')}(tabId=${solrSearchWeb.solrSearch.tabId}, detailId=${item.oaiIdentifierB64})}"
+              th:aria-label="#{list.title.modal.text.button}" th:title="#{list.title.modal.text.button}">
+              <span class="icono fas fa-list" aria-hidden="true"></span>
+            </a>
+
+            <button sec:authorize="isAuthenticated() and principal.hasRole(#vars.thymeleafMap.get('READER_AUTHORITY'))"
+              th:class="'btn_detail_item_title_list btn-secondary btn modal_js ' + ${item.myList != null && #lists.size(item.myList) > 0? 'active':''}"
+              data-modal_tipo="light"
+              data-modal_size="modal-lg"
+              th:data-modal_target="'#modal_title_list_'+${item.oaiIdentifierB64}"
+              data-modal_discriminador="modal_detail_item_title_list"
+              th:data-modal_title="#{list.title.modal.text.button}"
+              th:data-modal_html="'#list_title_form_'+${item.oaiIdentifierB64}"
+              data-modal_footer="false"
+              th:aria-label="#{list.title.modal.text.button}" th:title="#{list.title.modal.text.button}" th:id="'b_title_list_'+${item.oaiIdentifierB64}">
+              <span th:class="'icono fas fa-list ' + ${item.myList != null && #lists.size(item.myList) > 0? 'active' : ''}" aria-hidden="true"></span>
+            </button>
+
+            <div th:id="'list_title_form_'+${item.oaiIdentifierB64}" class="list_title_form d-none" aria-hidden="true">
+              <form th:action="@{${thymeleafMap.get('READER_API_ADD_LIST')}}" method="POST">
+                <input	type="hidden" name="id" th:value="${item.oaiIdentifierB64}">
+
+                <fieldset th:class="'content_myList ' + ${(item.myList != null && #lists.size(item.myList) > 0) ? 'd-flex flex-column col-md-12 mb-3' : 'd-none'}">
+                	<h3 th:text="#{list.title.modal.list}"></h3>
+                  <div class="cont_list-group d-flex border w-100 mt-3 mb-3">
+                    <ul th:id="'myList_'+${item.oaiIdentifierB64}" class="list-group d-flex col-12">
+                      <th:block th:each="myL : ${item.myList}">
+                       <input	type="hidden" name="titleId" th:value="${item.oaiIdentifierB64}">
+                       <input	type="hidden" name="idList" th:value="${myL.id}">
+                      <li th:id="'list_'+${item.oaiIdentifierB64}+'_'+${myL.id}" class="list_item">
+                        <span class="list_title" th:text="${myL.name}" />
+  						<button type="button" th:data-listid="${myL.id}" class="deleteTitleListItem btn btn-secondary" th:title="#{list.title.modal.delete.button}" th:aria-label="#{list.title.modal.delete.button}">
+                          <span class="icono fas fa-trash" aria-hidden="true" ></span>
+                        </button>
+                      </li>
+                      </th:block>
+                    </ul>
+                  </div>
+                </fieldset>
+                <!-- :: /.content_myList -->
+
+
+
+                <div class="content_old_title_list col-md-12 mb-3">
+                  <div class="alert alert-info w-100">
+                    <span class="alert_titulo sr-only" th:text="#{mylibrary.request.info}"></span>
+                    <span class="alert_texto" th:text="#{list.title.modal.info}"></span>
+                  </div>
+                  <!-- :: /.alert-info -->
+                  <fieldset>
+                    <legend th:text="#{title.list.select}"></legend>
+                    <div class="cont_form_group d-flex">
+                      <div class="form-group cont_selectPicker col-md-12 pl-0 pr-0">
+                        <label class="sr-only" th:for="'idList_select_'+${item.oaiIdentifierB64}" th:text="#{title.list.select.title}"></label>
+                        <select th:id="'idList_select_'+${item.oaiIdentifierB64}" name="idList" class="selectMyList form-control" >
+                          <option value="" selected th:text="#{title.list.option.no.selection}"></option>
+                          <option th:each="list : ${listsTitle}" th:value="${list.id}" th:text="${list.name}" />
+                        </select>
+                        <span class="bmd-help" th:text="#{title.list.select.help}"></span>
+                      </div>
+                      <!-- :: /.form-group.cont_selectPicker -->
+                    </div>
+                    <!-- :: /.cont_form_group -->
+                  </fieldset>
+                </div>
+                <!-- :: /.content_old_title_list -->
+
+                <div class="content_new_title_list col-md-12 mb-3">
+                  <div class="alert alert-info w-100">
+                    <span class="alert_titulo sr-only" th:text="#{mylibrary.request.info}"></span>
+                    <span class="alert_texto" th:text="#{list.title.modal.add.list.info}"></span>
+                  </div>
+                  <!-- :: /.alert-info -->
+                  <fieldset>
+                    <legend th:text="#{list.title.modal.text.title}"></legend>
+                    <div class="cont_form_group d-flex">
+                      <div class="form-group col-md-12 pl-0 pr-0">
+                        <label class="bmd-label-floating" th:text="#{title.list.name}" th:for="'listName_input_'+${item.oaiIdentifierB64}"></label>
+                        <input th:id="'listName_input_'+${item.oaiIdentifierB64}" class="form-control" type="text" name="listName" value=""/>
+                        <span class="bmd-help" th:text="#{title.list.name.help}"></span>
+                      </div>
+                      <!-- :: /.form-group -->
+                    </div>
+                    <!-- :: /.cont_form_group -->
+                  </fieldset>
+                </div>
+                <!-- :: /.content_new_title_list -->
+
+                <div class="cont_alert col-md-12" aria-live="polite" aria-atomic="true">
+                  <div class="alert alert-process w-100 mt-3 mb-0 d-none">
+                    <span class="alert_titulo sr-only"></span>
+                    <span class="alert_texto"></span>
+                  </div>
+                  <!-- :: /.alert -->
+                </div>
+                <!-- :: /.cont_alert -->
+
+                <div class="cont_botonera_form col-md-12 d-flex justify-content-center mt-3">
+                  <button type="button" class="btn btn-outline-secondary mr-2" data-dismiss="modal" th:text="#{modal.exit}" />
+                  <button type="submit" class="btn btn-primary addTitleListItem mr-2" th:text="#{list.title.select.add}"></button>
+                  <button type="button" class="btn btn-primary btn-old-title-list">
+                    <span class="icono fas fa-chevron-left" aria-hidden="true"></span>
+                    <span class="" th:text="#{list.title.modal.add.list}"></span>
+                  </button>
+                  <button type="button" class="btn btn-primary btn-add-title-list">
+                    <span class="" th:text="#{list.title.modal.add.button}"></span>
+                    <span class="icono fas fa-chevron-right" aria-hidden="true"></span>
+                  </button>
+                </div>
+                <!-- :: /.cont_botonera_form -->
+
+              </form>
+            </div>
+
+            <!-- my lists icons -->
+            <th:block th:if="${thymeleafMap.get('MY_LIST_ITEMS') == solrSearchWeb.solrSearch.queryType}" th:insert="/reader/titleList/fragments/searchListElement_mylist"/>
+            <!-- /my lists icons -->
+
+          </div>
+          <!-- :: /.item-action-icons -->
+        </div>
+        
+        <!-- :: /.cont_titles -->
+        <div class="cont_datos col-12 d-flex">
+      	
+        	 <div class="cont_item-format col-4 pl-0 pr-0 pt-3">
+        	 <div class="comments comments--search-results">	        
+	        		<!--<th:block th:with="comments = ${item}"  th:insert="/title/comments/commentsResults.html"></th:block>   -->	        	
+        		</div>
+             	<span class="item-format pl-0">
+                	<th:block th:if="${item.recordFormatType.value != 'undefined'}" th:text="#{desc.format. + ${item.recordFormatType.value}}"/>
+            	 </span>
+          	</div>
+         
+          <div class="item-location desktop_flex col-8">
+	      		<th:block th:if="${item.titn != null}">
+	              <div th:if="${item.numPlaces > 0}" class="cont_location"> 
+	                  <span class="icono fas fa-map-marker-alt mr-1"></span>
+	                  <span class="cont_titulo mr-2" th:text="#{result.localized.at}"></span>
+	                  <a class="link" th:href="@{${thymeleafMap.get('CATALOG_MAPPING_DETAIL_VIEW_NO_VIEW_NO_PARAM')}+${item.oaiIdentifierB64}+'#copias'(tabId=${solrSearchWeb.solrSearch.tabId})}" th:text="${item.numPlaces} + ' ' + #{result.locations}" th:if="${item.numPlaces > 1}" th:title="${item.numPlaces} + ' ' + #{result.locations}"/>
+	                  <a class="link" th:href="@{${thymeleafMap.get('CATALOG_MAPPING_DETAIL_VIEW_NO_VIEW_NO_PARAM')}+${item.oaiIdentifierB64}+'#copias'(tabId=${solrSearchWeb.solrSearch.tabId})}" th:text="${item.titleLocationDescription}" th:if="${item.numPlaces == 1 }" th:title="${item.titleLocationDescription}"/>
+	              </div>
+	              <!-- :: /.cont_location -->
+					<th:block th:if="${item.marcFields.get('t856') != null or item.hasCirculation}">
+			              <div class="cont_num_ejemplares">
+			                <a class="link" th:href="@{${thymeleafMap.get('CATALOG_MAPPING_DETAIL_VIEW_NO_VIEW_NO_PARAM')}+${item.oaiIdentifierB64}+'#copias'(tabId=${solrSearchWeb.solrSearch.tabId})}" th:if="${item.totalCopiesByPage != null and item.totalCopiesByPage > 0}" th:aria-label="#{result.copies} + ' ('  +  ${item.totalCopiesByPage} + ')'">
+			                    <th:block th:text="#{result.copies} + ' :'  + ${item.totalCopiesByPage}"/>
+			                </a>
+			              </div>
+			              <!-- :: /.cont_num_ejemplares -->
+			
+			              <div class="cont_disponibles">
+			                <a class="link" th:href="@{${thymeleafMap.get('CATALOG_MAPPING_DETAIL_VIEW_NO_VIEW_NO_PARAM')}+${item.oaiIdentifierB64}+'#copias'(tabId=${solrSearchWeb.solrSearch.tabId},setAvailable='true')}" th:if="${item.availableCopies != null and item.totalCopiesByPage != null and item.totalCopiesByPage > 0}" th:aria-label="#{result.copies.available} + ' ('  +  ${item.availableCopies} + ')'">
+			                    <th:block th:text="#{result.copies.available} + ': ' + ${item.availableCopies}"/>
+			                </a>
+			              </div>
+	              	</th:block>
+	              <!-- :: /.cont_disponibles -->
+	           </th:block>
+	           <th:block th:if="${item.titn == null}">
+	              <div class="cont_location">
+	                <span class="icono fas fa-map-marker-alt mr-1"></span>
+	                <span class="cont_titulo mr-2" th:text="#{result.localized.at}"></span>
+	                <a class="link" th:href="@{${thymeleafMap.get('CATALOG_MAPPING_DETAIL_VIEW_NO_VIEW_NO_PARAM')}+${item.oaiIdentifierB64}+'#copias'(tabId=${solrSearchWeb.solrSearch.tabId})}" th:text="#{result.location.online}" th:aria-label="#{result.location.online}"/>
+	             </div>
+	             <span th:text="${item.marcFields.get('t856') != null}"></span>
+	             <span th:text="${item.tFields.get('t856') != null}"></span>
+	             
+		             <!-- :: /.cont_location -->
+		             <div class="cont_num_ejemplares">
+		                <a class="link" th:href="@{${thymeleafMap.get('CATALOG_MAPPING_DETAIL_VIEW_NO_VIEW_NO_PARAM')}+${item.oaiIdentifierB64}+'#copias'(tabId=${solrSearchWeb.solrSearch.tabId})}" th:aria-label="#{result.copies} + ' : 1'">
+		                    <span th:text="#{result.copies} + ' : 1'"></span>
+		                </a>
+		             </div>
+		             <!-- :: /.cont_num_ejemplares -->
+		             <div class="cont_disponibles">
+		               <a class="link" th:href="@{${thymeleafMap.get('CATALOG_MAPPING_DETAIL_VIEW_NO_VIEW_NO_PARAM')}+${item.oaiIdentifierB64}+'#copias'(tabId=${solrSearchWeb.solrSearch.tabId})}" th:aria-label="#{result.copies.available} + ' : 1'">
+		                  <span th:text="#{result.copies.available} + ' : 1'"></span>
+		               </a>
+		              </div>	              
+	              <!-- :: /.cont_disponibles -->
+	            </th:block>
+	        </div>          
+          <!-- :: /.item-location -->
+        </div>
+        <!-- :: /.cont_datos -->
+      </div>
+      <!-- :: /.media-body -->
+      <!-- :: Comments -->
+      <div class="comments comments--search-results col-lg-12 col-md-12 col-sm-12">	        
+	        <th:block  th:insert="/title/comments/commentsResults.html"></th:block>   	
+        </div>
+        <!-- :: /Comments -->
+</li>
+<!-- :: /[/public/catalog/fragments/searchListElement.html] -->

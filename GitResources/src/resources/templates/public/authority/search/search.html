@@ -1,0 +1,72 @@
+<!-- :: /[public/authority/search/search.html] -->
+<div class="quick_search quick_search_autoridad">
+  <div class="catalog-search simple-search container my-3">
+    <h2 class="page_title sr-only" id="sct_autorithy_search_title">
+      <span class="icono fas fa-users mr-1" aria-hidden="true"></span>
+      <span class="titulo" th:text="#{auth.search.area.title}"></span>
+    </h2>
+    <div class="cont_form_quick_search">
+      <form method="post" id="solrSearch" name="solrSearchWeb"
+        th:action="@{${thymeleafMap.get('AUTHORITY_SEARCH_ACTION')}}" th:object="${solrSearchWeb}" role="search">
+
+        <input type="hidden" name="solrSearch.solrCollection" id="solrCollection.form.quick" value="AUTHORITY" />
+        <input type="hidden" name="solrSearch.queryType" id="queryType.form.quick"
+          th:value="${thymeleafMap.get('AUTHORITY')}" />
+
+        <div class="cont_quick_search card">
+          <div class="card-header">
+            <p class="card-title">
+              <span class="icono fas fa-users mr-2" aria-hidden="true"></span>
+              <span class="titulo" th:text="#{auth.search.area.title}"></span>
+            </p>
+          </div>
+
+          <div class="card-body">
+            <div class="form-row">
+              <div class="form-group cont_input w-100">
+
+                <label id="mainAccessLinkLabel" class="sr-only" for="mainAccessLink"
+                  th:text="#{access.quicks.find.term}"></label>
+
+                <input type="text" id="mainAccessLink" class="form-control" name="solrSearch.query"
+                  th:value="((${solrSearchWeb.solrSearch}!=null)?${solrSearchWeb.solrSearch.query}:'')"
+                  th:placeholder="#{access.quicks.find.auth}" />
+
+              </div>
+            </div>
+            <!-- /.form-row -->
+            <fieldset>
+
+              <legend class="cont_title font-weight-bold my-3">
+                <span th:text="#{search.simple.filters.title}"></span>
+              </legend>
+
+              <th:block th:insert="/public/authority/fragments/select" />
+
+            </fieldset>
+          </div>
+
+          <div class="card-footer">
+            <div class="cont_botonera_quick_search justify-content-end">
+              <div>
+                <button type="submit" class="btn btn-outline-primary btn-search order-2"
+                  th:title="#{access.quicks.search}">
+                  <span th:text="#{button.search}"></span>
+                  <span class="icono fas fa-search-plus pl-2" aria-hidden="true"></span>
+                </button>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+
+      </form>
+    </div>
+    <!-- ::/.cont_form_quick_search -->
+  </div>
+  <!-- :: /.simple-search -->
+</div>
+<!-- :: /. container-->
+
+
+<!-- :: /[public/authority/search/search.html] -->

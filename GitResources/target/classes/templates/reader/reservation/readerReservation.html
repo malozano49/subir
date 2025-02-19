@@ -1,0 +1,187 @@
+<!-- :: [reader/reservation/readerReservation.html] -->
+<section class="card my-library-section reader-reservations item-detail container pb-4" aria-labelledby="readerReservation_title">
+  <h2 id="readerRequest_title" class="sr-only" th:text="#{mylibrary.reservation.section.title}"></h2>
+
+	<nav class="menuLoans" aria-label="myLibrary_menu" th:insert="/reader/fragments/upMenu" />
+
+	<article class="detail-copies article border pb-0" aria-labelledby="readerReservation_title">
+    <h3 id="readerReservation_title" class="d-block font-weight-bold fieldset__title">
+      <span class="icono far fa-calendar-plus mr-1" aria-hidden="true"></span>
+      <th:block th:text="#{mylibrary.reservation.section.title}"/>
+    </h3>
+
+    <th:block th:if="not ${readerRequests.isEmpty()}" th:each="requestEntry : ${readerRequests}">
+
+      <div th:id="'cont_table_'+${requestEntry.key}" th:if="${not #lists.isEmpty(requestEntry.value)}" class="librarys cont_table_big_00 w-100"  aria-live="polite" aria-atomic="true">
+
+        <!-- Origen de las solicitudes -->
+        <th:block th:if="${requestEntry.value != null} and not ${requestEntry.value.isEmpty()}">
+          <span th:if="${requestEntry.key==thymeleafMap.get('ABSYSNET_SOURCE')}" th:id="'titulo_situacion_'+ ${requestEntry.key}" class="location_title" th:text="#{mylibrary.loan.library.copies}"></span>
+          <span th:unless="${requestEntry.key==thymeleafMap.get('ABSYSNET_SOURCE')}" th:id="'titulo_situacion_'+ ${requestEntry.key}" class="location_title" th:text="${requestEntry.key}"></span>
+        </th:block>
+
+        <th:block th:each="request, iterStat : ${requestEntry.value}">
+
+          <th:block th:if="${iterStat.index == 0 or (iterStat.index > 0 and requestEntry.value[iterStat.index-1].copyLibrary.description != request.copyLibrary.description)}">
+            <h4 class="tb_00_legend col-md-12 mb-2">
+              <span class="cont_title">
+                <span class="tb_00_legend-title font-weight-bold" th:text="#{copy.library.label} + ':'"></span>
+                <span class="tb_00_legend-value" th:text="${request.copyLibrary.description}"></span>
+              </span>
+            </h4>
+          </th:block>
+
+          <div th:data-id="'table_'+${requestEntry.key}" class="table_big_00 col-md-12 pl-0 pr-0">
+            <ul class="tb_00_titles desktop_flex d-flex col-md-12 mb-2" th:if="${iterStat.index == 0 or (iterStat.index > 0 and requestEntry.value[iterStat.index-1].copyLibrary.description != request.copyLibrary.description)}">
+              <li class="type_title col_branchDescription">
+                <span class="title font-weight-bold" th:text="#{mylibrary.reservation.branch}"></span>
+              </li>
+              <li class="type_title col_title">
+                <span class="title font-weight-bold" th:text="#{mylibrary.reservation.title}"></span>
+              </li>
+              <li class="type_title col_author">
+                <span class="title font-weight-bold" th:text="#{mylibrary.reservation.author}"></span>
+              </li>
+              <li class="type_title col_createDate">
+                <span class="title font-weight-bold" th:text="#{mylibrary.reservation.create.date}"></span>
+              </li>
+              <li class="type_title col_endDate">
+                <span class="title font-weight-bold" th:text="#{mylibrary.reservation.end.date}"></span>
+              </li>
+              <li class="type_title col_desk">
+                <span class="title font-weight-bold" th:text="#{mylibrary.reservation.desk}"></span>
+              </li>
+              <li class="type_title col_reservationOrder">
+                <span class="title font-weight-bold" th:text="#{mylibrary.request.info}"></span>
+              </li>
+              <li class="type_title col_botonera">
+                <span class="title font-weight-bold"></span>
+              </li>
+            </ul>
+
+            <div class="cont_data col-md-12">
+              <ul class="tb_00_data d-flex col-md-12 m-0 p-0">
+                <li class="type_data col_branchDescription">
+                  <span class="title mobile" th:text="#{mylibrary.reservation.branch}"></span>
+                  <span class="data" th:text="${request.copyBranch.description}"></span>
+                </li>
+
+                <li class="type_data col_title">
+                  <span class="title mobile" th:text="#{mylibrary.reservation.title}"></span>
+                  <a class="data" th:href="@{/public/catalog/detail/{id}(id=${request.idDetalle})}">
+                    <th:block th:if="${request.tfields !=null}" th:insert="/reader/fragments/title :: frag(${request.tfields}, ${request.idDetalle})" />
+                  </a>
+                </li>
+
+                <!-- :: Este contenedor lleva boton de despliegue para la version movil -->
+                <li class="type_data cont_btn_desplegar col_author">
+                  <span class="title mobile" th:text="#{mylibrary.reservation.author}"></span>
+                  <div class="data" th:if="${request.tfields !=null}" th:insert="/reader/fragments/author :: frag(${request.tfields}, ${request.idDetalle})"/>
+                  <!-- :: Este boton solo aparece en mobile y en el attr data-target se encuentran las clases a ocultar (con el caracter '.') separadas por el caracter ',' -->
+                  <button type="button" class="tb_00_btn_collapse mobile" data-target=".col_createDate,.col_endDate,.col_desk,.col_reservationOrder,.col_botonera" aria-expanded="false" aria-label="Expandir info">
+                    <span class="icono fa text-danger fa-angle-down" aria-hidden="true"></span>
+                  </button>
+                </li>
+
+                <!-- :: Este contenedor esta oculto en version movil -->
+                <li class="type_data col_createDate ">
+                  <span class="title mobile" th:text="#{mylibrary.reservation.create.date}"></span>
+                  <span class="data value_date" th:text="${#dates.format(request.creationDate, 'dd/MM/yyyy')}"></span>
+                </li>
+                <!-- :: Este contenedor esta oculto en version movil -->
+                <li class="type_data col_endDate">
+                  <span class="title mobile" th:text="#{mylibrary.reservation.end.date}"></span>
+                  <span class="data value_date" th:text="${#dates.format(request.finalDate, 'dd/MM/yyyy')}"></span>
+                </li>
+                <!-- :: Este contenedor esta oculto en version movil -->
+                <li class="type_data col_desk">
+                  <span class="title mobile" th:text="#{mylibrary.reservation.desk}"></span>
+                  <span class="data value_date" th:text="${request.deskDescription}"></span>
+                </li>
+                <!-- :: Este contenedor esta oculto en version movil -->
+                <li class="type_data col_reservationOrder">
+                  <span class="title mobile" th:text="#{mylibrary.request.info}"></span>
+                  <th:block th:if="${request.requestState != null}">
+                  	<div class="data data_order text-success" th:if="${request.requestState == 'E'}" th:title="#{mylibrary.request.state.available}">
+                        <div class="text-left">
+                          <span class="icono fas fa-info-circle mr-1" aria-hidden="true"></span>
+                          <span th:text="#{mylibrary.request.state.available.until}+' '+${#dates.format(request.finalDate, 'dd/MM/yyyy')}"></span>
+                        </div>
+  	                </div>
+  	                <div class="data data_order text-danger" th:if="${request.requestState == 'X'}" th:title="#{mylibrary.request.state.error.title}">
+                        <div class="text-left">
+                          <span class="icono fas fa-exclamation-circle value" aria-hidden="true"></span>
+                          <span th:text="#{mylibrary.request.state.error.title}"></span>
+                          <span th:text="#{mylibrary.request.state.error.advice}"></span>
+                        </div>
+  	                </div>
+  	                <div class="data data_order text-info" th:if="${request.requestState != 'E' and request.requestState != 'X'}" th:title="#{mylibrary.request.state.pending}">
+                      <div class="text-left">
+                        <span class="icono fas fa-exclamation-circle value" aria-hidden="true"></span>
+                        <span th:text="#{mylibrary.request.state.pending}"></span>
+                      </div>
+                    </div>
+                  </th:block>
+                  <th:block th:if="${request.requestState == null}">
+  	                <div class="data data_order text-info" th:if="${#dates.format(request.activationDate, 'dd/MM/yyyy') ==null}" th:title="#{mylibrary.request.state.pending}">
+                      <div class="text-left">
+                        <span class="icono fas fa-exclamation-circle value" aria-hidden="true"></span>
+                        <span th:if="${#dates.format(request.activationDate, 'dd/MM/yyyy') ==null}"
+                          th:text="#{mylibrary.request.order.part.1} + ' ' + ${request.numberOfReservesBefore} + ' ' + #{mylibrary.request.order.part.2}"></span>
+                      </div>
+                    </div>
+  	                <div class="data data_order text-success" th:if="${#dates.format(request.activationDate, 'dd/MM/yyyy') !=null}" th:title="#{mylibrary.request.state.available}">
+                        <div class="text-left">
+                          <span class="icono fas fa-info-circle value ml-1" aria-hidden="true"></span>
+                          <span th:text="#{mylibrary.request.state.available.until} +' '+ ${#dates.format(request.finalDate, 'dd/MM/yyyy')}"></span>
+                        </div>
+  	                </div>
+                  </th:block>
+                </li>
+                <!-- :: Este contenedor esta oculto en version movil -->
+                <li class="type_data col_botonera">
+                  <span class="title mobile"></span>
+                  <div class="cont_botonera d-flex justify-content-center align-items-center w-100" th:if="${hasReservationAllowed and request.activationDate == null and request.requestState == null}">
+
+                    <button class="btn_cancel_reservation btn btn-sm btn-outline-primary modal_js"
+                      th:attr="data-id=''+${request.id},data-source=''+${request.source}"
+                      th:text="#{mylibrary.reservation.anular}"
+                      th:aria-label="#{mylibrary.reservation.anular}"
+                      th:data-modal_target="'#modal_anular_reserva_' + ${request.id}"
+                      th:data-modal_title="#{mylibrary.reservation.anular.modal.title}"
+                      data-modal_size="modal-md"
+                      data-modal_footer="false"
+                      data-modal_tipo="warning"
+                      data-modal_discriminador="modal_cancel_reservation"
+                      th:data-modal_html="'#modal_html_cancelReservationModal_' + ${request.id}"
+                    ></button>
+
+                  </div>
+                  <!-- :: /.cont_botonera -->
+                  <!-- :: contenido interno de la modal del botón .btn_cancel_reservation -->
+                  <div th:id="'modal_html_cancelReservationModal_' + ${request.id}" class="d-none" aria-hidden="true" th:if="${hasReservationAllowed and request.activationDate == null and request.requestState == null}">
+                    <p th:text="#{mylibrary.reservation.anular.confirmation}"></p>
+                    <div class="modal-footer">
+                      <button type="button" class="bs-modal-cancel btn btn-outline-secondary" data-dismiss="modal" th:text="#{mylibrary.reservation.anular.modal.button.cancel}">
+                      </button>
+                      <button type="button" class="bs-modal-go btn btn-outline-primary" th:text="#{mylibrary.reservation.anular}">
+                      </button>
+                    </div>
+                  </div>
+                  <!-- :: /contenido interno de la modal del botón .btn_cancel_reservation -->
+                </li>
+              </ul>
+            </div>
+            <!-- :: /.cont_data -->
+          </div>
+          <!-- :: /.table_big_00 -->
+        </th:block>
+      </div>
+      <!-- :: /.cont_table_big_00 -->
+      </th:block>
+
+	</article>
+
+</section>
+
+<!-- :: /[reader/reservation/readerReservation.html] -->

@@ -1,0 +1,19 @@
+<!-- :: [public/search/copySourcesSelect.html] -->
+
+<div class="cont_form_group origen-selec type_copySources">
+	<div class="form-group cont_selectPicker cont_select selectPicker_selectized select-origins" id="select-origins">
+		<label for="solrSearch.origin" th:text="#{search.source.copies.from}" class="sr-only"></label>
+		<select class="sub-cata-select bootstrap-select form-control select_selectized" name="solrSearch.origin" id="solrSearch.origin">
+			<option value="" th:text="#{search.source.any.source}"
+				th:selected="${solrSearchWeb == null or solrSearchWeb.solrSearch.origin == '' or solrSearchWeb.solrSearch.origin == null}">
+			</option>
+			<option value="AbsysNET" th:text="Catálogo"
+				th:selected="${solrSearchWeb != null and solrSearchWeb.solrSearch.origin != null and solrSearchWeb.solrSearch.origin == 'AbsysNET'}">
+			</option>
+			<option class="" th:each="origin : ${solrSearchWeb.originList}" th:value="${origin}" th:text="${origin}"
+				th:selected="${solrSearchWeb != null and solrSearchWeb.solrSearch.origin != null and solrSearchWeb.solrSearch.origin == origin}">
+			</option>
+		</select>
+
+	</div>
+</div>

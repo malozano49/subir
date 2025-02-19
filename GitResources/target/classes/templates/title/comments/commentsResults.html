@@ -1,0 +1,10 @@
+<!-- :: /title/comments/commentsResults.html -->
+<div class="cont_titulo">
+	<th:block th:if="${valorationsEnabled}">
+		<!-- <th:block th:if="${comments.avgScore}!=0.0" th:text="#{comment.text.media.punctuation}+ ' '+${comments.avgScore}"></th:block> -->
+	</th:block>
+	<th:block th:if="${commentsEnabled}">
+		<th:block th:with="comment = ${item}, avg=${item.avgScore},numComments = ${item.numComments} "  th:insert="/title/comments/toolBarComments.html"></th:block>
+	</th:block>
+</div>
+<!-- :: /title/comments/commentsResults.html -->

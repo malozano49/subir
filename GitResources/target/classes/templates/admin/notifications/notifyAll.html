@@ -1,0 +1,68 @@
+<!-- :: [(OpacNotifications) admin/notifications/notifyAll.html] -->
+
+<article class="widget">
+  <h3 class="widget-header mb-4">
+    <span class="icono fas fa-cogs" aria-hidden="true"></span>
+    <th:block th:text="#{administration.notify.title}"/>
+  </h3>
+  <div class="cont_alert">
+    <div class="alert alert-success" role="alert" aria-atomic="true">
+     <span class="alert_titulo" th:text="#{alert.success.title}"></span>
+     <span class="alert_texto">.alert.alert-success</span>
+    </div>
+  </div>
+  <!-- FIXME: this value needs to come from ThymeleafMap, not being hardcoded -->
+  <form id="form_notifications" th:action="@{${thymeleafMap.get('ADMIN_NOTIFICATIONS_NOTIFY_ALL_PATH')}}" method="post" autocomplete="off">
+    <fieldset class="col-md-12 pr-0 pl-0 mb-3">
+      <legend class="w-auto" th:text="#{administration.notifications.notify.all}"></legend>
+      <div class="cont_form_group cont_notify_title pr-0 mt-3">
+        <div class="form-group">
+          <label for="notifyTitle" th:text="#{administration.notifications.notify.all.title}" class="bmd-label-floating"></label>
+          <div class="input-group">
+            <input id="notifyTitle" type="text" name="title" class="form-control" required  aria-required="true" maxlength="60"/>
+          </div>
+          <!-- /.input-group -->
+          <span id="notifyTitleHelp" class="bmd-help" th:text="#{administration.notifications.notify.all.title.help}"/>
+        </div>
+        <!-- :: /.form-group -->
+      </div>
+
+      <div class="cont_form_group cont_notify_message pr-0">
+        <div class="form-group">
+          <label for="notifyMessage" th:text="#{administration.notifications.notify.all.message}" class="bmd-label-floating"></label>
+          <div class="input-group">
+            <input id="notifyMessage" type="text" name="text" class="form-control" aria-required="true" maxlength="180"/>
+          </div>
+          <!-- /.input-group -->
+          <span id="notifyMessageHelp" class="bmd-help" th:text="#{administration.notifications.notify.all.message.help}"/>
+        </div>
+        <!-- :: /.form-group -->
+      </div>
+
+      <div class="cont_form_group cont_notify_link pr-0">
+        <div class="form-group">
+          <label for="notifyLink" th:text="#{administration.notifications.notify.all.link}" class="bmd-label-floating"></label>
+          <div class="input-group">
+            <input id="notifyLink" type="text" name="link" class="form-control" aria-required="true" maxlength="180"/>
+          </div>
+          <!-- /.input-group -->
+          <span id="notifyLinkHelp" class="bmd-help" th:text="#{administration.notifications.notify.all.link.help}"/>
+        </div>
+        <!-- :: /.form-group -->
+      </div>
+
+    </fieldset>
+
+  </form>
+
+  <div class="cont_botonera row text-right py-3">
+    <div class="col-12">
+      <button class="btn btn-primary btn_notify_all" th:title="#{administration.notifications.notify.all}">
+        <th:block th:text="#{administration.notifications.notify.all}"/>
+      </button>
+    </div>
+  </div>
+  <!-- /.cont_botonera -->
+</article>
+
+<!-- :: /[(OpacNotifications) admin/notifications/notifyAll.html] -->

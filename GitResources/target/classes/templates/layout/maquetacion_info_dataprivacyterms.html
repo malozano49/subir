@@ -1,0 +1,32 @@
+<th:block th:insert="/public/home/html_type"></th:block>
+<head>
+  <th:block th:insert="/public/home/technicalheader::main" th:with="page='opac-dataprivacyterms'"></th:block>
+  <!-- :: ESPECIFICO MAQUETACION -->
+  <link type="text/css" rel="stylesheet" th:href="@{/css/opac/maquetacion/maquetacion.css}" media="all">
+</head>
+<body class="page_type_info info_dataprivacyterms opac-dataprivacyterms bg-propietary-light">
+
+  <!-- :: [layout/maquetacion_infos.html] -->
+
+  <header class="header_principal">
+    <th:block th:with="pageLocation='home'" th:insert="/public/home/header"></th:block>
+  </header>
+
+  <main id="acc_anchor_main" class="container-fluid">
+
+    <th:block th:insert="/layout/fragments/enlaces_internos"></th:block>
+
+    <h2 class="w-100 mt-3 mb-3">Línea Maquetación paginas infos: Terminos de uso</h2>
+
+    <th:block th:insert="/layout/info_pages/dataprivacyterms"></th:block>
+
+  </main>
+
+  <th:block th:insert="/public/info/infobase::infoFooter" th:with="page='opac-dataprivacyterms'"/>
+
+  <th:block th:insert="/public/home/technicalfooter" th:with="page='opac-dataprivacyterms'"></th:block>
+
+<!-- :: /[layout/maquetacion4.html] -->
+</body>
+
+</html>

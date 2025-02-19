@@ -1,0 +1,136 @@
+/***********************************************************************************
+**** SECCIÓN RESERVAS
+Código desactivado en sass/_detail.scss y modificado para adaptar a MASTER Oda
+************************************************************************************/
+.page_reserve{
+  &.cont_datos{position:relative;float:none;display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;max-width:1280px;margin:auto;margin-top:3em;margin-bottom:3em;padding-left:1%;padding-right:1%;
+    .cont_progress_bar{position:relative;float:left;width:100%;padding-left:1%;padding-right:1%;
+      .cont_title{
+        .h2{position:relative;display:flex;align-items:center;}
+        .title{position:relative;margin-left:.5rem;}
+      }
+      .progress_bar{padding-left:3rem;padding-right:3rem}
+    }
+  }
+  .detail-summary {
+    .cont_image{max-width:140px;max-height:190px;align-self:flex-start;
+    svg {height:auto}}
+    .summary-location{align-items:center}
+  }
+  .cont_bloque{
+    .cont_title{
+      .legend-title,.legend-value{position:relative;display:inline-block}
+      .legend-title{min-width:80px;font-size:0.875rem;text-transform:uppercase}
+      .legend-value{font-size:0.9375rem}
+    }
+    &.cont_bloque_selects{position:relative;padding-left:2%;padding-right:2%;
+    .cont_alert {padding-bottom:1rem} 
+	.card {border:none}
+	
+    }
+  }
+  .cont_copies{
+    .cont_table_big_00{
+      .tb_00_title{margin-bottom:0}
+      .tb_00_legend-title{font-size:0.9375rem;@extend .font-italic}
+      .table_big_00{
+		border:1px solid $secondary;
+        .type_title{font-size:0.875rem;text-transform:uppercase;}
+        .tb_00_titles{padding-top:0;padding-bottom:0}
+        .tb_00_titles,
+        .tb_00_data{padding-left:0;padding-right:0;
+          li{text-align:center;padding-top:10px;padding-bottom:10px;padding-left:15px;
+            &.volume{min-width:180px}
+            &.check{max-width:80px}
+            .cont_check_graphic{
+              .cont_nuevo_check{
+                &.check_readonly{margin:0}
+              }
+            }
+          }
+        }
+        .tb_00_data{
+          .checkbox-decorator{padding-top:8px;padding-bottom:0}
+        }
+      }
+      &:last-child{
+        .table_big_00{padding-bottom:0}
+      }
+    }
+    .query{
+      legend{
+        .icono{font-size:1rem}
+        .legend_title{font-size:0.9375rem}
+      }
+    }
+  }
+  .cont_botonera.botonera_general{position:relative;float:left;width:100%;display:flex;flex-flow:row wrap;justify-content:flex-end;}
+
+
+  @include media_max(lg){
+    .detail-summary {
+      .cont_datos{
+        .cont_image{position:relative;margin:auto;max-width:140px;max-height:190px;
+          svg,
+          img{position:relative;top:auto;right:auto;bottom:auto;left:auto;margin:0;transform:none;height:190px;}
+        }
+      }
+    }
+    .cont_copies{
+      .cont_bloque{
+        h3{padding-left:0}
+        .blq_vacio{display:none}
+        .cont_selects{flex:0 0 100%;max-width:none}
+      }
+      .cont_table_big_00{
+        .table_big_00{border: 1px solid $secondary;
+		.tb_00_data li {padding-top:3px;padding-bottom: 3px}
+          .tb_00_data li.check,.tb_00_titles li.check{max-width:none}
+          .tb_00_data li.check{position:absolute;top:3px;right:8px;width:30px!important;height:30px;padding:0;display:flex;align-items:center;border-radius:50%;
+            .bmd-form-group{position:relative;left:25%;padding-top:0;}
+            .checkbox-decorator{padding:0}
+          }
+        }
+      }
+    }
+  }
+
+  @include media_max(md){
+    .detail-summary {flex:0 0 100%;max-width:100%;
+      .summary .item-title{text-align:left}
+      //.cont_datos{padding-left:1%!important;padding-right:1%!important}
+    }
+    .cont_copies{padding-left:0!important;padding-right:0!important;
+      .cont_bloque{
+        h3{padding-left:0}
+        .form-group{padding-left:0!important;
+          label{left:1em}
+        }
+      }
+    }
+  }
+
+  @include media_max(sm){
+    .cont_copies{
+      .cont_bloque{
+        &.cont_bloque_selects{padding-left:2%!important;padding-right:2%!important;
+          .fld_text_info{padding-left:2%!important;padding-right:2%!important;}
+          .btn_enlace{margin-left:0!important}
+          .cont_general_form_group{padding-left:0;padding-right:0}
+          .cont_form_group{margin-bottom:1rem;padding-left:0!important;padding-right:0!important;
+            &:last-child{margin-bottom:0}
+          }
+        }
+        .form-group{padding-right:0!important;}
+      }
+    }
+    .cont_botonera.botonera_general{justify-content:center}
+  }
+  @include media_max(xs){
+    .cont_botonera.botonera_general{
+      .btn{width:80%;margin-right:0!important;margin-bottom:8px;
+        &:last-child{margin-bottom:0}
+      }
+    } 
+  }
+}

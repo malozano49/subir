@@ -1,0 +1,390 @@
+/*!
+ *  @file        : _comments.scss
+ *
+ *  @description : ABSYS aplicación estilos
+ *
+ *  @author      : http://www.baratz.es/
+ *
+ *  @ref         : Hoja de estilos para toda la parte de valoraciones
+--------------------------------------------------------------------------------------------------*/
+.comments {
+	span.icono {
+		color:$secondary;
+	}
+	&--search-results {
+		margin-top: 5px;
+		.cont_titulo {
+			font-size: 14px;
+			.icono {				
+				margin-right: 5px;
+				font-size: 1rem !important;
+			}
+			br{
+				clear: both;
+			}
+			span.viewrating {
+				margin-top:10px;
+			}
+			.viewtodas{
+				font-size: 16px;
+				> .icono {
+					margin-top:5px;
+					color:$secondary;
+				}
+			}
+			.link {
+				margin-top: 6px;
+				
+				&:hover {
+					text-decoration:none;
+				}
+				.viewrating {
+					float: left;
+					margin-right: 5px;
+				}
+				
+				.view-comments {
+						&:hover {
+						text-decoration: underline #031784;
+					}
+				}
+			}
+		}
+		.item-format {
+			padding-bottom: 0;
+			padding-top:1.3rem;
+		}
+		.fa-chart-line {
+			float: left;
+			&::before{
+				    content: "\f201";
+				    @include fontawesome-solid;
+			}
+		}
+		.comment-average{
+			font-size: 14px;			
+		}
+	}
+	&--list {
+		.table-bordered td,
+		.table-bordered th {
+			vertical-align: middle;
+		}
+		span.icono {
+			color:$secondary;
+		    margin-right: 5px;	
+		}
+		.h2.item-title {			
+		    color: $primary;	   
+	    }
+	    .add-opinion {
+			margin:15px 0;
+		}
+		.stars-table {
+			justify-content: center;
+			li {
+				font-size: 25px;
+			}
+		}
+		.lists,
+		 .lists-pagination {
+			margin-bottom: 30px;
+		}
+	}
+	
+	&--form {
+		margin-top: 30px;
+		.all-stars {
+			display: flex;
+			justify-content: center;
+			//flex-direction: row-reverse;
+			color: $secondary;
+			
+			label {
+				cursor: pointer;
+				margin:0 px;		
+				color:$gray-200;
+				&:hover {					
+					color:$primary;
+				}		
+			}
+			li.selecteds .radio-label,
+			li.selecteds .radio-label:before {
+			  color: $secondary !important;
+			}
+			.radio-label {
+				cursor: pointer;
+				color: rgb(192, 192, 192);
+				transition: color 0.1s ease-in-out;
+				margin:0 3px;
+				&:before {
+					content: "★";
+					display: inline-block;
+					font-size: 25px;
+				}
+			}
+			.radio-input {
+				 position: fixed;
+				 opacity: 0;
+				 pointer-events: none;
+			}
+			.radio-input:checked ~ .radio-label {				 
+				  color:$secondary;
+			}
+			.radio-label:hover,
+			.radio-label:hover ~ .radio-label {
+			  color:$secondary;
+			}
+			.radio-input:checked + .radio-label:hover,
+			.radio-input:checked + .radio-label:hover ~ .radio-label,
+			.radio-input:checked ~ .radio-label:hover,
+			.radio-input:checked ~ .radio-label:hover ~ .radio-label,
+			.radio-label:hover ~ .radio-input:checked ~ .radio-label {
+			  color:$secondary;
+			}
+		}
+		&--container {
+			margin:40px 0;
+			display: flex;
+			justify-content: center;
+			> form {				
+				min-width: 80%;				
+								
+				textarea,
+				input {
+					width: 75%;
+				}				
+				.error {
+					color: $red;
+				}
+				#error-comment-rating {
+				    display: flex;
+				    justify-content: space-around;
+				    margin-bottom: 30px;
+					
+				}
+			}			
+		}
+		.comment-save {
+			margin-right: 15px;
+		}
+	}
+}
+.average-rating {
+	position: relative;
+	appearance: none;
+	color: transparent;
+	width: auto;
+	display: block;
+	vertical-align: baseline;
+	font-size: 25px;
+	&:hover {
+		text-decoration: none;
+	}
+}
+.stars-container{
+	justify-content: center;
+}
+.stars {
+	font-size: 20px;
+	color:$secondary;
+}
+.average-rating::before {
+	content: var(--rating, '★★★★★'); 	
+  @include fontawesome-solid; 
+	position: absolute;
+	top: 0;
+	left: 0;
+	color: rgba(0,0,0,0.2);
+}
+.average-rating.custom-style::before {  
+  background: linear-gradient(90deg, #204477 var(--percent), rgba(0,0,0,0.2) var(--percent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Detalle average rating y ver todas las opiniones*/
+.page_type_title  {
+	#formcom {
+		display: none;
+	}
+	.comments-actions {
+		display: flex;
+		justify-content: center;
+	}
+	.link {
+		&:hover{
+			text-decoration: none !important;
+		}
+		> span:hover {
+			text-decoration: underline !important;			
+		}
+	}
+	.article-detail-comments {
+		width: 100%;
+		color: $secondary;
+		.cont_titulo {
+			margin-bottom: 10px;
+		}
+		.alert.alert-warning {
+			margin-left: unset;
+			margin-right: unset;
+		}
+		.table.table-striped.table-bordered {
+			th {
+				font-weight: 400;
+				color:$primary-400;
+			}
+			th, td {
+				vertical-align: middle;
+				width: fit-content;
+			}
+			.stars-table {
+				justify-content: center;
+				li {
+					font-size: 25px;
+					color:$secondary;
+				}
+			}
+		}
+	}	
+	.add-opinion-wrapper {
+		/*display: flex;
+		justify-content: flex-end;
+		margin-bottom:-30px;*/
+	}
+	@include media_max(lg){
+		.detail-summary {
+			.cont_image {
+				flex-direction: column;
+				align-content: center;
+			}
+			.mobile_flex > img {
+				margin:auto;
+			}
+		}
+	}	
+}
+/* manager*/
+.page_type_manager.manager_comments  {
+	.article-detail-comments .alert.alert-warning {
+		margin-left: unset;
+		margin-right: unset;
+	}
+}
+/* perfil: lista de comentarios del usuario */
+.page_type_reader {
+	.article-detail-comments .alert.alert-warning {
+		margin-left: unset;
+		margin-right: unset;
+	}
+	h2 {
+		margin-top:30px;
+		color: $secondary;
+	}
+	table#comments-list {
+		th {
+			font-weight: 400;
+			color:$primary-400;
+		}
+		th, td {
+			vertical-align: middle;
+			width: fit-content;
+		}
+		.stars-table {
+			justify-content: center;
+			li >span {
+				font-size: 25px;
+				color:$secondary;
+			}
+		}
+		tbody{
+			tr:nth-of-type(odd) {
+				background-color: $secondary-light;
+			}
+		}
+	}
+}
+
+.stars-table {
+	font-size: 25px;
+	color: $secondary;
+}
+.page_type_reader,
+.page_type_manager.manager_comments{
+	h2,
+	.page-link {
+		color:$secondary !important;
+	}
+	.manager-section article, 
+	.manager-section .article {
+		background-color: white;
+		box-shadow: none;
+	}
+	table,
+	.table-striped,
+	.table-bordered {
+			th {
+				font-weight: 400;
+				color:$primary-400;
+			}
+			th, td {
+				vertical-align: middle;
+				width: fit-content;
+			}
+			.tb_00_data.d-flex.col-md-12.m-0.p-0.stars-table {
+				justify-content: center;
+				li >span {
+					font-size: 25px;
+					color:$secondary;
+				}
+			}
+			tbody{
+				tr:nth-of-type(odd) {
+					background-color: $secondary-light;
+				}
+				td {
+					a.page-link {
+						background-color: transparent;
+						border:0;
+					}
+				}
+			}
+		}
+	}
+	
+span.viewrating {
+	margin-top:10px;
+}
+.viewtodas{
+	font-size: 16px;
+	> .icono {
+		margin-top:5px;
+		color:$secondary;
+	}
+}
+#error-comment-rating{
+   display: flex;
+   width: 100%;
+    color: $red;
+    justify-content: center;
+}
+
+.link .view-comments {
+	font-size: 16px;
+		color:$secondary;
+}
+#comments .mensajes {
+	font-size: 18px;
+	margin:10px;
+	color: $red;	
+    display: flex;
+    justify-content: center;
+}
+.btn_user_manager,
+.btn_user_manager span {
+	color: white !important;
+} 
+.article-detail-comments {
+	width:100%;
+}

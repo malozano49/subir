@@ -1,0 +1,18 @@
+<th:block th:insert="/public/home/html_type"></th:block>
+	<head>
+  	<th:block th:insert="/public/home/technicalheader::main" th:with="page='opac-home'"></th:block>
+	</head>
+  <body class="page_type_home page_type_simple">
+<!-- :: [public/home/home.html] -->
+    <header class="header_principal">
+      <th:block th:with="pageLocation='home'" th:insert="/public/home/header"></th:block>
+    </header>
+    <main id="acc_anchor_main">
+      <th:block th:insert="/public/home/home121::main(search='expert')"></th:block>
+    </main>
+    <footer class="footer_principal">
+      <th:block th:insert="/public/home/footer" th:with="page='opac-home'"></th:block>
+    </footer>
+    <th:block th:insert="/public/home/technicalfooter" th:with="page='opac-home'"></th:block>
+  </body>
+</html>

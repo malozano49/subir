@@ -1,0 +1,152 @@
+<th:block th:insert="/public/home/html_type"></th:block>
+<th:block th:insert="/public/home/technicalheader::main" th:with="page=${'opac-help-index-es_ES'}"></th:block>
+<script type="text/javascript">
+	var menu = document.getElementById('menu');
+	Stickyfill.add(menu);
+</script>
+<body>
+
+<div id="burger-menu" class="burger-menu">
+  <span></span>
+  			<div id="menu2" class="menu menu2">
+			<div class=""><nav class="sn-contents" aria-label="Secondary">
+      <ul class="sidenav--list">
+ <li><a href="#searchIndexes"> Busca índices</a></li>
+					<ul class="tab3-help"><li><a href="#typeSearach">Tipos de buscas</a></li>
+						<li><a href="#moveList">Como moverse pola lista de resultados localizados na busca</a></li>
+						<li><a href="#locateRecords">Como localizar os rexistros asociados aos resultados das buscas no índice</a></li>
+					</ul>
+						
+				
+				<li><a href="#findAuthorities">Acceso a busca en autoridades</a></li>
+				<li><a href="#lastSearch">Acceso a últimas buscas realizadas</a></li>	
+				<li><a href="#historySearch">Acceso a buscas gardadas</a></li>	
+				<li><a href="#favorites">Acceso a favoritos</a></li>
+				<li><a href="#profile">Acceso ao Meu Perfil</a></li>
+				<li><a href="#home">Acceso á páxina de inicio</a></li></ul></nav>
+</div>
+		</div>
+</div>
+
+	<div class="wrapper cf">
+		
+		<div id="menu" class="menu">
+			<div class="sidenav"><nav class="sn-contents" aria-label="Secundario">
+      <ul class="sidenav--list">
+ <li><a href="#searchIndexes">Busca índices</a></li>
+					
+		<ul class="tab3-help"><li><a href="#typeSearach">Tipos de buscas</a></li>
+						<li><a href="#moveList">Como moverse pola lista de resultados localizados na busca</a></li>
+						<li><a href="#locateRecords">Como localizar os rexistros asociados aos resultados das buscas no índice</a></li>
+					</ul>
+						
+				
+				<li><a href="#findAuthorities">Acceso a busca en autoridades</a></li>
+				<li><a href="#lastSearch">Acceso a últimas buscas realizadas</a></li>	
+				<li><a href="#historySearch">Acceso a buscas gardadas</a></li>	
+				<li><a href="#favorites">Acceso a favoritos</a></li>
+				<li><a href="#profile">Acceso ao Meu Perfil</a></li>
+				<li><a href="#home">Acceso á páxina de inicio</a></li></ul></nav>
+</div>
+		</div>
+		<div class="content margen5">
+			<a name="top"></a>
+			<a name="searchIndexes"></a>
+			<h2 class="title-help">Busca índices</h2>
+			<p>A opción Busca índices permite realizar unha busca para localizar palabras ou patróns de palabras parecidas ao termo ou termos introducidos.</p>
+			<p>Os resultados localizados na busca ordenanse por defecto de forma <span class="text-bold-help">alfabética</span>.</p>
+			<a name="typeSearach"></a>
+			<h4 class="title-help">Tipos de buscas</h4>
+			<p>Pódense realizar as seguintes buscas:</p>
+			<ul class="tab5-help margen10">
+				<li>Buscas nun campo concreto</li>
+				<li>Buscas en todos os campos</li>
+				<li>Buscas que conteñan termos parecidos ao termo de busca introducido</li>
+				<li>Buscas que comezan por</li>
+			</ul>
+			<p class="tab3-help paragraph-help">Buscas nun campo concreto</p>
+			<p class="tab4-help">Por defecto, a busca no índice realízase no campo Título. Para realizar unha busca en calquera outro campo, seleccione o que lle interese na opción Selección de campos. Por defecto, os campos nos que se pode realizar a busca son os seguintes:</p>
+			<span class="tab5-help margen10"><img th:src="@{/img/help/comb-filters-indexes.png}" alt="Combox de filtros de índices" width="350px"/></span>
+			<p class="tab4-help">A busca que realice só terá en conta o campo seleccionado.</p>
+			<p class="tab3-help paragraph-help">b. Buscas en todos os campos</p>
+			<p class="tab4-help">Se desexa que a busca se realice en calquera campo, seleccione a opción Todos os campos.</p>
+			<span class="tab5-help margen5"><img th:src="@{/img/help/selection-fields.png}" alt="Selección de campos"  width="350px"/></span>
+			<p class="tab4-help">A busca que realice terá en conta todos os campos da base de datos que estean definidos como buscables.</p>
+			<p class="tab3-help paragraph-help">c. Buscas que conteñan termos parecidos ao termo de busca introducido</p>
+			<p class="tab4-help">Para localizar no índice rexistros que conteñan termos parecidos ao termo introducido, utilice a opción <i>Contén en Selección de filtros</i>.</p>
+			<span class="tab5-help margen5"><img th:src="@{/img/help/filter-contains.png}" alt="Filtro de busca Empenza por" width="350px"/></span>
+			<p class="tab3-help paragraph-help">d. Buscas que comezan por</p>
+			<p class="tab4-help">Para localizar no índice rexistros que comezan por termos á cadea de busca introducida, seleccione a opción <i>Comeza por en Selección de filtros</i>.</p>
+			<span class="tab5-help margen10">
+			<img th:src="@{/img/help/filters-term.png}" alt="Filtro de busca por termo" width="320px"/></span>
+			<a name="moveList"></a>
+			<h4 class="title-help">Como moverse pola lista de resultados localizados na busca</h4>
+			<p>Por defecto, o resultado da busca mostrase ordenado en grupos de 10, pero existe a posibilidade de agrupar os resultados de 25 en 25 ou de 35 en 35.</p>
+			<span class="tab3-help margen10"><img th:src="@{/img/help/results-by-page.png}" alt="Resultados por páxina" width="320px"/></span>
+			<p>Para moverse polos diferentes grupos,</p>
+			<ul class="tab5-help margen5">
+				<li>Faga clic en <img th:src="@{/img/help/next.png}" alt="Seguinte" width="80px"/> para moverse á seguinte páxina.</li>
+				<li>Faga clic en <img th:src="@{/img/help/back.png}" alt="Anterior" width="80px"/> para moverse á páxina anterior.</li>
+				<li>Faga clic no nº de páxina que lle interese visualizar
+					<span class="tab3-help"><img th:src="@{/img/help/number-by-page.png}" alt="Número de páxina" width="320px"/></span>
+				</li>
+				<li>Faga clic no nº 1 para visualizar a primeira páxina
+					<span class "tab3-help"><img th:src="@{/img/help/first-page.png}" alt="Primeira páxina" width="320px"/></span>
+				</li>
+ 				<li>Faga clic no nº anterior a Seguinte para ir á última páxina
+ 					<span class="tab3-help"><img th:src="@{/img/help/last-page.png}" alt="Última páxina" width="320px"/></span>
+ 				</li>
+			</ul>
+			<a name="locateRecords"></a>
+			<h4 class="title-help">Como localizar os rexistros asociados aos resultados das buscas no índice</h4>
+			<p>Unha vez que realizou a consulta que lle interese no índice, mostrase unha lista de autoridades que se corresponden coa busca introducida e indícase o nº de rexistros que conteñen os termos localizados.</p>
+			<p class="tab2-help"><b>Exemplo:</b></p>
+			<p class="tab4-help margen5">Búscanse termos parecidos que comezan por quixote no campo Título</p>
+			<span class="tab5-help margen5"><img th:src="@{/img/help/search-title.png}" alt="Busqueda por título" width="500px"/></span>
+			<p class="tab4-help margen5">Amósanse en modo lista os termos localizados e indícase o nº de rexistros que os conteñen:</p>
+			<span class="tab5-help margen5"><img th:src="@{/img/help/search-list.png}" alt="Lista de resultados" width="400px"/></span>
+			<p class="tab2-help margen5">Faga clic na que lle interese para visualizar os rexistros asociados.</p>
+			<a name="findAuthorities"></a>
+			<h2 class="title-help">Acceso a busca en autoridades</h2>
+			<p>Para realizar unha busca de autoridades que permita localizar rexistros que conteñen unha autoridade específica, faga clic na opción <i>Busca autoridades</i>.</p>
+			<a name="lastSearch"></a>
+			<h2 class="title-help">Acceso a últimas buscas realizadas</h2>
+			<p>Para visualizar as <span class="text-bold-help">10</span> últimas buscas realizadas que devolveron resultados durante a sesión do Opac, faga clic en <i>Últimas buscas</i>.</p>	
+			<a name="historySearch"></a>
+			<h2 class="title-help">Acceso a buscas gardadas</h2>
+			<p>Se quere gardar algunha das buscas que realizou para poder executalas noutro momento, faga clic en <i>Buscas gardadas</i>.</p>
+			<ul class="tab5-help">
+				<li>Para poder gardar buscas é necesario que se identifique previamente</li>
+			</ul>
+			<a name="favorites"></a>
+			<h2 class="title-help">Acceso a favoritos</h2>
+			<p>Para visualizar os rexistros que marcou como favoritos, faga clic en <i>Favoritos</i>.</p>
+			<a name="profile"></a>
+			<h2 class="title-help">Acceso ao Meu Perfil</h2>
+			<p>Faga clic na opción <i>Meu perfil</i> e identifíquese para poder acceder ás seguintes utilidades de <span class="text-bold-help">ODA</span>: </p>
+			<ul class="tab5-help margen5">
+				<li>Datos persoais</li>
+				<li>Solicitudes</li>
+				<li>Préstamos activos</li>
+				<li>Histórico de préstamos</li>
+				<li>Renovar préstamos</li>
+				<li>Anular reservas</li>
+				<li>Gardar buscas</li>
+				<li>Crear listas de favoritos</li>
+			</ul>
+			<p class="tab2-help">Para identificarse como usuario pode utilizar calquera destes 3 métodos:</p>
+			<ul class="tab5-help margen5">
+				<li>nº de carné</li>
+				<li>correo electrónico que proporcionou á súa biblioteca</li>
+				<li>teléfono móbil que proporcionou á súa biblioteca</li>
+			</ul>
+			<a name="home"></a>
+			<h2 class="title-help">Acceso á páxina de inicio</h2>
+			<p>Para ir á páxina de inicio, faga clic en <i>Inicio</i>.</p>
+			<p class="top-help"><a href="#top">Arriba</a></p>
+		</div>
+	</div>
+	<th:block th:insert="/public/home/technicalfooter" th:with="page='opac-dataprivacyterms'"/>
+</body>
+</html>
+</html>

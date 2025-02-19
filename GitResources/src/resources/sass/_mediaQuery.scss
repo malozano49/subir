@@ -1,0 +1,37 @@
+/*!
+ *  @file        : _mediaQuery.scss
+ *
+ *  @description : ABSYS aplicacion estilos
+ *
+ *  @author      : http://www.baratz.es/
+ *
+ *  @ref         : Hoja de estilos
+--------------------------------------------------------------------------------------------------*/
+
+// =============================================================================
+//   bootstrap no aporta order a los xs
+// =============================================================================
+@include media_max(sm){
+  @for $x from 1 through 9 {
+    .order-xs-#{$x}{order:$x}
+  }
+}
+
+// =============================================================================
+//   Pantallas width: (576px a 768px)
+// =============================================================================
+@include media(sm){
+	.mw-mb-100{max-width: 100%!important;}
+}
+
+// =============================================================================
+//   Móviles pequeños (max-width: 576px)
+// =============================================================================
+@include media(xs){
+	.flex-xs-column {flex-direction: column!important;}
+	.justify-content-xs-center {
+		justify-content: center!important;
+	}
+	.mw-mb-100{max-width: 100%!important;}
+}
+

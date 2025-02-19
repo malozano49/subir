@@ -1,0 +1,68 @@
+<!-- :: [reader/titleList/fragments/searchListElement_mylist.html] -->
+  <form action="#" th:action="@{${thymeleafMap.get('READER_DELETE_ITEM_TITLE_LIST')}}"  method="post">
+     <input type="hidden" name="id" th:value="${item.oaiIdentifierB64}" >
+      <input type="hidden" name="idList" th:value="(${titleList.id} ? ${titleList.id})" >
+      <input type="hidden" name="titleId" th:value="(${item.oaiIdentifierB64} ? ${item.oaiIdentifierB64})" >
+      <input type="hidden" name="page" th:value="${solrSearchWeb.solrSearch.page}" >
+      <input type="hidden" name="paginationNumElements" th:value="${solrSearchWeb.solrSearch.elementPage}" >
+       <div class="">
+       <button type="submit" class="deleteTitleListItem btn btn-secondary" title="enviar" th:title="#{list.title.modal.delete.button}" th:aria-label="#{list.title.modal.delete.button}">
+                          <span class="icono fas fa-trash" aria-hidden="true" ></span>
+                        </button>
+        </div>
+        <!-- :: /.cont_botonera_form -->
+      
+  </form> 
+
+  <button class="btn_item_mueve btn btn-secondary modal_js"
+    data-modal_tipo="light"
+    th:data-modal_target="'#modal_detail_item_move_'+${item.oaiIdentifierB64}"
+    data-modal_discriminador="modal_detail_item_move"
+    th:data-modal_title="#{list.title.modal.move.button}"
+    th:data-modal_html="'#form_mover_'+${item.oaiIdentifierB64}"
+    data-modal_footer="false"
+    th:aria-label="#{list.title.modal.move.button}" tHh:title="#{list.title.modal.move.button}" th:id="btn_mover_+${item.oaiIdentifierB64}">
+    <span class="icono fas fa-random" aria-hidden="true"></span>
+  </button>
+  
+  <div th:id="'form_mover_'+${item.oaiIdentifierB64}" class="modal_detail_item_move_html d-none" aria-hidden="true">
+    <form action="#" th:action="@{${thymeleafMap.get('READER_CHANGE_TITLE_LIST_POST')}}" method="post">
+      <input type="hidden" name="idList" th:value="${titleList.id}">
+      <input type="hidden" name="titleId" th:value="${item.oaiIdentifierB64}">
+      <input type="hidden" name="page" th:value="${solrSearchWeb.solrSearch.page}">
+      <input type="hidden" name="paginationNumElements" th:value="${solrSearchWeb.solrSearch.elementPage}">
+      <div class="content_form col-md-12 mb-3">
+        <div class="alert alert-info w-100">
+          <span class="alert_titulo sr-only" th:text="#{alert.info.title}"></span>
+          <span class="alert_texto" th:text="#{list.title.modal.move.new.target.title}"></span>
+        </div>
+        <!-- :: /.alert -->
+
+        <div class="cont_form_group d-flex">
+          <div class="form-group cont_selectPicker">
+            <label th:for="'idListNew_'+${item.oaiIdentifierB64}" class="bmd-label-floating">Seleccione una lista</label>
+            <select th:id="'idListNew_'+${item.oaiIdentifierB64}" name="idListNew" class="form-control" >
+              <option value="" selected>Sin selección</option>
+              <option th:each="list : ${listsTitle}" th:value="${list.id}" th:text="${list.name}" />
+            </select>
+            <span class="bmd-help" th:text="#{title.list.select.help}"></span>
+          </div>
+          <!-- :: /.form-group.cont_selectPicker -->
+        </div>
+        <!-- :: /.cont_form_group -->
+
+        <div class="cont_botonera_form col-md-12 d-flex justify-content-center mt-3">
+          <button type="button" class="btn btn-outline-secondary mr-2" data-dismiss="modal" th:text="#{email.close}"></button>
+          <button type="submit" class="btn btn-primary" th:title="#{administration.monitor.level.update}">
+            <th:block th:text="#{administration.monitor.level.update}"/>
+          </button>
+        </div>
+        <!-- :: /.cont_botonera_form -->
+
+      </div>
+      <!-- :: /.content_form -->
+    </form>
+  </div>
+  <!-- :: /.modal_detail_item_move_html-->
+
+<!-- :: /[reader/titleList/fragments/searchListElement_mylist.html] -->

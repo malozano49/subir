@@ -1,0 +1,23 @@
+<!-- :: [/public/search/advanced/fragments/ShowFiltersFepu.html] -->
+<div class="row-dates col-md mt-2 mt-md-0 ml-md-1">
+	<div class="cont_botonera_desplegable">
+		<button type="button"
+		  class="btn btn-primary btn-collapse w-100 d-flex align-items-center justify-content-between"
+		  data-toggle="collapse" data-target="#collapse_dates" aria-expanded="false"
+		  aria-controls="collapse_dates">
+		  <span class="font-weight-bold" th:text="#{ba.date}"></span>
+		  <span class="icono fas fa-angle-down float-right align-middle" aria-hidden="true"></span>
+		</button>
+	</div>
+	<div id="collapse_dates" class="collapse cont_collapse">
+		<div class="form-row py-2">
+			<th:block th:insert="/public/search/advanced/fragments/searchFepu"></th:block>
+		</div>
+		<!-- :: /.form-row -->
+	</div>
+	<!-- :: /.collapse -->
+</div>
+<!-- :: /.row-dates -->
+
+
+<!-- :: [/public/search/advanced/fragments/ShowFiltersFepu.html] -->

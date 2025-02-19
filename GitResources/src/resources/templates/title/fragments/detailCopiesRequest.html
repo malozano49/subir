@@ -1,0 +1,20 @@
+<!-- :: [title/fragments/detailCopiesRequest.html] -->
+<!--/* @TODO FALTA UN LI POR DEFECTO PARA CUADRAR LA TABLA */-->
+  <th:block th:if="${hasRequestAllowed and (null == value.lentToReader or !value.lentToReader)}">
+  	<!-- permito solicitudes -->
+  	<!-- Adds component view adders -->
+        <th:block th:each="fragment:${COPIES_BUTTON_REQUEST}">
+        	<th:block th:insert="${fragment}"></th:block>
+        </th:block>
+  </th:block>
+
+  <th:block th:unless="${hasRequestAllowed and (null == value.lentToReader or !value.lentToReader)}">
+  	 <th:block th:if="${hasLoansAllowed and (null == value.lentToReader or !value.lentToReader)}">
+  	 <!-- no permite solicitudes pero si prestamos boton prestamos desabilitado -->
+  	 <!-- Adds component view adders -->
+        <th:block th:each="fragment:${COPIES_BUTTON_REQUEST}">
+        	<th:block th:insert="${fragment} :: hide(true)"></th:block>
+        </th:block>
+  	 </th:block>
+  </th:block>
+<!-- :: /[title/fragments/detailCopiesRequest.html] -->

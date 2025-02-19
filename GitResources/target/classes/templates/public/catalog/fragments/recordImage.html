@@ -1,0 +1,9 @@
+
+<th:block th:fragment="image(id)">
+  <!-- :: [/public/catalog/fragments/recordImage.html] -->  	
+	<img th:if="${item != null && item.image != null && item.imageHasValidUrl()}" th:data-id="${id}" th:src="${item.image}" class="imagen img_on_load" alt="cover" />
+	<th:block th:unless="${item != null && item.image != null && item.imageHasValidUrl()}" th:insert="/public/catalog/fragments/imageNotFound :: image(${id})"></th:block>
+  <!-- :: /[/public/catalog/fragments/recordImage.html] -->
+</th:block>
+
+

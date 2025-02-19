@@ -1,0 +1,46 @@
+/**
+ *  @file        : _tmpl_plantilla.js
+ *
+ *  @description : Js de aplicación en las vistas de la página de política de cookies
+ *  @license     : baratz
+ *  @copyright   : 2019
+ *
+ *  @author      : http://www.baratz.es/
+ *  @date        : 2021-09-03
+ *
+ *  @validate    : https://jshint.com/
+ */
+// jshint jquery :true, esversion:10
+/* globals Baratz,BaratzContextPath*/
+
+console.log("[tmpl_cookiesterms.js] CARGA");
+
+if (!Baratz.cookiesterms){
+  Baratz.cookiesterms={
+
+  };
+}
+
+/**
+ *  Contenedor de acciones en la vista infos FAQ
+ *
+ *  @obj Baratz.cookiesterms
+ *
+ */
+Object.assign(Baratz.cookiesterms,{
+  // INICIALIZACION
+  init:()=>{
+
+
+  },
+  // EVENTOS
+  eventos:()=>{
+
+
+  },
+  // OPERACIONES
+  OPS:{
+
+  }
+
+});

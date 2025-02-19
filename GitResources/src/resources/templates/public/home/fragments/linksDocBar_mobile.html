@@ -1,0 +1,77 @@
+<!-- :: [public/home/fragments/linksDocBar_mobile.html] -->
+
+<!--/* :: Este menú se duplica por necesidades de posicion de pintado en mobile (linksDocBar.html) */-->
+
+<ul id="menu_linksDockBar_mobile" aria-hidden="true" class="navbar-nav flex-row ml-md-auto ml-sm-auto doc_linksDocBar_mobile" th:classappend="${desktop=='true' ? 'd-md-flex' : 'd-xl-none d-lg-none icons'}">
+    <!--/*
+    <li id="item_anchor_content" class="item_anchor_content nav-item px-md-2 px-sm-1">
+      <a href="" class="nav-link" th:text="#{dockbar.hidden.link.label}"></a>
+    </li>
+    */-->
+   <li class="item_contrast nav-item px-md-2 px-sm-1">
+      <a class="nav-link con_icono" th:if="${session.skin==null || session.skin.schemaValue!='main_highcontrast'}" th:href="@{?__${thymeleafMap.get('COLOR_SCHEMA_PARAMETER')}__=main_highcontrast}" th:aria-label="#{dockbar.high.contrast.aria.label}">
+        <span class="icono fas fa-adjust pr-xl-1" aria-hidden="true"></span>
+        <span class="link_title" th:text="#{dockbar.high.contrast.title}"></span>
+      </a>
+      <a class="nav-link con_icono active" th:if="${session.skin!=null && session.skin.schemaValue!='main'}" th:href="@{?__${thymeleafMap.get('COLOR_SCHEMA_PARAMETER')}__=main}"  th:aria-label="#{dockbar.default.contrast.aria.label}">
+        <span class="icono fas fa-adjust pr-xl-1" aria-hidden="true"></span>
+        <span  class="link_title" th:text="#{dockbar.default.contrast.title}"></span>
+      </a>
+   </li>
+   <li class="item_lang nav-item px-md-2 px-sm-1">
+      <button type="button" class="btn con_icono btn-secondary dropdown-toggle text-white btn_menu_mobile btn_menu_lang" id="dropdown-lang-mobile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+        <span class="sr-only" th:text="#{dockbar.language.title}"></span>
+        <span class="icono icono_lang fas fa-globe" aria-hidden="true"></span>
+        <span class="link_title desktop" th:text="#{dockbar.language}"></span>
+      </button>
+      <div class="dropdown-menu bg-white userLang">
+        <ul>
+          <li th:each="language : ${languages}" class="item_language" th:classappend="${language.key.equalsIgnoreCase(#locale)} ? active : ''">
+            <a class="nav-link" th:href="@{'/public/home?__${thymeleafMap.get('LANGUAGE_PARAMETER')}__='+ ${language.key}}">
+              <span class="title_lang link_title" th:text="${language.value}"/>
+              <span class="icono_despliegue fas fa-angle-right" aria-hidden="true"></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+   </li>
+   
+   <li class="item_user_data nav-item px-md-2 px-sm-1"
+   		sec:authorize="${isAuthenticated() and principal.hasRole(#vars.thymeleafMap.get('ADMINISTRATION_AUTHORITY'))}">
+	<div class="dropdown type_administration">
+	  <!--/* :: ADMINISTRADOR */-->
+	   <button class="btn_user_administration btn con_icono btn-secondary dropdown-toggle text-white btn_menu_mobile" type="button" id="dropdown-menu-mobile-administration" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" th:value="${#authentication.getPrincipal().getFirstName()}">
+	      <span class="icono fas fa-user" th:title="#{dockbar.login.label}" aria-hidden="true"></span>
+	      <span class="link_title" th:text="${#authentication.getPrincipal().getFirstName() + ' ' + #authentication.getPrincipal().getSurname()}"></span>
+	   </button>
+	   <div class="dropdown-menu dropdown-menu-right bg-primary adminMenu">
+	      <ul>
+	         <li>
+	            <a class="nav-link" th:href="@{${thymeleafMap.get('ADMIN_AREA_PATH')}}">
+	              <span class="link_title" th:text="#{dockbar.admin.title}"></span>
+	              <span class="icono_despliegue fas fa-angle-right" aria-hidden="true"></span>
+	            </a>
+	         </li>
+	      </ul>
+	   </div>
+	   <!-- :: /.dropdown-menu -->
+	</div>
+	<!-- :: /.dropdown -->
+   </li>
+   
+   <!-- Adds component view adders -->
+   <th:block th:each="fragment:${USER_LINK_DOCBAR_MOBILE}">
+     <th:block th:insert="${fragment}"></th:block>
+   </th:block>
+    
+   <li class="item_disconect nav-item px-md-2 px-sm-1">
+     <form method="post" th:action="@{${thymeleafMap.get('LOGOUT')}}">
+       <button type="submit" class="btn_desconectar btn con_icono btn-secondary text-white btn_menu_mobile">
+         <span class="icono fas fa-sign-out-alt mr-xl-1" aria-hidden="true"></span>
+         <span class="link_title" th:text="#{dockbar.logout.title}"></span>
+       </button>
+     </form>
+   </li>
+  
+</ul>
+<!-- :: /[/public/home/fragments/linksDocBar_mobile.html] -->

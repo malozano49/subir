@@ -1,0 +1,11 @@
+<!-- :: [public/catalog/fragments/searchHistory.html] -->
+    <div class="cont_historico w-100">
+      <th:block th:insert="/public/catalog/fragments/record.html::limit(${lastSearchQuickLimit})"/>
+      <div class="botonera_ultimas_busquedas cont_botonera w-100 d-flex justify-content-center">
+          <a class="btn btn-sm btn-primary w-100 d-flex justify-content-center" th:href="@{${thymeleafMap.get('READER_LAST_SEARCHS')}(tabId=(${solrSearchWeb?.solrSearch} ? ${solrSearchWeb?.solrSearch?.tabId}),id=(${id} ? ${id}))}">
+            <span class="" th:text="#{search.record.last.go.to}" /> 
+          </a>
+      </div>
+    </div>
+    <!-- :: /.cont_historico -->
+<!-- :: /[public/catalog/fragments/searchHistory.html] -->

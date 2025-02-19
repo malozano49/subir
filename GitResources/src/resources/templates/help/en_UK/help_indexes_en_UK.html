@@ -1,0 +1,150 @@
+<th:block th:insert="/public/home/html_type"></th:block>
+<th:block th:insert="/public/home/technicalheader::main" th:with="page=${'opac-help-index-es_ES'}"></th:block>
+<script type="text/javascript">
+	var menu = document.getElementById('menu');
+	Stickyfill.add(menu);
+</script>
+<body>
+
+<div id="burger-menu" class="burger-menu">
+  <span></span>
+  			<div id="menu2" class="menu menu2">
+			<div class=""><nav class="sn-contents" aria-label="Secondary">
+      <ul class="sidenav--list">
+		<li><a href="#searchIndexes">Index Search</a></li>
+			<ul class="tab3-help">
+				<li><a href="#typeSearach">Types of Searches</a></li>
+				<li><a href="#moveList">Navigating the List of Results Located in the Search</a></li>
+				<li><a href="#locateRecords">Locating Records Associated with Search Results in the Index</a></li>
+			</ul>		
+		<li><a href="#findAuthorities">Access to Authorities Search</a></li>
+		<li><a href="#lastSearch">Access to Recent Searches</a></li>
+		<li><a href="#historySearch">Access to Saved Searches</a></li>
+		<li><a href="#favorites">Access to Favorites</a></li>
+		<li><a href="#profile">Access to My Profile</a></li>
+		<li><a href="#home">Access to Homepage</a></li>
+		</ul></nav>
+		</div>
+		</div>
+		</div>
+		
+		<div class="wrapper cf">
+		
+		<div id="menu" class="menu">
+		<div class="sidenav"><nav class="sn-contents" aria-label="Secondary">
+		    <ul class="sidenav--list">
+		        <li><a href="#searchIndexes">Index Search</a></li>
+		
+		        <ul class="tab3-help">
+		            <li><a href="#typeSearach">Types of Searches</a></li>
+		            <li><a href="#moveList">Navigating the List of Results Located in the Search</a></li>
+		            <li><a href="#locateRecords">Locating Records Associated with Search Results in the Index</a></li>
+		        </ul>
+			        <li><a href="#findAuthorities">Access to Authorities Search</a></li>
+			        <li><a href="#lastSearch">Access to Recent Searches</a></li>
+			        <li><a href="#historySearch">Access to Saved Searches</a></li>
+			        <li><a href="#favorites">Access to Favorites</a></li>
+			        <li><a href="#profile">Access to My Profile</a></li>
+			        <li><a href="#home">Access to Homepage</a></li></ul></nav>
+		</div>
+		</div>
+		<div class="content margen5">
+		<a name="top"></a>
+		<a name="searchIndexes"></a>
+		<h2 class="title-help">Index Search</h2>
+		<p>The Index Search option allows you to perform a search to locate words or patterns of words similar to the entered term or terms.</p>
+		<p>The results located in the search are sorted by default in <span class="text-bold-help">alphabetical</span> order.</p>
+		<a name="typeSearach"></a>
+		<h4 class="title-help">Types of Searches</h4>
+		<p>You can perform the following types of searches:</p>
+		<ul class="tab5-help margen10">
+		    <li>Searches in a specific field</li>
+		    <li>Searches in all fields</li>
+		    <li>Searches containing terms similar to the search term entered</li>
+		    <li>Searches starting with</li>
+		</ul>
+		<p class="tab3-help paragraph-help">a. Searches in a specific field</p>
+		<p class="tab4-help">By default, the index search is performed in the Title field. To perform a search in any other field, select the one you are interested in from the Field Selection option. By default, the fields in which the search can be performed are as follows:</p>
+		<span class="tab5-help margen10"><img th:src="@{/img/help/comb-filters-indexes.png}" alt="Index Filters Combobox" width="350px"/></span>
+		<p class="tab4-help">The search you perform will only consider the selected field.</p>
+		<p class="tab3-help paragraph-help">b. Searches in all fields</p>
+		<p class="tab4-help">If you want the search to be performed in any field, select the All Fields option.</p>
+		<span class="tab5-help margen5"><img th:src="@{/img/help/selection-fields.png}" alt="Field Selection"  width="350px"/></span>
+		<p class="tab4-help">The search you perform will consider all fields in the database defined as searchable.</p>
+		<p class="tab3-help paragraph-help">c. Searches containing terms similar to the search term entered</p>
+		<p class="tab4-help">To locate in the index records containing terms similar to the entered term, use the <i>Contains in Filter Selection</i> option.</p>
+		<span class="tab5-help margen5"><img th:src="@{/img/help/filter-contains.png}" alt="Filter for Contains Search" width="350px"/></span>
+		<p class="tab3-help paragraph-help">d. Searches that start with</p>
+		<p class="tab4-help">To locate in the index records that start with terms in the search string entered, select the <i>Starts with in Filter Selection</i> option.</p>
+		<span class="tab5-help margen10">
+		<img th:src="@{/img/help/filters-term.png}" alt="Search by Term Filter" width="320px"/></span>
+		<a name="moveList"></a>
+		<h4 class="title-help">Navigating the List of Results Located in the Search</h4>
+		<p>By default, the search result is displayed in groups of 10, but you have the option to group the results in sets of 25 or 35.</p>
+		<span class="tab3-help margen10"><img th:src="@{/img/help/results-by-page.png}" alt="Results per Page" width="320px"/></span>
+		<p>To navigate through different groups,</p>
+		<ul class="tab5-help margen5">
+		    <li>Click on <img th:src="@{/img/help/next.png}" alt="Next" width="80px"/> to move to the next page.</li>
+		    <li>Click on <img th:src="@{/img/help/back.png}" alt="Previous" width="80px"/> to move to the previous page.</li>
+		    <li>Click on the page number you want to view
+		        <span class="tab3-help"><img th:src="@{/img/help/number-by-page.png}" alt="Page Number" width="320px"/></span>
+		    </li>
+		    <li>Click on the number 1 to view the first page
+		        <span class="tab3-help"><img th:src="@{/img/help/first-page.png}" alt="First Page" width="320px"/></span>
+		    </li>
+		    <li>Click on the number before Next to go to the last page
+		        <span class="tab3-help"><img th:src="@{/img/help/last-page.png}" alt="Last Page" width="320px"/></span>
+		    </li>
+		</ul>
+		<a name="locateRecords"></a>
+		<h4 class="title-help">Locating Records Associated with Search Results in the Index</h4>
+		<p>Once you have performed the query of interest in the index, a list of authorities corresponding to the entered search is displayed, along with the number of records containing the located terms.</p>
+		<p class="tab2-help"><b>Example:</b></p>
+		<p class="tab4-help margen5">Searching for similar terms starting with "quijote" in the Title field</p>
+		<span class="tab5-help margen5"><img th:src="@{/img/help/search-title.png}" alt="Search by Title" width="500px"/></span>
+		<p class="tab4-help margen5">The located terms are displayed in list mode, along with the number of records containing them:</p>
+		<span class="tab5-help margen5"><img th:src="@{/img/help/search-list.png}" alt="Results List" width="400px"/></span>
+		<p class="tab2-help margen5">Click on the one you are interested in to view the associated records.</p>
+		<a name="findAuthorities"></a>
+		<h2 class="title-help">Access to Authorities Search</h2>
+		<p>To perform a search for authorities that allows you to locate records containing a specific authority, click on the <i>Authorities Search</i> option.</p>
+		<a name="lastSearch"></a>
+		<h2 class="title-help">Access to Recent Searches</h2>
+		<p>To view the <span class="text-bold-help">10</span> most recent searches that have yielded results during the OPAC session, click on <i>Recent Searches</i>.</p>
+		<a name="historySearch"></a>
+		<h2 class="title-help">Access to Saved Searches</h2>
+		<p>If you want to save any of the searches you have performed to be able to run them at another time, click on <i>Saved Searches</i>.</p>
+		<ul class="tab5-help">
+		    <li>To save searches, it is necessary to identify yourself beforehand.</li>
+		</ul>
+		<a name="favorites"></a>
+		<h2 class="title-help">Access to Favorites</h2>
+		<p>To view the records you have marked as favorites, click on <i>Favorites</i>.</p>
+		<a name="profile"></a>
+		<h2 class="title-help">Access to My Profile</h2>
+		<p>Click on the <i>My Profile</i> option and identify yourself to access the following <span class="text-bold-help">ODA</span> utilities: </p>
+		<ul class="tab5-help margen5">
+		    <li>Personal information</li>
+		    <li>Requests</li>
+		    <li>Active loans</li>
+		    <li>Loan history</li>
+		    <li>Renew loans</li>
+		    <li>Cancel reservations</li>
+		    <li>Save searches</li>
+		    <li>Create favorites lists</li>
+		</ul>
+		<p class="tab2-help">To identify yourself as a user, you can use any of these 3 methods:</p>
+		<ul class="tab5-help margen5">
+		    <li>Library card number</li>
+		    <li>Email provided to your library</li>
+		    <li>Mobile phone provided to your library</li>
+		</ul>
+		<a name="home"></a>
+		<h2 class="title-help">Access to Homepage</h2>
+		<p>To go to the homepage, click on <i>Home</i>.</p>
+		<p class="top-help"><a href="#top">Back to top</a></p>
+		</div>
+		</div>
+		<th:block th:insert="/public/home/technicalfooter" th:with="page='opac-dataprivacyterms'"/>
+</body>
+</html>

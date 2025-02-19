@@ -1,0 +1,152 @@
+//
+// Zona derecha. Prestamos y solicitudes
+//
+.reader-loans,
+.reader-loans-history,
+.reader-reservations{
+  .menuLoans{position:relative;display:inline-block;margin:auto}
+  .detail-copies{margin-bottom:0;padding-top:0;border-color:transparent!important;
+  .fieldset__title{color:$secondary}
+    .cont_table_big_00{
+      &:last-child{
+        .cont_data{border-bottom:0}
+      }
+      .data{align-items:center}
+      @include media_max(lg){
+        .cont_data{border-bottom:0}
+      }
+      @include media_max(md){
+        .cont_data{margin-bottom:0;padding-left:3%;padding-right:3%}
+     }
+    }
+  }
+  .article_title{position:relative;display:table!important;top:-.8rem;line-height:1.5rem}
+  .item-authority{
+    .links{
+      .btn-link{position:relative;float:left;font-size:.875rem;text-align:left}
+    }
+  }
+  .cont_total_results_bar{
+    .cont_pagination{margin-bottom:0;}
+  }
+
+  @include media_max(lg){
+    .cont_table_big_00 {
+      .tb_00_data{
+        li {
+			&.capa_dependiente {
+				&.col_botonera { 
+				background-color: white;
+				
+				}
+			}
+         /* &.capa_dependiente{
+            &.col_createDate,
+            &.col_loanDate{padding-top:1rem}
+            &.col_reservationOrder,
+            &.col_returnDate{padding-bottom:1rem}
+          }*/
+          .title{@include font-weight-bold;}
+        }
+      }
+      .tb_00_legend{margin-top:0;padding-top:0;padding-right:0;padding-left:0;border-color:transparent;
+        .cont_title{padding-left:4%;padding-right:4%}
+      }
+      .col_branchDescription{margin-bottom:.5rem}
+      &#cont_table_0{
+        .col_branchDescription{border-top:transparent}
+      }
+    }
+    .type_data{
+      &.col_branchDescription{margin-top:.5rem;padding-top:.5rem;}
+    }
+    li.type_title{
+      &.col_loanDate{padding-top:8px;}
+      &.col_returnDate{padding-bottom:8px}
+      &.capa_dependiente {
+        .title,
+        .data{width:auto;height:auto;max-width:none;padding:5px}
+        .title{padding:5px 1rem 5px 0}
+      }
+    }
+    .total-results-bar{
+      .results-pagination{
+         .cont{flex-wrap:wrap;}
+        .pagination{flex-wrap:wrap;padding-top:0!important;
+          .page-item:not(.btn_mobile){display:block;}
+        }
+        form{position:relative;flex:0 0 100%;flex-wrap:wrap;margin:auto;
+          nav{display:flex!important;flex-wrap:wrap;justify-content:center}
+        }
+      }
+    }
+  }
+
+  @include media_max(sm){
+    .total-results-bar{
+      .results-pagination{padding-bottom:0;
+        .cont_pagination{
+          &:first-child{margin-bottom:.5rem;
+            form{
+              nav{padding-right:15px}
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.reader-loans,
+.reader-loans-history,
+.reader-reservations{
+  /* barra de paginacion */
+  .pagination_bar{position:relative;float:left;width:100%;display:flex;flex-flow:row wrap;justify-content:space-between;padding-top:5px;padding-bottom:5px;font-size:.81rem;
+    &.position_bar_top{}
+    &.position_bar_bottom{margin-top:1em}
+    .cont_datos_label,
+    .cont_selection_size_label{position:relative;margin-right:1em;}
+    .cont_selection_size_label{@include font-weight-bold;}
+    /* seleccion de resultados por página*/
+    .selection_results-pagination{padding-left:15px;
+      .cont_selection_size{position:relative;display:flex;
+        .results-bar{position:relative;display:flex;flex-flow:row wrap;align-items:center;}
+
+        .cont_select_size_page{position:relative;float:left;display:flex;align-items:center;margin-bottom:0;
+          .size-item{margin-right:3px}
+        }
+      }
+    }
+    /* paginacion */
+    .results-pagination{padding-right:15px}
+    .pagination_normal{width:auto;margin-bottom:0}
+
+    @include media_max(lg){
+      .selection_results-pagination,
+      .results-pagination,
+      .pagination_normal{position:relative;width:100%;}
+      .pagination_normal{justify-content:flex-end;margin-top:5px}
+    }
+    @include media_max(xs){
+      .pagination_normal{justify-content:center;}
+    }
+  }
+  .cont_table_big_00{margin-top:1rem;margin-bottom:1rem;
+    .location_title{margin-bottom:0.5rem;border-radius:0.25rem}
+    .tb_00_legend{margin-top:7px;
+      &:after{content:"";position:absolute;top:0;left:0;bottom:0;width:4px;}
+    }
+    .tb_00_titles{padding-top:8px}
+    .item-authority{
+      form{position:relative;float:left;width:100%;margin-top:3px;margin-bottom:3px}
+    }
+  }
+  .cont_table_big_00+.cont_table_big_00{
+    .table_big_00{margin-top:0;}
+    .tb_00_legend{margin-top:7px;padding-top:0;}
+  }
+  .cont_table_big_00~.cont_table_big_00{padding-top:2rem;}
+  @include media_max(sm){
+    .cont_table_big_00{margin-top:1rem;margin-bottom:0;}
+  }
+}

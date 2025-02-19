@@ -1,0 +1,90 @@
+<th:block th:insert="/public/home/html_type"></th:block>
+<th:block th:insert="/public/home/technicalheader::main" th:with="page=${'opac-help-historySearch-es_ES'}"></th:block>
+<script type="text/javascript">
+	var menu = document.getElementById('menu');
+	Stickyfill.add(menu);
+</script>
+<body>
+<div id="burger-menu" class="burger-menu">
+  <span></span>
+  			<div id="menu2" class="menu menu2">
+			<div class=""><nav class="sn-contents" aria-label="Secondary">
+      <ul class="sidenav--list">
+		<li><a href="#historySearch">Cerques guardades</a></li>
+						<li><a href="#searchAuthorities">Accés a la cerca a les autoritats</a></li>
+						<li><a href="#searchIndexes">Accés a la cerca als índexs</a></li>
+						<li><a href="#favorites">Accés als preferits</a></li>
+						<li><a href="#profile">Accés al Meu Perfil</a></li>	
+						<li><a href="#home">Accés a la pàgina d'inici</a></li></ul></nav>
+		</div>
+				</div>
+		</div>
+			<div class="wrapper cf">
+		<div id="menu" class="menu">
+					<div class="sidenav"><nav class="sn-contents" aria-label="Secundari">
+		      <ul class="sidenav--list">
+		 <li><a href="#historySearch">Cerques emmagatzemades</a></li>
+						<li><a href="#searchAuthorities">Accés a la cerca a les autoritats</a></li>
+						<li><a href="#searchIndexes">Accés a la cerca als índexs</a></li>
+						<li><a href="#favorites">Accés als preferits</a></li>
+						<li><a href="#profile">Accés al Meu Perfil</a></li>	
+						<li><a href="#home">Accés a la pàgina d'inici</a></li></ul></nav>
+		</div>
+				</div>
+				<div class="content">
+					<a name="top"></a>
+					<a name="historySearch"></a>	
+					<h2 class="title-help">Cerques emmagatzemades</h2>
+					<p>Des d'aquesta opció es visualitzen les cerques que ha emmagatzemat en sessions anteriors</p>
+					<ul class="tab4-help margen5">
+						<li>Les cerques es mostren ordenades per data en <span class="text-bold-help">mode descendent</span>
+						<li>Si desitja <span class="text-bold-help">eliminar</span> alguna de les cerques emmagatzemades, faci clic a l'opció 
+							<img th:src="@{/img/help/icon-paper-bin-1.png}" alt="Ícona paperera"/>
+							associada a la cerca que li interessi
+						</li>
+					</ul>
+					<p>Des d'aquesta opció també pot visualitzar les últimes cerques que ha realitzat durant la sessió que té oberta. Per fer-ho, faci clic a <i>Últimes cerques</i>.</p>
+					<ul class="tab4-help margen5">
+						<li>Si desitja emmagatzemar alguna de les cerques, faci clic a l'opció <img th:src="@{/img/help/icon-save.png}" alt="Ícona guardar"/>associada a la cerca que li interessi.
+							<ul class="tab5-help margen5">
+								<li>- per defecte, es poden emmagatzemar un màxim de <span class="text-bold-help">50</span> cerques</li>
+							</ul>
+						</li>
+					</ul>
+					<a name="searchAuthorities"></a>	
+					<h2 class="title-help">2.- Accés a la cerca a les autoritats</h2>
+					<p>Per realitzar una cerca d'autoritats que permeti localitzar registres que contenen una autoritat específica, faci clic a l'opció <i>Cerca autoritats</i>.</p>
+					<a name="searchIndexes"></a>	
+					<h2 class="title-help">3.- Accés a la cerca als índexs</h2>
+					<p>Per realitzar una cerca que localitzi paraules o patrons de paraules semblants al terme o termes introduïts, faci clic a l'opció <i>Cerca índexs</i>.</p>
+					<a name="favorites"></a>	
+					<h2 class="title-help">4.- Accés als preferits</h2>
+					<p>Per visualitzar els registres que ha marcat com a preferits, faci clic a <i>Preferits</i>.</p>
+					<a name="profile"></a>	
+					<h2 class="title-help">5.- Accés al Meu Perfil</h2>
+					<p> Faci clic a l'opció <i>El meu perfil</i> i identifiqui's per poder accedir a les següents utilitats d'<span class="text-bold-help">ODA</span>:</p>
+					<ul class="tab5-help margen10">
+						<li>Dades personals</li>
+						<li>Sol·licituds</li>
+						<li>Préstecs actius</li>
+						<li>Històric de préstecs</li>
+						<li>Renovar préstecs</li>
+						<li>Anul·lar reserves</li>
+						<li>Emmagatzemar cerques</li>
+						<li>Crear llistes de preferits</li>
+					</ul>
+					<p  class="tab3-help">•	Per identificar-se com a usuari pot utilitzar qualsevol d'aquests 3 mètodes:</p>
+					<ul class="tab5-help margen10">
+						<li>núm. de carnet</li>
+						<li>correu electrònic que hagi proporcionat a la seva biblioteca</li>
+						<li>telèfon mòbil que hagi proporcionat a la seva biblioteca</li>
+					</ul>
+					<a name="home"></a>	
+					<h2 class="title-help">6.- Accés a la pàgina d'inici</h2>
+					<p>Per tornar a la pàgina d'inici, faci clic a <i>Inici</i>.</p>
+					<p class="top-help"><a href="#top">Amunt</a></p>
+		</div>
+	</div>
+	<th:block th:insert="/public/home/technicalfooter" th:with="page='opac-dataprivacyterms'"/>
+</body>
+</html>

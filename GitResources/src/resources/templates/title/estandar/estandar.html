@@ -1,0 +1,88 @@
+<!-- :: [title/estandar/estandar.html] -->
+<div class="standard-copy-format">
+   <th:block th:if="${tfields != null}" th:each="mykey : ${detail.fieldsToShow}">
+
+      <th:block th:if="${tfields[__${mykey}__] != null and tfields[__${mykey}__].size() == 1 and (specialFileds?.get('__${mykey}__') == null or specialFileds?.get('__${mykey}__')?.get('showAddInf'))}" th:each="mvalor , iterStat: ${tfields[__${mykey}__]}">
+         <th:block th:if="${!#strings.isEmpty(mvalor) and !#lists.isEmpty(mvalor.subFields)}">
+            <div th:class="'linea linea_type_'+${mykey}">
+               <div class="field-title col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                  <span th:text="#{${mykey}} + ': '" class="copy-field-label font-weight-bold"></span>
+               </div>
+               <div class="field-content d-flex col-lg-9 col-md-12 col-sm-12 col-xs-12">
+                  <div class="field-content_internal d-flex">
+                  <th:block th:switch="${mykey}">
+                     <th:block th:case="'t700'">
+                        <th:block th:insert="/title/estandar/enlace.html"></th:block>
+                     </th:block>
+                     <th:block th:case="'t650'">
+                        <th:block th:insert="/title/estandar/enlace.html"></th:block>
+                     </th:block>
+                     <th:block th:case="'t511'">
+                        <th:block th:insert="/title/estandar/enlace.html"></th:block>
+                     </th:block>
+                     <th:block th:case="'t600'">
+                        <th:block th:insert="/title/estandar/enlace.html"></th:block>
+                     </th:block>
+                     <th:block th:case="'t856'">
+                        <th:block th:insert="/title/fragments/t856URL.html"></th:block>
+                     </th:block>
+                     <th:block th:case="'t508'">
+                        <th:block th:insert="/title/estandar/t508.html"></th:block>
+                     </th:block>
+                     <th:block th:case="*">
+                        <th:block th:insert="/title/estandar/sinEnlace.html"></th:block>
+                     </th:block>
+                  </th:block>
+                  </div>
+               </div>
+            </div>
+            <!-- :: /.linea -->
+         </th:block>
+      </th:block>
+      <th:block th:if="${tfields[__${mykey}__] != null and tfields[__${mykey}__].size() > 1 and !#strings.isEmpty(tfields[__${mykey}__][0]) and !#lists.isEmpty(tfields[__${mykey}__][0].subFields)}">
+      <div th:class="'linea linea_type_'+${mykey}">
+         <div class="field-title col-lg-3 col-md-12 col-sm-12 col-xs-12">
+            <span th:text="#{${mykey}} + ': '" class="copy-field-value font-weight-bold"></span>
+         </div>
+         <!-- :: /.field-title -->
+         <div class="field-content d-flex col-lg-9 col-md-12 col-sm-12 col-xs-12 flex-column">
+            <th:block th:each="mvalor , iterStat: ${tfields[__${mykey}__]}">
+               <div class="field-content_internal d-flex">
+                  <th:block th:if="${iterStat.index} < ${iterStat.size}">
+                     <th:block th:switch="${mykey}">
+                        <th:block th:case="'t700'">
+                           <th:block th:insert="/title/estandar/enlace.html"></th:block>
+                        </th:block>
+                        <th:block th:case="'t650'">
+                           <th:block th:insert="/title/estandar/enlace.html"></th:block>
+                        </th:block>
+                        <th:block th:case="'t600'">
+                           <th:block th:insert="/title/estandar/enlace.html"></th:block>
+                        </th:block>
+                        <th:block th:case="'t856'">
+                           <th:block th:insert="/title/fragments/t856URL.html"></th:block>
+                        </th:block>
+                        <th:block th:case="'t508'">
+                           <th:block th:insert="/title/estandar/t508.html"></th:block>
+                        </th:block>
+                        <th:block th:case="*">
+                           <th:block th:insert="/title/estandar/sinEnlace.html"></th:block>
+                        </th:block>
+                     </th:block>
+                  </th:block>
+               </div>
+            </th:block>
+         </div>
+         <!-- ::/.field-content -->
+      </div>
+      <!-- :: /.linea -->
+      </th:block>
+   </th:block>
+
+<!--  PRUEBA -->
+
+<!--  PRUEBA -->
+
+</div>
+<!-- :: /.standard-copy-format -->
+<!-- :: /[title/estandar/estandar.html] -->

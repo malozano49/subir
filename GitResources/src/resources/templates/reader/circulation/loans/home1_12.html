@@ -1,0 +1,28 @@
+<th:block>
+<!-- :: [reader/circulation/loans/home1_12.html] -->
+<section class="card-body cont_datos page_reserve col-md-12 col-sm-12 col-xs-12">
+  <article class="cont_progress_bar mb-0">
+    <th:block th:insert="/reader/circulation/fragments/progressBar :: frag(#{loan.progress.bar.title}, 50,#{loan.progress.bar1},#{loan.progress.bar2})"></th:block>
+    <div class="item-detail page_reserve col-md-12 col-sm-12 col-xs-12 m-auto pt-4">
+      <div class="detail-summary col-9 d-flex m-auto pl-0 pr-0">
+        <div class="cont_image card-body col-md-2 col-sm-12 col-xs-12 desktop">
+          <th:block th:with="item = ${detail.catalog}" th:insert="/public/catalog/fragments/recordImage.html :: image(${detail.catalog.oaiIdentifierB64})"></th:block>
+        </div>
+        <!-- :: /.card-body.cont_image -->
+        <div class="cont_datos card-body col-md-10 col-sm-12 col-xs-12 pt-2 pr-0 px-4">
+          <th:block th:insert="/title/fragments/titleSummary.html"></th:block>
+        </div>
+        <!-- :: /.card-body -->
+      </div>
+      <!-- :: /.detail-summary -->
+    </div>
+    <!-- :: /.item-detail -->
+    <div class="copies page_reserve col-md-12 col-sm-12 col-xs-12 ">
+        <th:block th:insert="/reader/circulation/loans/fragments/copies.html"></th:block>
+    </div>
+    <!-- :: /.copies -->
+  </article>
+</div>
+
+<!-- :: /[reader/circulation/loans/home1_12.html] -->
+</th:block>

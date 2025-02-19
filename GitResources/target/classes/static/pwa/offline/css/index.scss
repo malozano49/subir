@@ -1,0 +1,153 @@
+/*!
+ *  @file        : index.scss
+ *
+ *  @description : PWA offline styles
+ *
+ *  @author      : http://www.baratz.es/
+--------------------------------------------------------------------------------------------------*/
+
+// =============================================================================
+//    Grid breakpoints
+// =============================================================================
+
+// Define the minimum dimensions at which your layout will change,
+// adapting to different screen sizes, for use in media queries.
+
+$breakpoint-xs : 0;
+$breakpoint-sm : 576px;
+$breakpoint-md : 768px;
+$breakpoint-lg : 992px;
+$breakpoint-xl : 1200px;
+
+$landscape : landscape;
+
+@mixin media($media) {
+  @if $media == xs {
+    @media (max-width: $breakpoint-sm) { @content; }
+  }
+  @else if $media == sm {
+    @media (min-width: $breakpoint-sm) and (max-width: $breakpoint-md) { @content; }
+  }
+  @else if $media == md {
+    @media (min-width: $breakpoint-md) and (max-width: $breakpoint-lg) { @content; }
+  }
+  @else if $media == lg {
+    @media (min-width: $breakpoint-lg) and (max-width: $breakpoint-xl) { @content; }
+  }
+  @else if $media == xl {
+    @media (min-width: $breakpoint-xl) { @content; }
+  }
+}
+
+@mixin media_max($media){
+  @if $media == lg {
+    @media (max-width: $breakpoint-xl) { @content; }
+  }
+  @else if $media == md {
+    @media (max-width: $breakpoint-lg) { @content; }
+  }
+  @else if $media == sm {
+    @media (max-width: $breakpoint-md) { @content; }
+  }
+  @else if $media == xs {
+    @media (max-width: $breakpoint-sm) { @content; }
+  }
+}
+
+@mixin media_min($media){
+  @if $media == xl {
+    @media (min-width: $breakpoint-xl) { @content; }
+  }
+  @else if $media == lg {
+    @media (min-width: $breakpoint-lg) { @content; }
+  }
+  @else if $media == md {
+    @media (min-width: $breakpoint-md) { @content; }
+  }
+  @else if $media == sm {
+    @media (min-width: $breakpoint-sm) { @content; }
+  }
+  @else if $media == xs {
+    @media (min-width: $breakpoint-xs) { @content; }
+  }
+}
+
+
+// https://codepen.io/ademilter/pen/hDtpq
+.cont_effect,
+canvas,
+.caps,
+.frame{position:absolute;top:0;left:0;width:100%;height:100%;}
+.cont_effect{display:flex;z-index:-10;align-items:start;justify-content:center;overflow:hidden;
+  img{position:absolute;z-index:3;max-width:80%;width:300px;margin-top:420px;animation:as 2s linear infinite;}
+  @include media_max(sm){
+    img{margin-top:350px;}
+  }
+  .caps {z-index:2;opacity:0;animation:as 8s linear infinite;}
+  .frame{z-index:3;
+    background:radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 19%, rgba(0, 0, 0, 0.9) 100%);
+    div {position:absolute;left:0;top:-20%;width:100%;height:20%;background-color:rgba(0, 0, 0, .12);box-shadow:0 0 10px rgba(0, 0, 0, .3);animation:asd 12s linear infinite;
+      &:nth-child(1) {animation-delay:0;}
+      &:nth-child(2) {animation-delay:4s;}
+      &:nth-child(3) {animation-delay:8s;}
+    }
+  }
+}
+
+@keyframes as {
+  0% {
+      opacity:0;
+  }
+  10% {
+      opacity:.3;
+  }
+  20% {
+      opacity:.1;
+  }
+  30% {
+      opacity:.5;
+  }
+  40% {
+      opacity:0;
+  }
+  50% {
+      opacity:.8;
+  }
+  55% {
+      opacity:0;
+  }
+  55% {
+      opacity:0;
+  }
+}
+
+@keyframes asd {
+  0% {
+      top:-20%;
+  }
+  100% {
+      top:100%;
+  }
+}
+
+
+main{display:flex;flex-direction:column;align-items:center;justify-content:center;
+  .offline_section{position:relative;display:flex;flex-flow:column wrap;width:100%;max-width:1280px;min-height:78vh;margin:auto}
+  article{
+    &.component-message{position:relative;width:100%;max-width:800px;display:flex;flex-flow:column wrap;justify-content:center;align-items:center;margin:40px auto 150px auto;padding-left:15px;padding-right:15px;background-color:rgba(255,255,255,.8);
+      h1{position:relative;font-size:4rem;font-weight:900}
+      p{position:relative;max-width:300px}
+      .img-no_connection{position:absolute;left:0;top:0;width:auto;opacity:.1}
+      @include media_max(sm){
+        h1{font-size:2.5rem;}
+      }
+      @media (max-width:380px){
+        margin-bottom:110px;
+      }
+    }
+    &.component-user_data{position:relative;width:100%;display:flex;flex-direction:column;
+      a.data{pointer-events:none}
+    }
+  }
+}
+.vista_reader .cont_menu_datos_type_00{min-height:0}

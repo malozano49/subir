@@ -1,0 +1,28 @@
+<!-- :: [reader/buysuggestions/acepted/buySuggestionsList.html] -->
+<div class="card p-4 add-buysuggestions-wrapper">
+	
+	<h2 id="buySuggestionsList_title" class="item-title d-block font-weight-bold fieldset__title">
+        <span class="icono fa fa-comment mr-2" aria-hidden="true"></span>
+        <span th:text="#{mylibrary.reader.buy.suggestions.acepted}" ></span>
+    </h2>
+    
+	<table class="table table-striped table-bordered lists" th:if="${not #lists.isEmpty(reader.acceptedSuggestionsList)}">
+				<thead class="">
+					<tr>
+						<th scope="col" class="" th:text="#{suggestion.buy.acepeted.author}"></th>	
+						<th scope="col" class="" th:text="#{suggestion.buy.acepeted.title}"></th>
+						<th scope="col" class="" th:text="#{suggestion.buy.acepeted.status}"></th>					 				 
+					</tr>
+				</thead>
+				<tbody>
+					<th:block th:each="aceptedSuggestion : ${reader.acceptedSuggestionsList}"> 
+						<tr>
+							<td class="" th:text="${aceptedSuggestion.detail.author}"></td>
+							<td class="" th:text="${aceptedSuggestion.detail.title}"></td> 
+							<td class="" th:text="${aceptedSuggestion.detail.statusDescription}"></td> 
+						</tr>	
+					</th:block> 
+				</tbody>
+	</table>
+</div>
+<!-- :: [reader/buysuggestions/acepted/buySuggestionsList.html] -->

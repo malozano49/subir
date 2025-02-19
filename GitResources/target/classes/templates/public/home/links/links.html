@@ -1,0 +1,27 @@
+<!-- :: [public/home/links/links.html] -->
+
+<div class="widget_links widget widget_home border" th:if="${not #maps.isEmpty(infos) and infos['info.links'] != null }">
+  <div class="widget-cont_header">
+    <span class="icono fas fa-external-link-alt mr-2"></span>
+    <h3 id="art_links_title" class="anchor_title stc_title widget-header h2" th:text="#{${infos['info.links'].text}}"></h3>
+  </div>
+  <!-- :: /.widget-cont_header -->
+  <div class="widget_cont">
+    <ul class="category-list">
+    	<li th:if="${infos['info.links'].elements != null}" th:each="link: ${infos['info.links'].elements}">
+    	  <a class="link" th:href="${link.link}" th:title="#{info.links.link.description(${link.text})}" th:aria-label="#{info.links.link.description(${link.text})}" target="_blank" rel="external noopener noreferrer" >
+          	<span class="desc" th:text="${link.text}" aria-hidden="true"></span>
+          </a>
+    	</li>
+    </ul>
+    <div th:if="${infos['info.links'].showAllButton && infos['info.links'].elements.size() > 9}" class="wdg_botonera d-flex justify-content-end w-100 mt-3">
+      <a th:href="@{${thymeleafMap.get('INFO_LINKS_URL')}}" class="btn btn-primary" th:title="#{info.activities.all}" th:aria-label="#{info.activities.all}">
+        <span aria-hidden="true" class="btn_title" th:text="#{button.view.all}"></span>
+      </a>
+    </div>
+  </div>
+  <!-- :: /.widget_cont -->
+</div>
+<!-- :: /.widget -->
+
+<!-- :: /[public/home/links/links.html] -->

@@ -1,0 +1,235 @@
+<th:block th:insert="/public/home/html_type"></th:block>
+<th:block th:insert="/public/home/technicalheader::main" th:with="page=${'opac-help-seeDetail-es_ES'}"></th:block>
+<script type="text/javascript">
+	var menu = document.getElementById('menu');
+	Stickyfill.add(menu);
+</script>
+<body>
+<div id="burger-menu" class="burger-menu">
+  <span></span>
+  			<div id="menu2" class="menu menu2">
+			<div class=""><nav class="sn-contents" aria-label="Secondary">
+      <ul class="sidenav--list">
+		<li><a href="#viewdetail">Visualización en modo detalle</a>
+		    <ul class="tab3-help">
+		        <li><a href="#markfavotites">Como marcar como favorito o rexistro que se está a ver</a></li>
+		        <li><a href="#addfavotitesview">Como engadir unha nova lista de favoritos dende a visualización en modo detalle</a></li>
+		        <li><a href="#addfavotites">Como engadir o rexistro a unha das miñas listas de favoritos</a></li>
+		        <li><a href="#viewcopy">Como visualizar a información dos exemplares</a>
+		            <ul class="tab3-help"><li><a href="#movicopy">Como moverse pola lista de exemplares</a></li></ul>                        
+		        </li>
+		        <li><a href="#requestcopy">Como facer unha solicitude dun exemplar</a></li>
+		        <li><a href="#listresults">Acceso ao listado de resultados</a>
+		        <li><a href="#searchAuthorities">Acceso á procura nas autoridades</a></li>
+		        <li><a href="#searchIndexes">Acceso á procura nos índices</a></li>
+		        <li><a href="#lastSearch">Acceso ás últimas buscas realizadas</a></li>
+		        <li><a href="#historySearch">Acceso ás buscas gardadas</a></li>
+		        <li><a href="#favorites">Acceso a favoritos</a></li>
+		        <li><a href="#profile">Acceso ao Meu Perfil</a></li>
+		        <li><a href="#home">Acceso á páxina de inicio</a></li>
+		    </ul>
+		</li>
+		</ul>
+		</nav>
+		</div>
+		</div>
+		</div>
+		<div class="wrapper cf">
+		<div id="menu" class="menu">
+		    <div class="sidenav">
+		        <nav class="sn-contents" aria-label="Secundario">
+		            <ul class="sidenav--list">
+		                <li><a href="#markfavotites">Como marcar como favorito o rexistro que se está a ver</a></li>
+		                <li><a href="#addfavotitesview">Como engadir unha nova lista de favoritos dende a visualización en modo detalle</a></li>
+		                <li><a href="#addfavotites">Como engadir o rexistro a unha das miñas listas de favoritos</a></li>
+		                <li><a href="#viewcopy">Como visualizar a información dos exemplares</a>
+		                    <ul class="tab3-help"><li><a href="#movicopy">Como moverse pola lista de exemplares</a></li></ul>                        
+		                </li>
+		                <li><a href="#requestcopy">Como facer unha solicitude dun exemplar</a></li>
+		                <li><a href="#listresults">Acceso ao listado de resultados</a></li>
+		                <li><a href="#searchAuthorities">Acceso á procura nas autoridades</a></li>
+		                <li><a href="#searchIndexes">Acceso á procura nos índices</a></li>
+		                <li><a href="#lastSearch">Acceso ás últimas buscas realizadas</a></li>
+		                <li><a href="#historySearch">Acceso ás buscas gardadas</a></li>
+		                <li><a href="#favorites">Acceso a favoritos</a></li>
+		                <li><a href="#profile">Acceso ao Meu Perfil</a></li>
+		                <li><a href="#home">Acceso á páxina de inicio</a></li>
+		            </ul>
+		        </nav>
+		    </div>
+		</div>
+		<div class="content">
+		    <a name="top"></a>
+		    <a name="viewdetail"></a>
+		    <h2 class="title-help">Visualización en modo detalle</h2>
+		    <p>Na visualización en modo detalle amósase a seguinte información:</p>
+		    <ul class="tab5-help margen5">
+		        <li>- Portada</li>
+		        <li>- Título</li>
+		        <li>- Autor</li>
+		        <li>- Publicación</li>
+		        <li>- Resumo</li>
+		        <li>- Xénero</li>
+		        <li>- Tipo de material</li>
+		        <li>- Información sobre os exemplares asociados ao rexistro:
+		            <ul class="tab5-help margen5">
+		                <li>- Localización</li>
+		                <li>- Nº de exemplares totais asociados ao rexistro</li>
+		                <li>- Nº de exemplares dispoñibles</li>
+		            </ul>
+		        </li>
+		    </ul>
+		    <ul class="tab4-help">
+		        <li>Se desexa ver información doutras áreas incluídas no rexistro, prema na opción  <img th:src="@{/img/help/icon-more-detail.png}" alt="icono Máis detalle" width="50px"/> da barra flotante
+		        <br>
+		        <span class="tab4-help"><img th:src="@{/img/help/more-detail.png}" alt="Máis detalle" width="500px"/></span>
+		        </li>
+		        <br>
+		        <p class="tab4-help">Se quere activar o formato MARC, prema en <img th:src="@{/img/help/marc.png}" alt="MARC"/> 
+		        <li>* Se se atopan outros <span class="text-bold-help">rexistros coincidentes</span> en determinadas áreas co rexistro que se está a ver, móstranse na parte inferior en forma de carrusel. 
+		            <p>Para acceder a outros rexistros relacionados, prema na opción <img th:src="@{/img/help/icon-other-related-records.png}" alt="Outros rexistros relacionados" width="50px"/> da barra flotante.</p>
+		            <p>As áreas que se teñen en conta para considerar que os rexistros están relacionados co que se está a ver son as seguintes:</p>
+		            <ul class="tab5-help margen10">
+		                <li>- mesma editorial e colección</li>
+		                <li>- mesmo xénero</li>
+		            </ul><br>
+		            <p class="tab4-help"><img th:src="@{/img/help/carrusell.png}" alt="Carrusel" width="500px"/></p>
+		        </li>
+		    </ul>
+		    <a name="markfavotites"></a>
+		    <h4 class="title-help">Como marcar como favorito o rexistro que se está a ver</h4>
+		    <p>Para marcar o rexistro que está a ver, prema na opción <img th:src="@{/img/help/icon-favorites.png}" alt="Icono favoritos"/> </p>
+		    <p>Se desexa consultar os rexistros marcados como favoritos na sesión de traballo, prema en Favoritos</p>
+		    <ul class="tab4-help margen5">
+		        <li>Por defecto, pode almacenar un máximo de <span class="text-bold-help">100</span> favoritos</li>
+		        <li>Os favoritos móstranse ordeados por <span class="text-bold-help">autor/título</span></li>
+		        <li>Para desmarcar algunha das opcións de favoritos, prema na opción <img th:src="@{/img/help/favorites-icon-selected.png}" alt="Icono favoritos seleccionado"/> do rexistro que queira eliminar dos favoritos.
+		            <ul class="tab5-help margen5">
+		                <li>- os rexistros tamén se poden desmarcar desde a visualización en modo lista ou en modo detalle</li>
+		            </ul>
+		        </li>
+		    </ul>
+		    <a name="addfavotitesview"></a>
+		    <h4 class="title-help">Como engadir unha nova lista de favoritos dende a visualización en modo detalle</h4>
+		    <p>Para crear unha lista de favoritos,</p>
+		    <ul class="tab5-help margen5"> 
+		        <li>1. Prema na opción <img th:src="@{/img/help/icon-add-list.png}" alt="Icono engadir lista"/> asociada ao rexistro que está a ver.
+		        <li>2. Prema na opción <img th:src="@{/img/help/btn-add-list.png}" alt="Botón engadir lista" width="100px"/>
+		        <li>3. Introduza a descrición que queira asociar á nova lista.
+		            <p class="tab4-help margen10"><img th:src="@{/img/help/name-list.png}" alt="Nome da lista" width="200px"/></p>
+		        </li>
+		        <li>4. Prema en  <img th:src="@{/img/help/btn-add-title-list.png}" alt="Botón engadir título á lista seleccionada" width="200px"/>
+		            <ul class="tab4-help margen5">
+		                <li>crea a nova lista co rexistro asociado</li>
+		                <li>os rexistros pertencentes a unha lista de favoritos móstranse coa seguinte imaxe distintiva: 
+		                    <img th:src="@{/img/help/icon-record-in-list.png}" alt="Icono de lista no rexistro" width="50px"/>
+		                </li> 
+		                <li>* se desexa visualizar as listas que ten creadas, prema no seu usuario e seleccione a opción <i>As miñas listas</i>
+		                <p class="tab4-help margen5"><img th:src="@{/img/help/my-lists.png}" alt="As miñas listas" width="200px"/></p>
+		                </li>
+		            </ul>
+		        </li>
+		    </ul>
+			<a name="addfavotites"></a>
+			<h4 class="title-help">Como engadir o rexistro a unha das miñas listas de favoritos</h4>
+			<p>Para engadir o rexistro a unha das listas de favoritos xá creadas,</p>
+			<ul class="tab5-help margen5">
+			    <li>1. Prema na opción <img th:src="@{/img/help/icon-add-list.png}" alt="Icono engadir lista"/> asociada ao rexistro.</li>
+			    <li>2. Seleccione a lista que lle interese.
+			        <p class="tab4-help margen5"><img th:src="@{/img/help/list-selection.png}" alt="Seleccionar lista" width="200px"/></p>
+			    </li>
+			    <li>3. Prema en  <img th:src="@{/img/help/btn-add-title-list.png}" alt="Botón engadir título á lista seleccionada" width="200px"/>
+			        <ul class="tab3-margen5">
+			            <li>o rexistro asociase á lista seleccionada</li>
+			            <li>os rexistros pertencentes a unha lista de favoritos móstranse coa seguinte imaxe distintiva:
+			                <img th:src="@{/img/help/icon-record-in-list.png}" alt="Icono de lista no rexistro" width="50px"/>
+			            </li>
+			            <li>Por defecto, só se poden almacenar <span class="text-bold-help">200</span> favoritos nunha mesma lista.</li>
+			            <li>un mesmo rexistro pode estar asociado a varias listas de favoritos</li>
+			        </ul>
+			    </li>
+			</ul>
+			<a name="viewcopy"></a>
+			<h4 class="title-help">Como visualizar a información dos exemplares</h4>
+			<p>Para visualizar os exemplares asociados ao rexistro que está a ver, prema na opción <img th:src="@{/img/help/icon-visualization.png}" alt="Icono visualización" width="35px"/>  da barra flotante</p>
+			<ul class="tab3-help margen5">
+			    <li>Se desexa visualizar máis información sobre os exemplares, prema en <img th:src="@{/img/help/icon-see-more.png}" alt="Icono ver máis"/>
+			        <p class="tab5-help"><img th:src="@{/img/help/localization.png}" alt="Localización" width="500px"/></p>
+			    </li>
+			    <li>Se desexa filtrar os exemplares que vai a visualizar en base á súa dispoñibilidade, seleccione a opción que lle interese en <i>Filtrar por dispoñibilidade</i>:
+			        <p class="tab5-help"><img th:src="@{/img/help/filters-available.png}" alt="Filtros dispoñibles" width="250px"/></p>
+			    </li>
+			    <li>Se o rexistro ten exemplares de diferentes localizacións e superan o número de exemplares que se visualizan por páxina, pode filtrar por biblioteca/sucursal para facilitar a súa visualización. Para iso, seleccione a biblioteca ou sucursal pola que queira facer a restricción:
+			        <p class="tab5-help"><img th:src="@{/img/help/filter-bibio-branch.png}" alt="Filtrar por biblioteca ou sucursal" width="300px"/></p>
+			    </li>
+			</ul>
+			<a name="movicopy"></a>
+			<h5 class="subtitle-help">Cómo moverse polo listado de exemplares</h5>
+			<p>Por defecto, os exemplares móstranse en grupos de <span class="text-bold-help">10</span>. Para moverse polas diferentes páxinas dos resultados obtidos existen as seguintes opcións:
+			</p>
+			<ul class="tab3-help margen5">
+			    <li>Prema en <img th:src="@{/img/help/next.png}" alt="Seguinte" width="75px"> para moverse á seguinte páxina.</li>
+			    <li>Prema en <img th:src="@{/img/help/back.png}" alt="Anterior" width="75px"> para moverse á páxina anterior.</li>
+			    <li>Prema no nº de páxina que lle interese visualizar
+			        <br><br><img th:src="@{/img/help/number-by-page.png}" alt="Número de páxina" width="350px">
+			    </li>
+			    <li>Prema no nº 1 para visualizar a primeira páxina
+			        <br><br><img th:src="@{/img/help/first-page.png}" alt="Primeira páxina" width="350px"/>
+			    </li>
+			    <li>Prema no nº anterior a Seguinte para ir á última páxina
+			        <br><br><img th:src="@{/img/help/last-page.png}" alt="Última páxina" width="350px"/>
+			    </li>
+			</ul>
+			<a name="requestcopy"></a>
+			<h4 class="title-help">Como facer unha solicitude dun exemplar</h4>
+			<p>Se quere solicitar algún dos exemplares asociados ao rexistro que está a visualizar, prema en 
+			<img th:src="@{/img/help/icon-request.png}" alt="Solicitude"/></p>
+			<a name="listresults"></a>
+			<h2 class="title-help">Acceso ao listado de resultados</h2>
+			<p>Se desexa volver a visualizar todos os rexistros localizados na procura, prema na opción <i>Listado de resultados</i>.</p>
+			<a name="searchAuthorities"></a> 
+			<h2 class="title-help">Acceso a busca en autoridades</h2>
+			<p>Para realizar unha procura de autoridades que permita localizar rexistros que conteñen unha autoridade específica, prema na opción <i>Procura autoridades</i>.</p>
+			<a name="searchIndexes"></a> 
+			<h2 class="title-help">Acceso a busca nos índices</h2>
+			<p>Para realizar unha procura que localice palabras ou patróns de palabras parecidas ao termo ou termos introducidos, prema na opción <i>Procura índices</i>.</p>
+			<a name="lastSearch"></a> 
+			<h2 class="title-help">Acceso ás últimas búsquedas realizadas</h2>
+			<p>Para visualizar as <span class="text-bold-help">10</span> últimas búsquedas realizadas que trouxeron resultados durante a sesión do Opac, prema en <i>Últimas búsquedas</i>.</p>
+			<a name="historySearch"></a>
+			<h2 class="cont cont_title title-help">Acceso a búsquedas gardadas</h2>
+			<p>Se quere gardar algunha das búsquedas que realizou para poder executalas nun momento posterior, prema en <i>Búsquedas gardadas</i>.</p>
+			<ul class="tab3-help">
+			    <li>Para poder gardar búsquedas é necesario que se identifique previamente</li>
+			</ul>
+			<a name="favorites"></a> 
+			<h2 class="title-help">Acceso a favoritos</h2>
+			<p>Para visualizar os rexistros que marcou como favoritos, prema en <i>Favoritos</i>.</p>
+			<a name="profile"></a> 
+			<h2 class="title-help">Acceso ao meu perfil</h2>
+			<p>Prema na opción <i>O meu perfil</i> e identifíquese para poder acceder ás seguintes utilidades de <span class="text-bold-help">ODA</span>: </p>
+			<ul class="tab5-help margen5">
+			    <li>- Datos persoais</li>
+			    <li>- Solicitudes</li>
+			    <li>- Préstamos activos</li>
+			    <li>- Histórico de préstamos</li>
+			    <li>- Renovar préstamos</li>
+			    <li>- Anular reservas</li>
+			    <li>- Gardar búsquedas</li>
+			    <li>- Crear listas de favoritos</li>
+			</ul>
+			<p class="tab2-help">•	Para identificarse como usuario pode utilizar calquera destes 3 métodos:</p>
+			<ul class="tab5-help margen5">
+			    <li>- nº de carné</li>
+			    <li>- correo electrónico que proporcionou á súa biblioteca</li>
+			    <li>- teléfono móbil que proporcionou á súa biblioteca</li>
+			</ul>
+			<a name="home"></a> 
+			<h2 class="title-help">Acceso á páxina de inicio</h2>
+			<p>Para ir á páxina de inicio, prema en <i>Inicio</i>.</p>
+			<p class="top-help"><a href="#top">Arriba</a></p>
+		</div>
+	</div>
+	<th:block th:insert="/public/home/technicalfooter" th:with="page='opac-dataprivacyterms'"/>
+</body>
+</html>

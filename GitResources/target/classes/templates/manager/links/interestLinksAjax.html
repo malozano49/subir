@@ -1,0 +1,118 @@
+<!-- :: [manager/links/interestLinksAjax.html] -->
+<li th:class="'cmp_sortable_item list-group-item '+ ${!lk.active ? 'out':''}" th:data-id="${lk.id}" data-order-init="" th:classappend="${lk.edit==false} ? 'no-sortable' : ''">
+<!--/* :: TODO 210128 Si th:if="${lk.edit==true}" habilitar */-->
+  <span th:if="${lk.edit==true}" aria-hidden="true" class="icono fas fa-ellipsis-v mr-3 ml-3"></span>
+  <span class="title" th:text="${lk.text}"></span>
+  <div class="cont_botonera" th:if="${lk.edit}">
+    <!-- :: Modificar -->
+    <button class="btn_interest_link_form_modify btn btn-outline-secondary mr-1 modal_js" type="button" th:id="'b_link_'+${#strings.replace(contentLevel,' ','_')}+'_'+${lk.id}"
+      data-modal_tipo="light"
+      data-modal_size="modal-lg"
+      th:data-modal_target="'#modal_interest_link_'+${#strings.replace(contentLevel,' ','_')}+'_'+${lk.id}"
+      data-modal_discriminador="modal_modificar_manager_link"
+      th:data-modal_title="#{interest.link.modal.title}"
+      th:data-modal_html="'#interest_link_form_'+${#strings.replace(contentLevel,' ','_')}+'_'+${lk.id}"
+      data-modal_footer="false"
+      th:aria-label="#{interest.link.modal.title}" th:title="#{interest.link.modal.title}">
+      <span class="icono fas fa-edit" aria-hidden="true"></span>
+    </button>
+    <!-- :: Modificar Modal-->
+    <div th:id="'interest_link_form_'+${#strings.replace(contentLevel,' ','_')}+'_'+${lk.id}" class="interest_link_edit_form d-none" aria-hidden="true">
+      <form th:action="@{${thymeleafMap.get('MANAGER_INTEREST_LINKS_ADD')}}" th:object="${interestLinkVO}" method="POST">
+        <input type="hidden" name="id" th:value="${lk.id}">
+        <input type="hidden" name="contentLevel" th:value="${contentLevel}">
+        <input type="hidden" name="type" th:value="@{${thymeleafMap.get('INTEREST_LINK')}}">
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+
+        <div class="content_interest_link_form d-flex flex-column col-md-12 mb-3">
+
+            <fieldset>
+              <div class="cont_form_group d-flex mb-3">
+                <div class="form-group col-md-12 pl-0 pr-0">
+                  <label th:for="'input_text_'+${lk.id}" class="bmd-label-floating" th:text="#{interest.link.text}" ></label>
+                  <input th:id="'input_text_'+${lk.id}"class="form-control" type="text" name="text" th:aria-label="#{interest.link.text}" th:value="${lk.text}"/>
+                  <span class="bmd-help" th:text="#{interest.link.text.help}"></span>
+                </div>
+                <!-- :: /.form-group -->
+              </div>
+              <!-- :: /.cont_form_group -->
+            </fieldset>
+
+            <fieldset>
+              <div class="cont_form_group d-flex mb-3">
+                <div class="form-group col-md-12 pl-0 pr-0">
+                  <label th:for="'input_link_'+${lk.id}" class="bmd-label-floating" th:text="#{interest.link.link}" ></label>
+                  <input th:id="'input_link_'+${lk.id}"class="form-control" type="text" name="link" th:aria-label="#{interest.link.link}" th:value="${lk.link}"/>
+                  <span class="bmd-help" th:text="#{interest.link.link.help}"></span>
+                </div>
+                <!-- :: /.form-group -->
+              </div>
+              <!-- :: /.cont_form_group -->
+            </fieldset>
+
+            <div class="cont_fechas row ml-0 mr-0 w-100">
+
+              <fieldset class="cont_form_group d-flex col-lg-4 col-sm-12 pl-0 pr-lg-3 pr-0 mb-3">
+                <div class="form-group col-md-12 pl-0 pr-0">
+                  <label th:for="'input_startDate_'+${lk.id}" class="bmd-label-floating" th:text="#{interest.link.startDate}"></label>
+                  <div class="ctrl_datetimepicker input-group date" th:id="'datetimepicker_startDate_'+${lk.id}" data-target-input="nearest">
+                    <input type="text" th:id="'input_startDate_'+${lk.id}" name="startDate" class="form-control datetimepicker-input assessment-date-keypress" autocomplete="off" th:data-target="'#datetimepicker_startDate_'+${lk.id}" th:value="${#dates.format(lk.startDate,'yyyy-MM-dd')}">
+                    <div class="input-group-append" >
+                      <button type="button" class="btn btn-primary input-group-text btn_open_datepicker" th:data-target="'#datetimepicker_startDate_'+${lk.id}" data-toggle="datetimepicker" th:aria-label="#{general.datetimepicker.btn_open_datepicker.title}" th:title="#{general.datetimepicker.btn_open_datepicker.title}"><span aria-hidden="true" class="icono fas fa-calendar"></span></button>
+                      <button type="button" class="btn btn-outline-secondary btn_reset btn_reset_datepicker" th:aria-label="#{general.datetimepicker.btn_reset_datepicker.title}" th:title="#{general.datetimepicker.btn_reset_datepicker.title}"><span aria-hidden="true" class="icono fas fa-times"></span></button>
+                    </div>
+                  </div>
+                  <span class="bmd-help" th:text="#{interest.link.startDate.help}"></span>
+                </div>
+                <!-- :: /.form-group -->
+              </fieldset>
+
+              <fieldset class="cont_form_group d-flex col-lg-4 col-sm-12 pl-0 pr-lg-3 pr-0 mb-3">
+                <div class="form-group col-md-12 pl-0 pr-0">
+                  <label th:for="'input_endDate_'+${lk.id}" class="bmd-label-floating" th:text="#{interest.link.endDate}"></label>
+                  <div class="ctrl_datetimepicker input-group date" th:id="'datetimepicker_endDate_'+${lk.id}" data-target-input="nearest">
+                    <input type="text" th:id="'input_endDate_'+${lk.id}" name="endDate" class="form-control datetimepicker-input assessment-date-keypress" autocomplete="off" data-target="#datetimepicker_endDate" th:value="${#dates.format(lk.endDate,'yyyy-MM-dd')}">
+                    <div class="input-group-append" >
+                      <button type="button" class="btn btn-primary input-group-text btn_open_datepicker" th:data-target="'#datetimepicker_endDate_'+${lk.id}" data-toggle="datetimepicker" th:aria-label="#{general.datetimepicker.btn_open_datepicker.title}" th:title="#{general.datetimepicker.btn_open_datepicker.title}"><span aria-hidden="true" class="icono fas fa-calendar"></span></button>
+                      <button type="button" class="btn btn-outline-secondary btn_reset btn_reset_datepicker" th:aria-label="#{general.datetimepicker.btn_reset_datepicker.title}" th:title="#{general.datetimepicker.btn_reset_datepicker.title}"><span aria-hidden="true" class="icono fas fa-times"></span></button>
+                    </div>
+                  </div>
+                  <span class="bmd-help" th:text="#{interest.link.endDate.help}"></span>
+                </div>
+                <!-- :: /.form-group -->
+              </fieldset>
+
+            </div>
+            <!-- :. /.cont_fechas -->
+
+          <div class="cont_botonera_form col-md-12 d-flex justify-content-center mt-3">
+            <button type="button" class="btn btn-outline-secondary mr-2" data-dismiss="modal" th:text="#{modal.exit}" />
+            <button type="submit" class="btn btn-primary btn-modify-link mr-2" th:text="#{interest.link.modal.add.button}"></button>
+          </div>
+          <!-- :: /.cont_botonera_form -->
+        </div>
+        <!-- /.content_interest_link_form-->
+      </form>
+    </div>
+    <!-- :: /.interest_link_edit_form -->
+    <!-- :: Eliminar  -->
+    <button type="button" class="btn_linkdelete btn btn-outline-secondary modal_js" th:aria-label="#{interest.link.modal.delete.title}" th:title="#{interest.link.modal.delete.title}"
+      th:data-url="@{${thymeleafMap.get('MANAGER_INTEREST_LINKS_DELETE')}}"
+      th:data-id="${lk.id}"
+      th:data-modal_title="#{manager.delete.confirm}"
+      data-modal_size="modal-md"
+      th:data-modal_target="'#modal_confirmacion_borrado_link_' + ${lk.id}"
+      data-modal_tipo="light"
+      data-modal_discriminador="modal_confirmacion_borrado_manager_link"
+      data-modal_html="#modal_confirmacion_borrado_link_html"
+      data-modal_footer="false">
+      <span class="icono fas fa-trash" aria-hidden="true" ></span>
+    </button>
+    <form th:action="@{${thymeleafMap.get('MANAGER_INTEREST_LINKS_DELETE')}}"  method="POST">
+       <input type="hidden" th:value="${lk.id}" name="id">
+       <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+    </form>
+  </div>
+  <!-- :: /.cont_botonera -->
+</li>
+<!-- :: [manager/links/interestLinksAjax.html] -->

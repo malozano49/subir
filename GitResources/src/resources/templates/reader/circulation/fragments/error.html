@@ -1,0 +1,32 @@
+<th:block th:insert="/public/home/html_type"></th:block>
+  <head>
+    <th:block th:insert="/public/home/technicalheader::main" th:with="page='opac-reader-reservation-error'"></th:block>
+  </head>
+  <body class="page_type_circulation circulation_error">
+    <!-- :: [reader/circulation/fragments/error.html] -->
+    <header class="header_principal">
+       <th:block th:insert="/public/home/header"></th:block>
+       <th:block th:insert="/fragments/breadcrums"></th:block>
+    </header>
+    <main id="acc_anchor_main" class="main_type_error cont_page_error_reserve container_color_back">
+        <div class="cont_error mw-90"  aria-live="polite" aria-atomic="true" >
+          <div class="alert alert-danger alert_icon error error_reserve" role="alert" aria-atomic="true">
+             <span class="icono fas fa-cogs" aria-hidden="true"></span>
+
+             <h2 class="alert_titulo sr-only" th:text="#{alert.error.title}"></h2>
+             <!--/* FIXME: diferenciar errores http de errores controlados de aplicación */-->
+             <!--/* FIXME: solución general para parámetros en los mensajes */-->
+             <th:block th:each="m : ${message}">
+               <span th:if="${#strings.startsWith(m.message,'api')} " class="alert_texto" th:text="#{__${m.message}__}"></span>
+               <span th:unless="${#strings.startsWith(m.message,'api')} " class="alert_texto" th:text="#{__${'error.description.' + m.message}__}"></span>
+             </th:block>
+          </div>
+        </div>
+    </main>
+    <footer class="footer_principal">
+       <th:block th:insert="/public/home/footer"></th:block>
+    </footer>
+    <th:block th:insert="/public/home/technicalfooter" th:with="page='opac-reader-reservation-error'"></th:block>
+    <!-- :: /[reader/circulation/fragments/error.html] -->
+  </body>
+</html>

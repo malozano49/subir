@@ -1,0 +1,31 @@
+<!-- :: [/title/fragments/detailCopiesButtonRequest.html] -->
+                  <th:block sec:authorize="!isAuthenticated() or principal.hasRole(#vars.thymeleafMap.get('READER_AUTHORITY'))" >
+
+                      <div class="contenedor">
+                        <div class="cont_button">
+                          <div class="title w-100 mobile">
+                            <span class="btn_title" th:text="#{copy.reserv}"></span>
+                          </div>
+                          <form th:action="@{${thymeleafMap.get('RESERVE')}}" th:object="${reserveInfo}" th:method="post">
+                            <input type="hidden" name="selectedCopyId" th:value="${value.barcode}"/>
+                            <input type="hidden" name="selectedTitleId" th:value="${value.title}"/>
+                            <input type="hidden" name="selectedLibraryId" th:value="${value.library}"/>
+                            <input type="hidden" name="selectedBranchId" th:value="${value.branch}"/>
+                            <input type="hidden" name="selectedDetailId" th:value="${id}"/>
+                            <input type="hidden" name="tabId" th:value="${solrSearchWeb.solrSearch.tabId}">
+                            <input type="hidden" name="source" th:value="${value.source}" >
+                              <!--/* FIXME
+              			  		<th:block th:each="sub,iter  : ${solrSearchWeb?.solrSearch?.subCatalog?.subCatalogs}">
+              			  		<input type="hidden" th:name="'solrSearch.subCatalog.subCatalogs['+${iter.index}+'].optionSelected'"  th:value="${sub.optionSelected}"/>
+              			  		</th:block> */-->
+
+                            <button type="submit" class="btn_reserve btn btn-outline-secondary" th:aria-label="#{copy.reserv}" th:title="#{copy.reserv}">
+                              <span class="icono fas fa-book-medical" aria-hidden="true"></span>
+                            </button>
+                          </form>
+                        </div>
+                        <!-- :: /.cont_button -->
+                      </div>
+                      <!-- :: /.contenedor -->
+                  </th:block>
+<!-- :: /[OpacCirculationProviderAbsysNetModule/title/fragments/detailCopiesButtonRequest.html] -->

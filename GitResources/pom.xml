@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>ODAResources</groupId>
+	<artifactId>ODAResources</artifactId>
+	<version>0.0.18-SNAPSHOT</version>
+	<name>ODAResources</name>
+	<description>Proyecto para las resources de ODA</description>
+	 <properties>
+	 	<btz.nexus.url>http://nexus.baratznet.cloud</btz.nexus.url>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<closure-compiler-maven-plugin.version>2.21.0</closure-compiler-maven-plugin.version>
+		<sass.version>3.7.2</sass.version>
+		<minimify.phase>prepare-package</minimify.phase>
+		<jshint.version>1.6.0</jshint.version>
+		<java.version>1.8</java.version>
+  	</properties>
+  	
+  	<distributionManagement>
+		<repository>
+			<id>baratz-releases</id>
+			<name>Baratz Repository Releases</name>
+			<url>${btz.nexus.url}/repository/baratz_release/</url>
+		</repository>
+		<snapshotRepository>
+			<id>baratz-snapshots</id>
+			<name>Baratz Repository Snapshots</name>
+			<url>${btz.nexus.url}/repository/baratz_snapshot/</url>
+		</snapshotRepository>
+	</distributionManagement>
+  	<repositories>
+		<repository>
+			<id>baratz-nexus</id>
+			<url>${btz.nexus.url}/repository/maven-public/</url>
+		</repository>
+	</repositories>
+
+	<scm>
+		<developerConnection>scm:svn:http://svn.baratznet.cloud/tecnologia/producto/bibliotecas/AbsysJava/Workspace/Absys/ODAResources/trunk</developerConnection>
+	</scm>
+  	
+  	<dependencies>
+	  	<!-- https://mvnrepository.com/artifact/com.cj.jshintmojo/jshint-maven-plugin -->
+		<dependency>
+		    <groupId>com.cj.jshintmojo</groupId>
+		    <artifactId>jshint-maven-plugin</artifactId>
+		    <version>${jshint.version}</version>
+		</dependency>
+  	</dependencies>
+  	
+  	
+  	<profiles>
+		<!-- Local profile -->
+		<profile>
+			<id>local</id>
+			<properties>
+				<activatedProperties>local</activatedProperties>
+				<!-- disable js minimify plugin -->
+				<minimify.phase>none</minimify.phase>
+				<!-- includes all js files with filtering because js minify plugin will 
+					not be executed -->
+				<resource.filtering.js>static/js/**/*.js</resource.filtering.js>
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+		<!-- ENV profile -->
+		<profile>
+			<id>env</id>
+			<properties>
+				<activatedProperties>env</activatedProperties>
+			</properties>
+				<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+		</profile>
+		</profiles>
+  	<build>
+  	
+  	
+  	
+  	<resources>
+			<resource> <!-- skip js, webfonts and certs with filtering -->
+				<directory>${project.basedir}/src/resources</directory>
+				<filtering>true</filtering>
+				<excludes>
+					<exclude>static/webfonts/**</exclude>
+					<!-- exclude sass and other directories -->
+					<exclude>sass/**</exclude>
+					<!-- js resources must be skipped if minify plugin is executed -->
+					<exclude>static/js/**/*.js</exclude>
+					<!-- templates -->
+					<exclude>templates/**</exclude>
+				</excludes>
+			</resource>
+			<resource> <!-- includes js files with filtering that will not be minified -->
+				<directory>${project.basedir}/src/resources</directory>
+				<filtering>true</filtering>
+				<includes>
+					<include>${resource.filtering.js}</include>
+					<include>static/js/commons/i18n/*.js</include>
+					<include>static/js/commons/utils.js</include>
+					<include>static/js/commons/polyfills.js</include>
+					<include>static/js/init/**/*.js</include>
+				</includes>
+			</resource>
+			<resource> <!-- includes webfonts and certs without filtering -->
+				<directory>${project.basedir}/src/resources</directory>
+				<filtering>false</filtering>
+				<includes>
+					<include>static/webfonts/**</include>
+					<include>templates/**</include>
+				</includes>
+			</resource>
+		</resources>
+  		
+  		
+  	
+		<plugins>
+		<!-- jshint  -->
+		<!--	<plugin>
+				<groupId>com.cj.jshintmojo</groupId>
+				<artifactId>jshint-maven-plugin</artifactId>
+				<version>${jshint.version}</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>lint</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<directories>
+						<directory>src/resources/static/js</directory>
+					</directories>
+					<failOnError>true</failOnError>
+					<reportFile>${project.build.directory}/jslint.xml</reportFile>
+					<reporter>jslint</reporter>
+					
+					<configFile>.jshintrc</configFile>
+				</configuration>
+			</plugin>
+		-->
+		
+		<!-- Exclude files -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>3.3.0</version>
+				<configuration>
+					<nonFilteredFileExtensions>
+						<nonFilteredFileExtension>js</nonFilteredFileExtension>
+						<nonFilteredFileExtension>txt</nonFilteredFileExtension>
+					</nonFilteredFileExtensions>
+				</configuration>
+			</plugin>
+			
+		<!-- reemplazar version cache -->
+		<plugin>
+    <artifactId>maven-antrun-plugin</artifactId>
+    <executions>
+      <execution>
+        <phase>prepare-package</phase>
+        <configuration>
+          <tasks>
+            <replace token="opacDiscovery-artifactId-version" value="opacDiscovery-${project.artifactId}-${project.version}" dir="target/classes">                                 
+              <include name="**/service-worker.js" />
+            </replace>
+          </tasks>
+        </configuration>
+        <goals>
+          <goal>run</goal>
+        </goals>
+      </execution>
+    </executions>
+  </plugin>
+		
+		<!-- minimify maven plugin -->
+			<!-- https://blutorange.github.io/closure-compiler-maven-plugin/examples/basic.html -->
+			<plugin>
+				<groupId>com.github.blutorange</groupId>
+				<artifactId>closure-compiler-maven-plugin</artifactId>
+				<version>${closure-compiler-maven-plugin.version}</version>
+				<executions>
+					<execution>
+						<id>default-minify</id>
+						<phase>${minimify.phase}</phase>
+						<configuration>
+							<skipRunOnIncremental>true</skipRunOnIncremental>
+
+							<encoding>UTF-8</encoding>
+							<baseSourceDir>${basedir}/src/resources/</baseSourceDir>
+							<baseTargetDir>${project.build.directory}/classes/</baseTargetDir>
+							<closureSourceMapOutputType>inline</closureSourceMapOutputType>
+							<closureIncludeSourcesContent>true</closureIncludeSourcesContent>
+							<sourceDir>static/js/</sourceDir>
+							<targetDir>static/js/</targetDir>
+
+							<skipMerge>true</skipMerge>
+
+							<!-- List of files to include in the minification process -->
+							<includes>
+								<include>**/*.js</include>
+							</includes>
+							<excludes>
+								<exclude>**/*min.js</exclude>
+								<exclude>**/init/**/*.js</exclude>
+								<exclude>**/commons/utils.js</exclude>
+								<exclude>**/commons/polyfills.js</exclude>
+							</excludes>
+							<closureWarningLevels>
+								<nonStandardJsDocs>OFF</nonStandardJsDocs>
+							</closureWarningLevels>
+
+							<closureLanguageIn>ECMASCRIPT_2020</closureLanguageIn>
+							<closureLanguageOut>ECMASCRIPT_2019</closureLanguageOut>
+
+						</configuration>
+						<goals>
+							<goal>minify</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		
+		<!-- sass compiler plugin -->
+			<plugin>
+				<groupId>nl.geodienstencentrum.maven</groupId>
+				<artifactId>sass-maven-plugin</artifactId>
+				<version>${sass.version}</version>
+				<executions>
+					<execution>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>update-stylesheets</goal>
+						</goals>
+						<configuration>
+							<sassSourceDirectory>${basedir}/src/resources/sass</sassSourceDirectory>
+							<resources>
+								<resource>
+									<source>
+										<directory>${basedir}/src/resources/sass</directory>
+										<includes>
+											<include>**/*.scss</include>
+										</includes>
+									</source>
+									<destination>${project.build.directory}/classes/static/css/opac</destination>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		
+		
+			<plugin>
+			<version>2.3.2</version>
+			<!-- No generar el jar -->
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>default-jar</id>
+						<phase>none</phase>
+					</execution>
+				</executions>
+			</plugin>
+			 <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <appendAssemblyId>false</appendAssemblyId>
+                            <descriptors>
+                                <descriptor>src/assembly/assembly.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+		</plugins>
+		
+		<pluginManagement>
+
+			<plugins>
+
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>nl.geodienstencentrum.maven</groupId>
+										<artifactId>sass-maven-plugin</artifactId>
+										<versionRange>[1.0.0,18.0.0]</versionRange>
+										<goals>
+											<goal>update-stylesheets</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<execute>
+											<runOnIncremental>true</runOnIncremental>
+										</execute>
+									</action>
+								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>com.samaxes.maven</groupId>
+										<artifactId>minify-maven-plugin</artifactId>
+										<versionRange>[1.0.0,18.0.0]</versionRange>
+										<goals>
+											<goal>minify</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<execute>
+											<runOnIncremental>true</runOnIncremental>
+										</execute>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+
+			</plugins>
+
+		</pluginManagement>
+		
+	</build>
+</project>

@@ -1,0 +1,54 @@
+<th:block th:insert="/public/home/html_type"></th:block>
+	<head>
+  		<th:block th:insert="/public/home/technicalheader::main" th:with="page='opac-info'"></th:block>
+	</head>
+  <body class="page_type_info info_opacUsserMessage">
+  <!-- :: public/info/opacUserMessage.html -->
+    <header class="header_principal">
+       <th:block th:insert="/public/home/header"></th:block>
+    </header>
+    <main id="acc_anchor_main" class="d-flex justify-content-center container_color_back">
+      <section class="container-fluid">
+        <h2 class="sr-only" th:text="#{info.user.messages.title}"></h2>
+        <div class="cont_message col-md-6 px-4 py-4 border bg-white m-auto">
+
+          <div class="cont_alerts col-lg-12 col-md-12 col-sm-12 d-flex flex-column align-items-start mb-0 pb-0"  aria-live="polite" aria-atomic="true">
+            <div th:if="${level}" th:class="'alert alert-' + ${level} +' alert_icon'" role="alert" aria-atomic="true">
+              <span class="icono fas fa-cogs" aria-hidden="true"></span>
+              <span class="alert_titulo sr-only" th:text="#{alert.info.title}"></span>
+              <h3 class="h4 alert_texto font-weight-bold" th:text="#{${resetAlertMessage}}"> </h3>
+            </div>
+            <!-- :: /.alert -->
+
+            <div th:unless="${level}" class="alert alert-info alert_icon">
+              <span class="icono fas fa-cogs" aria-hidden="true"></span>
+              <span class="alert_titulo sr-only" th:text="#{alert.info.title}"></span>
+              <h3 class="h4 alert_texto font-weight-bold" th:text="#{${resetAlertMessage}}"> </h3>
+            </div>
+            <!-- :: /.alert-info -->
+
+          </div>
+          <!-- :: /.cont_alerts -->
+
+          <div class="cont_messages col-lg-12 col-md-12 col-sm-12 d-flex flex-column align-items-center mb-0 pb-0">
+            <h3 th:if="${resultMessage}" th:text="#{${resultMessage}}" class="mt-3 mb-3"></h3>
+            <div th:if="${gologin} != null" class="mt-3">
+              <a class="link" th:href="@{${thymeleafMap.get('LOGIN_PATH')}}" th:text="#{reset.back.login}"></a>
+            </div>
+            <div class="mt-3">
+              <a class="link" th:href="@{${thymeleafMap.get('HOME_URL')}}" th:text="#{reset.back.home}"></a>
+            </div>
+          </div>
+          <!-- :: /.cont_messages -->
+
+        </div>
+
+      </section>
+    </main>
+    <footer class="footer_principal">
+       <th:block th:insert="/public/home/footer" th:with="page='opac-user-message'"></th:block>
+    </footer>
+    <th:block th:insert="/public/home/technicalfooter" th:with="page='opac-user-message'"></th:block>
+  </body>
+  <!-- :: public/reset/homePasswordMessage.html -->
+</html>

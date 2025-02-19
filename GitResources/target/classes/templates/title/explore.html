@@ -1,0 +1,107 @@
+<th:block th:fragment="frag (explorers,title,manager,recommendedIndex)">
+  <th:block th:fragment="main">
+  <!-- :: [title/explore.html] -->
+
+    <th:block th:if="${explorers != null and #lists.size(explorers)>0}">
+      <!-- :: data-skip_to_content [scripts.js] -> ACCESIBLE_SKIP_TO_CONTENT() -->
+      <div th:id="'suggestions_'+${explore}+'_'+${recommendedIndex}" class="detail-explore d-flex flex-column w-100 pb-3" data-skip_to_content="false">
+        <!-- :: <span id="label_explore" class="w-auto anchor_title stc_title sr-only"><th:block th:text="#{${title}}"/></span> -->
+        <th:block th:each="expo,iter : ${explorers}">
+
+          <article th:id="${explore}+'_art_suggest_'+${recommendedIndex}+'_'+${iter.index}" th:class="${expo.type}+ ' art_suggest article d-flex flex-column w-100 no_border m-0 p-0'" th:aria-labelledby="'title_'+${explore}+'_art_suggest_'+${recommendedIndex}+'_'+${iter.index}">
+
+            <!--:: Si es collapse se aporta boton -->
+            <th:block th:if="${exploreType} == 'explore_collapse'">
+              <button th:if="${expo.branchDescription != ''}" type="button" class="btn btn_article_title" data-toggle="collapse" th:data-target="'#collapse_'+${recommendedIndex}" th:aria-controls="'collapse_'+${recommendedIndex}" th:aria-expanded="${recommendedIndex==0}?'true':'false'">
+                <h3 th:if="${expo.branchDescription != ''}" th:id="'title_'+${explore}+'_art_suggest_'+${recommendedIndex}+'_'+${iter.index}" class="titulo font-weight-bold mb-2 mt-2 stc_title" th:text="${expo.branchDescription}"/>
+                <h3 th:unless="${expo.branchDescription != ''}" th:id="'title_'+${explore}+'_art_suggest_'+${recommendedIndex}+'_'+${iter.index}" class="titulo font-weight-bold mb-2 mt-2 stc_title" th:text="#{${expo.name}}"/>
+              </button>
+            </th:block>
+
+            <!--:: Si no es collapse se aporta sólo título -->
+            <th:block th:if="${exploreType} == 'explore_no_collapse'">
+              <h3 th:if="${expo.branchDescription != ''}" th:id="'title_'+${explore}+'_art_suggest_'+${recommendedIndex}+'_'+${iter.index}" class="titulo font-weight-bold mb-2 mt-2 stc_title" th:text="${expo.branchDescription}"/>
+<!--/* :: @TODO 210129 Este titulo es el que falla en local */-->
+              <h3 th:unless="${expo.branchDescription != ''}" th:id="'title_'+${explore}+'_art_suggest_'+${recommendedIndex}+'_'+${iter.index}" class="titulo font-weight-bold mb-2 mt-2 stc_title" th:text="#{${expo.name}}"/>
+            </th:block>
+
+            <!--:: Si es collapse se aporta contenedor collapsable -->
+            <th:block th:if="${exploreType} == 'explore_collapse'">
+              <div role="region" th:aria-label="#{collapsable.content}" th:id="'collapse_'+${recommendedIndex}" class="collapse cont_collapse" th:classappend="${recommendedIndex==0}?'show':''">
+                <div class="cont_alerts alerts_actions" aria-live="polite" aria-atomic="true"></div>
+                <div class="cont_html w-100">
+                  <!--:: |==================>>>>>>>>>>>>> va a entrar a "/title/explorePag.html -->
+                  <th:block th:insert="/title/explorePag.html"></th:block>
+                </div>
+                <div class="cont_botonera_control w-100 d-flex justify-content-end" th:if="${expo.showAllButton}">
+                  <form name="solrSearchWeb" th:action="@{${thymeleafMap.get('SEARCH_EXPLORER')}}" th:object="${solrSearchWeb}" method="post" >
+                    <input type="hidden" name="solrSearch.hiddenQuery" th:value="${expo.query}">
+                    <input type="hidden" name="name" th:value="${expo.name}">
+                    <input type="hidden" name="solrSearch.solrCollection" value="BIBLIOGRAPHIC_CATALOG"/>
+                    <input type="hidden" name="solrSearch.queryType"  th:value="${thymeleafMap.get('EXPERT')}"/>
+                    <input type="hidden" name="solrSearch.sort" th:if="${expo.sort != null}" th:value="${expo.sort}"/>
+                    <input type="hidden" name="solrSearch.origin" th:if="${expo.source != null}" th:value="${expo.source}"/>
+
+                    <th:block th:each="sub,iter  : ${expo?.subcatalog?.subCatalogs}">
+                    <input type="hidden" th:name="'solrSearch.subCatalog.subCatalogs['+${iter.index}+'].optionSelected'"  th:value="${sub.optionSelected}"/>
+                    </th:block>
+
+                    <button type="submit" class="btn_view_all btn btn-primary">
+                      <th:block th:text="#{button.view.all}"/>
+                    </button>
+                  </form>
+                </div>
+                <!-- :: /.cont_botonera_control -->
+              </div>
+              <!-- :: /.collapse.cont_collapse -->
+            </th:block>
+
+            <!--:: Si no es collapse  -->
+            <th:block th:if="${exploreType} == 'explore_no_collapse'">
+              <div th:class="'cont_views view_type_'+${expo.type}" th:classappend="${expo.type=='carousel'?'carousel-main carousel_explore':''}">
+
+                <div th:classappend="${expo.type=='carousel'?'swiper-container col-md-12':expo.type + '-main container-fluid'}" th:attr="data-name=#{${expo.name}}, data-type=${expo.type}, data-query=${expo.query}, data-manager=${manager}">
+                  <ul>
+                    <th:block th:each="item, iterStat : ${expo.data}">
+                            <th:block th:if=${item.hasDataResourceSolr}><!-- ================= >>>> Recurso existente Solr-->
+                            	<th:block th:insert="/public/catalog/fragments/searchListElement_view.html" th:with="exploreView=${exploreView}"></th:block>
+                            </th:block>
+                    </th:block>
+                  </ul>
+                </div>
+                <!-- :: /.container-fluid-->
+
+              </div>
+              <!-- :: /.cont_views-->
+              <div class="cont_botonera_control w-100 d-flex justify-content-end" th:if="${expo.showAllButton}">
+                <form name="solrSearchWeb" th:action="@{${thymeleafMap.get('SEARCH_EXPLORER')}}" th:object="${solrSearchWeb}" method="post" >
+                  <input type="hidden" name="solrSearch.hiddenQuery" th:value="${expo.query}">
+                  <input type="hidden" name="name" th:value="${expo.name}">
+                  <input type="hidden" name="solrSearch.solrCollection" value="BIBLIOGRAPHIC_CATALOG"/>
+                  <input type="hidden" name="solrSearch.queryType"  th:value="${thymeleafMap.get('EXPERT')}"/>
+                  <input type="hidden" name="solrSearch.sort" th:if="${expo.sort != null}" th:value="${expo.sort}"/>
+                  <input type="hidden" name="solrSearch.origin" th:if="${expo.source != null}" th:value="${expo.source}"/>
+
+                  <th:block th:each="sub,iter  : ${expo?.subcatalog?.subCatalogs}">
+                    <input type="hidden" th:name="'solrSearch.subCatalog.subCatalogs['+${iter.index}+'].optionSelected'"  th:value="${sub.optionSelected}"/>
+                  </th:block>
+
+                  <button type="submit" class="btn_view_all btn btn-primary">
+                    <th:block th:text="#{button.view.all}"/>
+                  </button>
+                </form>
+              </div>
+              <!-- :: /.cont_botonera_control -->
+            </th:block>
+
+          </article>
+
+        </th:block>
+      </div>
+      <!-- :: /.detail-explore-->
+
+    </th:block>
+
+  <!-- :: /[title/explore.html] -->
+  </th:block>
+</th:block>

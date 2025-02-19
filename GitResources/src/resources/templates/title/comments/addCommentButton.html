@@ -1,0 +1,20 @@
+<!-- title/comments/addCommentButton.html -->
+<div class="add-opinion-wrapper">
+		<div class="add-opinion-button">
+			<button class="link add-opinion btn  active"
+				data-modal_tipo="light" data-modal_size="modal-lg"
+				data-modal_target="#add_comments"
+				data-modal_title="Deje una opinión"
+				 data-modal_html="#add_comments"
+				 data-modal_discriminador="modal_add_comments"				 
+				data-modal_footer="false"><span class="icono fa fa-comment" aria-hidden="true"></span>
+				<span th:if="${numComments > 0}" th:text="#{comment.opinion}"></span>
+				<span th:unless="${numComments > 0}" th:text="#{comment.first.text}"></span>
+		
+			</button>
+		</div>
+		<div id="add_comments" class="d-none" aria-hidden="true">
+			<th:block th:insert="/title/comments/formComments.html"></th:block>
+		</div>
+	</div>
+<!-- title/comments/addCommentButton.html -->	

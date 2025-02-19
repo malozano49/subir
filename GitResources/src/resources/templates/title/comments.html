@@ -1,0 +1,66 @@
+<th:block th:fragment="main">
+   <!-- :: [title/comments.html] -->
+   <!-- :: data-skip_to_content [scripts.js] -> ACCESIBLE_SKIP_TO_CONTENT() -->
+   <article id="comments" class="article detail-comments border" data-skip_to_content="cont_relationed">
+      <h2 class="anchor_title stc_title"><th:block th:text="#{comment.title}"/>(3)</h2>
+      <div class="comment-opinion">
+         <a class="page-link" href="#">
+            <span class="icono fas fa-comments"></span>&nbsp;&nbsp;
+            <th:block th:text="#{comment.opinion}"/>
+         </a>
+      </div>
+      <!-- :: /.comment-opinion -->
+      <div class="cont_comments col-12 pl-0 pr-0">
+        <div class="card_comment mb-2 border-bottom">
+           <div class="cont_user_data text-center">
+              <img th:src="@{/img/def_face.png}" class="img img-rounded img-fluid" th:alt="#{comment.img}"/>
+              <p class="text-secondary">
+                 <a href="#"><strong>Juan Colmenar</strong></a>
+                 <span class="d-block">12/04/18</span>
+              </p>
+           </div>
+           <div class="cont_user_comment">
+              <p>★ ★ ★ ★</p>
+              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+           </div>
+        </div>
+        <!-- :: /.card_comment -->
+        <div class="card_comment mb-2 border-bottom">
+           <div class="cont_user_data text-center">
+              <img th:src="@{/img/def_face.png}" class="img img-rounded img-fluid" th:alt="#{comment.img}"/>
+              <p class="text-secondary">
+                 <strong>Anónimo</strong>
+                 <span class="d-block">13/04/18</span>
+              </p>
+           </div>
+           <div class="cont_user_comment">
+              <p>★ ★</p>
+              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+           </div>
+        </div>
+        <!-- :: /.card_comment -->
+        <div class="card_comment mb-2 border-bottom">
+           <div class="cont_user_data text-center">
+              <img th:src="@{/img/def_face.png}" class="img img-rounded img-fluid" th:alt="#{comment.img}"/>
+              <p class="text-secondary">
+                 <strong>Anónimo</strong>
+                 <span class="d-block">06/07/18</span>
+              </p>
+           </div>
+            <div class="cont_user_comment">
+              <p>★ ★ ★ </p>
+              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+           </div>
+        </div>
+        <!-- :: /.card_comment -->
+      </div>
+      <!-- :: /.cont_comments-->
+      <div class="botonera_comments text-center mt-4">
+         <button type="submit" class="btn btn-outline-secondary comment-button" th:aria-label="#{comment.btn}" th:title="#{comment.btn}">
+            <th:block th:text="#{comment.btn}"></th:block>
+         </button>
+      </div>
+      <!-- :: /.botonera_comments -->
+   </article>
+   <!-- :: /[title/comments.html] -->
+</th:block>

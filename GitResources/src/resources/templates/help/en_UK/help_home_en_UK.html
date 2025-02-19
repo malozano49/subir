@@ -1,0 +1,293 @@
+﻿﻿<th:block th:insert="/public/home/html_type"></th:block>
+<th:block th:insert="/public/home/technicalheader::main" th:with="page=${'opac-help-home-es_ES'}"></th:block>
+<script type="text/javascript">
+	var menu = document.getElementById('menu');
+	Stickyfill.add(menu);
+</script>
+
+<body>	
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="jquery.fittext.js"></script>
+
+<div id="burger-menu" class="burger-menu">
+  <span></span>
+  			<div id="menu2" class="menu menu2">
+			<div class=""><nav class="sn-contents" aria-label="Secondary">
+      <ul class="sidenav--list">
+  <li>
+ <a href="#find" class="page-link">Simple Search</a></li><li>
+  <a href="#findAdvanced" class="page-link">Advanced Search Access</a></li><li>
+  <a href="#findAuthorities" class="page-link">Authority Search Access</a></li><li>
+  <a href="#searchIndexes" class="page-link">Indexes Search Access</a></li><li>
+  <a href="#lastSearch" class="page-link">Access to Recent Searches</a></li><li>
+ <a href="#historySearch" class="page-link">Access to Saved Searches</a></li><li>
+  <a href="#favorites" class="page-link">Access to Favorites</a></li><li>
+  <a href="#profile" class="page-link">Access to My Profile</a></li></ul></nav>
+</div>
+		</div>
+</div>
+
+
+	<div class="wrapper cf">
+
+		<div id="menu" class="menu">
+			<div class="sidenav"><nav class="sn-contents" aria-label="Secondary">
+      <ul class="sidenav--list">
+		<li>
+		  <a href="#find" class="page-link">Simple Search</a>
+		</li><li>
+		  <a href="#findAdvanced" class="page-link">Advanced Search Access</a>
+		</li><li>
+		  <a href="#findAuthorities" class="page-link">Authority Search Access</a>
+		</li><li>
+		  <a href="#searchIndexes" class="page-link">Indexes Search Access</a>
+		</li><li>
+		  <a href="#lastSearch" class="page-link">Access to Recent Searches</a>
+		</li><li>
+		  <a href="#historySearch" class="page-link">Access to Saved Searches</a>
+		</li><li>
+		  <a href="#favorites" class="page-link">Access to Favorites</a>
+		</li><li>
+		  <a href="#profile" class="page-link">Access to My Profile</a>
+		</li></ul></nav>
+		</div>
+		</div>
+		
+		<div class="wrapper cf">
+		
+		<div id="menu" class="menu">
+		  <div class="sidenav">
+		    <nav class="sn-contents" aria-label="Secondary">
+		      <ul class="sidenav--list">
+		        <li>
+		          <a href="#find" class="page-link">Simple Search</a>
+		        </li><li>
+		          <a href="#findAdvanced" class="page-link">Advanced Search Access</a>
+		        </li><li>
+		          <a href"#findAuthorities" class="page-link">Authority Search Access</a>
+		        </li><li>
+		          <a href="#searchIndexes" class="page-link">Indexes Search Access</a>
+		        </li><li>
+		          <a href="#lastSearch" class="page-link">Access to Recent Searches</a>
+		        </li><li>
+		          <a href="#historySearch" class="page-link">Access to Saved Searches</a>
+		        </li><li>
+		          <a href="#favorites" class="page-link">Access to Favorites</a>
+		        </li><li>
+		          <a href="#profile" class="page-link">Access to My Profile</a>
+		        </li>
+		      </ul>
+		    </nav>
+		  </div>
+		</div>
+		
+		<div class="content">
+		  <a name="top"></a>
+		  <a name="find"></a>
+		  <h2 class="title-help">Simple Search</h2>
+		  <p>Simple search is the default search on the homepage.</p>
+		  <div class="flexx flexcentro">
+		    <img class="img-busqueda-sencilla-help" th:src="@{/img/help/simple-search.png}" height="150px" width="100px" alt="simple search.png">
+		  </div>
+		  <a name="filter"></a> 
+		  <h4 class="title-help">Filters that can be applied to a search</h4>
+		  <span class="tab2-help">When performing a search, you can consult all available <span class="text-bold-help">sources</span> or a specific one.</span>
+		  <div class=" mb-4">
+		    <img  class="img-filtro-help" th:src="@{/img/help/search-filters.png}" alt="search filters.png">
+		  </div>
+		  <p>By default, the search is conducted in all available sources. If you want the search to be carried out in a specific source, select it:</p>
+		  <div class=" mb-4">
+		    <img class="img-filtro-help" th:src="@{/img/help/filter-efilm.png}" alt="Efilm filter">
+		  </div>
+		  <p>In addition to being able to select the sources for the search, <span class="text-bold-help">ODA</span> allows you to narrow down the search to a specific set of records, which we will call <span class="text-bold-help">subcatalogs</span>.</p>
+		  <ul>
+		    <li><span class="tab4-help margen5">You can select a subcatalog from the list of subcatalogs or locate it by entering certain characters.</span> 
+		    </li>
+		  </ul>
+		  <div class="flexcentro">
+		    <img class="img-subcatalogos-help" th:src="@{/img/help/write-in-subcatalogs.png}" alt="Write in subcatalogs"/>
+		  </div>
+		  <br> 
+		
+		  <a name="howToSearch"></a> 
+		  <h4 class="title-help">How to Search</h4>
+		  <p>Before you start searching, please consider the following points:</p>
+		  <ul class="tab4-help margen10">
+		    <li>Search terms can be entered in any way, including uppercase or lowercase letters and diacritics, accents, umlauts, etc., or without them, etc., or without them.</li>
+		    <li>Any term entered is considered a search term: a word, a number, a string of characters, etc.</li>
+		    <li><span class="text-bold-help">There are no</span> defined <span class="text-bold-help">stop words</span>. Prepositions, articles, etc. are included as searchable to facilitate the exact location of documents.</li>
+		    <li>When multiple search terms are entered in the same query, they can be combined with an <span class="text-bold-help">operator</span> that indicates their relationship in each document. The meaning of each of the operators that can be used is as follows:</li>
+		  </ul>
+		  <table class="table-help">
+		    <tr class="tr-help">
+		      <th class="td-help th-help border-right-help">Operator</th>
+		      <th class="td-help th-help" >Description</th>
+		    </tr>
+		    <tr class="tr-help">
+		      <td class="td-help col-help">AND (&)</td>
+		      <td class="td-help">Locates records that contain all the terms connected with this operator.</td>
+		    </tr>
+		    <tr class="tr-help">
+		      <td class="td-help col-help border-top-help">OR (|)</td>
+		      <td class="td-help border-top-help">Locates records that contain any of the terms connected with this operator or both.</td>
+		    </tr>
+		    <tr class="tr-help">
+		      <td class="td-help col-help border-top-help">NOT</td>
+		      <td class="td-help border-top-help">Locates records that contain the first term connected with this operator but not the second.</td>
+		    </tr>
+		  </table>			
+		  <br>
+		  <ul class="tab4-help margen10">
+		    <li>You can perform <span class="text-bold-help">exact searches</span> by enclosing all the terms in double quotes ("). <br>
+		      This way, you will locate all records that contain the text entered within quotes in the same order as entered in the search.
+		    </li>
+		    <li>You can use <span class="text-bold-help">wildcards</span> to locate parts of words. Wildcards can be of two types:</li>
+		  </ul>
+		  <table class="table-help">
+		    <tr class="tr-help">
+		      <th class="td-help th-help border-right-help"></th>
+		      <th class="td-help th-help">Description</th>
+		    </tr>
+		    <tr class="tr-help">
+		      <td class="td-help col-help">?</td>
+		      <td class="td-help border-top-help">Placed in any position in the search term, each ? replaces a single character. This way, you will locate all documents that meet the search pattern and that contain any character where the ? sign is located.</td>
+		    </tr>
+		    <tr>
+		      <td class="td-help col-help border-top-help">*</td>
+		      <td class="td-help border-top-help">Placed in any position of the term, or in several at once, it replaces a string of characters. The asterisk * will locate all documents that meet the search pattern and that contain any number of characters where the * sign is located.</td>
+		    </tr>
+		  </table>
+		  <br>
+		  <p>You can perform the following searches:</p>
+		  <div class="margen10"><ul class="tab5-help">
+		    <li>- By a single term</li>
+		    <li>- By multiple terms</li>
+		    <li>Exact searches</li>
+		  </ul></div>
+		
+		  <a name="searchesByTerm"></a> 
+		  <h5 class="subtitle-help">Search by a Single Term</h5>
+		  <span class="tab2-help">1. Enter the search term you want to locate.</span>
+		  <div class=" mb-4">
+		    <img class="img-buscar-termino-help" th:src="@{/img/help/search-text.png}" alt="Text search box"/>
+		  </div>
+		  <span class="tab2-help">2. Click <img class="img-btn-buscar-help" th:src="@{/img/help/btn-search.png}" alt="Search button"/> to locate the records containing the entered term.</span>
+		  <br><br>
+		  <div class="tab4-help flexcentro">
+		    <div class="box-help">
+		      Remember that you can also perform searches using wildcards
+		    </div>
+		  </div>
+		
+		  <a name="searchesSeveralTerms"></a> 
+		  <h5 class="subtitle-help">Search by Multiple Terms</h5>
+		  <span class="tab2-help">1. Enter the search terms you want to locate connected with one of the operators explained earlier.</span>
+		  <div class="flexcentro">
+		    <img class="img-buscar-termino-help" th:src="@{/img/help/search-multiple-terms.png}" alt="Multiple term search box"/>
+		  </div>
+		  <span class="tab2-help">2. Click <img class="img-btn-buscar-help" th:src="@{/img/help/btn-search.png}" alt="Search button"/> to locate the records containing the entered terms.</span>
+		  <br><br>
+		  <div class="tab4-help flexcentro">
+		    <div class="box-help">
+		      Remember that you can also perform searches using wildcards
+		    </div>
+		  </div>
+		
+		  <a name="exactSearches"></a> 
+		  <h5 class="subtitle-help">Exact Searches</h5>
+		  <p>This search retrieves records that contain the exact expression searched for as entered.</p>
+		  <span class="tab2-help">1. Enter the search terms you want to locate enclosed in double quotes.</span>
+		  <div class=" mb-4">
+		    <img class="img-buscar-entre-comillas-help" th:src="@{/img/help/search-in-quotes.png}" alt="Search in quotes"/>
+		  </div>
+		  <span class="tab2-help">2. Click <img class="img-btn-buscar-help" th:src="@{/img/help/btn-search.png}" alt="Search button"/> to locate the records containing the exact expression entered.</span>
+		  <br><br>
+		  <div class="tab4-help flexcentro">
+		    <div class="box-help">
+		      Remember that you can also perform searches using wildcards
+		    </div>
+		  </div>
+		
+		  <a name="deleteTerms"></a>
+		  <h5 class="subtitle-help">How to Delete Entered Search Terms</h5>
+		  <p>To delete the entered search terms, click on <img th:src="@{/img/help/btn-clean.png}" alt="Clear button"/>
+		  <div class="flexcentro">
+		    <img class="img-buscar-terminos-help" th:src="@{/img/help/search-multiple-terms.png}" alt="Text search box"/>
+		  </div>
+		
+		  <a name="automaticSearch"></a> 
+		  <h5 class="subtitle-help">Automatic Search Suggestions</h5>
+		  <p><span class="text-bold-help">ODA</span> provides the following possibilities for automatic search suggestions:</p>
+		  <div class="margen5"><ul class="tab4-help">
+		  <ul class="tab5-help">
+		    <li>1."Did you mean"</li>
+		    <li>2.Authority search</li>
+		  </ul>
+		  </div>
+		  <h5 class="paragraph-help">"Did you mean"</h5>
+		  <p>If no results are found in the search or fewer than 10 records are located, <span class="text-bold-help">ODA</span> suggests terms to users that may help them find records of interest based on spellchecking.</p>
+		  <p>Spellchecking is a spelling check that involves reviewing the query entered by the user and suggesting an alternative query that is orthographically correct.</p>
+		  <b>Example:</b>
+		  <div class="flexcentro"><ul class="tab4-help">
+		  <ul class="tab5-help">
+		    <li>1. The term "estilmismo" is entered
+		      <div class=" mb-4">
+		        <img class="img-caja-mas-btn-help"  th:src="@{/img/help/box-text-btn-search.png}" alt="Search text box plus search button"/>
+		      </div>
+		    </li>
+		    <li>2. Since the search does not return results, it suggests the following terms:
+		      <div class=" mb-4">
+		        <img class="img-caja-mas-btn-help" th:src="@{/img/help/did-you-mean.png}" alt="Did you mean"/>
+		      </div>
+		    </li>
+		    <li>3. If you click on one of the suggested terms, it performs a search to locate records containing the selected term.</li>
+		  </ul>
+		  </div>
+		  <h5 class="paragraph-help">Authority Search</h5>
+		  <p>If no results are found in the search or fewer than 10 records are located, <span class="text-bold-help">ODA</span> performs a search in the authority database to see if it can locate any authority that matches the entered search.</p>
+			<a name="findAuthorities"></a>
+			<h2 class="title-help">Access to Authorities Search</h2>
+			<p>To perform a search for authorities to locate records containing a specific authority, click on the <span class="text-bold-help">authorities search</span> option.</p>
+			<a name="searchIndexes"></a>
+			<h2 class="title-help">Access to Index Search</h2>
+			<p>To perform a search that locates words or patterns of words similar to the entered term or terms, click on the <span class="text-bold-help">index search</span> option.</p>
+			<a name="lastSearch"></a> 
+			<h2 class="title-help">Access to Recent Searches</h2>
+			<p>To view the <span class="text-bold-help">10</span> most recent searches that have yielded results during the OPAC session, click on <span class="text-bold-help">recent searches</span>.</p>
+			<a name="historySearch"></a> 
+			<h2 class "title-help">Access to Saved Searches</h2>
+			<p>If you want to save any of the searches you have performed to be able to run them at another time, click on <span class="text-bold-help">saved searches</span>.</p>
+			<ul class="tab5-help">
+			    <li>To save a search, it is necessary to identify yourself beforehand.</li>
+			</ul>
+			<a name="favorites"></a>
+			<h2 class="title-help">Access to Favorites</h2>
+			<p>To view the records you have marked as favorites, click on <span class="text-bold-help">Favorites</span>.</p>
+			<a name="profile"></a> 
+			<h2 class="title-help">Access to My Profile</h2>
+			<p>Click on the <i>My profile</i> option and identify yourself to access the following <span class="text-bold-help">ODA</span> utilities:</p>
+			<ul class="tab5-help margen10">
+			    <li>Personal information</li>
+			    <li>Requests</li>
+			    <li>Active loans</li>
+			    <li>Loan history</li>
+			    <li>Renew loans</li>
+			    <li>Cancel reservations</li>
+			    <li>Save search</li>
+			    <li>Create favorites lists</li>
+			</ul>
+			<p>To identify yourself as a user, you can use any of these 3 methods:</p>
+			<ul class="tab5-help margen10">
+			    <li>Library card number</li>
+			    <li>Email provided to your library</li>
+			    <li>Mobile phone provided to your library</li>
+			</ul>
+			<p class="top-help"><a href="#top">Back to top</a></p>
+			</div>
+			</div>
+			</div>
+			<th:block th:insert="/public/home/technicalfooter" th:with="page='opac-dataprivacyterms'"/>
+			
+	</body>
+</html>
+

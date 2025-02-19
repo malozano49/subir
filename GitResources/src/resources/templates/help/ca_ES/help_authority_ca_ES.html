@@ -1,0 +1,175 @@
+<th:block th:insert="/public/home/html_type"></th:block>
+<th:block th:insert="/public/home/technicalheader::main" th:with="page=${'opac-help-authority-es_ES'}"></th:block>
+<script type="text/javascript">
+	var menu = document.getElementById('menu');
+	Stickyfill.add(menu);
+</script>
+<body>
+<div id="burger-menu" class="burger-menu">
+  <span></span>
+  			<div id="menu2" class="menu menu2">
+			<div class=""><nav class="sn-contents" aria-label="Secondary">
+		<li><a href="#serchAuthorities">Cerca d'autoritats</a>
+							<ul class="tab3-help">
+								<li><a href="#typeSearach">Tipus de cerques</a></li>
+								<li><a href="#orderRecords">Com ordenar els resultats de la cerca</a></li>
+								<li><a href="#moveList">Com moure's per la llista d'autoritats trobades a la cerca</a></li>
+								<li><a href="#locateRecords">Com localitzar els registres que contenen una autoritat determinada</a></li>
+							</ul>
+						</li>
+						<li><a href="#searchIndexes">Accés a la cerca als índexs</a></li>
+						<li><a href="#lastSearch">Accés a les últimes cerques realitzades</a></li>	
+						<li><a href="#historySearch">Accés a les cerques desades</a></li>	
+						<li><a href="#favorites">Accés als preferits</a></li>
+						<li><a href="#profile">Accés al meu perfil</a></li>
+						<li><a href="#home">Accés a la pàgina d'inici</a></li></ul></nav>
+</div>
+		</div>
+</div>
+
+	<div class="wrapper cf">
+
+		<div id="menu" class="menu">
+			<div class="sidenav"><nav class="sn-contents" aria-label="Secondary">
+      <ul class="sidenav--list">
+  <li><a href="#typeSearach">Tipus de cerques</a></li>
+						<li><a href="#orderRecords">Com ordenar el resultat de la cerca</a></li>
+						<li><a href="#moveList">Com moure's per la llista d'autoritats trobades a la cerca </a></li>
+						<li><a href="#locateRecords">Com localitzar els registres que contenen una autoritat determinada</a></li>
+				
+						<li><a href="#searchIndexes">Accés a la cerca als índexs</a></li>
+						<li><a href="#lastSearch">Accés a les últimes cerques realitzades</a></li>	
+						<li><a href="#historySearch">Accés a les cerques desades</a></li>	
+						<li><a href="#favorites">Accés als preferits</a></li>
+						<li><a href="#profile">Accés al meu perfil</a></li>
+						<li><a href="#home">Accés a la pàgina d'inici</a></li></ul></nav>
+</div>
+		</div>
+		<div class="content">
+			<a name="top"></a>
+			<a name="serchAuthorities"></a>
+			<h2 class="title-help">Cerca d'autoritats</h2>
+			<p>L'opció <i>Cerca d'autoritats</i> permet realitzar una cerca d'autoritats per facilitar la localització de registres que contenen una autoritat específica.</p>
+			<a name="typeSearach"></a>
+			<h4 class="title-help">Tipus de cerques</h4>
+			<p>Es poden realitzar els següents tipus de cerques:</p>
+			<ul class="tab5-help margen10">
+			    <li>- Cerques en tots els camps</li>
+			    <li>- Cerques en un camp concret</li>
+			    <li>- Cerques que continguen els termes o el terme de cerca introduït</li>
+			    <li>- Cerques que comencin per</li>
+			    <li>- Cerques exactes</li>
+			</ul>
+			<p class="tab3-help paragraph-help">Cerques en tots els camps</p>
+			<p class="tab4-help">Per defecte, la cerca es realitza a Tots els camps.</p>
+			<span class="tab5-help"><img th:src="@{/img/help/select-any-field.png}" alt="Seleccionar qualsevol camp" width="350px"/></span>
+			<p class="tab4-help">La cerca que realitzi tindrà en compte tots els camps de la base de dades que estiguin definits com a recercables.</p>
+			<p class="tab3-help paragraph-help">Cerques en un camp concret</p>
+			<p class="tab4-help">Per realitzar una cerca en un camp concret, seleccioneu el que us interessa a l'opció <i>Selecció de camps</i>. Per defecte, els camps en què es pot fer la cerca són els següents:</p>
+			<span class="tab5-help"><img th:src="@{/img/help/select-field-authority.png}" alt="Seleccionar camp d'autoritat" width="350px"/></span>
+			<p class="tab4-help">La cerca que realitzi només tindrà en compte el camp seleccionat</p>
+			<p class="tab3-help paragraph-help">Cerques que continguen els termes o el terme de cerca introduït</p>
+			<p class="tab4-help">Per a localitzar autoritats que continguen un o diversos termes de cerca, utilitzeu l'opció <i>Conté en Selecció de filtres</i>.</p>
+			<span class="tab5-help"><img th:src="@{/img/help/term-authority.png}" alt="Un terme d'autoritat" width="450px"/></span>
+			<p></p>
+			<div class="tab5-help">
+			    <div class="box-help">
+			        <p>La cerca es realitza utilitzant internament truncaments davant i darrere del terme de cerca introduït. Per afinar la cerca, es pot utilitzar el terme entre cometes.</p>
+			        <p><b>Exemple:</b></p>
+			        <ul class="tab5-help">
+			            <li>Si s'introdueix el terme sagrario, la cerca que es realitza és: *sagra*. D'aquesta manera, localitzarà autoritats com les següents:
+			                <ul class="tab4-help">
+			                    <li>Cantalejo Ruiz, Sagrario</li>
+			                    <li>Fierro Madrid, Sagrario</li>
+			                    <li>Ibáñez, Sagra</li>
+			                </ul>
+			            </li>
+			            <li>Si s'introdueix "sagra", localitza només els que continguen el terme sagra:
+			                <ul class="tab4-help"><li>Ibáñez, Sagra</li></ul>
+			            </li>
+			        </ul>
+			    </div>
+			</div>
+			<p></p>
+			<p class="tab3-help paragraph-help">Cerques que comencen per</p>
+			<p class="tab4-help">Per localitzar autoritats que comencen per un terme concret, seleccioneu l'opció <i>Comença per en Selecció de filtres</i>.</p>
+			<span class="tab5-help"><img th:src="@{/img/help/start-term-authory.png}" alt="Començar per" width="500px"/></span>
+			<p class="tab4-help">L'opció <i>“Comença per”</i> només està disponible si prèviament s'ha seleccionat un camp de cerca.</p>
+			<p class="tab3-help paragraph-help">Cerques exactes</p>
+			<p class="tab4-help">Per localitzar autoritats que coincideixin exactament amb la cadena de cerca introduïda, seleccioneu l'opció <i>Exacte per en Selecció de filtres</i>.</p>
+			<span class="tab5-help"><img th:src="@{/img/help/exact-authority.png}" alt="Terme exacte a Autoritats" width="500px"/></span>
+			<p class="tab4-help">L'opció <i>“Exacte”</i> només està disponible si prèviament s'ha seleccionat un camp de cerca.</p>
+			<a name="orderRecords"></a>
+			<h4 class="title-help">Com ordenar el resultat de la cerca</h4>
+			<p>Les autoritats localitzades en una cerca s'ordenen per defecte de forma <span class="text-bold-help">alfabètica</span>. Si ho desitja, pot canviar la ordenació tenint en compte la rellevància.</p>
+			<a name="moveList"></a>
+			<h4 class="title-help">Com moure's per la llista d'autoritats trobades a la cerca</h4>
+			<p>Per defecte, les autoritats localitzades en una cerca es mostren en grups de <span class="text-bold-help">10</span>, però existeix la possibilitat d'agrupar els resultats de 25 en 25 o de 35 en 35.</p>
+			<span class="tab5-help margen5"><img th:src="@{/img/help/results-by-page.png}" alt="Resultats per pàgina" width="320px"/></span>
+			<p>Per moure's per les diferents pàgines dels resultats obtinguts existeixen les següents opcions:</p>
+			<ul class="tab4-help margen5">
+			    <li>Faci clic a <img th:src="@{/img/help/next.png}" alt="Següent" width="80px"/> per moure's a la següent pàgina.</li>
+			    <li>Faci clic a <img th:src="@{/img/help/back.png}" alt "Anterior" width="80px"/> per moure's a la pàgina anterior.</li>
+			    <li>Faci clic al nº de pàgina que li interessi veure
+			        <span class="tab3-help"><img th:src="@{/img/help/number-by-page.png}" alt="Número de pàgina" width="320px"/></span>
+			    </li>
+			    <li>* Faci clic al nº 1 per veure la primera pàgina</li>
+			    <span class="tab3-help"><img th:src="@{/img/help/first-page.png}" alt="Primera pàgina" width="320px"/></span>
+			    <br>
+			    <li>Faci clic al nº anterior a Següent per anar a l'última pàgina
+			        <span class="tab3-help"><img th:src="@{/img/help/last-page.png}" alt="Última pàgina" width="320px"/></span>
+			    </li>
+			</ul>
+			<a name="locateRecords"></a>
+			<h4 class="title-help">Com localitzar els registres que contenen una autoritat determinada</h4>
+			<p>Un cop ha realitzat la consulta que li interessa en autoritats, es mostra una llista d'autoritats que corresponen a la cerca introduïda i s'indica el nº de registres que contenen les autoritats localitzades.</p>
+			<p class="tab2-help"><b>Exemple:</b></p>
+			<p class="tab5-help margen5">Es busquen autoritats que en el camp Matèria continguen novel·la negra</p>
+			<span class="tab5-help margen5"><img th:src="@{/img/help/search-matter-field.png}" alt="Camp Matèria" width="500px"/></span>
+			<p class="tab5-help margen5">Es mostren en mode llista les autoritats localitzades i s'indica el nº de registres que conté cadascuna de les autoritats:</p>
+			<span class="tab5-help margen5"><img th:src="@{/img/help/list-matter-field.png}" alt="Llista camp Matèria" width="500px"/>
+			</span>
+			<p class="tab2-help margen5">Facis clic a la que t'interessi per visualitzar els registres associats.</p>			
+			<a name="searchIndexes"></a>
+			<h2 class="title-help">Accés a la cerca en els índexs</h2>
+			<p>Per realitzar una cerca que localitzi paraules o patrons de paraules semblants al terme o termes introduïts, faci clic a l'opció <i>Cerca índexs</i>.</p>
+			<a name="lastSearch"></a>
+			<h2 class="title-help">Accés a les últimes cerques realitzades</h2>
+			<p>Per visualitzar les <span class="text-bold-help">10</span> últimes cerques realitzades que han retornat resultats durant la sessió de l'Opac, faci clic a <i>Últimes cerques</i>.</p>	
+			<a name="historySearch"></a>
+			<h2 class="title-help">Accés a les cerques desades</h2>
+			<p>Si vol desar alguna de les cerques que ha realitzat per poder executar-les més endavant, faci clic a <i>Cerques desades</i>.</p>
+			<ul class="tab5-help">
+				<li>Per poder desar cerques és necessari que s'identifiqui prèviament</li>
+			</ul>
+			<a name="favorites"></a>
+			<h2 class="title-help">Accés als preferits</h2>
+			<p>Per visualitzar els registres que ha marcat com a preferits, faci clic a <i>Preferits</i>.</p>
+			<a name="profile"></a>
+			<h2 class="title-help">Accés al Meu Perfil</h2>
+			<p>Faci clic a l'opció <i>El meu perfil</i> i identifiqui's per poder accedir a les següents utilitats de <span class="text-bold-help">ODA</span>: </p>
+			<ul class="tab5-help margen5">
+				<li>Dades personals</li>
+				<li>Sol·licituds</li>
+				<li>Prestecs actius</li>
+				<li>Històric de préstecs</li>
+				<li>Renovar préstecs</li>
+				<li>Cancelar reserves</li>
+				<li>Desar cerques</li>
+				<li>Crear llistes de preferits</li>
+			</ul>
+			<p class="tab2-help">Per identificar-se com a usuari pot utilitzar qualsevol d'aquests 3 mètodes:</p>
+			<ul class="tab5-help margen5">
+				<li>nº de carnet</li>
+				<li>correu electrònic que hagi proporcionat a la seva biblioteca</li>
+				<li>telèfon mòbil que hagi proporcionat a la seva biblioteca</li>
+			</ul>
+			<a name="home"></a>
+			<h2 class="title-help">Accés a la pàgina d'inici</h2>
+			<p>Per anar a la pàgina d'inici, faci clic a <i>Inici</i>.</p>
+			<p class="top-help"><a href="#top">A dalt</a></p>
+		</div>
+	</div>
+	<th:block th:insert="/public/home/technicalfooter" th:with="page='opac-dataprivacyterms'"/>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!--  :: [title/fragments/detailCopiesButtonDefault_w.html] -->
+<a target="_blank" class="online-copies__enlace btn btn-white" th:href="${#strings.replace(resourceUrl,'%s',subField.subFieldValue)}"
+				th:title="#{copy.online.external.link.title}" rel="noopener noreferrer">
+				<span
+					th:if="${#strings.equals(subField.dollar,'w') and tsubField.getMapSubFields()['z'] != null}"
+					th:text="${#strings.isEmpty(tsubField.getMapSubFields()['z'][0]) ? #messages.msg('copy.online.external.link.resource') : tsubField.getMapSubFields()['z'][0]}" class="btn_enlace_title"></span>
+				<span
+					th:if="${#strings.equals(subField.dollar,'w') and tsubField.getMapSubFields()['z'] == null and tsubField.getMapSubFields()['y'] != null}"
+					th:text="${#strings.isEmpty(tsubField.getMapSubFields()['y'][0]) ? #messages.msg('copy.online.external.link.resource') : tsubField.getMapSubFields()['y'][0]}" class="btn_enlace_title"></span>
+				<span
+					th:if="${#strings.equals(subField.dollar,'w') and tsubField.getMapSubFields()['z'] == null and tsubField.getMapSubFields()['y'] == null and tsubField.getMapSubFields()['q'] != null}"
+					th:text="${#strings.isEmpty(tsubField.getMapSubFields()['q'][0]) ? #messages.msg('copy.online.external.link.resource') : tsubField.getMapSubFields()['q'][0]}" class="btn_enlace_title"></span>
+				<span
+					th:if="${#strings.equals(subField.dollar,'w') and tsubField.getMapSubFields()['z'] == null and tsubField.getMapSubFields()['y'] == null and tsubField.getMapSubFields()['q'] == null}"
+					th:text="#{copy.online.external.link.resource}"></span>
+			</a>
+<!-- :: [title/fragments/detailCopiesButtonDefault_w.html]  -->

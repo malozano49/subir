@@ -1,0 +1,26 @@
+<th:block th:if="${iterStat.index == 0}">
+ <!-- :: [title/estandar/multiple.html] -->
+ <tr>
+    <th scope="row" class="align-top">
+       <th:block th:if="${detail.catalog.catalog != thymeleafMap.get('MarcDocumentType_AUTHORITY')" th:text="#{${mykey}} + ': '"></th:block>
+    </th>
+    <td>
+</th:block>
+<th:block th:if="${iterStat.index} < ${iterStat.size}">
+  <th:block th:switch="${mykey}">
+    <th:block th:case="'t700'">
+      <th:block th:insert="/title/estandar/enlace.html"></th:block>
+    </th:block>
+    <th:block th:case="'t650'">
+      <th:block th:insert="/title/estandar/enlace.html"></th:block>
+    </th:block>
+    <th:block th:case="*">
+      <th:block th:insert="/title/estandar/sinEnlace.html"></th:block>
+    </th:block>
+  </th:block>
+</th:block>
+<th:block th:if="${iterStat.index} == ${iterStat.size}">
+  </td>
+  </tr>
+  <!-- :: /[title/estandar/multiple.html] -->
+</th:block>

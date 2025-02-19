@@ -1,0 +1,47 @@
+<!-- :: [public/reset/homeForm.html] -->
+<section class="cont_form py-2">
+  <h2 class="sr-only" th:text="#{reset.form.title}"></h2>
+  <form name="abnetc" th:action="@{${thymeleafMap.get('READER_RESET_PASSWORD')}}" th:object="${resetPassword}" method="post" class="text-center pt-3">
+    <fieldset>
+      <legend><h3 class="login_fieldset--title text-primary" th:text="#{reset.title}"></h3></legend>
+      <div th:if="${code}" class="alert alert-danger alert_icon" role="alert" aria-atomic="true">
+         <span class="icono fas fa-address-card" aria-hidden="true"></span>
+         <span class="alert_titulo sr-only" th:text="#{alert.error.title}"></span>
+         <span class="alert_texto" th:if="${code}" th:text="#{${'error.login.' + code}}"></span>
+      </div>
+      <!-- :: /.alert -->
+      <div class="cont_form_group">
+        <div class="form-group cont_num_lector">
+           <label for="numReader" class="bmd-label-floating" th:text="#{reset.user.num.reader}"></label>
+           <input id="numReader" type="text" name="numReader" class="form-control" required maxlength="50"/>
+           <span id="numReaderHelp" class="bmd-help" th:text="#{reset.user.num.reader.help}"></span>
+        </div>
+        <!-- :: /.cont_num_lector -->
+      </div>
+      <!-- :: /.cont_form_group -->
+
+      <div class="cont_form_group">
+        <div class="form-group cont_email">
+           <label for="email" th:text="#{reset.user.email}" class="bmd-label-floating"></label>
+           <input id="email" type="email" name="email" class="form-control" required maxlength="50"/>
+           <span id="emailHelp" class="bmd-help" th:text="#{reset.user.email.help}"></span>
+        </div>
+        <!-- :: /.cont_email -->
+      </div>
+      <!-- :: /.cont_form_group -->
+      </fieldset>
+      <div class="cont_botonera mt-4">
+      		<div class="cont_inicio mb-2">
+                 <a class="cont_inicio_link" th:href="@{${thymeleafMap.get('HOME_URL')}}" id="backHome">
+                 	<span class="icono fas fa-angle-double-left" aria-hidden="true"></span>
+                    <span class="link_title" th:text="#{reset.back.home}"></span>
+                    </a>
+             </div>  
+        <button type="submit" class="btn btn-primary btn-send w-50 mb-2" th:text="#{reset.button}"></button>
+      </div>
+      <!-- :: /.cont_botonera -->
+
+  </form>
+</section>
+<!-- :: /.cont_form -->
+<!-- :: /[public/reset/homeForm.html] -->

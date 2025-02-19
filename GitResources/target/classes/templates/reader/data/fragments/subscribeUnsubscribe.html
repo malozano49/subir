@@ -1,0 +1,18 @@
+<!-- :: [(OpacNotifications) reader/notifications/subscribeUnsuscribe.html] -->
+<th:block th:if="${edit=='true'}">
+	<fieldset class="col-md-auto">
+	    <div class="form-group cont_check cont_check_tunned float-left d-flex flex-row-reverse ml-2 pt-0 pr-0">
+	      <label for="notifications_subscribe" th:text="#{mylibrary.reader.notifications.check}" class="label_checkbox"></label>
+	      <input type="checkbox" id='notifications_subscribe' name="notifications_subscribe">
+	    </div>
+	</fieldset>
+</th:block>
+
+<th:block th:if="${edit=='false'}">
+	<li class="ml-2 cont_notify_push">
+	  <div class="form-group cont_check cont_check_tunned d-inline-block pt-0 pl-0 pb-0">
+	    <label for="notifications_subscribe" th:text="#{mylibrary.reader.notifications.check}" class="label_checkbox"></label>
+	    <input type="checkbox" id='notifications_subscribe' name="notifications_subscribe" disabled>
+	  </div>
+	</li>
+</th:block>

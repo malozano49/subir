@@ -1,0 +1,8 @@
+<!-- :: [public/register/readerType.html] -->
+<select aria-describedby=""  class="sub-cata-select form-control" name="readerType" id="readerType"> 
+	<option  th:text="#{reader.form.readerType.select}"  value="" ></option>
+   	<th:block  th:each="item : ${readerTypes}" >
+      <option  th:selected="${item.code == selectedType}" th:utext="${item.description}"  th:value="${item.code}" ></option>
+    </th:block>
+</select>
+<!-- :: [public/register/readerType.html] -->

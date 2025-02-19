@@ -1,0 +1,240 @@
+<th:block th:insert="/public/home/html_type"></th:block>
+<th:block th:insert="/public/home/technicalheader::main" th:with="page=${'opac-help-favorites-es_ES'}"></th:block>
+<script type="text/javascript">
+	var menu = document.getElementById('menu');
+	Stickyfill.add(menu);
+</script>
+<body>
+<div id="burger-menu" class="burger-menu">
+  <span></span>
+  			<div id="menu2" class="menu menu2">
+			<div class=""><nav class="sn-contents" aria-label="Secondary">
+      <ul class="sidenav--list">
+<li><a href="#favorites">Favorites</a>
+					</li>
+						<li><a href="#emailFavorites">How to Share Favorites by Email</a></li>
+						<li><a href="#addListFavorites">How to Create Lists of Favorites</a></li>
+						<li><a href="#appendRecordList">How to Add Records to One of My Favorite Lists</a></li>
+						<li><a href="#moviFavorites">How to Move a Favorite to Another Existing List</a></li>
+						<li><a href="#delRecordList">How to Delete Records from Existing Lists</a></li>
+						<li><a href="#modifyDescList">How to Modify the Description Associated with a List</a></li>
+						<li><a href="#delList">How to Delete a List</a></li>
+				
+				
+				<li><a href="#searchAuthority">Access to Authority Search</a></li>
+				<li><a href="#searchIndexes">Access to Index Search</a></li>
+				<li><a href="#lastSearh">Access to Recent Searches</a></li>
+				<li><a href="#historySearch">Access to Saved Searches</a></li>
+				<li><a href="#profil">Access to My Profile</a></li>
+				<li><a href="#home">Access to the Home Page</a></li></ul></nav>
+</div>
+		</div>
+</div>
+				
+		<div class="wrapper cf">
+		<div id="menu" class="menu">
+				<div class="sidenav"><nav class="sn-contents" aria-label="Secondary">
+			<ul class="sidenav--list">
+		<li><a href="#favorites">Favorites</a>
+				</li>
+					<li><a href="#emailFavorites">How to Share Favorites by Email</a></li>
+					<li><a href="#addListFavorites">How to Create Lists of Favorites</a></li>
+					<li><a href="#appendRecordList">How to Add Records to One of My Favorite Lists</a></li>
+					<li><a href="#moviFavorites">How to Move a Favorite to Another Existing List</a></li>
+					<li><a href="#delRecordList">How to Delete Records from Existing Lists</a></li>
+					<li><a href="#modifyDescList">How to Modify the Description Associated with a List</a></li>
+					<li><a href="#delList">How to Delete a List</a></li>
+				
+				
+				<li><a href="#searchAuthority">Access to Authority Search</a></li>
+				<li><a href="#searchIndexes">Access to Index Search</a></li>
+				<li><a href="#lastSearh">Access to Recent Searches</a></li>
+				<li><a href="#historySearch">Access to Saved Searches</a></li>
+				<li><a href="#profil">Access to My Profile</a></li>
+				<li><a href="#home">Access to the Home Page</a></li></ul></nav>
+</div>
+	</div>
+			<div class="content">
+				<a name="top"></a>
+				<a name="favorites"></a>
+				<h2 class="title-help">Favorites</h2>
+				<p>From this option, you can view the records you have marked as favorites.</p>
+				<p class="tab2-help">By default, the search results are displayed in groups of 10, but you have the option to group the results by 25 or 35.</p>
+				<p class="tab5-help margen10"><img th:src="@{/img/help/results-by-page.png}" alt="Results per page" width="250px"></p>
+				<p class="tab2-help">To navigate through the different pages of the search results, you can use the following options:</p>
+				<ul class="tab4-help margen5">
+					<li>Click on <img th:src="@{/img/help/next.png}" alt="Next" width="75px"> to move to the next page.</li>
+					<li>Click on <img th:src="@{/img/help/back.png}" alt="Previous" width="75px"> to move to the previous page.</li>
+					<li>Click on the page number you want to view
+						<br><br><img th:src="@{/img/help/number-by-page.png}" alt="Page number" width="350px">
+					</li>
+				<li>Click on the number 1 to view the first page
+						<br><br><img th:src="@{/img/help/first-page.png}" alt="First page" width="350px"/>
+				</li>
+				<li>Click on the number before "Next" to go to the last page
+						<br><br><img th:src="@{/img/help/last-page.png}" alt="Last page" width="350px"/>
+				</li>
+			</ul>
+			<a name="emailFavorites"></a>
+			<h4 class="title-help">How to Share Favorites by Email</h4>
+			<p>If you want to share the records you've marked as favorites via email:</p>
+			<ul class="tab5-help margen5">
+				<li>1. Click on <img th:src="@{/img/help/icon-favorites.png}" alt="Favorites icon"/></li>
+				<li>2. Click on <img th:src="@{/img/help/btn-share-email1.png}" alt="Email Share button 1" width="150px"/></li>
+				<li>3. A window will open for you to enter an email address.
+					<span class="center-text-help"><img th:src="@{/img/help/share-email.png}" alt="Email Share" width="350px"></span>
+				</li>
+				<li>4. Click on <img th:src="@{/img/help/btn-share-email2.png}" alt="Email Share button 2" width="150px"/> to send your favorites to the provided email.
+				</li>
+				</ul>
+				<a name="addListFavorites"></a>
+				<h4 class="title-help">How to Create Lists of Favorites</h4>
+				<ul class="tab5-help margen5">
+				<li>1. Click on the option <img th:src="@{/img/help/icon-add-list.png}" alt="Add List icon"/> associated with the record you want to add to the new list.
+				<li>2. Click on the option <img th:src="@{/img/help/btn-add-list.png}" alt="New List button" width="100px"/>
+				<li>3. Enter the description for the new list.
+				<span class="tab3-help margen5"><img th:src="@{/img/help/append-list-new.png}" alt="Add New List" width="200px"/></span>
+				</li>
+				<li>4. Click on <img th:src="@{/img/help/btn-add-title-list.png}" alt="Add Selected List button" width="200px"/>
+				<ul class="tab3-help margen5">
+				<li>The new list is created with the associated record.</li>
+				<li>Records belonging to a list of favorites are displayed with the following distinctive image:
+				<img th:src="@{/img/help/icon-record-in-list.png}" alt="Record in lists"/>
+				</li>
+				<li>If you want to view the lists you've created, click on your user profile and select the "My Lists" option.
+				<span class="tab5-help margen5"><img th:src="@{/img/help/my-lists.png}" alt="My Lists" width="150px"/></span>
+				</li>
+				</ul>
+				</li>
+				</ul>
+				<a name="appendRecordList"></a>
+				<h4 class="title-help">How to Add Records to One of My Favorite Lists</h4>
+				<p>If you want to add records to one of your existing lists of favorites:</p>
+				<ul class="tab5-help margen5">
+				<li>1. Click on the option <img th:src="@{/img/help/icon-add-list.png}" alt="Add List icon"/> associated with the record you want to add to one of the lists you've already created.
+				<li>2. Select the list you're interested in.
+				<span class="tab5-help margen5"><img th:src="@{/img/help/list-selection.png}" alt="Select List" width="250px"/></span> 
+				</li>
+				<li>3. Click on <img th:src="@{/img/help/btn-add-title-list.png}" alt="Add List button" width="200px"/> 
+				</li>
+				</ul>
+				<a name="moviFavorites"></a>
+				<h4 class="title-help">How to Move a Favorite to Another Existing List</h4>
+				<p>If you want to move one of the records you have in one list to a different one, you need to identify yourself first. To do this, click on
+				<img th:src="@{/img/help/my-profile.png}" alt="My Profile" width="65px"/>
+				</p>
+				<ul class="tab5-help margen10">
+				<li>1. Click on your user profile and select the "My Lists" option.
+				<span class="tab5-help margen5"><img th:src="@{/img/help/my-lists.png}" alt="My Lists" width="250px"/></span>
+				</li>
+				<li>2. Click on the list where the record you want to move is located.
+				<span class="tab5-help margen5"><img th:src="@{/img/help/list-my.png}" alt="My List" width="350px"/></span>
+				</li>
+				<li>3. Click on the option <img th:src="@{/img/help/icon-share.png}" alt="Share Icon"/> associated with the record you want to change to another list.
+				</li>
+				<li>4. Select the list to which you want to move the record
+				<br><span class="tab5-help margen5"><img th:src="@{/img/help/move-list.png}" alt="Move List" width="250px"/></span>
+				</li>
+				<li>5. Click on <img th:src="@{/img/help/update.png}" alt="Update button" width="100px"/> to move the record to the selected list.
+				</li>
+				</ul>
+				<a name="delRecordList"></a>
+				<h4 class="title-help">How to Delete Records from Existing Lists</h4>
+				<p>If you want to delete one of the records from a list, you need to identify yourself first. To do this, click on
+				<img th:src="@{/img/help/my-profile.png}" alt="My Profile" width="65px"/>
+				</p>
+				<p>Once you're identified,</p>
+				<ul class="tab5-help margen10">
+				<li>1. Click on your user profile and select the "My Lists" option
+				<span class="tab5-help margen5"><img th:src="@{/img/help/my-lists.png}" alt="My Lists" width="250px"/></span>
+				</li>
+				<li>2. Click on the list where the record you want to delete is located
+				<span class="tab5-help margen5"><img th:src="@{/img/help/list-my.png}" alt="My List" width="350px"/></span>
+				</li>
+				<li>3. Click on the option <img th:src="@{/img/help/icon-paper-bin-1.png}" alt="Trash Icon"/> associated with the record you want to delete
+				<br><span class="tab5-help margen5"><img th:src="@{/img/help/records.png}" alt="Record"  width="350px"/></span>
+				<ul class="tab3-help">
+				<li>To view the lists you've created again, click on <img th:src="@{/img/help/return.png}" alt="Return" width="50px"/></li>
+				</ul>
+				</li>
+				</ul>
+				<a name="modifyDescList"></a>
+				<h4 class="title-help">How to Modify the Description Associated with a List</h4>
+				<p>If you want to modify the description associated with a list of favorites, you need to identify yourself first. To do this, click on
+				<img th:src="@{/img/help/my-profile.png}" alt="My Profile" width="65px"/>
+				</p>
+				<p>Once you're identified,</p>
+				<ul class="tab5-help margen10">
+				<li>1. Click on your user profile and select the "My Lists" option
+				<span class="tab5-help margen5"><img th:src="@{/img/help/my-lists.png}" alt="My Lists" width="200px"/></span>
+				</li> 
+				<li>2. Click on the option <img th:src="@{/img/help/icon-update.png}" alt="Update List Icon"/> associated with the list whose description you want to modify.
+				</li>
+				<li>3. Modify the description of the list
+				<br><span class="tab5-help margen5"><img th:src="@{/img/help/box-update-list.png}" alt="Update List Box" width="350px"/></span>
+				<ul class="tab3-help">
+				<li>If you don't want to save the modification, click on <img th:src="@{/img/help/icon-close.png}" alt="Close List Icon"/></li>  
+				<li>If you want to save the change, click on <img th:src="@{/img/help/icon-accept.png}" alt="Accept Icon"/></li>
+				</ul>
+				</li>
+				</ul>
+				<a name="delList"></a>
+				<h4 class="title-help">How to Delete a List</h4>
+				<p>If you want to delete one of your lists of favorites, you need to identify yourself first. To do this, click on
+				<img th:src="@{/img/help/my-profile.png}" alt="Mi perfil" width="65px"/>
+			</p> 
+			<p>Once you are logged in,</p> 
+			<ul class="tab5-help margen10">
+			    <li>1. Click on your user and select the <i>My Lists</i> option.<br>
+			        <span class="tab5-help margin5"><img th:src="@{/img/help/my-lists.png}" alt="My Lists" width="200px"/></span>
+			    </li> 
+			    <li>2. Click on the <img th:src="@{/img/help/icon-paper-bin-1.png}" alt="Trash Can Icon"/> associated with the list you want to delete.</li>
+			    <li>3. A confirmation message for deletion will appear.<br>
+			        <span class="tab5-help margin5"><img th:src="@{/img/help/del-confirmation.png}" alt="Confirmation Button" width="300px"/></span><p>
+			        <ul class="tab3-help">
+			            <li>If you don't want to delete the list, click on <img th:src="@{/img/help/btn-close.png}" alt="Close List Button" width="50px"/>.</li><p>  
+			            <li>If you want to delete the list, click on <img th:src="@{/img/help/btn-del-list.png}" alt="Delete List Button" width="100px"/>.</li>
+			        </ul> 
+			    </li>
+			</ul>
+			<a name="searchAuthority"></a>
+			<h2 class="title-help">Access to Authority Search</h2>
+			<p>To perform an authority search that allows you to locate records containing a specific authority, click on the <i>Authority Search</i> option.</p>
+			<a name="searchIndexes"></a>
+			<h2 class="title-help">Access to Index Search</h2>
+			<p>To perform a search that locates words or patterns of words similar to the term or terms entered, click on the <i>Index Search</i> option.</p>
+			<a name="lastSearch"></a>
+			<h2 class "title-help">Access to Recently Conducted Searches</h2>
+			<p>To view the <span class="text-bold-help">10</span> most recent searches that returned results during the OPAC session, click on <i>Recent Searches</i>.</p>
+			<a name="historySearch"></a>
+			<h2 class="title-help">Access to Saved Searches</h2>
+			<p>If you want to save any of the searches you've conducted to run them at another time, click on <i>Saved Searches</i>.</p>
+			<p class="tab2-help">* To save searches, it is necessary to identify yourself beforehand.</p>
+			<a name="profile"></a>
+			<h2 class="title-help">Access to My Profile</h2>
+			<p>Click on the <i>My Profile</i> option and identify yourself to access the following <span class="text-bold-help">ODA</span> utilities:</p>	
+			<ul class="tab5-help margin10">
+			    <li>Personal information</li>
+			    <li>Requests</li>
+			    <li>Active loans</li>
+			    <li>Loan history</li>
+			    <li>Renew loans</li>
+			    <li>Cancel reservations</li>
+			    <li>Save searches</li>
+			    <li>Create favorite lists</li>
+			</ul>
+			<p>To identify yourself as a user, you can use any of these 3 methods:</p>
+			<ul class="tab5-help margin10">
+			    <li>Library card number</li>
+			    <li>Email provided to your library</li>
+			    <li>Mobile phone number provided to your library</li>
+			</ul>
+			<a name="home"></a>
+			<h2 class="title-help">Access to the Home Page</h2>
+			<p>To go to the home page, click on <i>Home</i>.</p>
+			<p class="top-help"><a href="#top">Top</a></p>
+		</div>			 
+	</div>	
+	<th:block th:insert="/public/home/technicalfooter" th:with="page='opac-dataprivacyterms'"/>
+</body>
+</html>

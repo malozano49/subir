@@ -1,0 +1,5 @@
+<!-- :: [public/search/advanced/fragments/options.html] -->
+<th:block th:fragment="options(collection,selected)">
+<option  th:each="item : ${collection}" th:text="#{${item}}" th:value="${item}" th:selected="${item}==${selected}"></option>
+</th:block>
+<!-- :: /[public/search/advanced/fragments/options.html] -->

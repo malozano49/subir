@@ -1,0 +1,417 @@
+<!-- :: [layout/carousel/carousel_min.html] -->
+
+<div class="view_type_carousel container-fluid">
+  <h4 class="h2 pl-3 py-2">
+    <span class="icono fas fa-star mr-2"></span>Carousel mini
+  </h4>
+  <div class="swiper-container">
+    <ul>
+      <!-- :: [/public/catalog/fragments/searchListElement_carousel.html] -->
+      <li>
+          <figure>
+            <div class="cont_image invisible">
+              <button type="button" class="btn_image" tabindex="-1" title="ir al detalle" aria-label="ir al detalle">
+                <!--<img class="img-fluid mx-auto d-block img-thumbnail" src="https://olcovers2.blob.core.windows.net/coverswp/2019/02/Mechanics_and_Relativity-Idema-OpenLibra.jpg" alt="slide 1">-->
+                <!-- :: [/public/catalog/fragments/recordImage.html] -->
+                <img id="100039" src="https://via.placeholder.com/350x150" class="imagen img_on_load" alt="cover">
+                <!-- :: /[/public/catalog/fragments/recordImage.html] -->
+              </button>
+            </div>
+            <!-- :: /.cont_image -->
+            <figcaption class="card-body">
+              <a class="link cont_title" href="" title="Anatomía de un instante [ texto] /  Javier Cercas." aria-label="Anatomía de un instante [ texto] /  Javier Cercas.">
+                <span class="item-title btn_title ellipsis_multiline" aria-hidden="true">Anatomía de un instante [ texto] /  Javier Cercas.</span>
+              </a>
+              <div  class="item-publication d-flex mt-3">México :  Planeta,  2006.</div>
+              <!-- /.item-publication -->
+              <div class="item_data col-12 d-flex">
+                <div class="cont_item-format col-3 pl-0 pr-0 d-flex">
+                   <span class="item-format pl-0">
+                      Monografía
+                   </span>
+                </div>
+                <!-- :: /.cont_item-format-->
+                <div class="item-location desktop_flex col-9">
+                   <div class="cont_location">
+                      <span class="icono fas fa-map-marker-alt mr-1"></span>
+                      <span class="cont_titulo mr-2">Ubicación</span>
+                      <a class="link" href="/OpacWeb-0.2.0-SNAPSHOT/public/catalog/detail/b2FpOmNlbGVicmF0aW9uOmVzLmJhcmF0ei5kZW1vLzE1ODY2?tabId=1590137827133#copias" title="Bolivia, Bolivia P, La Paz">Bolivia, Bolivia, Santa Cruz de la Sierra</a>
+                   </div>
+                   <!-- :: /.cont_location -->
+                   <div class="cont_num_ejemplares">
+                     <a class="link" href="/OpacWeb-0.2.0-SNAPSHOT/public/catalog/detail/b2FpOmNlbGVicmF0aW9uOmVzLmJhcmF0ei5kZW1vLzE1ODY2?tabId=1590137827133#copias">Ejemplares :1</a>
+                   </div>
+                   <!-- :: /.cont_num_ejemplares -->
+                   <div class="cont_disponibles">
+                     <a class="link" href="/OpacWeb-0.2.0-SNAPSHOT/public/catalog/detail/b2FpOmNlbGVicmF0aW9uOmVzLmJhcmF0ei5kZW1vLzE1ODY2?tabId=1590137827133#copias">Disponibles: 1</a>
+                    </div>
+                    <!-- :: /.cont_disponibles -->
+                </div>
+                <!-- :: /.item-location -->
+              </div>
+              <!-- :: /.item_data -->
+              <div class="item-action-icons d-flex flex-row align-items-start">
+                <!-- :: ICONO FAVORITOS -->
+                <button type="button" class="btn_message_js btn_favorite btn btn-secondary" data-message_activo="Eliminado de favoritos" data-message_no_activo="Añadido a favoritos" data-btn_action="favorite_toggle" data-id="b2FpOmNlbGVicmF0aW9uOmVzLmJhcmF0ei5kZW1vLzk3Mg" aria-label="Guardar a favoritos" title="Guardar a favoritos" data-fav-limit="200" data-fav-size="0" data-fav-message="Has llegado al límite de favoritos. Este favorito no se guardará hasta que no elimines otro. ">
+                  <span class="icono far fa-bookmark" aria-hidden="true"></span>
+                </button>
+                <!-- :: ICONO LANZA MODAL COMPARTIR POR EMAIL -->
+                <button class="btn_detail_item_share btn btn-secondary modal_js" data-modal_tipo="light" data-modal_target="#ID_DE_MODAL_00" data-modal_discriminador="CLASE_DISCRIMINADORA" data-modal_title="TITULO_DE_MODAL" data-modal_html="#MODAL_00" data-modal_footer="false" aria-label="Compartir por email." title="Compartir por email." type="button">
+                  <span class="icono fas fa-envelope" aria-hidden="true"></span>
+                </button>
+                <!-- :: CONTENIDO DE LA MODAL A LANZAR DESDE EL ICONO COMPARTIR POR MAIL -->
+                <div id="MODAL_00" class="d-none" aria-hidden="true">
+                  <div class="alert alert-info alert_icon alert-dismissible w-100 fade show" >
+                    <span class="icono fas fa-question-circle"></span>
+                    <span class="alert_titulo" th:text="#{alert.info.title}"></span>
+                    <span class="alert_texto">Sólo puede introducir una dirección de email.</span>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">×</span>
+                    </button>
+                  </div>
+                  <!-- :: /.alert -->
+                  <form action="/OpacWeb-0.2.0-SNAPSHOT/public/sendMailSimple" method="POST"><input type="hidden" name="_csrf" value="1cc84caf-c95c-4c7c-960c-91507690a3a4">
+                    <input type="hidden" name="id" value="b2FpOmNlbGVicmF0aW9uOmVzLmJhcmF0ei5kZW1vLzk3Mg">
+                    <fieldset>
+                      <legend>Inserte un email para compartir el item.</legend>
+                      <div class="cont_form_group col-md-12">
+                        <div class="form-group cont_input">
+                          <label class="bmd-label-floating" for="recipientEmail_00">email</label>
+                          <input id="recipientEmail_00" class="form-control" type="email" name="recipientEmail" value="">
+                          <span class="bmd-help">Pon el email de la persona con la que deseas compartir este contenido</span>
+                        </div>
+                      </div>
+                    </fieldset>
+                    <!-- :: /.cont_form_group -->
+                    <div class="alert mt-3 d-none" role="alert" aria-atomic="true">
+                      <span class="alert_titulo" th:text="#{alert.error.title}"></span>
+                      <span class="alert_texto">.alert.alert-info</span>
+                    </div>
+                    <!-- :: /.alert -->
+                    <div class="cont_botonera_form col-md-12 d-flex justify-content-center mt-3">
+                      <button type="button" class="btn btn-outline-secondary mr-2" data-dismiss="modal">Cerrar.</button>
+                      <button type="submit" class="btn btn-primary mailto">Compartir por email.</button>
+                    </div>
+                    <!-- :: /.cont_botonera_form -->
+                  </form>
+                </div>
+                <!-- :: /#MODAL-->
+              </div>
+              <!-- :: /.item-action-icons -->
+            </figcaption>
+          </figure>
+          <div class="cont_item-format col-12 pl-0 pr-0 d-flex">
+             <span class="item-format pl-0">
+                Monografía
+             </span>
+          </div>
+          <!-- :: /.cont_item-format-->
+      </li>
+      <!-- :: /[/public/catalog/fragments/searchListElement_carousel.html] -->
+
+      <!-- :: [/public/catalog/fragments/searchListElement_carousel.html] -->
+      <li>
+          <figure>
+            <div class="cont_image invisible">
+              <button type="button" class="btn_image" tabindex="-1" title="ir al detalle" aria-label="ir al detalle">
+                <!--<img class="img-fluid mx-auto d-block img-thumbnail" src="https://olcovers2.blob.core.windows.net/coverswp/2019/02/Mechanics_and_Relativity-Idema-OpenLibra.jpg" alt="slide 1">-->
+                <!-- :: [/public/catalog/fragments/recordImage.html] -->
+                <img id="14320" src="https://via.placeholder.com/650x550" class="imagen img_on_load" alt="cover">
+                <!-- :: /[/public/catalog/fragments/recordImage.html] -->
+              </button>
+            </div>
+            <!-- :: /.cont_image -->
+            <figcaption class="card-body">
+              <a class="link cont_title" href="" title="Aventuras de Don Quijote y Sancho /  basadas en la obra original de Miguel de Cervantes ; una recreación de Concha López Narváez ; con prólogo de Ana María Matute ; e ilustraciones de Alicia Cañas Cortázar." aria-label="Aventuras de Don Quijote y Sancho /  basadas en la obra original de Miguel de Cervantes ; una recreación de Concha López Narváez ; con prólogo de Ana María Matute ; e ilustraciones de Alicia Cañas Cortázar.">
+                <span class="item-title btn_title ellipsis_multiline" aria-hidden="true">Aventuras de Don Quijote y Sancho /  basadas en la obra original de Miguel de Cervantes ; una recreación de Concha López Narváez ; con prólogo de Ana María Matute ; e ilustraciones de Alicia Cañas Cortázar.</span>
+              </a>
+              <div  class="item-publication d-flex mt-3">México :  Planeta,  2006.</div>
+              <!-- /.item-publication -->
+              <div class="item_data col-12 d-flex">
+                <div class="cont_item-format col-3 pl-0 pr-0 d-flex">
+                   <span class="item-format pl-0">Monografía</span>
+                </div>
+                <!-- :: /.cont_item-format-->
+                <div class="item-location desktop_flex col-9">
+                   <div class="cont_location">
+                      <span class="icono fas fa-map-marker-alt mr-1"></span>
+                      <span class="cont_titulo mr-2">Ubicación</span>
+                      <a class="link" href="/OpacWeb-0.2.0-SNAPSHOT/public/catalog/detail/b2FpOmNlbGVicmF0aW9uOmVzLmJhcmF0ei5kZW1vLzE1ODY2?tabId=1590137827133#copias" title="Bolivia, Bolivia P, La Paz">Bolivia, Bolivia, Santa Cruz de la Sierra</a>
+                   </div>
+                   <!-- :: /.cont_location -->
+                   <div class="cont_num_ejemplares">
+                     <a class="link" href="/OpacWeb-0.2.0-SNAPSHOT/public/catalog/detail/b2FpOmNlbGVicmF0aW9uOmVzLmJhcmF0ei5kZW1vLzE1ODY2?tabId=1590137827133#copias">Ejemplares :1</a>
+                   </div>
+                   <!-- :: /.cont_num_ejemplares -->
+                   <div class="cont_disponibles">
+                     <a class="link" href="/OpacWeb-0.2.0-SNAPSHOT/public/catalog/detail/b2FpOmNlbGVicmF0aW9uOmVzLmJhcmF0ei5kZW1vLzE1ODY2?tabId=1590137827133#copias">Disponibles: 1</a>
+                   </div>
+                    <!-- :: /.cont_disponibles -->
+                </div>
+                <!-- :: /.item-location -->
+              </div>
+              <!-- :: /.item_data -->
+              <div class="item-action-icons d-flex flex-row align-items-start">
+                <!-- :: ICONO FAVORITOS -->
+                <button type="button" class="btn_message_js btn_favorite btn btn-secondary" data-message_activo="Eliminado de favoritos" data-message_no_activo="Añadido a favoritos" data-btn_action="favorite_toggle" data-id="b2FpOmNlbGVicmF0aW9uOmVzLmJhcmF0ei5kZW1vLzk3Mg" aria-label="Guardar a favoritos" title="Guardar a favoritos" data-fav-limit="200" data-fav-size="0" data-fav-message="Has llegado al límite de favoritos. Este favorito no se guardará hasta que no elimines otro. ">
+                  <span class="icono far fa-bookmark" aria-hidden="true"></span>
+                </button>
+                <!-- :: ICONO LANZA MODAL COMPARTIR POR EMAIL -->
+                <button class="btn_detail_item_share btn btn-secondary modal_js" data-modal_tipo="light" data-modal_target="#ID_DE_MODAL_01" data-modal_discriminador="CLASE_DISCRIMINADORA" data-modal_title="TITULO_DE_MODAL" data-modal_html="#MODAL_01" data-modal_footer="false" aria-label="Compartir por email." title="Compartir por email." type="button">
+                  <span class="icono fas fa-envelope" aria-hidden="true"></span>
+                </button>
+                <!-- :: CONTENIDO DE LA MODAL A LANZAR DESDE EL ICONO COMPARTIR POR MAIL -->
+                <div id="MODAL_01" class="d-none" aria-hidden="true">
+                  <div class="alert alert-info alert_icon alert-dismissible w-100 fade show" >
+                    <span class="icono fas fa-question-circle"></span>
+                    <span class="alert_titulo" th:text="#{alert.info.title}"></span>
+                    <span class="alert_texto">Sólo puede introducir una dirección de email.</span>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">×</span>
+                    </button>
+                  </div>
+                  <!-- :: /.alert -->
+                  <form action="/OpacWeb-0.2.0-SNAPSHOT/public/sendMailSimple" method="POST"><input type="hidden" name="_csrf" value="1cc84caf-c95c-4c7c-960c-91507690a3a4">
+                    <input type="hidden" name="id" value="b2FpOmNlbGVicmF0aW9uOmVzLmJhcmF0ei5kZW1vLzk3Mg">
+                    <fieldset>
+                      <legend>Inserte un email para compartir el item.</legend>
+                      <div class="cont_form_group col-md-12">
+                        <div class="form-group cont_input">
+                          <label class="bmd-label-floating" for="recipientEmail_01">email</label>
+                          <input id="recipientEmail_01" class="form-control" type="email" name="recipientEmail" value="">
+                          <span class="bmd-help">Pon el email de la persona con la que deseas compartir este contenido</span>
+                        </div>
+                      </div>
+                    </fieldset>
+                    <!-- :: /.cont_form_group -->
+                    <div class="alert mt-3 d-none" role="alert" aria-atomic="true">
+                      <span class="alert_titulo" th:text="#{alert.error.title}"></span>
+                      <span class="alert_texto">.alert.alert-info</span>
+                    </div>
+                    <!-- :: /.alert -->
+                    <div class="cont_botonera_form col-md-12 d-flex justify-content-center mt-3">
+                      <button type="button" class="btn btn-outline-secondary mr-2" data-dismiss="modal">Cerrar.</button>
+                      <button type="submit" class="btn btn-primary mailto">Compartir por email.</button>
+                    </div>
+                    <!-- :: /.cont_botonera_form -->
+                  </form>
+                </div>
+                <!-- :: /#MODAL-->
+              </div>
+              <!-- :: /.item-action-icons -->
+            </figcaption>
+          </figure>
+          <div class="cont_item-format col-12 pl-0 pr-0 d-flex">
+             <span class="item-format pl-0">Monografía</span>
+          </div>
+          <!-- :: /.cont_item-format-->
+      </li>
+      <!-- :: /[/public/catalog/fragments/searchListElement_carousel.html] -->
+
+      <!-- :: [/public/catalog/fragments/searchListElement_carousel.html] -->
+      <li>
+          <figure>
+            <div class="cont_image invisible">
+              <button type="button" class="btn_image" tabindex="-1" title="ir al detalle" aria-label="ir al detalle">
+                <!--<img class="img-fluid mx-auto d-block img-thumbnail" src="https://olcovers2.blob.core.windows.net/coverswp/2019/02/Mechanics_and_Relativity-Idema-OpenLibra.jpg" alt="slide 1">-->
+                <!-- :: [/public/catalog/fragments/recordImage.html] -->
+                <img id="44910" src="https://via.placeholder.com/150x150" class="imagen img_on_load" alt="cover">
+                <!-- :: /[/public/catalog/fragments/recordImage.html] -->
+              </button>
+            </div>
+            <!-- :: /.cont_image -->
+            <figcaption class="card-body">
+              <a class="link cont_title" href="" title="Don Quijote de La Mancha /  Miguel de Cervantes ; versión de Vicente Muñoz Puelles ; ilustraciones de Manuel Boix." aria-label="Don Quijote de La Mancha /  Miguel de Cervantes ; versión de Vicente Muñoz Puelles ; ilustraciones de Manuel Boix.">
+                <span class="item-title btn_title ellipsis_multiline" aria-hidden="true">Don Quijote de La Mancha /  Miguel de Cervantes ; versión de Vicente Muñoz Puelles ; ilustraciones de Manuel Boix.</span>
+              </a>
+              <div  class="item-publication d-flex mt-3">México :  Planeta,  2006.</div>
+              <!-- /.item-publication -->
+              <div class="item_data col-12 d-flex">
+                <div class="cont_item-format col-3 pl-0 pr-0 d-flex">
+                   <span class="item-format pl-0">Monografía</span>
+                </div>
+                <!-- :: /.cont_item-format-->
+                <div class="item-location desktop_flex col-9">
+                   <div class="cont_location">
+                      <span class="icono fas fa-map-marker-alt mr-1"></span>
+                      <span class="cont_titulo mr-2">Ubicación</span>
+                      <a class="link" href="/OpacWeb-0.2.0-SNAPSHOT/public/catalog/detail/b2FpOmNlbGVicmF0aW9uOmVzLmJhcmF0ei5kZW1vLzE1ODY2?tabId=1590137827133#copias" title="Bolivia, Bolivia P, La Paz">Bolivia, Bolivia, Santa Cruz de la Sierra</a>
+                   </div>
+                   <!-- :: /.cont_location -->
+                   <div class="cont_num_ejemplares">
+                     <a class="link" href="/OpacWeb-0.2.0-SNAPSHOT/public/catalog/detail/b2FpOmNlbGVicmF0aW9uOmVzLmJhcmF0ei5kZW1vLzE1ODY2?tabId=1590137827133#copias">Ejemplares :1</a>
+                   </div>
+                   <!-- :: /.cont_num_ejemplares -->
+                   <div class="cont_disponibles">
+                     <a class="link" href="/OpacWeb-0.2.0-SNAPSHOT/public/catalog/detail/b2FpOmNlbGVicmF0aW9uOmVzLmJhcmF0ei5kZW1vLzE1ODY2?tabId=1590137827133#copias">Disponibles: 1</a>
+                    </div>
+                    <!-- :: /.cont_disponibles -->
+                </div>
+                <!-- :: /.item-location -->
+              </div>
+              <!-- :: /.item_data -->
+              <div class="item-action-icons d-flex flex-row align-items-start">
+                <!-- :: ICONO FAVORITOS -->
+                <button type="button" class="btn_message_js btn_favorite btn btn-secondary" data-message_activo="Eliminado de favoritos" data-message_no_activo="Añadido a favoritos" data-btn_action="favorite_toggle" data-id="b2FpOmNlbGVicmF0aW9uOmVzLmJhcmF0ei5kZW1vLzk3Mg" aria-label="Guardar a favoritos" title="Guardar a favoritos" data-fav-limit="200" data-fav-size="0" data-fav-message="Has llegado al límite de favoritos. Este favorito no se guardará hasta que no elimines otro. ">
+                  <span class="icono far fa-bookmark" aria-hidden="true"></span>
+                </button>
+                <!-- :: ICONO LANZA MODAL COMPARTIR POR EMAIL -->
+                <button class="btn_detail_item_share btn btn-secondary modal_js" data-modal_tipo="light" data-modal_target="#ID_DE_MODAL_02" data-modal_discriminador="CLASE_DISCRIMINADORA" data-modal_title="TITULO_DE_MODAL" data-modal_html="#MODAL_02" data-modal_footer="false" aria-label="Compartir por email." title="Compartir por email." type="button">
+                  <span class="icono fas fa-envelope" aria-hidden="true"></span>
+                </button>
+                <!-- :: CONTENIDO DE LA MODAL A LANZAR DESDE EL ICONO COMPARTIR POR MAIL -->
+                <div id="MODAL_02" class="d-none" aria-hidden="true">
+                  <div class="alert alert-info alert_icon alert-dismissible w-100 fade show" >
+                    <span class="icono fas fa-question-circle"></span>
+                    <span class="alert_titulo" th:text="#{alert.info.title}"></span>
+                    <span class="alert_texto">Sólo puede introducir una dirección de email.</span>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">×</span>
+                    </button>
+                  </div>
+                  <!-- :: /.alert -->
+                  <form action="/OpacWeb-0.2.0-SNAPSHOT/public/sendMailSimple" method="POST"><input type="hidden" name="_csrf" value="1cc84caf-c95c-4c7c-960c-91507690a3a4">
+                    <input type="hidden" name="id" value="b2FpOmNlbGVicmF0aW9uOmVzLmJhcmF0ei5kZW1vLzk3Mg">
+                    <fieldset>
+                      <legend>Inserte un email para compartir el item.</legend>
+                      <div class="cont_form_group col-md-12">
+                        <div class="form-group cont_input">
+                          <label class="bmd-label-floating" for="recipientEmail_02">email</label>
+                          <input id="recipientEmail_02" class="form-control" type="email" name="recipientEmail" value="">
+                          <span class="bmd-help">Pon el email de la persona con la que deseas compartir este contenido</span>
+                        </div>
+                      </div>
+                      <!-- :: /.cont_form_group -->
+                    </fieldset>
+                    <div class="alert mt-3 d-none" role="alert" aria-atomic="true">
+                      <span class="alert_titulo" th:text="#{alert.error.title}"></span>
+                      <span class="alert_texto">.alert.alert-info</span>
+                    </div>
+                    <!-- :: /.alert -->
+                    <div class="cont_botonera_form col-md-12 d-flex justify-content-center mt-3">
+                      <button type="button" class="btn btn-outline-secondary mr-2" data-dismiss="modal">Cerrar.</button>
+                      <button type="submit" class="btn btn-primary mailto">Compartir por email.</button>
+                    </div>
+                    <!-- :: /.cont_botonera_form -->
+                  </form>
+                </div>
+                <!-- :: /#MODAL-->
+              </div>
+              <!-- :: /.item-action-icons -->
+            </figcaption>
+          </figure>
+          <div class="cont_item-format col-12 pl-0 pr-0 d-flex">
+             <span class="item-format pl-0">
+                Monografía
+             </span>
+          </div>
+          <!-- :: /.cont_item-format-->
+      </li>
+      <!-- :: /[/public/catalog/fragments/searchListElement_carousel.html] -->
+
+      <!-- :: [/public/catalog/fragments/searchListElement_carousel.html] -->
+      <li id="elem_54494">
+          <figure>
+            <div class="cont_image invisible">
+              <button type="button" class="btn_image" tabindex="-1" title="ir al detalle" aria-label="ir al detalle">
+                <!--<img class="img-fluid mx-auto d-block img-thumbnail" src="https://olcovers2.blob.core.windows.net/coverswp/2019/02/Mechanics_and_Relativity-Idema-OpenLibra.jpg" alt="slide 1">-->
+                <!-- :: [/public/catalog/fragments/recordImage.html] -->
+                <img id="54494" src="https://via.placeholder.com/450x450" class="imagen img_on_load" alt="cover">
+                <!-- :: /[/public/catalog/fragments/recordImage.html] -->
+              </button>
+            </div>
+            <!-- :: /.cont_image -->
+            <figcaption class="card-body">
+              <a class="link cont_title" href="" title="El pequeño Borges imagina el Quijote /  Carlos Cañeque ; [ilustraciones: pinturas de] Ramón Moscardó." aria-label="El pequeño Borges imagina el Quijote /  Carlos Cañeque ; [ilustraciones: pinturas de] Ramón Moscardó.">
+                <span class="item-title btn_title ellipsis_multiline" aria-hidden="true">El pequeño Borges imagina el Quijote /  Carlos Cañeque ; [ilustraciones: pinturas de] Ramón Moscardó.</span>
+              </a>
+              <div  class="item-publication d-flex mt-3">México :  Planeta,  2006.</div>
+              <!-- /.item-publication -->
+              <div class="item_data col-12 d-flex">
+                <div class="cont_item-format col-3 pl-0 pr-0 d-flex">
+                   <span class="item-format pl-0">Monografía</span>
+                </div>
+                <!-- :: /.cont_item-format-->
+                <div class="item-location desktop_flex col-9">
+                   <div class="cont_location">
+                      <span class="icono fas fa-map-marker-alt mr-1"></span>
+                      <span class="cont_titulo mr-2">Ubicación</span>
+                      <a class="link" href="/OpacWeb-0.2.0-SNAPSHOT/public/catalog/detail/b2FpOmNlbGVicmF0aW9uOmVzLmJhcmF0ei5kZW1vLzE1ODY2?tabId=1590137827133#copias" title="Bolivia, Bolivia P, La Paz">Bolivia, Bolivia, Santa Cruz de la Sierra</a>
+                   </div>
+                   <!-- :: /.cont_location -->
+                   <div class="cont_num_ejemplares">
+                     <a class="link" href="/OpacWeb-0.2.0-SNAPSHOT/public/catalog/detail/b2FpOmNlbGVicmF0aW9uOmVzLmJhcmF0ei5kZW1vLzE1ODY2?tabId=1590137827133#copias">Ejemplares :1</a>
+                   </div>
+                   <!-- :: /.cont_num_ejemplares -->
+                   <div class="cont_disponibles">
+                     <a class="link" href="/OpacWeb-0.2.0-SNAPSHOT/public/catalog/detail/b2FpOmNlbGVicmF0aW9uOmVzLmJhcmF0ei5kZW1vLzE1ODY2?tabId=1590137827133#copias">Disponibles: 1</a>
+                    </div>
+                    <!-- :: /.cont_disponibles -->
+                </div>
+                <!-- :: /.item-location -->
+              </div>
+              <!-- :: /.item_data -->
+              <div class="item-action-icons d-flex flex-row align-items-start">
+                <!-- :: ICONO FAVORITOS -->
+                <button type="button" class="btn_message_js btn_favorite btn btn-secondary" data-message_activo="Eliminado de favoritos" data-message_no_activo="Añadido a favoritos" data-btn_action="favorite_toggle" data-id="b2FpOmNlbGVicmF0aW9uOmVzLmJhcmF0ei5kZW1vLzk3Mg" aria-label="Guardar a favoritos" title="Guardar a favoritos" data-fav-limit="200" data-fav-size="0" data-fav-message="Has llegado al límite de favoritos. Este favorito no se guardará hasta que no elimines otro. ">
+                  <span class="icono far fa-bookmark" aria-hidden="true"></span>
+                </button>
+                <!-- :: ICONO LANZA MODAL COMPARTIR POR EMAIL -->
+                <button class="btn_detail_item_share btn btn-secondary modal_js" data-modal_tipo="light" data-modal_target="#ID_DE_MODAL_03" data-modal_discriminador="CLASE_DISCRIMINADORA" data-modal_title="TITULO_DE_MODAL" data-modal_html="#MODAL_03" data-modal_footer="false" aria-label="Compartir por email." title="Compartir por email." type="button">
+                  <span class="icono fas fa-envelope" aria-hidden="true"></span>
+                </button>
+                <!-- :: CONTENIDO DE LA MODAL A LANZAR DESDE EL ICONO COMPARTIR POR MAIL -->
+                <div id="MODAL_03" class="d-none" aria-hidden="true">
+                  <div class="alert alert-info alert_icon alert-dismissible w-100 fade show" >
+                    <span class="icono fas fa-question-circle"></span>
+                    <span class="alert_titulo" th:text="#{alert.info.title}"></span>
+                    <span class="alert_texto">Sólo puede introducir una dirección de email.</span>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">×</span>
+                    </button>
+                  </div>
+                  <!-- :: /.alert -->
+                  <form action="/OpacWeb-0.2.0-SNAPSHOT/public/sendMailSimple" method="POST"><input type="hidden" name="_csrf" value="1cc84caf-c95c-4c7c-960c-91507690a3a4">
+                    <input type="hidden" name="id" value="b2FpOmNlbGVicmF0aW9uOmVzLmJhcmF0ei5kZW1vLzk3Mg">
+                    <fieldset>
+                      <legend>Inserte un email para compartir el item.</legend>
+                      <div class="cont_form_group col-md-12">
+                        <div class="form-group cont_input">
+                          <label class="bmd-label-floating" for="recipientEmail_03">email</label>
+                          <input id="recipientEmail_03" class="form-control" type="email" name="recipientEmail" value="">
+                          <span class="bmd-help">Pon el email de la persona con la que deseas compartir este contenido</span>
+                        </div>
+                      </div>
+                      <!-- :: /.cont_form_group -->
+                    </fieldset>
+                    <div class="alert mt-3 d-none" role="alert" aria-atomic="true">
+                      <span class="alert_titulo" th:text="#{alert.error.title}"></span>
+                      <span class="alert_texto">.alert.alert-info</span>
+                    </div>
+                    <!-- :: /.alert -->
+                    <div class="cont_botonera_form col-md-12 d-flex justify-content-center mt-3">
+                      <button type="button" class="btn btn-outline-secondary mr-2" data-dismiss="modal">Cerrar.</button>
+                      <button type="submit" class="btn btn-primary mailto">Compartir por email.</button>
+                    </div>
+                    <!-- :: /.cont_botonera_form -->
+                  </form>
+                </div>
+                <!-- :: /#MODAL-->
+              </div>
+              <!-- :: /.item-action-icons -->
+            </figcaption>
+          </figure>
+          <div class="cont_item-format col-12 pl-0 pr-0 d-flex">
+             <span class="item-format pl-0">Monografía</span>
+          </div>
+          <!-- :: /.cont_item-format-->
+      </li>
+      <!-- :: /[/public/catalog/fragments/searchListElement_carousel.html] -->
+    </ul>
+  </div>
+  <!-- :: /.swiper-container -->
+  <div class="component" th:insert="/public/home/viewAll"></div>
+</div>
+<!-- :: /.carousel-main 00 -->
+
+<!-- :: [layout/carousel/carousel_min.html] -->

@@ -1,0 +1,36 @@
+<!-- :: [/public/catalog/fragments/searchListIndexElement.html] -->
+<li class="media catalog-item border-bottom row no-gutters p-0 p-md-3 py-3">
+      <div class="media-body col-12">
+        <div class="cont_titles d-flex">
+          <div class="cont_item_titles">
+            <div class="item-index">
+              <form method="post" name="solrSearchWeb" th:action="@{${thymeleafMap.get('INDEX_SEARCH_FACET_ACTION')}}" class="form_cont_button" th:object="${solrSearchWeb}">
+                <input type="hidden" name="solrSearch.solrCollection"  value="BIBLIOGRAPHIC_CATALOG">
+                <input type="hidden" name="solrSearch.queryType"  th:value="${thymeleafMap.get('EXPERT')}">
+
+                <input type="hidden" name="solrSearch.indexSearchField" th:value="${solrSearchWeb.solrSearch.indexSearchField}">
+                <input type="hidden" name="solrSearch.indexSearchFilter" th:value="${solrSearchWeb.solrSearch.indexSearchFilter}">
+                <input type="hidden" name="solrSearch.hiddenFacetVO.facet" th:value="${item.indexValue}">
+                <input type="hidden" name="solrSearch.hiddenFacetVO.facetType" th:value="${solrSearchWeb.solrSearch.indexSearchField}">
+                <input type="hidden" name="solrSearch.antecesorSearch.searchId" th:value="${solrSearchWeb.solrSearch.tabId}">
+            	<input type="hidden" name="solrSearch.antecesorSearch.type" th:value="${solrSearchWeb.solrSearch.queryType}">
+            	<input type="hidden" name="solrSearch.antecesorSearch.anchor" th:value="${'elem_' + iterStat.index}">
+            	<input type="hidden" name="solrSearch.hiddenQuery" th:value="${solrSearchWeb.solrSearch.query}">
+
+                  <button type="submit" name="solrSearch.query" th:value="${item.indexValue}" th:title="${item.indexValue}" class="btn_enlace btn btn-link" th:id="${'elem_' + iterStat.index}">
+                    <span class="btn_enlace_title" th:text="${item.indexValue}"></span>
+                  </button>
+              </form>
+              <!--<span class="btn_enlace_title" th:text="#{index.ocurrences}+' '+${item.authorityOccurences}"></span> -->
+              <span class="sr-only" th:text="#{index.ocurrences}+': '+${item.authorityOccurences}+'.'"></span>
+              <span aria-hidden="true" class="badge alertbul5" th:title="#{index.ocurrences}+': '+${item.authorityOccurences}+'.'" th:text="${item.authorityOccurences}"></span>
+            </div>
+            <!-- :: /.item-index -->
+          </div>
+          <!-- :: /.cont_item_titles -->
+        </div>
+        <!-- :: /.cont_titles -->
+      </div>
+      <!-- :: /.media-body -->
+  </li>
+<!-- :: /[/public/catalog/fragments/searchListIndexElement.html] -->

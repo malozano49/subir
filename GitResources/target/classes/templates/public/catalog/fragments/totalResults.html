@@ -1,0 +1,91 @@
+<!-- :: [/public/catalog/fragments/totalResults.html] -->
+
+<div class="results_order_filter_nav d-flex justify-content-between bg-highlight navbar px-0">
+
+  <div class="num_results bg-highlight navbar-text desktop_flex mr-3">
+    <span id="totalResultsLabelUp" class="text-truncate font-weight-bold pt-1 mr-1 pl-3">
+      <th:block id="total" th:text="${solrSearchWeb.solrSearch.results.totalResults}"/>
+    </span>
+    <span class="text-truncate pt-1 pl-1">
+      <th:block th:text="#{search.total.results}">
+    </span>
+  </div>
+  <!-- :: /.navbar-text -->
+
+  <nav class="cont_pagination pagination_num_results bg-highlight desktop" aria-labelledby="title_pagination_num_results">
+    <h3 id="title_pagination_num_results" class="sr-only" th:text="#{search.pagination.results.per.page.aria}"></h3>
+    <ul class="pagination pt-1">
+      <li id="resultsPerPageLabelUp" class="page-item text-truncate font-weight-bold mr-3 my-auto" th:text="#{search.pagination.results.per.page}"></li>
+      <li class="page-item" th:each="item : ${solrSearchWeb.elemntsXPage}" th:classappend="${#strings.equals(solrSearchWeb.solrSearch.elementPage, item)} ? 'active'">
+        <a th:href="@{${solrSearchWeb.currentUrl}(paginationNumElements=${item},tabId=${solrSearchWeb.solrSearch.tabId},id=(${id} ? ${id}),idList=(${idList} ? ${idList}))}" class="btn btn-white btn-link" th:text="${item}"></a>
+      </li>
+    </ul>
+  </nav>
+
+  <nav class="cont_formato_vistas bg-highlight mt-1 mr-auto d-none" aria-labelledby="title_cont_formato_vistas">
+    <h3 id="title_cont_formato_vistas" class="sr-only" th:text="#{search.list.view.types.select}"></h3>
+    <ul th:unless="${thymeleafMap.get('FAVORITES') == solrSearchWeb.solrSearch.queryType}" class="formato_vistas d-flex mb-0">
+      <li class="page-item active ml-1 mr-1">
+        <button type="submit" class="btn btn-white btn-link" th:title="#{search.list.view.label}" >
+          <span class="sr-only" th:text="#{search.list.view.label}"></span>
+          <span class="icono d-block fas fa-list-ul" aria-hidden="true"></span>
+        </button>
+      </li>
+      <li class="page-item disabled">
+        <button type="submit" class="btn btn-white btn-link" th:title="#{search.compact.view.label}">
+          <span class="sr-only" th:text="#{search.compact.view.label}"></span>
+          <span class="icono d-block fas fa-th-large" aria-hidden="true"></span>
+        </button>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- :: links o botones que activan el orden y facetas de filtro en mobile -->
+
+  <div th:unless="${thymeleafMap.get('FAVORITES') == solrSearchWeb.solrSearch.queryType}" class="botonera_filtrar navbar-text bg-highlight col-lg-9 col-xl-9 col-md-10 mx-auto mobile_flex p-0">
+    <button class="btn btn_order btn-outline-secondary" type="button" data-toggle="collapse" data-target="#capa_orden" aria-expanded="false" aria-controls="capa_orden">
+      <span class="btn_titulo"><th:block th:text="#{search.pagination.order}"/></span>
+      <span class="icono fas fa-angle-down" aria-hidden="true"></span>
+    </button>
+    <button class="btn btn_filter btn-outline-secondary" type="button" data-toggle="collapse" data-target="#capa_facetas" aria-expanded="false" aria-controls="capa_facetas">
+      <span class="btn_titulo"><th:block th:text="#{facet.filter.mobile}"/></span>
+      <span class="icono fas fa-angle-down" aria-hidden="true"></span>
+    </button>
+  </div>
+  <!-- :: /.navbar-text -->
+
+</div>
+<!-- :: /.total-results-bar -->
+
+<!-- :: orden y facetas visibles en mobile -->
+<div th:unless="${thymeleafMap.get('FAVORITES') == solrSearchWeb.solrSearch.queryType}" class="container cont_filters">
+	<div class="row mobile filter-bar-mobile">
+	   <div class="d-flex w-100 order-by filtros_orden">
+	      <div class="w-100 collapse" id="capa_orden">
+	         <div class="card card-body">
+	            <th:block th:insert="/public/catalog/fragments/orderBy.html" th:with="position='top_mobile'"></th:block>
+	         </div>
+	      </div>
+	   </div>
+	   <div class="d-flex w-100 filtros_facetas">
+	      <div class="w-100 collapse" id="capa_facetas">
+	         <div class="card card-body">
+	            <th:block th:with="display='mobile'" th:insert="/public/catalog/fragments/facets.html"></th:block>
+	         </div>
+	      </div>
+	   </div>
+	</div>
+	<!-- :: /.filter-bar-mobile -->
+	<div class="navbar-text mobile">
+	   <span id="totalResultsLabelDown" class="text-truncate font-weight-bold pt-1 mr-1 pl-3">
+	      <th:block id="total" th:text="${solrSearchWeb.solrSearch.results.totalResults}"/>
+	   </span>
+	   <span class="text-truncate pt-1 pl-1" >
+	      <th:block th:text="#{search.total.results}">
+	   </span>
+	</div>
+	<!-- :: /.navbar-text.mobile -->
+</div>
+<!-- :: /.cont_filters -->
+
+<!-- :: /[/public/catalog/fragments/totalResults.html] -->

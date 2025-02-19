@@ -1,0 +1,48 @@
+<!-- ::Begin [/public/catalog/fragments/searchListElementNotPresent.html] -->
+<li class="media catalog-item border-bottom row no-gutters p-0 p-md-3 py-3" th:id="${'elem_' + item.oaiIdentifierB64}" th:data-id_element="${item.oaiIdentifierB64}">
+			<th:block th:if="${SUBCATALOG_ENABLED}">
+				<th:block  th:each="sub,iter  : ${solrSearchWeb.solrSearch.subCatalog.subCatalogs}">
+	           		 <input type="hidden" th:name="'solrSearch.subCatalog.subCatalogs['+${iter.index}+'].optionSelected'"  th:value="${sub.optionSelected}"/>
+	            </th:block>
+            </th:block>
+
+      <div class="item-portrait col-lg-2 col-md-4 col-sm-12">
+           <th:block th:insert="/public/catalog/fragments/recordImage :: image(${item.oaiIdentifierB64})"></th:block>
+      </div>
+      <!-- :: /. item-portrait -->
+      <div class="media-body">
+        <div class="cont_titles d-flex justify-content-between">
+          <div class="cont_item_titles d-flex flex-column">
+            <h3 class="h3 item-title">
+           	  <span th:text="${item.marcFields.get('t245')[0]}"></span>
+            </h3>
+          </div>
+          <!-- :: /.cont_item_titles -->
+          <div class="item-action-icons d-flex flex-row align-items-start">
+            <button type="button"
+              th:class="'btn_message_js btn_favorite btn btn-secondary'+${#sets.size(favorites)>=favoriteLimit?' btn_limite_alcanzado':''}"
+              th:classappend="${#sets.contains(favorites, item.oaiIdentifierB64)}?active:''"
+              data-btn_action="favorite_toggle"
+              th:data-message_activo="#{summary.favorite.add.title}"
+              th:data-message_no_activo="#{summary.favorite.delete.title}"
+              th:data-message_limit_warning="#{favorite.list.limit.exceeded}"
+              th:attr="data-id=${item.oaiIdentifierB64},
+                aria-label=${#sets.contains(favorites, item.oaiIdentifierB64)}?#{summary.favorite.add.title} :#{summary.favorite.title},
+                title=${#sets.contains(favorites, item.oaiIdentifierB64)}?#{summary.favorite.add.title} :#{summary.favorite.title},
+                data-title_initial=#{summary.favorite.title},
+                data-fav-limit=${favoriteLimit},
+                data-fav-size=${#sets.size(favorites)},
+                data-fav-message=#{favorite.limit}"
+            >
+              <!-- :: Botón en la vista de favoritos y resultados de búsqueda -->
+              <span class="icono far fa-bookmark" aria-hidden="true"></span>
+            </button>
+            <!-- :: BOTONES RECOMENDAR -->
+            <th:block th:insert="/title/fragments/recommendedBtnModal" th:with="fragment_insert='searchListElement'"></th:block>
+            <!-- :: /BOTONES RECOMENDAR -->
+          
+             </th:block>	
+        </div>
+      </div>
+  </li>
+<!-- ::End [/public/catalog/fragments/searchListElementNotPresent.html] -->

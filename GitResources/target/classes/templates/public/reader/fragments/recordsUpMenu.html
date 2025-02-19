@@ -1,0 +1,17 @@
+<!-- :: [public/reader/fragments/recordsUpMenu.html] -->
+<h2 id="records_menu_title" class="sr-only" th:text="#{search.record.menu.title}"></h2>
+<ul class="nav nav-pills">
+<th:block  th:if="${userManagementEnabled}" sec:authorize="!isAuthenticated() or principal.hasRole(#vars.thymeleafMap.get('READER_AUTHORITY'))" >
+   <li class="nav-item" >
+      <a class="nav-link" th:href="@{${thymeleafMap.get('READER_SEARCH_HISTORY')}(tabId=(${solrSearchWeb} ? ${solrSearchWeb?.solrSearch?.tabId}),id=(${id} ? ${id}))}" th:text="#{search.record.stored.title}" 
+         th:classappend="${activePill=='storedSearchs'} ? active : ''">
+      </a>
+   </li>
+</th:block>   
+   <li class="nav-item">
+      <a class="nav-link" th:href="@{${thymeleafMap.get('READER_LAST_SEARCHS')}(tabId=(${solrSearchWeb} ? ${solrSearchWeb?.solrSearch?.tabId}),id=(${id} ? ${id}))}" th:text="#{search.record.last.title}" 
+         th:classappend="${activePill=='lastSearchs'} ? active : ''">
+      </a>
+   </li>
+</ul>
+<!-- :: /[public/reader/fragments/recordsUpMenu.html] -->

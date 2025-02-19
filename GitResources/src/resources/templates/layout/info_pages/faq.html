@@ -1,0 +1,63 @@
+
+      <section id="firstRow" class="container pt-4" aria-labelledby="sct_title">
+        <h2 id="sct_title" class="sr-only" th:text="#{info.frequent.answered.questions.title}"></h2>
+
+        <article class="bg-white">
+          <h3 class="h2 mt-3 mb-4">Muestra de estilos de estilos textos [faq.html]</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas venenatis elit vitae velit commodo, eu malesuada magna luctus. Aliquam maximus libero nisl, et placerat felis cursus in. Praesent libero magna, venenatis ut iaculis non, porta dignissim massa. Sed pellentesque feugiat metus sed porta. Mauris facilisis pharetra auctor. Quisque tempus neque et est tincidunt mattis. Nullam tristique sem eget enim placerat, sit amet dapibus purus varius. Donec consectetur in ex quis interdum. Sed fermentum nunc lacus, ac fringilla urna mollis non. Morbi sit amet ultrices diam. Proin bibendum sit amet tellus eu volutpat.</p>
+          <p>Morbi aliquet enim sollicitudin facilisis aliquet. In finibus sodales nunc vitae venenatis. Cras fermentum nunc magna, ac blandit ipsum tempus in. Mauris auctor fringilla arcu ut elementum. Ut luctus tortor id finibus cursus. Proin mattis rutrum velit et malesuada. Vestibulum vel ipsum id lorem sollicitudin pulvinar in vitae erat. In posuere urna leo, a ultrices dui malesuada fermentum. In hac habitasse platea dictumst. Nulla facilisi. Proin at elit vel turpis fermentum convallis ac nec magna. Duis nec elementum nisi, nec dictum lacus.</p>
+          <p>Fusce sed felis tincidunt, imperdiet magna ac, imperdiet mi. Etiam tincidunt erat at libero bibendum aliquet. Sed commodo, neque non consectetur commodo, quam leo tempus risus, a sagittis leo erat vitae libero. Nullam ullamcorper viverra venenatis. Mauris quis tortor vitae ante cursus accumsan sed at ligula. Donec nisl nunc, finibus vitae sem ut, dictum faucibus erat. Donec euismod finibus pharetra. In eu mi eget enim varius fermentum id non lectus.</p>
+
+         <p class="blockquote">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...</p>
+         <p class="blockquote font-italic">No hay nadie que ame el dolor mismo, que lo busque, lo encuentre y lo quiera, simplemente porque es el dolor.</p>
+
+        </article>
+
+        <article class="bg-white">
+          <h3 class="h2 mt-3 mb-4">Preguntas frecuentes [faq.html]</h3>
+          <!-- :: Ejemplos de collapse -->
+          <!-- :: Cuidado con los id que no pueden estar repetidos (data-target,aria-controls,)-->
+          <div id="error_search" class="cont cont_collapse cont_questions border">
+            <div class="cont cont_question">
+              <button class="btn btn-link btn_ctrl_collapse col-12 d-flex justify-content-between" type="button" data-toggle="collapse" data-target="#collapseExample_01" aria-expanded="false" aria-controls="collapseExample_01">
+<!-- :: RENAME -->
+                <span class="question text-left anchor_title">Error cuando el texto de búsqueda está mal formado</span>
+                <span class="btn-primary icono fas fa-plus p-1 rounded-circle" aria-hidden="true"></span>
+              </button>
+            </div>
+            <!-- :: /.cont_question -->
+            <div class="cont cont_response collapse pl-3 pr-3 pt-1" id="collapseExample_01">
+<!-- :: RENAME -->
+              <p>Si al buscar, dado un texto de búsqueda, aparece un diálogo rojo con el mensaje: <span class="blockquote font-italic">El texto de búsqueda está mal formado. Asegúrate que no contiene caracteres reservados.</span> nos está indicando que existe uno o varios caracteres inválidos en el texto de búsqueda.</p>
+              <p>Si estamos buscando un texto exacto, debemos entrecomillar el texto de búsqueda o parte de este, para encontrar resultados. Los caracteres <span class="blockquote font-italic">( ) [ ] : ~</span> suelen tener un significado concreto para la búsqueda, por lo que entrecomillar las palabras que contengan estos caracteres, suele ser una solución.</p>
+              <p>... ESTE TEXTO ES DE EJEMPLO.</p>
+            </div>
+            <!-- :: /.cont_response -->
+          </div>
+          <!-- :: /.cont_collapse -->
+
+          <!-- :: Cuidado con los id que no pueden estar repetidos (data-target,aria-controls,)-->
+          <div id="faq_question_2" class="cont cont_collapse cont_questions border">
+            <div class="cont cont_question">
+              <button class="btn btn-link btn_ctrl_collapse col-12 d-flex justify-content-between" type="button" data-toggle="collapse" data-target="#collapseExample_02" aria-expanded="false" aria-controls="collapseExample_02">
+                <span class="question text-left anchor_title">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas venenatis elit vitae velit commodo, eu malesuada magna luctus. Aliquam maximus libero nisl, et placerat felis cursus in. Praesent libero magna, venenatis ut iaculis non, porta dignissim massa. Sed pellentesque feugiat metus sed porta. Mauris facilisis pharetra auctor. Quisque tempus neque et est tincidunt mattis. Nullam tristique sem eget enim placerat, sit amet dapibus purus varius. Donec consectetur in ex quis interdum. Sed fermentum nunc lacus, ac fringilla urna mollis non. Morbi sit amet ultrices diam. Proin bibendum sit amet tellus eu volutpat.</span>
+                <span class="btn-primary icono fas fa-plus p-1 rounded-circle" aria-hidden="true"></span>
+              </button>
+            </div>
+            <!-- :: /.cont_question -->
+            <div class="cont cont_response collapse pl-3 pr-3 pt-1" id="collapseExample_02">
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas venenatis elit vitae velit commodo, eu malesuada magna luctus. Aliquam maximus libero nisl, et placerat felis cursus in. Praesent libero magna, venenatis ut iaculis non, porta dignissim massa. Sed pellentesque feugiat metus sed porta. Mauris facilisis pharetra auctor. Quisque tempus neque et est tincidunt mattis. Nullam tristique sem eget enim placerat, sit amet dapibus purus varius. Donec consectetur in ex quis interdum. Sed fermentum nunc lacus, ac fringilla urna mollis non. Morbi sit amet ultrices diam. Proin bibendum sit amet tellus eu volutpat.</p>
+            </div>
+            <!-- :: /.cont_response -->
+          </div>
+          <!-- :: /.cont_collapse -->
+        </article>
+
+
+      </section>
+      <div class="cont_botonera botonera_flotante_btn_actions d-none" aria-hidden="true">
+        <a th:href="@{${thymeleafMap.get('HOME_URL')}}" class="btn_navigation btn_home" th:aria-label="#{sidebar.btn_home.title}" th:title="#{sidebar.btn_home.title}">
+          <span class="icono fas fa-home" aria-hidden="true"></span>
+        </a>
+      </div>
+      <!-- :: /.cont_botonera -->

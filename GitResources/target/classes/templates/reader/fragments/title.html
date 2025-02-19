@@ -1,0 +1,12 @@
+<th:block th:fragment="frag(item,id)">
+  <!-- :: [reader/fragments/title.html] -->
+  <div class="item_title">
+    <span th:data-id="${'title_' + id}" class="d-block">
+      <th:block th:if="${item['t245']!=null and item['t245'][0]!=null}" th:each="subField : ${item['t245'][0].subFields}">
+        <th:block th:if="${#strings.equals(subField.dollar,'a')}" th:text="${subField.subFieldValue}"></th:block>
+        <th:block th:if="${#strings.equals(subField.dollar,'b')}" th:text="${subField.subFieldValue}"></th:block>
+      </th:block>
+    </span>
+  </div>
+  <!-- :: /[reader/fragments/title.html] -->
+</th:block>

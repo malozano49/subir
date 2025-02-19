@@ -1,0 +1,63 @@
+<div class="item_base_clone d-none">
+  <!-- :: ELEMENTO BASE PARA CLONADO -->
+  <!-- :: Cuidado con los ids y name, así como el valor para los checkboxes y la inicializacion de los selects (ver Baratz.tmpl_actions.CMP_SORTABLE()) -->
+  <div class="cmp_sortable_item cmp_sortable_item_form_row form-row d-flex flex-wrap col-md-12 pr-4 pt-3 pl-2 m-0 border" data-order-init="">
+
+    <div class="cont_form_group col-lg-4 col-md-6 col-sm-12">
+      <div class="form-group cont_input">
+        <label th:for="${'mostRecentName_' + __${index}__}" class="bmd-label-floating" th:text="#{administration.properties.home.more.recent.name}"></label>
+        <input type="text" th:id="${'mostRecentName_' + __${index}__}" class="form-control" autocomplete="off" th:name="${'home.mostRecent[' + __${index}__ + '].name'}" value="">
+        <span class="bmd-help" th:text="#{administration.properties.home.more.recent.name.help}"></span>
+      </div>
+      <!-- :: /.form-group -->
+    </div>
+    <!-- :: /.cont_form_group -->
+
+    <div class="cont_form_group col-lg-3 col-md-6 col-sm-12">
+      <div class="form-group cont_input">
+        <label th:for="${'mostRecentSource_' + __${index}__}" class="bmd-label-floating" th:text="#{administration.properties.home.more.recent.source}"></label>
+        <input type="text" th:id="${'mostRecentSource_' + __${index}__}" class="form-control" autocomplete="off" th:name="${'home.mostRecent[' + __${index}__ + '].source'}" value="">
+        <span class="bmd-help" th:text="#{administration.properties.home.more.recent.source.help}"></span>
+      </div>
+      <!-- :: /.form-group -->
+    </div>
+    <!-- :: /.cont_form_group -->
+
+    <div class="cont_form_group col-lg-2 col-md-6 col-sm-12 mb-3">
+      <div class="form-group cont_selectPicker">
+        <label th:for="${'mostRecentViewType_' + __${index}__}" class="bmd-label-floating" th:text="#{administration.properties.home.more.recent.view.type}"></label>
+        <select th:id="${'mostRecentViewType_' + __${index}__}" class="form-control" th:name="${'home.mostRecent[' + __${index}__ + '].viewType'}">
+          <option th:each="view_type_opt : ${thymeleafMap.get('RelatedTitlesViewKind')}" th:value="${view_type_opt}" th:text="${view_type_opt}"></option>
+        </select>
+        <span class="bmd-help" th:text="#{administration.properties.home.more.recent.view.type.help}"></span>
+      </div>
+      <!-- :: /.form-group -->
+    </div>
+    <!-- :: /.cont_form_group -->
+
+    <div class="cont_form_group col-lg-1 col-md-6 col-sm-12">
+      <div class="form-group cont_input">
+        <label th:for="${'mostRecentMaxResults_' + __${index}__}" class="bmd-label-floating" th:text="#{administration.properties.home.more.recent.max.results}"></label>
+        <input type="number" th:id="${'mostRecentMaxResults_' + __${index}__}" class="form-control" autocomplete="off" th:name="${'home.mostRecent[' + __${index}__ + '].maxResults'}" value="">
+        <span class="bmd-help" th:text="#{administration.properties.home.more.recent.max.results.help}"></span>
+      </div>
+      <!-- :: /.form-group -->
+    </div>
+    <!-- :: /.cont_form_group -->
+
+    <div class="cont_form_group col-lg-2 col-md-6 col-sm-12 pl-2 pr-2 mb-3 d-flex align-items-center">
+      <div class="form-group cont_check cont_check_tunned d-flex pt-0">
+        <label class="mb-0" th:for="${'mostRecentShowButton_' + __${index}__}" th:text="#{administration.properties.home.more.recent.show.all.button}"></label>
+        <input type="checkbox" th:id="${'mostRecentShowButton_' + __${index}__}" th:name="${'home.mostRecent[' + __${index}__ + '].showAllButton'}" value="false" checked="checked">
+        <input type="hidden" th:name="${'_home.mostRecent['+__${index}__+'].showAllButton'}" value="">
+      </div>
+      <!-- :: /.form-group -->
+    </div>
+    <!-- :: /.cont_form_group -->
+
+    <button type="button" class="btn_cmp_sortable_item_form_row--remove_item" th:title="#{administration.properties.buttons.delete.title}" th:aria-label="#{administration.properties.buttons.delete.title}"></button>
+  </div>
+  <!-- :: /.cmp_sortable_item -->
+  <!-- :: /ELEMENTO BASE PARA CLONADO -->
+ </div>
+<!-- :: /.item_base_clone -->

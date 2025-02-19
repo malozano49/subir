@@ -1,0 +1,15 @@
+<!-- reader/buysuggestions/addBuySuggestionsButton.html -->
+<div class="card p-4 add-buysuggestions-wrapper">
+		<div class="add-buysuggestion-button">
+			<button class="btn btn-primary active" data-toggle="collapse" data-target="#add_buysuggestions" aria-expanded="false" aria-controls="add_buysuggestions">
+				<span class="icono fa fa-comment mr-1" aria-hidden="true"></span>
+				<span th:text="#{suggestion.form.text}"></span>		
+			</button>
+		</div>
+		
+		<div id="add_buysuggestions" class="collapse" aria-hidden="true">
+			<br>
+			<th:block th:insert="/reader/buysuggestions/buySuggestionsForm.html"></th:block>
+		</div>
+	</div>
+<!-- reader/buysuggestions/addBuySuggestionsButton.html -->	

@@ -1,0 +1,132 @@
+/*!
+ *  @file        : _colors.scss
+ *
+ *  @description : ABSYS aplicacion estilos normal
+ *
+ *  @author      : http://www.baratz.es/
+ *
+ *  @ref         : Colorimetria
+ *
+ *  Ejemplo de definiciones: https://www.ibm.com/docs/es/spm/7.0.9?topic=application-customizing-color-scheme-typography
+ *
+ *  Sass color generator: http://scg.ar-ch.org/
+ *
+--------------------------------------------------------------------------------------------------*/
+
+// =============================================================================
+// Mixins
+// =============================================================================
+
+@function hexToRGB($hex) {
+  @return red($hex), green($hex), blue($hex);
+}
+
+
+// =============================================================================
+// Colors http://scg.ar-ch.org/
+// =============================================================================
+
+$white            : #FFFFFF !default;
+$black            : #1D1D1D !default;
+$dark             : $black !default;
+
+$gray-100         : #E8E8E8 !default;
+$gray-200         : darken($gray-100,20%) !default;
+$gray-300         : darken($gray-100,30%) !default;
+$gray-400         : darken($gray-100,40%) !default;
+$gray-500         : darken($gray-100,50%) !default;
+$gray-600         : darken($gray-100,60%) !default;
+$gray-700         : darken($gray-100,70%) !default;
+$gray-800         : darken($gray-100,80%) !default;
+
+$red              : #a22553 !default;
+$red_dark         : darken($red,10%) !default;
+
+$green            : #53A225 !default;
+$green_dark       : darken($green,10%) !default;
+
+$blue             : #2553a2 !default;
+$blue_dark        : darken($blue,10%) !default;
+
+$yellow           : #f7f7c7 !default;
+$yellow_dark      : darken($yellow,30%) !default;
+
+
+/// PERSONALIZACIONES BASE COLOR
+$primary-100      : #D7E1F2 !default;
+$primary-200      :	#A9BAD4 !default;
+$primary-300      :	#6786B8 !default;
+$primary-400      :	#234C86 !default;
+$primary-500      :	#063a64 !default;
+
+$secondary        : #204477 !default;
+$secondary-light  : #E6F4FF !default;
+
+$propietary       : #A0A8BE !default;
+$propietary-medio : #C7CCDA !default;
+$propietary-light : #F2F5F9 !default;
+
+$link-propietary  : #114B74 !default;
+$link-propietary-hover  : $primary-100 !default;
+
+$alert-info    : #b4deff !default;
+$alert-success : #c4e2a0!default;
+$alert-warning : $yellow !default;
+$alert-danger  : #F5D6DA !default;
+/// \PERSONALIZACIONES BASE COLOR
+
+$light         : $gray-100 !default;
+$light-medium  : $gray-200 !default;
+$medium        : $gray-300 !default;
+$grey-dark     : $gray-600 !default;
+$info          : $primary-100 !default;
+$disabled      : $primary-200 !default;
+$resaltado     : $primary-400 !default;
+$color-info    : $primary-400 !default;
+$primary       : $primary-500 !default;
+$danger        : $red !default;
+$success       : $green !default;
+$warning       : $yellow !default;
+
+
+// =============================================================================
+// Botones simples
+// =============================================================================
+
+$btn-success-back  : #68C17C !default;
+$btn-success-hover : darken($btn-success-back,20%) !default;
+
+$btn-info-back     : #73C7D4 !default;
+$btn-info-hover    : darken($btn-info-back,20%) !default;
+
+$btn-warning-back  : $yellow !default;
+$btn-warning-hover : $yellow_dark !default;
+
+$btn-danger-back   : #dfa39a !default;
+$btn-danger-hover  : darken($btn-danger-back,20%) !default;
+
+
+// =============================================================================
+// Links
+// =============================================================================
+
+$link-color         : $secondary !default;
+$link-hover-color   : $primary-400 !default;
+// FOCO
+$focus_shadow_color : transparentize($primary,.54) !default;
+
+
+// =============================================================================
+// Components
+// =============================================================================
+
+$bg_body          : $white;
+$bg_footer        : $gray-100;
+$border-color     : $gray-100 !default;
+$table_border     : $gray-100 !default;
+$gray-hover       : lighten($gray-300, 25%) !default;
+$bg_component_01  : $secondary-light; // ej título busquedas autoridad, títulos tablas detalle del item, back pag error, back datos de usuario
+
+
+
+

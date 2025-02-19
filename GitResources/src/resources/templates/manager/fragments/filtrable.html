@@ -1,0 +1,10 @@
+<!-- :: [manager/fragments/filtrable.html] -->
+<div class="cont_filtrable cont_form_group py-3">
+  <p class="font-weight-bold" th:text="#{activity.filter.info}"></p>
+  <div class="form-group cont_input">
+    <label for="filter_branch_office" class="bmd-label-floating" th:text="#{recommended.branch.filter.title}"></label>
+    <input type="text" id="filter_branch_office" class="form-control filterize_markjs" autocomplete="off" name="filter_branch_office" value="" data-class_filterize="btn_article_title">
+    <span id="filter_branch_officehelp" class="bmd-help" th:text="#{recommended.branch.filter.help}"></span>
+  </div>
+</div>
+<!-- :: /[manager/fragments/filtrable.html] -->

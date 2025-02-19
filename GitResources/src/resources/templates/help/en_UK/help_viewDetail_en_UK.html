@@ -1,0 +1,232 @@
+<th:block th:insert="/public/home/html_type"></th:block>
+<th:block th:insert="/public/home/technicalheader::main" th:with="page=${'opac-help-seeDetail-es_ES'}"></th:block>
+<script type="text/javascript">
+	var menu = document.getElementById('menu');
+	Stickyfill.add(menu);
+</script>
+<body>
+<div id="burger-menu" class="burger-menu">
+  <span></span>
+  			<div id="menu2" class="menu menu2">
+			<div class=""><nav class="sn-contents" aria-label="Secondary">
+      <ul class="sidenav--list">
+			<li><a href="#viewdetail">Viewing in Detail Mode</a>
+			    <ul class="tab3-help">
+			        <li><a href="#markfavorites">How to Mark the Currently Viewed Record as a Favorite</a></li>
+			        <li><a href="#addfavoritesview">How to Add a New Favorites List from Detail View</a></li>
+			        <li><a href="#addfavorites">How to Add the Record to One of My Favorites Lists</a></li>
+			        <li><a href="#viewcopy">How to View Information about Copies</a>
+			            <ul class="tab3-help"><li><a href="#movecopy">How to Navigate the List of Copies</a></li></ul>						
+			        </li>
+			        <li><a href="#requestcopy">How to Request a Copy</a></li>
+			        <li><a href="#listresults">Access to Results List</a></li>
+			    </ul></li>
+			<li><a href="#searchAuthorities">Access to Authority Search</a></li>
+			<li><a href="#searchIndexes">Access to Index Search</a></li>
+			<li><a href="#lastSearch">Access to Recently Performed Searches</a></li>
+			<li><a href="#historySearch">Access to Saved Searches</a></li>
+			<li><a href="#favorites">Access to Favorites</a></li>
+			<li><a href="#profile">Access to My Profile</a></li>
+			<li><a href="#home">Access to the Homepage</a></li>
+			</ul></nav>
+			</div>
+			</div>
+			</div>
+			<div class="wrapper cf">
+			<div id="menu" class="menu">
+			<div class="sidenav"><nav class="sn-contents" aria-label="Secondary">
+			<ul class="sidenav--list">
+			    <li><a href="#markfavorites">How to Mark the Currently Viewed Record as a Favorite</a></li>
+			    <li><a href="#addfavoritesview">How to Add a New Favorites List from Detail View</a></li>
+			    <li><a href="#addfavorites">How to Add the Record to One of My Favorites Lists</a></li>
+			    <li><a href="#viewcopy">How to View Information about Copies</a>
+			        <ul class="tab3-help"><li><a href="#movecopy">How to Navigate the List of Copies</a></li></ul>						
+			    </li>
+			    <li><a href="#requestcopy">How to Request a Copy</a></li>
+			    <li><a href="#listresults">Access to Results List</a></li>
+			    <li><a href="#searchAuthorities">Access to Authority Search</a></li>
+			    <li><a href="#searchIndexes">Access to Index Search</a></li>
+			    <li><a href="#lastSearch">Access to Recently Performed Searches</a></li>
+			    <li><a href="#historySearch">Access to Saved Searches</a></li>
+			    <li><a href="#favorites">Access to Favorites</a></li>
+			    <li><a href="#profile">Access to My Profile</a></li>
+			    <li><a href="#home">Access to the Homepage</a></li>
+			</ul></nav>
+			</div>
+			</div>
+			<div class="content">
+			<a name="top"></a>
+			<a name="viewdetail"></a>
+			<h2 class="title-help">Viewing in Detail Mode</h2>
+			<p>Detail mode displays the following information:</p>
+			<ul class="tab5-help margen5">
+			    <li>- Cover</li>
+			    <li>- Title</li>
+			    <li>- Author</li>
+			    <li>- Publication</li>
+			    <li>- Summary</li>
+			    <li>- Genre</li>
+			    <li>- Material Type</li>
+			    <li>- Information about copies associated with the record:
+			        <ul class="tab5-help margen5">
+			            <li>o Location</li>
+			            <li>o Total number of copies associated with the record</li>
+			            <li>o Number of available copies</li>
+			        </ul>
+			    </li>
+			</ul>
+			<ul class="tab4-help">
+			    <li>If you want to see information from other fields included in the record, click on the <img th:src="@{/img/help/icon-more-detail.png}" alt="More Details icon" width="50px"/> option in the floating bar
+			    <br>
+			    <span class="tab4-help"><img th:src="@{/img/help/more-detail.png}" alt="More Details" width="500px"/></span>
+			    </li>
+			    <br>
+			    <p class="tab4-help">To enable the MARC format, click on <img th:src="@{/img/help/marc.png}" alt="MARC"/> 
+			    <li>* If other <span class="text-bold-help">matching records</span> are found in certain fields with the currently viewed record, they are displayed at the bottom in a carousel format.
+			        <p>To access other related records, click on the <img th:src="@{/img/help/icon-other-related-records.png}" alt="Other Related Records icon" width="50px"/> option in the floating bar.</p>
+			        <p>The fields considered for records to be related to the currently viewed one are as follows:</p>
+			        <ul class="tab5-help margen10">
+			            <li>- Same publisher and collection</li>
+			            <li>- Same genre</li>
+			        </ul><br>
+			        <p class="tab4-help"><img th:src="@{/img/help/carousel.png}" alt="Carousel" width="500px"/></p>
+			    </li>
+			</ul>
+			<a name="markfavorites"></a>
+			<h4 class="title-help">How to Mark the Currently Viewed Record as a Favorite</h4>
+			<p>To mark the currently viewed record as a favorite, click on the <img th:src="@{/img/help/icon-favorites.png}" alt="Favorites icon"/> option.</p>
+			<p>If you want to view the records marked as favorites in the current session, click on Favorites.</p>
+			<ul class="tab4-help margen5">
+			    <li>By default, you can store a maximum of <span class="text-bold-help">100</span> favorites</li>
+			    <li>Favorites are displayed in order by <span class="text-bold-help">author/title</span></li>
+			    <li>To unmark a favorite, click on the <img th:src="@{/img/help/favorites-icon-selected.png}" alt="Selected Favorites icon"/> option for the record you want to remove from favorites.
+			        <ul class="tab5-help margen5">
+			            <li>- Records can also be unmarked from list or detail view</li>
+			        </ul>
+			    </li>
+			</ul>			
+			<a name="addfavotitesview"></a>
+			<a name="addfavoritesview"></a>
+			<h4 class="title-help">How to Add a New Favorites List from Detail View</h4>
+			<p>To create a favorites list, follow these steps:</p>
+			<ul class="tab5-help margen5"> 
+			    <li>1. Click on the option <img th:src="@{/img/help/icon-add-list.png}" alt="Add List Icon"/> associated with the record you are viewing.
+			    <li>2. Click on the option <img th:src="@{/img/help/btn-add-list.png}" alt="Add List Button" width="100px"/>.
+			    <li>3. Enter the description you want to associate with the new list.
+			        <p class="tab4-help margen10"><img th:src="@{/img/help/name-list.png}" alt="List Name" width="200px"/></p>
+			    </li>
+			    <li>4. Click <img th:src="@{/img/help/btn-add-title-list.png}" alt="Add Title to Selected List Button" width="200px"/>.
+			        <ul class="tab4-help margen5">
+			            <li>The new list is created with the associated record.</li>
+			            <li>Records belonging to a favorites list are displayed with the following distinctive image: 
+			                <img th:src="@{/img/help/icon-record-in-list.png}" alt="List Icon on Record" width="50px"/>
+			            </li> 
+			            <li>* To view the lists you've created, click on your user and select the option <i>My Lists</i>.
+			                <p class="tab4-help margen5"><img th:src="@{/img/help/my-lists.png}" alt="My Lists" width="200px"/></p>
+			            </li>
+			        </ul>
+			    </li>
+			</ul>			
+			<a name="addfavotites"></a>
+			<h4 class="title-help">How to Add the Record to One of My Favorites Lists</h4>
+			<p>To add the record to one of the already created favorites lists, follow these steps:</p>
+			<ul class="tab5-help margen5">
+			    <li>1. Click on the option <img th:src="@{/img/help/icon-add-list.png}" alt="Add List Icon"/> associated with the record.
+			    <li>2. Select the list you are interested in.
+			        <p class="tab4-help margen5"><img th:src="@{/img/help/list-selection.png}" alt="Select List" width="200px"/></p>
+			    </li>
+			    <li>3. Click <img th:src="@{/img/help/btn-add-title-list.png}" alt="Add Title to Selected List Button" width="200px"/>.
+			        <ul  class="tab3- margen5">
+			            <li>The record is associated with the selected list.</li>
+			            <li>Records belonging to a favorites list are displayed with the following distinctive image:
+			                <img th:src="@{/img/help/icon-record-in-list.png}" alt="List Icon on Record" width="50px"/>
+			            </li>  
+			            <li>By default, you can only store <span class="text-bold-help">200</span> favorites in a single list.</li>
+			            <li>The same record can be associated with multiple favorites lists.</li>
+			        </ul>
+			    </li>  
+			</ul>			
+			<a name="viewcopy"></a>
+			<h4 class="title-help">How to View Information about Copies</h4>
+			<p>To view copies associated with the currently viewed record, click on the <img th:src="@{/img/help/icon-visualization.png}" alt="Visualization Icon" width="35px"/> in the floating bar.</p>
+			<ul class="tab3-help margen5">
+			    <li>If you want to see more information about the copies, click on <img th:src="@{/img/help/icon-see-more.png}" alt="See More Icon"/>
+			        <p class="tab5-help"><img th:src="@{/img/help/localization.png}" alt="Localization" width="500px"/></p>
+			    </li>  
+			    <li>If you want to filter the copies you are going to view based on their availability, select the option you are interested in under <i>Filter by Availability</i>:
+			        <p class="tab5-help"><img th:src="@{/img/help/filters-available.png}" alt="Available Filters" width="250px"/></p>
+			    </li>
+			    <li>If the record has copies in different locations and exceeds the number of copies displayed per page, you can filter by library/branch to facilitate viewing. To do so, select the library or branch for which you want to restrict:
+			        <p class="tab5-help"><img th:src="@{/img/help/filter-bibio-branch.png}" alt="Filter by Library or Branch" width="300px"/></p>
+			    </li>
+			</ul>			
+			<a name="movicopy"></a>
+			<h5 class="subtitle-help">How to Navigate the List of Copies</h5>
+			<p>By default, copies are displayed in groups of <span class="text-bold-help">10</span>. To navigate through the different pages of the results, you have the following options:
+			</p>
+			<ul class="tab3-help margen5">
+			    <li>Click on <img th:src="@{/img/help/next.png}" alt="Next" width="75px"> to move to the next page.</li>
+			    <li>Click on <img th:src="@{/img/help/back.png}" alt="Previous" width="75px"> to move to the previous page.</li>
+			    <li>Click on the page number you want to view
+			        <br><br><img th:src="@{/img/help/number-by-page.png}" alt="Page Number" width="350px">
+			    </li>
+			    <li>Click on number 1 to view the first page
+			        <br><br><img th:src="@{/img/help/first-page.png}" alt="First Page" width="350px"/>
+			    </li>
+			    <li>Click on the number just before Next to go to the last page
+			        <br><br><img th:src="@{/img/help/last-page.png}" alt="Last Page" width="350px"/>
+			    </li>
+			</ul>			
+			<a name="requestcopy"></a>
+			<h4 class="title-help">How to Request a Copy</h4>
+			<p>If you want to request any of the copies associated with the record you are viewing, click on 
+			<img th:src="@{/img/help/icon-request.png}" alt="Request Icon"/></p>		
+			<a name="listresults"></a>
+			<h2 class="title-help">Access to Results List</h2>
+			<p>If you want to go back and view all the records found in the search, click on the option <i>Results List</i>.</p>			
+			<a name="searchAuthorities"></a> 
+			<h2 class="title-help">Access to Authority Search</h2>
+			<p>To perform an authority search to locate records that contain a specific authority, click on <i>Authority Search</i>.</p>			
+			<a name="searchIndexes"></a> 
+			<h2 class="title-help">Access to Index Search</h2>
+			<p>To perform a search that locates words or word patterns similar to the term or terms entered, click on <i>Index Search</i>.</p>		
+			<a name="lastSearch"></a> 
+			<h2 class="title-help">Access to Recently Performed Searches</h2>
+			<p>To view the <span class="text-bold-help">10</span> most recent searches that returned results during the Opac session, click on <i>Recently Performed Searches</i>.</p>		
+			<a name="historySearch"></a>
+			<h2 class="cont cont_title title-help">Access to Saved Searches</h2>
+			<p>If you want to save any of the searches you've conducted for future use, click on <i>Saved Searches</i>.</p>
+			<ul class="tab3-help">
+			    <li>In order to save searches, you need to identify yourself in advance.</li>
+			</ul>		
+			<a name="favorites"></a> 
+			<h2 class="title-help">Access to Favorites</h2>
+			<p>To view the records you've marked as favorites, click on <i>Favorites</i>.			
+			<a name="profile"></a> 
+			<h2 class="title-help">Access to My Profile</h2>
+			<p>Click on the option <i>My Profile</i> and log in to access the following <span class="text-bold-help">ODA</span> features: </p>
+			<ul class="tab5-help margen5">
+			    <li>- Personal Data</li>
+			    <li>- Requests</li>
+			    <li>- Active Loans</li>
+			    <li>- Loan History</li>
+			    <li>- Renew Loans</li>
+			    <li>- Cancel Reservations</li>
+			    <li>- Save Searches</li>
+			    <li>- Create Favorites Lists</li>
+			</ul>
+			<p class="tab2-help">• To log in as a user, you can use any of these 3 methods:</p>
+			<ul class="tab5-help margen5">
+			    <li>- Library Card Number</li>
+			    <li>- Email provided to your library</li>
+			    <li>- Mobile phone number provided to your library</li>
+			</ul>			
+			<a name="home"></a> 
+			<h2 class="title-help">Access to the Homepage</h2>
+			<p>To go to the homepage, click on <i>Home</i>.</p>
+			<p class="top-help"><a href="#top">Top</a></p>
+		</div>
+	</div>
+	<th:block th:insert="/public/home/technicalfooter" th:with="page='opac-dataprivacyterms'"/>
+</body>
+</html>

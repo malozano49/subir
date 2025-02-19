@@ -1,0 +1,10 @@
+<!-- :: [reader/fragments/userWarningReservation] -->
+<div  class="alert alert-danger" role="alert" aria-atomic="true">
+  <span class="alert_titulo sr-only" th:text="#{alert.warning.title}"></span>
+  <th:block th:each="warn : ${userWarning}">
+    <!-- TODO: los parámetros de los mensajes hay que procesarlos todos en thymeleaf, ahora solo procesa uno -->
+	<span th:if="${warn.params!=null and warn.params.size() > 0}" class="alert_texto" th:text="#{${warn.message}(${warn.params[0]})}"></span>
+    <span th:unless="${warn.params!=null and warn.params.size() > 0}" class="alert_texto" th:text="#{${warn.message}}"></span>
+	</th:block>
+</div>
+<!-- :: /[reader/fragments/userWarningReservation] -->

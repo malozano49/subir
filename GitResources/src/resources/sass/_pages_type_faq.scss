@@ -1,0 +1,104 @@
+/*!
+ *  @file        : _pages_type_faq.scss
+ *
+ *  @description : ABSYS aplicacion: páginas tipo FAQ
+ *
+ *  @author      : http://www.baratz.es/
+ *
+ *  @ref         : Hoja de estilos para páginas FAQ (preguntas frecuentes, etc)
+--------------------------------------------------------------------------------------------------*/
+
+/*!
+  GENERAL
+-------------------------------------------------*/
+.page_type_info{
+  .cont,
+  .article,
+  article,
+  .anchor_list,
+  p{position:relative;float:left;width:100%;}
+  p{padding-left:1rem}
+
+  .cont_title{margin-top:15px;margin-bottom:15px;
+    &.title_anchor{display:flex;flex-flow:row wrap;justify-content:space-between;align-items:center;padding-right:35px;
+      .icon_anchor_return{position:absolute;right:0;display:flex;align-items:center;justify-content:center;width:30px;height:30px;font-size:12px;border:3px solid $primary;border-radius:50%;background-color:$white;color:$primary;transition:all .3s linear;
+        .icon{position:relative;line-height:1em}
+        &:hover{text-decoration:none;background-color:$primary;color:$white;}
+      }
+    }
+  }
+  .cont_botonera_form{display:flex;justify-content:center;}
+
+  /* Accesibilidad links internos */
+  .cont_articles{
+    .link{color:$primary;text-decoration:underline;
+      &:hover{text-decoration:none}
+    }
+  }
+
+  /* listas de enlaces*/
+  .anchor_list{display:flex;flex-flow:column wrap;list-style-type:none;
+    li{position:relative;float:left;width:100%;font-weight:bold;padding-left:1.5rem;
+      &:before{content:"\f13d";@include fontawesome-solid;position:absolute;left:0;}
+      .anchor{color:$primary;text-decoration:underline;
+        &:hover{text-decoration:none}
+      }
+    }
+  }
+  /* tablas */
+  .cont_table{overflow:auto;margin-bottom: 8px;}
+  .table{position:relative;float:left;min-width:$breakpoint-md;
+    tbody tr{
+      &:last-child{
+        th,td{border-bottom:1px solid #dee2e6}
+      }
+    }
+    /* checkboxes */
+    .form-group.cont_check_tunned{position:relative;float:left;width:100%;padding:0;margin:auto;
+      .cont_nuevo_check{margin:auto auto auto 15px}
+    }
+
+  }
+
+  /* collapses */
+  .cont_collapse{
+    &+.cont_collapse{border-top:0!important}
+    .btn_ctrl_collapse{align-items:flex-start;
+      .icono{position:relative;float:left;min-width:24px;max-width:24px;height:24px;display:flex;align-items:center;justify-content:center;
+        &:before{position:absolute;left:48%;transform:translateX(-50%)}
+      }
+      &:focus{border-radius:0}
+      &[aria-expanded="true"]{
+        .icono:before{content:"\f068"}
+      }
+    }
+  }
+
+
+  @include media_max(md){
+    p{padding-left:3%}
+  }
+}
+
+
+/*!
+  Preguntas frecuentes [faq.html]
+-------------------------------------------------*/
+.opac-faq{
+  .question{padding-left:3px;@include font-weight-bold;}
+  .cont_question{
+    .blockquote{font-size:1em}
+  }
+}
+
+
+/*!
+  Política de cookies [cookieterms.html]
+  Política de protección de datos [dataprivacyterms.html]
+-------------------------------------------------*/
+.opac-cookieterms,
+.opac-dataprivacyterms{
+  .cont_articles{margin-bottom:30px;padding:30px 3% 30px 3%;background-color:$white;box-shadow:0px 1px 3px 0px rgba(0,0,0,.3);border-radius:2px;}
+  .article,
+  article{margin:0;padding:0;background:transparent;box-shadow:none}
+}

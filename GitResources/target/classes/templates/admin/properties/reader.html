@@ -1,0 +1,235 @@
+<!-- :: [admin/properties/reader.html] -->
+
+  <div class="col-lg-8 col-md-12 pl-0 pr-0">
+    <fieldset class="cont_checks w-100">
+      <legend class="h3 d-block font-weight-bold pl-0" th:text="#{administration.properties.reader.area}"></legend>
+      <ul class="pl-3">
+        <li>
+          <div class="form-group cont_check cont_check_tunned">
+            <label for="check_allow_loans" th:text="#{administration.properties.reader.allow.loans}"></label>
+            <input type="checkbox" id="check_allow_loans" name="readerLoansAllowed"
+            th:field="*{adminProps.reader.readerLoansAllowed}" th:value="*{adminProps.reader.readerLoansAllowed}"
+            th:disabled="${!adminProps.editEnabled}" value="">
+          </div>
+          <!-- :: /.form-group -->
+        </li>
+        <li>
+          <div class="form-group cont_check cont_check_tunned">
+            <label for="check_allow_renews" th:text="#{administration.properties.reader.allow.renews}"></label>
+            <input type="checkbox" id="check_allow_renews" name="readerRenewsAllowed"
+            th:field="*{adminProps.reader.readerRenewsAllowed}" th:value="*{adminProps.reader.readerRenewsAllowed}"
+            th:disabled="${!adminProps.editEnabled}" value="">
+          </div>
+          <!-- :: /.form-group -->
+        </li>
+        <li>
+          <div class="form-group cont_check cont_check_tunned">
+            <label for="check_allow_requests" th:text="#{administration.properties.reader.allow.requests}"></label>
+            <input type="checkbox" id="check_allow_requests" name="readerRequestsAllowed"
+            th:field="*{adminProps.reader.readerRequestsAllowed}" th:value="*{adminProps.reader.readerRequestsAllowed}"
+            th:disabled="${!adminProps.editEnabled}" value="">
+          </div>
+          <!-- :: /.form-group -->
+        </li>
+        <li>
+          <div class="form-group cont_check cont_check_tunned">
+            <label for="check_allow_loan_history_view" th:text="#{administration.properties.reader.allow.loan.history.view}"></label>
+            <input type="checkbox" id="check_allow_loan_history_view" name="readerLoanHistoryViewAllowed"
+            th:field="*{adminProps.reader.readerLoanHistoryViewAllowed}" th:value="*{adminProps.reader.readerLoanHistoryViewAllowed}"
+            th:disabled="${!adminProps.editEnabled}">
+          </div>
+          <!-- :: /.form-group -->
+        </li>
+        <li>
+          <div class="form-group cont_check cont_check_tunned">
+            <label for="check_allow_rememberme" th:text="#{administration.properties.reader.allow.rememberme}"></label>
+            <input type="checkbox" id="check_allow_rememberme" name="readerRemembermeAllowed"
+            th:field="*{adminProps.reader.readerRemembermeAllowed}" th:value="*{adminProps.reader.readerRemembermeAllowed}"
+            th:disabled="${!adminProps.editEnabled}">
+          </div>
+          <!-- :: /.form-group -->
+        </li>
+      </ul>
+    </fieldset>
+    <div class="row mt-3">
+      <fieldset class="col-lg-4 col-md-6 col-sm-12 pr-lg-0 pr-md-0">
+        <legend class="h3 d-block font-weight-bold pl-0" th:text="#{administration.properties.reader.favorites}"></legend>
+        <ul>
+          <li>
+            <div class="cont_form_group">
+            <div class="form-group">
+              <label for="input_favorites_limit" class="bmd-label-floating" th:text="#{administration.properties.reader.favorites.limit}"></label>
+              <input type="number" id="input_favorites_limit" name="favoritesLimit" class="form-control" th:field="*{adminProps.reader.favoritesLimit}" th:disabled="${!adminProps.editEnabled}">
+              <span id="input_favorites_limit_help" class="bmd-help" th:text="#{administration.properties.reader.favorites.limit.help}"></span>
+            </div>
+            </div>
+            <!-- :: /.form-group -->
+          </li>
+        </ul>
+      </fieldset>
+      <fieldset class="col-lg-4 col-md-6 col-sm-12 pr-lg-0">
+        <legend class="h3 d-block font-weight-bold pl-0" th:text="#{administration.properties.reader.lists}"></legend>
+        <ul>
+          <li>
+            <div class="cont_form_group">
+              <div class="form-group">
+                <label for="input_lists_limit" class="bmd-label-floating" th:text="#{administration.properties.reader.lists.limit}"></label>
+                <input type="number" id="input_lists_limit" name="listsLimit" class="form-control" th:field="*{adminProps.reader.listsLimit}" th:disabled="${!adminProps.editEnabled}">
+                <span id="input_lists_limit_help" class="bmd-help" th:text="#{administration.properties.reader.lists.limit.help}"></span>
+              </div>
+            </div>
+            <!-- :: /.form-group -->
+          </li>
+          <li>
+            <div class="cont_form_group">
+              <div class="form-group">
+                <label for="input_list_titles_limit" class="bmd-label-floating" th:text="#{administration.properties.reader.lists.title.limit}"></label>
+                <input type="number" id="input_list_titles_limit" name="titleListsLimit" class="form-control" th:field="*{adminProps.reader.titleListsLimit}" th:disabled="${!adminProps.editEnabled}">
+                <span id="input_list_titles_limit_help" class="bmd-help" th:text="#{administration.properties.reader.lists.title.limit.help}"></span>
+              </div>
+            </div>
+            <!-- :: /.cont_form_group -->
+          </li>
+        </ul>
+      </fieldset>
+      <fieldset class="col-lg-4 col-md-12 col-sm-12 pr-lg-0">
+        <legend class="h3 d-block font-weight-bold pl-0" th:text="#{administration.properties.reader.searches}"></legend>
+        <div class="row mr-0 ml-0 pl-0 pr-lg-3 pr-0">
+          <div class="cont_form_group col-lg-12 col-md-6 pl-lg-0 pl-0 pr-md-0 pr-0">
+            <div class="form-group">
+              <label for="input_session_search_limit" class="bmd-label-floating" th:text="#{administration.properties.reader.last.searches.limit}"></label>
+              <input type="number" id="input_session_search_limit" name="sessionSearchsLimit" class="form-control" th:field="*{adminProps.reader.sessionSearchsLimit}" th:disabled="${!adminProps.editEnabled}">
+              <span id="input_session_search_limit_help" class="bmd-help" th:text="#{administration.properties.reader.last.searches.limit.help}"></span>
+            </div>
+          </div>
+          <!-- :: /.cont_form_group -->
+          <div class="cont_form_group col-lg-12 col-md-6 pl-lg-0 pl-md-3 pl-0 pr-lg-0 pr-0">
+            <div class="form-group">
+              <label for="input_stored_search_limit" class="bmd-label-floating" th:text="#{administration.properties.reader.stored.searches.limit}"></label>
+              <input type="number" id="input_stored_search_limit" name="storedSearchsLimit" class="form-control" th:field="*{adminProps.reader.storedSearchsLimit}" th:disabled="${!adminProps.editEnabled}">
+              <span id="input_stored_search_limit_help" class="bmd-help" th:text="#{administration.properties.reader.stored.searches.limit.help}"></span>
+            </div>
+          </div>
+          <!-- :: /.cont_form_group -->
+        </div>
+      </fieldset>
+    </div>
+
+    <div class="row mt-3">
+      <fieldset class="col-md-12 pr-3 pl-3">
+        <legend class="h3 d-block font-weight-bold pl-0" th:text="#{administration.properties.reader.pagination}"></legend>
+        <div class="row w-100 ml-0 mr-0">
+          <div class="cont_form_group col-md-4 col-sm-4 pl-lg-0 pl-md-0 pr-lg-3 pr-sm-3 pr-0">
+            <div class="form-group">
+              <label for="input_elements_per_page_1" class="bmd-label-floating" th:text="#{administration.properties.reader.pagination.1st}"></label>
+              <input type="number" id="input_elements_per_page_1" name="elementsPerPage" class="form-control" th:field="*{adminProps.reader.elementsPerPage[0]}" th:disabled="${!adminProps.editEnabled}">
+              <span id="input_elements_per_page_1_help" class="bmd-help" th:text="#{administration.properties.reader.pagination.1st.help}"></span>
+            </div>
+          </div>
+          <!-- :: /.cont_form_group -->
+          <div class="cont_form_group col-md-4 col-sm-4 pl-lg-0 pl-md-0 pr-lg-3 pr-sm-3 pr-0">
+              <div class="form-group">
+                <label for="input_elements_per_page_2" class="bmd-label-floating" th:text="#{administration.properties.reader.pagination.2nd}"></label>
+                <input type="number" id="input_elements_per_page_2" name="elementsPerPage" class="form-control" th:field="*{adminProps.reader.elementsPerPage[1]}" th:disabled="${!adminProps.editEnabled}">
+                <span id="input_elements_per_page_2_help" class="bmd-help" th:text="#{administration.properties.reader.pagination.2nd.help}"></span>
+              </div>
+          </div>
+          <!-- :: /.cont_form_group -->
+          <div class="cont_form_group col-md-4 col-sm-4 pl-lg-0 pl-md-0 pr-0">
+              <div class="form-group">
+                <label for="input_elements_per_page_3" class="bmd-label-floating" th:text="#{administration.properties.reader.pagination.3rd}"></label>
+                <input type="number" id="input_elements_per_page_3" name="elementsPerPage" class="form-control" th:field="*{adminProps.reader.elementsPerPage[2]}" th:disabled="${!adminProps.editEnabled}">
+                <span id="input_elements_per_page_3_help" class="bmd-help" th:text="#{administration.properties.reader.pagination.3rd.help}"></span>
+              </div>
+          </div>
+          <!-- :: /.cont_form_group -->
+        </div>
+      </fieldset>
+    </div>
+
+  </div>
+
+  <div class="cont_checks col-lg-4 col-md-12 pl-lg-3 pl-0 pr-0 mt-3">
+    <fieldset class="w-100">
+      <legend class="h3 d-block font-weight-bold pl-0" th:text="#{administration.properties.reader.editable.fields}"></legend>
+      <div class="row w-100 ml-md-0 mr-md-0 pl-3">
+        <ul class="col-lg-12 col-md-6 pl-md-0 pl-3 mb-0">
+          <li>
+            <div class="form-group cont_check cont_check_tunned">
+              <label for="check_edit_email" th:text="#{administration.properties.reader.editable.fields.email}"></label>
+              <input type="checkbox" id="check_edit_email" name="readerEditableFields.email"
+              th:field="*{adminProps.reader.readerEditableFields.email}" th:value="*{adminProps.reader.readerEditableFields.email}"
+              th:disabled="${!adminProps.editEnabled}">
+            </div>
+            <!-- :: /.form-group -->
+          </li>
+          <li>
+            <div class="form-group cont_check cont_check_tunned">
+              <label for="check_edit_phone" th:text="#{administration.properties.reader.editable.fields.phone}"></label>
+              <input type="checkbox" id="check_edit_phone" name="readerEditableFields.phone"
+              th:field="*{adminProps.reader.readerEditableFields.phone}" th:value="*{adminProps.reader.readerEditableFields.phone}"
+              th:disabled="${!adminProps.editEnabled}">
+            </div>
+            <!-- :: /.form-group -->
+          </li>
+          <li>
+            <div class="form-group cont_check cont_check_tunned">
+              <label for="check_edit_mobile" th:text="#{administration.properties.reader.editable.fields.mobile}"></label>
+              <input type="checkbox" id="check_edit_mobile" name="readerEditableFields.mobilePhone"
+              th:field="*{adminProps.reader.readerEditableFields.mobilePhone}" th:value="*{adminProps.reader.readerEditableFields.mobilePhone}"
+              th:disabled="${!adminProps.editEnabled}">
+            </div>
+            <!-- :: /.form-group -->
+          </li>
+          <li>
+            <div class="form-group cont_check cont_check_tunned">
+              <label for="check_edit_address" th:text="#{administration.properties.reader.editable.fields.address}"></label>
+              <input type="checkbox" id="check_edit_address" name="readerEditableFields.address"
+              th:field="*{adminProps.reader.readerEditableFields.address}" th:value="*{adminProps.reader.readerEditableFields.address}"
+              th:disabled="${!adminProps.editEnabled}">
+            </div>
+            <!-- :: /.form-group -->
+          </li>
+          <li>
+            <div class="form-group cont_check cont_check_tunned">
+              <label for="check_edit_address" th:text="#{administration.properties.reader.editable.fields.address}"></label>
+              <input type="checkbox" id="check_edit_address" name="readerEditableFields.address"
+              th:field="*{adminProps.reader.readerEditableFields.address}" th:value="*{adminProps.reader.readerEditableFields.address}"
+              th:disabled="${!adminProps.editEnabled}">
+            </div>
+            <!-- :: /.form-group -->
+          </li>
+        </ul>
+        <ul class="col-lg-12 col-md-6 pl-md-0 pl-3 mb-0">
+          <li>
+            <div class="form-group cont_check cont_check_tunned">
+              <label for="check_edit_alias" th:text="#{administration.properties.reader.editable.fields.alias}"></label>
+              <input type="checkbox" id="check_edit_alias" name="readerEditableFields.alias"
+              th:field="*{adminProps.reader.readerEditableFields.alias}" th:value="*{adminProps.reader.readerEditableFields.alias}"
+              th:disabled="${!adminProps.editEnabled}">
+            </div>
+            <!-- :: /.form-group -->
+          </li>
+          <li>
+            <div class="form-group cont_check cont_check_tunned">
+              <label for="check_edit_aliasdescription" th:text="#{administration.properties.reader.editable.fields.aliasdescription}"></label>
+              <input type="checkbox" id="check_edit_aliasdescription" name="readerEditableFields.aliasDescription"
+              th:field="*{adminProps.reader.readerEditableFields.aliasDescription}" th:value="*{adminProps.reader.readerEditableFields.aliasDescription}"
+              th:disabled="${!adminProps.editEnabled}">
+            </div>
+            <!-- :: /.form-group -->
+          </li>
+          <li>
+            <div class="form-group cont_check cont_check_tunned">
+              <label for="check_edit_activeemail" th:text="#{administration.properties.reader.editable.fields.activeemail}"></label>
+              <input type="checkbox" id="check_edit_activeemail" name="readerEditableFields.activeEmail"
+              th:field="*{adminProps.reader.readerEditableFields.activeEmail}" th:value="*{adminProps.reader.readerEditableFields.activeEmail}"
+              th:disabled="${!adminProps.editEnabled}">
+            </div>
+            <!-- :: /.form-group -->
+          </li>
+        </ul>
+    </div>
+    </fieldset>
+  </div>
+<!-- :: /[admin/properties/reader.html] -->

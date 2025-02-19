@@ -1,0 +1,233 @@
+<th:block th:insert="/public/home/html_type"></th:block>
+<th:block th:insert="/public/home/technicalheader::main" th:with="page=${'opac-help-seeDetail-es_ES'}"></th:block>
+<script type="text/javascript">
+	var menu = document.getElementById('menu');
+	Stickyfill.add(menu);
+</script>
+<body>
+<div id="burger-menu" class="burger-menu">
+  <span></span>
+  			<div id="menu2" class="menu menu2">
+			<div class=""><nav class="sn-contents" aria-label="Secondary">
+      <ul class="sidenav--list">
+		<li><a href="#viewdetail">Visualització en mode detall</a>
+		    <ul class="tab3-help">
+				        <li><a href="#markfavotites">Com marcar com a favorit el registre que s'està visualitzant</a></li>
+				        <li><a href="#addfavotitesview"> Com afegir una nova llista de favorits des de la visualització en mode detall</a></li>
+				        <li><a href="#addfavotites">Com afegir el registre a una de les meves llistes de favorits</a></li>
+				        <li><a href="#viewcopy">Com visualitzar la informació dels exemplars</a>
+				            <ul class="tab3-help"><li><a href="#movicopy">Com moure's pel llistat d'exemplars</a></li></ul>						
+				        </li>
+				        <li><a href="#requestcopy">Com realitzar una sol·licitud d'un exemplar</a></li>
+				        <li><a href="#listresults">Accés al llistat de resultats</a></li>
+					    </ul>
+					</li>
+					<li><a href="#searchAuthorities">Accés a la cerca en autoritats</a></li>
+					<li><a href="#searchIndexes">Accés a la cerca en els índexs</a></li>
+					<li><a href="#lastSearch">Accés a les darreres cerques realitzades</a></li>
+					<li><a href="#historySearch">Accés a cerques desades</a></li>
+					<li><a href="#favorites">Accés als favorits</a></li>
+					<li><a href="#profile">Accés a El Meu Perfil</a></li>
+					<li><a href="#home">Accés a la pàgina d'inici</a></li>
+
+											
+						</ul></nav>
+</div>
+		</div>
+</div>
+	<div class="wrapper cf">
+	<div id="menu" class="menu">
+			<div class="sidenav"><nav class="sn-contents" aria-label="Secondary">
+      <ul class="sidenav--list">
+					<li><a href="#markfavotites">Com marcar com a favorit el registre que s'està visualitzant</a></li>
+					<li><a href="#addfavotitesview">Com afegir una nova llista de favorits des de la visualització en mode detall</a></li>
+					<li><a href="#addfavotites">Com afegir el registre a una de les meves llistes de favorits</a></li>
+					<li><a href="#viewcopy">Com visualitzar la informació dels exemplars</a>
+					    <ul class="tab3-help"><li><a href="#movicopy">Com moure's pel llistat d'exemplars</a></li></ul>						
+					</li>
+					<li><a href="#requestcopy">Com realitzar una sol·licitud d'un exemplar</a></li>
+					<li><a href="#listresults">Accés al llistat de resultats</a></li>
+					<li><a href="#searchAuthorities">Accés a la cerca en autoritats</a></li>
+					<li><a href="#searchIndexes">Accés a la cerca en els índexs</a></li>
+					<li><a href="#lastSearch">Accés a les darreres cerques realitzades</a></li>
+					<li><a href="#historySearch">Accés a cerques desades</a></li>
+					<li><a href="#favorites">Accés als favorits</a></li>
+					<li><a href="#profile">Accés a El Meu Perfil</a></li>
+					<li><a href="#home">Accés a la pàgina d'inici</a></li>
+</div>
+		</div>
+		<div class="content">
+			<a name="top"></a>
+			<a name="viewdetail"></a>
+			<h2 class="title-help">Visualització en mode detall</h2>
+			<p>En la visualització en mode detall es mostra la següent informació:</p>
+			<ul class="tab5-help margen5">
+				<li>- Portada</li>
+				<li>- Títol</li>
+				<li>- Autor</li>
+				<li>- Publicació</li>
+				<li>- Resum</li>
+				<li>- Gènere</li>
+				<li>- Tipus de material</li>
+				<li>- Informació sobre els exemplars associats al registre:
+					<ul class="tab5-help margen5">
+						<li>o Localització</li>
+						<li>o Núm. d'exemplars totals associats al registre</li>
+						<li>o Núm. d'exemplars disponibles</li>
+					</ul>
+				</li>
+			</ul>
+			<ul class="tab4-help">
+				<li>Si desitja veure informació d'altres camps inclosos en el registre, faci clic a l'opció  <img th:src="@{/img/help/icon-more-detail.png}" alt="icona Més detall" width="50px"/> de la barra flotant
+				<br>
+				<span class="tab4-help"><img th:src="@{/img/help/more-detail.png}" alt="Més detall" width="500px"/></span>
+				</li>
+				<br>
+				<p class="tab4-help">Si desitja activar el format MARC, faci clic a <img th:src="@{/img/help/marc.png}" alt="Marc"/> 
+				<li>* Si es localitzen altres <span class="text-bold-help">registres coincidents</span> en determinats camps amb el registre que s'està visualitzant, es mostren a la part inferior en forma de carrousel. 
+					<p>Per accedir a altres registres relacionats, faci clic a l'opció <img th:src="@{/img/help/icon-other-related-records.png}" alt="Altres registres relacionats" width="50px"/> de la barra flotant.</p>
+					<p>Els camps que es tenen en compte per considerar que els registres estan relacionats amb el que s'està visualitzant són els següents:</p>
+					<ul class="tab5-help margen10">
+						<li>- mateixa editorial i col·lecció</li>
+						<li>- mateix gènere</li>
+					</ul><br>
+					<p class="tab4-help"><img th:src="@{/img/help/carrusell.png}" alt="Carrousel" width="500px"/></p>
+				</li>
+			</ul>
+			<a name="markfavotites"></a>
+			<h4 class="title-help">Com marcar com a favorit el registre que s'està visualitzant</h4>
+			<p>Per marcar el registre que està visualitzant, faci clic a l'opció <img th:src="@{/img/help/icon-favorites.png}" alt="Icona favorits"/> </p>
+			<p>Si desitja consultar els registres marcats com a favorits a la sessió de treball, faci clic a Favorits</p>
+			<ul class="tab4-help margen5">
+				<li>Per defecte, es poden emmagatzemar un màxim de <span class="text-bold-help">100</span> favorits</li>
+				<li>Els favorits es mostren ordenats per <span class="text-bold-help">autor/títol</span></li>
+				<li>Per desmarcar algun dels favorits, faci clic a l'opció <img th:src="@{/img/help/favorites-icon-selected.png}" alt="Icona favorits seleccionat"/> del registre que vol eliminar de favorits.
+					<ul class="tab5-help margen5">
+						<li>- els registres també es poden desmarcar des de la visualització en mode llista o en mode detall</li>
+					</ul>
+				</li>
+			</ul>				
+			<a name="addfavotitesview"></a>
+			<h4 class="title-help">Com afegir una nova llista de favorits des de la visualització en mode detall</h4>
+			<p>Per crear una llista de favorits,</p>
+			<ul class="tab5-help margen5"> 
+				<li>1. Feu clic a l'opció <img th:src="@{/img/help/icon-add-list.png}" alt="Icona afegir llista"/> associada al registre que està visualitzant.
+				<li>2. Feu clic a l'opció <img th:src="@{/img/help/btn-add-list.png}" alt="Botó afegir llista" width="100px"/>
+				<li>3. Introduïu la descripció que voleu associar a la nova llista.
+					<p class="tab4-help margen10"><img th:src="@{/img/help/name-list.png}" alt="Nom de la llista" width="200px"/></p>
+				</li>
+				<li>4. Feu clic a  <img th:src="@{/img/help/btn-add-title-list.png}" alt="Botó afegir títol a la llista seleccionada" width="200px"/>
+					<ul class="tab4-help margen5">
+						<li>es crea la nova llista amb el registre associat</li>
+						<li>els registres pertanyents a una llista de favorits, es mostren amb la següent imatge distintiva: 
+							<img th:src="@{/img/help/icon-record-in-list.png}" alt="Icona de llista en registre" width="50px"/>
+						</li> 
+						<li>* si voleu visualitzar les llistes que teniu creades, feu clic al vostre usuari i seleccioneu l'opció <i>Les meves llistes</i>
+						<p class="tab4-help margen5"><img th:src="@{/img/help/my-lists.png}" alt="Les meves llistes" width="200px"/></p>
+						</li>
+					</ul>
+				</li>
+			</ul>
+			<a name="addfavotites"></a>
+			<h4 class="title-help">Com afegir el registre a una de les meves llistes de favorits</h4>
+			<p>Per afegir el registre a una de les llistes de favorits ja creades,</p>
+			<ul class="tab5-help margen5">
+				<li>1. Feu clic a l'opció <img th:src="@{/img/help/icon-add-list.png}" alt="Icona afegir llista"/>   associada al registre.</li>
+				<li>2. Seleccioneu la llista que us interessi.
+					<p class="tab4-help margen5"><img th:src="@{/img/help/list-selection.png}" alt="Seleccionar llista" width="200px"/></p>
+				</li>
+				<li>3. Feu clic a  <img th:src="@{/img/help/btn-add-title-list.png}" alt="Botó afegir títol a la llista seleccionada" width="200px"/>
+					<ul  class="tab3- margen5">
+						<li>el registre s'associa a la llista seleccionada</li>
+						<li>els registres pertanyents a una llista de favorits, es mostren amb la següent imatge distintiva:
+								<img th:src="@{/img/help/icon-record-in-list.png}" alt="Icona de llista en registre" width="50px"/>
+						</li>  
+						<li>Per defecte, només es poden emmagatzemar <span class="text-bold-help">200</span> favorits en una mateixa llista.</li>
+						<li>un mateix registre pot estar associat a diverses llistes de favorits</li>
+					</ul>
+				</li>  
+			</ul>
+			<a name="viewcopy"></a>
+			<h4 class="title-help">Com visualitzar la informació dels exemplars</h4>
+			<p>Per visualitzar els exemplars associats al registre que està visualitzant, feu clic a l'opció <img th:src="@{/img/help/icon-visualization.png}" alt="Icona visualització" width="35px"/> de la barra flotant</p>
+			<ul class="tab3-help margen5">
+				<li>Si desitja veure més informació sobre els exemplars, feu clic a <img th:src="@{/img/help/icon-see-more.png}" alt="Icona de veure més"/>
+					<p class="tab5-help"><img th:src="@{/img/help/localization.png}" alt="Localització" width="500px"/></p>
+				</li>  
+				<li>Si desitja filtrar els exemplars que vol visualitzar en base a la seva disponibilitat, seleccioneu l'opció que us interessi a <i>Filtrar per disponible</i>:
+					<p class="tab5-help"><img th:src="@{/img/help/filters-available.png}" alt="Filtres disponibles" width="250px"/></p>
+				</li>
+				<li>Si el registre té exemplars de diferents localitzacions i superen el nombre d'exemplars que es visualitzen per pàgina, es pot filtrar per biblioteca/sucursal per facilitar-ne la visualització. Per fer-ho, seleccioneu la biblioteca o sucursal per la qual voleu fer la restricció:
+					<p class="tab5-help"><img th:src="@{/img/help/filter-bibio-branch.png}" alt="Filtrar per biblioteca o sucursal" width="300px"/></p>
+				</li>
+			</ul>
+			<a name="movicopy"></a>
+			<h5 class="subtitle-help">Com moure's pel llistat d'exemplars</h5>
+			<p>Per defecte, els exemplars es mostren en grups de <span class="text-bold-help">10</span>. Per moure's per les diferents pàgines dels resultats obtinguts hi ha les següents opcions:
+			</p>
+			<ul class="tab3-help margen5">
+				<li>Fes clic a <img th:src="@{/img/help/next.png}" alt="Següent" width="75px"> per passar a la següent pàgina.</li>
+				<li>Fes clic a <img th:src="@{/img/help/back.png}" alt="Anterior" width="75px"> per passar a la pàgina anterior.</li>
+				<li>Fes clic al nº de pàgina que t'interessi visualitzar
+					<br><br><img th:src="@{/img/help/number-by-page.png}" alt="Número de pàgina" width="350px">
+				</li>
+				<li>Fes clic al nº 1 per visualitzar la primera pàgina
+					<br><br><img th:src="@{/img/help/first-page.png}" alt="Primera pàgina" width="350px"/>
+				</li>
+				<li>Fes clic al nº anterior a Següent per anar a l'última pàgina
+					<br><br><img th:src="@{/img/help/last-page.png}" alt="Última pàgina" width="350px"/>
+				</li>
+			</ul>
+			<a name="requestcopy"></a>
+			<h4 class="title-help">Com fer una sol·licitud d'un exemplar</h4>
+			<p>Si voleu sol·licitar algun dels exemplars associats al registre que esteu visualitzant, feu clic a 
+			<img th:src="@{/img/help/icon-request.png}" alt="Sol·licitud"/></p>
+			<a name="listresults"></a>
+			<h2 class="title-help">Accés al llistat de resultats</h2>
+			<p>Si desitgeu tornar a visualitzar tots els registres localitzats a la cerca, feu clic a l'opció <i>Llistat de resultats</i>.</p>
+			<a name="searchAuthorities"></a> 
+			<h2 class="title-help">Accés a cerca en autoritats</h2>
+			<p>Per realitzar una cerca d'autoritats que permeti localitzar registres que contenen una autoritat específica, feu clic a l'opció <i>Cerca autoritats</i>.</p>
+			<a name="searchIndexes"></a> 
+			<h2 class="title-help">Accés a cerca en els índexs</h2>
+			<p>Per realitzar una cerca que localitzi paraules o patrons de paraules semblants al terme o termes introduïts, feu clic a l'opció <i>Cerca índexs</i>.</p>
+			<a name="lastSearch"></a> 
+			<h2 class="title-help">Accés a les últimes cerques realitzades</h2>
+			<p>Per visualitzar les <span class="text-bold-help">10</span> últimes cerques realitzades que han retornat resultats durant la sessió de l'Opac, feu clic a <i>Últimes cerques</i>.</p>
+			<a name="historySearch"></a>
+			<h2 class="cont cont_title title-help">Accés a cerques desades</h2>
+			<p>Si voleu desar alguna de les cerques que heu realitzat per poder executar-les en un altre moment, feu clic a <i>Cerques desades</i>.</p>
+			<ul class="tab3-help">
+				<li>Per poder desar cerques és necessari que us identifiqueu prèviament</li>
+			</ul>
+			<a name="favorites"></a> 
+			<h2 class="title-help">Accés a preferits</h2>
+			<p>Per visualitzar els registres que ha marcat com a preferits, feu clic a <i>Preferits</i>.</p>
+			<a name="profile"></a> 
+			<h2 class="title-help">Accés al Meu Perfil</h2>
+			<p>Faci clic a l'opció <i>El meu perfil</i> i identifiqui's per poder accedir a les següents utilitats d' <span class="text-bold-help">ODA</span>: </p>
+			<ul class="tab5-help margen5">
+				<li>- Dades personals</li>
+				<li>- Sol·licituds</li>
+				<li>- Préstecs actius</li>
+				<li>- Històric de préstecs</li>
+				<li>- Renovar préstecs</li>
+				<li>- Anul·lar reserves</li>
+				<li>- Desar cerques</li>
+				<li>- Crear llistes de preferits</li>
+			</ul>
+			<p class="tab2-help">•	Per identificar-se com a usuari pot utilitzar qualsevol d'aquests 3 mètodes:</p>
+			<ul class="tab5-help margen5">
+				<li>- nº de carnet</li>
+				<li>- correu electrònic que hagi proporcionat a la seva biblioteca</li>
+				<li>- telèfon mòbil que hagi proporcionat a la seva biblioteca</li>
+			</ul>
+			<a name="home"></a> 
+			<h2 class="title-help">Accés a la pàgina d'inici</h2>
+			<p>Per anar a la pàgina d'inici, feu clic a <i>Inici</i>.</p>
+			<p class="top-help"><a href="#top">Amunt</a></p>
+		</div>
+	</div>
+	<th:block th:insert="/public/home/technicalfooter" th:with="page='opac-dataprivacyterms'"/>
+</body>
+</html>

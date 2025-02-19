@@ -1,0 +1,67 @@
+<!-- :: [/public/catalog/fragments/orderBy.html] -->
+<!-- :: <span th:text="${position}" /> -->
+<th:block th:unless="${thymeleafMap.get('INDEX') == solrSearchWeb.solrSearch.queryType}">
+	<span class="text-truncate font-weight-bold mr-3">
+		<th:block th:if="${solrSearchWeb.solrSearch.solrCollection == 'AUTHORITY'}">
+			<th:block th:each="order,iter : ${solrSearchWeb.orderList}"> 
+				<th:block th:if="${order == 'authortitle' || order == 'score'}" th:text="#{search.pagination.order}"/>
+			</th:block>
+		</th:block>	
+		<th:block th:if="${solrSearchWeb.solrSearch.solrCollection != 'AUTHORITY'}">
+			<th:block th:text="#{search.pagination.order}"/>
+		</th:block>
+	</span>
+	<nav class="cont_order_list my-auto d-xl-block" th:aria-labelledby="'title_cont_order_list_'+${position}">
+		<h3 th:id="'title_cont_order_list_'+${position}" class="sr-only" th:text="#{search.pagination.order.aria}+' '+${position}"></h3>
+		<ul class="order_list d-flex mb-0">
+			<th:block th:each="order,iter : ${solrSearchWeb.orderList}"> 
+				<li th:if="${order == 'authortitle'}">
+					<a th:href="@{${solrSearchWeb.currentUrl}(sort='',tabId=${solrSearchWeb.solrSearch.tabId})}" th:title="#{sort.default}" th:aria-label="#{sort.default}" class="btn btn-white btn-link"
+					th:classappend="${solrSearchWeb.solrSearch.sort == null or solrSearchWeb.solrSearch.sort == ''} ? 'active'">
+						<span class="icono fas fa-address-card"></span>
+						<span class="btn_title mobile pl-1">
+							<th:block th:text="#{sort.default}"/>
+						</span>
+					</a>
+				</li>
+				<li th:classappend="${solrSearchWeb.solrSearch.sort == 'score'} ? 'active'" th:if="${order == 'score'}">
+					<a th:href="@{${solrSearchWeb.currentUrl}(sort='score',tabId=${solrSearchWeb.solrSearch.tabId})}" th:title="#{sort.score}" th:aria-label="#{sort.score}" class="btn btn-white btn-link"
+					th:classappend="${solrSearchWeb.solrSearch.sort == 'score'} ? 'active'">
+						<span class="icono fas fa-bullseye"></span>
+						<span class="btn_title mobile pl-1">
+							<th:block th:text="#{sort.score}"/>
+						</span>
+					</a>				
+				</li>
+				<li th:classappend="${solrSearchWeb.solrSearch.sort == 't245'} ? 'active'" th:if="${solrSearchWeb.solrSearch.solrCollection != 'AUTHORITY' && order == 't245'}">
+					<a th:href="@{${solrSearchWeb.currentUrl}(sort='t245',tabId=${solrSearchWeb.solrSearch.tabId})}" th:title="#{sort.title}" th:aria-label="#{sort.title}" class="btn btn-white btn-link"
+					th:classappend="${solrSearchWeb.solrSearch.sort == 't245'} ? 'active'">
+						<span class="icono fas fa-text-height"></span>
+						<span class="btn_title mobile pl-1">
+							<th:block th:text="#{sort.title}"/>
+						</span>
+					</a>
+				</li>
+				<li th:classappend="${solrSearchWeb.solrSearch.sort == 'fepu'} ? 'active'" th:if="${solrSearchWeb.solrSearch.solrCollection != 'AUTHORITY' && order == 'fepu'}">
+					<a th:href="@{${solrSearchWeb.currentUrl}(sort='fepu',tabId=${solrSearchWeb.solrSearch.tabId})}" th:title="#{sort.fepu}" th:aria-label="#{sort.fepu}" class="btn btn-white btn-link"
+					th:classappend="${solrSearchWeb.solrSearch.sort == 'fepu'} ? 'active'">
+						<span class="icono far fa-calendar-check"></span>
+						<span class="btn_title mobile pl-1">
+							<th:block th:text="#{sort.fepu}"/>
+						</span>
+					</a>
+				</li>
+				<li th:classappend="${solrSearchWeb.solrSearch.sort == 'fein'} ? 'active'" th:if="${solrSearchWeb.solrSearch.solrCollection != 'AUTHORITY' && order == 'fein'}">
+					<a th:href="@{${solrSearchWeb.currentUrl}(sort='fein',tabId=${solrSearchWeb.solrSearch.tabId})}"  th:title="#{sort.fein}" th:aria-label="#{sort.fein}" class="btn btn-white btn-link"
+					th:classappend="${solrSearchWeb.solrSearch.sort == 'fein'} ? 'active'">
+						<span class="icono fas fa-calendar-day"></span>
+						<span class="btn_title mobile pl-1">
+							<th:block th:text="#{sort.fein}"/>
+						</span>
+					</a>
+				</li>
+			</th:block>
+		</ul>
+	</nav>
+</th:block>
+<!-- :: /[/public/catalog/fragments/orderBy.html] -->

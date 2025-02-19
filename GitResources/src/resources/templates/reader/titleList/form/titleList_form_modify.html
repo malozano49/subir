@@ -1,0 +1,30 @@
+<!-- :: [reader/titleList/form/titleList_form_modify.html] -->
+
+<!-- :: Este formulario se clona en una modal para pedir el nombre de la nueva lista con lo que el action hay que montarlo antes de enviar el dato [tmpl_my_profile_lists_loans_applications] o [myProfile.js]-->
+<!-- :: <span th:text="${use}" />-->
+<div class="cont_titleList_form_modify col-md-8 pl-0 pr-0 d-none">
+  <form action="#" th:action="${url}" th:object="${titleList}" method="post" >
+    <input type="hidden" name="id" value="">
+    <fieldset th:aria-label="#{administration.load.marc.files}">
+      <div class="cont_form_group input_con_iconos col-12">
+        <div class="form-group w-100">
+           <label class="bmd-label-floating" th:for="${use}+'_input_id_00'" th:text="#{title.list.name}"></label>
+           <input type="text" th:id="${use}+'_input_id_00'" name="name" class="form-control js_input_rename" value="">
+        </div>
+        <!-- :: /.form-group -->
+        <div class="cont_botonera_input d-flex flex-row justify-content-start">
+          <button type="button" class="btn_titleList_form_modify_cancel btn btn-outline-secondary" data-action="titleList_form_modify_cancel" th:aria-label="#{dockbar.biblio.personal.title.list.btn_titleList_form_modify_cancel.title}" th:title="#{dockbar.biblio.personal.title.list.btn_titleList_form_modify_cancel.title}">
+            <span class="icono fas fa-times" aria-hidden="true"></span>
+          </button>
+          <button type="submit" class="btn_modificar btn btn-primary" th:aria-label="#{dockbar.biblio.personal.title.list.upd}" th:title="#{dockbar.biblio.personal.title.list.upd}">
+            <span class="icono fas fa-paper-plane" aria-hidden="true"></span>
+          </button>
+        </div>
+        <!-- :: /.cont_botonera_input -->
+      </div>
+      <!-- :: /.cont_form_group -->
+    </fieldset>
+
+  </form>
+</div>
+<!-- :: /[reader/titleList/form/titleList_form_modify.html] -->

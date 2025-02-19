@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+  <head>
+    <!-- :: [public/home/technicalheader.html] -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- :: EDGE: formato teléfono no clickable -->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="application-name" th:content="'OpacDiscovery '+${applicationVersion}+' Offline'">
+    <meta name="author" content="Baratz">
+    <!-- :: description: max:160 caracteres - min:50 -->
+    <meta name="description" content="Opac">
+
+    <title>OpacDiscovery offline</title>
+
+    <!-- FAVICONS -->
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/img/favicons/favicon.ico}">
+    <link rel="apple-touch-icon" th:href="@{/img/favicons/apple-touch-icon.png}" sizes="180x180">
+    <link rel="icon" type="image/png" th:href="@{/img/favicons/favicon-32x32.png}" sizes="32x32">
+    <link rel="icon" type="image/png" th:href="@{/img/favicons/favicon-16x16.png}" sizes="16x16">
+
+    <link rel="mask-icon" th:href="@{/img/favicons/safari-pinned-tab.svg}" color="#062d64">
+
+    <meta name="apple-mobile-web-app-title" content="OpacDiscovery">
+    <meta name="msapplication-TileColor" content="#062d64">
+    <meta name="theme-color" content="#062d64">
+    <meta name="msapplication-config" th:content="@{/img/favicons/browserconfig.xml}">
+
+    <!-- FONTS -->
+    <link type="text/css" rel="stylesheet" th:href="@{/webfonts/fontawesome-free-5.11.2-web/css/all.min.css}">
+    <link type="text/css" rel="stylesheet" th:href="@{/webfonts/SourceSansPro/all.css}">
+
+    <!-- BSv4.4.1 -->
+    <link type="text/css" rel="stylesheet" th:href="@{/plugins/bootstrap/bootstrap.min.css}">
+
+    <link type="text/css" rel="stylesheet" th:href="@{/css/opac/main.css}">
+
+    <link type="text/css" rel="stylesheet" th:href="@{/pwa/offline/css/index.min.css}">
+
+    <script th:attr="nonce=${#request.getAttribute('cspNonce')}" th:inline="javascript">/*<![CDATA[*/ const BaratzContextPath=/*[[@{/}]]*/ /*]]>*/</script>
+  </head>
+<body class="vista_reader bg-propietary-light">
+  <div class="cont_effect" aria-hidden="true">
+    <img th:src="@{/img/logo-sin-fondo.png}" alt="Logo Baratz">
+    <div class="frame">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div class="caps"></div>
+    <canvas id="canvas_offline" class="canvas_offline"></canvas>
+  </div>
+  <!-- /.cont_effect -->
+  <header class="header_principal">
+    <div class="menu-principal">
+      <div id="cont_logo_baratz" class="cont_logo_baratz navbar-brand">
+        <img th:src="@{/img/logo-sin-fondo.png}" class="logo" alt="Logo Opac 3.0">
+      </div>
+    </div>
+  </header>
+  <main>
+    <section id="offline_section" class="offline_section component">
+
+      <article class="component component-message">
+        <img class="img-no_connection" role="presentation" th:src="@{/pwa/offline/img/no-internet-icon-24.jpg}" alt="Image no connection">
+        <h1 th:text="#{pwa.offline.no_connection.title}"></h1>
+        <h2 th:text="#{pwa.offline.no_connection.subtitle}"></h2>
+        <p th:text="#{pwa.offline.no_connection.text}"></p>
+      </article>
+
+      <article class="component component-user_data d-none bg-white">
+        <h2 th:text="#{pwa.offline.no_connection.user_message.title}"></h2>
+        <p th:text="#{pwa.offline.no_connection.user_message.text}"></p>
+        <div class="cont_data_user">
+
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer_principal">
+    <div class="footer-bottom bg-highlight container-fluid border-top">
+      <section class="row container flex-row px-4" aria-labelledby="sct_data_title">
+        <!--
+        <h2 id="sct_data_title" class="sr-only" th:text="#{footer.our.info}"></h2>
+        <article class="art_location blq col-md-3 col-sm-6" aria-labelledby="title_art_location">
+          <h3 id="title_art_location" class="font-weight-bold mb-3">
+            <th:block th:text="#{footer.our.location.title}"/>
+          </h3>
+          <ul>
+              <li>
+                <div><th:block th:text="#{footer.address.title}"/></div>
+                <div><th:block th:text="#{footer.additional.address.title}"/></div>
+              </li>
+              <li>
+                <th:block th:text="#{footer.phones.title}"/>
+              </li>
+              <li>
+                <a class="link" href="mailto:informa@baratz.es">
+                  <th:block th:text="#{footer.email.title}"/>
+                </a>
+              </li>
+          </ul>
+        </article>
+        -->
+      </section>
+    </div>
+  </footer>
+
+  <!--/* JAVASCRIPTS */-->
+  <script th:src="@{/plugins/jquery/jquery.min.js}"></script>
+  <!--/* Tooltip & popover positioning engine (Bootstrap's dropdowns require Popper.js)*/-->
+  <script th:src="@{/plugins/popper/popper.min.js}"></script>
+  <!--/* bootstrap */-->
+  <script th:src="@{/plugins/bootstrap/bootstrap.min.js}"></script>
+  <script th:src="@{/js/commons/utils.js}"></script>
+  <script th:src="@{/js/commons/scripts.js}"></script>
+  <script th:src="@{/pwa/offline/js/index.js}"></script>
+</body>
+</html>

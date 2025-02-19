@@ -1,0 +1,959 @@
+<th:block th:insert="/public/home/html_type"></th:block>
+	<head>
+  		<th:block th:insert="/public/home/technicalheader::main" th:with="page='opac-maquetacion-1'"></th:block>
+   <!-- :: ESPECIFICO MAQUETACION -->
+   <link type="text/css" rel="stylesheet" th:href="@{/css/opac/maquetacion/maquetacion.css}" media="all">
+	</head>
+   <body class="page_type_layout layout_maquetacion1">
+<!-- :: [layout/maquetacion1.html] -->
+      <header class="header_principal">
+         <th:block th:with="pageLocation='home'" th:insert="/public/home/header"></th:block>
+      </header>
+      <main id="acc_anchor_main">
+        <h2 class="col-12 mt-3 mb-3">Línea Maquetación 1: Componentes simples</h2>
+
+<!-- :: ALERTS -->
+          <section class="container-fluid">
+
+            <th:block th:insert="/layout/fragments/enlaces_internos"></th:block>
+
+            <h3 id="title_alerts" class="h2 col-12 pl-2">Alertas</h3>
+            <div class="cont_alerts_general article col-lg-12 col-md-12 col-sm-12 border"  aria-live="polite" aria-atomic="true">
+              <div class="alert alert-info alert_centered alert-dismissible">
+                <span class="alert_titulo" th:text="#{alert.info.title}"></span>
+                <span class="alert_texto">.alert.alert-info.alert_centered.alert-dismissible</span>
+                <span class="alert_texto"><code>.alert_centered</code> centra vertical y horizontal en el bloque padre en position absolute</span>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <!-- :: /.alert-info.alert_centered -->
+              <div class="alert alert-success">
+                <span class="alert_titulo" th:text="#{alert.success.title}"></span>
+                <span class="alert_texto">.alert.alert-success</span>
+              </div>
+              <!-- :: /.alert-success -->
+              <div class="alert alert-warning">
+                <span class="alert_titulo" th:text="#{alert.warning.title}"></span>
+                <span class="alert_texto">.alert.alert-warning</span>
+              </div>
+              <!-- :: /.alert-warning -->
+              <div class="alert alert-warning sin_icono" role="alert" aria-atomic="true">
+                <span class="alert_titulo" th:text="#{alert.warning.title}"></span>
+                <span class="alert_texto">.alert.alert-warning.sin_icono</span>
+              </div>
+              <!-- :: /.alert-warning.sin_icono -->
+              <div class="alert alert-danger alert-dismissible fade show" role="alert" aria-atomic="true">
+                <span class="alert_titulo" th:text="#{alert.error.title}"></span>
+                <span class="alert_texto">.alert.alert-danger.alert-dismissible</span>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <!-- :: /.alert-danger -->
+              <div class="alert alert-warning alert_icon alert-dismissible fade show" role="alert" aria-atomic="true">
+                <span class="icono fas fa-search-minus"></span>
+                <span class="alert_titulo" th:text="#{alert.warning.title}"></span>
+                <span class="alert_texto">.alert.alert-warning.alert_icon.alert-dismissible</span>
+                <span class="alert_texto">.alert.alert-warning.alert_icon</span>
+                <span class="alert_texto">.alert.alert-warning.alert_icon</span>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <!-- :: /.alert-icon -->
+            </div>
+            <!-- :: /.cont_alerts -->
+          </section>
+          <!-- :: /.container -->
+
+<!-- :: BOTONES Y LINKS -->
+          <section id="capa_botones" class="container-fluid">
+            <h3 id="title_buttons" class="h2 col-12 pl-2">Botones y links</h3>
+
+            <div class="cont_botones col-lg-12 col-md-12 col-sm-12 border">
+
+              <article class="art_unlogged d-flex flex-column align-items-start w-100 mt-3 pl-0 pr-0" aria-labelledby="art_unlogged_title">
+                <h4 id="art_unlogged_title" class="h2 sr-only">Clase unlogged</h4>
+                <div class="alert alert-info alert-dismissible fade show d-flex flex-column w-auto">
+                  <span class="alert_titulo">Aplicación de <code>.unlogged</code></span>
+                  <span class="alert_texto">La clase <code>.unlogged</code> se puede aplicar sobre un contenedor padre y muestra un ángulo de color sobre los distintos componentes clickables contenidos.</span>
+                  <span class="alert_texto">Para evitar conflictos en estilos con fontawesome, se aplica sobre el padre de los iconos (por ejemplo en .btn, como padre de un span titulo + un span .icono)</span>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="form-group cont_check cont_check_tunned d-flex flex-row-reverse">
+                  <input class="" type="checkbox" id='view_unlogged' name="view_unlogged" value="" />
+                  <label class="" for="view_unlogged">Aplicar <code>.unlogged</code> para botones, links y componentes form en todo el body</label>
+                </div>
+                <div class="cont_unlogged_descripciones d-flex flex-column mw-100 w-auto">
+                  <span class="h3 font-weight-bold">Vista de clase</span>
+                  <pre>
+.unlogged{
+  .btn{@include unlogged(red);}
+  .nav-link{@include unlogged(green);}
+  .link{@include unlogged(DARKORANGE);}
+  .page-link{@include unlogged(blue);}
+  .form-group{
+    &.cont_input{@include unlogged(red);}
+    &.cont_selectPicker{
+      .btn{
+        &:before{display:none}
+      }
+      @include unlogged(red);
+    }
+  }
+}
+                  </pre>
+                </div>
+              </article>
+              <!-- :: /.art_unlogged -->
+
+              <article class="art_modelos d-flex flex-wrap w-100 pl-0 pr-0" aria-labelledby="art_modelos_title">
+                <h4 id="art_modelos_title" class="h2 sr-only">Tipos de botones</h4>
+                <span class="h4 col-12 pl-2">.btn</span>
+                <div class="botones btns_modelos d-flex flex-wrap w-100 mt-3">
+                  <button type="button" class="btn btn-primary mr-2">
+                    <span class="btn_title">.btn.btn-primary</span>
+                    <span class="icono fas fa-search" aria-hidden="true"></span>
+                  </button>
+                  <button type="button" class="btn btn-outline-primary mr-2">
+                    <span class="btn_title">.btn.btn-outline-primary</span>
+                    <span class="icono fas fa-search" aria-hidden="true"></span>
+                  </button>
+                  <button type="button" class="btn btn-secondary mr-2">
+                    <span class="icono fas fa-search" aria-hidden="true"></span>
+                    <span class="btn_title">.btn.btn-secondary</span>
+                  </button>
+                  <button type="button" class="btn btn-outline-secondary mr-2">
+                    <span class="btn_title">.btn.btn-outline-secondary</span>
+                    <span class="icono fas fa-search" aria-hidden="true"></span>
+                  </button>
+                  <button type="button" class="btn btn-link mr-2">
+                    <span class="btn_title">.btn.btn-link</span>
+                  </button>
+                  <button type="button" class="btn btn-link btn_enlace mr-2">
+                    <span class="btn_title">.btn.btn-link.btn_enlace</span>
+                  </button>
+                  <button type="button" class="btn btn-white mr-2">
+                    <span class="icono fas fa-search" aria-hidden="true"></span>
+                    <span class="btn_title">.btn.btn-white</span>
+                  </button>
+                  <button type="button" class="btn page-link">
+                    <span class="icono fas fa-search" aria-hidden="true"></span>
+                    <span class="btn_title">.btn.page-link</span>
+                  </button>
+                </div>
+                <!-- :: /.btns_modelos -->
+                <div class="botones btns_modelos d-flex flex-wrap w-100 mt-2">
+                  <button type="button" class="btn btn-success">
+                    <span class="btn_title">.btn.btn-success</span>
+                  </button>
+                  <button type="button" class="btn btn-info">
+                    <span class="btn_title">.btn.btn-info</span>
+                  </button>
+                  <button type="button" class="btn btn-warning">
+                    <span class="btn_title">.btn.btn-warning</span>
+                  </button>
+                  <button type="button" class="btn btn-danger">
+                    <span class="btn_title">.btn.btn-danger</span>
+                  </button>
+                  <button type="button" class="btn btn-dark">
+                    <span class="btn_title">.btn.btn-dark</span>
+                  </button>
+                  <button type="button" class="btn btn-light">
+                    <span class="btn_title">.btn.btn-light</span>
+                  </button>
+                </div>
+                <!-- :: /.btns_modelos -->
+                <hr/>
+                <span class="d-flex h4 w-100 pl-2 mt-4">.pagination</span>
+                <th:block th:insert="/layout/fragments/pagination" th:with="pagination_position='pagination-top'"></th:block>
+              </article>
+              <!-- :: /.art_modelos -->
+
+              <article class="art_links d-flex flex-wrap w-100 pl-0 pr-0 mt-3" aria-labelledby="art_links_title">
+                <h4 id="art_links_title" class="h2 w-100 pl-2">Links y estados</h4>
+                <div class="page-links d-flex w-100">
+                  <a href="#" class="link" title="">a.link</a>
+                </div>
+                <!-- :: /.page-links-->
+                <div class="page-links d-flex flex-wrap w-100 mt-2">
+                  <a href="#" title=" " class="btn btn-white btn-link">
+                     <span class="icono fas fa-address-card" aria-hidden="true"></span>
+                     <span class="btn_title">a.btn.btn-white.btn-link</span>
+                  </a>
+
+                  <a href="#" title=" " class="btn btn-white btn-link active">
+                     <span class="icono fas fa-address-card" aria-hidden='true'></span>
+                     <span class="btn_title">a.btn.btn-white.btn-link.active</span>
+                  </a>
+                  <!-- :: capa superior con clase active -->
+                  <div class="d-inline-block active">
+                    <a href="#" title=" " class="btn btn-white btn-link">
+                       <span class="icono fas fa-address-card" aria-hidden="true"></span>
+                       <span class="btn_title">.active a.btn.btn-white.btn-link</span>
+                    </a>
+                  </div>
+                  <!-- :: capa superior con clase disbaled -->
+                  <div class="d-inline-block disabled">
+                    <a href="#" title=" " class="btn btn-white btn-link">
+                       <span class="icono fas fa-address-card" aria-hidden='true'></span>
+                       <span class="btn_title">.disabled a.btn.btn-white.btn-link</span>
+                    </a>
+                  </div>
+                </div>
+                <!-- :: /.page-links-->
+                <div class="page-links d-flex  flex-wrap  w-100 mt-2">
+                  <button type="button" class="btn btn-white btn-link">
+                     <span class="icono fas fa-address-card" aria-hidden="true"></span>
+                     <span class="btn_title">button.btn.btn-white.btn-link</span>
+                  </button>
+
+                  <button type="button" class="btn btn-white btn-link active">
+                     <span class="icono fas fa-address-card" aria-hidden='true'></span>
+                     <span class="btn_title">button.btn.btn-white.btn-link.active</span>
+                  </button>
+                  <!-- :: capa superior con clase active -->
+                  <div class="d-inline-block active">
+                    <button type="button" class="btn btn-white btn-link">
+                       <span class="icono fas fa-address-card" aria-hidden="true"></span>
+                       <span class="btn_title">.active button.btn.btn-white.btn-link</span>
+                    </button>
+                  </div>
+                  <!-- :: capa superior con clase disbaled -->
+                  <div class="d-inline-block disabled">
+                    <button type="button" class="btn btn-white btn-link">
+                       <span class="icono fas fa-address-card" aria-hidden='true'></span>
+                       <span class="btn_title">.disabled button.btn.btn-white.btn-link</span>
+                    </button>
+                  </div>
+                </div>
+                <!-- :: /.page-links-->
+              </article>
+              <!-- :: /.art_links -->
+
+<!-- :: MODALES -->
+              <article class="art_modales d-flex w-100 flex-wrap mt-3 pl-0 pr-0 mt-3">
+                <h4 class="h2 w-100 pl-2">Modales</h4>
+                <div class="botonera_modales d-flex w-100">
+                  <!--
+                      [obligatorio] data-modal_target     : id de la modal que se va a montar
+                      [opcional] data-modal_title         : titulo de la modal
+                      [opcional] data-modal_tipo          : tipo de pintado de modal .modal_type_(primary,secondary,success,danger,warning,info,light,dark,custom)
+                      [opcional] data-modal_size          : tamaños bootstrap en .modal-dialog: modal-xl:1140px, modal-lg:800px, modal-md/default:500, modal-sm:300px
+                      [opcional] data-modal_discriminador : clase para discriminar en los eventos de dicha modal, si es necesario, para aplicacion de plugins, etc..
+                      [opcional] data-modal_datos         : datos de transmision a la modal, que pueden ser necesarios en el pintado del html (JSON)
+                      [opcional] data-modal_footer        : Elimina el footer de la modal (botonera inferior) si su valor es "false", para usar botones propios por ejemplo
+                      [obligatorio] data-modal_html       : id del tag html en donde se encuentre el contenido de la modal (los plugins se lanzarán desde los eventos de la modal), si es necesario
+                  -->
+                 <button class="btn btn-primary modal_js"
+                   data-modal_title="Título de prueba"
+                   data-modal_size="modal-lg"
+                   data-modal_target="#exampleModalCenter"
+                   data-modal_tipo="warning"
+                   data-modal_discriminador="modal_de_prueba"
+                   data-modal_datos='[{"nombre":"prueba_nombre_00","direccion":"prueba_direcccion_00"},{"nombre":"prueba_nombre_01","direccion":"prueba_direcccion_01"}]'
+                   data-modal_html="#modal_html"
+                 >Lanza modal (.modal_js)</button>
+                </div>
+                <!-- :: /.botonera_modales -->
+                <div id="modal_html" class="d-none" aria-hidden="true">
+                   <span>Prueba de contenido en la modal</span>
+                </div>
+                <!-- ::/#modal_html -->
+              </article>
+              <!-- :: /.art_modales -->
+
+            </div>
+            <!-- :: /.cont_botones -->
+          </section>
+          <!-- :: /.container -->
+
+<!-- :: FORMS COMPONENTES -->
+          <section id="capa_componentes" class="sct_componentes container-fluid mt-3" aria-labelledby="sct_componentes_title">
+            <h3 id="sct_componentes_title" class="h2 col-12 pl-2">FORMS Componentes</h3>
+            <div class="cont_entradas article d-flex flex-wrap col-lg-12 col-md-12 col-sm-12 border">
+<!-- :: SELECT -->
+              <div class="cont_form_group col-lg-3 col-md-6 col-sm-12 mb-4">
+                <div class="form-group cont_selectPicker">
+                  <label for="select_prueba_00" class="bmd-label-floating">.cont_selectPicker</label>
+                  <select id="select_prueba_00" name="select_prueba_00" class="form-control">
+                    <option value="" selected>&nbsp;</option>
+                    <option value="1">option 1</option>
+                    <option value="2">option 2</option>
+                    <option value="3">option 3</option>
+                  </select>
+                  <span class="bmd-help">Prueba de ayuda en select selectPicker</span>
+                </div>
+                <!-- :: /.form-group -->
+              </div>
+              <!-- :: /.cont_form_group-->
+<!-- :: SELECT -->
+              <div class="cont_form_group col-lg-3 col-md-6 col-sm-12 mb-4">
+                <div class="form-group cont_selectPicker">
+                  <label for="select_prueba_00" class="bmd-label-floating">.cont_selectPicker livesearch</label>
+                  <select id="select_prueba_00" name="select_prueba_00" class="form-control" data-live-search="true">
+                    <option value="" selected>&nbsp;</option>
+                    <option value="1">option 1</option>
+                    <option value="2">option 2</option>
+                    <option value="3">option 3</option>
+                  </select>
+                  <span class="bmd-help">Prueba de ayuda en select selectPicker</span>
+                </div>
+                <!-- :: /.form-group -->
+              </div>
+              <!-- :: /.cont_form_group-->
+<!-- :: SELECT DISABLED -->
+              <div class="cont_form_group col-lg-3 col-md-6 col-sm-12 mb-4">
+                <div class="form-group cont_selectPicker">
+                  <label for="select_prueba_01" class="bmd-label-floating">.cont_selectPicker select[disabled]</label>
+                  <select id="select_prueba_01" name="select_prueba_01" class="form-control" disabled>
+                    <option value="" selected>Sin selección</option>
+                    <option value="1">option 1</option>
+                    <option value="2">option 2</option>
+                    <option value="3">option 3</option>
+                  </select>
+                  <span class="bmd-help">Prueba de ayuda en select disabled</span>
+                </div>
+                <!-- :: /.form-group -->
+              </div>
+              <!-- :: /.cont_form_group-->
+<!-- :: INPUT -->
+              <div class="cont_form_group col-lg-3 col-md-6 col-sm-12 mb-4">
+                <div class="form-group">
+                  <label for="input_prueba_00" class="bmd-label-floating">input</label>
+                  <input type="text" id="input_prueba_00" class="form-control" autocomplete="off" name="input_prueba_00" value="">
+                  <span class="bmd-help">Prueba de ayuda en input</span>
+               </div>
+              </div>
+              <!-- :: /.cont_form_group-->
+
+<!-- :: INPUT DISABLED-->
+              <div class="cont_form_group col-lg-3 col-md-6 col-sm-12 mb-4">
+                <div class="form-group">
+                  <label for="input_prueba_01" class="bmd-label-floating">input[disabled]</label>
+                  <input type="text" id="input_prueba_01" class="form-control" autocomplete="off" name="input_prueba_01" value="xxx" disabled="disabled">
+                  <span class="bmd-help">Prueba de ayuda en input</span>
+               </div>
+              </div>
+              <!-- :: /.cont_form_group-->
+
+<!-- :: INPUT CON ICONOS MIN-HEIGHT-->
+              <div class="cont_form_group input_con_iconos min-height col-lg-3 col-md-6 col-sm-12 mb-4">
+                <div class="form-group w-100">
+  <!-- :: RENAME -->
+                  <label for="input_con_iconos_00" class="bmd-label-floating">.input_con_iconos.min-height</label>
+                  <input class="form-control" type="text" id="input_con_iconos_00" value=""/>
+  <!-- :: RENAME -->
+                  <span class="bmd-help">Input con iconos altura de mínima</span>
+                </div>
+                <div class="cont_botonera_input d-flex flex-row justify-content-start">
+                  <button type="button" class="btn_cancelar btn btn-outline-secondary" aria-label="Cancelar la modificación del nombre." title="Cancelar">
+                    <span class="icono fas fa-times" aria-hidden="true"></span>
+                  </button>
+                  <button type="submit" class="btn_aceptar btn btn-primary" aria-label="Aceptar la modificación del nombre." title="Aceptar">
+                    <span class="icono fas fa-paper-plane" aria-hidden="true"></span>
+                  </button>
+                </div>
+                <!-- :: /.cont_botonera_input -->
+              </div>
+              <!-- :: /.cont_form_group -->
+
+<!-- :: SELECT MIN-HEIGHT-->
+              <div class="cont_form_group min-height col-lg-3 col-md-6 col-sm-12 mb-4">
+                <div class="form-group cont_select_min cont_selectPicker">
+                  <label for="select_prueba_02" class="bmd-label-floating">.min-height .cont_select.cont_select_min</label>
+                  <select id="select_prueba_02" name="select_prueba_02" class="form-control">
+                    <option value="" selected>&nbsp;</option>
+                    <option value="1">option 1</option>
+                    <option value="2">option 2</option>
+                    <option value="3">option 3</option>
+                  </select>
+                  <span class="bmd-help">Prueba de ayuda en select selectPicker</span>
+                </div>
+                <!-- :: /.form-group -->
+              </div>
+              <!-- :: /.cont_form_group-->
+
+<!-- :: INPUT DATE
+              <div class="cont_form_group col-lg-3 col-md-6 col-sm-12 mb-4">
+                <div class="form-group">
+                   <label for="harvestFrom" class="bmd-label-floating">input[type="datetime-local"]</label>
+                   <input id="harvestFrom" type="datetime-local" name="harvestFrom" class="form-control" autocomplete="off">
+                   <span class="bmd-help">
+                      Registros incluídos o modificados desde esta fecha
+                   </span>
+                </div>
+             </div>
+-->
+
+<!-- :: INPUT DATE CON PLUGIN -->
+            <div class="cont_form_group col-lg-3 col-md-6 col-sm-12 mb-4">
+              <div class="form-group">
+                <label for="harvestUntil" class="bmd-label-floating">
+                    input:[text] .datetimepicker-input
+                </label>
+                <div class="ctrl_datetimepicker input-group date" id="datetimepicker2" data-target-input="nearest">
+                  <input id="harvestUntil" type="text" name="harvestUntil" class="form-control datetimepicker-input" data-target="#datetimepicker2" autocomplete="off">
+                  <div class="input-group-append">
+                    <button type="button" class="btn btn-primary input-group-text" data-target="#datetimepicker2" data-toggle="datetimepicker" th:aria-label="#{general.datetimepicker.btn_open_datepicker.title}" th:title="#{general.datetimepicker.btn_open_datepicker.title}"><span aria-hidden="true" class="icono fas fa-calendar"></span></button>
+                    <button type="button" class="btn btn-outline-secondary btn_reset btn_reset_datepicker" th:aria-label="#{general.datetimepicker.btn_reset_datepicker.title}" th:title="#{general.datetimepicker.btn_reset_datepicker.title}"><span aria-hidden=true class="icono fas fa-times"></span></button>
+                  </div>
+                </div>
+                <span class="bmd-help">
+                    Ejemplo de aplicación plugin bs4 dominus tempus
+                </span>
+              </div>
+              <!-- :: /.form-group -->
+            </div>
+            <!-- :: /.cont_form_group -->
+
+
+<!-- :: CHECKBOXES -->
+              <fieldset class="cont_form_group col-md-12 mb-4">
+                <legend><span>Checkboxes</span></legend>
+
+                <div class="form-group cont_check cont_check_tunned d-inline-block mr-5">
+                  <label for="check_id_00">Label checkbox no-checked</label>
+                  <input type="checkbox" id='check_id_00' name="check_name_00" value="" />
+                </div>
+                <div class="form-group cont_check cont_check_tunned d-inline-block mr-5">
+                  <label for="check_id_01">Label checkbox checked</label>
+                  <input type="checkbox" id='check_id_01' name="check_name_00" checked value="" />
+                </div>
+                <div class="form-group cont_check cont_check_tunned d-inline-block  mr-5">
+                  <input type="hidden" id="hidden_00"/> <!-- :: prueba de hidden no afecta a funcionalidad -->
+                  <label for="check_id_03">Label checkbox disabled</label>
+                  <input type="checkbox" id='check_id_03' name="check_name_00" disabled value="" />
+                </div>
+                <div class="form-group cont_check cont_check_tunned d-inline-block">
+                  <input type="hidden" id="hidden_01"/> <!-- :: prueba de hidden no afecta a funcionalidad -->
+                  <label for="check_id_02">Label checkbox checked disabled</label>
+                  <input type="checkbox" id='check_id_02' name="check_name_00" checked disabled value="" />
+                </div>
+
+              </fieldset>
+              <!-- :: /.cont_form_group-->
+
+<!-- :: RADIO BUTTONS -->
+              <fieldset class="cont_form_group cont_radio_tunned col-md-12 mb-4">
+                <legend><span>Radio buttons</span></legend>
+                <div class="form-group d-inline-block cont_radio d-inline-block mr-5">
+                  <label for="radio_id_00">Label radio 00</label>
+                  <input type="radio" id='radio_id_00' name="radio_name" value="0" />
+                </div>
+                <div class="form-group d-inline-block cont_radio d-inline-block mr-5">
+                  <label for="radio_id_01">Label radio 01</label>
+                  <input type="radio" id='radio_id_01' name="radio_name" value="1" />
+                </div>
+                <div class="form-group d-inline-block cont_radio d-inline-block mr-5">
+                  <label for="radio_id_02">Label radio 02</label>
+                  <input type="radio" id='radio_id_02' name="radio_name" value="2" checked/>
+                </div>
+                <div class="form-group d-inline-block cont_radio d-inline-block mr-5">
+                  <label for="radio_id_03">Label radio 03</label>
+                  <input type="radio" id='radio_id_03' name="radio_name" value="3" />
+                </div>
+              </fieldset>
+              <!-- :: /.cont_form_group-->
+
+            </div>
+            <!-- :: /.cont_entradas -->
+          </section>
+          <!-- :: /.container -->
+
+<!-- :: BIG TABLE  -->
+          <section class="container-fluid">
+            <h2 id="title_table" class="col-12 pl-2">TABLAS</h2>
+            <div class="article d-flex flex-wrap col-lg-12 col-md-12 col-sm-12 border mb-5">
+              <h3 class="h2 col-12 pl-2">.table_big_00</h3>
+              <div class="col-md-12">
+
+                <div id="cont_table_0" class="cont_table_big_00 col-md-12">
+                  <h4 id="label_table_0" class="h3 tb_00_legend col-md-12">
+                    <span class="cont_title">
+                      <span class="tb_00_legend-title font-weight-bold">Biblioteca:</span>
+                      <span class="tb_00_legend-value">República Dominicana</span>
+                    </span>
+                  </h4>
+                  <!-- ::  data-btn_in_modal= columna para boton de aparición de modal con resto de datos | data-view_in_modal= columnas a mostrar en la modal, por tipo o clase, separadas por comas -->
+                  <div id="table_0" class="table_big_00 col-md-12 pl-0 pr-0" data-btn_in_modal=".col_5" data-view_in_modal=".col_6,.col_7,.col_8,.col_9,.col_10,.col_11,.col_12,.col_13,.col_14,.col_15,.col_16">
+                    <!-- :: TITULOS DESKTOP -->
+                    <ul class="tb_00_titles desktop_flex d-flex col-md-12 m-0">
+                      <li class="type_title">
+                        <span class="title font-weight-bold">Sucursal</span>
+                      </li>
+                      <li class="type_title col_0">
+                        <span class="title font-weight-bold">Disponibilidad</span>
+                      </li>
+                      <li class="type_title col_1">
+                        <span class="title font-weight-bold">Nº reservas actuales </span>
+                      </li>
+                      <li class="type_title col_2">
+                        <span class="title font-weight-bold">Localización</span>
+                      </li>
+                      <li class="type_title col_3">
+                        <span class="title font-weight-bold">Signatura</span>
+                      </li>
+                      <li class="type_title col_4">
+                        <span class="title font-weight-bold">Tipo de ejemplar</span>
+                      </li>
+                      <li class="type_title col_5">
+                        <span class="title font-weight-bold">Soporte</span>
+                      </li>
+                      <li class="type_title col_6 tb_00_in_modal">
+                        <span class="title font-weight-bold">Código de barras</span>
+                      </li>
+                      <li class="type_title col_7 tb_00_in_modal">
+                        <span class="title font-weight-bold">Código de localización</span>
+                      </li>
+                      <li class="type_title col_8 tb_00_in_modal">
+                        <span class="title font-weight-bold">Fecha de registro</span>
+                      </li>
+                      <li class="type_title col_9 tb_00_in_modal">
+                        <span class="title font-weight-bold">Código de sucursal</span>
+                      </li>
+                      <li class="type_title col_10 tb_00_in_modal">
+                        <span class="title font-weight-bold">Signatura supl.</span>
+                      </li>
+                      <li class="type_title col_11 tb_00_in_modal">
+                        <span class="title font-weight-bold">Estado</span>
+                      </li>
+                      <li class="type_title col_12 tb_00_in_modal">
+                        <span class="title font-weight-bold">Nº de registro</span>
+                      </li>
+                      <li class="type_title col_13 tb_00_in_modal">
+                        <span class="title font-weight-bold">Situación ejemplar</span>
+                      </li>
+                      <li class="type_title col_14 tb_00_in_modal">
+                        <span class="title font-weight-bold">Identificador de volumen</span>
+                      </li>
+                      <li class="type_title col_15 tb_00_in_modal">
+                        <span class="title font-weight-bold">Código 1 de ejemplar</span>
+                      </li>
+                      <li class="type_title tb_00_cont_botonera">
+                        <div class="contenedor">
+                          <div class="cont_button">
+                            <div class="title w-100 desktop">
+                              <span class="btn_title">Solicitar</span>
+                            </div>
+                          </div>
+                          <!-- :: /.cont_button -->
+                        </div>
+                      </li>
+                    </ul>
+                    <!-- :: /TITULOS DESKTOP -->
+                    <div class="cont_data col-md-12">
+                      <ul class="tb_00_data d-flex col-md-12 m-0 p-0">
+                        <li class="type_data">
+                          <span class="title font-weight-bold mobile">Código de sucursal</span>
+                          <span class="data">Santo Domingo</span>
+                        </li>
+                        <li class="type_data col_0">
+                          <span class="title mobile">Disponibilidad</span>
+                          <span class="data">Disponible</span>
+                        </li>
+                        <li class="type_data col_1 cont_btn_desplegar">
+                          <span class="title mobile">Nº reservas actuales </span>
+                          <span class="data">0</span>
+                          <!--:: este boton solo aparece en mobile para la vista de ciertas columnas en un collapse -->
+                          <button type="button" class="tb_00_btn_collapse mobile" data-target=".col_2,.col_3,.col_4,.col_5,.col_6,.col_7,.col_8,.col_9,.col_10,.col_11,.col_12,.col_13,.col_14,.col_15,.col_16" aria-expanded="false" aria-label="Expandir info">
+                            <span class="icono fas fa-angle-down text-danger" aria-hidden="true"></span>
+                          </button>
+                        </li>
+                        <li class="type_data col_2">
+                          <span class="title mobile">Localización</span>
+                          <span class="data">Sala infantil</span>
+
+                        </li>
+                        <li class="type_data col_3">
+                          <span class="title mobile">Signatura</span>
+                          <span class="data">CCESD-AECID I 863.3 C419dyM</span>
+                        </li>
+                        <li class="type_data col_4">
+                          <span class="title mobile">Tipo de ejemplar</span>
+                          <span class="data">Prestable</span>
+                        </li>
+                        <li class="type_data col_5">
+                          <span class="title mobile">Soporte</span>
+                          <div class="data">
+                          </div>
+                        </li>
+                        <li class="type_data col_6">
+                          <span class="title mobile">Código de barras</span>
+                          <span class="data">141010200</span>
+                        </li>
+                        <li class="type_data col_7">
+                          <span class="title mobile">Código de localización</span>
+                          <span class="data">INF</span>
+
+                        </li>
+                        <li class="type_data col_8">
+                          <span class="title mobile">Fecha de registro</span>
+                          <span class="data"></span>
+                        </li>
+                        <li class="type_data col_9">
+                          <span class="title mobile">Código de sucursal</span>
+                          <span class="data">SD-RDO</span>
+                        </li>
+                        <li class="type_data col_10">
+                          <span class="title mobile">Signatura supl.</span>
+                          <span class="data">De 12-14 años (Marbete azul)</span>
+                        </li>
+                        <li class="type_data col_11">
+                          <span class="title mobile">Estado</span>
+                          <span class="data"></span>
+                        </li>
+                        <li class="type_data col_12">
+                          <span class="title mobile">Nº de registro</span>
+                          <span class="data"></span>
+                        </li>
+                        <li class="type_data col_13">
+                          <span class="title mobile">Situación ejemplar</span>
+                          <span class="data">Circulación</span>
+                        </li>
+                        <li class="type_data col_14">
+                          <span class="title mobile">Identificador de volumen</span>
+                          <span class="data"></span>
+                        </li>
+                        <li class="type_data col_15">
+                          <span class="title mobile">Código 1 de ejemplar</span>
+                          <span class="data"></span>
+                        </li>
+                        <li class="type_data tb_00_cont_botonera">
+                          <div class="contenedor">
+                            <div class="cont_button">
+                              <div class="title w-100 mobile">
+                                <span class="btn_title">Solicitar</span>
+                              </div>
+                              <form action="#" method="post">
+                                <input type="hidden" name="_csrf" value="">
+                                <input type="hidden" name="selectedCopyId" value="">
+                                <input type="hidden" name="selectedTitleId" value="">
+                                <input type="hidden" name="selectedLibraryId" value="">
+                                <input type="hidden" name="selectedBranchId" value="">
+                                <input type="hidden" name="selectedDetailId" value="">
+                                <input type="hidden" name="tabId" value="">
+                                <button type="submit" class="btn btn-outline-secondary" aria-label="Solicitar" title="Solicitar">
+                                  <span class="icono fas fa-shopping-cart fa-lg p-2" aria-hidden="true"></span>
+                                </button>
+                              </form>
+                            </div>
+                            <!-- :: /.cont_button -->
+                          </div>
+                          <!-- :: /.contenedor -->
+                        </li>
+                      </ul>
+                      <!-- :: /.tb_00_data -->
+                    </div>
+                    <!-- :: /.cont_data -->
+                  </div>
+                  <!-- :: /.table_big_00 -->
+                </div>
+                <!-- :: /.cont_table_big_00 -->
+
+                <div id="cont_table_1" class="cont_table_big_00 col-md-12">
+                 <!-- ::  data-btn_in_modal= columna para boton de aparición de modal con resto de datos | data-view_in_modal= columnas a mostrar en la modal, por tipo o clase, separadas por comas -->
+                  <div id="table_1" class="table_big_00 col-md-12 pl-0 pr-0" data-btn_in_modal=".col_5" data-view_in_modal=".col_6,.col_7,.col_8,.col_9,.col_10,.col_11,.col_12,.col_13,.col_14,.col_15,.col_16">
+                    <div class="cont_data col-md-12">
+                      <ul class="tb_00_data d-flex col-md-12 m-0 p-0">
+                        <li class="type_data">
+                          <span class="title font-weight-bold mobile">Código de sucursal</span>
+                          <span class="data">Santo Domingo</span>
+                        </li>
+                        <li class="type_data col_0">
+                          <span class="title mobile">Disponibilidad</span>
+                          <span class="data">Disponible</span>
+                        </li>
+                        <li class="type_data col_1  cont_btn_desplegar">
+                          <span class="title mobile">Nº reservas actuales </span>
+                          <span class="data">0</span>
+                          <!--:: este boton solo aparece en mobile para la vista de ciertas columnas en un collapse -->
+                          <button type="button" class="tb_00_btn_collapse mobile" data-target=".col_2,.col_3,.col_4,.col_5,.col_6,.col_7,.col_8,.col_9,.col_10,.col_11,.col_12,.col_13,.col_14,.col_15,.col_16" aria-expanded="false" aria-label="Expandir info">
+                            <span class="icono fas fa-angle-down text-danger" aria-hidden="true"></span>
+                          </button>
+                        </li>
+                        <li id="table_value_1_locationDescription" class="type_data col_2">
+                          <span class="title mobile">Localización</span>
+                          <span class="data">Sala infantil</span>
+                        </li>
+                        <li class="type_data col_3">
+                          <span class="title mobile">Signatura</span>
+                          <span class="data">CCESD-AECID I 863.3 C419dyM</span>
+                        </li>
+                        <li class="type_data col_4">
+                          <span class="title mobile">Tipo de ejemplar</span>
+                          <span class="data">Prestable</span>
+                        </li>
+                        <li class="type_data col_5">
+                          <span class="title mobile">Soporte</span>
+                          <span class="data">
+                          </span>
+                        </li>
+                        <li class="type_data col_6">
+                          <span class="title mobile">Código de barras</span>
+                          <span class="data">141010201</span>
+                        </li>
+                        <li class="type_data col_7">
+                          <span class="title mobile">Código de localización</span>
+                          <span class="data">INF</span>
+                        </li>
+                        <li class="type_data col_8">
+                          <span class="title mobile">Fecha de registro</span>
+                          <span class="data"></span>
+                        </li>
+                        <li class="type_data col_9">
+                          <span class="title mobile">Código de sucursal</span>
+                          <span class="data">SD-RDO</span>
+                        </li>
+                        <li class="type_data col_10">
+                          <span class="title mobile">Signatura supl.</span>
+                          <span class="data">De 12-14 años (Marbete azul)</span>
+                        </li>
+                        <li class="type_data col_11">
+                          <span class="title mobile">Estado</span>
+                          <span class="data"></span>
+                        </li>
+                        <li class="type_data col_12">
+                          <span class="title mobile">Nº de registro</span>
+                          <span class="data"></span>
+                        </li>
+                        <li class="type_data col_13">
+                          <span class="title mobile">Situación ejemplar</span>
+                          <span class="data">Circulación</span>
+                        </li>
+                        <li class="type_data col_14">
+                          <span class="title mobile">Identificador de volumen</span>
+                          <span class="data"></span>
+                        </li>
+                        <li class="type_data col_15">
+                          <span class="title mobile">Código 1 de ejemplar</span>
+                          <span class="data"></span>
+                        </li>
+                        <li class="type_data tb_00_cont_botonera">
+                          <div class="contenedor">
+                            <div class="cont_button">
+                              <div class="title w-100 mobile">
+                                <span class="btn_title">Solicitar</span>
+                              </div>
+                              <form action="#" method="post">
+                                <input type="hidden" name="_csrf" value="">
+                                <input type="hidden" name="selectedCopyId" value="">
+                                <input type="hidden" name="selectedTitleId" value="">
+                                <input type="hidden" name="selectedLibraryId" value="">
+                                <input type="hidden" name="selectedBranchId" value="">
+                                <input type="hidden" name="selectedDetailId" value="">
+                                <input type="hidden" name="tabId" value="">
+                                <button type="submit" class="btn btn-outline-secondary" aria-label="Solicitar" title="Solicitar">
+                                  <span class="icono fas fa-shopping-cart fa-lg p-2" aria-hidden="true"></span>
+                                </button>
+                              </form>
+                            </div>
+                            <!-- :: /.cont_button -->
+                          </div>
+                          <!-- ::/.contenedor -->
+                        </li>
+                      </ul>
+                      <!-- :: /.tb_00_data -->
+                    </div>
+                    <!-- :: /.cont_data -->
+                  </div>
+                  <!-- :: /.table_big_00 -->
+                </div>
+                <!-- :: /.cont_table_big_00 -->
+
+                <div id="cont_table_2" class="cont_table_big_00 col-md-12">
+                  <h4 id="label_table_2" class="h3 tb_00_legend col-md-12">
+                    <span class="cont_title">
+                      <span class="tb_00_legend-title font-weight-bold">Biblioteca:</span>
+                      <span class="tb_00_legend-value">El Salvador</span>
+                    </span>
+                  </h4>
+                  <!-- ::  data-btn_in_modal= columna para boton de aparición de modal con resto de datos | data-view_in_modal= columnas a mostrar en la modal, por tipo o clase, separadas por comas -->
+                  <div id="table_2" class="table_big_00 col-md-12 pl-0 pr-0" data-btn_in_modal=".col_5" data-view_in_modal=".col_6,.col_7,.col_8,.col_9,.col_10,.col_11,.col_12,.col_13,.col_14,.col_15,.col_16">
+                    <!-- :: TITULOS DESKTOP -->
+                    <ul class="tb_00_titles desktop_flex d-flex col-md-12 m-0">
+                      <li id="table_2_branchDescription" class="type_title">
+                        <span class="title font-weight-bold">Sucursal</span>
+                      </li>
+                      <li id="table_2_availability" class="type_title col_0">
+                        <span class="title font-weight-bold">Disponibilidad</span>
+                      </li>
+                      <li id="table_2_numberOfReserves" class="type_title col_1">
+                        <span class="title font-weight-bold">Nº reservas actuales </span>
+                      </li>
+                      <li id="table_2_locationDescription" class="type_title col_2">
+                        <span class="title font-weight-bold">Localización</span>
+                      </li>
+                      <li id="table_2_signature" class="type_title col_3">
+                        <span class="title font-weight-bold">Signatura</span>
+                      </li>
+                      <li id="table_2_typeDescription" class="type_title col_4">
+                        <span class="title font-weight-bold">Tipo de ejemplar</span>
+                      </li>
+                      <li id="table_2_mediaDescription" class="type_title col_5">
+                        <span class="title font-weight-bold">Soporte</span>
+                      </li>
+                      <li id="table_2_barcode" class="type_title col_6 tb_00_in_modal">
+                        <span class="title font-weight-bold">Código de barras</span>
+                      </li>
+                      <li id="table_2_location" class="type_title col_7 tb_00_in_modal">
+                        <span class="title font-weight-bold">Código de localización</span>
+                      </li>
+                      <li id="table_2_registrationDate" class="type_title col_8 tb_00_in_modal">
+                        <span class="title font-weight-bold">Fecha de registro</span>
+                      </li>
+                      <li id="table_2_branch" class="type_title col_9 tb_00_in_modal">
+                        <span class="title font-weight-bold">Código de sucursal</span>
+                      </li>
+                      <li id="table_2_supplementarySignature" class="type_title col_10 tb_00_in_modal">
+                        <span class="title font-weight-bold">Signatura supl.</span>
+                      </li>
+                      <li id="table_2_state" class="type_title col_11 tb_00_in_modal">
+                        <span class="title font-weight-bold">Estado</span>
+                      </li>
+                      <li id="table_2_registryNumber" class="type_title col_12 tb_00_in_modal">
+                        <span class="title font-weight-bold">Nº de registro</span>
+                      </li>
+                      <li id="table_2_situationDescription" class="type_title col_13 tb_00_in_modal">
+                        <span class="title font-weight-bold">Situación ejemplar</span>
+                      </li>
+                      <li id="table_2_volumeIdentifier" class="type_title col_14 tb_00_in_modal">
+                        <span class="title font-weight-bold">Identificador de volumen</span>
+                      </li>
+                      <li id="table_2_internalCode" class="type_title col_15 tb_00_in_modal">
+                        <span class="title font-weight-bold">Código 1 de ejemplar</span>
+                      </li>
+                      <li id="table_2_title_8" class="type_title tb_00_cont_botonera">
+                        <div class="contenedor">
+                          <div class="cont_button">
+                            <div class="title w-100 desktop">
+                              <span class="btn_title">Solicitar</span>
+                            </div>
+                          </div>
+                          <!-- :: /.cont_button -->
+                        </div>
+                      </li>
+                    </ul>
+                    <!-- :: /TITULOS DESKTOP -->
+                    <div class="cont_data col-md-12">
+                      <ul class="tb_00_data d-flex col-md-12 m-0 p-0">
+                        <li class="type_data">
+                          <span class="title font-weight-bold mobile">Código de sucursal</span>
+                          <span class="data">San Salvador</span>
+                        </li>
+                        <li class="type_data col_0">
+                          <span class="title mobile">Disponibilidad</span>
+                          <span class="data">Disponible</span>
+                        </li>
+                        <!-- :: COLUMNA CON BOTON PARA DESPLIEGUE EN MOBILE -->
+                        <li class="type_data col_1 cont_btn_desplegar">
+                          <span class="title mobile">Nº reservas actuales </span>
+                          <span class="data">0</span>
+                          <!--:: este boton solo aparece en mobile para la vista de ciertas columnas en un collapse -->
+                          <button type="button" class="tb_00_btn_collapse mobile" data-target=".col_2,.col_3,.col_4,.col_5,.col_6,.col_7,.col_8,.col_9,.col_10,.col_11,.col_12,.col_13,.col_14,.col_15,.col_16" aria-expanded="false" aria-label="Expandir info">
+                            <span class="icono fas fa-angle-down text-danger" aria-hidden="true"></span>
+                          </button>
+                        </li>
+                        <li class="type_data col_2">
+                          <span class="title mobile">Localización</span>
+                          <span class="data">Sala de lectura</span>
+                        </li>
+                        <li class="type_data col_3">
+                          <span class="title mobile">Signatura</span>
+                          <span class="data">L-1232</span>
+                        </li>
+                        <li class="type_data col_4">
+                          <span class="title mobile">Tipo de ejemplar</span>
+                          <span class="data">Prestable</span>
+                        </li>
+                        <li class="type_data col_5">
+                          <span class="title mobile">Soporte</span>
+                          <span class="data"></span>
+                        </li>
+                        <li class="type_data col_6">
+                          <span class="title mobile">Código de barras</span>
+                          <span class="data">291004812</span>
+                        </li>
+                        <li class="type_data col_7">
+                          <span class="title mobile">Código de localización</span>
+                          <span class="data">SALA</span>
+                        </li>
+                        <li class="type_data col_8">
+                          <span class="title mobile">Fecha de registro</span>
+                          <span class="data"></span>
+                        </li>
+                        <li class="type_data col_9">
+                          <span class="title mobile">Código de sucursal</span>
+                          <span class="data">SS-SAL</span>
+                        </li>
+                        <li class="type_data col_10">
+                          <span class="title mobile">Signatura supl.</span>
+                          <span class="data"></span>
+                        </li>
+                        <li class="type_data col_11">
+                          <span class="title mobile">Estado</span>
+                          <span class="data"></span>
+                        </li>
+                        <li class="type_data col_12">
+                          <span class="title mobile">Nº de registro</span>
+                          <span class="data"></span>
+                        </li>
+                        <li class="type_data col_13">
+                          <span class="title mobile">Situación ejemplar</span>
+                          <span class="data">Circulación</span>
+                        </li>
+                        <li class="type_data col_14">
+                          <span class="title mobile">Identificador de volumen</span>
+                          <span class="data"></span>
+                        </li>
+                        <li class="type_data col_15">
+                          <span class="title mobile">Código 1 de ejemplar</span>
+                          <span class="data"></span>
+                        </li>
+                        <li class="type_data tb_00_cont_botonera">
+                          <div class="contenedor">
+                            <div class="cont_button">
+                              <div class="title w-100 mobile">
+                                <span class="btn_title">Solicitar</span>
+                              </div>
+                              <form action="#" method="post">
+                                <input type="hidden" name="_csrf" value="">
+                                <input type="hidden" name="selectedCopyId" value="">
+                                <input type="hidden" name="selectedTitleId" value="">
+                                <input type="hidden" name="selectedLibraryId" value="">
+                                <input type="hidden" name="selectedBranchId" value="">
+                                <input type="hidden" name="selectedDetailId" value="">
+                                <input type="hidden" name="tabId" value="">
+                                <button type="submit" class="btn btn-outline-secondary" aria-label="Solicitar" title="Solicitar">
+                                  <span class="icono fas fa-shopping-cart fa-lg p-2" aria-hidden="true"></span>
+                                </button>
+                              </form>
+                            </div>
+                            <!-- :: /.cont_button -->
+                          </div>
+                        </li>
+                      </ul>
+                      <!-- :: /.tb_00_data -->
+                    </div>
+                    <!-- :: /.cont_data -->
+                  </div>
+                  <!-- :: /.table_big_00 -->
+                </div>
+                <!-- :: /.cont_table_big_00 -->
+
+              </div>
+            </div>
+          </section>
+          <!-- :: /.container -->
+      </main>
+      <footer class="footer_principal">
+         <th:block th:insert="/public/home/footer"></th:block>
+      </footer>
+      <th:block th:insert="/public/home/technicalfooter" th:with="page='opac-maquetacion-1'"></th:block>
+
+<!-- :: /[layout/maquetacion1.html] -->
+   </body>
+</html>

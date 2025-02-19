@@ -1,0 +1,8 @@
+<!-- :: [reader/renew/fragments/copyLoansState.html] -->
+<th:block th:fragment="frag(loan)">
+	<span th:if="${loan.returnDate!=null}" th:text="${#dates.format(loan.returnDate, 'dd/MM/yyyy')}" class="mx-1"></span>
+	<span th:if="${loan.attributes.get('typeDescription')!=null}" th:text="${loan.attributes.get('typeDescription')}" class="mx-1"></span>
+	<span th:if="${loan.volumeIdentifier!=null}" th:text="${loan.volumeIdentifier}" class="reservation-volume-id mx-1"></span>
+	<span th:if="${loan.attributes.get('locationDescription')!=null}" th:text="${loan.attributes.get('locationDescription')}" class="reservation-location mx-1"></span>
+</th:block>
+<!-- :: [reader/renew/fragments/copyLoansState.html] -->

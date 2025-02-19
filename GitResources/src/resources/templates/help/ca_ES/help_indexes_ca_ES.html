@@ -1,0 +1,152 @@
+<th:block th:insert="/public/home/html_type"></th:block>
+<th:block th:insert="/public/home/technicalheader::main" th:with="page=${'opac-help-index-es_ES'}"></th:block>
+<script type="text/javascript">
+	var menu = document.getElementById('menu');
+	Stickyfill.add(menu);
+</script>
+<body>
+
+<div id="burger-menu" class="burger-menu">
+  <span></span>
+  			<div id="menu2" class="menu menu2">
+			<div class=""><nav class="sn-contents" aria-label="Secondary">
+      <ul class="sidenav--list">
+<li><a href="#searchIndexes">Cerca d'Índex</a></li>
+					<ul class="tab3-help"><li><a href="#typeSearch">Tipus de cerques</a></li>
+						<li><a href="#moveList">Com moure's per la llista de resultats localitzats a la cerca</a></li>
+						<li><a href="#locateRecords">Com localitzar els registres associats als resultats de les cerques a l'índex</a></li>
+					</ul>
+						
+				
+				<li><a href="#findAuthorities">Accés a la cerca a les autoritats</a></li>
+				<li><a href="#lastSearch">Accés a les últimes cerques realitzades</a></li>	
+				<li><a href="#historySearch">Accés a cerques desades</a></li>	
+				<li><a href="#favorites">Accés als preferits</a></li>
+				<li><a href="#profile">Accés al meu perfil</a></li>
+				<li><a href="#home">Accés a la pàgina d'inici</a></li></ul></nav>
+</div>
+		</div>
+</div>
+
+	<div class="wrapper cf">
+		
+		<div id="menu" class="menu">
+			<div class="sidenav"><nav class="sn-contents" aria-label="Secondary">
+      <ul class="sidenav--list">
+<li><a href="#searchIndexes">Cerca d'Índex</a></li>
+					<ul class="tab3-help"><li><a href="#typeSearch">Tipus de cerques</a></li>
+						<li><a href="#moveList">Com moure's per la llista de resultats localitzats a la cerca</a></li>
+						<li><a href="#locateRecords">Com localitzar els registres associats als resultats de les cerques a l'índex</a></li>
+					</ul>
+						
+				
+				<li><a href="#findAuthorities">Accés a la cerca a les autoritats</a></li>
+				<li><a href="#lastSearch">Accés a les últimes cerques realitzades</a></li>	
+				<li><a href="#historySearch">Accés a cerques desades</a></li>	
+				<li><a href="#favorites">Accés als preferits</a></li>
+				<li><a href="#profile">Accés al meu perfil</a></li>
+				<li><a href="#home">Accés a la pàgina d'inici</a></li></ul></nav>
+</div>
+		</div>
+		<div class="content margen5">
+			<a name="top"></a>
+			<a name="searchIndexes"></a>
+			<h2 class="title-help">Cerca a índex</h2>
+			<p>L'opció Cerca a índex permet realitzar una cerca per localitzar paraules o patrons de paraules similars al terme o termes introduïts.</p>
+			<p>Els resultats localitzats a la cerca s'ordenen per defecte de forma <span class="text-bold-help">alfabètica</span>.</p>
+			<a name="typeSearch"></a>
+			<h4 class="title-help">Tipus de cerques</h4>
+			<p>Es poden realitzar les següents cerques:</p>
+			<ul class="tab5-help margen10">
+				<li>Cerques en un camp concret</li>
+				<li>Cerques en tots els camps</li>
+				<li>Cerques que continguin termes similars al terme de cerca introduït</li>
+				<li>Cerques que comencin per</li>
+			</ul>
+			<p class="tab3-help paragraph-help">Cerques en un camp concret</p>
+			<p class="tab4-help">Per defecte, la cerca a l'índex es realitza al camp Títol. Per fer una cerca a qualsevol altre camp, seleccioneu el que us interessi a l'opció Selecció de camps. Per defecte, els camps en què es pot realitzar la cerca són els següents:</p>
+			<span class="tab5-help margen10"><img th:src="@{/img/help/comb-filters-indexes.png}" alt="Combobox de filtres d'índex" width="350px"/></span>
+			<p class="tab4-help">La cerca que realitzeu només tindrà en compte el camp seleccionat.</p>
+			<p class="tab3-help paragraph-help">b. Cerques en tots els camps</p>
+			<p class="tab4-help">Si voleu que la cerca es realitzi a qualsevol camp, seleccioneu l'opció Tots els camps.</p>
+			<span class="tab5-help margen5"><img th:src="@{/img/help/selection-fields.png}" alt="Selecció de camps"  width="350px"/></span>
+			<p class "tab4-help">La cerca que realitzeu tindrà en compte tots els camps de la base de dades que estiguin definits com a buscablEs.</p>
+			<p class="tab3-help paragraph-help">c. Cerques que continguin termes similars al terme de cerca introduït</p>
+			<p class="tab4-help">Per localitzar a l'índex registres que continguin termes similars al terme introduït, utilitzeu l'opció <i>Conté en Selecció de filtres</i>.</p>
+			<span class="tab5-help margen5"><img th:src="@{/img/help/filter-contains.png}" alt="Filtre de cerca Comença per" width="350px"/></span>
+			<p class="tab3-help paragraph-help">d. Cerques que comencin per</p>
+			<p class="tab4-help">Per localitzar a l'índex registres que comencin per termes a la cadena de cerca introduïda, seleccioneu l'opció <i>Comença per en Selecció de filtres</i>.</p>
+			<span class="tab5-help margen10">
+			<img th:src="@{/img/help/filters-term.png}" alt="Filtre de cerca per terme" width="320px"/></span>
+			<a name="moveList"></a>
+			<h4 class="title-help">Com moure's per la llista de resultats localitzats a la cerca</h4>
+			<p>Per defecte, el resultat de la cerca es mostra ordenat en grups de 10, però existeix la possibilitat d'agrupar els resultats de 25 en 25 o de 35 en 35.</p>
+			<span class="tab3-help margen10"><img th:src="@{/img/help/results-by-page.png}" alt="Resultats per pàgina" width="320px"/></span>
+			<p>Per moure's pels diferents grups,</p>
+			<ul class="tab5-help margen5">
+				<li>Faci clic en <img th:src="@{/img/help/next.png}" alt="Següent" width="80px"/> per moure's a la següent pàgina.</li>
+				<li>Faci clic en <img th:src="@{/img/help/back.png}" alt="Anterior" width="80px"/> per moure's a la pàgina anterior.</li>
+				<li>Faci clic en el nº de pàgina que li interessi visualitzar
+					<span class="tab3-help"><img th:src="@{/img/help/number-by-page.png}" alt="Número de pàgina" width="320px"/></span>
+				</li>
+				<li>Faci clic en el nº 1 per visualitzar la primera pàgina
+					<span class="tab3-help"><img th:src="@{/img/help/first-page.png}" alt="Primera pàgina" width="320px"/></span>
+				</li>
+ 				<li>Faci clic en el nº anterior a Següent per anar a l'última pàgina
+ 					<span class="tab3-help"><img th:src="@{/img/help/last-page.png}" alt="Última pàgina" width="320px"/></span>
+ 				</li>
+			</ul>
+			<a name="locateRecords"></a>
+			<h4 class="title-help">Com localitzar els registres associats als resultats de les cerques a l'índex</h4>
+			<p>Un cop hàgiu realitzat la consulta que us interessi a l'índex, es mostra una llista d'autoritats que es corresponen amb la cerca introduïda i s'indica el núm. de registres que contenen els termes localitzats.</p>
+			<p class="tab2-help"><b>Exemple:</b></p>
+			<p class="tab4-help margen5">Es busquen termes similars que comencen per "quijote" al camp Títol.</p>
+			<span class="tab5-help margen5"><img th:src="@{/img/help/search-title.png}" alt="Cerca per títol" width="500px"/></span>
+			<p class="tab4-help margen5">Els termes localitzats es mostren en mode llista i s'indica el núm. de registres que els contenen:</p>
+			<span class="tab5-help margen5"><img th:src="@{/img/help/search-list.png}" alt="Llista de resultats" width="400px"/></span>
+			<p class="tab2-help margen5">Feu clic en la que us interessi per visualitzar els registres associats.</p>
+			<a name="findAuthorities"></a>
+			<h2 class="title-help">Accés a la cerca d'autoritats</h2>
+			<p>Per realitzar una cerca d'autoritats que permeti localitzar registres que contenen una autoritat específica, feu clic a l'opció <i>Cerca d'autoritats</i>.</p>
+			<a name="lastSearch"></a>
+			<h2 class="title-help">Accés a les últimes cerques realitzades</h2>
+			<p>Per visualitzar les <span class="text-bold-help">10</span> últimes cerques realitzades que han retornat resultats durant la sessió de l'Opac, feu clic a <i>Últimes cerques</i>.</p>
+			<a name="historySearch"></a>
+			<h2 class="title-help">Accés a les cerques desades</h2>
+			<p>Si voleu desar algunes de les cerques que heu realitzat per poder-les executar en un altre moment, feu clic a <i>Cerques desades</i>.</p>
+			<ul class="tab5-help">
+				<li>Per poder desar cerques és necessari que us identifiqueu prèviament.</li>
+			</ul>
+			<a name="favorites"></a>
+			<h2 class="title-help">Accés als preferits</h2>
+			<p>Per visualitzar els registres que heu marcat com a preferits, feu clic a <i>Preferits</i>.</p>
+			<a name="profile"></a>
+			<h2 class="title-help">Accés al meu perfil</h2>
+			<p>Fa clic a l'opció <i>El meu perfil</i> i identifiqueu-vos per poder accedir a les següents utilitats de <span class="text-bold-help">ODA</span>: </p>
+			<ul class="tab5-help margen5">
+				<li>Dades personals</li>
+				<li>Sol·licituds</li>
+				<li>Préstecs actius</li>
+				<li>Històric de préstecs</li>
+				<li>Renovar préstecs</li>
+				<li>Cancelar reserves</li>
+				<li>Desar cerques</li>
+				<li>Crear llistes de preferits</li>
+			</ul>
+			<p class="tab2-help">Per identificar-vos com a usuari podeu utilitzar qualsevol d'aquests 3 mètodes:</p>
+			<ul class="tab5-help margen5">
+				<li>núm. de carnet</li>
+				<li>correu electrònic que hàgiu proporcionat a la vostra biblioteca</li>
+				<li>telèfon mòbil que hàgiu proporcionat a la vostra biblioteca</li>
+			</ul>
+			<a name="home"></a>
+			<h2 class="title-help">Accés a la pàgina d'inici</h2>
+			<p>Per anar a la pàgina d'inici, feu clic a <i>Inici</i>.</p>
+			<p class="top-help"><a href="#top">Amunt</a></p>
+
+		</div>
+	</div>
+	<th:block th:insert="/public/home/technicalfooter" th:with="page='opac-dataprivacyterms'"/>
+</body>
+</html>
+</html>

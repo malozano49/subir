@@ -1,0 +1,49 @@
+<!-- :: /title/comments/formComments.html -->
+			<div class="comments--form comments--form--container">
+				<form id="form_addComent" th:action="@{${urlAddComment}}" th:object="${commentVO}" method="post">
+					<input type="hidden" name="oaiIdentifierB64" th:field="*{oaiIdentifierB64}"> 
+					<input type="hidden" name="id" th:value="*{id}" /> 
+					<input type="hidden" name="reader" th:value="*{reader}" />
+															
+					<div class="form-row mt-3 mb-3 col-12">
+						<div class="col-4 text-right">
+							<label for="opinionline" th:text="#{commnet.form.line}"></label>
+						</div>
+						<div class="col-8">
+							<input class="" type="text" name="opinionline" id="opinionline"  th:field="*{opinionline}" maxlength="50">
+						</div>						
+						<span id="error-comment-title" class="error text-center col-12" th:if="${#fields.hasErrors('opinionline')}" th:errors="*{opinionline}"></span>
+						<span id="error-front-opinionline" class="error text-center col-12"></span>
+					</div>
+					<div class="form-row mt-3 mb-3 col-12">
+						<div class="col-4 text-right">
+							<label for="parrafo" th:text="#{commnet.form.text}"></label>
+						</div>
+						<div class="col-8">
+							<textarea id="parrafo" name="opiniontext" th:field="*{opiniontext}" maxlength="500"></textarea>					
+						</div>
+							<span id="error-comment-text" class="error text-center col-12" th:if="${#fields.hasErrors('opiniontext')}" th:errors="*{opiniontext}"></span>	
+							<span id="error-front-parrafo" class="error text-center col-12"></span>	
+					</div>	
+					<th:block th:if="${valorationsEnabled}">				
+					<ul class="all-stars col-12">		
+					 <li th:each="starts,startsStat : ${#numbers.sequence(1, iNumStarts)}">
+					    <input type="radio" th:field="*{punctuation}" th:value="${startsStat.index+1}" class="radio-input" th:id="'punctuation' + ${startsStat.index+1}"/>
+					    <label th:for="'punctuation' + ${startsStat.index+1}" class="radio-label"></label>
+					  </li>	
+					</ul>
+					 <span id="error-comment-rating" class="error" th:if="${#fields.hasErrors('punctuation')}" th:errors="*{punctuation}"></span>
+					 <span id="error-front-rating" class="error text-center col-12 d-none" th:text="#{Min.commentVO.punctuation}"></span>
+					 </th:block>
+					<div class="cont_botonera_input d-flex flex-row justify-content-end">
+					
+						<a class="btn btn-outline-secondary comment-save-cancel" th:href="@{${thymeleafMap.get('COMENT')}(id=${commentVO.oaiIdentifierB64})}" th:inline="text" th:aria-label="#{mylibrary.reader.cancel}">
+						<span class="icono fas fa-eraser pr-2 d-none" aria-hidden="true"></span>[[#{mylibrary.reader.cancel}]]
+						</a>
+						<button class="btn btn-outline-primary btn-search comment-save" id="save-comments" type="button" th:aria-label="#{mylibrary.reader.save}">
+						<th:block th:text="#{mylibrary.reader.save}"></th:block>
+						</button>
+					</div>
+				</form>
+			</div>
+<!-- :: /title/comments/formComments.html -->

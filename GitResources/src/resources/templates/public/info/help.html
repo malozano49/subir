@@ -1,0 +1,25 @@
+<th:block th:insert="/public/home/html_type"></th:block>
+  <th:block th:insert="/public/info/infobase::infoHead" th:with="page='opac-help'"/>
+   <body class="page_type_info info_help">
+      <!-- :: public/info/help.html -->
+      <th:block th:insert="/public/info/infobase::infoHeader"/>
+      <main id="acc_anchor_main" class="flex-shrink-0">
+         <div class="component">
+            <section>
+               <article>
+                  <header class="header_principal">
+                     <h1 th:text="#{company.name}"></h1>
+                  </header>
+                  <p>
+                     <th:block th:text="${applicationVersion}"/>
+                  </p>
+                  <footer class="footer_principal">
+                  </footer>
+               </article>
+            </section>
+         </div>
+         <!-- :: /.component -->
+      </main>
+      <th:block th:insert="/public/info/infobase::infoFooter" th:with="page='opac-help'"/>
+   </body>
+</html>

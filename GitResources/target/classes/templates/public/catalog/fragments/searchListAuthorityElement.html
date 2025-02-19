@@ -1,0 +1,55 @@
+<!-- :: [/public/catalog/fragments/searchListAuthorityElement.html] -->
+<li class="media catalog-item border-bottom row no-gutters p-0 p-md-3 py-3">
+      <div class="media-body col-12">
+        <div class="cont_titles d-flex">
+          <div class="cont_item_titles">
+			<div class="item-authority con_badge"
+                th:if="${item.marcFields.get('t100') != null or item.marcFields.get('t110') != null or item.marcFields.get('t111') != null or item.marcFields.get('t130') != null or item.marcFields.get('t147') != null or item.marcFields.get('t148') != null or item.marcFields.get('t150') != null or item.marcFields.get('t151') != null or item.marcFields.get('t155') != null or item.marcFields.get('t180') != null or item.marcFields.get('t181') != null or item.marcFields.get('t182') != null or item.marcFields.get('t185') != null}">
+
+                <th:block th:if="${item.marcFields.get('t100') != null}" >
+                     <th:block th:if="${item.ltFields.get('lt100') != null}" th:include="/public/catalog/fragments/ltfieldAuthority :: frag(lfield='lt100',titn=${item.titn},ocurrencies=${item.authorityOccurences},anchor=${'elem_' + iterStat.index})"></th:block>
+                </th:block>
+                <th:block th:if="${item.marcFields.get('t110') != null}" >
+                     <th:block th:if="${item.ltFields.get('lt110') != null}" th:include="/public/catalog/fragments/ltfieldAuthority :: frag(lfield='lt110',titn=${item.titn},ocurrencies=${item.authorityOccurences},anchor=${'elem_' + iterStat.index})"></th:block>
+                </th:block>
+                <th:block th:if="${item.marcFields.get('t111') != null}" >
+                     <th:block th:if="${item.ltFields.get('lt111') != null}" th:include="/public/catalog/fragments/ltfieldAuthority :: frag(lfield='lt111',titn=${item.titn},ocurrencies=${item.authorityOccurences},anchor=${'elem_' + iterStat.index})"></th:block>
+                </th:block>
+                <th:block th:if="${item.marcFields.get('t130') != null}" >
+                   	<th:block th:if="${item.ltFields.get('lt130') != null}" th:include="/public/catalog/fragments/ltfieldAuthority :: frag(lfield='lt130',titn=${item.titn},ocurrencies=${item.authorityOccurences},anchor=${'elem_' + iterStat.index})"></th:block>
+                </th:block>
+                <th:block th:if="${item.marcFields.get('t147') != null}" >
+                     <th:block th:if="${item.ltFields.get('lt147') != null}" th:include="/public/catalog/fragments/ltfieldAuthority :: frag(lfield='lt147',titn=${item.titn},ocurrencies=${item.authorityOccurences},anchor=${'elem_' + iterStat.index})"></th:block>
+                </th:block>
+                <th:block  th:if="${item.marcFields.get('t148') != null}" >
+                     <th:block th:if="${item.ltFields.get('lt148') != null}" th:include="/public/catalog/fragments/ltfieldAuthority :: frag(lfield='lt148',titn=${item.titn},ocurrencies=${item.authorityOccurences},anchor=${'elem_' + iterStat.index})"></th:block>
+                </th:block>
+                 <th:block  th:if="${item.marcFields.get('t150') != null}" >
+                     <th:block th:if="${item.ltFields.get('lt150') != null}" th:include="/public/catalog/fragments/ltfieldAuthority :: frag(lfield='lt150',titn=${item.titn},ocurrencies=${item.authorityOccurences},anchor=${'elem_' + iterStat.index})"></th:block>
+                </th:block>
+                 <th:block  th:if="${item.marcFields.get('t151') != null}" >
+                     <th:block th:if="${item.ltFields.get('lt151') != null}" th:include="/public/catalog/fragments/ltfieldAuthority :: frag(lfield='lt151',titn=${item.titn},ocurrencies=${item.authorityOccurences},anchor=${'elem_' + iterStat.index})"></th:block>
+                </th:block>
+                 <th:block  th:if="${item.marcFields.get('t155') != null}" >
+                     <th:block th:if="${item.ltFields.get('lt155') != null}" th:include="/public/catalog/fragments/ltfieldAuthority :: frag(lfield='lt155',titn=${item.titn},ocurrencies=${item.authorityOccurences},anchor=${'elem_' + iterStat.index})"></th:block>
+                </th:block>
+                 <th:block  th:if="${item.marcFields.get('t180') != null}" >
+                     <th:block th:if="${item.ltFields.get('lt180') != null}" th:include="/public/catalog/fragments/ltfieldAuthority :: frag(lfield='lt180',titn=${item.titn},ocurrencies=${item.authorityOccurences},anchor=${'elem_' + iterStat.index})"></th:block>
+                </th:block>
+                 <th:block  th:if="${item.marcFields.get('t181') != null}" >
+                     <th:block th:if="${item.ltFields.get('lt181') != null}" th:include="/public/catalog/fragments/ltfieldAuthority :: frag(lfield='lt181',titn=${item.titn},ocurrencies=${item.authorityOccurences},anchor=${'elem_' + iterStat.index})"></th:block>
+                </th:block>
+                 <th:block  th:if="${item.marcFields.get('t182') != null}" >
+                     <th:block th:if="${item.ltFields.get('lt182') != null}" th:include="/public/catalog/fragments/ltfieldAuthority :: frag(lfield='lt182',titn=${item.titn},ocurrencies=${item.authorityOccurences},anchor=${'elem_' + iterStat.index})"></th:block>
+                </th:block>
+                 <th:block  th:if="${item.marcFields.get('t185') != null}" >
+                     <th:block th:if="${item.ltFields.get('lt185') != null}" th:include="/public/catalog/fragments/ltfieldAuthority :: frag(lfield='lt185',titn=${item.titn},ocurrencies=${item.authorityOccurences},anchor=${'elem_' + iterStat.index})"></th:block>
+                </th:block>
+             </div>
+             <!-- :: /.item-authority -->
+          </div>
+        </div>
+
+      </div>
+  </li>
+<!-- :: /[/public/catalog/fragments/searchListAuthorityElement.html] -->

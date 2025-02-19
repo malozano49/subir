@@ -1,0 +1,60 @@
+<th:block th:fragment="main">
+<!-- :: [admin/data/adminData.html] -->
+
+<!-- Administrator messages -->
+<section class="admin-section admin-catalog admin-messages mt-5">
+
+  <h2 class="sr-only" th:text="#{alert.general.messages}"></h2>
+	<div class="container cont_message" th:insert="/admin/fragments/warningData"></div>
+</section>
+<!-- :: /.admin-messages -->
+
+<div class="admin-section admin-catalog admin-data mt-5 mb-5">
+  <div class="container container_menu">
+    <div th:insert="/admin/fragments/upMenu" class="cont_up_menu d-flex justify-content-center"></div>
+    <!-- :: /.cont_up_menu -->
+  </div>
+  <!-- :: /.container_menu -->
+  
+  <section class="container container_general border pb-3">
+    <h2 class="d-block font-weight-bold section__title">
+      <span class="icono fas fa-server mr-1" aria-hidden="true"></span>
+      <th:block th:text="#{administration.data.area}"/>
+    </h2>
+
+    <div id="manageData" class="cont cont_manageData row mt-5">
+      <div class="cont__deleteData col-lg-6 col-md-6">
+        <!-- Delete Data -->
+        <div class="component" th:insert="/admin/data/deleteData"></div>
+      </div>
+      <!-- :: /.cont__deleteData -->
+      <div class="cont__reindexData col-lg-6 col-md-6">
+        <!-- Reindex Data -->
+        <div class="component" th:insert="/admin/data/reindexData"></div>
+      </div>
+      <!-- :: /.cont__reindexData -->
+    </div>
+    <!-- :: /.cont_manageData -->
+    <div id="harvestData" class="cont cont_harvestData row">
+      <div class="cont__harvestOAIData col-lg-6">
+        <!-- Harvest Data -->
+        <div class="component" th:insert="/admin/data/harvestOAIData"></div>
+      </div>
+      <!-- :: /.cont__harvestOAIData -->
+      <div class="cont__loadMarcFiles col-lg-6">
+        <!-- Load Data -->
+        <div class="component" th:insert="/admin/data/loadMarcFiles"></div>
+      </div>
+      <!-- :: /.cont__loadMarcFiles -->
+    </div>
+    <!-- :: /.cont_harvestData -->
+  </section>
+  <!-- :: /.container_general -->
+</div>
+<!-- :: /.admin-data -->
+
+<th:block th:insert="/admin/fragments/data_script.html"></th:block>
+
+<!-- :: /[admin/data/adminData.html] -->
+
+</th:block>

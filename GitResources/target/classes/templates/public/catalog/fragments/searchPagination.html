@@ -1,0 +1,90 @@
+<!-- :: [/public/catalog/fragments/searchPagination.html] -->
+
+<!-- :: @TODO: Aplicar condición para que este contenedor no aparezca vacío en el dom -->
+
+<div class="search-sorting-pagination d-flex flex-xs-column justify-content-between bg-highlight">
+  <div th:unless="${thymeleafMap.get('FAVORITES') == solrSearchWeb.solrSearch.queryType or thymeleafMap.get('MY_LIST_ITEMS') == solrSearchWeb.solrSearch.queryType}"  class="results-sorting d-flex px-4 px-sm-3 order-by desktop_flex">
+    <th:block th:insert="/public/catalog/fragments/orderBy.html" th:with="position=${position}"></th:block>
+  </div>
+  <!-- :: /. results-sorting-->
+  <div class="cont cont_pagination results-pagination d-flex px-4 px-sm-3">
+    <!-- :: hidden que debe tener el ID sin añadirle espeficificacion (variable usada por ajax) -->
+    <th:block th:if="${thymeleafMap.get('ADVANCED') == solrSearchWeb.solrSearch.queryType or thymeleafMap.get('EXPERT') == solrSearchWeb.solrSearch.queryType}">
+    	<!--/* FIXME subcatalog
+    	<input type="hidden" name="selectValuesPagination" th:value="${@solrSearchWeb.solrSearch.subCatalog.getSubcatalogsValues()}"/>
+    	 */-->
+    </th:block>
+    <nav class="mr-auto" th:aria-labelledby="'search_title_nav_pages_in_'+${position}" th:data-position="${position}">
+         <h3 th:id="'search_title_nav_pages_in_'+${position}" class="sr-only" th:text="#{search.pagination.page.aria}"></h3>
+      <th:block th:with="currentUrl=(${thymeleafMap.get('MY_LIST_ITEMS') == solrSearchWeb.solrSearch.queryType}? ${solrSearchWeb.currentUrl} + '?idList=' + ${idList} : ${solrSearchWeb.currentUrl})">
+      <ul class="pagination">
+         <li class="btn_anterior btn_mobile preview page-item" th:classappend="${solrSearchWeb.solrSearch.page == 1} ? 'disabled'">
+            <a th:href="@{${currentUrl}(page=${solrSearchWeb.solrSearch.page-1},tabId=${solrSearchWeb.solrSearch.tabId},paginationNumElements=${solrSearchWeb.solrSearch.elementPage})} + '#refreshWrapper'" class="btn page-link" data-type="back" th:title="#{search.pagination.page.previous}">
+              <span class="icono fas fa-angle-left" aria-hidden="true"></span>
+              <span class="btn_title" th:text="#{search.pagination.page.previous}"></span>
+            </a>
+         </li>
+         <li class="btn_inicio btn_mobile page-item" th:classappend="${solrSearchWeb.solrSearch.page == 1} ? 'active'">
+           <a th:href="@{${currentUrl}(page=1,tabId=${solrSearchWeb.solrSearch.tabId},paginationNumElements=${solrSearchWeb.solrSearch.elementPage})} + '#refreshWrapper'" class="btn page-link" th:aria-label="#{search.pagination.first.page}" th:title="#{search.pagination.first.page}">
+              <span class="icono fas fa-angle-double-left" aria-hidden="true"></span>
+              <span aria-hidden="true">1</span>
+             </a>
+         </li>
+         <li  class="page-item" th:if="${solrSearchWeb.solrSearch.page < 4 && solrSearchWeb.solrSearch.results.totalPagesNumber > 2}" th:classappend="${solrSearchWeb.solrSearch.page == 2} ? 'active'">
+            <a th:href="@{${currentUrl}(page=2,tabId=${solrSearchWeb.solrSearch.tabId},paginationNumElements=${solrSearchWeb.solrSearch.elementPage})} + '#refreshWrapper'"  class="btn page-link">2</a>
+         </li>
+         <li  class="page-item" th:if="${solrSearchWeb.solrSearch.page < 4 && solrSearchWeb.solrSearch.results.totalPagesNumber > 3}" th:classappend="${solrSearchWeb.solrSearch.page == 3} ? 'active'">
+            <a th:href="@{${currentUrl}(page=3,tabId=${solrSearchWeb.solrSearch.tabId},paginationNumElements=${solrSearchWeb.solrSearch.elementPage})} + '#refreshWrapper'" class="btn page-link">3</a>
+         </li>
+         <li class="page-item" th:if="${solrSearchWeb.solrSearch.page < 4  && solrSearchWeb.solrSearch.results.totalPagesNumber > 4}">
+            <a th:href="@{${currentUrl}(page=4,tabId=${solrSearchWeb.solrSearch.tabId},paginationNumElements=${solrSearchWeb.solrSearch.elementPage})} + '#refreshWrapper'" class="btn page-link">4</a>
+         </li>
+         <li  th:if="${solrSearchWeb.solrSearch.page > 3}" class="page-item" >
+            <button class="btn btn_and" th:aria-label="#{search.pagination.intermediate.pages}" th:title="#{search.pagination.intermediate.pages}" data-type="intermediate" disabled>&hellip;</button>
+         </li>
+         <li  class="page-item" th:if="${(solrSearchWeb.solrSearch.page > 3) && (solrSearchWeb.solrSearch.page <= (solrSearchWeb.solrSearch.results.totalPagesNumber-3))}">
+            <a th:href="@{${currentUrl}(page=${solrSearchWeb.solrSearch.page-1},tabId=${solrSearchWeb.solrSearch.tabId},paginationNumElements=${solrSearchWeb.solrSearch.elementPage})} + '#refreshWrapper'"  class="btn page-link" th:text="${solrSearchWeb.solrSearch.page-1}"/>
+         </li>
+         <li  class="page-item active my-auto" th:if="${(solrSearchWeb.solrSearch.page > 3) && (solrSearchWeb.solrSearch.page <= (solrSearchWeb.solrSearch.results.totalPagesNumber-3))}">
+          <a th:href="@{${currentUrl}(page=${solrSearchWeb.solrSearch.page},tabId=${solrSearchWeb.solrSearch.tabId},paginationNumElements=${solrSearchWeb.solrSearch.elementPage})} + '#refreshWrapper'"  class="btn page-link" th:text="${solrSearchWeb.solrSearch.page}"/>
+         </li>
+         <li class="page-item"  th:if="${(solrSearchWeb.solrSearch.page > 3) && (solrSearchWeb.solrSearch.page <= (solrSearchWeb.solrSearch.results.totalPagesNumber-3))}">
+          <a th:href="@{${currentUrl}(page=${solrSearchWeb.solrSearch.page+1},tabId=${solrSearchWeb.solrSearch.tabId},paginationNumElements=${solrSearchWeb.solrSearch.elementPage})} + '#refreshWrapper'"  class="btn page-link" th:text="${solrSearchWeb.solrSearch.page+1}"/>
+         </li>
+         <li th:if="${solrSearchWeb.solrSearch.page <= (solrSearchWeb.solrSearch.results.totalPagesNumber-3)}" class="page-item">
+            <button class="btn btn_and" th:aria-label="#{search.pagination.intermediate.pages}" th:title="#{search.pagination.intermediate.pages}" data-type="intermediate" disabled>&hellip;</button>
+         </li>
+         <li  class="page-item" th:if="${solrSearchWeb.solrSearch.page > 3 && solrSearchWeb.solrSearch.page > (solrSearchWeb.solrSearch.results.totalPagesNumber-3)}">
+            <a th:href="@{${currentUrl}(page=${solrSearchWeb.solrSearch.results.totalPagesNumber-3},tabId=${solrSearchWeb.solrSearch.tabId},paginationNumElements=${solrSearchWeb.solrSearch.elementPage})} + '#refreshWrapper'"  class="btn page-link" th:text="${solrSearchWeb.solrSearch.results.totalPagesNumber-3}"/>
+         </li>
+         <li  class="page-item" th:if="${solrSearchWeb.solrSearch.page > 3 && solrSearchWeb.solrSearch.page > (solrSearchWeb.solrSearch.results.totalPagesNumber-3)}" th:classappend="${solrSearchWeb.solrSearch.page == solrSearchWeb.solrSearch.results.totalPagesNumber-2} ? 'active'">
+            <a th:href="@{${currentUrl}(page=${solrSearchWeb.solrSearch.results.totalPagesNumber-2},tabId=${solrSearchWeb.solrSearch.tabId},paginationNumElements=${solrSearchWeb.solrSearch.elementPage})} + '#refreshWrapper'" class="btn page-link" th:text="${solrSearchWeb.solrSearch.results.totalPagesNumber-2}"/>
+         </li>
+
+         <th:block th:if="${solrSearchWeb.solrSearch.results.totalPagesNumber} < ${configMaxLastPage} ">
+	   	     <li class="page-item" th:if="${solrSearchWeb.solrSearch.page > 3 && solrSearchWeb.solrSearch.page > (solrSearchWeb.solrSearch.results.totalPagesNumber-3)}" th:classappend="${solrSearchWeb.solrSearch.page == solrSearchWeb.solrSearch.results.totalPagesNumber-1} ? 'active'">
+	            <a th:href="@{${currentUrl}(page=${solrSearchWeb.solrSearch.results.totalPagesNumber-1},tabId=${solrSearchWeb.solrSearch.tabId},paginationNumElements=${solrSearchWeb.solrSearch.elementPage})} + '#refreshWrapper'" class="btn page-link" th:text="${solrSearchWeb.solrSearch.results.totalPagesNumber-1}"></a>
+	         </li>
+	          
+	         <li class="btn_final btn_mobile page-item" th:if="${solrSearchWeb.solrSearch.results.totalPagesNumber > 1}" th:classappend="${solrSearchWeb.solrSearch.page == solrSearchWeb.solrSearch.results.totalPagesNumber} ? 'active'" >
+	            <a th:href="@{${currentUrl}(page=${solrSearchWeb.solrSearch.results.totalPagesNumber},tabId=${solrSearchWeb.solrSearch.tabId},paginationNumElements=${solrSearchWeb.solrSearch.elementPage})} + '#refreshWrapper'" class="btn page-link" th:aria-label="'Página final' + ${solrSearchWeb.solrSearch.results.totalPagesNumber}" th:title="'Página final ' + ${solrSearchWeb.solrSearch.results.totalPagesNumber}">
+	              <span class="btn_title" th:text="${solrSearchWeb.solrSearch.results.totalPagesNumber}" aria-hidden="true"></span>
+	              <span class="icono fas fa-angle-double-right" aria-hidden="true"></span>
+	            </a>
+	         </li>
+	 	</th:block>
+
+      	 <li class="btn_siguiente btn_mobile next page-item" th:classappend="${solrSearchWeb.solrSearch.page == solrSearchWeb.solrSearch.results.totalPagesNumber} ? 'disabled'">
+            <a th:href="@{${currentUrl}(page=${solrSearchWeb.solrSearch.page+1},tabId=${solrSearchWeb.solrSearch.tabId},paginationNumElements=${solrSearchWeb.solrSearch.elementPage})} + '#refreshWrapper'" class="btn page-link" data-type="forward" th:title="#{search.pagination.page.next}">
+              <span class="btn_title" th:text="#{search.pagination.page.next}"></span>
+              <span class="icono fas fa-angle-right" aria-hidden="true"></span>
+            </a>
+         </li>
+      </ul>
+      </th:block>
+    </nav>
+  </div>
+  <!-- :: /.results-pagination -->
+</div>
+<!-- :: /.search-sorting-pagination -->
+<!-- :: /[/public/catalog/fragments/searchPagination.html] -->

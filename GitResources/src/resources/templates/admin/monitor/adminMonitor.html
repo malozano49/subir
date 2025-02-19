@@ -1,0 +1,47 @@
+<th:block th:fragment="main">
+<!-- :: [admin/monitor/adminMonitor.html] -->
+
+<!-- Administrator messages -->
+<section class="admin-section admin-monitor admin-messages mt-5">
+  <h2 class="sr-only" th:text="#{alert.general.messages}"></h2>
+	<div class="container cont_message" th:insert="/admin/fragments/warningData"></div>
+</section>
+<!-- :: /.admin-messages -->
+
+<div class="admin-section admin-monitor admin-data mt-5 mb-5">
+  <div class="container container_menu">
+    <div th:insert="/admin/fragments/upMenu" class="cont_up_menu d-flex justify-content-center"></div>
+    <!-- :: /.cont_up_menu -->
+  </div>
+  <!-- :: /.container_menu -->
+
+  <section class="container container_general border pb-3">
+    <h2 class="h2 d-block font-weight-bold section__title">
+      <span class="icono fas fa-chart-line mr-1" aria-hidden="true"></span>
+      <th:block th:text="#{administration.monitor.area}"/>
+    </h2>
+
+    <div id="levelLogs" class="cont cont_levelLogs mt-5">
+      <div class="cont cont__levelLogs col-md-12">
+        <div class="component" th:insert="/admin/monitor/logs"></div>
+      </div>
+    </div>
+    <!-- :: /.cont_levelLogs -->
+
+    <div id="batchData" class="cont cont_batchData">
+      <div class="cont cont_batchData col-md-12">
+        <div class="component" th:insert="/admin/monitor/jobs"></div>
+      </div>
+    </div>
+    <!-- :: /.cont_batchData -->
+
+  </section>
+  <!-- :: /.container_general -->
+
+</div>
+<!-- :: /.admin-section -->
+
+<!-- :: /[admin/monitor/adminData.html] -->
+
+
+</th:block>

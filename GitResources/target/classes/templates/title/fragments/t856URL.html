@@ -1,0 +1,15 @@
+<th:block th:each="subcampo : ${mvalor.subFields}">
+   <!-- :: [title/fragments/t856URL.html] -->
+   <span class="page-link_title mr-2" th:if="${!#strings.equals(subcampo.dollar,'u') and !#strings.equals(subcampo.dollar,'z') and !#strings.equals(subcampo.dollar,'x')}" 
+      th:text="${subcampo.subFieldValue}"></span>
+   <a class="btn btn-link btn_enlace" th:if="${#strings.equals(subcampo.dollar,'u') and mvalor.getMapSubFields()['z'] != null}" target="_blank" rel="external noopener noreferrer" 
+      th:href="${subcampo.subFieldValue}" th:attr="title='Enlace externo a: '+${mvalor.getMapSubFields()['z'][0]}">
+        <span th:text="${mvalor.getMapSubFields()['z'][0]}" class="btn_enlace_title"></span>
+   </a>
+   <a class="btn btn-link btn_enlace" th:if="${#strings.equals(subcampo.dollar,'u') and mvalor.getMapSubFields()['z'] == null}" target="_blank" rel="external noopener noreferrer"
+      th:href="${subcampo.subFieldValue}" th:attr="title='Enlace externo a: '+${subcampo.subFieldValue}">
+        <span th:text="${subcampo.subFieldValue}" class="btn_enlace_title"></span>
+   </a>
+   <span class="page-link_title ml-2" th:if="${#strings.equals(subcampo.dollar,'z') and mvalor.getMapSubFields()['u'] == null}" th:text="${subcampo.subFieldValue}"></span>	
+   <!-- :: /[title/fragments/t856URL.html] -->
+</th:block>

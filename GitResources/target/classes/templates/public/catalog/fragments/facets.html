@@ -1,0 +1,78 @@
+<!-- :: [/public/catalog/fragments/facets.html] -->
+<!--/* Facets column */-->
+<article th:if="${solrSearchWeb != null}" th:class="'facets facets_'+${display}+' position-relative d-flex flex-column pt-2 bg-white'" th:aria-labelledby="'title_facets_'+${display}">
+  <h3 th:id="'title_facets_'+${display}" class="sr-only" th:text="#{facet.filter.title}"></h3>
+   <div class="cont_title m-2 p-0">
+       <span class="icono fas fa-filter mr-2"></span>
+       <span class="titulo" th:text="#{facet.filter}"></span>
+   </div>
+   <!-- :: /.cont_title -->
+   <th:block th:if="${solrSearchWeb.solrSearch.facetVO}!=null"><!-- if por error por los comentarios-->
+	   <div th:if="${not #lists.isEmpty(solrSearchWeb.solrSearch.facetVO.facetedList)}" class="cont_filters_applied_list navbar-collapse m-2 p-0">
+	      <ul class="filters_list list-group alert alert-warning sin_icono pl-2 text-dark" aria-atomic="true">
+	         <th:block th:each="value , iterStat: ${solrSearchWeb.solrSearch.facetVO.facetedList}">
+	            <li class="p-2" th:if="${iterStat.index==0}">
+	              <span class="icono fas fa-info-circle fa-lg mr-1" aria-hidden="true"></span>
+	              <span class="font-weight-bold" th:text="#{facet.fitered}"></span>
+	            </li>
+	            <li class="px-2">
+	              <div class="general_filter_title mt-1"><span class="text-capitalize text-dark description_text" th:text="#{${#strings.toLowerCase(value.group)}}"></span>:</div>
+	              <th:block th:with="currentUrl=${thymeleafMap.get('CATALOG_MAPPING_SEARCH_FACETED_DEL')}">
+	                <a th:href="@{${currentUrl}(facetType=${value.group},facet=${value.name},tabId=${solrSearchWeb.solrSearch.tabId})}" class="btn btn-link text-left pl-2 btn_filter_active" th:inline="text" th:aria-label="${value.group} +':'  +${value.name}">
+	                <span class="btn_filter_title" aria-hidden="true">[[${value.name}]]</span>
+	                <span class="icono fas fa-times fa-lg pl-2" aria-hidden="true"></span>
+	              	</a>
+	 			  </th:block>
+	            </li>
+	         </th:block>
+	      </ul>
+	   </div>
+	   <!-- :: /.cont_filters.card-body -->
+	   <div class="cont_filters navbar-collapse m-2 p-0">
+	      <th:block th:each="mykey : ${solrSearchWeb.solrSearch.facetVO.facets}">
+	          <button type="button" class="facet-title font-weight-bold p-2 btn btn_despliegue" data-toggle="collapse" th:data-target="'#'+${display}+'_collapseFacets_'+${#strings.replace(mykey.key,' ','')}"
+	            aria-expanded="false" th:aria-controls="${display}+'_collapseFacets_'+${#strings.replace(mykey.key,' ','')}"
+	            th:if="${mykey.key} != null and (${#lists.size(mykey.value) > 1}  or (${#lists.size(mykey.value) ==1}  and (${#lists.isEmpty(solrSearchWeb.solrSearch.facetVO.facetedList)} or ${not #lists.contains(solrSearchWeb.solrSearch.facetVO.facetedList, mykey.value[0].detail)}) ) )">
+	            <span class="btn_title"><th:block th:text="#{${mykey.key}}"></th:block></span>
+	            <span class="icono fas fa-angle-down float-right mt-1 mr-2" aria-hidden="true"></span>
+	          </button>
+	         <div th:id="${display}+'_collapseFacets_'+${#strings.replace(mykey.key,' ','')}" class="collapse hide cont_filters_with_buttons">
+	            <ul class="filtros_lista m-0">
+	               <th:block th:each="valor , iterStat: ${mykey.value}">
+	                  <th:block th:if="${#lists.isEmpty(solrSearchWeb.solrSearch.facetVO.facetedList) or !#lists.contains(solrSearchWeb.solrSearch.facetVO.facetedList, valor.detail)}">
+	                     <li class="display_none">
+	
+							   <th:block th:with="currentUrl=${thymeleafMap.get('CATALOG_MAPPING_SEARCH_FACETED_ADD')}">
+	                           <a th:href="@{${currentUrl}(facetType=${valor.detail.group},facet=${valor.detail.translateMe},tabId=${solrSearchWeb.solrSearch.tabId})}" class="btn btn-link with_badge text-left w-100" th:aria-label="${valor.detail.translateMe} + ': ' + ${valor.count} +' resultados'">
+	                              <span class="btn_title" th:utext="${valor.detail.name}" aria-hidden="true"></span>
+	                              <span class="badge alertbul3" th:text="${valor.count}" aria-hidden="true"></span>
+	                           </a>
+	                           </th:block>
+	
+	                     </li>
+	                  </th:block>
+	               </th:block>
+	            </ul>
+	            <div class="cont_facets_controls mb-2 mt-2 " aria-hidden="true" data-steps="5">
+	              <button type="button" class="btn btn-link facet-control minus display_none" data-action="minus">
+	                <span class="btn_title" th:text="#{facet.less}"></span>
+	                <span class="icono fas fa-minus-square pl-2" aria-hidden="true"></span>
+	              </button>
+	              <button type="button" th:if="${#lists.size(mykey.value)>5}" class="btn btn-link facet-control more" data-action="more">
+	                <span class="btn_title" th:text="#{facet.more}"></span>
+	                <span class="icono fas fa-plus-square pl-2" aria-hidden="true"></span>
+	              </button>
+	            </div>
+	            <!-- :: /.cont_facets_controls -->
+	         </div>
+	         <!-- :: /.collapse.cont_filters_with_buttons -->
+	      </th:block>
+	   </div>
+   </th:block><!--Error por los comentarios Fin-->
+
+   <!-- :: /.card-body -->
+  </article>
+<!-- :: /.facets -->
+
+
+<!-- :: /[/public/catalog/fragments/facets.html] -->

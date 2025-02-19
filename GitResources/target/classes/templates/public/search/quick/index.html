@@ -1,0 +1,144 @@
+<!-- :: [public/search/quick/index.html] -->
+
+<div class="quick_search py-2">
+  <div class="catalog-search simple-search container my-3">
+    <!--<div class="col-lg-9 col-xl-9 col-md-10 mx-auto cont_form_quick_search">
+     :: /.form-row
+          <div class="cont_subcatalogs cont_dependant form-row pt-5 mb-2 m-0" th:if="${SUBCATALOG_ENABLED}" th:object="${solrSearchWeb}">
+            <th:block th:insert="/public/search/subCataSelect"/>     
+          </div> -->
+    <!-- :: /.form-row -->
+    <form method="post" id="solrSearch" class="border" name="solrSearchWeb"
+      th:action="@{/public/search/action#refreshWrapper}" th:object="${solrSearchWeb}" role="search">
+      <!-- 	<th:block th:if="${solrSearchWeb}"  th:replace="/public/search/subCataSelectHidden :: selectname(sname='solrSearchWeb.solrSearch.subCatalog.subCatalogs',sfield='solrSearch.subCatalog.subCatalogs',var=${solrSearchWeb.solrSearch.subCatalog.subCatalogs},ncomb=${solrSearchWeb.solrSearch.subCatalog.numCombo})"></th:block> -->
+      <input type="hidden" name="solrSearch.solrCollection" id="solrCollection.form.quick"
+        value="BIBLIOGRAPHIC_CATALOG" />
+      <input type="hidden" name="solrSearch.queryType" id="queryType.form.quick"
+        th:value="${thymeleafMap.get('EXPERT')}" />
+
+      <div class="cont_quick_search card">
+
+        <div class="card-header">
+          <div class="form-row cont_form_quick_search">
+            <!-- :: /.form-row -->
+            <div class="cont_subcatalogs w-100 cont_dependant form-row" th:if="${SUBCATALOG_ENABLED}"
+              th:object="${solrSearchWeb}">
+              <th:block th:insert="/public/search/subCataSelect" />
+            </div>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <!--/* :: hidden que debe tener el ID sin añadirle espeficificacion (variable usada por ajax) */-->
+          <!--/* FIXME subcatalogo
+        <input type="hidden" name="selectValuesQuick" id="selectValues" th:value="${solrSearchWeb.solrSearch.subCatalog.subcatalogSelect}"/>
+         */-->
+          <div class="form-row search-term">
+            <div class="cont_input_quick_search form-group">
+              <div class="blq cont_botonera botonera_left">
+                <span class="icono fas fa-search icono_lupa desktop" aria-hidden="true"></span>
+                <!-- :: Boton de 'buscar' sólo resolucion móvil -->
+              </div>
+              <!-- :: /.cont_botonera -->
+              <div class="blq cont_input">
+                <label class="sr-only" for="mainAccessLink" th:text="#{access.quicks.find.term}"></label>
+                <th:block th:if="${solrSearchWeb==null or solrSearchWeb.solrSearch.hiddenQuery!=null}">
+                  <input type="text" id="mainAccessLink" name="solrSearch.query" class="input_quick_search form-control"
+                    value="" th:placeholder="#{access.quicks.find.term}" autocomplete="off" />
+                </th:block>
+                <th:block th:if="${solrSearchWeb!=null and solrSearchWeb.solrSearch.hiddenQuery==null}">
+                  <input type="text" id="mainAccessLink" name="solrSearch.query" class="input_quick_search form-control"
+                    th:value="${solrSearchWeb.solrSearch.query}" th:placeholder="#{access.quicks.find.term}"
+                    autocomplete="off" />
+                </th:block>
+              </div>
+              <!-- :: /.cont_input -->
+              <div class="blq cont_botonera botonera_right">
+                <button type="button" id="delete_terms" class="btn_quick_search btn_delete_terms"
+                  th:aria-label="#{access.quicks.search.btn_delete_terms.title}"
+                  th:title="#{access.quicks.search.btn_delete_terms.title}">
+                  <span class="icono fas fa-times icono_delete" aria-hidden="true"></span>
+                </button>
+                <!-- :: Botón de despliegue de la capa de opciones de búsqueda sólo resolución móvil -->
+                <span class="d-none">
+                  <button type="button" id="show_collapse" class="btn_quick_search btn_show_collapse mobile"
+                    th:aria-label="#{access.quicks.mobile.btn_show_collapse.title}"
+                    th:title="#{access.quicks.mobile.btn_show_collapse.title}">
+                    <span class="icono fas fa-angle-down icono_show_collapse" aria-hidden="true"></span>
+                  </button>
+                </span>
+              </div>
+              <!-- :: /.cont_botonera -->
+            </div>
+            <!-- :: /.form-group -->
+            <div class="cont_botonera_quick_search botonera_desktop col-2">
+              <button type="submit" class="btn btn_search btn-outline-primary p-2 m-auto"
+                th:title="#{access.quicks.search}">
+                <span class="icono fas fa-search m-auto mobile" aria-hidden="true"></span>
+                <span class="desktop" th:text="#{button.search}"></span>
+              </button>
+            </div>
+            <!-- :: /.form-group -->
+          </div>
+          <!-- :: /.form-row -->
+          <div class="barra_titulo form-row bg-highlight mt-1">
+            <!-- <div class="cont_titulo col-md-6 col-xl-3 my-auto desktop py-1">
+                    <span class="titulo m-2" th:text="#{search.simple.filters.title}"></span>
+                  </div> -->
+            <!-- :: /.form-group -->
+            <!-- link Avanzado -->
+            <div class="cont_botonera col-auto my-auto ml-auto my-auto p-0">
+              <a class="btn btn-link btn_enlace link-buscar mr-2"
+                th:href="@{${thymeleafMap.get('ADVANCED_SEARCH_PATH')}}">
+                <span class="texto font-weight-bold" th:text="#{search.advanced.title}"></span>
+                <span class="icono fas fa-chevron-right" aria-hidden="true"></span>
+              </a>
+            </div>
+            <!-- :: /.form-group -->
+          </div>
+          <!-- :: /.form-row -->
+          <div class="container_mobile_collapse desktop_flex">
+            <div class="d-none form-row cont_mobile_buttons mobile_flex">
+              <th:block th:insert="/public/search/mobileButtons" />
+            </div>
+
+            <!-- :: /.form-row -->
+            <!-- :: /.form-row -->
+            <div class="cont_extras nav-item row mb-1 mobile_flex">
+              <button type="button"
+                class="dropdownMenuLink_history btn-actions btn btn_simil_desplegable w-100 text-left mb-2"
+                data-control_container="cont_search_history" data-max_items="5" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <span class="icono fas fa-history" aria-hidden="true"></span>
+                <span class="btn_title" th:text="#{dockbar.historic.searchs.title}"></span>
+              </button>
+              <div class="cont_search_history cont_dependant col-12 form-row mb-2">
+                <th:block th:insert="/public/catalog/fragments/searchHistory" />
+              </div>
+              <!-- :: /.form-row -->
+
+              <a th:href="@{${thymeleafMap.get('READER_DATA_PATH')}}" class="btn btn_simil_desplegable w-100 text-left">
+                <span class="icono far fa-bookmark" aria-hidden="true"></span>
+                <span class="btn_title" th:text="#{favorite.button}"></span>
+              </a>
+            </div>
+            <!-- :: /.form-row -->
+          </div>
+          <!-- :: /.container_mobile_collapse -->
+        </div>
+        <div class="card-footer">
+          <!-- if origin as checkboxes -->
+          <th:block th:if="${originView=='checkbox'}" th:insert="/public/search/copySourcesChecks" />
+          <!-- /if -->
+
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<!-- :: /.simple-search -->
+</div>
+<!-- :: /. container-->
+
+
+<!-- :: /[public/search/quick/index.html] -->

@@ -1,0 +1,35 @@
+<!-- :: [admin/fragments/warningData.html] -->
+<div class="row">
+  <div class="cont_alert col-11" aria-live="polite" aria-atomic="true">
+     <div class="alert alert-info" th:if="${managerData != null && managerData.infos != null && managerData.infos.size() > 0}">
+       <span class="alert_titulo sr-only" th:text="#{alert.info.title}"></span>
+        <div  th:each="si : ${managerData.infos} ">
+           <th:block th:text="${si}"/>
+        </div>
+     </div>
+     <!-- :: /.alert -->
+     <div class="alert alert-success" th:if="${managerData != null && managerData.successes != null && managerData.successes.size() > 0}">
+       <span class="alert_titulo sr-only" th:text="#{alert.success.title}"></span>
+        <div th:each="sm : ${managerData.successes} ">
+           <th:block th:text="${sm}"/>
+        </div>
+     </div>
+     <!-- :: /.alert -->
+     <div class="alert alert-warning" th:if="${managerData != null && managerData.warnings != null && managerData.warnings.size() > 0}">
+       <span class="alert_titulo sr-only" th:text="#{alert.warning.title}"></span>
+        <div th:each="sw : ${managerData.warnings} ">
+           <th:block th:text="${sw}"/>
+        </div>
+     </div>
+     <!-- :: /.alert -->
+     <div class="alert alert-danger" role="alert" aria-atomic="true" th:if="${managerData != null && managerData.errors != null && managerData.errors.size() > 0}" >
+       <span class="alert_titulo sr-only" th:text="#{alert.error.title}"></span>
+        <div th:each="sd : ${managerData.errors} ">
+           <th:block th:text="${sd}"/>
+        </div>
+     </div>
+     <!-- :: /.alert -->
+  </div>
+  <!-- :: /.cont_alert -->
+</div>
+<!-- :: /[admin/fragments/warningData.html] -->

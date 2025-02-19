@@ -1,0 +1,32 @@
+<!-- :: [title/fragments/detailCopiesButtonLoan.html] -->
+
+
+                    <th:block  th:if="${userManagementEnabled}" sec:authorize="!isAuthenticated() or principal.hasRole(#vars.thymeleafMap.get('READER_AUTHORITY'))" th:fragment="hide(hide)">
+                      <div class="contenedor">
+                        <div class="cont_button">
+                          <div class="title w-100 mobile">
+                            <span class="btn_title" th:text="#{copy.loan}"></span>
+                          </div>
+                          <form th:action="@{${thymeleafMap.get('LOAN')}}" th:object="${reserveInfo}" th:method="post">
+                            <input type="hidden" name="selectedCopyId" th:value="${value.barcode}"/>
+                            <input type="hidden" name="selectedTitleId" th:value="${value.title}">
+                            <input type="hidden" name="selectedLibraryId" th:value="${value.library}"/>
+                            <input type="hidden" name="selectedBranchId" th:value="${value.branch}"/>
+                            <input type="hidden" name="selectedDetailId" th:value="${id}"/>
+                            <input type="hidden" name="tabId" th:value=${solrSearchWeb.solrSearch.tabId}>
+
+                            <th:block th:each="sub,iter  : ${solrSearchWeb?.solrSearch?.subCatalog?.subCatalogs}">
+                              <input type="hidden" th:name="'solrSearch.subCatalog.subCatalogs['+${iter.index}+'].optionSelected'" th:value="${sub.optionSelected}"/>
+                            </th:block>
+
+                            <button type="submit" class="btn btn-outline-secondary" th:aria-label="#{copy.loan}" th:title="#{copy.loan}" th:disabled="${hide}">
+                              <span class="icono fas fa-book-medical fa-lg p-2" aria-hidden="true"></span>
+                            </button>
+                          </form>
+                        </div>
+                        <!-- :: /.cont_button -->
+                      </div>
+                    </th:block>
+
+
+<!-- :: /[title/fragments/detailCopiesButtonLoan.html] -->

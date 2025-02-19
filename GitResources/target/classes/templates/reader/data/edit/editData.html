@@ -1,0 +1,190 @@
+<!-- :: [reader/data/edit/editData.html] -->
+<section class="card reader-data card_editData" aria-labelledby="card_editData_description">
+  <h3 id="card_editData_description" class="sr-only" th:text="#{mylibrary.reader.edit.area}"></h3>
+  <th:block th:if="${updateResult != null}">
+    <div th:if="${updateResult}" class="alert alert-success">
+      <span th:text="#{mylibrary.reader.update.ok}"></span>
+    </div>
+    <div th:unless="${updateResult}" class="alert alert-danger" role="alert" aria-atomic="true">
+      <span th:text="#{${__${thymeleafMap.get('EDITFIELDS_ERROR')}__}}"></span>
+    </div>
+  </th:block>
+   <!--  <div class="row mx-5 mt-4 mb-3">
+      <div class="col-md-12 d-flex cont_header">
+          <div class="col-md-auto col-sm-12 col-xs-12 cont_image">
+            <div th:insert="/public/catalog/fragments/imageNotFound :: image('1')" class="user-portrait border border-primary rounded-circle mx-3 mb-3"></div>
+            <h4 th:text="${reader.firstName + ' ' + reader.surname}" class="d-block font-weight-bold"/>
+          </div>
+          <div class="col-md-auto ml-auto col-sm-12 col-xs-12 cont_botonera">
+            <div class="ml-auto btn_edition">
+              <span class="icono far fa-edit" aria-hidden="true"></span>
+              <span class="label_icono" th:text="#{mylibrary.reader.editing}"/>
+            </div>
+          </div>
+      </div>
+    </div>-->
+
+    <div class="row mx-5 my-2 d-flex cont_form">
+      <form id="idReader" name="reader" th:action="@{${thymeleafMap.get('READER_DATA_EDIT_PATH')}}" th:object="${reader}" method="post">
+        <div class="row mx-3 my-2">
+          <fieldset class="col-md-6 col_izqda">
+            <legend th:text="#{mylibrary.contact.data.title}"/>
+
+            <!-- email -->
+            <div class="ml-2 mr-2 form-group input_icon_right" th:if="${#strings.contains(editFields,thymeleafMap.get('READER_FIELD_EMAIL'))}">
+                <span class="icono fas fa-envelope" aria-hidden="true"></span>
+                <label for="email" th:text="#{mylibrary.reader.email}" class="bmd-label-floating "/>
+                <input type="email" id="email" th:field="*{email}" name="email" class="form-control" th:value="${email}" autocomplete="off">
+                <span id="emailHelp" class="bmd-help" th:text="#{mylibrary.reader.email.help}" ></span>
+            </div>
+            <div class="ml-2 mr-2 form-group" th:unless="${#strings.contains(editFields,thymeleafMap.get('READER_FIELD_EMAIL'))}">
+                <span class="icono fas fa-envelope mr-2" aria-hidden="true"></span>
+                <span th:text="#{mylibrary.reader.email}" class="reader-data-title"></span>
+                <span th:text="*{email}" class="reader-data-value"></span>
+            </div>
+
+            <!-- phone -->
+            <div class="ml-2 mr-2 cont_phonem-0 pr-0 pb-0">
+              <div class="form-group input_icon_right input_phone mb-0" th:if="${#strings.contains(editFields,thymeleafMap.get('READER_FIELD_PHONE'))}">
+                  <span class="icono fas fa-phone-volume" aria-hidden="true"></span>
+                  <label for="phone" th:text="#{mylibrary.reader.phone}" class="bmd-label-floating"></label>
+                  <input type="tel" id="phone" th:field="*{phone}" name="phone" class="form-control"	th:value="${phone}" maxlength="50">
+                  <span id="phoneHelp" class="bmd-help" th:text="#{mylibrary.reader.phone}" ></span>
+              </div>
+              <div class="form-group input_phone mb-0" th:unless="${#strings.contains(editFields,thymeleafMap.get('READER_FIELD_PHONE'))}">
+                   <span class="icono fas fa-phone-volume" aria-hidden="true"></span>
+                  <span th:text="#{mylibrary.reader.phone}" class="reader-data-title"></span>
+                  <span th:text="*{phone}" class="reader-data-value"></span>
+              </div>
+
+              <!-- mobile phone -->
+              <div class="form-group input_icon_right input_phone mb-0" th:if="${#strings.contains(editFields,thymeleafMap.get('READER_FIELD_MOBILEPHONE'))}">
+                  <span class="icono fas fa-mobile-alt" aria-hidden="true"></span>
+                  <label for="mobilePhone" th:text="#{mylibrary.reader.mobile.phone}" class="bmd-label-floating"></label>
+                  <input type="tel" id="mobilePhone" th:field="*{mobilePhone}" name="mobilePhone" class="form-control" th:value="${mobilePhone}" maxlength="50">
+                  <span id="mobilePhoneHelp" class="bmd-help" th:text="#{mylibrary.reader.mobile.phone}" ></span>
+              </div>
+              <div class="form-group input_phone mb-0" th:unless="${#strings.contains(editFields,thymeleafMap.get('READER_FIELD_MOBILEPHONE'))}">
+                  <span class="icono fas fa-mobile-alt" aria-hidden="true"></span>
+                  <span th:text="#{mylibrary.reader.mobile.phone}" class="reader-data-title"></span>
+                  <span th:text="*{mobilePhone}" class="reader-data-value"></span>
+              </div>
+
+            </div>
+
+            <!-- address -->
+            <div class="ml-2 mr-2 form-group input_icon_right" th:if="${#strings.contains(editFields,thymeleafMap.get('READER_FIELD_ADDRESS'))}" th:each="address, itemStat : *{address}">
+                <span class="icono fas fa-map-marker-alt" th:if="${itemStat.index == 0}" aria-hidden="true"></span>
+                <label th:for="'address_'+${itemStat.index}" th:text="#{mylibrary.reader.address}" class="bmd-label-floating"></label>
+                <input type="text" th:id="'address_'+${itemStat.index}" th:field="*{address[__${itemStat.index}__]}" name="address" class="form-control" th:value="${address}" maxlength="50">
+                <span th:id="'addressHelp_'+${itemStat.index}" class="bmd-help" th:text="#{mylibrary.reader.address.help}"></span>
+            </div>
+
+            <th:block th:unless="${#strings.contains(editFields,thymeleafMap.get('READER_FIELD_ADDRESS'))}">
+              <div class="ml-2 mr-2 form-group" th:if="${reader.address != null and not #lists.isEmpty(reader.address)}">
+                  <span class="icono fas fa-map-marker-alt" aria-hidden="true"></span> <!--  th:aria-label="#{mylibrary.reader.address}"  -->
+                  <span th:each="a, iterStat : ${reader.address}" th:text="!${iterStat.last} ? ${a} + ',': ${a}"></span>
+              </div>
+            </th:block>
+
+        </fieldset>
+        <!-- :: /.col_izqda -->
+
+        <div class="col-md-6 col_dcha">
+            <fieldset class="col-md-auto">
+                <legend th:text="#{mylibrary.reader.data.title}"/>
+
+                <!-- barcode -->
+                <div class="ml-2 mr-2 form-group unstyled">
+                  <div class="form-control card_editData-item">
+                    <span th:text="#{mylibrary.reader.barcode}" class="reader-data-title"></span>
+                    <span th:text="*{barcode}" class="reader-data-value"></span>
+                  </div>
+                </div>
+
+               <!-- alias  -->
+                <div class="ml-2 mr-2 form-group input_icon_right" th:if="${#strings.contains(editFields,thymeleafMap.get('READER_FIELD_ALIAS'))}">
+                  <label for="alias" th:text="#{mylibrary.reader.alias}" class="bmd-label-floating"></label>
+           		    <input type="text" id="alias" th:field="*{alias}" name="alias" class="form-control" th:value="*{alias}" maxlength="50">
+                  <span id="aliasHelp" class="bmd-help" th:text="#{mylibrary.reader.alias}" ></span>
+                </div>
+
+                <div class="ml-2 mr-2 form-group unstyled" th:unless="${#strings.contains(editFields,thymeleafMap.get('READER_FIELD_ALIAS'))}">
+                  <span th:text="#{mylibrary.reader.alias}" class="reader-data-title"></span>
+                  <span th:text="*{alias}" class="reader-data-value"></span>
+                </div>
+
+                <!-- aliasDescription  -->
+                <div class="ml-2 mr-2 form-group input_icon_right" th:if="${#strings.contains(editFields,thymeleafMap.get('READER_FIELD_ALIASDESCRIPTION'))}">
+                  <label for="aliasDescription" th:text="#{mylibrary.reader.alias.description}" class="bmd-label-floating"></label>
+                  <input type="text" id="aliasDescription" th:field="*{aliasDescription}" name="aliasDescription" class="form-control" th:value="*{aliasDescription}" maxlength="50">
+                  <span id="aliasDescriptionHelp" class="bmd-help" th:text="#{mylibrary.reader.alias.description}" ></span>
+                </div>
+
+                <div class="ml-2 mr-2 form-group unstyled" th:unless="${#strings.contains(editFields,thymeleafMap.get('READER_FIELD_ALIASDESCRIPTION'))}">
+                  <div class="form-control">
+                    <span th:text="#{mylibrary.reader.alias.description}" class="reader-data-title"></span>
+                    <span th:text="*{aliasDescription}" class="reader-data-value"></span>
+                  </div>
+                </div>
+
+                 <!-- branchDescription  -->
+                <th:block th:if="${SUBCATALOG_ENABLED}">
+                <div class="cont_select_med ml-2 mr-2" th:if="${#strings.contains(editFields,thymeleafMap.get('READER_DEAFAULT_BRANCH'))}">
+                  <th:block  th:insert="/public/search/subCataSelectDiv :: selectname(sname='reader.opacBranch',sfield='opacBranch',showBtnCambiar='false',padSeleSubcata='false',var=${solrSearchWeb.solrSearch.subCatalog.subCatalogs},ncomb=${solrSearchWeb.solrSearch.subCatalog.numCombo})"></th:block>
+                </div>
+
+                <div class="cont_select_med ml-2 mr-2" th:unless="${#strings.contains(editFields,thymeleafMap.get('READER_DEAFAULT_BRANCH'))}">
+                  <th:block  th:insert="/public/search/subCataSelectDiv :: selectname(sname='reader.opacBranch',sfield='opacBranch',showBtnCambiar='false',padSeleSubcata='false',var=${solrSearchWeb.solrSearch.subCatalog.subCatalogs},ncomb=${solrSearchWeb.solrSearch.subCatalog.numCombo})"></th:block>
+                </div>
+                </th:block>
+
+            </fieldset>
+          </div>
+          <!-- :: /.col_dcha -->
+        </div>
+        <div class="row mx-3 my-2">
+          <fieldset class="col-md-6 col_izqda">
+            <legend th:text="#{mylibrary.security.data.title}"/>
+
+            <!-- password -->
+            <div class="form-group ml-2 mr-2 input_icon_right cont_password cont_password-linked is-focused">
+              <span class="label bmd-label-floating" th:text="#{mylibrary.reader.password}"></span>
+              <a id="link_password" class="form-control link_password" th:href="@{${thymeleafMap.get('READER_PASSWORD_CHANGE_PATH')}}" th:title="mylibrary.reader.password.link_password.title" th:aria-label="mylibrary.reader.password.link_password.title">
+                <span class="pass" aria-hidden="true">********</span>
+              </a>
+              <input type="hidden" id="password" name="password" th:value="'********'">
+            </div>
+          </fieldset>
+          <div class="col-md-6 pr-0 col_dcha oculto">
+            <fieldset class="col-md-auto">
+                <legend th:text="#{mylibrary.warning.data.title}"/>
+                <!-- active email  -->
+                <div class="form-group cont_check cont_check_tunned mt-4 ml-2 pt-0 pr-0" th:if="${#strings.contains(editFields,thymeleafMap.get('READER_FIELD_ACTIVEEMAIL'))}">
+                  <label for="activeEmail" th:text="#{mylibrary.reader.email.check}" class="label_checkbox"></label>
+                  <input type="checkbox" id='activeEmail' name="activeEmail" th:field="*{activeEmail}" th:value="*{activeEmail}">
+                </div>
+                <div class="form-group cont_check cont_check_tunned mt-4 ml-2 pt-0 pr-0" th:unless="${#strings.contains(editFields,thymeleafMap.get('READER_FIELD_ACTIVEEMAIL'))}">
+                  <label for="activeEmail" th:text="#{mylibrary.reader.email.check}" class="label_checkbox"></label>
+                  <input type="checkbox" id='activeEmail' name="activeEmail" th:field="*{activeEmail}" th:value="*{activeEmail}" disabled>
+                </div>
+              </fieldset>
+              <!-- /* External Modules */ -->
+			  <th:block th:each="fragment:${READER_DATA_NOTIFY}">
+			  	<th:block th:with="edit='true'" th:insert="${fragment}"></th:block>
+			  </th:block>
+          </div>
+        </div>
+        <div class="cont_botonera d-flex mx-5 mb-5 mt-2">
+          <button class="btn btn-outline-primary btn-search order-2" type="submit" th:aria-label="#{mylibrary.reader.save}">
+              <th:block th:text="#{mylibrary.reader.save}"></th:block>
+              <span class="icono fas fa-search-plus pl-2 d-none" aria-hidden="true"></span>
+          </button>
+          <a class="btn btn-outline-secondary reset-form order-1 mx-3" th:href="@{${thymeleafMap.get('READER_DATA_PATH')}}" th:inline="text" th:aria-label="#{mylibrary.reader.cancel}">
+          <span class="icono fas fa-eraser pr-2 d-none" aria-hidden="true"></span>[[#{mylibrary.reader.cancel}]]
+          </a>
+        </div>
+    </form>
+  </div>
+</section>
+<!-- :: /[reader/data/edit/editData.html] -->

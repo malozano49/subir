@@ -1,0 +1,111 @@
+.register_form {
+	.register-row {
+		.cont_form_group, .register_group {
+			padding-right: 5px;
+			label {margin-bottom: 0}
+			&:last-child{padding-right:5px}
+			.cont_checkbox {
+    			visibility: visible;
+    			display:flex;
+    			justify-content: flex-start;
+    			align-items: center;
+			}
+			.cont_input {	
+				min-height: 3.7rem;	
+				.form-control {
+					min-height: 2rem;
+					padding-top: 0;
+					padding-bottom: 0;	
+					
+					&.select_selectized{
+						min-height: 2.4rem;
+					}			
+				}
+			}
+			.cont_textarea_suggestion {
+				height: 11rem;
+				textarea {
+					height: 100%
+				}
+			}
+			
+			.cont_textarea_comment {
+				height: 5rem;
+				textarea {
+					height: 100%
+				}
+			}
+			
+			
+			
+		}
+		.icono.fas.fa-sort-down.icono_red	{
+			display: none;
+		}
+		
+		.alert_lgpd {
+				#link_lgpd {
+					font-weight: bold;
+				}
+		}
+	}
+	.error {
+		font-size: 14px;
+		color: red;
+		}	
+}
+.type_readerregister {
+	.cont_help{
+		margin-bottom: 40px;
+		
+		.cont_botonera_help {
+	    display: flex;
+	    flex-flow: row wrap;
+	    justify-content: flex-end;
+	    
+	    .btn_show_help {
+			    border-radius: 50%;
+			    position: relative;
+			    display: flex;
+			    align-items: center;
+			    justify-content: center;
+			    padding: 0.5em;
+			    border: 2px solid #FFFFFF;
+			    outline: 1px solid #063a64;
+			    background-color: #FFFFFF;
+	    		color: #063a64;
+			    
+			    &.active {
+			    	background-color: #063a64;	
+			    	color: #FFFFFF;				
+					}
+				}
+			}	
+			.alert_icon {
+				display: none;
+			}			
+		}
+}
+.reader_register {
+	.cont_alerts_general .alert{
+				&_titulo{
+					font-size: 16px;
+				}
+				&::after{
+					top: 3px;
+				}
+			}
+}
+
+.alert-register-info, .register_form{
+	.mandatory{
+		color:$red;
+		font-weight: bold;
+		font-size: 16px;
+		padding:0 3px;
+	}
+}
+.cont_form_group .cont_selectPicker .btn.dropdown-toggle, 
+.cont_form_group .form-group.selectLivesearch .btn.dropdown-toggle.btn-light{
+		padding:0 !important;
+}

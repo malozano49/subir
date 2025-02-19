@@ -1,0 +1,209 @@
+<!-- :: /title/comments/listComments.html -->
+	<section id="comments" class="card article-detail-comments p-4">
+			<th:block th:if="${commentsMsg}!=null">
+				<span class="campo alert alert-success" th:text="#{${commentsMsg}}"></span>
+			</th:block>
+			</th:block>
+			
+			<h2 id="commentsList_title" class="item-title d-block font-weight-bold fieldset__title">
+        <span class="icono fa fa-comment mr-2" aria-hidden="true"></span>
+        <span th:text="#{mylibrary.reader.comments}" ></span>
+    </h2>
+			<table class="marc-copy-format table table-striped table-bordered lists" th:if="${not #lists.isEmpty(pagecomments.content)}">
+				<thead class="">
+					<tr>
+						<th scope="col" class="text-center" th:if="${lstTitle != null}">
+							<th:block th:text="#{comment.title.text}"></th:block>
+						</th>
+						<th scope="col" class="text-center" th:if="${valorationsEnabled}">
+							<th:block th:text="#{comment.punctuation.text}"></th:block>
+						</th>
+						<!--<th scope="col" class="text-center">
+							<th:block th:text="#{comment.phrase.text}"></th:block>
+						</th>-->
+						
+						 <th scope="col" colspan="2" class="text-center">
+							<th:block th:text="#{comment.opinion.text}"></th:block>
+						 </th>
+						 <th scope="col" class="text-center" th:if="${showAuthor}">
+							<th:block th:text="#{comment.author.text}"></th:block>
+						</th>
+						<th scope="col" class="text-center">
+						<th:block th:text="#{ffepu}"></th:block>
+					 </th>
+					 <th:block sec:authorize="isAuthenticated()">
+						 <th scope="col" class="text-center" sec:authorize="${principal.hasRole(#vars.thymeleafMap.get('READER_AUTHORITY'))}"></th>
+						 <th scope="col" class="text-center"></th>
+						 <th scope="col" class="text-center" th:text="#{comment.state}" sec:authorize="${principal.hasRole(#vars.thymeleafMap.get('CONTENT_MANAGER_AUTHORITY'))}"></th>
+					 </th:block>
+					</tr>
+				</thead>
+				<tbody>
+					<th:block th:each="comment : ${pagecomments.content}">
+						<tr>
+							<td class="valorCampoSubcampo" th:if="${lstTitle != null}">
+							  <a th:href="@{${thymeleafMap.get('CATALOG_MAPPING_DETAIL_VIEW_NO_VIEW_NO_PARAM')+comment.oaiIdentifierB64}}"><span th:text="${lstTitle.get(comment.oaiIdentifierB64)}"></span></a>
+							</td>
+							
+							<td class="valorCampoSubcampo text-center" th:if="${valorationsEnabled}">
+							  	<ul class="tb_00_data d-flex col-md-12 m-0 p-0 stars-table">
+										<th:block th:if="${comment.punctuation > 0}">								
+											<li th:each="punctuation : ${#numbers.sequence(1, comment.punctuation)}">★</li>
+										</th:block>	
+									</ul>
+							</td>
+							<td class="valorCampoSubcampo" th:text="${comment.opinionline}"></td>
+							
+							
+							<td class="valorCampoSubcampo" th:utext="${comment.opiniontext}"></td>
+							<!--Si es anónimo o no tiene alias, #comment.anom.user, sino pintar el alias-->
+							<td class="valorCampoSubcampo  text-center" th:if="${showAuthor}">
+							    <th:block th:if="${comment.reader == null OR readersAlias == null OR readersAlias['__${comment.reader}__'] == null OR readersAlias['__${comment.reader}__'] == ''}" th:text="#{comment.anom.user}"></th:block>
+								<th:block th:unless="${comment.reader == null OR readersAlias == null OR readersAlias['__${comment.reader}__'] == null OR readersAlias['__${comment.reader}__'] == ''}" th:text="${readersAlias['__${comment.reader}__']}"></th:block>
+							</td>
+							<td class="valorCampoSubcampo text-center" th:with="fecha=${comment.fech}">
+								<span th:text="${#temporals.format(fecha, 'dd/MM/yyyy')}"></span>
+							</td>						
+							
+							<td class="campo  text-center" sec:authorize="${isAuthenticated() AND principal.hasRole(#vars.thymeleafMap.get('READER_AUTHORITY'))}"> 
+							<th:block  th:if="${comment.reader != null and comment.reader == #authentication.principal.barcode}">
+								<!--Boton de Modificar user --> 		
+									<form name="commentsedit" id="commentsedit" th:action="@{${urlModifyComment}}" method="post">
+										<input type="hidden" id="id" name="id" th:value="${comment.id}" />		
+										<button type="button" class="btn_update_comment btn btn-outline-secondary" th:title="#{comment.modal.title.modify}" th:aria-label="#{comment.modal.title.modify}">
+											<span class="icono fas fa-edit" aria-hidden="true"></span>
+										</button>								
+									</form>
+									
+									
+									<!--<button type="button" class="btn btn_update_add_comment btn-outline-secondary active d-none  modal_js " title="Modificar comentario" aria-label="Modificar comentario" 
+											data-modal_tipo="light" data-modal_size="modal-lg"
+											th:data-modal_target="'#modal_update_comments_'+${comment.id}"
+											th:data-modal-id="'modal_update_comments_'+${comment.id}"
+											data-modal_title="Modificar un comentario"
+											data-modal_html="#modal_update_comments"
+											data-modal_discriminador="modal_update_comments"	
+											th:data-url="@{${urlAddComment}}"			 
+											data-modal_footer="false"
+											th:data-id="${comment.id}"
+											th:id="${comment.id}">
+											<span class="icono fas fa-edit" aria-hidden="true"></span>
+										</button>
+										<div th:id="modal_update_comments" id="modal_update_comments" class="d-none" aria-hidden="true">								
+										</div>-->
+								</th:block>
+							</td>
+							<td class="campo  text-center" sec:authorize="isAuthenticated()"> 
+							
+							<th:block  th:if="${comment.reader != null and comment.reader == #authentication.principal.barcode}" sec:authorize="${principal.hasRole(#vars.thymeleafMap.get('READER_AUTHORITY'))}">
+								 	<!--Boton de Borrar user-->
+											<button	type="button" class="btn btn-primary btn_comment_delete user btn_delete_all_items modal_js" th:title="#{delete.opinion.modal}" th:aria-label="#{delete.opinion.modal.aria.babel}" 
+												th:data-modal_title="#{delete.opinion.modal.title}" data-modal_size="modal-md" data-modal_tipo="warning" 	data-modal_footer="false" 
+												th:data-modal-id="'modal_delete_comment_'+${comment.id}"
+												th:data-modal_target="'#modal_delete_comment_'+${comment.id}"												
+												data-modal_discriminador="modal_confirmacion_borrado_user_comment" 
+												data-modal_html="#modal_delete_comment"
+												th:data-id="${comment.id}"
+												th:id="${comment.id}"
+												th:data-url="@{${urlDeleteComment}}" >
+												<span class="icono fas fa-trash" aria-hidden="true"></span>		                  		
+		                				</button>
+			                			<div id="modal_delete_comment" class="d-none" aria-hidden="true">
+								               <span class="float-left col-md-12 mb-4" th:text="#{comment.delete.confirm}"></span>
+								               <div class="modal-footer">
+								                 	<button type="button" class="btn_cerrar btn btn-outline-secondary" data-dismiss="modal" th:aria-label="#{comment.cancel}" th:text="#{comment.cancel}"></button>
+								                 	<button type="button"  class="btn_eliminar_comment user btn btn-primary" th:aria-label="#{delete.opinion.modal.aria.babel}" th:text="#{comment.delete}"></button>
+								        		</div>
+								        </div>     
+		                			<form name="commentsdel" id="commentsdel"  th:action="@{${urlDeleteComment}}" method="post">
+										<input type="hidden" id="id" name="id" th:value="${comment.id}" />
+										<input type="hidden" id="oaiIdentifierB64" name="oaiIdentifierB64" th:value="${comment.oaiIdentifierB64}" />										
+									</form>		                			
+								</th:block>	
+							
+								<th:block  sec:authorize="${isAuthenticated() AND principal.hasRole(#vars.thymeleafMap.get('CONTENT_MANAGER_AUTHORITY'))}" >
+								<!--Boton de Borrar admin-->
+									<button	type="button" class="btn btn-primary btn_comment_delete btn_admin btn_delete_all_itemsy" th:title="#{delete.opinion.modal.title}" th:aria-label="#{delete.opinion.modal.aria.babel}"
+											data-modal_title="Borrar comentarios" data-modal_size="modal-md" data-modal_tipo="warning" 	data-modal_footer="false" 
+												th:data-modal-id="'modal_delete_comment_'+${comment.id}"
+												th:data-modal_target="'#modal_delete_manager_comment_'+${comment.id}"												
+												data-modal_discriminador="modal_confirmacion_borrado_manager_comment" 
+												data-modal_html="#modal_delete_comment-admin"
+												th:data-url="@{${urlDeleteComment}}"
+												th:data-id="${comment.id}">
+												<span class="icono fas fa-trash" aria-hidden="true"></span>		                  		
+		                				</button>
+		                				<div id="modal_delete_comment-admin" class="modal_delete_comments modal modal_js modal_type_warning fade d-none" aria-hidden="true">
+								               <span class="float-left col-md-12 mb-4" th:text="#{comment.delete.confirm}"></span>
+								               <div class="modal-footer">
+								                 	<button type="button" class="btn_cerrar btn btn-outline-secondary" data-dismiss="modal" th:aria-label="#{comment.cancel}"th:text="#{comment.cancel}"></button>
+								                 	<button type="button" class="btn_borrar_comment manager btn btn-primary" th:aria-label="#{comment.modal.title.delete}" th:text="#{comment.delete}"></button>
+								        		</div>
+								        </div>    
+									<form name="commentsdel-admin" th:id="'commentsdel-admin_'+${comment.id}" th:action="@{${urlDeleteComment}}" method="post">
+										<input type="hidden" id="id" name="id" th:value="${comment.id}" />
+										<input type="hidden" id="oaiIdentifierB64" name="oaiIdentifierB64" th:value="${comment.oaiIdentifierB64}" />										
+									</form>
+									
+								</th:block>
+							</td>
+							<td class="campo  text-center" sec:authorize="${isAuthenticated() AND principal.hasRole(#vars.thymeleafMap.get('CONTENT_MANAGER_AUTHORITY'))}" >						
+							<!--Boton validar admin-->
+
+									<button	type="button" class="btn btn-primary btn_comment_validate " th:title="${comment.validated} ? #{comment.modal.title.invalidate} : #{comment.modal.title.validate}" th:aria-label="${comment.validated} ? #{comment.modal.title.invalidate} : #{comment.modal.title.validate}"
+												data-modal_title="Validar comentario" data-modal_size="modal-md" data-modal_tipo="warning" 	data-modal_footer="false" 
+												th:data-modal-id="'modal_validate_comment_'+${comment.id}"
+												th:data-modal_target="'#modal_validate_comment_'+${comment.id}"												
+												data-modal_discriminador="modal_confirmacion_validacion_comment" 
+												th:data-modal_html="'#modal_validate_comment_'+${comment.id}"
+												th:data-url="@{${urlValidateComment}}"
+												th:data-id="${comment.id}"
+												th:id="${comment.id}">
+												<th:block th:if=${comment.validated}> 
+													<span class="icono fas fa-check" aria-hidden="true"></span>
+												</th:block>
+												<th:block th:unless=${comment.validated}> 
+													<span class="icono fas fa-times-circle" aria-hidden="true"></span>
+												</th:block>	    		
+		                				</button>
+									<form name="commentsval" id="commentsval" th:action="@{${urlValidateComment}}" method="post">
+										<input type="hidden" id="id" name="id" th:value="${comment.id}" />
+										<input type="hidden" id="page" name="page" th:value="${page}" />
+										<input type="hidden" id="oaiIdentifierB64" name="oaiIdentifierB64" th:value="${comment.oaiIdentifierB64}" />
+									</form>								
+                				<div id="modal_validate_comment" class="modal_validate_comments modal modal_js modal_type_warning fade d-none" aria-hidden="true">
+						               <span th:if=${comment.validated} class="float-left col-md-12 mb-4" th:text="#{comment.text.invalid.confirm}"></span> 
+						               <span th:unless=${comment.validated} class="float-left col-md-12 mb-4" th:text="#{comment.text.valid.confirm}"></span>
+						               <div class="modal-footer">
+						                 	<button type="button" class="btn_cerrar btn btn-outline-secondary" data-dismiss="modal" aria-label="Cerrar ventana modal." th:text="#{comment.cancel}"></button>
+						                 	<button th:if=${comment.validated} type="button" class="btn_validar_comment btn btn-primary" th:aria-label="#{comment.invalidate}" th:text="#{comment.invalidate}"></button>
+						        			<button th:unless=${comment.validated} type="button" class="btn_validar_comment btn btn-primary" aria-label="#{comment.validate}" th:text="#{comment.validate}"></button>
+						        		</div>
+						        </div>  
+							</td>
+						</tr>
+					</th:block>
+				</tbody>
+			</table>
+			
+			<nav th:if="${pagecomments.totalPages > 0}" aria-label="Paginación de comentarios" class="lists-pagination" >
+				<ul class="pagination justify-content-center">
+					<li class="page-item" th:classappend="${page == 0 ? 'disabled' : ''}">
+						<a class="page-link" th:href="@{${urlPagelist}(id=${oaiIdentifierB64}, page=${page-1})}">
+							<span th:text="#{search.pagination.page.previous}"></span>
+						</a>
+					</li>
+					<li class="page-item" th:classappend="${i eq pagecomments.totalPages + 1} ? 'active'" th:each="i : ${#numbers.sequence( 0, pagecomments.totalPages-1, 1)}">
+						<a class="page-link" th:href="@{${urlPagelist}(id=${oaiIdentifierB64}, page=${i})}" th:text="${i+1}" th:title="${i+1}" data-toggle="tooltip"></a>
+					</li>
+					
+					<li class="page-item"   th:classappend="${page == pagecomments.totalPages-1} ? 'disabled'" >
+						<a class="page-link" th:href="@{${urlPagelist}(id=${oaiIdentifierB64}, page=${page+1})}">
+							<span class="btn_title" th:text="#{search.pagination.page.next}"></span>
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</section>
+		
+<!-- :: /title/comments/listComments.html -->

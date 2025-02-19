@@ -1,0 +1,45 @@
+<!-- :: [public/search/copySourcesChecks.html] -->
+<div class="origen-checks form-row">
+  <fieldset>
+    <legend class="py-3" th:text="#{search.source.copies.aria.label}"></legend>
+
+    <!-- :: /.fieldset_title -->
+    <ul class="cont_checks">
+      <li>
+        <span class="custom-switch">
+          <input type="checkbox" id="any-source" name="solrSearch.origin" value=""
+            th:checked="${solrSearchWeb == null or solrSearchWeb.solrSearch.origin == '' or solrSearchWeb.solrSearch.origin == null } ? 'checked'"
+            class="custom-control-input">
+          <label id="source" for="any-source" th:text="#{search.source.any.source}"
+            class="custom-control-label"></label>
+        </span>
+      </li>
+      <!-- :: /.col-auto-->
+      <li>
+        <span class="custom-switch">
+          <input type="checkbox" id="AbsysNET" name="solrSearch.origin" value="AbsysNET"
+            th:checked="${solrSearchWeb != null and solrSearchWeb.solrSearch.origin != null and #sets.contains(solrSearchWeb.solrSearch.originSet ,'AbsysNET')} ? 'checked'"
+            class="custom-control-input">
+          <label id="absysnet" class="custom-control-label" for="AbsysNET" th:text="#{search.source.absysnet}"></label>
+        </span>
+      </li>
+      <!-- :: /.col-auto-->
+      <li
+        th:each="ori, iterStat: ${solrSearchWeb != null ? solrSearchWeb.originList : null } ">
+        <span class="custom-switch">
+          <input type="checkbox" th:id="${ori}" name="solrSearch.origin" th:value="${ori}"
+            th:checked="${solrSearchWeb != null and solrSearchWeb.solrSearch.origin != null and #sets.contains(solrSearchWeb.solrSearch.originSet , ori)} ? 'checked'"
+            class="custom-control-input">
+          <label th:id="${ori}+'_label'" class="custom-control-label" th:for="${ori}" th:text="${ori}"></label>
+        </span>
+      </li>
+      <!-- :: /.col-auto-->
+
+    </ul>
+    <!-- :: /.cont_checks -->
+
+  </fieldset>
+</div>
+<!-- :: /.search-sources -->
+
+<!-- :: [public/search/copySourcesChecks.html] -->

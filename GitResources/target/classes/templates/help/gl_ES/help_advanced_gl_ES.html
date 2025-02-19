@@ -1,0 +1,325 @@
+<th:block th:insert="/public/home/html_type"></th:block>
+<th:block th:insert="/public/home/technicalheader::main" th:with="page=${'opac-help-advanced-es_ES'}"></th:block>
+<script type="text/javascript">
+	var menu = document.getElementById('menu');
+	Stickyfill.add(menu);
+</script>
+<body>
+<div id="burger-menu" class="burger-menu">
+  <span></span>
+  			<div id="menu2" class="menu menu2">
+			<div class=""><nav class="sn-contents" aria-label="Secondary">
+      <ul class="sidenav--list">
+<li><a href="#searchAllFields">Buscas en todos os campos</a></li>
+								<li><a href="#searchsSpecificField">Buscas nun campo específico</a></li>
+								<li><a href="#searchsByTerm">Buscas por un termo</a></li>
+								<li><a href="#searchsSeveralTerms">Buscas por varios termos</a></li>
+								<li><a href="#searchsContainTerms">Buscas que conteñen todos os termos introducidos</a></li>
+								<li><a href="#searchesSomeTerms">Buscas que conteñen algún ou todos os termos introducidos</a></li>
+								<li><a href="#searchExact">Buscas exactas</a></li>
+								<li><a href="#searchsOperators">Buscas utilizando operadores</a></li>
+								<li><a href="#searchsFilters">Buscas utilizando filtros</a></li>
+								<li><a href="#searchsFepu">Buscas por Ano de publicación</a></li>
+								<li><a href="#removeSearchTerms">Como eliminar os termos de busca introducidos</a></li>
+								<li><a href="#viewInforSearch">Como visualizar información sobre a busca que se vai realizar</a></li>
+								<li><a href="#examplesSearchs">Exemplos de Buscas</a></li>
+								<li><a href="#suggestionsSearchs">Suxestións de busca automáticas</a></li></ul></nav>
+</div>
+		</div>
+		
+</div>
+	<div class="wrapper cf">
+			<div id="menu" class="menu">
+			<div class="sidenav"><nav class="sn-contents" aria-label="Secondary">
+      <ul class="sidenav--list">
+<li><a href="#searchAllFields">Búsquedas en todos los campos</a></li>
+								<li><a href="#searchsSpecificField">Buscas nun campo específico</a></li>
+								<li><a href="#searchsByTerm">Buscas por un termo</a></li>
+								<li><a href="#searchsSeveralTerms">Buscas por varios termos</a></li>
+								<li><a href="#searchsContainTerms">Buscas que conteñen todos os termos introducidos</a></li>
+								<li><a href="#searchesSomeTerms">Buscas que conteñen algún ou todos os termos introducidos</a></li>
+								<li><a href="#searchExact">Buscas exactas</a></li>
+								<li><a href="#searchsOperators">Buscas utilizando operadores</a></li>
+								<li><a href="#searchsFilters">Buscas utilizando filtros</a></li>
+								<li><a href="#searchsFepu">Buscas por Ano de publicación</a></li>
+								<li><a href="#removeSearchTerms">Como eliminar os termos de busca introducidos</a></li>
+								<li><a href="#viewInforSearch">Como visualizar información sobre a busca que se vai realizar</a></li>
+								<li><a href="#examplesSearchs">Exemplos de Buscas</a></li>
+								<li><a href="#suggestionsSearchs">Suxestións de busca automáticas</a></li></ul></nav>
+</div>
+		</div>
+		<div class="content">
+			<a name="top"></a>
+			<a name="searchAdvance"></a>
+			<h2 class="title-help">Busca avanzada</h2>
+			<a name="filtersSearch"></a>
+			<h4 class="title-help">Filtros que se poden aplicar a unha busca</h4>
+			<p>Cando se realiza unha busca, pódese consultar en todas as <span class="text-bold-help">fontes</span> dispoñibles ou nunha en concreto.</p> 
+ 			<p class="tab4-help margen5"><img th:src="@{/img/help/filters-origin.png}" alt="Filtros das orixes"  width="450px"/></p>
+			<p>Por defecto, as Buscas realízanse en todas as fontes dispoñibles. Se quere que as Buscas realícense nunha fonte determinada, selecciónaa:</p>
+			<p class="tab4-help margen5"><img th:src="@{/img/help/filter-efilm.png}" alt="Filtros das orixes"  width="450px"/></p>
+			<p>Ademais de poder seleccionar as fontes nas que se pode realizar a Busca, <span class="text-bold-help">ODA</span> permite restringir a busca a un conxunto de rexistros en concreto (p.ex., os que pertencen a unha biblioteca concreta), aos que imos chamar <span class="text-bold-help">subcatálogos</span></p>
+ 			<p><b>Exemplo:</b></p>
+			<ul class="tab5-help margen5">
+				<li>A rede de bibliotecas está composta por 2 bibliotecas:
+					<ul class="tab5-help margen5">
+						<li>Biblioteca Baratz:
+							<ul class "tab5-help margen10">
+								<li>- Sucursal Madrid</li>
+								<li>- Sucursal Granada</li>
+							</ul>
+						</li>
+						<li>Biblioteca Central:
+							<ul class="tab5-help margen10"><li>- Sucursal Central</li></ul>
+						</li>
+					</ul>
+				</li>
+				<li>No despregable do subcatálogo vemos as 2 bibliotecas:
+ 					<p class="tab4-help margen5"><img th:src="@{/img/help/dropdown-subcatalogs.png}" alt="Subcatálogos"  width="450px"/></p>
+ 					<ul class="tab5-help" >
+ 						<li>pódese seleccionar un subcatálogo desde a lista de subcatálogos ou localizalo a partir da introdución de determinados caracteres
+ 						<p class="tab4-help margen5"><img th:src="@{/img/help/write-in-subcatalogs.png}" alt="Escribir en subcatálogo"  width="450px"/></p>
+ 				
+ 						</li> 
+ 						<li>para activar o subcatálogo seleccionado, faga clic na opción 
+ 						<img th:src="@{/img/help/btn-change.png}" alt="Botón cambiar"  width="100px"/>
+ 						</li>
+ 					</ul>  
+				</li>
+			</ul>			
+			<a name="howtoSearch"></a>
+			<h4 class="title-help">Como buscar</h4>
+			<p>Antes de comezar a buscar, teña en conta os seguintes puntos:</p>
+			<ul class="tab3-help margen5">
+			    <li>Os termos de busca poden introducirse de calquera maneira, isto é, en maiúsculas ou minúsculas e con diacríticos, acentos, diérese, etc., ou sen eles.</li>
+			    <li>Cualquera termo introducido considérase como termo de busca: unha palabra, un número, unha cadea de caracteres, etc.</li>
+			    <li>Non existen palabras definidas como baleiras. Decidiuse manter as preposicións, artigos, etc., como buscabos para facilitar a localización exacta dos documentos.</li>
+			    <li>Cando se introducen varios termos de busca na mesma consulta, poden unirse con un operador que indicará a súa relación en cada un dos documentos. O significado de cada un dos operadores que se poden utilizar é o seguinte:
+			
+			        <table class="table-help">
+			            <tr class="tr-help">
+			                <th class="td-help th-help border-right-help">Operador</th>
+			                <th class="td-help th-help" >Descrición</th>
+			            </tr>
+			            <tr class="tr-help">
+			                <td class="td-help col-help">AND (&)</td>
+			                <td class="td-help">Localiza os rexistros que conteñen todos os termos unidos con este operador.</td>
+			            </tr>
+			            <tr class="tr-help">
+			                <td class="td-help col-help border-top-help">OR (|)</td>
+			                <td class="td-help border-top-help">Localiza os rexistros que conteñen algún dos termos unidos con este operador ou ambos.</td>
+			            </tr>
+			            <tr class="tr-help">
+			                <td class="td-help col-help border-top-help">NOT</td>
+			                <td class="td-help border-top-help">Localiza os rexistros que conteñen o primeiro termo unido con este operador pero non o segundo.</td>
+			            </tr>
+			        </table>           
+			    </li>
+			    <li>Pódense realizar Buscas exactas incluíndo todos os termos entre comiñas (").
+			        <p>Desta maneira, localízanse todos os rexistros que conteñen o texto introducido entre comiñas na mesma orde na que se introduciron na busca.</p>
+			    </li>
+			    <li>Pódese utilizar truncamentos para localizar partes de palabras. Os truncamentos poden ser de dous tipos:
+			        <table class="table-help">
+			            <tr class="tr-help">
+			                <th class="td-help th-help border-right-help"></th>
+			                <th class="td-help th-help">Descrición</th>
+			            </tr>
+			            <tr class="tr-help">
+			                <td class="td-help col-help">?</td>
+			                <td class="td-help border-top-help">Situalo en calquera posición do termo de busca, cada ? sustitúe un único carácter. Desta maneira, localizaranse todos os documentos que cumpran o patrón de busca e que no lugar onde se atopa o signo ? conteñan calquera carácter.</td>
+			            </tr>
+			            <tr>
+			                <td class="td-help col-help border-top-help">*</td>
+			                <td class="td-help border-top-help">Situalo en calquera posición do termo, ou en varios a vez, sustitúe unha cadea de caracteres. O asterisco * localizará todos os documentos que cumpran o patrón de busca e que no lugar onde se atopa o signo * conteñan calquera número de caracteres.</td>
+			            </tr>
+			        </table>
+			    </li>
+			</ul>
+					<p>Pódense realizar as seguintes Buscas:</p>
+			<ul class="tab5-help margen10">
+			    <li>Buscas en todos os campos</li>
+			    <li>Buscas en un campo concreto</li>
+			    <li>Buscas por un termo</li>
+			    <li>Buscas por varios termos</li>
+			    <li>Buscas que conteñan todos os termos introducidos</li>
+			    <li>Buscas que conteñan algún dos termos introducidos</li>
+			    <li>Buscas exactas</li>
+			    <li>Buscas utilizando operadores</li>
+			    <li>Buscas utilizando filtros</li>
+			    <li>Busca por Ano de publicación</li>
+			</ul>
+			</li>
+			</ul>
+			<a name="searchAllFields"></a>
+			<h5 class="subtitle-help">Buscas en todos os campos</h5>
+			<p>Por defecto, a busca avanzada realízase en <i>Cualquier campo</i>.
+			<p class="tab5-help margen5"><img th:src="@{/img/help/search-range.png}" alt="Rango de busca" width="300px"/></p>
+			<p>A busca que realices terá en conta todos os campos da base de datos que estén definidos como buscables.</p>
+			<a name="searchsSpecificField"></a>
+			<h5 class="subtitle-help">Buscas en un campo concreto</h5>
+			<p>Para realizar unha busca nun campo concreto, selecciona o que che interese na opción <i>Campo</i>. Por defecto, os campos nos que se pode realizar a busca son os seguintes:
+			<p class="tab5-help margen10"><img th:src="@{/img/help/combox-search-range.png}" alt="Rango de busca" width="300px"/></p>
+			<p>A busca que realices só terá en conta o campo seleccionado.</p>
+			<a name="searchsByTerm"></a>    
+			<h5 class="subtitle-help">Buscas por un termo</h5>
+			<p class="tab2-help">1. Introduce o termo de busca que desexas localizar no campo <i>Termo</i> a buscar.</p>
+			<p class="tab5-help margen5"><img th:src="@{/img/help/search-term.png}" alt="Termo de busca" width="750px"/></p>
+			<p class="tab2-help">2. Fai clic en <img th:src="@{/img/help/btn-search-advanced.png}" alt="botón de busca" width="100px"/>  para localizar os rexistros que conteñen o termo introducido.
+			<div class="tab5-help margen5">
+			<p class="box-help margen5">Lembra que tamén podes realizar Buscas utilizando truncamentos</p>
+			</div>
+			<a name="searchsSeveralTerms"></a>
+			<h5 class="subtitle-help">Buscas por varios termos</h5>
+			<p class="tab2-help">1. Introduce os termos de busca que desexas localizar no campo <i>Termo</i> a buscar</p>
+			<p class="tab5-help margen5"><img th:src="@{/img/help/search-terms.png}" alt="Varios termos de busca" width="750px"/>
+			<p class="tab2-help">2. Fai clic en <img th:src="@{/img/help/btn-search-advanced.png}" alt="Botón de busca" width="100px"/>  para localizar os rexistros que conteñen os termos introducidos.
+			<div class="tab5-help margen10">
+			<p class="box-help">Lembra que tamén podes realizar Buscas utilizando truncamentos</p>
+			</div>
+			<a name="searchsContainTerms"></a>    
+			<h5 class="subtitle-help">Buscas que conteñan todos os termos introducidos</h5>
+			<p>Por defecto, a busca avanzada localiza todos os termos de busca introducidos</p>
+			<p class="tab5-help margen5"><img th:src="@{/img/help/search-terms.png}" alt="Varios termos de busca" width="750px"/>
+			<a name="searchesSomeTerms"></a>
+			<h5 class="subtitle-help">Buscas que conteñan algún dos termos introducidos</h5>
+			<p>Se desexas que a busca só localice algún ou todos os termos de busca introducidos, selecciona a opción <i>Alguna palabra</i>.</p>
+			<p class="tab5-help margen5"><img th:src="@{/img/help/some-words.png}" alt="Algúns palabras" width="500px"/>
+			<a name="searchExact"></a>
+			<h5 class="subtitle-help">Buscas exactas</h5>
+			<p>Se desexas que a busca recupere os rexistros que conteñen a expresión buscada tal e como se introduciu, selecciona a opción <i>Frase exacta</i>.</p>
+			<p class="tab5-help margen5"><img th:src="@{/img/help/exact-phrase.png}" alt="Frase exacta" width="500px"/></p>
+			<a name="searchsOperators"></a>
+			<h5 class="subtitle-help">Buscas utilizando operadores</h5>
+			<p>Os operadores que se poden utilizar na busca avanzada son os seguintes:</p>
+			<p class="tab5-help margen10"><img th:src="@{/img/help/operators.png}" alt="Operadores" width="150px"/></p>
+			<ul class="tab5-help">
+				<li>O operador por defecto utilizado na busca avanzada é o <b>E</b>.</li>
+				<li>A busca por operadores amósase cando se utiliza a opción <img th:src="@{/img/help/btn-new-line.png}" alt="Botón de nova liña" width="150px"/>  para combinar varias Buscas.</li>
+				<li>Se quixer eliminar algunha das combinacións engadidas, fai clic na opción <img th:src="@{/img/help/btn-del-line.png}" alt="botón" width="45px"/>  asociada á que non che interese aplicar</li>
+			</ul>
+			<p class="tab5-help margen5"><img th:src="@{/img/help/form-search-advanced.png}" alt="Formulario de busca avanzada" width="750px"/></p>
+			<a name="searchsFilters"></a>
+			<h5 class="subtitle-help">Buscas utilizando filtros</h5>
+			<p>Por defecto, na busca avanzada pódense utilizar os seguintes filtros:</p>
+			<ul class="tab5-help margen10">
+				<li>Idioma</li>
+				<li>País</li>
+				<li>Soporte</li>
+				<li>Tipo documental</li>
+			</ul>
+			<p class="tab4-help"><img th:src="@{/img/help/filters-advanced.png}" alt="Filtros de busca avanzada" width="750px"/></p>
+			<a name="searchsFepu"></a>
+			<h5 class="subtitle-help">Buscas por Ano de publicación</h5>
+			<p>Por defecto, na busca avanzada está habilitada a busca polo ano de publicación.</p> 
+			 <dl class="tab5-help"> 
+			   	<dt>Como buscar rexistros publicados nun ano concreto</dt>
+			   	<dd class="tab2-help">Para localizar os rexistros publicados nun ano concreto, introduce o ano que che interese nos campos Ano inicio e Ano fin.
+			   		<p class="tab3-help margen10"><img th:src="@{/img/help/specific-year.png}" alt="Ano concreto" width="500px"/></p>
+			   	</dd> 
+			   	<dt>Como buscar rexistros publicados a partir dun ano</dt>
+			   	<dd class="tab2-help">Para localizar os rexistros publicados a partir dun ano concreto, introduce o ano que che interese no campo Ano inicio.
+			   		<p class="tab3-help margen10"><img th:src="@{/img/help/from-year.png}" alt="A partir dun ano" width="500px"/></p>
+			   	</dd>
+			   	<dt>Como buscar rexistros publicados antes dun ano</dt> 
+			   	<dd class="tab2-help">Para localizar os rexistros publicados antes dun ano concreto, introduce o ano que che interese no campo Ano fin.
+			   		<p class="tab3-help margen10"><img th:src="@{/img/help/before-year.png}" alt="Antes dun ano" width="500px"/></p>
+			   	</dd>
+			   	<dt>Como buscar rexistros publicados nun período determinado</dt> 
+			   	<dd class="tab2-help">Para localizar os rexistros publicados nun período determinado,
+			   		<ul class="tab5-help margen5">
+			   			<li>1. Introduce o primeiro ano no campo Ano inicio.</li>
+			   			<li>2. Introduce o último ano no campo Ano fin.
+			   				<p class="tab3-help"><img th:src="@{/img/help/determined-period.png}" alt="Período determinado" width="500px"/></p>
+			   			</li>
+			   		</ul>
+			   	</dd>
+			</dl>
+			<a name="removeSearchTerms"></a>
+			<h5 class="subtitle-help">Como eliminar os termos de busca introducidos</h5>
+			<p>Para eliminar as condicións de busca introducidas, fai clic en
+				<img th:src="@{/img/help/btn-remove-advanced.png}" alt="Botón de limpar" width="100px"/>
+			</p>
+			<a name="viewInforSearch"></a>
+			<h5 class="subtitle-help">Como visualizar información sobre a busca que se vai realizar</h5>
+			<p>Na parte inferior da xanela de Busca avanzada, amósase información sobre a busca que se vai executar.</p>
+			<p class="tab5-help"><img th:src="@{/img/help/format-search.png}" alt="Formato de busca" width="500px"/></p>
+			<a name="examplesSearchs"></a>
+			<h5 class="subtitle-help">Exemplos de Buscas</h5>
+			<p class="tab5-help margen5">Como localizar publicacións de Alfaguara dos anos 2020 e 2021 que estean en inglés e sexan novela negra</p>
+			<p class="tab5-help margen10"><img th:src="@{/img/help/example-1-search-advanced.png}" alt="Formato de busca" width="500px"/></p>
+			<p class="tab3-help margen5">Como localizar fotografías de Diane Arbus relacionadas co mundo da moda</p>
+			<p class "tab5-help margen10"><img th:src="@{/img/help/example-2-search-advanced.png}" alt="Formato de busca" width="500px"/></p>
+			<a name="suggestionsSearchs"></a>
+			<h5 class="subtitle-help">Suxestións de busca automáticas</h5>
+			<p><span class="text-bold-help">ODA</span> proporciona as seguintes posibilidades de suxestións de buscas automáticas:</p>
+			<ul class="tab5-help margen5">
+				<li>1. "Quixo dicir"</li>
+				<li>2. busca en autoridades</li>
+			</ul>
+			<h5 class="paragraph-help">"Quixo dicir"</h5>
+			<p>Se na busca non se atoparon resultados ou se localizaron menos de 10 rexistros, <span class="text-bold-help">ODA</span> suxire termos aos usuarios que lles poden axudar a obter rexistros que lles poidan interesar baseado no spellchecking.</p>
+			<p>O spellchecking é unha comprobación ortográfica que consiste en revisar a consulta introducida polo usuario e suxerirlle unha consulta alternativa ortograficamente correcta.</p>
+			<b>Exemplo:</b>
+			<ul class="tab5-help">
+				<li>Introdúcese o termo estilmismo
+					<img class="img-caixa-mais-btn-help margen5" th:src="@{/img/help/box-text-btn-search.png}" alt="Caixa de busca de texto máis botón" width="10px"/>
+				</li>
+				<li>Como a busca non devolve resultados, ofrece como suxestións os seguintes termos:
+					<div class="margen5">
+						<img class="img-caixa-mais-btn-help" th:src="@{/img/help/did-you-mean.png}" alt="Quixo dicir"/>
+					</div>
+				</li>
+				<li>Se se fai clic en calquera dos termos suxeridos, realiza unha consulta para localizar os rexistros que conteñan o termo seleccionado</li>
+			</ul>
+			<h5 class="paragraph-help">Busca en autoridades</h5>
+			<p>Se na busca non se atoparon resultados ou se localizaron menos de 10 rexistros,<span class="text-bold-help"> ODA</span> realiza unha busca na base de datos de autoridades para ver se localiza algunha autoridade que se corresponda coa busca introducida.</p>
+			<a name="searchSimple"></a> 
+			<h2 class="title-help">Acceso a busca sinxela</h2>
+			<p>Para acceder á busca sinxela, fai clic na opción <i>Busca sinxela</i></p>
+			<p class="tab5-help margen5"><img th:src="@{/img/help/searchsimple.png}" alt="Localización" width="500px"/></p>
+			<a name="searchAuthorities"></a> 
+			<h2 class="title-help">Acceso a busca en autoridades</h2>
+			<p>Para realizar unha busca de autoridades que permita localizar rexistros que conteñen unha autoridade específica, fai clic na opción <i>Busca autoridades</i>.</p>
+			<a name="searchIndexes"></a> 
+			<h2 class="title-help">Acceso a busca nos índices</h2>
+			<p>Para realizar unha busca que localice palabras ou patróns de palabras semellantes ao termo ou termos introducidos, fai clic na opción <i>Busca índices</i>.</p>
+			<a name="lastSearch"></a> 
+			<h2 class="title-help">Acceso a últimas Buscas realizadas</h2>
+			<p>Para visualizar as <span class="text-bold-help">10</span> últimas Buscas realizadas que devolveron resultados durante a sesión do Opac, fai clic en <i>Últimas Buscas</i>.</p>
+			<a name="historySearch"></a>
+			<h2 class="cont cont_title title-help">Acceso a Buscas gardadas</h2>
+			<p>Se queres gardar algunha das Buscas que realizaches para poder executalas noutro momento, fai clic en <i>Buscas gardadas</i>.</p>
+			<ul class="tab3-help margen5">
+				<li>Para poder gardar Buscas é necesario que te identifiques previamente</li>
+			</ul>
+			<a name="favorites"></a> 
+			<h2 class="title-help">Acceso a favoritos</h2>
+			<p>Para visualizar os rexistros que marcaste como favoritos, fai clic en <i>Favoritos</i>.</p>
+			<a name="profile"></a> 
+			<h2 class="title-help">Acceso a Meu Perfil</h2>
+			<p>Fai clic na opción <i>Meu perfil</i> e identifícate para poder acceder ás seguintes utilidades de <span class="text-bold-help">ODA</span>: </p>
+			<ul class="tab5-help margen10">
+				<li>Datos persoais</li>
+				<li>Solicitudes</li>
+				<li>Préstamos activos</li>
+				<li>Histórico de préstamos</li>
+				<li>Renovar préstamos</li>
+				<li>Anular reservas</li>
+				<li>Gardar Buscas</li>
+				<li>Crear listas de favoritos</li>
+			</ul>
+			<p class="tab5-help">Para identificarte como usuario podes utilizar calquera destes 3 métodos:</p>
+			<ul class="tab5-help margen10">
+				<li>nº de carné</li>
+				<li>correo electrónico que proporcionaches á túa biblioteca</li>
+				<li>teléfono móbil que proporcionaches á túa biblioteca</li>
+			</ul>
+			<a name="home"></a> 
+			<h2 class="title-help">Acceso á páxina de inicio</h2>
+			<p>Para ir á páxina de inicio, fai clic en <i>Inicio</i>.</p>
+			<p class="top-help"><a href="#top">Arriba</a></p>
+		</div>
+	</div>
+	<th:block th:insert="/public/home/technicalfooter" th:with="page='opac-dataprivacyterms'"/>
+</body>
+</html>

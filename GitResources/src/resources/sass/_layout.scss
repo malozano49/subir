@@ -1,0 +1,95 @@
+/*!
+ *  @file        : _layout.scss
+ *
+ *  @description : ABSYS aplicacion estilos
+ *
+ *  @author      : http://www.baratz.es/
+ *
+ *  @ref         : Hoja de estilos layout
+--------------------------------------------------------------------------------------------------*/
+
+// =============================================================================
+//    Varios
+// =============================================================================
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+// Scroll suave en los url con target id
+html {scroll-behavior: smooth;}
+
+// Asocia un pequeño espacio antes del target para los casos de scroll url target
+//:target:before {content:' ';display: block;height: 25px;}
+
+body {
+
+	.alert{
+		border-radius: $border-radius;
+	}
+
+	/// anchos
+	.mw-25 {
+		max-width: 25%;
+	}
+
+	.mw-50 {
+		max-width: 50%;
+	}
+
+	.mw-75 {
+		max-width: 75%;
+	}
+
+	.mw-90 {
+		max-width: 90%;
+	}
+
+}
+
+// =============================================================================
+// Varios
+// =============================================================================
+.layout_1-12 {
+	.cont_menu_datos_type_00 {
+		.component {position:relative;float:left;width:100%;padding: 1em;}
+	}
+}
+
+
+
+.item_muestra{animation:fadeInFromNone 0.5s ease-out;}
+@keyframes fadeInFromNone {
+  0% {
+      display: none;
+      opacity: 0;
+  }
+
+  1% {
+      display: block;
+      opacity: 0;
+  }
+
+  100% {
+      display: block;
+      opacity: 1;
+  }
+}
+.item_oculta{animation:fadeOutFromBlock 0.5s ease-out;}
+@keyframes fadeOutFromBlock {
+  0% {
+      display: block;
+      opacity: 1;
+  }
+
+  1% {
+      display: block;
+      opacity: 1;
+  }
+
+  100% {
+      display: none;
+      opacity: 0;
+  }
+}

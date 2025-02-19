@@ -1,0 +1,261 @@
+/*!
+ *  @file        : _record.scss
+ *
+ *  @description : ABSYS aplicacion estilos
+ *
+ *  @author      : http://www.baratz.es/
+ *
+ *  @ref         : Hoja de estilos historico de busquedas, favoritos, busquedas guardadas
+--------------------------------------------------------------------------------------------------*/
+
+//
+// Boton header histórico de busquedas
+//
+.menu-principal{
+  .cont_btn_historico{
+    &.dropdown{
+      .dropdown-menu{width:auto;min-width:30vw;max-width:60vh;padding-left:15px;padding-right:15px;margin-top:20px;border-radius:.25rem;@extend %shadow-dropdown;
+        &.show{display:flex;
+          /// http://www.cssarrowplease.com/
+          &:after,
+          &:before{content:"";position:absolute;bottom:100%;left:90%;width:0;height:0;}
+          &:after{border-width:13px;margin-left:-13px;}
+          &:before{border-width:14px;margin-left:-14px;}
+        }
+      }
+    }
+  }
+}
+
+//
+// dropdown busquedas guardadas res 1200px
+//
+.cont_search_history,
+.cont_btn_historico{
+  .cont_historico{
+    .records_list{padding-top:1rem;padding-bottom:.5rem;
+      .card{margin-bottom:.5rem;font-size:0.875rem;border-radius:0;outline:0}
+      .card-body{padding:0 0 5px 10px}
+      .cont_search{padding-right:25px;
+        .cont_link__link{@extend %ellipsis;width:auto;max-width:100%;}
+      }
+      .cont_origin{clear:left;margin-right:1rem;max-width:50%}
+      .cont_catalog{@extend %ellipsis;max-width:100%;width:auto;}
+      .cont_button{position:absolute;top:-8px;right:0;
+        .btn{position:relative;float:left;margin:0;padding:0;
+          .icono{position:relative;float:left;top:0;left:0;transform:none;font-size:1rem}
+        }
+      }
+    }
+    .botonera_ultimas_busquedas{
+      .btn_title{font-size:0.875rem;}
+    }
+  }
+}
+@include media_max(md){
+  .menu-principal{
+    .cont_btn_historico{
+      &.dropdown{
+        .dropdown-menu{margin-top:0;
+          &.show{
+            &:after,
+            &:before{display:none}
+          }
+          .cont_button{top:0}
+        }
+      }
+    }
+  }
+}
+
+//
+// Páginas tipo favoritos, búsquedas guardadas, últimas búsquedas
+//
+.main_type_records{
+  .article{padding:30px 15px 30px 15px;
+    .anchor_title{position:relative;padding:15px 15px 0 15px;background:transparent;transition:color .3s,background-color .3s;
+      h2{margin-bottom:0;@include font-weight-bold;margin-right:1rem}
+    }
+    .card{margin-bottom:1rem;font-size:1rem}
+  }
+  @include media_max(lg){
+    .layout_1-2-1{padding-left:0;padding-right:0}
+  }
+  @include media_max(sm){
+    .layout_1-2-1{
+      section{padding-left:2%;padding-right:2%}
+      .nav-pills{
+        .nav-item{position:relative;width:100%;margin:0;
+          .nav-link{border-radius:0;text-align:center}
+        }
+      }
+    }
+  }
+
+}
+
+//
+// Búsquedas guardadas / Últimas búsquedas
+//
+.opac_page_lastSearchs,
+.opac_page_historySearch{
+  .lastSearch_list,
+  .historySearch_list{
+    .listado-resultados-desktop{
+      .records_list{padding-left:15px;padding-right:15px;
+        .card-body{flex-direction:column;
+          .cont{display:block;font-size:.875rem;
+            .cont__title{display:inline-block!important;min-width:100px;padding-right:1rem;@include font-weight-bold;text-align:right}
+            .value{display:inline;word-break:break-all}
+          }
+          .cont_search{margin-bottom:.5rem;padding-right:2rem;
+            .cont_link{font-size:1.2rem;line-height:1.5em;margin-bottom:0}
+          }
+          .cont_button{position:absolute;top:0px;right:0px;}
+        }
+      }
+      @include media_max(sm){
+        .records_list{padding-left:0;padding-right:0;
+          .card-body{
+            .cont{display:flex;flex-direction:column;flex-wrap:wrap;
+              .cont__title{padding-right:0;text-align:left}
+            }
+            .cont_search{padding-right:0}
+            .cont_button{position:relative;float:left;width:100%;display:flex;flex-direction:column;margin-top:1rem;
+              .btn{position:relative;display:flex;justify-content:center;max-width:100%;min-width:200px;margin:auto auto 8px auto;
+                .btn_title{display:inline-block!important;}
+                .icono{display:none}
+                &:last-child{margin-bottom:0}
+              }
+            }
+          }
+        }
+      }
+      @include media_max(xs){
+        .records_list{}
+      }
+    }
+    @include media_max(xs){
+      .art_contenido{padding-left:0;padding-right:0}
+
+    }
+  }
+}
+
+//
+// Últimas busquedas / modal últimas búsquedas
+//
+.btn_record{
+  .icono{@include fontawesome-regular}
+  &.active{
+    .icono{@include fontawesome-solid}
+  }
+}
+
+//
+// Búsquedas guardadas
+//
+.opac_page_historySearch{
+  .historySearch_list{
+    .contenido{padding-top:0}
+    .listado-resultados-desktop{
+      .cont_form_group{margin-bottom:1rem;padding-right:15px;}
+      .records_list{
+        .card-body{flex-direction:row;
+          .cont_dateTime{display:flex;flex-direction:column;
+            .js_transform_datetime{display:none}
+          }
+          .cont_data_search{display:flex;flex-direction:column;width:100%;padding-left:15px;}
+        }
+      }
+      @include media_max(sm){
+        .cont_form_group{padding-left:0;padding-right:0}
+        .records_list{
+          .card-body{flex-direction:column;padding-left:0;padding-right:0;
+            .cont_dateTime{align-items:center;margin-bottom:15px;}
+            .cont_data_search{padding-left:15px;padding-right:15px}
+          }
+        }
+      }
+    }
+  }
+}
+
+
+//
+// Favoritos
+//
+.reader_favorites{
+  .cont_page_favorites{
+    .favorites_list{
+      .anchor_title{display:flex;flex-wrap:wrap;justify-content:space-between;padding-bottom:15px}
+      .total-results-bar{
+        .num_results{display:flex!important;font-size:1rem}
+        .cont_pagination{display:flex!important;
+          .pagination{flex-wrap:wrap}
+        }
+      }
+      .listado-resultados-desktop{padding-top:0!important}
+    }
+    @include media_max(sm){
+      .favorites_list{padding-left:0;padding-right:0;
+        .anchor_title{padding-left:4%;padding-right:4%;}
+        &>.d-flex{padding-left:4%;padding-right:4%;}
+        .total-results-bar{padding-left:4%;padding-right:4%;
+          .cont_pagination{
+            .pagination{margin-left:auto;margin-right:auto;}
+          }
+        }
+      }
+    }
+  }
+}
+
+
+//
+// hoja de almanaque
+//
+.almanaque_hoja{position:relative;float:left;display:block;min-width:7em;font-size:.8rem;border-radius:2px;box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+	.zona_titulo{position:relative;float:left;clear:left;display:block;width:100%;text-align:center;
+		.anho{position:relative;float:left;display:block;width:100%;padding-top:2px;font-size:1em;line-height:.8em;@include font-weight-bold;text-align:center}
+		.mes_nom{position:relative;float:left;display:block;width:100%;padding-bottom:2px;font-size:1em;line-height:1em;@include font-weight-bold;text-align:center}
+	}
+	.zona_cuerpo{position:relative;float:left;clear:left;display:block;width:100%;text-align:center;padding-top:2px;padding-bottom:5px;
+    span:last-child{padding-bottom:3px}
+		.dia_nom{position:relative;float:left;clear:left;display:block;width:100%;font-size:.9em;text-align:center}
+		.dia_num{position:relative;float:left;clear:left;display:block;width:100%;@include font-weight-bold;font-size:1.7em;line-height:.8em;text-align:center;}
+		.cont_hora{position:relative;float:left;clear:left;display:block;width:100%;text-align:center;
+			.hora,
+      .min,
+      .seg{position:relative;display:inline-block}
+			.min:before,
+      .seg:before{content:":";position:relative;float:left}
+		}
+	}
+}
+
+//
+//
+//
+.opac_page_record{
+  .records_list{
+    .card{
+      .card-body{padding:1em 1.25em 1em 1.25em}
+    }
+  }
+}
+
+
+//
+// Páginas tipo error
+//
+.main_type_error{position:relative;float:left;width:100%;display:flex;justify-content:center;align-items:center;padding-top:3rem;padding-bottom:3rem;
+  .cont_error{position:relative;display:flex;flex-direction:column;}
+  .alert{position:relative;float:none;display:inline-block;margin:auto;left:auto;right:auto;transform:none}
+}
+
+
+
+
+
+

@@ -1,0 +1,101 @@
+<!-- :: [/public/home/fragments/userLinksDocBar.html] -->
+
+   <li class="item_user_login" sec:authorize="${!isAuthenticated()}">
+      <a class="btn btn-primary con_icono" th:href="@{${thymeleafMap.get('LOGIN_PATH')}}" th:title="#{dockbar.login.label}">
+        <span class="icono fas fa-user mr-2" aria-hidden="true"></span>
+        <span class="link_title" th:text="#{dockbar.login.title}"></span>
+      </a>
+   </li>
+   <li class="item_user_data" sec:authorize="${isAuthenticated()}">
+      <div class="dropdown type_reader dropdown_menu_desktop" sec:authorize="principal.hasRole(#vars.thymeleafMap.get('READER_AUTHORITY'))" >
+         <button class="btn con_icono btn-primary dropdown-toggle btn_menu_desktop" type="button" id="dropdown-menu-desktop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" th:value="${#authentication.getPrincipal().getFirstName()}"  th:title="'Acceder al perfil de '+ ${#authentication.getPrincipal().getFirstName() + ' ' + #authentication.getPrincipal().getSurname()}">
+            <span class="icono fas fa-user-circle mr-1" aria-hidden="true"></span>
+            <span class="link_title d-none d-sm-block" th:text="${#strings.abbreviate(#authentication.getPrincipal().getFirstName() + ' ' + #authentication.getPrincipal().getSurname(),20)}"></span>
+         </button>
+         <div class="dropdown-menu dropdown-menu-right bg-white userMenu mt-1">
+<!--/* :: TODO: Falta incluir correctamente la clase 'active' en los tags li según la vista visitada */-->
+            <ul>
+              <li class="user_name">
+                <span class="user_name__label" th:text="#{dockbar.login.user.title}"></span>
+                <span class="user_name__data" th:text="${#authentication.getPrincipal().getFirstName() + ' ' + #authentication.getPrincipal().getSurname()}"></span>
+              </li>
+              <li class="nav_title my-2">
+                <span class="nav_title-mi_perfil" th:text="#{dockbar.biblio.title}"/>
+                <div class="dropdown-divider"></div>
+              </li>
+              <li>
+                <a class="dropdown-item d-flex align-items-center justify-content-between" th:href="@{${thymeleafMap.get('READER_DATA_PATH')}}" th:title="#{dockbar.biblio.personal.data}">
+                  <span class="link_title" th:text="#{dockbar.biblio.personal.data}"></span>
+                  <!--<span class="icono_despliegue fas fa-angle-right" aria-hidden="true"></span>-->
+                </a>
+                <div class="dropdown-divider"></div>
+              </li>
+              <li>
+                <a class="dropdown-item d-flex align-items-center justify-content-between" th:href="@{${thymeleafMap.get('READER_TITLE_LIST')}}" th:title="#{dockbar.title.list.title}">
+                  <span class="link_title" th:text="#{dockbar.title.list.title}"></span>
+                   <!--<span class="icono_despliegue fas fa-angle-right" aria-hidden="true"></span>-->
+                </a>
+                <div class="dropdown-divider"></div>
+              </li>
+              <li>
+                <a class="dropdown-item d-flex align-items-center justify-content-between" th:href="@{${thymeleafMap.get('READER_LOANS_PATH')}}" th:title="#{dockbar.biblio.loans.reservations}">
+                  <span class="link_title" th:text="#{dockbar.biblio.loans.reservations}"></span>
+                   <!--<span class="icono_despliegue fas fa-angle-right" aria-hidden="true"></span>-->
+                </a>
+                <div class="dropdown-divider"></div>
+              </li>
+            
+              <li th:if="${commentsEnabled}">
+                  <a class="dropdown-item d-flex align-items-center justify-content-between" th:href="@{${thymeleafMap.get('READER_COMMENTS')}}" th:title="#{dockbar.biblio.comment}">
+                      <span class="link_title" th:text="#{dockbar.biblio.comment}"></span>
+                       <!--<span class="icono_despliegue fas fa-angle-right" aria-hidden="true"></span>-->
+                  </a>
+                  <div class="dropdown-divider"></div>
+              </li>  
+              <li   th:if="${suggestionsEnabled}">
+         		<a class="dropdown-item d-flex align-items-center justify-content-between" th:href="@{${thymeleafMap.get('READER_SUGGESTIONS')}}" th:title="#{dockbar.biblio.suggestions}">
+         			<span class="link_title" th:text="#{dockbar.biblio.suggestions}"></span>
+           			 <!--<span class="icono_despliegue fas fa-angle-right" aria-hidden="true"></span>-->
+         		</a>
+         		<div class="dropdown-divider"></div>
+        	 </li>
+        	<li  th:if="${buySuggestionsEnabled}">
+         		<a class="dropdown-item d-flex align-items-center justify-content-between" th:href="@{${thymeleafMap.get('READER_BUY_SUGGESTIONS')}}" th:title="#{dockbar.biblio.buysuggestions}">
+         			<span class="link_title" th:text="#{dockbar.biblio.buysuggestions}"></span>
+           			 <!--<span class="icono_despliegue fas fa-angle-right" aria-hidden="true"></span>-->
+         		</a>
+         		<div class="dropdown-divider"></div>
+        	</li>       
+        	<li  th:if="${buySuggestionsEnabled}">
+         		<a class="dropdown-item d-flex align-items-center justify-content-between" th:href="@{${thymeleafMap.get('READER_BUY_SUGGESTIONS_ACEPTED')}}" th:title="#{dockbar.biblio.buysuggestions.acepted}">
+         			<span class="link_title" th:text="#{dockbar.biblio.buysuggestions.acepted}"></span>
+           			 <!--<span class="icono_despliegue fas fa-angle-right" aria-hidden="true"></span>-->
+         		</a>
+        	</li>         
+            </ul>
+         </div>
+         <!-- :: /.dropdown-menu -->
+      </div>
+      <!-- :: /.dropdown -->
+
+     <div class="dropdown type_manager" sec:authorize="${principal.hasRole(#vars.thymeleafMap.get('CONTENT_MANAGER_AUTHORITY'))}">
+        <!-- :: MANAGER -->
+         <button class="btn_user_manager btn con_icono btn-secondary dropdown-toggle" type="button" id="dropdown-menu-manager" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" th:value="${#authentication.getPrincipal().getAlias()}" th:title="'Acceder al perfil de '+ ${#authentication.getPrincipal().getFirstName()}">
+            <span class="icono fas fa-user-edit" aria-hidden="true"></span>
+            <span class="link_title ml-1" th:text="${#authentication.getPrincipal().getFirstName() + ' ' + #authentication.getPrincipal().getSurname()}"></span>
+         </button>
+         <div class="dropdown-menu dropdown-menu-right bg-primary managerMenu" >
+            <ul>
+               <li>
+                  <a class="btn btn-primary" th:href="@{${thymeleafMap.get('MANAGEMENT_AREA_PATH')}}" th:title="#{dockbar.manager.title}">
+                    <span class="link_title" th:text="#{dockbar.manager.title}"></span>
+                     <!--<span class="icono_despliegue fas fa-angle-right" aria-hidden="true"></span>-->
+                  </a>
+               </li>
+            </ul>
+         </div>
+         <!-- :: /.dropdown-menu -->
+      </div>
+      <!-- :: /.dropdown -->
+   </li>
+<!-- :: [/public/home/fragments/userLinksDocBar.html] -->

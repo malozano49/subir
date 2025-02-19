@@ -1,0 +1,176 @@
+<th:block th:insert="/public/home/html_type"></th:block>
+<th:block th:insert="/public/home/technicalheader::main" th:with="page=${'opac-help-authority-es_ES'}"></th:block>
+<script type="text/javascript">
+	var menu = document.getElementById('menu');
+	Stickyfill.add(menu);
+</script>
+<body>
+<div id="burger-menu" class="burger-menu">
+  <span></span>
+  			<div id="menu2" class="menu menu2">
+			<div class=""><nav class="sn-contents" aria-label="Secondary">
+      <ul class="sidenav--lis margen5t">
+			<li><a href="#serchAuthorities">Authority Search</a>
+			  <ul class="tab3-help">
+			    <li><a href="#typeSearach">Types of Searches</a></li>
+			    <li><a href="#orderRecords">How to Sort the Search Results</a></li>
+			    <li><a href="#moveList">How to Navigate the List of Authorities Found in the Search</a></li>
+			    <li><a href="#locateRecords">How to Find Records Containing a Specific Authority</a></li>
+			  </ul>
+			</li>
+			<li><a href="#searchIndexes">Access to Index Search</a></li>
+			<li><a href="#lastSearch">Access to Recent Searches</a></li>  
+			<li><a href="#historySearch">Access to Saved Searches</a></li>  
+			<li><a href="#favorites">Access to Favorites</a></li>
+			<li><a href="#profile">Access to My Profile</a></li>
+			<li><a href="#home">Access to the Home Page</a></li></ul></nav>
+			</div>
+			</div>
+			<div class="wrapper cf">
+			<div id="menu" class="menu">
+			  <div class="sidenav">
+			    <nav class="sn-contents" aria-label="Secondary">
+			      <ul class="sidenav--list">
+			        <li><a href="#typeSearach">Types of Searches</a></li>
+			        <li><a href="#orderRecords">How to Sort the Search Results</a></li>
+			        <li><a href="#moveList">How to Navigate the List of Authorities Found in the Search</a></li>
+			        <li><a href="#locateRecords">How to Find Records Containing a Specific Authority</a></li>
+			
+			        <li><a href="#searchIndexes">Access to Index Search</a></li>
+			        <li><a href="#lastSearch">Access to Recent Searches</a></li>
+			        <li><a href="#historySearch">Access to Saved Searches</a></li>
+			        <li><a href="#favorites">Access to Favorites</a></li>
+			        <li><a href="#profile">Access to My Profile</a></li>
+			        <li><a href="#home">Access to the Home Page</a></li>
+			      </ul>
+			    </nav>
+			  </div>
+			</div>
+			<div class="content">
+			  <a name="top"></a>
+			  <a name="serchAuthorities"></a>
+			  <h2 class="title-help">Authority Search</h2>
+			  <p>The <i>Authority Search</i> option allows you to perform an authority search to facilitate the location of records containing a specific authority.</p>
+			  <a name="typeSearach"></a>
+			  <h4 class="title-help">Types of Searches</h4>
+			  <p>The following types of searches can be performed:</p>
+			  <ul class="tab5-help margen10">
+			    <li>- Searches in all fields</li>
+			    <li>- Searches in a specific field</li>
+			    <li>- Searches containing the entered term or terms</li>
+			    <li>- Searches starting with</li>
+			    <li>- Exact searches</li>
+			  </ul>
+			  <p class="tab3-help paragraph-help">Searches in all fields</p>
+			  <p class="tab4-help">By default, the search is performed in All Fields.</p>
+			  <span class="tab5-help"><img th:src="@{/img/help/select-any-field.png}" alt="Select Any Field" width="350px"/></span>
+			  <p class="tab4-help">The search you perform takes into account all fields in the database that are defined as searchable.</p>
+			  <p class="tab3-help paragraph-help">Searches in a specific field</p>
+			  <p class="tab4-help">To perform a search in a specific field, select the one you are interested in from the <i>Field Selection</i> option. By default, the fields available for searching are as follows:</p>
+			  <span class="tab5-help"><img th:src="@{/img/help/select-field-authority.png}" alt="Select Authority Field" width="350px"/></span>
+			  <p class="tab4-help">The search you perform will only consider the selected field.</p>
+			  <p class="tab3-help paragraph-help">Searches containing the entered term or terms</p>
+			  <p class="tab4-help">To locate authorities containing one or more search terms, use the <i>Contains in Selection Filters</i> option.</p>
+			  <span class="tab5-help"><img th:src="@{/img/help/term-authority.png}" alt="Single Authority Term" width="450px"/></span>
+			  <p></p>
+			  <div class="tab5-help">
+			    <div class="box-help">
+			      <p>The search is performed using internal truncations in front of and behind the entered search term. To refine the search, you can use the term in quotes.</p>
+			      <p><b>Example:</b></p>
+			      <ul class="tab5-help">
+			        <li>If you enter the term "sagrario," the search performed is: *sagra*. In this way, it will locate authorities such as the following:
+			          <ul class="tab4-help">
+			            <li>Cantalejo Ruiz, Sagrario</li>
+			            <li>Fierro Madrid, Sagrario</li>
+			            <li>Ibáñez, Sagra</li>
+			          </ul>
+			        </li>
+			        <li>If you enter "sagra," it will only locate those containing the term "sagra":
+			          <ul class="tab4-help"><li>Ibáñez, Sagra</li></ul>
+			        </li>
+			      </ul>
+			    </div>
+			  </div>
+			<p></p>
+			<p class="tab3-help paragraph-help">Searches Starting With</p>
+			<p class="tab4-help">To locate authorities that start with a specific term, select the <i>Starts with in Selection Filters</i> option.</p>
+			<span class="tab5-help"><img th:src="@{/img/help/start-term-authory.png}" alt="Starts with" width="500px"/></span>
+			<p class="tab4-help">The <i>"Starts with"</i> option is only available if a search field has been selected previously.</p>
+			<p class="tab3-help paragraph-help">Exact Searches</p>
+			<p class="tab4-help">To locate authorities that match exactly with the search string entered, select the <i>Exact in Selection Filters</i> option.</p>
+			<span class="tab5-help"><img th:src="@{/img/help/exact-authority.png}" alt="Exact Term in Authorities" width="500px"/></span>
+			<p class="tab4-help">The <i>"Exact"</i> option is only available if a search field has been selected previously.</p>
+			<a name="orderRecords"></a>
+			<h4 class="title-help">How to Sort the Search Results</h4>
+			<p>The authorities found in a search are sorted by default in <span class="text-bold-help">alphabetical</span> order. If you wish, you can change the sorting based on relevance.</p>
+			<a name="moveList"></a>
+			<h4 class="title-help">How to Navigate the List of Authorities Found in the Search</h4>
+			<p>By default, authorities found in a search are displayed in groups of <span class="text-bold-help">10</span>, but there is an option to group the results by 25 or 35.</p>
+			<span class="tab5-help margen5"><img th:src="@{/img/help/results-by-page.png}" alt="Results per page" width="320px"/></span>
+			<p>To navigate through the different pages of the results obtained, you have the following options:</p>
+			<ul class="tab4-help margen5">
+			  <li>Click on <img th:src="@{/img/help/next.png}" alt="Next" width="80px"/> to move to the next page.</li>
+			  <li>Click on <img th:src="@{/img/help/back.png}" alt="Previous" width="80px"/> to move to the previous page.</li>
+			  <li>Click on the page number you want to view
+			    <span class="tab3-help"><img th:src="@{/img/help/number-by-page.png}" alt="Page number" width="320px"/></span>
+			  </li>
+			  <li>* Click on the number 1 to view the first page</li>
+			  <span class="tab3-help"><img th:src="@{/img/help/first-page.png}" alt="First page" width="320px"/></span>
+			  <br>
+			  <li>Click on the number before "Next" to go to the last page
+			    <span class="tab3-help"><img th:src="@{/img/help/last-page.png}" alt="Last page" width="320px"/></span>
+			  </li>
+			</ul>
+			<a name="locateRecords"></a>
+			<h4 class="title-help">How to Find Records Containing a Specific Authority</h4>
+			<p>Once you have made the query you are interested in authorities, a list of authorities corresponding to the entered search is displayed, along with the number of records containing the located authorities.</p>
+			<p class="tab2-help"><b>Example:</b></p>
+			<p class="tab5-help margen5">Searching for authorities in the Subject field containing "detective fiction"</p>
+			<span class="tab5-help margen5"><img th:src="@{/img/help/search-matter-field.png}" alt="Subject Field" width="500px"/></span>
+			<p class="tab5-help margen5">The located authorities are displayed in list mode, along with the number of records containing each authority:</p>
+			<span class="tab5-help margen5"><img th:src="@{/img/help/list-matter-field.png}" alt="List Subject Field" width="500px"/>
+			</span>
+			<p class="tab2-help margen5">Click on the one you are interested in to view the associated records.</p>
+			<a name="searchIndexes"></a>
+			<h2 class="title-help">Access to Index Search</h2>
+			<p>To perform a search that locates words or word patterns similar to the entered term or terms, click on the <i>Index Search</i> option.</p>
+			<a name="lastSearch"></a>
+			<h2 class="title-help">Access to Recent Searches</h2>
+			<p>To view the <span class="text-bold-help">10</span> most recent searches that have returned results during the OPAC session, click on <i>Recent Searches</i>.</p>
+			<a name="historySearch"></a>
+			<h2 class="title-help">Access to Saved Searches</h2>
+			<p>If you want to save some of the searches you have conducted to run them at another time, click on <i>Saved Searches</i>.</p>
+			<ul class="tab5-help">
+			  <li>To save searches, you need to identify yourself beforehand.</li>
+			</ul>
+			<a name="favorites"></a>
+			<h2 class="title-help">Access to Favorites</h2>
+			<p>To view the records you have marked as favorites, click on <i>Favorites</i>.</p>
+			<a name="profile"></a>
+			<h2 class="title-help">Access to My Profile</h2>
+			<p>Click on the <i>My Profile</i> option and log in to access the following <span class="text-bold-help">ODA</span> utilities:</p>
+			<ul class="tab5-help margen5">
+			  <li>Personal Information</li>
+			  <li>Requests</li>
+			  <li>Active Loans</li>
+			  <li>Loan History</li>
+			  <li>Renew Loans</li>
+			  <li>Cancel Reservations</li>
+			  <li>Save Searches</li>
+			  <li>Create Favorites Lists</li>
+			</ul>
+			<p class="tab2-help">To identify yourself as a user, you can use any of these 3 methods:</p>
+			<ul class="tab5-help margen5">
+			  <li>Library card number</li>
+			  <li>Email address provided to your library</li>
+			  <li>Mobile phone number provided to your library</li>
+			</ul>
+			<a name="home"></a>
+			<h2 class="title-help">Access to the Home Page</h2>
+			<p>To go to the home page, click on <i>Home</i>.</p>
+			<p class="top-help"><a href="#top">Top</a></p>
+		</div>
+	</div>
+	<th:block th:insert="/public/home/technicalfooter" th:with="page='opac-dataprivacyterms'"/>
+</body>
+</html>

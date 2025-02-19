@@ -1,0 +1,52 @@
+<!-- :: [title/marc/marcTable.html] -->
+<!--Table-->
+<table class="marc-copy-format table table-striped table-bordered">
+   <thead class="">
+      <tr>
+         <th scope="col" class="campo">
+            <th:block th:text="#{copy.more.details.marc.field.label}"></th:block>
+         </th>
+         <th scope="col" class="indicador text-center">
+            <th:block th:text="#{copy.more.details.marc.i1.label}"></th:block>
+         </th>
+         <th scope="col" class="indicador text-center">
+            <th:block th:text="#{copy.more.details.marc.i2.label}"></th:block>
+         </th>
+         <th scope="col" class="valorCampoSubcampo">
+            <th:block th:text="#{copy.more.details.marc.value.label}"></th:block>
+         </th>
+      </tr>
+   </thead>
+   <tbody>
+      <th:block th:each="instance : ${tfields}">
+         <tr th:if="${specialFileds?.get('__${instance.key}__') == null or specialFileds?.get('__${instance.key}__')?.get('showMarcTable')}">
+            <td class="campo" th:text="${#strings.replace(instance.key,'t','')}"></td>
+            <th:block th:each="valor, iterStat: ${instance.value}">
+               <td class="indicador text-center" >
+                  <th:block th:if="${valor != null and valor.indicator1 !=null}">
+                     <span class="infodoc" th:text="${valor.indicator1}"></span>
+                  </th:block>
+               </td>
+               <td class="indicador text-center" >
+                  <th:block th:if="${valor != null and valor.indicator2 !=null}">
+                     <span class="infodoc" th:text="${valor.indicator2}"></span>
+                  </th:block>
+               </td>
+               <td class="valorCampoSubcampo">
+                  <th:block th:if="${valor != null and valor.controlValue !=null}">
+                     <span th:text="${valor.controlValue}"></span>
+                  </th:block>
+                  <th:block th:if="${valor != null and valor.subFields !=null}">
+                     <th:block th:each="subcampos : ${valor.subFields}">
+                        <span class="cr" th:text="'$'+${subcampos.dollar}"></span>
+                        <th:block th:insert="/title/fragments/subfieldValue"></th:block>
+                     </th:block>
+                  </th:block>
+               </td>
+               <th:block th:if="${iterStat.index} < ${iterStat.size-1}" th:insert="/title/marc/endTrMarc"></th:block>
+            </th:block>
+         </tr>
+      </th:block>
+   </tbody>
+</table>
+<!-- :: /[title/marc/marcTable.html] -->

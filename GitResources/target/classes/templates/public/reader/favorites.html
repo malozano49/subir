@@ -1,0 +1,53 @@
+<th:block th:insert="/public/home/html_type"/>
+  <head>
+    <th:block th:insert="/public/home/technicalheader::main" th:with="page='opac-reader-favorites'"/>
+  </head>
+  <body class="page_type_reader reader_favorites">
+    <!-- :: public/reader/favorites.html -->
+    <header class="header_principal">
+      <th:block th:with="pageLocation='favorites'" th:insert="/public/home/header"/>
+      <th:block th:insert="/fragments/breadcrums"></th:block>
+    </header>
+    <main id="acc_anchor_main" class="main_type_records cont_page_favorites container-fluid container_color_back">
+      <div class="layout_1-2-1 col-lg-9 col-md-12 mr-auto ml-auto pt-3 pb-3">
+        <section id="firstRow" class="sct_favoritos d-flex col-md-12 ml-auto mr-auto mt-3" aria-labelledby="favoritos_titulo">
+          <div id="favorites_list" class="favorites_list article col-md-12 mt-5 mb-4 border">
+
+            <div class="anchor_title w-100">
+              <h2 id="favoritos_titulo"><span class="icono far fa-bookmark mr-2" aria-hidden="true"></span><th:block th:text="#{favorite.title}"/></h2>
+              <th:block th:insert="/public/reader/fragments/shareFavorites"></th:block>
+            </div>
+
+            <div class="col-md-12 d-flex">
+              <div id="refreshWrapper" class="container p-0">
+                <th:block th:if="${solrSearchWeb.solrSearch.results != null and not #lists.isEmpty(solrSearchWeb.solrSearch.results.resultList)}">
+
+                  <th:block th:insert="/public/catalog/fragments/totalResults"></th:block>
+
+                  <div class="row listado-resultados-desktop justify-content-center py-3">
+                    <!-- :: Listado de resultados -->
+                    <div class="col-md-9 col-sm-7 py-3 pb-0 portadas-list">
+                      <th:block th:insert="/public/catalog/fragments/catalogView"></th:block>
+                    </div>
+                    <!-- :: /.portadas-list -->
+                  </div>
+                  <!-- :: /.listado-resultados-desktop -->
+
+                </th:block>
+              </div>
+              <!-- :: /#refreshWrapper -->
+            </div>
+
+          </div>
+          <!-- :: /.favorites_list -->
+
+        </section>
+      </div>
+      <!-- :: /.layout_1-2-1 -->
+    </main>
+    <footer class="footer_principal">
+      <th:block th:insert="/public/home/footer"/>
+    </footer>
+    <th:block th:insert="/public/home/technicalfooter" th:with="page='opac-reader-favorites'"/>
+  </body>
+</html>

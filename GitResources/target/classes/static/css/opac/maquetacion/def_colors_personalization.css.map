@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": ";AAAA;;;;;;;;oGAQoG;ACRpG;;;;;;;;;;;;;oGAaoG;ADalG,mCAAQ;EAAC,OAAO,EEgCE,4zEAAoB",
+"sources": ["../../../../../../src/resources/sass/maquetacion/def_colors_personalization.scss","../../../../../../src/resources/sass/perso/_colors.scss","../../../../../../src/resources/static/plugins/sass-to-js/sass/_sass-to-js.scss"],
+"names": [],
+"file": "def_colors_personalization.css"
+}

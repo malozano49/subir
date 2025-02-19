@@ -1,0 +1,34 @@
+<th:block th:insert="/public/home/html_type"></th:block>
+   <head>
+      <th:block th:insert="/public/home/technicalheader::main" th:with="page='opac-password-reset'"></th:block>
+   </head>
+   <body class="page_type_login page_reset">
+      <!-- :: public/reset/home.html -->
+      <header class="header_principal">
+      <th:block th:with="pageLocation='home'" th:insert="/public/home/header"></th:block>
+    </header>
+      <main id="acc_anchor_main" class="main_type_login ie_fix_column container-fluid">
+         <div class="row">
+            <div class="col_dcha col-md-12 col-12 col-lg-12 col-xl-12">
+              <div th:if="${code}" class="alert alert-danger col-12 m-0" role="alert" aria-atomic="true">
+                 <span class="alert_titulo sr-only" th:text="#{alert.error.title}"></span>
+                 <span th:if="${code}" th:text="#{${'error.login.' + code}}"> </span>
+              </div>
+              <!-- :: /.alert -->
+              <div class="cont_blq_login col-12 col-md-5 col-lg-5 col-xl-5 mx-auto pb-4 pt-4">
+             
+                  <th:block th:insert="/public/reset/homeForm"></th:block>
+               
+               </div>
+               <!-- :: /.cont_blq_login -->
+            </div>
+            <!-- :: /.col_dcha -->
+         </div>
+         <!-- :: /.row -->
+      </main>
+        <footer class="footer_principal">
+      <th:block th:insert="/login/loginFooter" th:with="page='opac-home'"></th:block>
+    </footer>
+      <th:block th:insert="/public/home/technicalfooter" th:with="page='opac-password-reset'"></th:block>
+   </body>
+</html>

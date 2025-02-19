@@ -1,0 +1,377 @@
+<th:block th:fragment="main">
+<!-- :: [manager/activities/activities.html] -->
+
+<!-- Manager messages -->
+<section class="manager-section manager-catalog manager-messages mt-5" aria-labelledby="sct_title_warnings">
+  <h2 id="sct_title_warnings" class="sr-only" th:text="#{alert.general.messages}"></h2>
+	<div class="container cont_message" th:insert="/manager/fragments/warningData"></div>
+</section>
+<!-- :: /.manager-messages -->
+
+<div class="manager-section manager-catalog manager-activities mt-5 mb-5">
+  <div class="container container_menu">
+    <div th:insert="/manager/fragments/upMenu" class="cont_up_menu d-flex justify-content-center"></div>
+    <!-- :: /.cont_up_menu -->
+  </div>
+  <!-- :: /.container_menu -->
+
+  <section class="container container_general border" aria-labelledby="sct_title_general">
+
+    <h2 id="sct_title_general" class="d-block font-weight-bold section__title">
+      <span class="icono fas fa-calendar-times mr-1" aria-hidden="true"></span>
+      <th:block th:text="#{manager.activities.area}"/>
+    </h2>
+
+    <th:block th:include="/manager/fragments/alertMarcas"></th:block>
+
+    <th:block th:if="${#lists.size(activities.keySet()) > 1}" th:insert="/manager/fragments/filtrable"></th:block>
+
+    <!--/* :: WARNING: La clase .cont_global indica si la nueva actividad se debe insertar desde js en el resto de bloques */-->
+    <article th:id="manageActivities_+${#strings.replace(activity.key.code,' ','_')}" class="cont_manageActivities border mt-3" th:data-level="${activity.key.code}" th:each="activity, stat: ${activities}" th:classappend="${activity.key.level==thymeleafMap.get('LevelType_B')} ? 'cont_global':''" th:aria-labelledby="'art_title_'+${#strings.replace(activity.key.code,' ','_')}">
+      <h3 class="sr-only" th:id="'art_title_'+${#strings.replace(activity.key.code,' ','_')}" th:text="#{${'level.'+activity.key.level}(${activity.key.text})}"></h3>
+      <button th:id="'art_agenda_title_'+${#strings.replace(activity.key.code,' ','_')}" type="button" class="btn btn_article_title" data-toggle="collapse" th:data-target="'#collapse_'+${stat.index}" th:aria-expanded="${stat.index==0}?'true':'false'" th:aria-label="#{${'level.'+activity.key.level}(${activity.key.text})}">
+        <span class="titulo h3 font-weight-bold mb-2 mt-2 stc_title" th:text="#{${'level.'+activity.key.level}(${activity.key.text})}" aria-hidden="true"/>
+      </button>
+      <!--<h3 th:id="'art_agenda_title_'+${#strings.replace(activity.key.code,' ','_')}" class="article_title w-auto"  th:text="#{${'level.'+activity.key.level}(${activity.key.text})}" ></h3>-->
+      <div th:id="'collapse_'+${stat.index}" class="collapse cont_collapse" th:classappend="${stat.index==0}?'show':''">
+
+        <div class="cont cont_help_with_button mb-3">
+          <div class="cont_botonera_help">
+            <button type="button" class="btn btn_show_help" th:title="#{general.btn_show_help.title}" th:aria-label="#{general.btn_show_help.title}">
+              <span class="icono fas fa-info" aria-hidden="true"></span>
+            </button>
+          </div>
+          <!-- :: /.cont_botonera_help -->
+          <div class="alert alert-info alert-dismissible mt-3">
+            <span class="alert_titulo mb-2" th:text="#{activity.info.use.title}"></span>
+            <span class="alert_texto" th:text="#{activity.info.use.line.1}"></span>
+            <span class="alert_texto" th:text="#{activity.info.use.line.2}"></span>
+            <span class="alert_texto mb-2" th:text="#{activity.info.use.line.3}"></span>
+            <button type="button" class="close" data-dismiss="alert" th:aria-label="#{general.alerts.btn_close.title}" th:title="#{general.alerts.btn_close.title}">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <!-- :: /.alert -->
+        </div>
+        <!-- :: /.cont_help_with_button -->
+
+        <div class="cont_alerts alerts_actions" aria-live="polite" aria-atomic="true"></div>
+
+        <div class="cont_botonera_control w-100 d-flex justify-content-end mb-2">
+          <!-- :: alta de actividad -->
+          <button class="btn_activity_add btn btn-primary mr-1 modal_js" type="submit"  th:id="'b_activity_'+${#strings.replace(activity.key.code,' ','_')}"
+            data-modal_tipo="info"
+            data-modal_size="modal-lg"
+            th:data-show_content_no_edit="${dataShowContentNoEdit}"
+            th:data-modal_target="'#modal_activity_'+${#strings.replace(activity.key.code,' ','_')}"
+            data-modal_discriminador="modal_add_manager_activity"
+            th:data-modal_title="#{activity.modal.title}"
+            th:data-modal_html="'#activity_form_'+${#strings.replace(activity.key.code,' ','_')}"
+            data-modal_footer="false"
+            th:aria-label="#{activity.modal.title}" th:title="#{activity.modal.title}"
+            th:if="${activity.key.edit}">
+            <span class="icono fas fa-plus" aria-hidden="true"></span>
+            <span class="btn_titleWhite" th:text="#{activity.button.add}"></span>
+          </button>
+        </div>
+        <!-- :: /.cont_botonera_control -->
+
+        <div th:id="'activity_form_'+${#strings.replace(activity.key.code,' ','_')}" class="activity_add_form d-none">
+          <form th:action="@{${thymeleafMap.get('MANAGER_ACTIVITIES_ADD')}}" th:object="${activityVO}" method="POST">
+            <input type="hidden" name="contentLevel" th:value="${activity.key.code}">
+            <input type="hidden" name="type" th:value="@{${thymeleafMap.get('ACTIVITY')}}">
+
+            <div class="content_activity_form d-flex flex-column col-md-12 mb-3" data-form_id="00">
+
+              <fieldset>
+                <div class="cont_form_group d-flex mb-3">
+                  <div class="form-group col-md-12 pl-0 pr-0">
+                    <label th:for="'input_text_'+${#strings.replace(activity.key.code,' ','_')}+'_'+${stat.index}" class="bmd-label-floating" th:text="#{activity.text}"></label>
+                    <input th:id="'input_text_'+${#strings.replace(activity.key.code,' ','_')}+'_'+${stat.index}" class="form-control" type="text" name="text" th:aria-label="#{activity.text}" value=""/>
+                    <span class="bmd-help" th:text="#{activity.text.help}"></span>
+                  </div>
+                  <!-- :: /.form-group -->
+                </div>
+                <!-- :: /.cont_form_group -->
+              </fieldset>
+
+              <fieldset>
+                <div class="cont_form_group d-flex mb-3">
+                  <div class="form-group col-md-12 pl-0 pr-0">
+                    <label th:for="'input_link_'+${#strings.replace(activity.key.code,' ','_')}+'_'+${stat.index}" class="bmd-label-floating" th:text="#{activity.link}" ></label>
+                    <input th:id="'input_link_'+${#strings.replace(activity.key.code,' ','_')}+'_'+${stat.index}" class="form-control" type="text" name="link" th:aria-label="#{activity.link}" value=""/>
+                    <span class="bmd-help" th:text="#{activity.link.help}"></span>
+                  </div>
+                  <!-- :: /.form-group -->
+                </div>
+                <!-- :: /.cont_form_group -->
+              </fieldset>
+
+              <div class="cont_fechas row ml-0 mr-0 w-100">
+
+                <div class="alert alert-info alert_instructions_modal alert-dismissible fade show">
+                  <button type="button" class="close" data-dismiss="alert" th:aria-label="#{activity.modal.alert.info.btn_close.title}" th:title="#{activity.modal.alert.info.btn_close.title}">
+                    <span aria-hidden="true">×</span>
+                  </button>
+                  <span class="alert_titulo" th:text="#{alert.info.title}"></span>
+                  <span class="alert_texto" th:text="#{activity.modal.alert.info.date}"></span>
+                </div>
+
+                <fieldset class="cont_form_group d-flex col-lg-6 col-sm-12 pl-0 pr-lg-3 pr-0 mb-3">
+                  <div class="form-group col-md-12 pl-0 pr-0">
+                    <label th:for="'input_activityDateStart_'+${stat.index}" class="bmd-label-floating" th:text="#{activity.activityDateStart}"></label>
+                    <div class="ctrl_datetimepicker input-group date" th:id="'datetimepicker_activityDateStart_'+${stat.index}" data-target-input="nearest">
+                      <input type="text" th:id="'input_activityDateStart_'+${stat.index}" name="activityDateStart" class="form-control datetimepicker-input assessment-date-keypress" autocomplete="off" th:data-target="'#datetimepicker_activityDateStart_'+${stat.index}">
+                      <div class="input-group-append">
+                        <button type="button" class="btn btn-primary input-group-text btn_open_datepicker" th:data-target="'#datetimepicker_activityDateStart_'+${stat.index}" data-toggle="datetimepicker" th:aria-label="#{general.datetimepicker.btn_open_datepicker.title}" th:title="#{general.datetimepicker.btn_open_datepicker.title}"><span aria-hidden="true" class="icono fas fa-calendar"></span></button>
+                        <button type="button" class="btn btn-outline-secondary btn_reset btn_reset_datepicker" th:aria-label="#{general.datetimepicker.btn_reset_datepicker.title}" th:title="#{general.datetimepicker.btn_reset_datepicker.title}"><span aria-hidden=true class="icono fas fa-times"></span></button>
+                      </div>
+                    </div>
+                    <span class="bmd-help" th:text="#{activity.activityDateStart.help}"></span>
+                  </div>
+                  <!-- :: /.form-group -->
+                </fieldset>
+
+                <fieldset class="cont_form_group d-flex col-lg-6 col-sm-12 pl-0 pr-lg-3 pr-0 mb-3">
+                  <div class="form-group col-md-12 pl-0 pr-0">
+                    <label th:for="'input_activityDateEnd_'+${stat.index}" class="bmd-label-floating" th:text="#{activity.activityDateEnd}"></label>
+                    <div class="ctrl_datetimepicker input-group date" th:id="'datetimepicker_activityDateEnd_'+${stat.index}" data-target-input="nearest">
+                      <input type="text" th:id="'input_activityDateEnd_'+${stat.index}" name="activityDateEnd" class="form-control datetimepicker-input assessment-date-keypress" autocomplete="off" th:data-target="'#datetimepicker_activityDateEnd_'+${stat.index}">
+                      <div class="input-group-append">
+                        <button type="button" class="btn btn-primary input-group-text btn_open_datepicker" th:data-target="'#datetimepicker_activityDateEnd_'+${stat.index}" data-toggle="datetimepicker" th:aria-label="#{general.datetimepicker.btn_open_datepicker.title}" th:title="#{general.datetimepicker.btn_open_datepicker.title}"><span aria-hidden="true" class="icono fas fa-calendar"></span></button>
+                        <button type="button" class="btn btn-outline-secondary btn_reset btn_reset_datepicker" th:aria-label="#{general.datetimepicker.btn_reset_datepicker.title}" th:title="#{general.datetimepicker.btn_reset_datepicker.title}"><span aria-hidden="true" class="icono fas fa-times"></span></button>
+                      </div>
+                    </div>
+                    <span class="bmd-help" th:text="#{activity.activityDateEnd.help}"></span>
+                  </div>
+                  <!-- :: /.form-group -->
+                </fieldset>
+
+                <fieldset class="cont_form_group d-flex col-lg-6 col-sm-12 pl-0 pr-lg-3 pr-0 mb-3">
+                  <div class="form-group col-md-12 pl-0 pr-0">
+                    <label th:for="'input_startDate_'+${stat.index}" class="bmd-label-floating" th:text="#{activity.startDate}"></label>
+                    <div class="ctrl_datetimepicker input-group date" th:id="'datetimepicker_startDate_'+${stat.index}" data-target-input="nearest">
+                      <input type="text" th:id="'input_startDate_'+${stat.index}" name="startDate" class="form-control datetimepicker-input assessment-date-keypress" autocomplete="off" data-target="'#datetimepicker_startDate_'+${stat.index}">
+                      <div class="input-group-append">
+                        <button type="button" class="btn btn-primary input-group-text btn_open_datepicker" data-target="'#datetimepicker_startDate_'+${stat.index}" data-toggle="datetimepicker" th:aria-label="#{general.datetimepicker.btn_open_datepicker.title}" th:title="#{general.datetimepicker.btn_open_datepicker.title}"><span aria-hidden="true" class="icono fas fa-calendar"></span></button>
+                        <button type="button" class="btn btn-outline-secondary btn_reset btn_reset_datepicker" th:aria-label="#{general.datetimepicker.btn_reset_datepicker.title}" th:title="#{general.datetimepicker.btn_reset_datepicker.title}"><span aria-hidden="true" class="icono fas fa-times"></span></button>
+                      </div>
+                    </div>
+                    <span class="bmd-help" th:text="#{activity.startDate.help}"></span>
+                  </div>
+                  <!-- :: /.form-group -->
+                </fieldset>
+
+                <fieldset class="cont_form_group d-flex col-lg-6 col-sm-12 pl-0 pr-lg-3 pr-0 mb-3">
+                  <div class="form-group col-md-12 pl-0 pr-0">
+                    <label th:for="'input_endDate_'+${stat.index}" class="bmd-label-floating" th:text="#{activity.endDate}"></label>
+                    <div class="ctrl_datetimepicker input-group date" th:id="'datetimepicker_endDate_'+${stat.index}" data-target-input="nearest">
+                      <input type="text" th:id="'input_endDate_'+${stat.index}" name="endDate" class="form-control datetimepicker-input assessment-date-keypress" autocomplete="off" th:data-target="'#datetimepicker_endDate_'+${stat.index}">
+
+                      <div class="input-group-append">
+                        <button type="button" class="btn btn-primary input-group-text btn_open_datepicker" th:data-target="'#datetimepicker_endDate_'+${stat.index}" data-toggle="datetimepicker" th:aria-label="#{general.datetimepicker.btn_open_datepicker.title}" th:title="#{general.datetimepicker.btn_open_datepicker.title}"><span aria-hidden="true" class="icono fas fa-calendar"></span></button>
+                        <button type="button" class="btn btn-outline-secondary btn_reset btn_reset_datepicker" th:aria-label="#{general.datetimepicker.btn_reset_datepicker.title}" th:title="#{general.datetimepicker.btn_reset_datepicker.title}"><span aria-hidden="true" class="icono fas fa-times"></span></button>
+                      </div>
+                    </div>
+                    <span class="bmd-help" th:text="#{activity.endDate.help}"></span>
+                  </div>
+                  <!-- :: /.form-group -->
+                </fieldset>
+
+              </div>
+              <!-- :. /.cont_fechas -->
+
+              <div class="cont_botonera_form col-md-12 d-flex justify-content-center mt-3">
+                <button type="button" class="btn btn-outline-secondary mr-2" data-dismiss="modal" th:text="#{modal.exit}" />
+                <button type="submit" class="btn btn-primary btn-add-activity mr-2" th:text="#{activity.modal.add.button}"></button>
+              </div>
+              <!-- :: /.cont_botonera_form -->
+
+            </div>
+            <!-- :: /.content_activity_form -->
+          </form>
+        </div>
+        <!-- :: /.activity_add_form -->
+
+        <div class="cont_manager activity_cont activity_modify_forms" >
+          <ul class="list-group">
+            <li th:class="'list-group-item '+ ${!act.active ? 'out':''}" th:data-id="${act.id}" th:each="act: ${activity.value}">
+              <span class="title" th:text="${act.text}"></span>
+              <div class="cont_botonera" th:if="${act.edit}">
+                <!-- :: Modificar actividad-->
+                <button class="btn_activity_form_modify btn btn-outline-secondary mr-1 modal_js" type="submit" th:id="'b_activity_'+${act.id}"
+                  data-modal_tipo="light"
+                  data-modal_size="modal-lg"
+                  th:data-modal_target="'#modal_activity_'+${act.id}"
+                  data-modal_discriminador="modal_modificar_manager_activity"
+                  th:data-modal_title="#{activity.modal.edit.button}"
+                  th:data-modal_html="'#activity_form_'+${act.id}"
+                  data-modal_footer="false"
+                  th:aria-label="#{activity.modal.edit.button}" th:title="#{activity.modal.edit.button}" >
+                  <span class="icono fas fa-edit" aria-hidden="true"></span>
+                </button>
+
+                <div th:id="'activity_form_'+${act.id}" class="activity_edit_form d-none">
+                  <form th:action="@{${thymeleafMap.get('MANAGER_ACTIVITIES_ADD')}}" th:object="${activityVO}" method="POST">
+                    <input type="hidden" name="id" th:value="${act.id}">
+                    <input type="hidden" name="contentLevel" th:value="${activity.key.code}">
+                    <input type="hidden" name="type" th:value="@{${thymeleafMap.get('ACTIVITY')}}">
+
+                    <div class="content_activity_form d-flex flex-column col-md-12 mb-3" data-form_id="01">
+
+                      <fieldset>
+                        <div class="cont_form_group d-flex mb-3">
+                          <div class="form-group col-md-12 pl-0 pr-0">
+                            <label class="bmd-label-floating" th:text="#{activity.text}" ></label>
+                            <input class="form-control" type="text" name="text" th:aria-label="#{activity.text}" th:value="${act.text}"/>
+                            <span class="bmd-help" th:text="#{activity.text.help}"></span>
+                          </div>
+                          <!-- :: /.form-group -->
+                        </div>
+                        <!-- :: /.cont_form_group -->
+                      </fieldset>
+
+                      <fieldset>
+                        <div class="cont_form_group d-flex mb-3">
+                          <div class="form-group col-md-12 pl-0 pr-0">
+                            <label class="bmd-label-floating" th:text="#{activity.link}" ></label>
+                            <input class="form-control" type="text" name="link" th:aria-label="#{activity.link}" th:value="${act.link}"/>
+                            <span class="bmd-help" th:text="#{activity.link.help}"></span>
+                          </div>
+                          <!-- :: /.form-group -->
+                        </div>
+                        <!-- :: /.cont_form_group -->
+                      </fieldset>
+
+                      <div class="cont_fechas row ml-0 mr-0 w-100">
+
+                        <div class="alert alert-info alert_instructions_modal alert-dismissible fade show">
+                          <button type="button" class="close" data-dismiss="alert" th:aria-label="#{activity.modal.alert.info.btn_close.title}" th:title="#{activity.modal.alert.info.btn_close.title}">
+                            <span aria-hidden="true">×</span>
+                          </button>
+                          <span class="alert_titulo" th:text="#{alert.info.title}"></span>
+                          <span class="alert_texto" th:text="#{activity.modal.alert.info.date}"></span>
+                        </div>
+
+                        <fieldset class="cont_form_group d-flex col-lg-6 col-sm-12 pl-0 pr-lg-3 pr-0 mb-3">
+                          <div class="form-group col-md-12 pl-0 pr-0">
+                            <label th:for="'modify_input_activityDateStart_'+${act.id}" class="bmd-label-floating" th:text="#{activity.activityDateStart}"></label>
+                            <div class="ctrl_datetimepicker input-group date" th:id="'datetimepicker_activityDateStart_'+${act.id}" data-target-input="nearest">
+                              <input type="text" th:id="'modify_input_activityDateStart_'+${act.id}" name="activityDateStart" class="form-control datetimepicker-input assessment-date-keypress" autocomplete="off" th:data-target="'#datetimepicker_activityDateStart_'+${act.id}" th:value="${#dates.format(act.activityDateStart,'yyyy-MM-dd')}">
+                              <div class="input-group-append" >
+                                <button type="button" class="btn btn-primary input-group-text btn_open_datepicker" th:data-target="'#datetimepicker_activityDateStart_'+${act.id}" data-toggle="datetimepicker" th:aria-label="#{general.datetimepicker.btn_open_datepicker.title}" th:title="#{general.datetimepicker.btn_open_datepicker.title}"><span aria-hidden="true" class="icono fas fa-calendar"></span></button>
+                                <button type="button" class="btn btn-outline-secondary btn_reset btn_reset_datepicker" th:aria-label="#{general.datetimepicker.btn_reset_datepicker.title}" th:title="#{general.datetimepicker.btn_reset_datepicker.title}"><span aria-hidden="true" class="icono fas fa-times"></span></button>
+                              </div>
+                            </div>
+                            <span class="bmd-help" th:text="#{activity.activityDateStart.help}"></span>
+                          </div>
+                          <!-- :: /.form-group -->
+                        </fieldset>
+
+                        <fieldset class="cont_form_group d-flex col-lg-6 col-sm-12 pl-0 pr-lg-3 pr-0 mb-3">
+                          <div class="form-group col-md-12 pl-0 pr-0">
+                            <label th:for="'modify_input_activityDateEnd_'+${act.id}" for="activityDateEnd" class="bmd-label-floating" th:text="#{activity.activityDateEnd}"></label>
+                            <div class="ctrl_datetimepicker input-group date" th:id="'datetimepicker_activityDateEnd_'+${act.id}" data-target-input="nearest">
+                              <input type="text" th:id="'modify_input_activityDateEnd_'+${act.id}" name="activityDateEnd" class="form-control datetimepicker-input assessment-date-keypress" autocomplete="off" th:data-target="'#datetimepicker_activityDateEnd_'+${act.id}" th:value="${#dates.format(act.activityDateEnd,'yyyy-MM-dd')}">
+                              <div class="input-group-append">
+                                <button type="button" class="btn btn-primary input-group-text btn_open_datepicker" th:data-target="'#datetimepicker_activityDateEnd_'+${act.id}" data-toggle="datetimepicker" th:aria-label="#{general.datetimepicker.btn_open_datepicker.title}" th:title="#{general.datetimepicker.btn_open_datepicker.title}"><span aria-hidden="true" class="icono fas fa-calendar"></span></button>
+                                <button type="button" class="btn btn-outline-secondary btn_reset btn_reset_datepicker" th:aria-label="#{general.datetimepicker.btn_reset_datepicker.title}" th:title="#{general.datetimepicker.btn_reset_datepicker.title}"><span aria-hidden="true" class="icono fas fa-times"></span></button>
+                              </div>
+                            </div>
+                            <span class="bmd-help" th:text="#{activity.activityDateEnd.help}"></span>
+                          </div>
+                          <!-- :: /.form-group -->
+                        </fieldset>
+
+                        <fieldset class="cont_form_group d-flex col-lg-6 col-sm-12 pl-0 pr-lg-3 pr-0 mb-3">
+                          <div class="form-group col-md-12 pl-0 pr-0">
+                            <label th:for="'modify_input_startDate_'+${act.id}" class="bmd-label-floating" th:text="#{activity.startDate}"></label>
+                            <div class="ctrl_datetimepicker input-group date" th:id="'datetimepicker_startDate_'+${act.id}" data-target-input="nearest">
+                              <input type="text" th:id="'modify_input_startDate_'+${act.id}" name="startDate" class="form-control datetimepicker-input assessment-date-keypress" autocomplete="off" th:data-target="'#datetimepicker_startDate_'+${act.id}" th:value="${#dates.format(act.startDate,'yyyy-MM-dd')}">
+                              <div class="input-group-append">
+                                <button type="button" class="btn btn-primary input-group-text btn_open_datepicker" th:data-target="'#datetimepicker_startDate_'+${act.id}" data-toggle="datetimepicker" th:aria-label="#{general.datetimepicker.btn_open_datepicker.title}" th:title="#{general.datetimepicker.btn_open_datepicker.title}"><span aria-hidden="true" class="icono fas fa-calendar"></span></button>
+                                <button type="button" class="btn btn-outline-secondary btn_reset btn_reset_datepicker" th:aria-label="#{general.datetimepicker.btn_reset_datepicker.title}" th:title="#{general.datetimepicker.btn_reset_datepicker.title}"><span aria-hidden="true" class="icono fas fa-times"></span></button>
+                              </div>
+                            </div>
+                            <span class="bmd-help" th:text="#{activity.startDate.help}"></span>
+                          </div>
+                          <!-- :: /.form-group -->
+                        </fieldset>
+
+                        <fieldset class="cont_form_group d-flex col-lg-6 col-sm-12 pl-0 pr-lg-3 pr-0 mb-3">
+                          <div class="form-group col-md-12 pl-0 pr-0">
+                            <label th:for="'modify_input_endDate_'+${act.id}" class="bmd-label-floating" th:text="#{activity.endDate}"></label>
+                            <div class="ctrl_datetimepicker input-group date" th:id="'datetimepicker_endDate_'+${act.id}" data-target-input="nearest">
+                              <input type="text" th:id="'modify_input_endDate_'+${act.id}" name="endDate" class="form-control datetimepicker-input assessment-date-keypress" autocomplete="off" th:data-target="'#datetimepicker_endDate_'+${act.id}" th:value="${#dates.format(act.endDate,'yyyy-MM-dd')}">
+
+                              <div class="input-group-append">
+                                <button type="button" class="btn btn-primary input-group-text btn_open_datepicker" th:data-target="'#datetimepicker_endDate_'+${act.id}" data-toggle="datetimepicker" th:aria-label="#{general.datetimepicker.btn_open_datepicker.title}" th:title="#{general.datetimepicker.btn_open_datepicker.title}"><span aria-hidden="true" class="icono fas fa-calendar"></span></button>
+                                <button type="button" class="btn btn-outline-secondary btn_reset btn_reset_datepicker" th:aria-label="#{general.datetimepicker.btn_reset_datepicker.title}" th:title="#{general.datetimepicker.btn_reset_datepicker.title}"><span aria-hidden="true" class="icono fas fa-times"></span></button>
+                              </div>
+                            </div>
+                            <span class="bmd-help" th:text="#{activity.endDate.help}"></span>
+                          </div>
+                          <!-- :: /.form-group -->
+                        </fieldset>
+
+                      </div>
+                      <!-- :: /.cont_fechas-->
+
+                      <div class="cont_botonera_form col-md-12 d-flex justify-content-center mt-3">
+                        <button type="button" class="btn btn-outline-secondary mr-2" data-dismiss="modal" th:text="#{modal.exit}" />
+                        <button type="submit" class="btn btn-primary btn-modify-activity mr-2" th:text="#{activity.modal.add.button}"></button>
+                      </div>
+                      <!-- :: /.cont_botonera_form -->
+
+                    </div>
+                    <!-- :: /.content_activity_form -->
+                  </form>
+                </div>
+                <!-- :: /.activity_edit_form -->
+                <button type="submit" class="btn_activity_delete btn btn-outline-secondary modal_js" th:aria-label="#{activity.modal.edit.confirm.button}" th:title="#{activity.modal.edit.confirm.button}"
+                    th:data-url="@{${thymeleafMap.get('MANAGER_ACTIVITIES_DELETE')}(id=(${act.id} ? ${act.id}))}"
+                    th:data-id_activity="${act.id}"
+                    th:data-modal_title="#{manager.delete.confirm}"
+                    data-modal_size="modal-md"
+                    th:data-modal_target="'#modal_confirmacion_borrado_activity_' + ${act.id}"
+                    data-modal_tipo="light"
+                    data-modal_discriminador="modal_confirmacion_borrado_manager_activity"
+                    data-modal_html="#modal_confirmacion_borrado_activity_html"
+                    data-modal_footer="false">
+                  <span class="icono fas fa-trash" aria-hidden="true"></span>
+                </button>
+              </div>
+              <!-- :: /.cont_botonera -->
+            </li>
+          </ul>
+        </div>
+        <!-- :: /.activity_cont -->
+      </div>
+      <!-- :: /.cont_collapse -->
+    </article>
+    <!-- :: /.cont_manageActivities -->
+
+  </section>
+  <!-- :: /.container_general -->
+
+</div>
+<!-- :: /.manager-activities -->
+
+<div id="modal_confirmacion_borrado_activity_html" class="d-none">
+
+    <span class="modal_question" th:text="#{activity.modal.edit.confirm.text}"></span>
+    <div class="cont_botonera_form d-flex justify-content-center mt-4">
+
+      <button type="button" class="btn_cerrar btn btn-outline-secondary mr-2" data-dismiss="modal" th:text="#{activity.modal.edit.cancel.button}"></button>
+      <!-- :: El id de la lista se complementa en la url a traves de js en [scripts.js]. Buscar por modal_confirmacion_borrado_lista -->
+      <button type="button" class="btn_borrar btn btn-primary" th:text="#{activity.modal.edit.confirm.button}"></button>
+
+    </div>
+    <!-- :: /.cont_botonera -->
+  </div>
+  <!-- :: /#modal_confirmacion_borrado_activity_html -->
+
+
+<!-- :: /[manager/activities/activities.html] -->
+
+</th:block>

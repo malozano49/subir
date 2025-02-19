@@ -1,0 +1,110 @@
+<!-- :: [title/share.html] -->
+<!-- :: data-skip_to_content [scripts.js] -> ACCESIBLE_SKIP_TO_CONTENT() -->
+<article id="share" class="article detail-share border"  data-skip_to_content="copias" aria-labelledby="art_share_title">
+  <h2 id="art_share_title" class="w-auto anchor_title stc_title" th:text="#{share.label}"></h2>
+  <div class="share_items_list">
+    <div class="cont_button_share">
+      <button class="btn_detail_item_share btn btn-secondary modal_js share_item share_item_email"
+        data-modal_tipo="light"
+        th:data-modal_target="'#modal_'+${detail.catalog.oaiIdentifierB64}"
+        data-modal_discriminador="modal_detail_item_share_mail"
+        th:data-modal_title="#{email.modal.text.button}"
+        th:data-modal_html="'#dmh'+${detail.catalog.oaiIdentifierB64}"
+        data-modal_footer="false"
+        th:aria-label="#{email.modal.text.button}" th:title="#{email.modal.text.button}" th:id="b_+${detail.catalog.oaiIdentifierB64}">
+        <span class="icono fas fa-envelope" aria-hidden="true"></span>
+      </button>
+
+      <div th:id="'dmh'+${detail.catalog.oaiIdentifierB64}" class="d-none" aria-hidden="true">
+        <div class="alert alert-info alert_icon alert-dismissible w-100 fade show">
+          <span class="icono fas fa-question-circle"></span>
+          <span class="alert_titulo sr-only" th:text="#{alert.info.title}"></span>
+          <span class="alert_texto" th:text="#{summary.share.email.info}"></span>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <!-- :: /.alert -->
+        <form th:action="@{${thymeleafMap.get('SENDMAILSIMPLE')}}" method="POST">
+          <input	type="hidden" name="id" th:value="${detail.catalog.oaiIdentifierB64}">
+          <fieldset>
+            <legend th:text="#{summary.share.email.title}"></legend>
+            <div class="cont_form_group col-md-12">
+              <div class="form-group">
+                <label th:for="'recipientEmail_'+${detail.catalog.oaiIdentifierB64}" class="bmd-label-floating" th:text="#{summary.share.email}"></label>
+<!-- :: @TODO ADJUDICAR ID UNICO AL INPUT Y FOR DEL LABEL para accesibilidad -->
+                <input th:id="'recipientEmail_'+${detail.catalog.oaiIdentifierB64}" class="form-control" type="email" name="recipientEmail" value=""/>
+                <span class="bmd-help" th:text="#{email.to}"></span>
+              </div>
+              <!-- :: /.form_group -->
+            </div>
+            <!-- :: /.cont_form_group -->
+          </fieldset>
+          <div class="alert alert-info mt-3 d-none" role="alert" aria-atomic="true">
+            <span class="alert_titulo sr-only" th:text="#{alert.error.title}"></span>
+            <span class="alert_texto">.alert.alert-info</span>
+          </div>
+          <!-- ::/.alert -->
+          <div class="cont_botonera col-md-12 d-flex justify-content-center mt-3">
+            <button type="button" class="btn btn-outline-secondary mr-2" data-dismiss="modal" th:text="#{email.close}"></button>
+            <button type="submit" class="btn btn-primary mailto" data-dismiss="modal" th:text="#{email.modal.text.button}"></button>
+          </div>
+          <!-- ::/.cont_botonera_form -->
+        </form>
+      </div>
+    </div>
+    <!-- :: /.cont_button_share -->
+
+    <div class="cont_button_share">
+      <a class="btn share_item share_item_pdf" target="_blank" rel="noopener noreferrer" th:href="@{${thymeleafMap.get('CATALOG_MAPPING_DETAIL_PDF')}(detailId=${detail.catalog.oaiIdentifierB64})}" th:title="#{summary.pdf.view.title}" th:aria-label="#{summary.pdf.view.title}">
+        <span class="icono fas fa-file-pdf" aria-hidden="true"></span>
+      </a>
+    </div>
+    <!-- :: /.cont_button_share -->
+
+    <div class="cont_button_share">
+      <button class="btn btn-secondary modal_js share_item share_item_permalink" th:title="#{share.permlink.title}" th:aria-label="#{share.permlink.title}"
+        data-modal_tipo="light"
+        th:data-modal_target="'#modal_'+${detail.catalog.oaiIdentifierB64}+'_permalink'"
+        data-modal_discriminador="modal_detail_item_share_permalink"
+        th:data-modal_title="Permalink"
+        th:data-modal_html="'#dmh'+${detail.catalog.oaiIdentifierB64}+'_permalink'"
+        data-modal_footer="false">
+        <span class="icono fas fa-link" aria-hidden="true"></span>
+      </button>
+      <div th:id="'dmh'+${detail.catalog.oaiIdentifierB64}+'_permalink'" class="d-none" aria-hidden="true">
+        <div class="alert alert-info alert_icon w-100 fade show">
+          <span class="icono fas fa-question-circle"></span>
+          <span class="alert_titulo mb-3" th:text="#{alert.info.title}"></span>
+          <span class="alert_texto" th:text="#{summary.permlink.info.text1}"></span>
+        </div>
+        <div class="cont_permalink">
+          <label for="permalink_textarea" class="sr-only" th:text="#{summary.permlink.text.area.title}"></label>
+          <textarea id="permalink_textarea" readonly></textarea>
+        </div>
+        <div class="cont_botonera d-flex justify-content-center">
+          <button type="button" class="btn btn-primary btn_close" data-dismiss="modal" th:aria-label="#{modal.close.title}">
+            <span class="btn_title" th:text="#{modal.close}"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- :: /.cont_button_share -->
+
+    <div id="shareIcons_00" class="jssocials" data-social_share_type="item_detail"
+    	th:data-social_share_title="${dataSocialShare.title}"
+    	th:data-social_share_description="${dataSocialShare.description}"
+    	th:data-social_share_img="${dataSocialShare.img}">
+
+
+
+
+
+
+
+    </div>
+    <!-- :: /.jssocials -->
+  </div>
+  <!-- ::/.share_items_list -->
+</article>
+<!-- :: /[title/share.hmtl] -->
